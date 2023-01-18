@@ -162,6 +162,7 @@ class _RegionSslCertificateState:
                  certificate_id: Optional[pulumi.Input[int]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -177,6 +178,7 @@ class _RegionSslCertificateState:
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -202,6 +204,8 @@ class _RegionSslCertificateState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
@@ -265,6 +269,18 @@ class _RegionSslCertificateState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expire time of the certificate in RFC3339 text format.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
     @property
     @pulumi.getter
@@ -587,6 +603,7 @@ class RegionSslCertificate(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["certificate_id"] = None
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["self_link"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -604,6 +621,7 @@ class RegionSslCertificate(pulumi.CustomResource):
             certificate_id: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expire_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
@@ -624,6 +642,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -649,6 +668,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         __props__.__dict__["certificate_id"] = certificate_id
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["private_key"] = private_key
@@ -691,6 +711,14 @@ class RegionSslCertificate(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Expire time of the certificate in RFC3339 text format.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter

@@ -36,6 +36,29 @@ __all__ = [
     'TriggerWebhookConfig',
     'WorkerPoolNetworkConfig',
     'WorkerPoolWorkerConfig',
+    'GetTriggerApprovalConfigResult',
+    'GetTriggerBuildResult',
+    'GetTriggerBuildArtifactResult',
+    'GetTriggerBuildArtifactObjectResult',
+    'GetTriggerBuildArtifactObjectTimingResult',
+    'GetTriggerBuildAvailableSecretResult',
+    'GetTriggerBuildAvailableSecretSecretManagerResult',
+    'GetTriggerBuildOptionResult',
+    'GetTriggerBuildOptionVolumeResult',
+    'GetTriggerBuildSecretResult',
+    'GetTriggerBuildSourceResult',
+    'GetTriggerBuildSourceRepoSourceResult',
+    'GetTriggerBuildSourceStorageSourceResult',
+    'GetTriggerBuildStepResult',
+    'GetTriggerBuildStepVolumeResult',
+    'GetTriggerGitFileSourceResult',
+    'GetTriggerGithubResult',
+    'GetTriggerGithubPullRequestResult',
+    'GetTriggerGithubPushResult',
+    'GetTriggerPubsubConfigResult',
+    'GetTriggerSourceToBuildResult',
+    'GetTriggerTriggerTemplateResult',
+    'GetTriggerWebhookConfigResult',
 ]
 
 @pulumi.output_type
@@ -2090,5 +2113,798 @@ class WorkerPoolWorkerConfig(dict):
         If true, workers are created without any public address, which prevents network egress to public IPs.
         """
         return pulumi.get(self, "no_external_ip")
+
+
+@pulumi.output_type
+class GetTriggerApprovalConfigResult(dict):
+    def __init__(__self__, *,
+                 approval_required: bool):
+        pulumi.set(__self__, "approval_required", approval_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> bool:
+        return pulumi.get(self, "approval_required")
+
+
+@pulumi.output_type
+class GetTriggerBuildResult(dict):
+    def __init__(__self__, *,
+                 artifacts: Sequence['outputs.GetTriggerBuildArtifactResult'],
+                 available_secrets: Sequence['outputs.GetTriggerBuildAvailableSecretResult'],
+                 images: Sequence[str],
+                 logs_bucket: str,
+                 options: Sequence['outputs.GetTriggerBuildOptionResult'],
+                 queue_ttl: str,
+                 secrets: Sequence['outputs.GetTriggerBuildSecretResult'],
+                 sources: Sequence['outputs.GetTriggerBuildSourceResult'],
+                 steps: Sequence['outputs.GetTriggerBuildStepResult'],
+                 substitutions: Mapping[str, str],
+                 tags: Sequence[str],
+                 timeout: str):
+        pulumi.set(__self__, "artifacts", artifacts)
+        pulumi.set(__self__, "available_secrets", available_secrets)
+        pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "logs_bucket", logs_bucket)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "queue_ttl", queue_ttl)
+        pulumi.set(__self__, "secrets", secrets)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "steps", steps)
+        pulumi.set(__self__, "substitutions", substitutions)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def artifacts(self) -> Sequence['outputs.GetTriggerBuildArtifactResult']:
+        return pulumi.get(self, "artifacts")
+
+    @property
+    @pulumi.getter(name="availableSecrets")
+    def available_secrets(self) -> Sequence['outputs.GetTriggerBuildAvailableSecretResult']:
+        return pulumi.get(self, "available_secrets")
+
+    @property
+    @pulumi.getter
+    def images(self) -> Sequence[str]:
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter(name="logsBucket")
+    def logs_bucket(self) -> str:
+        return pulumi.get(self, "logs_bucket")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Sequence['outputs.GetTriggerBuildOptionResult']:
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="queueTtl")
+    def queue_ttl(self) -> str:
+        return pulumi.get(self, "queue_ttl")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Sequence['outputs.GetTriggerBuildSecretResult']:
+        return pulumi.get(self, "secrets")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetTriggerBuildSourceResult']:
+        return pulumi.get(self, "sources")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.GetTriggerBuildStepResult']:
+        return pulumi.get(self, "steps")
+
+    @property
+    @pulumi.getter
+    def substitutions(self) -> Mapping[str, str]:
+        return pulumi.get(self, "substitutions")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactResult(dict):
+    def __init__(__self__, *,
+                 images: Sequence[str],
+                 objects: Sequence['outputs.GetTriggerBuildArtifactObjectResult']):
+        pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Sequence[str]:
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Sequence['outputs.GetTriggerBuildArtifactObjectResult']:
+        return pulumi.get(self, "objects")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactObjectResult(dict):
+    def __init__(__self__, *,
+                 location: str,
+                 paths: Sequence[str],
+                 timings: Sequence['outputs.GetTriggerBuildArtifactObjectTimingResult']):
+        """
+        :param str location: The Cloud Build location for the trigger.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "timings", timings)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The Cloud Build location for the trigger.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def timings(self) -> Sequence['outputs.GetTriggerBuildArtifactObjectTimingResult']:
+        return pulumi.get(self, "timings")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactObjectTimingResult(dict):
+    def __init__(__self__, *,
+                 end_time: str,
+                 start_time: str):
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetTriggerBuildAvailableSecretResult(dict):
+    def __init__(__self__, *,
+                 secret_managers: Sequence['outputs.GetTriggerBuildAvailableSecretSecretManagerResult']):
+        pulumi.set(__self__, "secret_managers", secret_managers)
+
+    @property
+    @pulumi.getter(name="secretManagers")
+    def secret_managers(self) -> Sequence['outputs.GetTriggerBuildAvailableSecretSecretManagerResult']:
+        return pulumi.get(self, "secret_managers")
+
+
+@pulumi.output_type
+class GetTriggerBuildAvailableSecretSecretManagerResult(dict):
+    def __init__(__self__, *,
+                 env: str,
+                 version_name: str):
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "version_name", version_name)
+
+    @property
+    @pulumi.getter
+    def env(self) -> str:
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> str:
+        return pulumi.get(self, "version_name")
+
+
+@pulumi.output_type
+class GetTriggerBuildOptionResult(dict):
+    def __init__(__self__, *,
+                 disk_size_gb: int,
+                 dynamic_substitutions: bool,
+                 envs: Sequence[str],
+                 log_streaming_option: str,
+                 logging: str,
+                 machine_type: str,
+                 requested_verify_option: str,
+                 secret_envs: Sequence[str],
+                 source_provenance_hashes: Sequence[str],
+                 substitution_option: str,
+                 volumes: Sequence['outputs.GetTriggerBuildOptionVolumeResult'],
+                 worker_pool: str):
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "dynamic_substitutions", dynamic_substitutions)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "log_streaming_option", log_streaming_option)
+        pulumi.set(__self__, "logging", logging)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "requested_verify_option", requested_verify_option)
+        pulumi.set(__self__, "secret_envs", secret_envs)
+        pulumi.set(__self__, "source_provenance_hashes", source_provenance_hashes)
+        pulumi.set(__self__, "substitution_option", substitution_option)
+        pulumi.set(__self__, "volumes", volumes)
+        pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> int:
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="dynamicSubstitutions")
+    def dynamic_substitutions(self) -> bool:
+        return pulumi.get(self, "dynamic_substitutions")
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Sequence[str]:
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter(name="logStreamingOption")
+    def log_streaming_option(self) -> str:
+        return pulumi.get(self, "log_streaming_option")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> str:
+        return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="requestedVerifyOption")
+    def requested_verify_option(self) -> str:
+        return pulumi.get(self, "requested_verify_option")
+
+    @property
+    @pulumi.getter(name="secretEnvs")
+    def secret_envs(self) -> Sequence[str]:
+        return pulumi.get(self, "secret_envs")
+
+    @property
+    @pulumi.getter(name="sourceProvenanceHashes")
+    def source_provenance_hashes(self) -> Sequence[str]:
+        return pulumi.get(self, "source_provenance_hashes")
+
+    @property
+    @pulumi.getter(name="substitutionOption")
+    def substitution_option(self) -> str:
+        return pulumi.get(self, "substitution_option")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetTriggerBuildOptionVolumeResult']:
+        return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> str:
+        return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class GetTriggerBuildOptionVolumeResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetTriggerBuildSecretResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 secret_env: Mapping[str, str]):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "secret_env", secret_env)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="secretEnv")
+    def secret_env(self) -> Mapping[str, str]:
+        return pulumi.get(self, "secret_env")
+
+
+@pulumi.output_type
+class GetTriggerBuildSourceResult(dict):
+    def __init__(__self__, *,
+                 repo_sources: Sequence['outputs.GetTriggerBuildSourceRepoSourceResult'],
+                 storage_sources: Sequence['outputs.GetTriggerBuildSourceStorageSourceResult']):
+        pulumi.set(__self__, "repo_sources", repo_sources)
+        pulumi.set(__self__, "storage_sources", storage_sources)
+
+    @property
+    @pulumi.getter(name="repoSources")
+    def repo_sources(self) -> Sequence['outputs.GetTriggerBuildSourceRepoSourceResult']:
+        return pulumi.get(self, "repo_sources")
+
+    @property
+    @pulumi.getter(name="storageSources")
+    def storage_sources(self) -> Sequence['outputs.GetTriggerBuildSourceStorageSourceResult']:
+        return pulumi.get(self, "storage_sources")
+
+
+@pulumi.output_type
+class GetTriggerBuildSourceRepoSourceResult(dict):
+    def __init__(__self__, *,
+                 branch_name: str,
+                 commit_sha: str,
+                 dir: str,
+                 invert_regex: bool,
+                 project_id: str,
+                 repo_name: str,
+                 substitutions: Mapping[str, str],
+                 tag_name: str):
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "substitutions", substitutions)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> str:
+        return pulumi.get(self, "commit_sha")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter
+    def substitutions(self) -> Mapping[str, str]:
+        return pulumi.get(self, "substitutions")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class GetTriggerBuildSourceStorageSourceResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 generation: str,
+                 object: str):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> str:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def object(self) -> str:
+        return pulumi.get(self, "object")
+
+
+@pulumi.output_type
+class GetTriggerBuildStepResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[str],
+                 dir: str,
+                 entrypoint: str,
+                 envs: Sequence[str],
+                 id: str,
+                 name: str,
+                 script: str,
+                 secret_envs: Sequence[str],
+                 timeout: str,
+                 timing: str,
+                 volumes: Sequence['outputs.GetTriggerBuildStepVolumeResult'],
+                 wait_fors: Sequence[str]):
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "entrypoint", entrypoint)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "script", script)
+        pulumi.set(__self__, "secret_envs", secret_envs)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "timing", timing)
+        pulumi.set(__self__, "volumes", volumes)
+        pulumi.set(__self__, "wait_fors", wait_fors)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Sequence[str]:
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter
+    def entrypoint(self) -> str:
+        return pulumi.get(self, "entrypoint")
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Sequence[str]:
+        return pulumi.get(self, "envs")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter(name="secretEnvs")
+    def secret_envs(self) -> Sequence[str]:
+        return pulumi.get(self, "secret_envs")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def timing(self) -> str:
+        return pulumi.get(self, "timing")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetTriggerBuildStepVolumeResult']:
+        return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="waitFors")
+    def wait_fors(self) -> Sequence[str]:
+        return pulumi.get(self, "wait_fors")
+
+
+@pulumi.output_type
+class GetTriggerBuildStepVolumeResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetTriggerGitFileSourceResult(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 repo_type: str,
+                 revision: str,
+                 uri: str):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetTriggerGithubResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 owner: str,
+                 pull_requests: Sequence['outputs.GetTriggerGithubPullRequestResult'],
+                 pushes: Sequence['outputs.GetTriggerGithubPushResult']):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "pull_requests", pull_requests)
+        pulumi.set(__self__, "pushes", pushes)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> str:
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="pullRequests")
+    def pull_requests(self) -> Sequence['outputs.GetTriggerGithubPullRequestResult']:
+        return pulumi.get(self, "pull_requests")
+
+    @property
+    @pulumi.getter
+    def pushes(self) -> Sequence['outputs.GetTriggerGithubPushResult']:
+        return pulumi.get(self, "pushes")
+
+
+@pulumi.output_type
+class GetTriggerGithubPullRequestResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 comment_control: str,
+                 invert_regex: bool):
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "comment_control", comment_control)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> str:
+        return pulumi.get(self, "comment_control")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+
+@pulumi.output_type
+class GetTriggerGithubPushResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 invert_regex: bool,
+                 tag: str):
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetTriggerPubsubConfigResult(dict):
+    def __init__(__self__, *,
+                 service_account_email: str,
+                 state: str,
+                 subscription: str,
+                 topic: str):
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "subscription", subscription)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> str:
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class GetTriggerSourceToBuildResult(dict):
+    def __init__(__self__, *,
+                 ref: str,
+                 repo_type: str,
+                 uri: str):
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetTriggerTriggerTemplateResult(dict):
+    def __init__(__self__, *,
+                 branch_name: str,
+                 commit_sha: str,
+                 dir: str,
+                 invert_regex: bool,
+                 project_id: str,
+                 repo_name: str,
+                 tag_name: str):
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> str:
+        return pulumi.get(self, "commit_sha")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class GetTriggerWebhookConfigResult(dict):
+    def __init__(__self__, *,
+                 secret: str,
+                 state: str):
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
 
 

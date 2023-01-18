@@ -46,8 +46,16 @@ class SnapshotArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.
+        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+               After you encrypt a snapshot using a customer-supplied key, you must
+               provide the same key if you use the snapshot later. For example, you
+               must provide the encryption key when you create a disk from the
+               encrypted snapshot in a future request.
+               Customer-supplied encryption keys do not protect access to metadata of
+               the snapshot.
+               If you do not provide an encryption key when creating the snapshot,
+               then the snapshot will be encrypted using an automatically generated
+               key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
@@ -164,8 +172,16 @@ class SnapshotArgs:
     @pulumi.getter(name="snapshotEncryptionKey")
     def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
         """
-        The customer-supplied encryption key of the snapshot. Required if the
-        source snapshot is protected by a customer-supplied encryption key.
+        Encrypts the snapshot using a customer-supplied encryption key.
+        After you encrypt a snapshot using a customer-supplied key, you must
+        provide the same key if you use the snapshot later. For example, you
+        must provide the encryption key when you create a disk from the
+        encrypted snapshot in a future request.
+        Customer-supplied encryption keys do not protect access to metadata of
+        the snapshot.
+        If you do not provide an encryption key when creating the snapshot,
+        then the snapshot will be encrypted using an automatically generated
+        key and you do not need to provide a key to use the snapshot later.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")
@@ -260,8 +276,16 @@ class _SnapshotState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.
+        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+               After you encrypt a snapshot using a customer-supplied key, you must
+               provide the same key if you use the snapshot later. For example, you
+               must provide the encryption key when you create a disk from the
+               encrypted snapshot in a future request.
+               Customer-supplied encryption keys do not protect access to metadata of
+               the snapshot.
+               If you do not provide an encryption key when creating the snapshot,
+               then the snapshot will be encrypted using an automatically generated
+               key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
@@ -447,8 +471,16 @@ class _SnapshotState:
     @pulumi.getter(name="snapshotEncryptionKey")
     def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
         """
-        The customer-supplied encryption key of the snapshot. Required if the
-        source snapshot is protected by a customer-supplied encryption key.
+        Encrypts the snapshot using a customer-supplied encryption key.
+        After you encrypt a snapshot using a customer-supplied key, you must
+        provide the same key if you use the snapshot later. For example, you
+        must provide the encryption key when you create a disk from the
+        encrypted snapshot in a future request.
+        Customer-supplied encryption keys do not protect access to metadata of
+        the snapshot.
+        If you do not provide an encryption key when creating the snapshot,
+        then the snapshot will be encrypted using an automatically generated
+        key and you do not need to provide a key to use the snapshot later.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")
@@ -653,8 +685,16 @@ class Snapshot(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+               After you encrypt a snapshot using a customer-supplied key, you must
+               provide the same key if you use the snapshot later. For example, you
+               must provide the encryption key when you create a disk from the
+               encrypted snapshot in a future request.
+               Customer-supplied encryption keys do not protect access to metadata of
+               the snapshot.
+               If you do not provide an encryption key when creating the snapshot,
+               then the snapshot will be encrypted using an automatically generated
+               key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
@@ -865,8 +905,16 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the
-               source snapshot is protected by a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+               After you encrypt a snapshot using a customer-supplied key, you must
+               provide the same key if you use the snapshot later. For example, you
+               must provide the encryption key when you create a disk from the
+               encrypted snapshot in a future request.
+               Customer-supplied encryption keys do not protect access to metadata of
+               the snapshot.
+               If you do not provide an encryption key when creating the snapshot,
+               then the snapshot will be encrypted using an automatically generated
+               key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
@@ -1000,8 +1048,16 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="snapshotEncryptionKey")
     def snapshot_encryption_key(self) -> pulumi.Output[Optional['outputs.SnapshotSnapshotEncryptionKey']]:
         """
-        The customer-supplied encryption key of the snapshot. Required if the
-        source snapshot is protected by a customer-supplied encryption key.
+        Encrypts the snapshot using a customer-supplied encryption key.
+        After you encrypt a snapshot using a customer-supplied key, you must
+        provide the same key if you use the snapshot later. For example, you
+        must provide the encryption key when you create a disk from the
+        encrypted snapshot in a future request.
+        Customer-supplied encryption keys do not protect access to metadata of
+        the snapshot.
+        If you do not provide an encryption key when creating the snapshot,
+        then the snapshot will be encrypted using an automatically generated
+        key and you do not need to provide a key to use the snapshot later.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")

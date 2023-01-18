@@ -160,7 +160,7 @@ public class User extends com.pulumi.resources.CustomResource {
     }
     /**
      * The host the user can connect from. This is only supported
-     * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+     * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      * 
      */
@@ -169,7 +169,7 @@ public class User extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The host the user can connect from. This is only supported
-     * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+     * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      * 
      */
@@ -211,7 +211,8 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-     * or CLOUD_IAM_SERVICE_ACCOUNT.
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      * 
      */
     @Export(name="password", type=String.class, parameters={})
@@ -220,7 +221,8 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-     * or CLOUD_IAM_SERVICE_ACCOUNT.
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      * 
      */
     public Output<Optional<String>> password() {

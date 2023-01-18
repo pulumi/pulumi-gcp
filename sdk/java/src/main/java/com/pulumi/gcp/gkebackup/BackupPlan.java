@@ -21,6 +21,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a Backup Plan instance.
+ * 
+ * To get more information about BackupPlan, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ * 
  * ## Example Usage
  * ### Gkebackup Backupplan Basic
  * ```java
@@ -37,7 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,9 +69,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
  *             .cluster(primary.id())
@@ -74,9 +79,7 @@ import javax.annotation.Nullable;
  *                 .includeSecrets(true)
  *                 .allNamespaces(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -97,7 +100,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.BackupPlan;
  * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -123,9 +125,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var autopilot = new BackupPlan(&#34;autopilot&#34;, BackupPlanArgs.builder()        
  *             .cluster(primary.id())
@@ -135,9 +135,7 @@ import javax.annotation.Nullable;
  *                 .includeSecrets(true)
  *                 .allNamespaces(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -163,7 +161,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespacesArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigEncryptionKeyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -188,21 +185,15 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
  *             .keyRing(keyRing.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var cmek = new BackupPlan(&#34;cmek&#34;, BackupPlanArgs.builder()        
  *             .cluster(primary.id())
@@ -219,9 +210,7 @@ import javax.annotation.Nullable;
  *                     .gcpKmsEncryptionKey(cryptoKey.id())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -244,7 +233,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -269,9 +257,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var full = new BackupPlan(&#34;full&#34;, BackupPlanArgs.builder()        
  *             .cluster(primary.id())
@@ -298,9 +284,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

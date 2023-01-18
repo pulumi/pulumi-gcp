@@ -147,6 +147,16 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.ImageGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
+        /// Encrypts the image using a customer-supplied encryption key.
+        /// After you encrypt an image with a customer-supplied key, you must
+        /// provide the same key if you use the image later (e.g. to create a
+        /// disk from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Output("imageEncryptionKey")]
+        public Output<Outputs.ImageImageEncryptionKey?> ImageEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
@@ -310,6 +320,16 @@ namespace Pulumi.Gcp.Compute
             set => _guestOsFeatures = value;
         }
 
+        /// <summary>
+        /// Encrypts the image using a customer-supplied encryption key.
+        /// After you encrypt an image with a customer-supplied key, you must
+        /// provide the same key if you use the image later (e.g. to create a
+        /// disk from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Input("imageEncryptionKey")]
+        public Input<Inputs.ImageImageEncryptionKeyArgs>? ImageEncryptionKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -447,6 +467,16 @@ namespace Pulumi.Gcp.Compute
             get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.ImageGuestOsFeatureGetArgs>());
             set => _guestOsFeatures = value;
         }
+
+        /// <summary>
+        /// Encrypts the image using a customer-supplied encryption key.
+        /// After you encrypt an image with a customer-supplied key, you must
+        /// provide the same key if you use the image later (e.g. to create a
+        /// disk from the image)
+        /// Structure is documented below.
+        /// </summary>
+        [Input("imageEncryptionKey")]
+        public Input<Inputs.ImageImageEncryptionKeyGetArgs>? ImageEncryptionKey { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.

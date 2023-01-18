@@ -106,12 +106,11 @@ class InstanceCluster(dict):
                  storage_type: Optional[str] = None,
                  zone: Optional[str] = None):
         """
-        :param str cluster_id: The ID of the Cloud Bigtable cluster.
+        :param str cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
         :param int num_nodes: The number of nodes in your Cloud Bigtable cluster.
-               Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-               for a `DEVELOPMENT` instance.
+               Required, with a minimum of `1` for each cluster in an instance.
         :param str storage_type: The storage type to use. One of `"SSD"` or
                `"HDD"`. Defaults to `"SSD"`.
         :param str zone: The zone to create the Cloud Bigtable cluster in. If it not
@@ -134,7 +133,7 @@ class InstanceCluster(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The ID of the Cloud Bigtable cluster.
+        The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -159,8 +158,7 @@ class InstanceCluster(dict):
     def num_nodes(self) -> Optional[int]:
         """
         The number of nodes in your Cloud Bigtable cluster.
-        Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-        for a `DEVELOPMENT` instance.
+        Required, with a minimum of `1` for each cluster in an instance.
         """
         return pulumi.get(self, "num_nodes")
 

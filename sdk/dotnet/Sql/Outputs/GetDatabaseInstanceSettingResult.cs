@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string Collation;
         public readonly string ConnectorEnforcement;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
+        public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult> DenyMaintenancePeriods;
         public readonly bool DiskAutoresize;
         public readonly int DiskAutoresizeLimit;
@@ -52,6 +53,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             string connectorEnforcement,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
+
+            bool deletionProtectionEnabled,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult> denyMaintenancePeriods,
 
@@ -92,6 +95,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             DatabaseFlags = databaseFlags;
+            DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;

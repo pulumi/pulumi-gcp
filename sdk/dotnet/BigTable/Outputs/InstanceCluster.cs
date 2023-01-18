@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// </summary>
         public readonly Outputs.InstanceClusterAutoscalingConfig? AutoscalingConfig;
         /// <summary>
-        /// The ID of the Cloud Bigtable cluster.
+        /// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
@@ -27,8 +27,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         public readonly string? KmsKeyName;
         /// <summary>
         /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-        /// for a `DEVELOPMENT` instance.
+        /// Required, with a minimum of `1` for each cluster in an instance.
         /// </summary>
         public readonly int? NumNodes;
         /// <summary>

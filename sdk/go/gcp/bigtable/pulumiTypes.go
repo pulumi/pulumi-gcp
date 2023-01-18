@@ -274,13 +274,12 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 type InstanceCluster struct {
 	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
 	AutoscalingConfig *InstanceClusterAutoscalingConfig `pulumi:"autoscalingConfig"`
-	// The ID of the Cloud Bigtable cluster.
+	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId string `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-	// for a `DEVELOPMENT` instance.
+	// Required, with a minimum of `1` for each cluster in an instance.
 	NumNodes *int `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
@@ -305,13 +304,12 @@ type InstanceClusterInput interface {
 type InstanceClusterArgs struct {
 	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
 	AutoscalingConfig InstanceClusterAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
-	// The ID of the Cloud Bigtable cluster.
+	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-	// for a `DEVELOPMENT` instance.
+	// Required, with a minimum of `1` for each cluster in an instance.
 	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
@@ -378,7 +376,7 @@ func (o InstanceClusterOutput) AutoscalingConfig() InstanceClusterAutoscalingCon
 	return o.ApplyT(func(v InstanceCluster) *InstanceClusterAutoscalingConfig { return v.AutoscalingConfig }).(InstanceClusterAutoscalingConfigPtrOutput)
 }
 
-// The ID of the Cloud Bigtable cluster.
+// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -389,8 +387,7 @@ func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 // The number of nodes in your Cloud Bigtable cluster.
-// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-// for a `DEVELOPMENT` instance.
+// Required, with a minimum of `1` for each cluster in an instance.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
 }

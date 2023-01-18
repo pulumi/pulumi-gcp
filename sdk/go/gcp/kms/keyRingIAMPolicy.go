@@ -139,7 +139,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
+//				Role: pulumi.String("roles/cloudkms.admin"),
 //			})
 //			if err != nil {
 //				return err
@@ -174,7 +174,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/editor"),
+//				Role: pulumi.String("roles/cloudkms.admin"),
 //			})
 //			if err != nil {
 //				return err
@@ -202,7 +202,7 @@ import (
 //			_, err := kms.NewKeyRingIAMMember(ctx, "keyRing", &kms.KeyRingIAMMemberArgs{
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Member:    pulumi.String("user:jane@example.com"),
-//				Role:      pulumi.String("roles/editor"),
+//				Role:      pulumi.String("roles/cloudkms.admin"),
 //			})
 //			if err != nil {
 //				return err
@@ -235,7 +235,7 @@ import (
 //				},
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Member:    pulumi.String("user:jane@example.com"),
-//				Role:      pulumi.String("roles/editor"),
+//				Role:      pulumi.String("roles/cloudkms.admin"),
 //			})
 //			if err != nil {
 //				return err
@@ -264,7 +264,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
 //
 // ```
 //

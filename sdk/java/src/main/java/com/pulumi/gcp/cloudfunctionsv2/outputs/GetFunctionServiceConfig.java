@@ -16,11 +16,13 @@ import java.util.Objects;
 @CustomType
 public final class GetFunctionServiceConfig {
     private Boolean allTrafficOnLatestRevision;
+    private String availableCpu;
     private String availableMemory;
     private Map<String,String> environmentVariables;
     private String gcfUri;
     private String ingressSettings;
     private Integer maxInstanceCount;
+    private Integer maxInstanceRequestConcurrency;
     private Integer minInstanceCount;
     private List<GetFunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
     private List<GetFunctionServiceConfigSecretVolume> secretVolumes;
@@ -34,6 +36,9 @@ public final class GetFunctionServiceConfig {
     private GetFunctionServiceConfig() {}
     public Boolean allTrafficOnLatestRevision() {
         return this.allTrafficOnLatestRevision;
+    }
+    public String availableCpu() {
+        return this.availableCpu;
     }
     public String availableMemory() {
         return this.availableMemory;
@@ -49,6 +54,9 @@ public final class GetFunctionServiceConfig {
     }
     public Integer maxInstanceCount() {
         return this.maxInstanceCount;
+    }
+    public Integer maxInstanceRequestConcurrency() {
+        return this.maxInstanceRequestConcurrency;
     }
     public Integer minInstanceCount() {
         return this.minInstanceCount;
@@ -88,11 +96,13 @@ public final class GetFunctionServiceConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allTrafficOnLatestRevision;
+        private String availableCpu;
         private String availableMemory;
         private Map<String,String> environmentVariables;
         private String gcfUri;
         private String ingressSettings;
         private Integer maxInstanceCount;
+        private Integer maxInstanceRequestConcurrency;
         private Integer minInstanceCount;
         private List<GetFunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
         private List<GetFunctionServiceConfigSecretVolume> secretVolumes;
@@ -106,11 +116,13 @@ public final class GetFunctionServiceConfig {
         public Builder(GetFunctionServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTrafficOnLatestRevision = defaults.allTrafficOnLatestRevision;
+    	      this.availableCpu = defaults.availableCpu;
     	      this.availableMemory = defaults.availableMemory;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.gcfUri = defaults.gcfUri;
     	      this.ingressSettings = defaults.ingressSettings;
     	      this.maxInstanceCount = defaults.maxInstanceCount;
+    	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.minInstanceCount = defaults.minInstanceCount;
     	      this.secretEnvironmentVariables = defaults.secretEnvironmentVariables;
     	      this.secretVolumes = defaults.secretVolumes;
@@ -125,6 +137,11 @@ public final class GetFunctionServiceConfig {
         @CustomType.Setter
         public Builder allTrafficOnLatestRevision(Boolean allTrafficOnLatestRevision) {
             this.allTrafficOnLatestRevision = Objects.requireNonNull(allTrafficOnLatestRevision);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availableCpu(String availableCpu) {
+            this.availableCpu = Objects.requireNonNull(availableCpu);
             return this;
         }
         @CustomType.Setter
@@ -150,6 +167,11 @@ public final class GetFunctionServiceConfig {
         @CustomType.Setter
         public Builder maxInstanceCount(Integer maxInstanceCount) {
             this.maxInstanceCount = Objects.requireNonNull(maxInstanceCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInstanceRequestConcurrency(Integer maxInstanceRequestConcurrency) {
+            this.maxInstanceRequestConcurrency = Objects.requireNonNull(maxInstanceRequestConcurrency);
             return this;
         }
         @CustomType.Setter
@@ -206,11 +228,13 @@ public final class GetFunctionServiceConfig {
         public GetFunctionServiceConfig build() {
             final var o = new GetFunctionServiceConfig();
             o.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            o.availableCpu = availableCpu;
             o.availableMemory = availableMemory;
             o.environmentVariables = environmentVariables;
             o.gcfUri = gcfUri;
             o.ingressSettings = ingressSettings;
             o.maxInstanceCount = maxInstanceCount;
+            o.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             o.minInstanceCount = minInstanceCount;
             o.secretEnvironmentVariables = secretEnvironmentVariables;
             o.secretVolumes = secretVolumes;

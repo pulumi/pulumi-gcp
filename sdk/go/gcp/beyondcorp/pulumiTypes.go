@@ -10,6 +10,372 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AppConnectionApplicationEndpoint struct {
+	// Hostname or IP address of the remote application endpoint.
+	Host string `pulumi:"host"`
+	// Port of the remote application endpoint.
+	Port int `pulumi:"port"`
+}
+
+// AppConnectionApplicationEndpointInput is an input type that accepts AppConnectionApplicationEndpointArgs and AppConnectionApplicationEndpointOutput values.
+// You can construct a concrete instance of `AppConnectionApplicationEndpointInput` via:
+//
+//	AppConnectionApplicationEndpointArgs{...}
+type AppConnectionApplicationEndpointInput interface {
+	pulumi.Input
+
+	ToAppConnectionApplicationEndpointOutput() AppConnectionApplicationEndpointOutput
+	ToAppConnectionApplicationEndpointOutputWithContext(context.Context) AppConnectionApplicationEndpointOutput
+}
+
+type AppConnectionApplicationEndpointArgs struct {
+	// Hostname or IP address of the remote application endpoint.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Port of the remote application endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (AppConnectionApplicationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpointOutput() AppConnectionApplicationEndpointOutput {
+	return i.ToAppConnectionApplicationEndpointOutputWithContext(context.Background())
+}
+
+func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpointOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionApplicationEndpointOutput)
+}
+
+func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput {
+	return i.ToAppConnectionApplicationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionApplicationEndpointOutput).ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx)
+}
+
+// AppConnectionApplicationEndpointPtrInput is an input type that accepts AppConnectionApplicationEndpointArgs, AppConnectionApplicationEndpointPtr and AppConnectionApplicationEndpointPtrOutput values.
+// You can construct a concrete instance of `AppConnectionApplicationEndpointPtrInput` via:
+//
+//	        AppConnectionApplicationEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppConnectionApplicationEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput
+	ToAppConnectionApplicationEndpointPtrOutputWithContext(context.Context) AppConnectionApplicationEndpointPtrOutput
+}
+
+type appConnectionApplicationEndpointPtrType AppConnectionApplicationEndpointArgs
+
+func AppConnectionApplicationEndpointPtr(v *AppConnectionApplicationEndpointArgs) AppConnectionApplicationEndpointPtrInput {
+	return (*appConnectionApplicationEndpointPtrType)(v)
+}
+
+func (*appConnectionApplicationEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (i *appConnectionApplicationEndpointPtrType) ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput {
+	return i.ToAppConnectionApplicationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *appConnectionApplicationEndpointPtrType) ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionApplicationEndpointPtrOutput)
+}
+
+type AppConnectionApplicationEndpointOutput struct{ *pulumi.OutputState }
+
+func (AppConnectionApplicationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (o AppConnectionApplicationEndpointOutput) ToAppConnectionApplicationEndpointOutput() AppConnectionApplicationEndpointOutput {
+	return o
+}
+
+func (o AppConnectionApplicationEndpointOutput) ToAppConnectionApplicationEndpointOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointOutput {
+	return o
+}
+
+func (o AppConnectionApplicationEndpointOutput) ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput {
+	return o.ToAppConnectionApplicationEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AppConnectionApplicationEndpointOutput) ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConnectionApplicationEndpoint) *AppConnectionApplicationEndpoint {
+		return &v
+	}).(AppConnectionApplicationEndpointPtrOutput)
+}
+
+// Hostname or IP address of the remote application endpoint.
+func (o AppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v AppConnectionApplicationEndpoint) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Port of the remote application endpoint.
+func (o AppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v AppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type AppConnectionApplicationEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AppConnectionApplicationEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (o AppConnectionApplicationEndpointPtrOutput) ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput {
+	return o
+}
+
+func (o AppConnectionApplicationEndpointPtrOutput) ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointPtrOutput {
+	return o
+}
+
+func (o AppConnectionApplicationEndpointPtrOutput) Elem() AppConnectionApplicationEndpointOutput {
+	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) AppConnectionApplicationEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AppConnectionApplicationEndpoint
+		return ret
+	}).(AppConnectionApplicationEndpointOutput)
+}
+
+// Hostname or IP address of the remote application endpoint.
+func (o AppConnectionApplicationEndpointPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port of the remote application endpoint.
+func (o AppConnectionApplicationEndpointPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type AppConnectionGateway struct {
+	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+	AppGateway string `pulumi:"appGateway"`
+	// -
+	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+	IngressPort *int `pulumi:"ingressPort"`
+	// The type of hosting used by the gateway. Refer to
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// for a list of possible values.
+	Type *string `pulumi:"type"`
+	// -
+	// Server-defined URI for this resource.
+	Uri *string `pulumi:"uri"`
+}
+
+// AppConnectionGatewayInput is an input type that accepts AppConnectionGatewayArgs and AppConnectionGatewayOutput values.
+// You can construct a concrete instance of `AppConnectionGatewayInput` via:
+//
+//	AppConnectionGatewayArgs{...}
+type AppConnectionGatewayInput interface {
+	pulumi.Input
+
+	ToAppConnectionGatewayOutput() AppConnectionGatewayOutput
+	ToAppConnectionGatewayOutputWithContext(context.Context) AppConnectionGatewayOutput
+}
+
+type AppConnectionGatewayArgs struct {
+	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+	AppGateway pulumi.StringInput `pulumi:"appGateway"`
+	// -
+	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+	IngressPort pulumi.IntPtrInput `pulumi:"ingressPort"`
+	// The type of hosting used by the gateway. Refer to
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// for a list of possible values.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// -
+	// Server-defined URI for this resource.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AppConnectionGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppConnectionGateway)(nil)).Elem()
+}
+
+func (i AppConnectionGatewayArgs) ToAppConnectionGatewayOutput() AppConnectionGatewayOutput {
+	return i.ToAppConnectionGatewayOutputWithContext(context.Background())
+}
+
+func (i AppConnectionGatewayArgs) ToAppConnectionGatewayOutputWithContext(ctx context.Context) AppConnectionGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionGatewayOutput)
+}
+
+func (i AppConnectionGatewayArgs) ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput {
+	return i.ToAppConnectionGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i AppConnectionGatewayArgs) ToAppConnectionGatewayPtrOutputWithContext(ctx context.Context) AppConnectionGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionGatewayOutput).ToAppConnectionGatewayPtrOutputWithContext(ctx)
+}
+
+// AppConnectionGatewayPtrInput is an input type that accepts AppConnectionGatewayArgs, AppConnectionGatewayPtr and AppConnectionGatewayPtrOutput values.
+// You can construct a concrete instance of `AppConnectionGatewayPtrInput` via:
+//
+//	        AppConnectionGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppConnectionGatewayPtrInput interface {
+	pulumi.Input
+
+	ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput
+	ToAppConnectionGatewayPtrOutputWithContext(context.Context) AppConnectionGatewayPtrOutput
+}
+
+type appConnectionGatewayPtrType AppConnectionGatewayArgs
+
+func AppConnectionGatewayPtr(v *AppConnectionGatewayArgs) AppConnectionGatewayPtrInput {
+	return (*appConnectionGatewayPtrType)(v)
+}
+
+func (*appConnectionGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppConnectionGateway)(nil)).Elem()
+}
+
+func (i *appConnectionGatewayPtrType) ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput {
+	return i.ToAppConnectionGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *appConnectionGatewayPtrType) ToAppConnectionGatewayPtrOutputWithContext(ctx context.Context) AppConnectionGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionGatewayPtrOutput)
+}
+
+type AppConnectionGatewayOutput struct{ *pulumi.OutputState }
+
+func (AppConnectionGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppConnectionGateway)(nil)).Elem()
+}
+
+func (o AppConnectionGatewayOutput) ToAppConnectionGatewayOutput() AppConnectionGatewayOutput {
+	return o
+}
+
+func (o AppConnectionGatewayOutput) ToAppConnectionGatewayOutputWithContext(ctx context.Context) AppConnectionGatewayOutput {
+	return o
+}
+
+func (o AppConnectionGatewayOutput) ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput {
+	return o.ToAppConnectionGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o AppConnectionGatewayOutput) ToAppConnectionGatewayPtrOutputWithContext(ctx context.Context) AppConnectionGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConnectionGateway) *AppConnectionGateway {
+		return &v
+	}).(AppConnectionGatewayPtrOutput)
+}
+
+// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+func (o AppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v AppConnectionGateway) string { return v.AppGateway }).(pulumi.StringOutput)
+}
+
+// -
+// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+func (o AppConnectionGatewayOutput) IngressPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppConnectionGateway) *int { return v.IngressPort }).(pulumi.IntPtrOutput)
+}
+
+// The type of hosting used by the gateway. Refer to
+// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+// for a list of possible values.
+func (o AppConnectionGatewayOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppConnectionGateway) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Server-defined URI for this resource.
+func (o AppConnectionGatewayOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppConnectionGateway) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type AppConnectionGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (AppConnectionGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppConnectionGateway)(nil)).Elem()
+}
+
+func (o AppConnectionGatewayPtrOutput) ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput {
+	return o
+}
+
+func (o AppConnectionGatewayPtrOutput) ToAppConnectionGatewayPtrOutputWithContext(ctx context.Context) AppConnectionGatewayPtrOutput {
+	return o
+}
+
+func (o AppConnectionGatewayPtrOutput) Elem() AppConnectionGatewayOutput {
+	return o.ApplyT(func(v *AppConnectionGateway) AppConnectionGateway {
+		if v != nil {
+			return *v
+		}
+		var ret AppConnectionGateway
+		return ret
+	}).(AppConnectionGatewayOutput)
+}
+
+// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+func (o AppConnectionGatewayPtrOutput) AppGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnectionGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppGateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+func (o AppConnectionGatewayPtrOutput) IngressPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppConnectionGateway) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IngressPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of hosting used by the gateway. Refer to
+// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+// for a list of possible values.
+func (o AppConnectionGatewayPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnectionGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Server-defined URI for this resource.
+func (o AppConnectionGatewayPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnectionGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppConnectorPrincipalInfo struct {
 	// ServiceAccount represents a GCP service account.
 	// Structure is documented below.
@@ -388,17 +754,547 @@ func (o AppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) AppGa
 	}).(AppGatewayAllocatedConnectionOutput)
 }
 
+type GetAppConnectionApplicationEndpoint struct {
+	Host string `pulumi:"host"`
+	Port int    `pulumi:"port"`
+}
+
+// GetAppConnectionApplicationEndpointInput is an input type that accepts GetAppConnectionApplicationEndpointArgs and GetAppConnectionApplicationEndpointOutput values.
+// You can construct a concrete instance of `GetAppConnectionApplicationEndpointInput` via:
+//
+//	GetAppConnectionApplicationEndpointArgs{...}
+type GetAppConnectionApplicationEndpointInput interface {
+	pulumi.Input
+
+	ToGetAppConnectionApplicationEndpointOutput() GetAppConnectionApplicationEndpointOutput
+	ToGetAppConnectionApplicationEndpointOutputWithContext(context.Context) GetAppConnectionApplicationEndpointOutput
+}
+
+type GetAppConnectionApplicationEndpointArgs struct {
+	Host pulumi.StringInput `pulumi:"host"`
+	Port pulumi.IntInput    `pulumi:"port"`
+}
+
+func (GetAppConnectionApplicationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (i GetAppConnectionApplicationEndpointArgs) ToGetAppConnectionApplicationEndpointOutput() GetAppConnectionApplicationEndpointOutput {
+	return i.ToGetAppConnectionApplicationEndpointOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectionApplicationEndpointArgs) ToGetAppConnectionApplicationEndpointOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionApplicationEndpointOutput)
+}
+
+// GetAppConnectionApplicationEndpointArrayInput is an input type that accepts GetAppConnectionApplicationEndpointArray and GetAppConnectionApplicationEndpointArrayOutput values.
+// You can construct a concrete instance of `GetAppConnectionApplicationEndpointArrayInput` via:
+//
+//	GetAppConnectionApplicationEndpointArray{ GetAppConnectionApplicationEndpointArgs{...} }
+type GetAppConnectionApplicationEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetAppConnectionApplicationEndpointArrayOutput() GetAppConnectionApplicationEndpointArrayOutput
+	ToGetAppConnectionApplicationEndpointArrayOutputWithContext(context.Context) GetAppConnectionApplicationEndpointArrayOutput
+}
+
+type GetAppConnectionApplicationEndpointArray []GetAppConnectionApplicationEndpointInput
+
+func (GetAppConnectionApplicationEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (i GetAppConnectionApplicationEndpointArray) ToGetAppConnectionApplicationEndpointArrayOutput() GetAppConnectionApplicationEndpointArrayOutput {
+	return i.ToGetAppConnectionApplicationEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectionApplicationEndpointArray) ToGetAppConnectionApplicationEndpointArrayOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionApplicationEndpointArrayOutput)
+}
+
+type GetAppConnectionApplicationEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectionApplicationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (o GetAppConnectionApplicationEndpointOutput) ToGetAppConnectionApplicationEndpointOutput() GetAppConnectionApplicationEndpointOutput {
+	return o
+}
+
+func (o GetAppConnectionApplicationEndpointOutput) ToGetAppConnectionApplicationEndpointOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointOutput {
+	return o
+}
+
+func (o GetAppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectionApplicationEndpoint) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetAppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetAppConnectionApplicationEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectionApplicationEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectionApplicationEndpoint)(nil)).Elem()
+}
+
+func (o GetAppConnectionApplicationEndpointArrayOutput) ToGetAppConnectionApplicationEndpointArrayOutput() GetAppConnectionApplicationEndpointArrayOutput {
+	return o
+}
+
+func (o GetAppConnectionApplicationEndpointArrayOutput) ToGetAppConnectionApplicationEndpointArrayOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointArrayOutput {
+	return o
+}
+
+func (o GetAppConnectionApplicationEndpointArrayOutput) Index(i pulumi.IntInput) GetAppConnectionApplicationEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppConnectionApplicationEndpoint {
+		return vs[0].([]GetAppConnectionApplicationEndpoint)[vs[1].(int)]
+	}).(GetAppConnectionApplicationEndpointOutput)
+}
+
+type GetAppConnectionGateway struct {
+	AppGateway  string `pulumi:"appGateway"`
+	IngressPort int    `pulumi:"ingressPort"`
+	Type        string `pulumi:"type"`
+	Uri         string `pulumi:"uri"`
+}
+
+// GetAppConnectionGatewayInput is an input type that accepts GetAppConnectionGatewayArgs and GetAppConnectionGatewayOutput values.
+// You can construct a concrete instance of `GetAppConnectionGatewayInput` via:
+//
+//	GetAppConnectionGatewayArgs{...}
+type GetAppConnectionGatewayInput interface {
+	pulumi.Input
+
+	ToGetAppConnectionGatewayOutput() GetAppConnectionGatewayOutput
+	ToGetAppConnectionGatewayOutputWithContext(context.Context) GetAppConnectionGatewayOutput
+}
+
+type GetAppConnectionGatewayArgs struct {
+	AppGateway  pulumi.StringInput `pulumi:"appGateway"`
+	IngressPort pulumi.IntInput    `pulumi:"ingressPort"`
+	Type        pulumi.StringInput `pulumi:"type"`
+	Uri         pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetAppConnectionGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectionGateway)(nil)).Elem()
+}
+
+func (i GetAppConnectionGatewayArgs) ToGetAppConnectionGatewayOutput() GetAppConnectionGatewayOutput {
+	return i.ToGetAppConnectionGatewayOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectionGatewayArgs) ToGetAppConnectionGatewayOutputWithContext(ctx context.Context) GetAppConnectionGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionGatewayOutput)
+}
+
+// GetAppConnectionGatewayArrayInput is an input type that accepts GetAppConnectionGatewayArray and GetAppConnectionGatewayArrayOutput values.
+// You can construct a concrete instance of `GetAppConnectionGatewayArrayInput` via:
+//
+//	GetAppConnectionGatewayArray{ GetAppConnectionGatewayArgs{...} }
+type GetAppConnectionGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetAppConnectionGatewayArrayOutput() GetAppConnectionGatewayArrayOutput
+	ToGetAppConnectionGatewayArrayOutputWithContext(context.Context) GetAppConnectionGatewayArrayOutput
+}
+
+type GetAppConnectionGatewayArray []GetAppConnectionGatewayInput
+
+func (GetAppConnectionGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectionGateway)(nil)).Elem()
+}
+
+func (i GetAppConnectionGatewayArray) ToGetAppConnectionGatewayArrayOutput() GetAppConnectionGatewayArrayOutput {
+	return i.ToGetAppConnectionGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectionGatewayArray) ToGetAppConnectionGatewayArrayOutputWithContext(ctx context.Context) GetAppConnectionGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionGatewayArrayOutput)
+}
+
+type GetAppConnectionGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectionGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectionGateway)(nil)).Elem()
+}
+
+func (o GetAppConnectionGatewayOutput) ToGetAppConnectionGatewayOutput() GetAppConnectionGatewayOutput {
+	return o
+}
+
+func (o GetAppConnectionGatewayOutput) ToGetAppConnectionGatewayOutputWithContext(ctx context.Context) GetAppConnectionGatewayOutput {
+	return o
+}
+
+func (o GetAppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.AppGateway }).(pulumi.StringOutput)
+}
+
+func (o GetAppConnectionGatewayOutput) IngressPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppConnectionGateway) int { return v.IngressPort }).(pulumi.IntOutput)
+}
+
+func (o GetAppConnectionGatewayOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetAppConnectionGatewayOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetAppConnectionGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectionGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectionGateway)(nil)).Elem()
+}
+
+func (o GetAppConnectionGatewayArrayOutput) ToGetAppConnectionGatewayArrayOutput() GetAppConnectionGatewayArrayOutput {
+	return o
+}
+
+func (o GetAppConnectionGatewayArrayOutput) ToGetAppConnectionGatewayArrayOutputWithContext(ctx context.Context) GetAppConnectionGatewayArrayOutput {
+	return o
+}
+
+func (o GetAppConnectionGatewayArrayOutput) Index(i pulumi.IntInput) GetAppConnectionGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppConnectionGateway {
+		return vs[0].([]GetAppConnectionGateway)[vs[1].(int)]
+	}).(GetAppConnectionGatewayOutput)
+}
+
+type GetAppConnectorPrincipalInfo struct {
+	ServiceAccounts []GetAppConnectorPrincipalInfoServiceAccount `pulumi:"serviceAccounts"`
+}
+
+// GetAppConnectorPrincipalInfoInput is an input type that accepts GetAppConnectorPrincipalInfoArgs and GetAppConnectorPrincipalInfoOutput values.
+// You can construct a concrete instance of `GetAppConnectorPrincipalInfoInput` via:
+//
+//	GetAppConnectorPrincipalInfoArgs{...}
+type GetAppConnectorPrincipalInfoInput interface {
+	pulumi.Input
+
+	ToGetAppConnectorPrincipalInfoOutput() GetAppConnectorPrincipalInfoOutput
+	ToGetAppConnectorPrincipalInfoOutputWithContext(context.Context) GetAppConnectorPrincipalInfoOutput
+}
+
+type GetAppConnectorPrincipalInfoArgs struct {
+	ServiceAccounts GetAppConnectorPrincipalInfoServiceAccountArrayInput `pulumi:"serviceAccounts"`
+}
+
+func (GetAppConnectorPrincipalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectorPrincipalInfo)(nil)).Elem()
+}
+
+func (i GetAppConnectorPrincipalInfoArgs) ToGetAppConnectorPrincipalInfoOutput() GetAppConnectorPrincipalInfoOutput {
+	return i.ToGetAppConnectorPrincipalInfoOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectorPrincipalInfoArgs) ToGetAppConnectorPrincipalInfoOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoOutput)
+}
+
+// GetAppConnectorPrincipalInfoArrayInput is an input type that accepts GetAppConnectorPrincipalInfoArray and GetAppConnectorPrincipalInfoArrayOutput values.
+// You can construct a concrete instance of `GetAppConnectorPrincipalInfoArrayInput` via:
+//
+//	GetAppConnectorPrincipalInfoArray{ GetAppConnectorPrincipalInfoArgs{...} }
+type GetAppConnectorPrincipalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetAppConnectorPrincipalInfoArrayOutput() GetAppConnectorPrincipalInfoArrayOutput
+	ToGetAppConnectorPrincipalInfoArrayOutputWithContext(context.Context) GetAppConnectorPrincipalInfoArrayOutput
+}
+
+type GetAppConnectorPrincipalInfoArray []GetAppConnectorPrincipalInfoInput
+
+func (GetAppConnectorPrincipalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectorPrincipalInfo)(nil)).Elem()
+}
+
+func (i GetAppConnectorPrincipalInfoArray) ToGetAppConnectorPrincipalInfoArrayOutput() GetAppConnectorPrincipalInfoArrayOutput {
+	return i.ToGetAppConnectorPrincipalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectorPrincipalInfoArray) ToGetAppConnectorPrincipalInfoArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoArrayOutput)
+}
+
+type GetAppConnectorPrincipalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectorPrincipalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectorPrincipalInfo)(nil)).Elem()
+}
+
+func (o GetAppConnectorPrincipalInfoOutput) ToGetAppConnectorPrincipalInfoOutput() GetAppConnectorPrincipalInfoOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoOutput) ToGetAppConnectorPrincipalInfoOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoOutput) ServiceAccounts() GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
+	return o.ApplyT(func(v GetAppConnectorPrincipalInfo) []GetAppConnectorPrincipalInfoServiceAccount {
+		return v.ServiceAccounts
+	}).(GetAppConnectorPrincipalInfoServiceAccountArrayOutput)
+}
+
+type GetAppConnectorPrincipalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectorPrincipalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectorPrincipalInfo)(nil)).Elem()
+}
+
+func (o GetAppConnectorPrincipalInfoArrayOutput) ToGetAppConnectorPrincipalInfoArrayOutput() GetAppConnectorPrincipalInfoArrayOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoArrayOutput) ToGetAppConnectorPrincipalInfoArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoArrayOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoArrayOutput) Index(i pulumi.IntInput) GetAppConnectorPrincipalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppConnectorPrincipalInfo {
+		return vs[0].([]GetAppConnectorPrincipalInfo)[vs[1].(int)]
+	}).(GetAppConnectorPrincipalInfoOutput)
+}
+
+type GetAppConnectorPrincipalInfoServiceAccount struct {
+	Email string `pulumi:"email"`
+}
+
+// GetAppConnectorPrincipalInfoServiceAccountInput is an input type that accepts GetAppConnectorPrincipalInfoServiceAccountArgs and GetAppConnectorPrincipalInfoServiceAccountOutput values.
+// You can construct a concrete instance of `GetAppConnectorPrincipalInfoServiceAccountInput` via:
+//
+//	GetAppConnectorPrincipalInfoServiceAccountArgs{...}
+type GetAppConnectorPrincipalInfoServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetAppConnectorPrincipalInfoServiceAccountOutput() GetAppConnectorPrincipalInfoServiceAccountOutput
+	ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(context.Context) GetAppConnectorPrincipalInfoServiceAccountOutput
+}
+
+type GetAppConnectorPrincipalInfoServiceAccountArgs struct {
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetAppConnectorPrincipalInfoServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectorPrincipalInfoServiceAccount)(nil)).Elem()
+}
+
+func (i GetAppConnectorPrincipalInfoServiceAccountArgs) ToGetAppConnectorPrincipalInfoServiceAccountOutput() GetAppConnectorPrincipalInfoServiceAccountOutput {
+	return i.ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectorPrincipalInfoServiceAccountArgs) ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoServiceAccountOutput)
+}
+
+// GetAppConnectorPrincipalInfoServiceAccountArrayInput is an input type that accepts GetAppConnectorPrincipalInfoServiceAccountArray and GetAppConnectorPrincipalInfoServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetAppConnectorPrincipalInfoServiceAccountArrayInput` via:
+//
+//	GetAppConnectorPrincipalInfoServiceAccountArray{ GetAppConnectorPrincipalInfoServiceAccountArgs{...} }
+type GetAppConnectorPrincipalInfoServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAppConnectorPrincipalInfoServiceAccountArrayOutput() GetAppConnectorPrincipalInfoServiceAccountArrayOutput
+	ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(context.Context) GetAppConnectorPrincipalInfoServiceAccountArrayOutput
+}
+
+type GetAppConnectorPrincipalInfoServiceAccountArray []GetAppConnectorPrincipalInfoServiceAccountInput
+
+func (GetAppConnectorPrincipalInfoServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectorPrincipalInfoServiceAccount)(nil)).Elem()
+}
+
+func (i GetAppConnectorPrincipalInfoServiceAccountArray) ToGetAppConnectorPrincipalInfoServiceAccountArrayOutput() GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
+	return i.ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppConnectorPrincipalInfoServiceAccountArray) ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoServiceAccountArrayOutput)
+}
+
+type GetAppConnectorPrincipalInfoServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectorPrincipalInfoServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppConnectorPrincipalInfoServiceAccount)(nil)).Elem()
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToGetAppConnectorPrincipalInfoServiceAccountOutput() GetAppConnectorPrincipalInfoServiceAccountOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppConnectorPrincipalInfoServiceAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetAppConnectorPrincipalInfoServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppConnectorPrincipalInfoServiceAccount)(nil)).Elem()
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ToGetAppConnectorPrincipalInfoServiceAccountArrayOutput() GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) Index(i pulumi.IntInput) GetAppConnectorPrincipalInfoServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppConnectorPrincipalInfoServiceAccount {
+		return vs[0].([]GetAppConnectorPrincipalInfoServiceAccount)[vs[1].(int)]
+	}).(GetAppConnectorPrincipalInfoServiceAccountOutput)
+}
+
+type GetAppGatewayAllocatedConnection struct {
+	IngressPort int    `pulumi:"ingressPort"`
+	PscUri      string `pulumi:"pscUri"`
+}
+
+// GetAppGatewayAllocatedConnectionInput is an input type that accepts GetAppGatewayAllocatedConnectionArgs and GetAppGatewayAllocatedConnectionOutput values.
+// You can construct a concrete instance of `GetAppGatewayAllocatedConnectionInput` via:
+//
+//	GetAppGatewayAllocatedConnectionArgs{...}
+type GetAppGatewayAllocatedConnectionInput interface {
+	pulumi.Input
+
+	ToGetAppGatewayAllocatedConnectionOutput() GetAppGatewayAllocatedConnectionOutput
+	ToGetAppGatewayAllocatedConnectionOutputWithContext(context.Context) GetAppGatewayAllocatedConnectionOutput
+}
+
+type GetAppGatewayAllocatedConnectionArgs struct {
+	IngressPort pulumi.IntInput    `pulumi:"ingressPort"`
+	PscUri      pulumi.StringInput `pulumi:"pscUri"`
+}
+
+func (GetAppGatewayAllocatedConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppGatewayAllocatedConnection)(nil)).Elem()
+}
+
+func (i GetAppGatewayAllocatedConnectionArgs) ToGetAppGatewayAllocatedConnectionOutput() GetAppGatewayAllocatedConnectionOutput {
+	return i.ToGetAppGatewayAllocatedConnectionOutputWithContext(context.Background())
+}
+
+func (i GetAppGatewayAllocatedConnectionArgs) ToGetAppGatewayAllocatedConnectionOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppGatewayAllocatedConnectionOutput)
+}
+
+// GetAppGatewayAllocatedConnectionArrayInput is an input type that accepts GetAppGatewayAllocatedConnectionArray and GetAppGatewayAllocatedConnectionArrayOutput values.
+// You can construct a concrete instance of `GetAppGatewayAllocatedConnectionArrayInput` via:
+//
+//	GetAppGatewayAllocatedConnectionArray{ GetAppGatewayAllocatedConnectionArgs{...} }
+type GetAppGatewayAllocatedConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetAppGatewayAllocatedConnectionArrayOutput() GetAppGatewayAllocatedConnectionArrayOutput
+	ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(context.Context) GetAppGatewayAllocatedConnectionArrayOutput
+}
+
+type GetAppGatewayAllocatedConnectionArray []GetAppGatewayAllocatedConnectionInput
+
+func (GetAppGatewayAllocatedConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppGatewayAllocatedConnection)(nil)).Elem()
+}
+
+func (i GetAppGatewayAllocatedConnectionArray) ToGetAppGatewayAllocatedConnectionArrayOutput() GetAppGatewayAllocatedConnectionArrayOutput {
+	return i.ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppGatewayAllocatedConnectionArray) ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppGatewayAllocatedConnectionArrayOutput)
+}
+
+type GetAppGatewayAllocatedConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetAppGatewayAllocatedConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppGatewayAllocatedConnection)(nil)).Elem()
+}
+
+func (o GetAppGatewayAllocatedConnectionOutput) ToGetAppGatewayAllocatedConnectionOutput() GetAppGatewayAllocatedConnectionOutput {
+	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionOutput) ToGetAppGatewayAllocatedConnectionOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionOutput {
+	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionOutput) IngressPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppGatewayAllocatedConnection) int { return v.IngressPort }).(pulumi.IntOutput)
+}
+
+func (o GetAppGatewayAllocatedConnectionOutput) PscUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppGatewayAllocatedConnection) string { return v.PscUri }).(pulumi.StringOutput)
+}
+
+type GetAppGatewayAllocatedConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppGatewayAllocatedConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppGatewayAllocatedConnection)(nil)).Elem()
+}
+
+func (o GetAppGatewayAllocatedConnectionArrayOutput) ToGetAppGatewayAllocatedConnectionArrayOutput() GetAppGatewayAllocatedConnectionArrayOutput {
+	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionArrayOutput) ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionArrayOutput {
+	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) GetAppGatewayAllocatedConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppGatewayAllocatedConnection {
+		return vs[0].([]GetAppGatewayAllocatedConnection)[vs[1].(int)]
+	}).(GetAppGatewayAllocatedConnectionOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionApplicationEndpointPtrInput)(nil)).Elem(), AppConnectionApplicationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionGatewayInput)(nil)).Elem(), AppConnectionGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionGatewayPtrInput)(nil)).Elem(), AppConnectionGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectorPrincipalInfoInput)(nil)).Elem(), AppConnectorPrincipalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectorPrincipalInfoPtrInput)(nil)).Elem(), AppConnectorPrincipalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectorPrincipalInfoServiceAccountInput)(nil)).Elem(), AppConnectorPrincipalInfoServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectorPrincipalInfoServiceAccountPtrInput)(nil)).Elem(), AppConnectorPrincipalInfoServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayAllocatedConnectionInput)(nil)).Elem(), AppGatewayAllocatedConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayAllocatedConnectionArrayInput)(nil)).Elem(), AppGatewayAllocatedConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionApplicationEndpointArrayInput)(nil)).Elem(), GetAppConnectionApplicationEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionGatewayInput)(nil)).Elem(), GetAppConnectionGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectionGatewayArrayInput)(nil)).Elem(), GetAppConnectionGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorPrincipalInfoInput)(nil)).Elem(), GetAppConnectorPrincipalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorPrincipalInfoArrayInput)(nil)).Elem(), GetAppConnectorPrincipalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorPrincipalInfoServiceAccountInput)(nil)).Elem(), GetAppConnectorPrincipalInfoServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppConnectorPrincipalInfoServiceAccountArrayInput)(nil)).Elem(), GetAppConnectorPrincipalInfoServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGatewayAllocatedConnectionInput)(nil)).Elem(), GetAppGatewayAllocatedConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGatewayAllocatedConnectionArrayInput)(nil)).Elem(), GetAppGatewayAllocatedConnectionArray{})
+	pulumi.RegisterOutputType(AppConnectionApplicationEndpointOutput{})
+	pulumi.RegisterOutputType(AppConnectionApplicationEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AppConnectionGatewayOutput{})
+	pulumi.RegisterOutputType(AppConnectionGatewayPtrOutput{})
 	pulumi.RegisterOutputType(AppConnectorPrincipalInfoOutput{})
 	pulumi.RegisterOutputType(AppConnectorPrincipalInfoPtrOutput{})
 	pulumi.RegisterOutputType(AppConnectorPrincipalInfoServiceAccountOutput{})
 	pulumi.RegisterOutputType(AppConnectorPrincipalInfoServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(AppGatewayAllocatedConnectionOutput{})
 	pulumi.RegisterOutputType(AppGatewayAllocatedConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointOutput{})
+	pulumi.RegisterOutputType(GetAppConnectionApplicationEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetAppConnectionGatewayOutput{})
+	pulumi.RegisterOutputType(GetAppConnectionGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetAppConnectorPrincipalInfoOutput{})
+	pulumi.RegisterOutputType(GetAppConnectorPrincipalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetAppConnectorPrincipalInfoServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetAppConnectorPrincipalInfoServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetAppGatewayAllocatedConnectionOutput{})
+	pulumi.RegisterOutputType(GetAppGatewayAllocatedConnectionArrayOutput{})
 }

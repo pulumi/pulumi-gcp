@@ -33,14 +33,14 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the Cloud Bigtable cluster.
+     * The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     @Import(name="clusterId", required=true)
     private Output<String> clusterId;
 
     /**
-     * @return The ID of the Cloud Bigtable cluster.
+     * @return The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     public Output<String> clusterId() {
@@ -64,8 +64,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-     * for a `DEVELOPMENT` instance.
+     * Required, with a minimum of `1` for each cluster in an instance.
      * 
      */
     @Import(name="numNodes")
@@ -73,8 +72,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-     * for a `DEVELOPMENT` instance.
+     * Required, with a minimum of `1` for each cluster in an instance.
      * 
      */
     public Optional<Output<Integer>> numNodes() {
@@ -168,7 +166,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clusterId The ID of the Cloud Bigtable cluster.
+         * @param clusterId The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
          * 
          * @return builder
          * 
@@ -179,7 +177,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clusterId The ID of the Cloud Bigtable cluster.
+         * @param clusterId The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
          * 
          * @return builder
          * 
@@ -211,8 +209,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-         * for a `DEVELOPMENT` instance.
+         * Required, with a minimum of `1` for each cluster in an instance.
          * 
          * @return builder
          * 
@@ -224,8 +221,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-         * for a `DEVELOPMENT` instance.
+         * Required, with a minimum of `1` for each cluster in an instance.
          * 
          * @return builder
          * 

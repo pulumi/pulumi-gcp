@@ -212,6 +212,11 @@ type RouterPeer struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringOutput `pulumi:"router"`
+	// The URI of the VM instance that is used as third-party router appliances
+	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+	// The VM instance must be located in zones contained in the same region as
+	// this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance pulumi.StringPtrOutput `pulumi:"routerApplianceInstance"`
 }
 
 // NewRouterPeer registers a new resource with the given unique name, arguments, and options.
@@ -316,6 +321,11 @@ type routerPeerState struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router *string `pulumi:"router"`
+	// The URI of the VM instance that is used as third-party router appliances
+	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+	// The VM instance must be located in zones contained in the same region as
+	// this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
 }
 
 type RouterPeerState struct {
@@ -380,6 +390,11 @@ type RouterPeerState struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringPtrInput
+	// The URI of the VM instance that is used as third-party router appliances
+	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+	// The VM instance must be located in zones contained in the same region as
+	// this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance pulumi.StringPtrInput
 }
 
 func (RouterPeerState) ElementType() reflect.Type {
@@ -443,6 +458,11 @@ type routerPeerArgs struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router string `pulumi:"router"`
+	// The URI of the VM instance that is used as third-party router appliances
+	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+	// The VM instance must be located in zones contained in the same region as
+	// this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
 }
 
 // The set of arguments for constructing a RouterPeer resource.
@@ -503,6 +523,11 @@ type RouterPeerArgs struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringInput
+	// The URI of the VM instance that is used as third-party router appliances
+	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+	// The VM instance must be located in zones contained in the same region as
+	// this Cloud Router. The VM instance is the peer side of the BGP session.
+	RouterApplianceInstance pulumi.StringPtrInput
 }
 
 func (RouterPeerArgs) ElementType() reflect.Type {
@@ -696,6 +721,14 @@ func (o RouterPeerOutput) Region() pulumi.StringOutput {
 // The name of the Cloud Router in which this BgpPeer will be configured.
 func (o RouterPeerOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.Router }).(pulumi.StringOutput)
+}
+
+// The URI of the VM instance that is used as third-party router appliances
+// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+// The VM instance must be located in zones contained in the same region as
+// this Cloud Router. The VM instance is the peer side of the BGP session.
+func (o RouterPeerOutput) RouterApplianceInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.StringPtrOutput { return v.RouterApplianceInstance }).(pulumi.StringPtrOutput)
 }
 
 type RouterPeerArrayOutput struct{ *pulumi.OutputState }

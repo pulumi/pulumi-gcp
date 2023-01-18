@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firebase.AndroidAppArgs;
 import com.pulumi.gcp.firebase.inputs.AndroidAppState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -43,6 +44,8 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name Basic&#34;)
  *             .packageName(&#34;&#34;)
+ *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
+ *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -75,16 +78,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/androidApp:AndroidApp")
 public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      * 
      */
     @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      * 
      */
     public Output<String> appId() {
@@ -109,28 +112,44 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionPolicy);
     }
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
-     * @return The user-assigned display name of the App.
+     * @return The user-assigned display name of the AndroidApp.
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     * 
+     */
+    @Export(name="etag", type=String.class, parameters={})
+    private Output<String> etag;
+
+    /**
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
+     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * @return The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      * 
      */
     public Output<String> name() {
@@ -167,6 +186,34 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Export(name="sha1Hashes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> sha1Hashes;
+
+    /**
+     * @return The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Output<Optional<List<String>>> sha1Hashes() {
+        return Codegen.optional(this.sha1Hashes);
+    }
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Export(name="sha256Hashes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> sha256Hashes;
+
+    /**
+     * @return The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Output<Optional<List<String>>> sha256Hashes() {
+        return Codegen.optional(this.sha256Hashes);
     }
 
     /**

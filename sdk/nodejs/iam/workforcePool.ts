@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a collection of external workforces. Provides namespaces for
+ * federated users that can be referenced in IAM policies.
+ *
+ * To get more information about WorkforcePool, see:
+ *
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools)
+ * * How-to Guides
+ *     * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
+ *
+ * > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
+ * your billing/quota project. The account team notifies you when the project is granted access.
+ *
  * ## Example Usage
  * ### Iam Workforce Pool Basic
  *
@@ -13,11 +25,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkforcePool("example", {
- *     workforcePoolId: "example-pool",
- *     parent: "organizations/123456789",
  *     location: "global",
- * }, {
- *     provider: google_beta,
+ *     parent: "organizations/123456789",
+ *     workforcePoolId: "example-pool",
  * });
  * ```
  * ### Iam Workforce Pool Full
@@ -27,15 +37,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkforcePool("example", {
- *     workforcePoolId: "example-pool",
- *     parent: "organizations/123456789",
- *     location: "global",
- *     displayName: "Display name",
  *     description: "A sample workforce pool.",
  *     disabled: false,
+ *     displayName: "Display name",
+ *     location: "global",
+ *     parent: "organizations/123456789",
  *     sessionDuration: "7200s",
- * }, {
- *     provider: google_beta,
+ *     workforcePoolId: "example-pool",
  * });
  * ```
  *
@@ -116,9 +124,10 @@ export class WorkforcePool extends pulumi.CustomResource {
      * Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
      * used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
      * approximately 30 days. You can restore a soft-deleted pool using
-     * [UndeleteWorkforcePool][WorkforcePools.UndeleteWorkforcePool]. You cannot reuse the ID of a soft-deleted pool until it
-     * is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to access
-     * resources. If the pool is undeleted, existing tokens grant access again.
+     * [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
+     * it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+     * access again.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -217,9 +226,10 @@ export interface WorkforcePoolState {
      * Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
      * used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
      * approximately 30 days. You can restore a soft-deleted pool using
-     * [UndeleteWorkforcePool][WorkforcePools.UndeleteWorkforcePool]. You cannot reuse the ID of a soft-deleted pool until it
-     * is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to access
-     * resources. If the pool is undeleted, existing tokens grant access again.
+     * [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
+     * it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+     * access again.
      */
     state?: pulumi.Input<string>;
     /**

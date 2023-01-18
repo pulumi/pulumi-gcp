@@ -345,7 +345,7 @@ import javax.annotation.Nullable;
  *             .machineType(&#34;e2-medium&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(google_compute_image.my_image().self_link())
+ *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
  *                 .build())
  *             .build());
  * 

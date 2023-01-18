@@ -16,45 +16,45 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
- *     project: "my-project-name",
  *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
  *     region: "us-west1",
  * });
  * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
  * const basicKey = new gcp.tags.TagKey("basicKey", {
+ *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
- *     shortName: "tagkey",
  *     purpose: "GCE_FIREWALL",
+ *     shortName: "tagkey",
  *     purposeData: {
  *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
  *     },
- *     description: "For keyname resources.",
  * });
  * const basicValue = new gcp.tags.TagValue("basicValue", {
+ *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
  *     shortName: "tagvalue",
- *     description: "For valuename resources.",
  * });
  * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
- *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
  *     action: "allow",
- *     direction: "INGRESS",
- *     priority: 1000,
- *     ruleName: "test-rule",
  *     description: "This is a simple rule description",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
  *     match: {
- *         srcSecureTags: [{
- *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
- *         }],
  *         srcIpRanges: ["10.100.0.1/32"],
  *         layer4Configs: [{
  *             ipProtocol: "all",
  *         }],
+ *         srcSecureTags: [{
+ *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
+ *         }],
  *     },
- *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
- *     region: "us-west1",
- *     enableLogging: true,
- *     disabled: false,
  * });
  * ```
  *

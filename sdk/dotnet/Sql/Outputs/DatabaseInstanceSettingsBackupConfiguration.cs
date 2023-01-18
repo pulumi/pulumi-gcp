@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? Location;
         /// <summary>
-        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+        /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         /// </summary>
         public readonly bool? PointInTimeRecoveryEnabled;
         /// <summary>

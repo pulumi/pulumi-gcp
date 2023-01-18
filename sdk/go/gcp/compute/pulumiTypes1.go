@@ -10,6 +10,2361 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetInstanceGroupManagerStatefulInternalIp struct {
+	DeleteRule    string `pulumi:"deleteRule"`
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetInstanceGroupManagerStatefulInternalIpInput is an input type that accepts GetInstanceGroupManagerStatefulInternalIpArgs and GetInstanceGroupManagerStatefulInternalIpOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulInternalIpInput` via:
+//
+//	GetInstanceGroupManagerStatefulInternalIpArgs{...}
+type GetInstanceGroupManagerStatefulInternalIpInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput
+	ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Context) GetInstanceGroupManagerStatefulInternalIpOutput
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArgs struct {
+	DeleteRule    pulumi.StringInput `pulumi:"deleteRule"`
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetInstanceGroupManagerStatefulInternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArgs) ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput {
+	return i.ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArgs) ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+// GetInstanceGroupManagerStatefulInternalIpArrayInput is an input type that accepts GetInstanceGroupManagerStatefulInternalIpArray and GetInstanceGroupManagerStatefulInternalIpArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatefulInternalIpArrayInput` via:
+//
+//	GetInstanceGroupManagerStatefulInternalIpArray{ GetInstanceGroupManagerStatefulInternalIpArgs{...} }
+type GetInstanceGroupManagerStatefulInternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput
+	ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArray []GetInstanceGroupManagerStatefulInternalIpInput
+
+func (GetInstanceGroupManagerStatefulInternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArray) ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return i.ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatefulInternalIpArray) ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatefulInternalIpArrayOutput)
+}
+
+type GetInstanceGroupManagerStatefulInternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulInternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) ToGetInstanceGroupManagerStatefulInternalIpOutput() GetInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) ToGetInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerStatefulInternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatefulInternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetInstanceGroupManagerStatefulInternalIpArrayOutput() GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatefulInternalIp {
+		return vs[0].([]GetInstanceGroupManagerStatefulInternalIp)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+type GetInstanceGroupManagerStatus struct {
+	AllInstancesConfigs []GetInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
+	IsStable            bool                                              `pulumi:"isStable"`
+	Statefuls           []GetInstanceGroupManagerStatusStateful           `pulumi:"statefuls"`
+	VersionTargets      []GetInstanceGroupManagerStatusVersionTarget      `pulumi:"versionTargets"`
+}
+
+// GetInstanceGroupManagerStatusInput is an input type that accepts GetInstanceGroupManagerStatusArgs and GetInstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusInput` via:
+//
+//	GetInstanceGroupManagerStatusArgs{...}
+type GetInstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput
+	ToGetInstanceGroupManagerStatusOutputWithContext(context.Context) GetInstanceGroupManagerStatusOutput
+}
+
+type GetInstanceGroupManagerStatusArgs struct {
+	AllInstancesConfigs GetInstanceGroupManagerStatusAllInstancesConfigArrayInput `pulumi:"allInstancesConfigs"`
+	IsStable            pulumi.BoolInput                                          `pulumi:"isStable"`
+	Statefuls           GetInstanceGroupManagerStatusStatefulArrayInput           `pulumi:"statefuls"`
+	VersionTargets      GetInstanceGroupManagerStatusVersionTargetArrayInput      `pulumi:"versionTargets"`
+}
+
+func (GetInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusArgs) ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput {
+	return i.ToGetInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusArgs) ToGetInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusOutput)
+}
+
+// GetInstanceGroupManagerStatusArrayInput is an input type that accepts GetInstanceGroupManagerStatusArray and GetInstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusArray{ GetInstanceGroupManagerStatusArgs{...} }
+type GetInstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput
+	ToGetInstanceGroupManagerStatusArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusArrayOutput
+}
+
+type GetInstanceGroupManagerStatusArray []GetInstanceGroupManagerStatusInput
+
+func (GetInstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusArray) ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusArray) ToGetInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusOutput) ToGetInstanceGroupManagerStatusOutput() GetInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusOutput) ToGetInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusOutput) AllInstancesConfigs() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusAllInstancesConfig {
+		return v.AllInstancesConfigs
+	}).(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+func (o GetInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) bool { return v.IsStable }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceGroupManagerStatusOutput) Statefuls() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusStateful { return v.Statefuls }).(GetInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+func (o GetInstanceGroupManagerStatusOutput) VersionTargets() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusVersionTarget {
+		return v.VersionTargets
+	}).(GetInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) ToGetInstanceGroupManagerStatusArrayOutput() GetInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) ToGetInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatus {
+		return vs[0].([]GetInstanceGroupManagerStatus)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfig struct {
+	Effective bool `pulumi:"effective"`
+}
+
+// GetInstanceGroupManagerStatusAllInstancesConfigInput is an input type that accepts GetInstanceGroupManagerStatusAllInstancesConfigArgs and GetInstanceGroupManagerStatusAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusAllInstancesConfigInput` via:
+//
+//	GetInstanceGroupManagerStatusAllInstancesConfigArgs{...}
+type GetInstanceGroupManagerStatusAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput
+	ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	Effective pulumi.BoolInput `pulumi:"effective"`
+}
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return i.ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+// GetInstanceGroupManagerStatusAllInstancesConfigArrayInput is an input type that accepts GetInstanceGroupManagerStatusAllInstancesConfigArray and GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusAllInstancesConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusAllInstancesConfigArray{ GetInstanceGroupManagerStatusAllInstancesConfigArgs{...} }
+type GetInstanceGroupManagerStatusAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+	ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArray []GetInstanceGroupManagerStatusAllInstancesConfigInput
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArray) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusAllInstancesConfigArray) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigOutput() GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusAllInstancesConfig {
+		return vs[0].([]GetInstanceGroupManagerStatusAllInstancesConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+type GetInstanceGroupManagerStatusStateful struct {
+	HasStatefulConfig  bool                                                     `pulumi:"hasStatefulConfig"`
+	PerInstanceConfigs []GetInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// GetInstanceGroupManagerStatusStatefulInput is an input type that accepts GetInstanceGroupManagerStatusStatefulArgs and GetInstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulArgs{...}
+type GetInstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput
+	ToGetInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulArgs struct {
+	HasStatefulConfig  pulumi.BoolInput                                                 `pulumi:"hasStatefulConfig"`
+	PerInstanceConfigs GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (GetInstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArgs) ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArgs) ToGetInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulOutput)
+}
+
+// GetInstanceGroupManagerStatusStatefulArrayInput is an input type that accepts GetInstanceGroupManagerStatusStatefulArray and GetInstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulArray{ GetInstanceGroupManagerStatusStatefulArgs{...} }
+type GetInstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput
+	ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulArray []GetInstanceGroupManagerStatusStatefulInput
+
+func (GetInstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArray) ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulArray) ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) ToGetInstanceGroupManagerStatusStatefulOutput() GetInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) ToGetInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) []GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) ToGetInstanceGroupManagerStatusStatefulArrayOutput() GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) ToGetInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusStateful {
+		return vs[0].([]GetInstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusStatefulOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	AllEffective bool `pulumi:"allEffective"`
+}
+
+// GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs and GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	AllEffective pulumi.BoolInput `pulumi:"allEffective"`
+}
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray and GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray{ GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray []GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusStatefulPerInstanceConfig) bool { return v.AllEffective }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]GetInstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTarget struct {
+	IsReached bool `pulumi:"isReached"`
+}
+
+// GetInstanceGroupManagerStatusVersionTargetInput is an input type that accepts GetInstanceGroupManagerStatusVersionTargetArgs and GetInstanceGroupManagerStatusVersionTargetOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusVersionTargetInput` via:
+//
+//	GetInstanceGroupManagerStatusVersionTargetArgs{...}
+type GetInstanceGroupManagerStatusVersionTargetInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput
+	ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) GetInstanceGroupManagerStatusVersionTargetOutput
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArgs struct {
+	IsReached pulumi.BoolInput `pulumi:"isReached"`
+}
+
+func (GetInstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArgs) ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput {
+	return i.ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArgs) ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+// GetInstanceGroupManagerStatusVersionTargetArrayInput is an input type that accepts GetInstanceGroupManagerStatusVersionTargetArray and GetInstanceGroupManagerStatusVersionTargetArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerStatusVersionTargetArrayInput` via:
+//
+//	GetInstanceGroupManagerStatusVersionTargetArray{ GetInstanceGroupManagerStatusVersionTargetArgs{...} }
+type GetInstanceGroupManagerStatusVersionTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput
+	ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArray []GetInstanceGroupManagerStatusVersionTargetInput
+
+func (GetInstanceGroupManagerStatusVersionTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArray) ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return i.ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerStatusVersionTargetArray) ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) ToGetInstanceGroupManagerStatusVersionTargetOutput() GetInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) ToGetInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusVersionTarget) bool { return v.IsReached }).(pulumi.BoolOutput)
+}
+
+type GetInstanceGroupManagerStatusVersionTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerStatusVersionTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetInstanceGroupManagerStatusVersionTargetArrayOutput() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerStatusVersionTarget {
+		return vs[0].([]GetInstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
+	}).(GetInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicy struct {
+	MaxSurgeFixed               int    `pulumi:"maxSurgeFixed"`
+	MaxSurgePercent             int    `pulumi:"maxSurgePercent"`
+	MaxUnavailableFixed         int    `pulumi:"maxUnavailableFixed"`
+	MaxUnavailablePercent       int    `pulumi:"maxUnavailablePercent"`
+	MinReadySec                 int    `pulumi:"minReadySec"`
+	MinimalAction               string `pulumi:"minimalAction"`
+	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
+	ReplacementMethod           string `pulumi:"replacementMethod"`
+	Type                        string `pulumi:"type"`
+}
+
+// GetInstanceGroupManagerUpdatePolicyInput is an input type that accepts GetInstanceGroupManagerUpdatePolicyArgs and GetInstanceGroupManagerUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerUpdatePolicyInput` via:
+//
+//	GetInstanceGroupManagerUpdatePolicyArgs{...}
+type GetInstanceGroupManagerUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput
+	ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(context.Context) GetInstanceGroupManagerUpdatePolicyOutput
+}
+
+type GetInstanceGroupManagerUpdatePolicyArgs struct {
+	MaxSurgeFixed               pulumi.IntInput    `pulumi:"maxSurgeFixed"`
+	MaxSurgePercent             pulumi.IntInput    `pulumi:"maxSurgePercent"`
+	MaxUnavailableFixed         pulumi.IntInput    `pulumi:"maxUnavailableFixed"`
+	MaxUnavailablePercent       pulumi.IntInput    `pulumi:"maxUnavailablePercent"`
+	MinReadySec                 pulumi.IntInput    `pulumi:"minReadySec"`
+	MinimalAction               pulumi.StringInput `pulumi:"minimalAction"`
+	MostDisruptiveAllowedAction pulumi.StringInput `pulumi:"mostDisruptiveAllowedAction"`
+	ReplacementMethod           pulumi.StringInput `pulumi:"replacementMethod"`
+	Type                        pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceGroupManagerUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArgs) ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput {
+	return i.ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArgs) ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerUpdatePolicyOutput)
+}
+
+// GetInstanceGroupManagerUpdatePolicyArrayInput is an input type that accepts GetInstanceGroupManagerUpdatePolicyArray and GetInstanceGroupManagerUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerUpdatePolicyArrayInput` via:
+//
+//	GetInstanceGroupManagerUpdatePolicyArray{ GetInstanceGroupManagerUpdatePolicyArgs{...} }
+type GetInstanceGroupManagerUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput
+	ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput
+}
+
+type GetInstanceGroupManagerUpdatePolicyArray []GetInstanceGroupManagerUpdatePolicyInput
+
+func (GetInstanceGroupManagerUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArray) ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return i.ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerUpdatePolicyArray) ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerUpdatePolicyArrayOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpdatePolicyOutput() GetInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgeFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgeFixed }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgePercent }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailableFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailableFixed }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailablePercent }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MinReadySec }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.ReplacementMethod }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceGroupManagerUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) ToGetInstanceGroupManagerUpdatePolicyArrayOutput() GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) ToGetInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerUpdatePolicy {
+		return vs[0].([]GetInstanceGroupManagerUpdatePolicy)[vs[1].(int)]
+	}).(GetInstanceGroupManagerUpdatePolicyOutput)
+}
+
+type GetInstanceGroupManagerVersion struct {
+	InstanceTemplate string `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name        string                                     `pulumi:"name"`
+	TargetSizes []GetInstanceGroupManagerVersionTargetSize `pulumi:"targetSizes"`
+}
+
+// GetInstanceGroupManagerVersionInput is an input type that accepts GetInstanceGroupManagerVersionArgs and GetInstanceGroupManagerVersionOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionInput` via:
+//
+//	GetInstanceGroupManagerVersionArgs{...}
+type GetInstanceGroupManagerVersionInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput
+	ToGetInstanceGroupManagerVersionOutputWithContext(context.Context) GetInstanceGroupManagerVersionOutput
+}
+
+type GetInstanceGroupManagerVersionArgs struct {
+	InstanceTemplate pulumi.StringInput `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name        pulumi.StringInput                                 `pulumi:"name"`
+	TargetSizes GetInstanceGroupManagerVersionTargetSizeArrayInput `pulumi:"targetSizes"`
+}
+
+func (GetInstanceGroupManagerVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionArgs) ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput {
+	return i.ToGetInstanceGroupManagerVersionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionArgs) ToGetInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionOutput)
+}
+
+// GetInstanceGroupManagerVersionArrayInput is an input type that accepts GetInstanceGroupManagerVersionArray and GetInstanceGroupManagerVersionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionArrayInput` via:
+//
+//	GetInstanceGroupManagerVersionArray{ GetInstanceGroupManagerVersionArgs{...} }
+type GetInstanceGroupManagerVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput
+	ToGetInstanceGroupManagerVersionArrayOutputWithContext(context.Context) GetInstanceGroupManagerVersionArrayOutput
+}
+
+type GetInstanceGroupManagerVersionArray []GetInstanceGroupManagerVersionInput
+
+func (GetInstanceGroupManagerVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionArray) ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput {
+	return i.ToGetInstanceGroupManagerVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionArray) ToGetInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionOutput) ToGetInstanceGroupManagerVersionOutput() GetInstanceGroupManagerVersionOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionOutput) ToGetInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionOutput) InstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.InstanceTemplate }).(pulumi.StringOutput)
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetInstanceGroupManagerVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupManagerVersionOutput) TargetSizes() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersion) []GetInstanceGroupManagerVersionTargetSize {
+		return v.TargetSizes
+	}).(GetInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) ToGetInstanceGroupManagerVersionArrayOutput() GetInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) ToGetInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerVersion {
+		return vs[0].([]GetInstanceGroupManagerVersion)[vs[1].(int)]
+	}).(GetInstanceGroupManagerVersionOutput)
+}
+
+type GetInstanceGroupManagerVersionTargetSize struct {
+	Fixed   int `pulumi:"fixed"`
+	Percent int `pulumi:"percent"`
+}
+
+// GetInstanceGroupManagerVersionTargetSizeInput is an input type that accepts GetInstanceGroupManagerVersionTargetSizeArgs and GetInstanceGroupManagerVersionTargetSizeOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionTargetSizeInput` via:
+//
+//	GetInstanceGroupManagerVersionTargetSizeArgs{...}
+type GetInstanceGroupManagerVersionTargetSizeInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput
+	ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Context) GetInstanceGroupManagerVersionTargetSizeOutput
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArgs struct {
+	Fixed   pulumi.IntInput `pulumi:"fixed"`
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetInstanceGroupManagerVersionTargetSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArgs) ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput {
+	return i.ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArgs) ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionTargetSizeOutput)
+}
+
+// GetInstanceGroupManagerVersionTargetSizeArrayInput is an input type that accepts GetInstanceGroupManagerVersionTargetSizeArray and GetInstanceGroupManagerVersionTargetSizeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerVersionTargetSizeArrayInput` via:
+//
+//	GetInstanceGroupManagerVersionTargetSizeArray{ GetInstanceGroupManagerVersionTargetSizeArgs{...} }
+type GetInstanceGroupManagerVersionTargetSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput
+	ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArray []GetInstanceGroupManagerVersionTargetSizeInput
+
+func (GetInstanceGroupManagerVersionTargetSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArray) ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return i.ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerVersionTargetSizeArray) ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetInstanceGroupManagerVersionTargetSizeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionTargetSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) ToGetInstanceGroupManagerVersionTargetSizeOutput() GetInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) ToGetInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) Fixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Fixed }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupManagerVersionTargetSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerVersionTargetSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetInstanceGroupManagerVersionTargetSizeArrayOutput() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerVersionTargetSizeArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerVersionTargetSize {
+		return vs[0].([]GetInstanceGroupManagerVersionTargetSize)[vs[1].(int)]
+	}).(GetInstanceGroupManagerVersionTargetSizeOutput)
+}
+
+type GetInstanceGroupNamedPortType struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	Port int    `pulumi:"port"`
+}
+
+// GetInstanceGroupNamedPortTypeInput is an input type that accepts GetInstanceGroupNamedPortTypeArgs and GetInstanceGroupNamedPortTypeOutput values.
+// You can construct a concrete instance of `GetInstanceGroupNamedPortTypeInput` via:
+//
+//	GetInstanceGroupNamedPortTypeArgs{...}
+type GetInstanceGroupNamedPortTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput
+	ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeOutput
+}
+
+type GetInstanceGroupNamedPortTypeArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	Port pulumi.IntInput    `pulumi:"port"`
+}
+
+func (GetInstanceGroupNamedPortTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
+	return i.ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeOutput)
+}
+
+// GetInstanceGroupNamedPortTypeArrayInput is an input type that accepts GetInstanceGroupNamedPortTypeArray and GetInstanceGroupNamedPortTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupNamedPortTypeArrayInput` via:
+//
+//	GetInstanceGroupNamedPortTypeArray{ GetInstanceGroupNamedPortTypeArgs{...} }
+type GetInstanceGroupNamedPortTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput
+	ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeArrayOutput
+}
+
+type GetInstanceGroupNamedPortTypeArray []GetInstanceGroupNamedPortTypeInput
+
+func (GetInstanceGroupNamedPortTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
+	return i.ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeArrayOutput)
+}
+
+type GetInstanceGroupNamedPortTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupNamedPortTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
+	return o
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetInstanceGroupNamedPortTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceGroupNamedPortTypeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetInstanceGroupNamedPortTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupNamedPortTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupNamedPortType {
+		return vs[0].([]GetInstanceGroupNamedPortType)[vs[1].(int)]
+	}).(GetInstanceGroupNamedPortTypeOutput)
+}
+
+type GetInstanceGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceGuestAcceleratorInput is an input type that accepts GetInstanceGuestAcceleratorArgs and GetInstanceGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAcceleratorInput` via:
+//
+//	GetInstanceGuestAcceleratorArgs{...}
+type GetInstanceGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput
+	ToGetInstanceGuestAcceleratorOutputWithContext(context.Context) GetInstanceGuestAcceleratorOutput
+}
+
+type GetInstanceGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAcceleratorArgs) ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput {
+	return i.ToGetInstanceGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAcceleratorArgs) ToGetInstanceGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAcceleratorOutput)
+}
+
+// GetInstanceGuestAcceleratorArrayInput is an input type that accepts GetInstanceGuestAcceleratorArray and GetInstanceGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAcceleratorArrayInput` via:
+//
+//	GetInstanceGuestAcceleratorArray{ GetInstanceGuestAcceleratorArgs{...} }
+type GetInstanceGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput
+	ToGetInstanceGuestAcceleratorArrayOutputWithContext(context.Context) GetInstanceGuestAcceleratorArrayOutput
+}
+
+type GetInstanceGuestAcceleratorArray []GetInstanceGuestAcceleratorInput
+
+func (GetInstanceGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAcceleratorArray) ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput {
+	return i.ToGetInstanceGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAcceleratorArray) ToGetInstanceGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAcceleratorArrayOutput)
+}
+
+type GetInstanceGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAcceleratorOutput) ToGetInstanceGuestAcceleratorOutput() GetInstanceGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorOutput) ToGetInstanceGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to this instance.
+func (o GetInstanceGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) ToGetInstanceGuestAcceleratorArrayOutput() GetInstanceGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) ToGetInstanceGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetInstanceGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGuestAccelerator {
+		return vs[0].([]GetInstanceGuestAccelerator)[vs[1].(int)]
+	}).(GetInstanceGuestAcceleratorOutput)
+}
+
+type GetInstanceNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Structure documented below.
+	AccessConfigs []GetInstanceNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// An array of alias IP ranges for this network interface. Structure documented below.
+	AliasIpRanges     []GetInstanceNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
+	Ipv6AccessConfigs []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType    string                                        `pulumi:"ipv6AccessType"`
+	// The name of the instance. One of `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The name or selfLink of the network attached to this interface.
+	Network string `pulumi:"network"`
+	// The private IP address assigned to the instance.
+	NetworkIp  string `pulumi:"networkIp"`
+	NicType    string `pulumi:"nicType"`
+	QueueCount int    `pulumi:"queueCount"`
+	StackType  string `pulumi:"stackType"`
+	// The name or selfLink of the subnetwork attached to this interface.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The project in which the subnetwork belongs.
+	SubnetworkProject string `pulumi:"subnetworkProject"`
+}
+
+// GetInstanceNetworkInterfaceInput is an input type that accepts GetInstanceNetworkInterfaceArgs and GetInstanceNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceInput` via:
+//
+//	GetInstanceNetworkInterfaceArgs{...}
+type GetInstanceNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput
+	ToGetInstanceNetworkInterfaceOutputWithContext(context.Context) GetInstanceNetworkInterfaceOutput
+}
+
+type GetInstanceNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Structure documented below.
+	AccessConfigs GetInstanceNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// An array of alias IP ranges for this network interface. Structure documented below.
+	AliasIpRanges     GetInstanceNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
+	Ipv6AccessConfigs GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType    pulumi.StringInput                                    `pulumi:"ipv6AccessType"`
+	// The name of the instance. One of `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name or selfLink of the network attached to this interface.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The private IP address assigned to the instance.
+	NetworkIp  pulumi.StringInput `pulumi:"networkIp"`
+	NicType    pulumi.StringInput `pulumi:"nicType"`
+	QueueCount pulumi.IntInput    `pulumi:"queueCount"`
+	StackType  pulumi.StringInput `pulumi:"stackType"`
+	// The name or selfLink of the subnetwork attached to this interface.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The project in which the subnetwork belongs.
+	SubnetworkProject pulumi.StringInput `pulumi:"subnetworkProject"`
+}
+
+func (GetInstanceNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceArgs) ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput {
+	return i.ToGetInstanceNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceArgs) ToGetInstanceNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceOutput)
+}
+
+// GetInstanceNetworkInterfaceArrayInput is an input type that accepts GetInstanceNetworkInterfaceArray and GetInstanceNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceArray{ GetInstanceNetworkInterfaceArgs{...} }
+type GetInstanceNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput
+	ToGetInstanceNetworkInterfaceArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceArrayOutput
+}
+
+type GetInstanceNetworkInterfaceArray []GetInstanceNetworkInterfaceInput
+
+func (GetInstanceNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceArray) ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceArray) ToGetInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceOutput) ToGetInstanceNetworkInterfaceOutput() GetInstanceNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceOutput) ToGetInstanceNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceOutput {
+	return o
+}
+
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Structure documented below.
+func (o GetInstanceNetworkInterfaceOutput) AccessConfigs() GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAccessConfig { return v.AccessConfigs }).(GetInstanceNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// An array of alias IP ranges for this network interface. Structure documented below.
+func (o GetInstanceNetworkInterfaceOutput) AliasIpRanges() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceIpv6AccessConfig {
+		return v.Ipv6AccessConfigs
+	}).(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+// The name of the instance. One of `name` or `selfLink` must be provided.
+func (o GetInstanceNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the network attached to this interface.
+func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The private IP address assigned to the instance.
+func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the subnetwork attached to this interface.
+func (o GetInstanceNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The project in which the subnetwork belongs.
+func (o GetInstanceNetworkInterfaceOutput) SubnetworkProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SubnetworkProject }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) ToGetInstanceNetworkInterfaceArrayOutput() GetInstanceNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) ToGetInstanceNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterface {
+		return vs[0].([]GetInstanceNetworkInterface)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceOutput)
+}
+
+type GetInstanceNetworkInterfaceAccessConfig struct {
+	// The IP address that is be 1:1 mapped to the instance's
+	// network ip.
+	NatIp string `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	NetworkTier string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.
+	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+}
+
+// GetInstanceNetworkInterfaceAccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceAccessConfigArgs and GetInstanceNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAccessConfigInput` via:
+//
+//	GetInstanceNetworkInterfaceAccessConfigArgs{...}
+type GetInstanceNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAccessConfigOutput() GetInstanceNetworkInterfaceAccessConfigOutput
+	ToGetInstanceNetworkInterfaceAccessConfigOutputWithContext(context.Context) GetInstanceNetworkInterfaceAccessConfigOutput
+}
+
+type GetInstanceNetworkInterfaceAccessConfigArgs struct {
+	// The IP address that is be 1:1 mapped to the instance's
+	// network ip.
+	NatIp pulumi.StringInput `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.
+	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+}
+
+func (GetInstanceNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAccessConfigArgs) ToGetInstanceNetworkInterfaceAccessConfigOutput() GetInstanceNetworkInterfaceAccessConfigOutput {
+	return i.ToGetInstanceNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAccessConfigArgs) ToGetInstanceNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAccessConfigOutput)
+}
+
+// GetInstanceNetworkInterfaceAccessConfigArrayInput is an input type that accepts GetInstanceNetworkInterfaceAccessConfigArray and GetInstanceNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceAccessConfigArray{ GetInstanceNetworkInterfaceAccessConfigArgs{...} }
+type GetInstanceNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAccessConfigArrayOutput() GetInstanceNetworkInterfaceAccessConfigArrayOutput
+	ToGetInstanceNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceAccessConfigArrayOutput
+}
+
+type GetInstanceNetworkInterfaceAccessConfigArray []GetInstanceNetworkInterfaceAccessConfigInput
+
+func (GetInstanceNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAccessConfigArray) ToGetInstanceNetworkInterfaceAccessConfigArrayOutput() GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAccessConfigArray) ToGetInstanceNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) ToGetInstanceNetworkInterfaceAccessConfigOutput() GetInstanceNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) ToGetInstanceNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// The IP address that is be 1:1 mapped to the instance's
+// network ip.
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.NatIp }).(pulumi.StringOutput)
+}
+
+// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// The DNS domain name for the public PTR record.
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigArrayOutput) ToGetInstanceNetworkInterfaceAccessConfigArrayOutput() GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigArrayOutput) ToGetInstanceNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterfaceAccessConfig {
+		return vs[0].([]GetInstanceNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceAccessConfigOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpRange struct {
+	// The IP CIDR range represented by this alias IP range.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetInstanceNetworkInterfaceAliasIpRangeInput is an input type that accepts GetInstanceNetworkInterfaceAliasIpRangeArgs and GetInstanceNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAliasIpRangeInput` via:
+//
+//	GetInstanceNetworkInterfaceAliasIpRangeArgs{...}
+type GetInstanceNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAliasIpRangeOutput() GetInstanceNetworkInterfaceAliasIpRangeOutput
+	ToGetInstanceNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) GetInstanceNetworkInterfaceAliasIpRangeOutput
+}
+
+type GetInstanceNetworkInterfaceAliasIpRangeArgs struct {
+	// The IP CIDR range represented by this alias IP range.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetInstanceNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpRangeArgs) ToGetInstanceNetworkInterfaceAliasIpRangeOutput() GetInstanceNetworkInterfaceAliasIpRangeOutput {
+	return i.ToGetInstanceNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpRangeArgs) ToGetInstanceNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAliasIpRangeOutput)
+}
+
+// GetInstanceNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts GetInstanceNetworkInterfaceAliasIpRangeArray and GetInstanceNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceAliasIpRangeArray{ GetInstanceNetworkInterfaceAliasIpRangeArgs{...} }
+type GetInstanceNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput
+	ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type GetInstanceNetworkInterfaceAliasIpRangeArray []GetInstanceNetworkInterfaceAliasIpRangeInput
+
+func (GetInstanceNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpRangeArray) ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceAliasIpRangeArray) ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpRangeOutput) ToGetInstanceNetworkInterfaceAliasIpRangeOutput() GetInstanceNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpRangeOutput) ToGetInstanceNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range.
+func (o GetInstanceNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range.
+func (o GetInstanceNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) ToGetInstanceNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterfaceAliasIpRange {
+		return vs[0].([]GetInstanceNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
+	ExternalIpv6             string `pulumi:"externalIpv6"`
+	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
+	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	NetworkTier string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.
+	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+}
+
+// GetInstanceNetworkInterfaceIpv6AccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceIpv6AccessConfigArgs and GetInstanceNetworkInterfaceIpv6AccessConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceIpv6AccessConfigInput` via:
+//
+//	GetInstanceNetworkInterfaceIpv6AccessConfigArgs{...}
+type GetInstanceNetworkInterfaceIpv6AccessConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceIpv6AccessConfigOutput() GetInstanceNetworkInterfaceIpv6AccessConfigOutput
+	ToGetInstanceNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigOutput
+}
+
+type GetInstanceNetworkInterfaceIpv6AccessConfigArgs struct {
+	ExternalIpv6             pulumi.StringInput `pulumi:"externalIpv6"`
+	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
+	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.
+	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+}
+
+func (GetInstanceNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceIpv6AccessConfigArgs) ToGetInstanceNetworkInterfaceIpv6AccessConfigOutput() GetInstanceNetworkInterfaceIpv6AccessConfigOutput {
+	return i.ToGetInstanceNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceIpv6AccessConfigArgs) ToGetInstanceNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+// GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput is an input type that accepts GetInstanceNetworkInterfaceIpv6AccessConfigArray and GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput` via:
+//
+//	GetInstanceNetworkInterfaceIpv6AccessConfigArray{ GetInstanceNetworkInterfaceIpv6AccessConfigArgs{...} }
+type GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput
+	ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput
+}
+
+type GetInstanceNetworkInterfaceIpv6AccessConfigArray []GetInstanceNetworkInterfaceIpv6AccessConfigInput
+
+func (GetInstanceNetworkInterfaceIpv6AccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkInterfaceIpv6AccessConfigArray) ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return i.ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkInterfaceIpv6AccessConfigArray) ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+type GetInstanceNetworkInterfaceIpv6AccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ToGetInstanceNetworkInterfaceIpv6AccessConfigOutput() GetInstanceNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ToGetInstanceNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6PrefixLength }).(pulumi.StringOutput)
+}
+
+// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// The DNS domain name for the public PTR record.
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput) ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput) ToGetInstanceNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkInterfaceIpv6AccessConfig {
+		return vs[0].([]GetInstanceNetworkInterfaceIpv6AccessConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+type GetInstanceNetworkPerformanceConfig struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetInstanceNetworkPerformanceConfigInput is an input type that accepts GetInstanceNetworkPerformanceConfigArgs and GetInstanceNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPerformanceConfigInput` via:
+//
+//	GetInstanceNetworkPerformanceConfigArgs{...}
+type GetInstanceNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput
+	ToGetInstanceNetworkPerformanceConfigOutputWithContext(context.Context) GetInstanceNetworkPerformanceConfigOutput
+}
+
+type GetInstanceNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier for the instance.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetInstanceNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPerformanceConfigArgs) ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput {
+	return i.ToGetInstanceNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPerformanceConfigArgs) ToGetInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPerformanceConfigOutput)
+}
+
+// GetInstanceNetworkPerformanceConfigArrayInput is an input type that accepts GetInstanceNetworkPerformanceConfigArray and GetInstanceNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkPerformanceConfigArrayInput` via:
+//
+//	GetInstanceNetworkPerformanceConfigArray{ GetInstanceNetworkPerformanceConfigArgs{...} }
+type GetInstanceNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput
+	ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetInstanceNetworkPerformanceConfigArrayOutput
+}
+
+type GetInstanceNetworkPerformanceConfigArray []GetInstanceNetworkPerformanceConfigInput
+
+func (GetInstanceNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkPerformanceConfigArray) ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput {
+	return i.ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkPerformanceConfigArray) ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkPerformanceConfigArrayOutput)
+}
+
+type GetInstanceNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPerformanceConfigOutput) ToGetInstanceNetworkPerformanceConfigOutput() GetInstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigOutput) ToGetInstanceNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigOutput {
+	return o
+}
+
+// The egress bandwidth tier for the instance.
+func (o GetInstanceNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) ToGetInstanceNetworkPerformanceConfigArrayOutput() GetInstanceNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) ToGetInstanceNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkPerformanceConfig {
+		return vs[0].([]GetInstanceNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetInstanceNetworkPerformanceConfigOutput)
+}
+
+type GetInstanceReservationAffinity struct {
+	SpecificReservations []GetInstanceReservationAffinitySpecificReservation `pulumi:"specificReservations"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceReservationAffinityInput is an input type that accepts GetInstanceReservationAffinityArgs and GetInstanceReservationAffinityOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinityInput` via:
+//
+//	GetInstanceReservationAffinityArgs{...}
+type GetInstanceReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput
+	ToGetInstanceReservationAffinityOutputWithContext(context.Context) GetInstanceReservationAffinityOutput
+}
+
+type GetInstanceReservationAffinityArgs struct {
+	SpecificReservations GetInstanceReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinityArgs) ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput {
+	return i.ToGetInstanceReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinityArgs) ToGetInstanceReservationAffinityOutputWithContext(ctx context.Context) GetInstanceReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinityOutput)
+}
+
+// GetInstanceReservationAffinityArrayInput is an input type that accepts GetInstanceReservationAffinityArray and GetInstanceReservationAffinityArrayOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinityArrayInput` via:
+//
+//	GetInstanceReservationAffinityArray{ GetInstanceReservationAffinityArgs{...} }
+type GetInstanceReservationAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput
+	ToGetInstanceReservationAffinityArrayOutputWithContext(context.Context) GetInstanceReservationAffinityArrayOutput
+}
+
+type GetInstanceReservationAffinityArray []GetInstanceReservationAffinityInput
+
+func (GetInstanceReservationAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinityArray) ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput {
+	return i.ToGetInstanceReservationAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinityArray) ToGetInstanceReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinityArrayOutput)
+}
+
+type GetInstanceReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinityOutput) ToGetInstanceReservationAffinityOutput() GetInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityOutput) ToGetInstanceReservationAffinityOutputWithContext(ctx context.Context) GetInstanceReservationAffinityOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityOutput) SpecificReservations() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinity) []GetInstanceReservationAffinitySpecificReservation {
+		return v.SpecificReservations
+	}).(GetInstanceReservationAffinitySpecificReservationArrayOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceReservationAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) ToGetInstanceReservationAffinityArrayOutput() GetInstanceReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) ToGetInstanceReservationAffinityArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetInstanceReservationAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceReservationAffinity {
+		return vs[0].([]GetInstanceReservationAffinity)[vs[1].(int)]
+	}).(GetInstanceReservationAffinityOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservation struct {
+	Key    string   `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// GetInstanceReservationAffinitySpecificReservationInput is an input type that accepts GetInstanceReservationAffinitySpecificReservationArgs and GetInstanceReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinitySpecificReservationInput` via:
+//
+//	GetInstanceReservationAffinitySpecificReservationArgs{...}
+type GetInstanceReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput
+	ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(context.Context) GetInstanceReservationAffinitySpecificReservationOutput
+}
+
+type GetInstanceReservationAffinitySpecificReservationArgs struct {
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArgs) ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput {
+	return i.ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArgs) ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinitySpecificReservationOutput)
+}
+
+// GetInstanceReservationAffinitySpecificReservationArrayInput is an input type that accepts GetInstanceReservationAffinitySpecificReservationArray and GetInstanceReservationAffinitySpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetInstanceReservationAffinitySpecificReservationArrayInput` via:
+//
+//	GetInstanceReservationAffinitySpecificReservationArray{ GetInstanceReservationAffinitySpecificReservationArgs{...} }
+type GetInstanceReservationAffinitySpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput
+	ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput
+}
+
+type GetInstanceReservationAffinitySpecificReservationArray []GetInstanceReservationAffinitySpecificReservationInput
+
+func (GetInstanceReservationAffinitySpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArray) ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return i.ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceReservationAffinitySpecificReservationArray) ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceReservationAffinitySpecificReservationArrayOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) ToGetInstanceReservationAffinitySpecificReservationOutput() GetInstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) ToGetInstanceReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceReservationAffinitySpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceReservationAffinitySpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) ToGetInstanceReservationAffinitySpecificReservationArrayOutput() GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) ToGetInstanceReservationAffinitySpecificReservationArrayOutputWithContext(ctx context.Context) GetInstanceReservationAffinitySpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetInstanceReservationAffinitySpecificReservationArrayOutput) Index(i pulumi.IntInput) GetInstanceReservationAffinitySpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceReservationAffinitySpecificReservation {
+		return vs[0].([]GetInstanceReservationAffinitySpecificReservation)[vs[1].(int)]
+	}).(GetInstanceReservationAffinitySpecificReservationOutput)
+}
+
+type GetInstanceScheduling struct {
+	// Specifies if the instance should be
+	// restarted if it was terminated by Compute Engine (not a user).
+	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+	InstanceTerminationAction string                              `pulumi:"instanceTerminationAction"`
+	MinNodeCpus               int                                 `pulumi:"minNodeCpus"`
+	NodeAffinities            []GetInstanceSchedulingNodeAffinity `pulumi:"nodeAffinities"`
+	// Describes maintenance behavior for the
+	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
+	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
+	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Whether the instance is preemptible.
+	Preemptible bool `pulumi:"preemptible"`
+	// Describe the type of preemptible VM.
+	ProvisioningModel string `pulumi:"provisioningModel"`
+}
+
+// GetInstanceSchedulingInput is an input type that accepts GetInstanceSchedulingArgs and GetInstanceSchedulingOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingInput` via:
+//
+//	GetInstanceSchedulingArgs{...}
+type GetInstanceSchedulingInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingOutput() GetInstanceSchedulingOutput
+	ToGetInstanceSchedulingOutputWithContext(context.Context) GetInstanceSchedulingOutput
+}
+
+type GetInstanceSchedulingArgs struct {
+	// Specifies if the instance should be
+	// restarted if it was terminated by Compute Engine (not a user).
+	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+	InstanceTerminationAction pulumi.StringInput                          `pulumi:"instanceTerminationAction"`
+	MinNodeCpus               pulumi.IntInput                             `pulumi:"minNodeCpus"`
+	NodeAffinities            GetInstanceSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+	// Describes maintenance behavior for the
+	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
+	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
+	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Whether the instance is preemptible.
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// Describe the type of preemptible VM.
+	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
+}
+
+func (GetInstanceSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceScheduling)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingArgs) ToGetInstanceSchedulingOutput() GetInstanceSchedulingOutput {
+	return i.ToGetInstanceSchedulingOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingArgs) ToGetInstanceSchedulingOutputWithContext(ctx context.Context) GetInstanceSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingOutput)
+}
+
+// GetInstanceSchedulingArrayInput is an input type that accepts GetInstanceSchedulingArray and GetInstanceSchedulingArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingArrayInput` via:
+//
+//	GetInstanceSchedulingArray{ GetInstanceSchedulingArgs{...} }
+type GetInstanceSchedulingArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingArrayOutput() GetInstanceSchedulingArrayOutput
+	ToGetInstanceSchedulingArrayOutputWithContext(context.Context) GetInstanceSchedulingArrayOutput
+}
+
+type GetInstanceSchedulingArray []GetInstanceSchedulingInput
+
+func (GetInstanceSchedulingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceScheduling)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingArray) ToGetInstanceSchedulingArrayOutput() GetInstanceSchedulingArrayOutput {
+	return i.ToGetInstanceSchedulingArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingArray) ToGetInstanceSchedulingArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingArrayOutput)
+}
+
+type GetInstanceSchedulingOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceScheduling)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingOutput) ToGetInstanceSchedulingOutput() GetInstanceSchedulingOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingOutput) ToGetInstanceSchedulingOutputWithContext(ctx context.Context) GetInstanceSchedulingOutput {
+	return o
+}
+
+// Specifies if the instance should be
+// restarted if it was terminated by Compute Engine (not a user).
+func (o GetInstanceSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+func (o GetInstanceSchedulingOutput) InstanceTerminationAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceSchedulingOutput) NodeAffinities() GetInstanceSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingNodeAffinity { return v.NodeAffinities }).(GetInstanceSchedulingNodeAffinityArrayOutput)
+}
+
+// Describes maintenance behavior for the
+// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
+// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
+func (o GetInstanceSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Whether the instance is preemptible.
+func (o GetInstanceSchedulingOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// Describe the type of preemptible VM.
+func (o GetInstanceSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
+}
+
+type GetInstanceSchedulingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceScheduling)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingArrayOutput) ToGetInstanceSchedulingArrayOutput() GetInstanceSchedulingArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingArrayOutput) ToGetInstanceSchedulingArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceScheduling {
+		return vs[0].([]GetInstanceScheduling)[vs[1].(int)]
+	}).(GetInstanceSchedulingOutput)
+}
+
+type GetInstanceSchedulingNodeAffinity struct {
+	Key      string   `pulumi:"key"`
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// GetInstanceSchedulingNodeAffinityInput is an input type that accepts GetInstanceSchedulingNodeAffinityArgs and GetInstanceSchedulingNodeAffinityOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingNodeAffinityInput` via:
+//
+//	GetInstanceSchedulingNodeAffinityArgs{...}
+type GetInstanceSchedulingNodeAffinityInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingNodeAffinityOutput() GetInstanceSchedulingNodeAffinityOutput
+	ToGetInstanceSchedulingNodeAffinityOutputWithContext(context.Context) GetInstanceSchedulingNodeAffinityOutput
+}
+
+type GetInstanceSchedulingNodeAffinityArgs struct {
+	Key      pulumi.StringInput      `pulumi:"key"`
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceSchedulingNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingNodeAffinityArgs) ToGetInstanceSchedulingNodeAffinityOutput() GetInstanceSchedulingNodeAffinityOutput {
+	return i.ToGetInstanceSchedulingNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingNodeAffinityArgs) ToGetInstanceSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetInstanceSchedulingNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingNodeAffinityOutput)
+}
+
+// GetInstanceSchedulingNodeAffinityArrayInput is an input type that accepts GetInstanceSchedulingNodeAffinityArray and GetInstanceSchedulingNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `GetInstanceSchedulingNodeAffinityArrayInput` via:
+//
+//	GetInstanceSchedulingNodeAffinityArray{ GetInstanceSchedulingNodeAffinityArgs{...} }
+type GetInstanceSchedulingNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceSchedulingNodeAffinityArrayOutput() GetInstanceSchedulingNodeAffinityArrayOutput
+	ToGetInstanceSchedulingNodeAffinityArrayOutputWithContext(context.Context) GetInstanceSchedulingNodeAffinityArrayOutput
+}
+
+type GetInstanceSchedulingNodeAffinityArray []GetInstanceSchedulingNodeAffinityInput
+
+func (GetInstanceSchedulingNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceSchedulingNodeAffinityArray) ToGetInstanceSchedulingNodeAffinityArrayOutput() GetInstanceSchedulingNodeAffinityArrayOutput {
+	return i.ToGetInstanceSchedulingNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceSchedulingNodeAffinityArray) ToGetInstanceSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceSchedulingNodeAffinityArrayOutput)
+}
+
+type GetInstanceSchedulingNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingNodeAffinityOutput) ToGetInstanceSchedulingNodeAffinityOutput() GetInstanceSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingNodeAffinityOutput) ToGetInstanceSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetInstanceSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSchedulingNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceSchedulingNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSchedulingNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceSchedulingNodeAffinityArrayOutput) ToGetInstanceSchedulingNodeAffinityArrayOutput() GetInstanceSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingNodeAffinityArrayOutput) ToGetInstanceSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetInstanceSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) GetInstanceSchedulingNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceSchedulingNodeAffinity {
+		return vs[0].([]GetInstanceSchedulingNodeAffinity)[vs[1].(int)]
+	}).(GetInstanceSchedulingNodeAffinityOutput)
+}
+
+type GetInstanceScratchDisk struct {
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface string `pulumi:"interface"`
+}
+
+// GetInstanceScratchDiskInput is an input type that accepts GetInstanceScratchDiskArgs and GetInstanceScratchDiskOutput values.
+// You can construct a concrete instance of `GetInstanceScratchDiskInput` via:
+//
+//	GetInstanceScratchDiskArgs{...}
+type GetInstanceScratchDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceScratchDiskOutput() GetInstanceScratchDiskOutput
+	ToGetInstanceScratchDiskOutputWithContext(context.Context) GetInstanceScratchDiskOutput
+}
+
+type GetInstanceScratchDiskArgs struct {
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface pulumi.StringInput `pulumi:"interface"`
+}
+
+func (GetInstanceScratchDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceScratchDisk)(nil)).Elem()
+}
+
+func (i GetInstanceScratchDiskArgs) ToGetInstanceScratchDiskOutput() GetInstanceScratchDiskOutput {
+	return i.ToGetInstanceScratchDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceScratchDiskArgs) ToGetInstanceScratchDiskOutputWithContext(ctx context.Context) GetInstanceScratchDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceScratchDiskOutput)
+}
+
+// GetInstanceScratchDiskArrayInput is an input type that accepts GetInstanceScratchDiskArray and GetInstanceScratchDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceScratchDiskArrayInput` via:
+//
+//	GetInstanceScratchDiskArray{ GetInstanceScratchDiskArgs{...} }
+type GetInstanceScratchDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceScratchDiskArrayOutput() GetInstanceScratchDiskArrayOutput
+	ToGetInstanceScratchDiskArrayOutputWithContext(context.Context) GetInstanceScratchDiskArrayOutput
+}
+
+type GetInstanceScratchDiskArray []GetInstanceScratchDiskInput
+
+func (GetInstanceScratchDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceScratchDisk)(nil)).Elem()
+}
+
+func (i GetInstanceScratchDiskArray) ToGetInstanceScratchDiskArrayOutput() GetInstanceScratchDiskArrayOutput {
+	return i.ToGetInstanceScratchDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceScratchDiskArray) ToGetInstanceScratchDiskArrayOutputWithContext(ctx context.Context) GetInstanceScratchDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceScratchDiskArrayOutput)
+}
+
+type GetInstanceScratchDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceScratchDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceScratchDisk)(nil)).Elem()
+}
+
+func (o GetInstanceScratchDiskOutput) ToGetInstanceScratchDiskOutput() GetInstanceScratchDiskOutput {
+	return o
+}
+
+func (o GetInstanceScratchDiskOutput) ToGetInstanceScratchDiskOutputWithContext(ctx context.Context) GetInstanceScratchDiskOutput {
+	return o
+}
+
+// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+func (o GetInstanceScratchDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceScratchDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+type GetInstanceScratchDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceScratchDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceScratchDisk)(nil)).Elem()
+}
+
+func (o GetInstanceScratchDiskArrayOutput) ToGetInstanceScratchDiskArrayOutput() GetInstanceScratchDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceScratchDiskArrayOutput) ToGetInstanceScratchDiskArrayOutputWithContext(ctx context.Context) GetInstanceScratchDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceScratchDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceScratchDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceScratchDisk {
+		return vs[0].([]GetInstanceScratchDisk)[vs[1].(int)]
+	}).(GetInstanceScratchDiskOutput)
+}
+
 type GetInstanceServiceAccount struct {
 	// The service account e-mail address.
 	Email string `pulumi:"email"`
@@ -468,7 +2823,10 @@ type GetInstanceTemplateDisk struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage string `pulumi:"sourceImage"`
+	SourceImage                  string                                               `pulumi:"sourceImage"`
+	SourceImageEncryptionKeys    []GetInstanceTemplateDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
+	SourceSnapshot               string                                               `pulumi:"sourceSnapshot"`
+	SourceSnapshotEncryptionKeys []GetInstanceTemplateDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -530,7 +2888,10 @@ type GetInstanceTemplateDiskArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+	SourceImage                  pulumi.StringInput                                           `pulumi:"sourceImage"`
+	SourceImageEncryptionKeys    GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput    `pulumi:"sourceImageEncryptionKeys"`
+	SourceSnapshot               pulumi.StringInput                                           `pulumi:"sourceSnapshot"`
+	SourceSnapshotEncryptionKeys GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -673,6 +3034,22 @@ func (o GetInstanceTemplateDiskOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.SourceImage }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceTemplateDiskOutput) SourceImageEncryptionKeys() GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) []GetInstanceTemplateDiskSourceImageEncryptionKey {
+		return v.SourceImageEncryptionKeys
+	}).(GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+func (o GetInstanceTemplateDiskOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.SourceSnapshot }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateDiskOutput) SourceSnapshotEncryptionKeys() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) []GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
+		return v.SourceSnapshotEncryptionKeys
+	}).(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 func (o GetInstanceTemplateDiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Type }).(pulumi.StringOutput)
@@ -793,6 +3170,212 @@ func (o GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateDiskDiskEncryptionKey {
 		return vs[0].([]GetInstanceTemplateDiskDiskEncryptionKey)[vs[1].(int)]
 	}).(GetInstanceTemplateDiskDiskEncryptionKeyOutput)
+}
+
+type GetInstanceTemplateDiskSourceImageEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+}
+
+// GetInstanceTemplateDiskSourceImageEncryptionKeyInput is an input type that accepts GetInstanceTemplateDiskSourceImageEncryptionKeyArgs and GetInstanceTemplateDiskSourceImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskSourceImageEncryptionKeyInput` via:
+//
+//	GetInstanceTemplateDiskSourceImageEncryptionKeyArgs{...}
+type GetInstanceTemplateDiskSourceImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyOutput
+	ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutputWithContext(context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyOutput
+}
+
+type GetInstanceTemplateDiskSourceImageEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+}
+
+func (GetInstanceTemplateDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskSourceImageEncryptionKeyArgs) ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyOutput {
+	return i.ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskSourceImageEncryptionKeyArgs) ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskSourceImageEncryptionKeyOutput)
+}
+
+// GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput is an input type that accepts GetInstanceTemplateDiskSourceImageEncryptionKeyArray and GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput` via:
+//
+//	GetInstanceTemplateDiskSourceImageEncryptionKeyArray{ GetInstanceTemplateDiskSourceImageEncryptionKeyArgs{...} }
+type GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput
+	ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput
+}
+
+type GetInstanceTemplateDiskSourceImageEncryptionKeyArray []GetInstanceTemplateDiskSourceImageEncryptionKeyInput
+
+func (GetInstanceTemplateDiskSourceImageEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskSourceImageEncryptionKeyArray) ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
+	return i.ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskSourceImageEncryptionKeyArray) ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+type GetInstanceTemplateDiskSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) ToGetInstanceTemplateDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateDiskSourceImageEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateDiskSourceImageEncryptionKey {
+		return vs[0].([]GetInstanceTemplateDiskSourceImageEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceTemplateDiskSourceImageEncryptionKeyOutput)
+}
+
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+}
+
+// GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs and GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+	ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+}
+
+func (GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray and GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray{ GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray []GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput
+
+func (GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetInstanceTemplateDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput)
 }
 
 type GetInstanceTemplateGuestAccelerator struct {
@@ -5135,6 +7718,48 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIpInput)(nil)).Elem(), GetInstanceGroupManagerStatefulInternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulInternalIpArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulInternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusInput)(nil)).Elem(), GetInstanceGroupManagerStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetInstanceGroupManagerStatusAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusAllInstancesConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusStatefulPerInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTargetInput)(nil)).Elem(), GetInstanceGroupManagerStatusVersionTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatusVersionTargetArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatusVersionTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), GetInstanceGroupManagerUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerUpdatePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerUpdatePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionInput)(nil)).Elem(), GetInstanceGroupManagerVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerVersionTargetSizeArrayInput)(nil)).Elem(), GetInstanceGroupManagerVersionTargetSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeArrayInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorInput)(nil)).Elem(), GetInstanceGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorArrayInput)(nil)).Elem(), GetInstanceGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceInput)(nil)).Elem(), GetInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), GetInstanceNetworkInterfaceIpv6AccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceIpv6AccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPerformanceConfigInput)(nil)).Elem(), GetInstanceNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetInstanceNetworkPerformanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinityInput)(nil)).Elem(), GetInstanceReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinityArrayInput)(nil)).Elem(), GetInstanceReservationAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservationInput)(nil)).Elem(), GetInstanceReservationAffinitySpecificReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservationArrayInput)(nil)).Elem(), GetInstanceReservationAffinitySpecificReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingInput)(nil)).Elem(), GetInstanceSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingArrayInput)(nil)).Elem(), GetInstanceSchedulingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSchedulingNodeAffinityArrayInput)(nil)).Elem(), GetInstanceSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceScratchDiskInput)(nil)).Elem(), GetInstanceScratchDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceScratchDiskArrayInput)(nil)).Elem(), GetInstanceScratchDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServiceAccountInput)(nil)).Elem(), GetInstanceServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServiceAccountArrayInput)(nil)).Elem(), GetInstanceServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceShieldedInstanceConfigInput)(nil)).Elem(), GetInstanceShieldedInstanceConfigArgs{})
@@ -5147,6 +7772,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskArrayInput)(nil)).Elem(), GetInstanceTemplateDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskDiskEncryptionKeyInput)(nil)).Elem(), GetInstanceTemplateDiskDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceTemplateDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetInstanceTemplateDiskSourceImageEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceTemplateDiskSourceImageEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateGuestAcceleratorInput)(nil)).Elem(), GetInstanceTemplateGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateGuestAcceleratorArrayInput)(nil)).Elem(), GetInstanceTemplateGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), GetInstanceTemplateNetworkInterfaceArgs{})
@@ -5221,6 +7850,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulInternalIpOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulInternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusVersionTargetOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerStatusVersionTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerUpdatePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerVersionTargetSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceIpv6AccessConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityOutput{})
+	pulumi.RegisterOutputType(GetInstanceSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceScratchDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceScratchDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetInstanceServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceShieldedInstanceConfigOutput{})
@@ -5233,6 +7904,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateDiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskSourceImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceOutput{})

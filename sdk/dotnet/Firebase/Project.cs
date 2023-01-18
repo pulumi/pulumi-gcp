@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// To get more information about Project, see:
     /// 
-    /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects)
+    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
     /// * How-to Guides
     ///     * [Official Documentation](https://firebase.google.com/)
     /// 

@@ -1131,7 +1131,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The labels associated with this dataset. You can use these to
         organize and group your datasets

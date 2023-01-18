@@ -19,7 +19,7 @@ class HostingSiteArgs:
                  site_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HostingSite resource.
-        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -38,7 +38,7 @@ class HostingSiteArgs:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
         associated with the Hosting site.
         """
         return pulumi.get(self, "app_id")
@@ -85,14 +85,14 @@ class _HostingSiteState:
                  site_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HostingSite resources.
-        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[str] default_url: The default URL for the site in the form of https://{name}.web.app
         :param pulumi.Input[str] name: Output only. The fully-qualified resource name of the Hosting site, in the format:
                projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-               ['ProjectNumber'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+               ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                ***(recommended)*** or its
-               ['ProjectId'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+               ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -115,7 +115,7 @@ class _HostingSiteState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
         associated with the Hosting site.
         """
         return pulumi.get(self, "app_id")
@@ -142,9 +142,9 @@ class _HostingSiteState:
         """
         Output only. The fully-qualified resource name of the Hosting site, in the format:
         projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-        ['ProjectNumber'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         ***(recommended)*** or its
-        ['ProjectId'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """
         return pulumi.get(self, "name")
@@ -243,7 +243,7 @@ class HostingSite(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -362,14 +362,14 @@ class HostingSite(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
                associated with the Hosting site.
         :param pulumi.Input[str] default_url: The default URL for the site in the form of https://{name}.web.app
         :param pulumi.Input[str] name: Output only. The fully-qualified resource name of the Hosting site, in the format:
                projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-               ['ProjectNumber'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+               ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                ***(recommended)*** or its
-               ['ProjectId'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+               ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -392,7 +392,7 @@ class HostingSite(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
         associated with the Hosting site.
         """
         return pulumi.get(self, "app_id")
@@ -411,9 +411,9 @@ class HostingSite(pulumi.CustomResource):
         """
         Output only. The fully-qualified resource name of the Hosting site, in the format:
         projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-        ['ProjectNumber'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         ***(recommended)*** or its
-        ['ProjectId'](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """
         return pulumi.get(self, "name")

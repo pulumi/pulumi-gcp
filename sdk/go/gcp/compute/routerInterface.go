@@ -75,7 +75,7 @@ type RouterInterface struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the interface that is redundant to
 	// this interface. Changing this forces a new interface to be created.
-	RedundantInterface pulumi.StringPtrOutput `pulumi:"redundantInterface"`
+	RedundantInterface pulumi.StringOutput `pulumi:"redundantInterface"`
 	// The region this interface's router sits in.
 	// If not specified, the project region will be used. Changing this forces a new interface to be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -387,8 +387,8 @@ func (o RouterInterfaceOutput) Project() pulumi.StringOutput {
 
 // The name of the interface that is redundant to
 // this interface. Changing this forces a new interface to be created.
-func (o RouterInterfaceOutput) RedundantInterface() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.RedundantInterface }).(pulumi.StringPtrOutput)
+func (o RouterInterfaceOutput) RedundantInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RedundantInterface }).(pulumi.StringOutput)
 }
 
 // The region this interface's router sits in.

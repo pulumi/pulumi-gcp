@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
         /// `settings.backup_configuration.enabled` is set to `true`.
         /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-        /// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        /// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         /// is set to `true`. Defaults to `ZONAL`.
         /// </summary>
         [Input("availabilityType")]
@@ -55,6 +55,9 @@ namespace Pulumi.Gcp.Sql.Inputs
             get => _databaseFlags ?? (_databaseFlags = new InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagArgs>());
             set => _databaseFlags = value;
         }
+
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         [Input("denyMaintenancePeriod")]
         public Input<Inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs>? DenyMaintenancePeriod { get; set; }

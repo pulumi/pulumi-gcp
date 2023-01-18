@@ -140,6 +140,12 @@ type Image struct {
 	// Applicable only for bootable images.
 	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
+	// Encrypts the image using a customer-supplied encryption key.
+	// After you encrypt an image with a customer-supplied key, you must
+	// provide the same key if you use the image later (e.g. to create a
+	// disk from the image)
+	// Structure is documented below.
+	ImageEncryptionKey ImageImageEncryptionKeyPtrOutput `pulumi:"imageEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
@@ -231,6 +237,12 @@ type imageState struct {
 	// Applicable only for bootable images.
 	// Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
+	// Encrypts the image using a customer-supplied encryption key.
+	// After you encrypt an image with a customer-supplied key, you must
+	// provide the same key if you use the image later (e.g. to create a
+	// disk from the image)
+	// Structure is documented below.
+	ImageEncryptionKey *ImageImageEncryptionKey `pulumi:"imageEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
@@ -294,6 +306,12 @@ type ImageState struct {
 	// Applicable only for bootable images.
 	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
+	// Encrypts the image using a customer-supplied encryption key.
+	// After you encrypt an image with a customer-supplied key, you must
+	// provide the same key if you use the image later (e.g. to create a
+	// disk from the image)
+	// Structure is documented below.
+	ImageEncryptionKey ImageImageEncryptionKeyPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this Image.
@@ -357,6 +375,12 @@ type imageArgs struct {
 	// Applicable only for bootable images.
 	// Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
+	// Encrypts the image using a customer-supplied encryption key.
+	// After you encrypt an image with a customer-supplied key, you must
+	// provide the same key if you use the image later (e.g. to create a
+	// disk from the image)
+	// Structure is documented below.
+	ImageEncryptionKey *ImageImageEncryptionKey `pulumi:"imageEncryptionKey"`
 	// Labels to apply to this Image.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
@@ -413,6 +437,12 @@ type ImageArgs struct {
 	// Applicable only for bootable images.
 	// Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
+	// Encrypts the image using a customer-supplied encryption key.
+	// After you encrypt an image with a customer-supplied key, you must
+	// provide the same key if you use the image later (e.g. to create a
+	// disk from the image)
+	// Structure is documented below.
+	ImageEncryptionKey ImageImageEncryptionKeyPtrInput
 	// Labels to apply to this Image.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
@@ -574,6 +604,15 @@ func (o ImageOutput) Family() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ImageOutput) GuestOsFeatures() ImageGuestOsFeatureArrayOutput {
 	return o.ApplyT(func(v *Image) ImageGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(ImageGuestOsFeatureArrayOutput)
+}
+
+// Encrypts the image using a customer-supplied encryption key.
+// After you encrypt an image with a customer-supplied key, you must
+// provide the same key if you use the image later (e.g. to create a
+// disk from the image)
+// Structure is documented below.
+func (o ImageOutput) ImageEncryptionKey() ImageImageEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *Image) ImageImageEncryptionKeyPtrOutput { return v.ImageEncryptionKey }).(ImageImageEncryptionKeyPtrOutput)
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.

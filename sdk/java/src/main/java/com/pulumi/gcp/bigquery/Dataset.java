@@ -462,15 +462,15 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> labels;
+    private Output<Map<String,String>> labels;
 
     /**
      * @return The labels associated with this dataset. You can use these to
      * organize and group your datasets
      * 
      */
-    public Output<Optional<Map<String,String>>> labels() {
-        return Codegen.optional(this.labels);
+    public Output<Map<String,String>> labels() {
+        return this.labels;
     }
     /**
      * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.

@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DnsManagedZoneIamBindingArgs, DnsManagedZoneIamBindingState } from "./dnsManagedZoneIamBinding";
+export type DnsManagedZoneIamBinding = import("./dnsManagedZoneIamBinding").DnsManagedZoneIamBinding;
+export const DnsManagedZoneIamBinding: typeof import("./dnsManagedZoneIamBinding").DnsManagedZoneIamBinding = null as any;
+utilities.lazyLoad(exports, ["DnsManagedZoneIamBinding"], () => require("./dnsManagedZoneIamBinding"));
+
+export { DnsManagedZoneIamMemberArgs, DnsManagedZoneIamMemberState } from "./dnsManagedZoneIamMember";
+export type DnsManagedZoneIamMember = import("./dnsManagedZoneIamMember").DnsManagedZoneIamMember;
+export const DnsManagedZoneIamMember: typeof import("./dnsManagedZoneIamMember").DnsManagedZoneIamMember = null as any;
+utilities.lazyLoad(exports, ["DnsManagedZoneIamMember"], () => require("./dnsManagedZoneIamMember"));
+
+export { DnsManagedZoneIamPolicyArgs, DnsManagedZoneIamPolicyState } from "./dnsManagedZoneIamPolicy";
+export type DnsManagedZoneIamPolicy = import("./dnsManagedZoneIamPolicy").DnsManagedZoneIamPolicy;
+export const DnsManagedZoneIamPolicy: typeof import("./dnsManagedZoneIamPolicy").DnsManagedZoneIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DnsManagedZoneIamPolicy"], () => require("./dnsManagedZoneIamPolicy"));
+
 export { GetKeysArgs, GetKeysResult, GetKeysOutputArgs } from "./getKeys";
 export const getKeys: typeof import("./getKeys").getKeys = null as any;
 export const getKeysOutput: typeof import("./getKeys").getKeysOutput = null as any;
@@ -50,6 +65,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding":
+                return new DnsManagedZoneIamBinding(name, <any>undefined, { urn })
+            case "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember":
+                return new DnsManagedZoneIamMember(name, <any>undefined, { urn })
+            case "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy":
+                return new DnsManagedZoneIamPolicy(name, <any>undefined, { urn })
             case "gcp:dns/managedZone:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
             case "gcp:dns/policy:Policy":
@@ -65,6 +86,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dns/dnsManagedZoneIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/managedZone", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/policy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dns/recordSet", _module)

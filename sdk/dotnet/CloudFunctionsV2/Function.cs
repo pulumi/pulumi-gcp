@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var account = new Gcp.ServiceAccount.Account("account", new()
     ///     {
-    ///         AccountId = "sa",
+    ///         AccountId = "gcf-sa",
     ///         DisplayName = "Test Service Account - used for both the cloud function and eventarc trigger in the test",
     ///     });
     /// 

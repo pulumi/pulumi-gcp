@@ -10,6 +10,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceTelemetryConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -250,6 +251,23 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="telemetryConfig")
+    private @Nullable Output<MetastoreServiceTelemetryConfigArgs> telemetryConfig;
+
+    /**
+     * @return The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MetastoreServiceTelemetryConfigArgs>> telemetryConfig() {
+        return Optional.ofNullable(this.telemetryConfig);
+    }
+
+    /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      * 
@@ -282,6 +300,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         this.project = $.project;
         this.releaseChannel = $.releaseChannel;
         this.serviceId = $.serviceId;
+        this.telemetryConfig = $.telemetryConfig;
         this.tier = $.tier;
     }
 
@@ -606,6 +625,29 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
+        }
+
+        /**
+         * @param telemetryConfig The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder telemetryConfig(@Nullable Output<MetastoreServiceTelemetryConfigArgs> telemetryConfig) {
+            $.telemetryConfig = telemetryConfig;
+            return this;
+        }
+
+        /**
+         * @param telemetryConfig The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder telemetryConfig(MetastoreServiceTelemetryConfigArgs telemetryConfig) {
+            return telemetryConfig(Output.of(telemetryConfig));
         }
 
         /**

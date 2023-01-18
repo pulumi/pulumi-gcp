@@ -45,6 +45,7 @@ from .get_health_check import *
 from .get_image import *
 from .get_instance import *
 from .get_instance_group import *
+from .get_instance_group_manager import *
 from .get_instance_serial_port import *
 from .get_instance_template import *
 from .get_lbip_ranges import *

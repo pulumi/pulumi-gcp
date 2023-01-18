@@ -81,14 +81,14 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
     }
 
     /**
-     * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+     * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
      * 
      */
     @Import(name="pointInTimeRecoveryEnabled")
     private @Nullable Output<Boolean> pointInTimeRecoveryEnabled;
 
     /**
-     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
      * 
      */
     public Optional<Output<Boolean>> pointInTimeRecoveryEnabled() {
@@ -244,7 +244,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+         * @param pointInTimeRecoveryEnabled True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
          * 
          * @return builder
          * 

@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -58,10 +57,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .binaryAuthorization(ServiceBinaryAuthorizationArgs.builder()
- *                 .breakglassJustification(&#34;Some justification&#34;)
- *                 .useDefault(true)
- *                 .build())
  *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .template(ServiceTemplateArgs.builder()

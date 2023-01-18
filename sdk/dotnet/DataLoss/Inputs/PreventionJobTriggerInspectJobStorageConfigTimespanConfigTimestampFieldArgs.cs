@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Datastore kind.
+        /// Name of a BigQuery field to be returned with the findings.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

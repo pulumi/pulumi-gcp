@@ -5,25 +5,42 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfig {
     /**
-     * @return Specifies free-text based transformations to be applied to the dataset.
+     * @return Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
      * 
      */
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
+    /**
+     * @return Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
 
     private PreventionDeidentifyTemplateDeidentifyConfig() {}
     /**
-     * @return Specifies free-text based transformations to be applied to the dataset.
+     * @return Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
      * 
      */
-    public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations() {
-        return this.infoTypeTransformations;
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations> infoTypeTransformations() {
+        return Optional.ofNullable(this.infoTypeTransformations);
+    }
+    /**
+     * @return Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations> recordTransformations() {
+        return Optional.ofNullable(this.recordTransformations);
     }
 
     public static Builder builder() {
@@ -35,21 +52,29 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.infoTypeTransformations = defaults.infoTypeTransformations;
+    	      this.recordTransformations = defaults.recordTransformations;
         }
 
         @CustomType.Setter
-        public Builder infoTypeTransformations(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
-            this.infoTypeTransformations = Objects.requireNonNull(infoTypeTransformations);
+        public Builder infoTypeTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
+            this.infoTypeTransformations = infoTypeTransformations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder recordTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations) {
+            this.recordTransformations = recordTransformations;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfig build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfig();
             o.infoTypeTransformations = infoTypeTransformations;
+            o.recordTransformations = recordTransformations;
             return o;
         }
     }

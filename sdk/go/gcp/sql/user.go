@@ -135,7 +135,7 @@ type User struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
-	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the Cloud SQL instance. Changing this
@@ -146,7 +146,8 @@ type User struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-	// or CLOUD_IAM_SERVICE_ACCOUNT.
+	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrOutput      `pulumi:"password"`
 	PasswordPolicy UserPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
@@ -203,7 +204,7 @@ type userState struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
-	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host *string `pulumi:"host"`
 	// The name of the Cloud SQL instance. Changing this
@@ -214,7 +215,8 @@ type userState struct {
 	Name *string `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-	// or CLOUD_IAM_SERVICE_ACCOUNT.
+	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       *string             `pulumi:"password"`
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
@@ -233,7 +235,7 @@ type UserState struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
-	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. Changing this
@@ -244,7 +246,8 @@ type UserState struct {
 	Name pulumi.StringPtrInput
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-	// or CLOUD_IAM_SERVICE_ACCOUNT.
+	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrInput
 	PasswordPolicy UserPasswordPolicyPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -267,7 +270,7 @@ type userArgs struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
-	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host *string `pulumi:"host"`
 	// The name of the Cloud SQL instance. Changing this
@@ -278,7 +281,8 @@ type userArgs struct {
 	Name *string `pulumi:"name"`
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-	// or CLOUD_IAM_SERVICE_ACCOUNT.
+	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       *string             `pulumi:"password"`
 	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
@@ -297,7 +301,7 @@ type UserArgs struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
-	// for MySQL instances. Don't set this field for PostgreSQL instances.
+	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. Changing this
@@ -308,7 +312,8 @@ type UserArgs struct {
 	Name pulumi.StringPtrInput
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-	// or CLOUD_IAM_SERVICE_ACCOUNT.
+	// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+	// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 	Password       pulumi.StringPtrInput
 	PasswordPolicy UserPasswordPolicyPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -415,7 +420,7 @@ func (o UserOutput) DeletionPolicy() pulumi.StringPtrOutput {
 }
 
 // The host the user can connect from. This is only supported
-// for MySQL instances. Don't set this field for PostgreSQL instances.
+// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 // Can be an IP address. Changing this forces a new resource to be created.
 func (o UserOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
@@ -435,7 +440,8 @@ func (o UserOutput) Name() pulumi.StringOutput {
 
 // The password for the user. Can be updated. For Postgres
 // instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-// or CLOUD_IAM_SERVICE_ACCOUNT.
+// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// ) Specifies a custom placement policy for the
+        /// Specifies a custom placement policy for the
         /// nodes.
         /// </summary>
         [Output("placementPolicy")]
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// ) Specifies a custom placement policy for the
+        /// Specifies a custom placement policy for the
         /// nodes.
         /// </summary>
         [Input("placementPolicy")]
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// ) Specifies a custom placement policy for the
+        /// Specifies a custom placement policy for the
         /// nodes.
         /// </summary>
         [Input("placementPolicy")]

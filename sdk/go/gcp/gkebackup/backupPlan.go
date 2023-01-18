@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a Backup Plan instance.
+//
+// To get more information about BackupPlan, see:
+//
+// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+//
 // ## Example Usage
 // ### Gkebackup Backupplan Basic
 //
@@ -38,7 +46,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -50,7 +58,7 @@ import (
 //					IncludeSecrets:    pulumi.Bool(true),
 //					AllNamespaces:     pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -86,7 +94,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -98,7 +106,7 @@ import (
 //					IncludeSecrets:    pulumi.Bool(true),
 //					AllNamespaces:     pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -134,19 +142,19 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
 //				KeyRing: keyRing.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -166,7 +174,7 @@ import (
 //						GcpKmsEncryptionKey: cryptoKey.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -201,7 +209,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -231,7 +239,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

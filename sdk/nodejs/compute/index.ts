@@ -205,6 +205,11 @@ export const getInstanceGroup: typeof import("./getInstanceGroup").getInstanceGr
 export const getInstanceGroupOutput: typeof import("./getInstanceGroup").getInstanceGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroup","getInstanceGroupOutput"], () => require("./getInstanceGroup"));
 
+export { GetInstanceGroupManagerArgs, GetInstanceGroupManagerResult, GetInstanceGroupManagerOutputArgs } from "./getInstanceGroupManager";
+export const getInstanceGroupManager: typeof import("./getInstanceGroupManager").getInstanceGroupManager = null as any;
+export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
+
 export { GetInstanceSerialPortArgs, GetInstanceSerialPortResult, GetInstanceSerialPortOutputArgs } from "./getInstanceSerialPort";
 export const getInstanceSerialPort: typeof import("./getInstanceSerialPort").getInstanceSerialPort = null as any;
 export const getInstanceSerialPortOutput: typeof import("./getInstanceSerialPort").getInstanceSerialPortOutput = null as any;

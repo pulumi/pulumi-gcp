@@ -95,7 +95,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Expire time of the certificate.
+     * Expire time of the certificate in RFC3339 text format.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
@@ -196,7 +196,7 @@ export interface MangedSslCertificateState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Expire time of the certificate.
+     * Expire time of the certificate in RFC3339 text format.
      */
     expireTime?: pulumi.Input<string>;
     /**

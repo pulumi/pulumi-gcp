@@ -2317,6 +2317,7 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 
 type EnvironmentConfigWorkloadsConfig struct {
 	Scheduler *EnvironmentConfigWorkloadsConfigScheduler `pulumi:"scheduler"`
+	Triggerer *EnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerer"`
 	WebServer *EnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServer"`
 	Worker    *EnvironmentConfigWorkloadsConfigWorker    `pulumi:"worker"`
 }
@@ -2334,6 +2335,7 @@ type EnvironmentConfigWorkloadsConfigInput interface {
 
 type EnvironmentConfigWorkloadsConfigArgs struct {
 	Scheduler EnvironmentConfigWorkloadsConfigSchedulerPtrInput `pulumi:"scheduler"`
+	Triggerer EnvironmentConfigWorkloadsConfigTriggererPtrInput `pulumi:"triggerer"`
 	WebServer EnvironmentConfigWorkloadsConfigWebServerPtrInput `pulumi:"webServer"`
 	Worker    EnvironmentConfigWorkloadsConfigWorkerPtrInput    `pulumi:"worker"`
 }
@@ -2421,6 +2423,12 @@ func (o EnvironmentConfigWorkloadsConfigOutput) Scheduler() EnvironmentConfigWor
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
 }
 
+func (o EnvironmentConfigWorkloadsConfigOutput) Triggerer() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigTriggerer {
+		return v.Triggerer
+	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
+}
+
 func (o EnvironmentConfigWorkloadsConfigOutput) WebServer() EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigWebServer {
 		return v.WebServer
@@ -2462,6 +2470,15 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Scheduler() EnvironmentConfig
 		}
 		return v.Scheduler
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigPtrOutput) Triggerer() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigTriggerer {
+		if v == nil {
+			return nil
+		}
+		return v.Triggerer
+	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
 }
 
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) WebServer() EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
@@ -2657,6 +2674,169 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) StorageGb() pulumi.F
 			return nil
 		}
 		return v.StorageGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+type EnvironmentConfigWorkloadsConfigTriggerer struct {
+	Count    int     `pulumi:"count"`
+	Cpu      float64 `pulumi:"cpu"`
+	MemoryGb float64 `pulumi:"memoryGb"`
+}
+
+// EnvironmentConfigWorkloadsConfigTriggererInput is an input type that accepts EnvironmentConfigWorkloadsConfigTriggererArgs and EnvironmentConfigWorkloadsConfigTriggererOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWorkloadsConfigTriggererInput` via:
+//
+//	EnvironmentConfigWorkloadsConfigTriggererArgs{...}
+type EnvironmentConfigWorkloadsConfigTriggererInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWorkloadsConfigTriggererOutput() EnvironmentConfigWorkloadsConfigTriggererOutput
+	ToEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(context.Context) EnvironmentConfigWorkloadsConfigTriggererOutput
+}
+
+type EnvironmentConfigWorkloadsConfigTriggererArgs struct {
+	Count    pulumi.IntInput     `pulumi:"count"`
+	Cpu      pulumi.Float64Input `pulumi:"cpu"`
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+}
+
+func (EnvironmentConfigWorkloadsConfigTriggererArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorkloadsConfigTriggererOutput() EnvironmentConfigWorkloadsConfigTriggererOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigTriggererOutput)
+}
+
+func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWorkloadsConfigTriggererArgs) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigTriggererOutput).ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigWorkloadsConfigTriggererPtrInput is an input type that accepts EnvironmentConfigWorkloadsConfigTriggererArgs, EnvironmentConfigWorkloadsConfigTriggererPtr and EnvironmentConfigWorkloadsConfigTriggererPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWorkloadsConfigTriggererPtrInput` via:
+//
+//	        EnvironmentConfigWorkloadsConfigTriggererArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigWorkloadsConfigTriggererPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput
+	ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput
+}
+
+type environmentConfigWorkloadsConfigTriggererPtrType EnvironmentConfigWorkloadsConfigTriggererArgs
+
+func EnvironmentConfigWorkloadsConfigTriggererPtr(v *EnvironmentConfigWorkloadsConfigTriggererArgs) EnvironmentConfigWorkloadsConfigTriggererPtrInput {
+	return (*environmentConfigWorkloadsConfigTriggererPtrType)(v)
+}
+
+func (*environmentConfigWorkloadsConfigTriggererPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (i *environmentConfigWorkloadsConfigTriggererPtrType) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigWorkloadsConfigTriggererPtrType) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
+}
+
+type EnvironmentConfigWorkloadsConfigTriggererOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWorkloadsConfigTriggererOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWorkloadsConfigTriggererOutput() EnvironmentConfigWorkloadsConfigTriggererOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o.ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigTriggerer) *EnvironmentConfigWorkloadsConfigTriggerer {
+		return &v
+	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
+type EnvironmentConfigWorkloadsConfigTriggererPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutput() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) ToEnvironmentConfigWorkloadsConfigTriggererPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Elem() EnvironmentConfigWorkloadsConfigTriggererOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) EnvironmentConfigWorkloadsConfigTriggerer {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigWorkloadsConfigTriggerer
+		return ret
+	}).(EnvironmentConfigWorkloadsConfigTriggererOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryGb
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -4520,6 +4700,7 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutp
 
 type GetEnvironmentConfigWorkloadsConfig struct {
 	Schedulers []GetEnvironmentConfigWorkloadsConfigScheduler `pulumi:"schedulers"`
+	Triggerers []GetEnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerers"`
 	WebServers []GetEnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServers"`
 	Workers    []GetEnvironmentConfigWorkloadsConfigWorker    `pulumi:"workers"`
 }
@@ -4537,6 +4718,7 @@ type GetEnvironmentConfigWorkloadsConfigInput interface {
 
 type GetEnvironmentConfigWorkloadsConfigArgs struct {
 	Schedulers GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput `pulumi:"schedulers"`
+	Triggerers GetEnvironmentConfigWorkloadsConfigTriggererArrayInput `pulumi:"triggerers"`
 	WebServers GetEnvironmentConfigWorkloadsConfigWebServerArrayInput `pulumi:"webServers"`
 	Workers    GetEnvironmentConfigWorkloadsConfigWorkerArrayInput    `pulumi:"workers"`
 }
@@ -4596,6 +4778,12 @@ func (o GetEnvironmentConfigWorkloadsConfigOutput) Schedulers() GetEnvironmentCo
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigScheduler {
 		return v.Schedulers
 	}).(GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput)
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigOutput) Triggerers() GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigTriggerer {
+		return v.Triggerers
+	}).(GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput)
 }
 
 func (o GetEnvironmentConfigWorkloadsConfigOutput) WebServers() GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput {
@@ -4740,6 +4928,112 @@ func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigWorkloadsConfigScheduler {
 		return vs[0].([]GetEnvironmentConfigWorkloadsConfigScheduler)[vs[1].(int)]
 	}).(GetEnvironmentConfigWorkloadsConfigSchedulerOutput)
+}
+
+type GetEnvironmentConfigWorkloadsConfigTriggerer struct {
+	Count    int     `pulumi:"count"`
+	Cpu      float64 `pulumi:"cpu"`
+	MemoryGb float64 `pulumi:"memoryGb"`
+}
+
+// GetEnvironmentConfigWorkloadsConfigTriggererInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigTriggererArgs and GetEnvironmentConfigWorkloadsConfigTriggererOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigTriggererInput` via:
+//
+//	GetEnvironmentConfigWorkloadsConfigTriggererArgs{...}
+type GetEnvironmentConfigWorkloadsConfigTriggererInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWorkloadsConfigTriggererOutput() GetEnvironmentConfigWorkloadsConfigTriggererOutput
+	ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(context.Context) GetEnvironmentConfigWorkloadsConfigTriggererOutput
+}
+
+type GetEnvironmentConfigWorkloadsConfigTriggererArgs struct {
+	Count    pulumi.IntInput     `pulumi:"count"`
+	Cpu      pulumi.Float64Input `pulumi:"cpu"`
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+}
+
+func (GetEnvironmentConfigWorkloadsConfigTriggererArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigTriggererArgs) ToGetEnvironmentConfigWorkloadsConfigTriggererOutput() GetEnvironmentConfigWorkloadsConfigTriggererOutput {
+	return i.ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigTriggererArgs) ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigTriggererOutput)
+}
+
+// GetEnvironmentConfigWorkloadsConfigTriggererArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigTriggererArray and GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigTriggererArrayInput` via:
+//
+//	GetEnvironmentConfigWorkloadsConfigTriggererArray{ GetEnvironmentConfigWorkloadsConfigTriggererArgs{...} }
+type GetEnvironmentConfigWorkloadsConfigTriggererArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutput() GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput
+	ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(context.Context) GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput
+}
+
+type GetEnvironmentConfigWorkloadsConfigTriggererArray []GetEnvironmentConfigWorkloadsConfigTriggererInput
+
+func (GetEnvironmentConfigWorkloadsConfigTriggererArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigTriggererArray) ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutput() GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
+	return i.ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigTriggererArray) ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput)
+}
+
+type GetEnvironmentConfigWorkloadsConfigTriggererOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWorkloadsConfigTriggererOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererOutput() GetEnvironmentConfigWorkloadsConfigTriggererOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
+type GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWorkloadsConfigTriggerer)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutput() GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) ToGetEnvironmentConfigWorkloadsConfigTriggererArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigTriggererOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigWorkloadsConfigTriggerer {
+		return vs[0].([]GetEnvironmentConfigWorkloadsConfigTriggerer)[vs[1].(int)]
+	}).(GetEnvironmentConfigWorkloadsConfigTriggererOutput)
 }
 
 type GetEnvironmentConfigWorkloadsConfigWebServer struct {
@@ -5103,6 +5397,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigSchedulerInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigSchedulerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigSchedulerPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigSchedulerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigTriggererInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigTriggererArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigTriggererPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigTriggererArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigWebServerInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigWebServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigWebServerPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigWebServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigWorkerInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigWorkerArgs{})
@@ -5137,6 +5433,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigSchedulerInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigSchedulerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigSchedulerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigTriggererInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigTriggererArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigTriggererArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigTriggererArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigWebServerInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigWebServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigWebServerArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigWebServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigWorkerInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigWorkerArgs{})
@@ -5173,6 +5471,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigSchedulerOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigTriggererOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigTriggererPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigWebServerOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigWebServerPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigWorkerOutput{})
@@ -5207,6 +5507,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigSchedulerOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigTriggererOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigWebServerOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigWorkerOutput{})

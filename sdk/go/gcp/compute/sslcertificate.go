@@ -158,6 +158,8 @@ type SSLCertificate struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Expire time of the certificate in RFC3339 text format.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -236,6 +238,8 @@ type sslcertificateState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Expire time of the certificate in RFC3339 text format.
+	ExpireTime *string `pulumi:"expireTime"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -269,6 +273,8 @@ type SSLCertificateState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Expire time of the certificate in RFC3339 text format.
+	ExpireTime pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -457,6 +463,11 @@ func (o SSLCertificateOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource.
 func (o SSLCertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLCertificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Expire time of the certificate in RFC3339 text format.
+func (o SSLCertificateOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

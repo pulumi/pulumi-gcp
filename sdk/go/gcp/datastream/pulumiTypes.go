@@ -1856,6 +1856,3567 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Vpc() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamBackfillAll struct {
+	// MySQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	MysqlExcludedObjects *StreamBackfillAllMysqlExcludedObjects `pulumi:"mysqlExcludedObjects"`
+}
+
+// StreamBackfillAllInput is an input type that accepts StreamBackfillAllArgs and StreamBackfillAllOutput values.
+// You can construct a concrete instance of `StreamBackfillAllInput` via:
+//
+//	StreamBackfillAllArgs{...}
+type StreamBackfillAllInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOutput() StreamBackfillAllOutput
+	ToStreamBackfillAllOutputWithContext(context.Context) StreamBackfillAllOutput
+}
+
+type StreamBackfillAllArgs struct {
+	// MySQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	MysqlExcludedObjects StreamBackfillAllMysqlExcludedObjectsPtrInput `pulumi:"mysqlExcludedObjects"`
+}
+
+func (StreamBackfillAllArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAll)(nil)).Elem()
+}
+
+func (i StreamBackfillAllArgs) ToStreamBackfillAllOutput() StreamBackfillAllOutput {
+	return i.ToStreamBackfillAllOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllArgs) ToStreamBackfillAllOutputWithContext(ctx context.Context) StreamBackfillAllOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOutput)
+}
+
+func (i StreamBackfillAllArgs) ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput {
+	return i.ToStreamBackfillAllPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllArgs) ToStreamBackfillAllPtrOutputWithContext(ctx context.Context) StreamBackfillAllPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOutput).ToStreamBackfillAllPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllPtrInput is an input type that accepts StreamBackfillAllArgs, StreamBackfillAllPtr and StreamBackfillAllPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPtrInput` via:
+//
+//	        StreamBackfillAllArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput
+	ToStreamBackfillAllPtrOutputWithContext(context.Context) StreamBackfillAllPtrOutput
+}
+
+type streamBackfillAllPtrType StreamBackfillAllArgs
+
+func StreamBackfillAllPtr(v *StreamBackfillAllArgs) StreamBackfillAllPtrInput {
+	return (*streamBackfillAllPtrType)(v)
+}
+
+func (*streamBackfillAllPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAll)(nil)).Elem()
+}
+
+func (i *streamBackfillAllPtrType) ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput {
+	return i.ToStreamBackfillAllPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllPtrType) ToStreamBackfillAllPtrOutputWithContext(ctx context.Context) StreamBackfillAllPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPtrOutput)
+}
+
+type StreamBackfillAllOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAll)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOutput) ToStreamBackfillAllOutput() StreamBackfillAllOutput {
+	return o
+}
+
+func (o StreamBackfillAllOutput) ToStreamBackfillAllOutputWithContext(ctx context.Context) StreamBackfillAllOutput {
+	return o
+}
+
+func (o StreamBackfillAllOutput) ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput {
+	return o.ToStreamBackfillAllPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllOutput) ToStreamBackfillAllPtrOutputWithContext(ctx context.Context) StreamBackfillAllPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAll) *StreamBackfillAll {
+		return &v
+	}).(StreamBackfillAllPtrOutput)
+}
+
+// MySQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) MysqlExcludedObjects() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllMysqlExcludedObjects { return v.MysqlExcludedObjects }).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAll)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPtrOutput) ToStreamBackfillAllPtrOutput() StreamBackfillAllPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllPtrOutput) ToStreamBackfillAllPtrOutputWithContext(ctx context.Context) StreamBackfillAllPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllPtrOutput) Elem() StreamBackfillAllOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) StreamBackfillAll {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAll
+		return ret
+	}).(StreamBackfillAllOutput)
+}
+
+// MySQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) MysqlExcludedObjects() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllMysqlExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlExcludedObjects
+	}).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjects struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases []StreamBackfillAllMysqlExcludedObjectsMysqlDatabase `pulumi:"mysqlDatabases"`
+}
+
+// StreamBackfillAllMysqlExcludedObjectsInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsArgs and StreamBackfillAllMysqlExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsArgs{...}
+type StreamBackfillAllMysqlExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsOutput() StreamBackfillAllMysqlExcludedObjectsOutput
+	ToStreamBackfillAllMysqlExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsArgs struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput `pulumi:"mysqlDatabases"`
+}
+
+func (StreamBackfillAllMysqlExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExcludedObjectsOutput() StreamBackfillAllMysqlExcludedObjectsOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsArgs) ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsOutput).ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllMysqlExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsArgs, StreamBackfillAllMysqlExcludedObjectsPtr and StreamBackfillAllMysqlExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllMysqlExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllMysqlExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput
+	ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllMysqlExcludedObjectsPtrType StreamBackfillAllMysqlExcludedObjectsArgs
+
+func StreamBackfillAllMysqlExcludedObjectsPtr(v *StreamBackfillAllMysqlExcludedObjectsArgs) StreamBackfillAllMysqlExcludedObjectsPtrInput {
+	return (*streamBackfillAllMysqlExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllMysqlExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllMysqlExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllMysqlExcludedObjectsPtrType) ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllMysqlExcludedObjectsPtrType) ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToStreamBackfillAllMysqlExcludedObjectsOutput() StreamBackfillAllMysqlExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToStreamBackfillAllMysqlExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsOutput) ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllMysqlExcludedObjects) *StreamBackfillAllMysqlExcludedObjects {
+		return &v
+	}).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamBackfillAllMysqlExcludedObjectsOutput) MysqlDatabases() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjects) []StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
+		return v.MysqlDatabases
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllMysqlExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) ToStreamBackfillAllMysqlExcludedObjectsPtrOutput() StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) ToStreamBackfillAllMysqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) Elem() StreamBackfillAllMysqlExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllMysqlExcludedObjects) StreamBackfillAllMysqlExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllMysqlExcludedObjects
+		return ret
+	}).(StreamBackfillAllMysqlExcludedObjectsOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) MysqlDatabases() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllMysqlExcludedObjects) []StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlDatabases
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabase struct {
+	// Database name.
+	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs{...}
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs struct {
+	// Database name.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
+}
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput)
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray{ StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs{...} }
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
+	return o
+}
+
+// Database name.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) MysqlTables() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabase) []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
+		return v.MysqlTables
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
+		return vs[0].([]StreamBackfillAllMysqlExcludedObjectsMysqlDatabase)[vs[1].(int)]
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs{...}
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray{ StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs{...} }
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable) []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return v.MysqlColumns
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
+		return vs[0].([]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable)[vs[1].(int)]
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.
+	Collation *string `pulumi:"collation"`
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType *string `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...}
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+}
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+// StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
+//
+//	StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray{ StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...} }
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+	ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return i.ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+// Column collation.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column name.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Column length.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return vs[0].([]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
+	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+type StreamBackfillNone struct {
+}
+
+// StreamBackfillNoneInput is an input type that accepts StreamBackfillNoneArgs and StreamBackfillNoneOutput values.
+// You can construct a concrete instance of `StreamBackfillNoneInput` via:
+//
+//	StreamBackfillNoneArgs{...}
+type StreamBackfillNoneInput interface {
+	pulumi.Input
+
+	ToStreamBackfillNoneOutput() StreamBackfillNoneOutput
+	ToStreamBackfillNoneOutputWithContext(context.Context) StreamBackfillNoneOutput
+}
+
+type StreamBackfillNoneArgs struct {
+}
+
+func (StreamBackfillNoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillNone)(nil)).Elem()
+}
+
+func (i StreamBackfillNoneArgs) ToStreamBackfillNoneOutput() StreamBackfillNoneOutput {
+	return i.ToStreamBackfillNoneOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillNoneArgs) ToStreamBackfillNoneOutputWithContext(ctx context.Context) StreamBackfillNoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillNoneOutput)
+}
+
+func (i StreamBackfillNoneArgs) ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput {
+	return i.ToStreamBackfillNonePtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillNoneArgs) ToStreamBackfillNonePtrOutputWithContext(ctx context.Context) StreamBackfillNonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillNoneOutput).ToStreamBackfillNonePtrOutputWithContext(ctx)
+}
+
+// StreamBackfillNonePtrInput is an input type that accepts StreamBackfillNoneArgs, StreamBackfillNonePtr and StreamBackfillNonePtrOutput values.
+// You can construct a concrete instance of `StreamBackfillNonePtrInput` via:
+//
+//	        StreamBackfillNoneArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillNonePtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput
+	ToStreamBackfillNonePtrOutputWithContext(context.Context) StreamBackfillNonePtrOutput
+}
+
+type streamBackfillNonePtrType StreamBackfillNoneArgs
+
+func StreamBackfillNonePtr(v *StreamBackfillNoneArgs) StreamBackfillNonePtrInput {
+	return (*streamBackfillNonePtrType)(v)
+}
+
+func (*streamBackfillNonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillNone)(nil)).Elem()
+}
+
+func (i *streamBackfillNonePtrType) ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput {
+	return i.ToStreamBackfillNonePtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillNonePtrType) ToStreamBackfillNonePtrOutputWithContext(ctx context.Context) StreamBackfillNonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillNonePtrOutput)
+}
+
+type StreamBackfillNoneOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillNoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillNone)(nil)).Elem()
+}
+
+func (o StreamBackfillNoneOutput) ToStreamBackfillNoneOutput() StreamBackfillNoneOutput {
+	return o
+}
+
+func (o StreamBackfillNoneOutput) ToStreamBackfillNoneOutputWithContext(ctx context.Context) StreamBackfillNoneOutput {
+	return o
+}
+
+func (o StreamBackfillNoneOutput) ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput {
+	return o.ToStreamBackfillNonePtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillNoneOutput) ToStreamBackfillNonePtrOutputWithContext(ctx context.Context) StreamBackfillNonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillNone) *StreamBackfillNone {
+		return &v
+	}).(StreamBackfillNonePtrOutput)
+}
+
+type StreamBackfillNonePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillNonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillNone)(nil)).Elem()
+}
+
+func (o StreamBackfillNonePtrOutput) ToStreamBackfillNonePtrOutput() StreamBackfillNonePtrOutput {
+	return o
+}
+
+func (o StreamBackfillNonePtrOutput) ToStreamBackfillNonePtrOutputWithContext(ctx context.Context) StreamBackfillNonePtrOutput {
+	return o
+}
+
+func (o StreamBackfillNonePtrOutput) Elem() StreamBackfillNoneOutput {
+	return o.ApplyT(func(v *StreamBackfillNone) StreamBackfillNone {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillNone
+		return ret
+	}).(StreamBackfillNoneOutput)
+}
+
+type StreamDestinationConfig struct {
+	// A configuration for how data should be loaded to Cloud Storage.
+	// Structure is documented below.
+	BigqueryDestinationConfig *StreamDestinationConfigBigqueryDestinationConfig `pulumi:"bigqueryDestinationConfig"`
+	// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+	DestinationConnectionProfile string `pulumi:"destinationConnectionProfile"`
+	// A configuration for how data should be loaded to Cloud Storage.
+	// Structure is documented below.
+	GcsDestinationConfig *StreamDestinationConfigGcsDestinationConfig `pulumi:"gcsDestinationConfig"`
+}
+
+// StreamDestinationConfigInput is an input type that accepts StreamDestinationConfigArgs and StreamDestinationConfigOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigInput` via:
+//
+//	StreamDestinationConfigArgs{...}
+type StreamDestinationConfigInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigOutput() StreamDestinationConfigOutput
+	ToStreamDestinationConfigOutputWithContext(context.Context) StreamDestinationConfigOutput
+}
+
+type StreamDestinationConfigArgs struct {
+	// A configuration for how data should be loaded to Cloud Storage.
+	// Structure is documented below.
+	BigqueryDestinationConfig StreamDestinationConfigBigqueryDestinationConfigPtrInput `pulumi:"bigqueryDestinationConfig"`
+	// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+	DestinationConnectionProfile pulumi.StringInput `pulumi:"destinationConnectionProfile"`
+	// A configuration for how data should be loaded to Cloud Storage.
+	// Structure is documented below.
+	GcsDestinationConfig StreamDestinationConfigGcsDestinationConfigPtrInput `pulumi:"gcsDestinationConfig"`
+}
+
+func (StreamDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfig)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigArgs) ToStreamDestinationConfigOutput() StreamDestinationConfigOutput {
+	return i.ToStreamDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigArgs) ToStreamDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigOutput)
+}
+
+func (i StreamDestinationConfigArgs) ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigArgs) ToStreamDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigOutput).ToStreamDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigPtrInput is an input type that accepts StreamDestinationConfigArgs, StreamDestinationConfigPtr and StreamDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigPtrInput` via:
+//
+//	        StreamDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput
+	ToStreamDestinationConfigPtrOutputWithContext(context.Context) StreamDestinationConfigPtrOutput
+}
+
+type streamDestinationConfigPtrType StreamDestinationConfigArgs
+
+func StreamDestinationConfigPtr(v *StreamDestinationConfigArgs) StreamDestinationConfigPtrInput {
+	return (*streamDestinationConfigPtrType)(v)
+}
+
+func (*streamDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfig)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigPtrType) ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigPtrType) ToStreamDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigPtrOutput)
+}
+
+type StreamDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigOutput) ToStreamDestinationConfigOutput() StreamDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigOutput) ToStreamDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigOutput) ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput {
+	return o.ToStreamDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigOutput) ToStreamDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfig) *StreamDestinationConfig {
+		return &v
+	}).(StreamDestinationConfigPtrOutput)
+}
+
+// A configuration for how data should be loaded to Cloud Storage.
+// Structure is documented below.
+func (o StreamDestinationConfigOutput) BigqueryDestinationConfig() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
+		return v.BigqueryDestinationConfig
+	}).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
+}
+
+// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+func (o StreamDestinationConfigOutput) DestinationConnectionProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfig) string { return v.DestinationConnectionProfile }).(pulumi.StringOutput)
+}
+
+// A configuration for how data should be loaded to Cloud Storage.
+// Structure is documented below.
+func (o StreamDestinationConfigOutput) GcsDestinationConfig() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfig) *StreamDestinationConfigGcsDestinationConfig {
+		return v.GcsDestinationConfig
+	}).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
+}
+
+type StreamDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigPtrOutput) ToStreamDestinationConfigPtrOutput() StreamDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigPtrOutput) ToStreamDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigPtrOutput) Elem() StreamDestinationConfigOutput {
+	return o.ApplyT(func(v *StreamDestinationConfig) StreamDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfig
+		return ret
+	}).(StreamDestinationConfigOutput)
+}
+
+// A configuration for how data should be loaded to Cloud Storage.
+// Structure is documented below.
+func (o StreamDestinationConfigPtrOutput) BigqueryDestinationConfig() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryDestinationConfig
+	}).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
+}
+
+// Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+func (o StreamDestinationConfigPtrOutput) DestinationConnectionProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DestinationConnectionProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// A configuration for how data should be loaded to Cloud Storage.
+// Structure is documented below.
+func (o StreamDestinationConfigPtrOutput) GcsDestinationConfig() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfig) *StreamDestinationConfigGcsDestinationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDestinationConfig
+	}).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfig struct {
+	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
+	// Editing this field will only affect new tables created in the future, but existing tables
+	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	DataFreshness *string `pulumi:"dataFreshness"`
+	// A single target dataset to which all data will be streamed.
+	// Structure is documented below.
+	SingleTargetDataset *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset `pulumi:"singleTargetDataset"`
+	// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+	// Structure is documented below.
+	SourceHierarchyDatasets *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets `pulumi:"sourceHierarchyDatasets"`
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigArgs and StreamDestinationConfigBigqueryDestinationConfigOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigOutput() StreamDestinationConfigBigqueryDestinationConfigOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigArgs struct {
+	// The guaranteed data freshness (in seconds) when querying tables created by the stream.
+	// Editing this field will only affect new tables created in the future, but existing tables
+	// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	DataFreshness pulumi.StringPtrInput `pulumi:"dataFreshness"`
+	// A single target dataset to which all data will be streamed.
+	// Structure is documented below.
+	SingleTargetDataset StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput `pulumi:"singleTargetDataset"`
+	// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+	// Structure is documented below.
+	SourceHierarchyDatasets StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput `pulumi:"sourceHierarchyDatasets"`
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfig)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigOutput() StreamDestinationConfigBigqueryDestinationConfigOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigArgs) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigOutput).ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigPtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigArgs, StreamDestinationConfigBigqueryDestinationConfigPtr and StreamDestinationConfigBigqueryDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigPtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigPtrType StreamDestinationConfigBigqueryDestinationConfigArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigPtr(v *StreamDestinationConfigBigqueryDestinationConfigArgs) StreamDestinationConfigBigqueryDestinationConfigPtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigPtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfig)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigPtrType) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigPtrType) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigOutput() StreamDestinationConfigBigqueryDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfig {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigPtrOutput)
+}
+
+// The guaranteed data freshness (in seconds) when querying tables created by the stream.
+// Editing this field will only affect new tables created in the future, but existing tables
+// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) DataFreshness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *string { return v.DataFreshness }).(pulumi.StringPtrOutput)
+}
+
+// A single target dataset to which all data will be streamed.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) SingleTargetDataset() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+		return v.SingleTargetDataset
+	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigOutput) SourceHierarchyDatasets() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+		return v.SourceHierarchyDatasets
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutput() StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) StreamDestinationConfigBigqueryDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfig
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigOutput)
+}
+
+// The guaranteed data freshness (in seconds) when querying tables created by the stream.
+// Editing this field will only affect new tables created in the future, but existing tables
+// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) DataFreshness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshness
+	}).(pulumi.StringPtrOutput)
+}
+
+// A single target dataset to which all data will be streamed.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) SingleTargetDataset() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+		if v == nil {
+			return nil
+		}
+		return v.SingleTargetDataset
+	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) SourceHierarchyDatasets() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfig) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+		if v == nil {
+			return nil
+		}
+		return v.SourceHierarchyDatasets
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset struct {
+	// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+	DatasetId string `pulumi:"datasetId"`
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs and StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs struct {
+	// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput).ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs, StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtr and StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtr(v *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrType) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
+}
+
+// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput)
+}
+
+// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets struct {
+	// Dataset template used for dynamic dataset creation.
+	// Structure is documented below.
+	DatasetTemplate StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate `pulumi:"datasetTemplate"`
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs and StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs struct {
+	// Dataset template used for dynamic dataset creation.
+	// Structure is documented below.
+	DatasetTemplate StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput `pulumi:"datasetTemplate"`
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput).ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs, StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtr and StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtr(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrType) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput)
+}
+
+// Dataset template used for dynamic dataset creation.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) DatasetTemplate() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+		return v.DatasetTemplate
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput)
+}
+
+// Dataset template used for dynamic dataset creation.
+// Structure is documented below.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) DatasetTemplate() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetTemplate
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate struct {
+	// If supplied, every created dataset will have its name prefixed by the provided value.
+	// The prefix and name will be separated by an underscore. i.e. _.
+	DatasetIdPrefix *string `pulumi:"datasetIdPrefix"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location string `pulumi:"location"`
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs and StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput` via:
+//
+//	StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{...}
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs struct {
+	// If supplied, every created dataset will have its name prefixed by the provided value.
+	// The prefix and name will be separated by an underscore. i.e. _.
+	DatasetIdPrefix pulumi.StringPtrInput `pulumi:"datasetIdPrefix"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput)
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput).ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs, StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtr and StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrInput` via:
+//
+//	        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput
+	ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput
+}
+
+type streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+
+func StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtr(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrInput {
+	return (*streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType)(v)
+}
+
+func (*streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return i.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrType) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return o.ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+		return &v
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
+}
+
+// If supplied, every created dataset will have its name prefixed by the provided value.
+// The prefix and name will be separated by an underscore. i.e. _.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) DatasetIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
+		return v.DatasetIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) string {
+		return v.Location
+	}).(pulumi.StringOutput)
+}
+
+type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) ToStreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutputWithContext(ctx context.Context) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) Elem() StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate
+		return ret
+	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput)
+}
+
+// If supplied, every created dataset will have its name prefixed by the provided value.
+// The prefix and name will be separated by an underscore. i.e. _.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) DatasetIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfig struct {
+	// AVRO file format configuration.
+	AvroFileFormat *StreamDestinationConfigGcsDestinationConfigAvroFileFormat `pulumi:"avroFileFormat"`
+	// The maximum duration for which new events are added before a file is closed and a new file is created.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	FileRotationInterval *string `pulumi:"fileRotationInterval"`
+	// The maximum file size to be saved in the bucket.
+	FileRotationMb *int `pulumi:"fileRotationMb"`
+	// JSON file format configuration.
+	// Structure is documented below.
+	JsonFileFormat *StreamDestinationConfigGcsDestinationConfigJsonFileFormat `pulumi:"jsonFileFormat"`
+	// Path inside the Cloud Storage bucket to write data to.
+	Path *string `pulumi:"path"`
+}
+
+// StreamDestinationConfigGcsDestinationConfigInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigArgs and StreamDestinationConfigGcsDestinationConfigOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigInput` via:
+//
+//	StreamDestinationConfigGcsDestinationConfigArgs{...}
+type StreamDestinationConfigGcsDestinationConfigInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigOutput() StreamDestinationConfigGcsDestinationConfigOutput
+	ToStreamDestinationConfigGcsDestinationConfigOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigOutput
+}
+
+type StreamDestinationConfigGcsDestinationConfigArgs struct {
+	// AVRO file format configuration.
+	AvroFileFormat StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput `pulumi:"avroFileFormat"`
+	// The maximum duration for which new events are added before a file is closed and a new file is created.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	FileRotationInterval pulumi.StringPtrInput `pulumi:"fileRotationInterval"`
+	// The maximum file size to be saved in the bucket.
+	FileRotationMb pulumi.IntPtrInput `pulumi:"fileRotationMb"`
+	// JSON file format configuration.
+	// Structure is documented below.
+	JsonFileFormat StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput `pulumi:"jsonFileFormat"`
+	// Path inside the Cloud Storage bucket to write data to.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (StreamDestinationConfigGcsDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfig)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConfigGcsDestinationConfigOutput() StreamDestinationConfigGcsDestinationConfigOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConfigGcsDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigOutput)
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigArgs) ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigOutput).ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigGcsDestinationConfigPtrInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigArgs, StreamDestinationConfigGcsDestinationConfigPtr and StreamDestinationConfigGcsDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigPtrInput` via:
+//
+//	        StreamDestinationConfigGcsDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigGcsDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput
+	ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput
+}
+
+type streamDestinationConfigGcsDestinationConfigPtrType StreamDestinationConfigGcsDestinationConfigArgs
+
+func StreamDestinationConfigGcsDestinationConfigPtr(v *StreamDestinationConfigGcsDestinationConfigArgs) StreamDestinationConfigGcsDestinationConfigPtrInput {
+	return (*streamDestinationConfigGcsDestinationConfigPtrType)(v)
+}
+
+func (*streamDestinationConfigGcsDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfig)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigPtrType) ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigPtrType) ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigOutput) ToStreamDestinationConfigGcsDestinationConfigOutput() StreamDestinationConfigGcsDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigOutput) ToStreamDestinationConfigGcsDestinationConfigOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigOutput) ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o.ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigOutput) ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfig {
+		return &v
+	}).(StreamDestinationConfigGcsDestinationConfigPtrOutput)
+}
+
+// AVRO file format configuration.
+func (o StreamDestinationConfigGcsDestinationConfigOutput) AvroFileFormat() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+		return v.AvroFileFormat
+	}).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
+}
+
+// The maximum duration for which new events are added before a file is closed and a new file is created.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StreamDestinationConfigGcsDestinationConfigOutput) FileRotationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *string { return v.FileRotationInterval }).(pulumi.StringPtrOutput)
+}
+
+// The maximum file size to be saved in the bucket.
+func (o StreamDestinationConfigGcsDestinationConfigOutput) FileRotationMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *int { return v.FileRotationMb }).(pulumi.IntPtrOutput)
+}
+
+// JSON file format configuration.
+// Structure is documented below.
+func (o StreamDestinationConfigGcsDestinationConfigOutput) JsonFileFormat() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+		return v.JsonFileFormat
+	}).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
+}
+
+// Path inside the Cloud Storage bucket to write data to.
+func (o StreamDestinationConfigGcsDestinationConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfig)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) ToStreamDestinationConfigGcsDestinationConfigPtrOutput() StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) ToStreamDestinationConfigGcsDestinationConfigPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) StreamDestinationConfigGcsDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigGcsDestinationConfig
+		return ret
+	}).(StreamDestinationConfigGcsDestinationConfigOutput)
+}
+
+// AVRO file format configuration.
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) AvroFileFormat() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+		if v == nil {
+			return nil
+		}
+		return v.AvroFileFormat
+	}).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
+}
+
+// The maximum duration for which new events are added before a file is closed and a new file is created.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) FileRotationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileRotationInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum file size to be saved in the bucket.
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) FileRotationMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FileRotationMb
+	}).(pulumi.IntPtrOutput)
+}
+
+// JSON file format configuration.
+// Structure is documented below.
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) JsonFileFormat() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+		if v == nil {
+			return nil
+		}
+		return v.JsonFileFormat
+	}).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
+}
+
+// Path inside the Cloud Storage bucket to write data to.
+func (o StreamDestinationConfigGcsDestinationConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormat struct {
+}
+
+// StreamDestinationConfigGcsDestinationConfigAvroFileFormatInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs and StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigAvroFileFormatInput` via:
+//
+//	StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs{...}
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormatInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput
+	ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput
+}
+
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs struct {
+}
+
+func (StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigAvroFileFormat)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput)
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput).ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs, StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtr and StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput` via:
+//
+//	        StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput
+	ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput
+}
+
+type streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs
+
+func StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtr(v *StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput {
+	return (*streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType)(v)
+}
+
+func (*streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfigAvroFileFormat)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigAvroFileFormatPtrType) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigAvroFileFormat)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o.ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigGcsDestinationConfigAvroFileFormat) *StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+		return &v
+	}).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfigAvroFileFormat)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigAvroFileFormat) StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigGcsDestinationConfigAvroFileFormat
+		return ret
+	}).(StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormat struct {
+	// Compression of the loaded JSON file.
+	// Possible values are `NO_COMPRESSION` and `GZIP`.
+	Compression *string `pulumi:"compression"`
+	// The schema file format along JSON data files.
+	// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+	SchemaFileFormat *string `pulumi:"schemaFileFormat"`
+}
+
+// StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs and StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput` via:
+//
+//	StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{...}
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput
+	ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput
+}
+
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs struct {
+	// Compression of the loaded JSON file.
+	// Possible values are `NO_COMPRESSION` and `GZIP`.
+	Compression pulumi.StringPtrInput `pulumi:"compression"`
+	// The schema file format along JSON data files.
+	// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+	SchemaFileFormat pulumi.StringPtrInput `pulumi:"schemaFileFormat"`
+}
+
+func (StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormat)(nil)).Elem()
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput)
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (i StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput).ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx)
+}
+
+// StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput is an input type that accepts StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs, StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtr and StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput values.
+// You can construct a concrete instance of `StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput` via:
+//
+//	        StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput interface {
+	pulumi.Input
+
+	ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput
+	ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput
+}
+
+type streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
+
+func StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtr(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput {
+	return (*streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType)(v)
+}
+
+func (*streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfigJsonFileFormat)(nil)).Elem()
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return i.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *streamDestinationConfigGcsDestinationConfigJsonFileFormatPtrType) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormat)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o.ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+		return &v
+	}).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput)
+}
+
+// Compression of the loaded JSON file.
+// Possible values are `NO_COMPRESSION` and `GZIP`.
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string { return v.Compression }).(pulumi.StringPtrOutput)
+}
+
+// The schema file format along JSON data files.
+// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) SchemaFileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string { return v.SchemaFileFormat }).(pulumi.StringPtrOutput)
+}
+
+type StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamDestinationConfigGcsDestinationConfigJsonFileFormat)(nil)).Elem()
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput() StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) ToStreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutputWithContext(ctx context.Context) StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput {
+	return o
+}
+
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Elem() StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormat) StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+		if v != nil {
+			return *v
+		}
+		var ret StreamDestinationConfigGcsDestinationConfigJsonFileFormat
+		return ret
+	}).(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput)
+}
+
+// Compression of the loaded JSON file.
+// Possible values are `NO_COMPRESSION` and `GZIP`.
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Compression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema file format along JSON data files.
+// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) SchemaFileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaFileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfig struct {
+	// MySQL data source configuration.
+	// Structure is documented below.
+	MysqlSourceConfig StreamSourceConfigMysqlSourceConfig `pulumi:"mysqlSourceConfig"`
+	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
+}
+
+// StreamSourceConfigInput is an input type that accepts StreamSourceConfigArgs and StreamSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigInput` via:
+//
+//	StreamSourceConfigArgs{...}
+type StreamSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOutput() StreamSourceConfigOutput
+	ToStreamSourceConfigOutputWithContext(context.Context) StreamSourceConfigOutput
+}
+
+type StreamSourceConfigArgs struct {
+	// MySQL data source configuration.
+	// Structure is documented below.
+	MysqlSourceConfig StreamSourceConfigMysqlSourceConfigInput `pulumi:"mysqlSourceConfig"`
+	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
+}
+
+func (StreamSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigArgs) ToStreamSourceConfigOutput() StreamSourceConfigOutput {
+	return i.ToStreamSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigArgs) ToStreamSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOutput)
+}
+
+func (i StreamSourceConfigArgs) ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigArgs) ToStreamSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOutput).ToStreamSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigPtrInput is an input type that accepts StreamSourceConfigArgs, StreamSourceConfigPtr and StreamSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput
+	ToStreamSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigPtrOutput
+}
+
+type streamSourceConfigPtrType StreamSourceConfigArgs
+
+func StreamSourceConfigPtr(v *StreamSourceConfigArgs) StreamSourceConfigPtrInput {
+	return (*streamSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigPtrType) ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigPtrType) ToStreamSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOutput) ToStreamSourceConfigOutput() StreamSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigOutput) ToStreamSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigOutput) ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOutput) ToStreamSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfig) *StreamSourceConfig {
+		return &v
+	}).(StreamSourceConfigPtrOutput)
+}
+
+// MySQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) MysqlSourceConfig() StreamSourceConfigMysqlSourceConfigOutput {
+	return o.ApplyT(func(v StreamSourceConfig) StreamSourceConfigMysqlSourceConfig { return v.MysqlSourceConfig }).(StreamSourceConfigMysqlSourceConfigOutput)
+}
+
+// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+func (o StreamSourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPtrOutput) ToStreamSourceConfigPtrOutput() StreamSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPtrOutput) ToStreamSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPtrOutput) Elem() StreamSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) StreamSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfig
+		return ret
+	}).(StreamSourceConfigOutput)
+}
+
+// MySQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) MysqlSourceConfig() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigMysqlSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.MysqlSourceConfig
+	}).(StreamSourceConfigMysqlSourceConfigPtrOutput)
+}
+
+// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+func (o StreamSourceConfigPtrOutput) SourceConnectionProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceConnectionProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfig struct {
+	// MySQL objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigMysqlSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// MySQL objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigMysqlSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+}
+
+// StreamSourceConfigMysqlSourceConfigInput is an input type that accepts StreamSourceConfigMysqlSourceConfigArgs and StreamSourceConfigMysqlSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigArgs{...}
+type StreamSourceConfigMysqlSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigOutput() StreamSourceConfigMysqlSourceConfigOutput
+	ToStreamSourceConfigMysqlSourceConfigOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigArgs struct {
+	// MySQL objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// MySQL objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSourceConfigOutput() StreamSourceConfigMysqlSourceConfigOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigOutput)
+}
+
+func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigArgs) ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigOutput).ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMysqlSourceConfigPtrInput is an input type that accepts StreamSourceConfigMysqlSourceConfigArgs, StreamSourceConfigMysqlSourceConfigPtr and StreamSourceConfigMysqlSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigMysqlSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMysqlSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput
+	ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput
+}
+
+type streamSourceConfigMysqlSourceConfigPtrType StreamSourceConfigMysqlSourceConfigArgs
+
+func StreamSourceConfigMysqlSourceConfigPtr(v *StreamSourceConfigMysqlSourceConfigArgs) StreamSourceConfigMysqlSourceConfigPtrInput {
+	return (*streamSourceConfigMysqlSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigMysqlSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMysqlSourceConfigPtrType) ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMysqlSourceConfigPtrType) ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSourceConfigOutput() StreamSourceConfigMysqlSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfig {
+		return &v
+	}).(StreamSourceConfigMysqlSourceConfigPtrOutput)
+}
+
+// MySQL objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigOutput) ExcludeObjects() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MySQL objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigOutput) IncludeObjects() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigMysqlSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ToStreamSourceConfigMysqlSourceConfigPtrOutput() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ToStreamSourceConfigMysqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) StreamSourceConfigMysqlSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMysqlSourceConfig
+		return ret
+	}).(StreamSourceConfigMysqlSourceConfigOutput)
+}
+
+// MySQL objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MySQL objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjects struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase `pulumi:"mysqlDatabases"`
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs and StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput `pulumi:"mysqlDatabases"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput).ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs, StreamSourceConfigMysqlSourceConfigExcludeObjectsPtr and StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigMysqlSourceConfigExcludeObjectsPtr(v *StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMysqlSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfigExcludeObjects) *StreamSourceConfigMysqlSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjects) []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
+		return v.MysqlDatabases
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigExcludeObjects) StreamSourceConfigMysqlSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMysqlSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigExcludeObjects) []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlDatabases
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase struct {
+	// Database name.
+	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs{...}
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs struct {
+	// Database name.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray{ StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs{...} }
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
+	return o
+}
+
+// Database name.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) MysqlTables() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase) []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
+		return v.MysqlTables
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs{...}
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray{ StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs{...} }
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInput
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable) []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return v.MysqlColumns
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.
+	Collation *string `pulumi:"collation"`
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType *string `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...}
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{ StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...} }
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+// Column collation.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column name.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Column length.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjects struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase `pulumi:"mysqlDatabases"`
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs and StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs struct {
+	// MySQL databases on the server
+	// Structure is documented below.
+	MysqlDatabases StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput `pulumi:"mysqlDatabases"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput).ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs, StreamSourceConfigMysqlSourceConfigIncludeObjectsPtr and StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigMysqlSourceConfigIncludeObjectsPtr(v *StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMysqlSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfigIncludeObjects) *StreamSourceConfigMysqlSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjects) []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
+		return v.MysqlDatabases
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigIncludeObjects) StreamSourceConfigMysqlSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMysqlSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput)
+}
+
+// MySQL databases on the server
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) MysqlDatabases() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigIncludeObjects) []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlDatabases
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase struct {
+	// Database name.
+	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{...}
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs struct {
+	// Database name.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.
+	MysqlTables StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{ StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{...} }
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
+	return o
+}
+
+// Database name.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) MysqlTables() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase) []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable {
+		return v.MysqlTables
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs{...}
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs struct {
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	MysqlColumns StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray{ StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs{...} }
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInput
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
+	return o
+}
+
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable) []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return v.MysqlColumns
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.
+	Collation *string `pulumi:"collation"`
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType *string `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...}
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// -
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+}
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+// StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput is an input type that accepts StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray and StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{ StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{...} }
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+	ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return o
+}
+
+// Column collation.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column name.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Column length.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) ToStreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+		return vs[0].([]StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
+	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfileInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfilePtrInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
@@ -1877,6 +5438,54 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllInput)(nil)).Elem(), StreamBackfillAllArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPtrInput)(nil)).Elem(), StreamBackfillAllArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNoneInput)(nil)).Elem(), StreamBackfillNoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNonePtrInput)(nil)).Elem(), StreamBackfillNoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrInput)(nil)).Elem(), StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigAvroFileFormatInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigInput)(nil)).Elem(), StreamSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
@@ -1897,4 +5506,52 @@ func init() {
 	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillNoneOutput{})
+	pulumi.RegisterOutputType(StreamBackfillNonePtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigAvroFileFormatOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput{})
+	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
 }

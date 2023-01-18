@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  *         "b",
  *         "c",
  *     ],
+ *     columnFamilies: [
+ *         {
+ *             family: "family-first",
+ *         },
+ *         {
+ *             family: "family-second",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -84,9 +92,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly columnFamilies!: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
     /**
-     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
     public readonly deletionProtection!: pulumi.Output<string>;
     /**
@@ -94,7 +100,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The name of the table.
+     * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -154,9 +160,7 @@ export interface TableState {
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
-     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
     deletionProtection?: pulumi.Input<string>;
     /**
@@ -164,7 +168,7 @@ export interface TableState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The name of the table.
+     * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
     name?: pulumi.Input<string>;
     /**
@@ -189,9 +193,7 @@ export interface TableArgs {
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
-     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
     deletionProtection?: pulumi.Input<string>;
     /**
@@ -199,7 +201,7 @@ export interface TableArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * The name of the table.
+     * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
     name?: pulumi.Input<string>;
     /**

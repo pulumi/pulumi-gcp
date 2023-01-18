@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
     /**
-     * @return The name of the Datastore kind.
+     * @return Name of a BigQuery field to be returned with the findings.
      * 
      */
     private String name;
 
     private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind() {}
     /**
-     * @return The name of the Datastore kind.
+     * @return Name of a BigQuery field to be returned with the findings.
      * 
      */
     public String name() {

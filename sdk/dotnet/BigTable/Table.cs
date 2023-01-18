@@ -46,6 +46,17 @@ namespace Pulumi.Gcp.BigTable
     ///             "b",
     ///             "c",
     ///         },
+    ///         ColumnFamilies = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "family-first",
+    ///             },
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "family-second",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -79,9 +90,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.TableColumnFamily>> ColumnFamilies { get; private set; } = null!;
 
         /// <summary>
-        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         /// </summary>
         [Output("deletionProtection")]
         public Output<string> DeletionProtection { get; private set; } = null!;
@@ -93,7 +102,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the table.
+        /// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -172,9 +181,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
@@ -186,7 +193,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the table.
+        /// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -233,9 +240,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
@@ -247,7 +252,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The name of the table.
+        /// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

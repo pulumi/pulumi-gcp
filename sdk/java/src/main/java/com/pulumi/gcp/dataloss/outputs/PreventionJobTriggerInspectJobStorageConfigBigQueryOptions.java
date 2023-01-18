@@ -4,15 +4,24 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
+    /**
+     * @return Specifies the BigQuery fields that will be returned with findings.
+     * If not specified, no identifying fields will be returned for findings.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields;
     /**
      * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
      * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -43,6 +52,15 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions() {}
+    /**
+     * @return Specifies the BigQuery fields that will be returned with findings.
+     * If not specified, no identifying fields will be returned for findings.
+     * Structure is documented below.
+     * 
+     */
+    public List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields() {
+        return this.identifyingFields == null ? List.of() : this.identifyingFields;
+    }
     /**
      * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
      * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -89,6 +107,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields;
         private @Nullable Integer rowsLimit;
         private @Nullable Integer rowsLimitPercent;
         private @Nullable String sampleMethod;
@@ -96,12 +115,21 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.identifyingFields = defaults.identifyingFields;
     	      this.rowsLimit = defaults.rowsLimit;
     	      this.rowsLimitPercent = defaults.rowsLimitPercent;
     	      this.sampleMethod = defaults.sampleMethod;
     	      this.tableReference = defaults.tableReference;
         }
 
+        @CustomType.Setter
+        public Builder identifyingFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields) {
+            this.identifyingFields = identifyingFields;
+            return this;
+        }
+        public Builder identifyingFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField... identifyingFields) {
+            return identifyingFields(List.of(identifyingFields));
+        }
         @CustomType.Setter
         public Builder rowsLimit(@Nullable Integer rowsLimit) {
             this.rowsLimit = rowsLimit;
@@ -124,6 +152,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
             final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
+            o.identifyingFields = identifyingFields;
             o.rowsLimit = rowsLimit;
             o.rowsLimitPercent = rowsLimitPercent;
             o.sampleMethod = sampleMethod;

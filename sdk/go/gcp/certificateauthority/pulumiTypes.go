@@ -1318,13 +1318,14 @@ type AuthorityConfigX509ConfigCaOptions struct {
 	// When true, the "CA" in Basic Constraints extension will be set to true.
 	IsCa bool `pulumi:"isCa"`
 	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+	// requires setting `zeroMaxIssuerPathLength = true`.
 	MaxIssuerPathLength *int `pulumi:"maxIssuerPathLength"`
 	// When true, the "CA" in Basic Constraints extension will be set to false.
 	// If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
 	NonCa *bool `pulumi:"nonCa"`
 	// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-	// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+	// If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
 	// the max path length will be omitted from the CA certificate.
 	ZeroMaxIssuerPathLength *bool `pulumi:"zeroMaxIssuerPathLength"`
 }
@@ -1344,13 +1345,14 @@ type AuthorityConfigX509ConfigCaOptionsArgs struct {
 	// When true, the "CA" in Basic Constraints extension will be set to true.
 	IsCa pulumi.BoolInput `pulumi:"isCa"`
 	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+	// requires setting `zeroMaxIssuerPathLength = true`.
 	MaxIssuerPathLength pulumi.IntPtrInput `pulumi:"maxIssuerPathLength"`
 	// When true, the "CA" in Basic Constraints extension will be set to false.
 	// If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
 	NonCa pulumi.BoolPtrInput `pulumi:"nonCa"`
 	// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-	// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+	// If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
 	// the max path length will be omitted from the CA certificate.
 	ZeroMaxIssuerPathLength pulumi.BoolPtrInput `pulumi:"zeroMaxIssuerPathLength"`
 }
@@ -1438,7 +1440,8 @@ func (o AuthorityConfigX509ConfigCaOptionsOutput) IsCa() pulumi.BoolOutput {
 }
 
 // Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+// requires setting `zeroMaxIssuerPathLength = true`.
 func (o AuthorityConfigX509ConfigCaOptionsOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigCaOptions) *int { return v.MaxIssuerPathLength }).(pulumi.IntPtrOutput)
 }
@@ -1450,7 +1453,7 @@ func (o AuthorityConfigX509ConfigCaOptionsOutput) NonCa() pulumi.BoolPtrOutput {
 }
 
 // When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+// If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
 // the max path length will be omitted from the CA certificate.
 func (o AuthorityConfigX509ConfigCaOptionsOutput) ZeroMaxIssuerPathLength() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigX509ConfigCaOptions) *bool { return v.ZeroMaxIssuerPathLength }).(pulumi.BoolPtrOutput)
@@ -1491,7 +1494,8 @@ func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) IsCa() pulumi.BoolPtrOutput
 }
 
 // Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+// requires setting `zeroMaxIssuerPathLength = true`.
 func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) MaxIssuerPathLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *int {
 		if v == nil {
@@ -1513,7 +1517,7 @@ func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) NonCa() pulumi.BoolPtrOutpu
 }
 
 // When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-// if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+// If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
 // the max path length will be omitted from the CA certificate.
 func (o AuthorityConfigX509ConfigCaOptionsPtrOutput) ZeroMaxIssuerPathLength() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigX509ConfigCaOptions) *bool {

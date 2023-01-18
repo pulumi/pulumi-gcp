@@ -54,6 +54,56 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Config Management With OCI
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     location: "global",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     configmanagement: {
+ *         version: "1.12.0",
+ *         configSync: {
+ *             oci: {
+ *                 syncRepo: "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+ *                 policyDir: "config-connector",
+ *                 syncWaitSecs: "20",
+ *                 secretType: "gcpserviceaccount",
+ *                 gcpServiceAccountEmail: "sa@project-id.iam.gserviceaccount.com",
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Multi Cluster Service Discovery
  *
  * ```typescript
@@ -100,7 +150,6 @@ import * as utilities from "../utilities";
  *     membership: membership.membershipId,
  *     mesh: {
  *         management: "MANAGEMENT_AUTOMATIC",
- *         controlPlane: "AUTOMATIC",
  *     },
  * }, {
  *     provider: google_beta,

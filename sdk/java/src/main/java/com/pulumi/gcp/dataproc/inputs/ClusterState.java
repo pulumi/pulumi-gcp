@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterVirtualClusterConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -121,6 +122,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     * 
+     */
+    @Import(name="virtualClusterConfig")
+    private @Nullable Output<ClusterVirtualClusterConfigArgs> virtualClusterConfig;
+
+    /**
+     * @return Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     * 
+     */
+    public Optional<Output<ClusterVirtualClusterConfigArgs>> virtualClusterConfig() {
+        return Optional.ofNullable(this.virtualClusterConfig);
+    }
+
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
@@ -130,6 +148,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.virtualClusterConfig = $.virtualClusterConfig;
     }
 
     public static Builder builder() {
@@ -288,6 +307,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param virtualClusterConfig Allows you to configure a virtual Dataproc on GKE cluster.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualClusterConfig(@Nullable Output<ClusterVirtualClusterConfigArgs> virtualClusterConfig) {
+            $.virtualClusterConfig = virtualClusterConfig;
+            return this;
+        }
+
+        /**
+         * @param virtualClusterConfig Allows you to configure a virtual Dataproc on GKE cluster.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualClusterConfig(ClusterVirtualClusterConfigArgs virtualClusterConfig) {
+            return virtualClusterConfig(Output.of(virtualClusterConfig));
         }
 
         public ClusterState build() {

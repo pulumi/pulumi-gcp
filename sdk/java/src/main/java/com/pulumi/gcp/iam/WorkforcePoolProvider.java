@@ -19,6 +19,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A configuration for an external identity provider.
+ * 
+ * To get more information about WorkforcePoolProvider, see:
+ * 
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers)
+ * * How-to Guides
+ *     * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
+ * 
+ * &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
+ * billing/quota project. The account team notifies you when the project is granted access.
+ * 
  * ## Example Usage
  * ### Iam Workforce Pool Provider Saml Basic
  * ```java
@@ -32,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderSamlArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,9 +60,7 @@ import javax.annotation.Nullable;
  *             .workforcePoolId(&#34;example-pool&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
@@ -62,9 +70,7 @@ import javax.annotation.Nullable;
  *             .saml(WorkforcePoolProviderSamlArgs.builder()
  *                 .idpMetadataXml(&#34;&lt;?xml version=\&#34;1.0\&#34;?&gt;&lt;md:EntityDescriptor xmlns:md=\&#34;urn:oasis:names:tc:SAML:2.0:metadata\&#34; entityID=\&#34;https://test.com\&#34;&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\&#34;urn:oasis:names:tc:SAML:2.0:protocol\&#34;&gt; &lt;md:KeyDescriptor use=\&#34;signing\&#34;&gt;&lt;ds:KeyInfo xmlns:ds=\&#34;http://www.w3.org/2000/09/xmldsig#\&#34;&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\&#34; Location=\&#34;https://test.com/sso\&#34;/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -81,7 +87,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderSamlArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -99,9 +104,7 @@ import javax.annotation.Nullable;
  *             .workforcePoolId(&#34;example-pool&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
@@ -115,9 +118,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;A sample SAML workforce pool provider.&#34;)
  *             .disabled(false)
  *             .attributeCondition(&#34;true&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -134,7 +135,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -152,9 +152,7 @@ import javax.annotation.Nullable;
  *             .workforcePoolId(&#34;example-pool&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
@@ -165,9 +163,7 @@ import javax.annotation.Nullable;
  *                 .issuerUri(&#34;https://accounts.google.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -184,7 +180,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -202,9 +197,7 @@ import javax.annotation.Nullable;
  *             .workforcePoolId(&#34;example-pool&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example = new WorkforcePoolProvider(&#34;example&#34;, WorkforcePoolProviderArgs.builder()        
  *             .workforcePoolId(pool.workforcePoolId())
@@ -219,9 +212,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;A sample OIDC workforce pool provider.&#34;)
  *             .disabled(false)
  *             .attributeCondition(&#34;true&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

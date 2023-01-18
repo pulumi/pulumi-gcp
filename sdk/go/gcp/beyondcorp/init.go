@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:beyondcorp/appConnection:AppConnection":
+		r = &AppConnection{}
 	case "gcp:beyondcorp/appConnector:AppConnector":
 		r = &AppConnector{}
 	case "gcp:beyondcorp/appGateway:AppGateway":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/appConnection",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/appConnector",

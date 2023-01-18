@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -12,6 +13,7 @@ public final class GetAndroidAppResult {
     private String appId;
     private String deletionPolicy;
     private String displayName;
+    private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -20,6 +22,8 @@ public final class GetAndroidAppResult {
     private String name;
     private String packageName;
     private String project;
+    private List<String> sha1Hashes;
+    private List<String> sha256Hashes;
 
     private GetAndroidAppResult() {}
     public String appId() {
@@ -30,6 +34,9 @@ public final class GetAndroidAppResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public String etag() {
+        return this.etag;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -47,6 +54,12 @@ public final class GetAndroidAppResult {
     public String project() {
         return this.project;
     }
+    public List<String> sha1Hashes() {
+        return this.sha1Hashes;
+    }
+    public List<String> sha256Hashes() {
+        return this.sha256Hashes;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,20 +73,26 @@ public final class GetAndroidAppResult {
         private String appId;
         private String deletionPolicy;
         private String displayName;
+        private String etag;
         private String id;
         private String name;
         private String packageName;
         private String project;
+        private List<String> sha1Hashes;
+        private List<String> sha256Hashes;
         public Builder() {}
         public Builder(GetAndroidAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
+    	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.packageName = defaults.packageName;
     	      this.project = defaults.project;
+    	      this.sha1Hashes = defaults.sha1Hashes;
+    	      this.sha256Hashes = defaults.sha256Hashes;
         }
 
         @CustomType.Setter
@@ -89,6 +108,11 @@ public final class GetAndroidAppResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder etag(String etag) {
+            this.etag = Objects.requireNonNull(etag);
             return this;
         }
         @CustomType.Setter
@@ -111,15 +135,34 @@ public final class GetAndroidAppResult {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
+        public Builder sha1Hashes(List<String> sha1Hashes) {
+            this.sha1Hashes = Objects.requireNonNull(sha1Hashes);
+            return this;
+        }
+        public Builder sha1Hashes(String... sha1Hashes) {
+            return sha1Hashes(List.of(sha1Hashes));
+        }
+        @CustomType.Setter
+        public Builder sha256Hashes(List<String> sha256Hashes) {
+            this.sha256Hashes = Objects.requireNonNull(sha256Hashes);
+            return this;
+        }
+        public Builder sha256Hashes(String... sha256Hashes) {
+            return sha256Hashes(List.of(sha256Hashes));
+        }
         public GetAndroidAppResult build() {
             final var o = new GetAndroidAppResult();
             o.appId = appId;
             o.deletionPolicy = deletionPolicy;
             o.displayName = displayName;
+            o.etag = etag;
             o.id = id;
             o.name = name;
             o.packageName = packageName;
             o.project = project;
+            o.sha1Hashes = sha1Hashes;
+            o.sha256Hashes = sha256Hashes;
             return o;
         }
     }

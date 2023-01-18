@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigScheduler;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigTriggerer;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigWebServer;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigWorker;
 import java.util.Objects;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentConfigWorkloadsConfig {
     private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
+    private @Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer;
     private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
     private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
 
     private EnvironmentConfigWorkloadsConfig() {}
     public Optional<EnvironmentConfigWorkloadsConfigScheduler> scheduler() {
         return Optional.ofNullable(this.scheduler);
+    }
+    public Optional<EnvironmentConfigWorkloadsConfigTriggerer> triggerer() {
+        return Optional.ofNullable(this.triggerer);
     }
     public Optional<EnvironmentConfigWorkloadsConfigWebServer> webServer() {
         return Optional.ofNullable(this.webServer);
@@ -38,12 +43,14 @@ public final class EnvironmentConfigWorkloadsConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
+        private @Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer;
         private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
         private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
         public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scheduler = defaults.scheduler;
+    	      this.triggerer = defaults.triggerer;
     	      this.webServer = defaults.webServer;
     	      this.worker = defaults.worker;
         }
@@ -51,6 +58,11 @@ public final class EnvironmentConfigWorkloadsConfig {
         @CustomType.Setter
         public Builder scheduler(@Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler) {
             this.scheduler = scheduler;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder triggerer(@Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer) {
+            this.triggerer = triggerer;
             return this;
         }
         @CustomType.Setter
@@ -66,6 +78,7 @@ public final class EnvironmentConfigWorkloadsConfig {
         public EnvironmentConfigWorkloadsConfig build() {
             final var o = new EnvironmentConfigWorkloadsConfig();
             o.scheduler = scheduler;
+            o.triggerer = triggerer;
             o.webServer = webServer;
             o.worker = worker;
             return o;

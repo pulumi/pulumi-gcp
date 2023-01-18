@@ -135,7 +135,7 @@ type NodePool struct {
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
 	Operation     pulumi.StringOutput      `pulumi:"operation"`
-	// ) Specifies a custom placement policy for the
+	// Specifies a custom placement policy for the
 	// nodes.
 	PlacementPolicy NodePoolPlacementPolicyPtrOutput `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
@@ -235,7 +235,7 @@ type nodePoolState struct {
 	// `nodeLocations` will be used.
 	NodeLocations []string `pulumi:"nodeLocations"`
 	Operation     *string  `pulumi:"operation"`
-	// ) Specifies a custom placement policy for the
+	// Specifies a custom placement policy for the
 	// nodes.
 	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
@@ -304,7 +304,7 @@ type NodePoolState struct {
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayInput
 	Operation     pulumi.StringPtrInput
-	// ) Specifies a custom placement policy for the
+	// Specifies a custom placement policy for the
 	// nodes.
 	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
@@ -372,7 +372,7 @@ type nodePoolArgs struct {
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
 	NodeLocations []string `pulumi:"nodeLocations"`
-	// ) Specifies a custom placement policy for the
+	// Specifies a custom placement policy for the
 	// nodes.
 	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
@@ -437,7 +437,7 @@ type NodePoolArgs struct {
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
 	NodeLocations pulumi.StringArrayInput
-	// ) Specifies a custom placement policy for the
+	// Specifies a custom placement policy for the
 	// nodes.
 	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
@@ -637,7 +637,7 @@ func (o NodePoolOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
-// ) Specifies a custom placement policy for the
+// Specifies a custom placement policy for the
 // nodes.
 func (o NodePoolOutput) PlacementPolicy() NodePoolPlacementPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolPlacementPolicyPtrOutput { return v.PlacementPolicy }).(NodePoolPlacementPolicyPtrOutput)

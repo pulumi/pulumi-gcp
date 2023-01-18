@@ -83,6 +83,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string SourceImage;
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateDiskSourceImageEncryptionKeyResult> SourceImageEncryptionKeys;
+        public readonly string SourceSnapshot;
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult> SourceSnapshotEncryptionKeys;
         /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
@@ -116,6 +119,12 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string sourceImage,
 
+            ImmutableArray<Outputs.GetInstanceTemplateDiskSourceImageEncryptionKeyResult> sourceImageEncryptionKeys,
+
+            string sourceSnapshot,
+
+            ImmutableArray<Outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult> sourceSnapshotEncryptionKeys,
+
             string type)
         {
             AutoDelete = autoDelete;
@@ -131,6 +140,9 @@ namespace Pulumi.Gcp.Compute.Outputs
             ResourcePolicies = resourcePolicies;
             Source = source;
             SourceImage = sourceImage;
+            SourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            SourceSnapshot = sourceSnapshot;
+            SourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             Type = type;
         }
     }

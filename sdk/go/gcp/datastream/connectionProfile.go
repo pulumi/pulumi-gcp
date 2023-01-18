@@ -121,6 +121,9 @@ import (
 //					Bucket:   pulumi.String("my-bucket"),
 //					RootPath: pulumi.String("/path"),
 //				},
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -255,7 +258,7 @@ type ConnectionProfile struct {
 	GcsProfile ConnectionProfileGcsProfilePtrOutput `pulumi:"gcsProfile"`
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this connection profile is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -328,7 +331,7 @@ type connectionProfileState struct {
 	GcsProfile *ConnectionProfileGcsProfile `pulumi:"gcsProfile"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this connection profile is located in.
 	Location *string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -364,7 +367,7 @@ type ConnectionProfileState struct {
 	GcsProfile ConnectionProfileGcsProfilePtrInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the location this connection profile is located in.
 	Location pulumi.StringPtrInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -404,7 +407,7 @@ type connectionProfileArgs struct {
 	GcsProfile *ConnectionProfileGcsProfile `pulumi:"gcsProfile"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this connection profile is located in.
 	Location string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -439,7 +442,7 @@ type ConnectionProfileArgs struct {
 	GcsProfile ConnectionProfileGcsProfilePtrInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the location this connection profile is located in.
 	Location pulumi.StringInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -579,7 +582,7 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the location this repository is located in.
+// The name of the location this connection profile is located in.
 func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

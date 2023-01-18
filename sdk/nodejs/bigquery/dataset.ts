@@ -259,7 +259,7 @@ export class Dataset extends pulumi.CustomResource {
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
      */

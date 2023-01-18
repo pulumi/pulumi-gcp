@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
  * import com.pulumi.gcp.bigtable.Table;
  * import com.pulumi.gcp.bigtable.TableArgs;
+ * import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,6 +62,13 @@ import javax.annotation.Nullable;
  *                 &#34;a&#34;,
  *                 &#34;b&#34;,
  *                 &#34;c&#34;)
+ *             .columnFamilies(            
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family(&#34;family-first&#34;)
+ *                     .build(),
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family(&#34;family-second&#34;)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -103,18 +111,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.columnFamilies);
     }
     /**
-     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
      */
     @Export(name="deletionProtection", type=String.class, parameters={})
     private Output<String> deletionProtection;
 
     /**
-     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
      */
     public Output<String> deletionProtection() {
@@ -135,14 +139,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * The name of the table.
+     * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the table.
+     * @return The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      * 
      */
     public Output<String> name() {

@@ -22,7 +22,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -47,6 +47,9 @@ class GetDatabaseInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if instance_type and not isinstance(instance_type, str):
+            raise TypeError("Expected argument 'instance_type' to be a str")
+        pulumi.set(__self__, "instance_type", instance_type)
         if ip_addresses and not isinstance(ip_addresses, list):
             raise TypeError("Expected argument 'ip_addresses' to be a list")
         pulumi.set(__self__, "ip_addresses", ip_addresses)
@@ -135,6 +138,11 @@ class GetDatabaseInstanceResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="ipAddresses")
@@ -226,6 +234,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             encryption_key_name=self.encryption_key_name,
             first_ip_address=self.first_ip_address,
             id=self.id,
+            instance_type=self.instance_type,
             ip_addresses=self.ip_addresses,
             maintenance_version=self.maintenance_version,
             master_instance_name=self.master_instance_name,
@@ -277,6 +286,7 @@ def get_database_instance(name: Optional[str] = None,
         encryption_key_name=__ret__.encryption_key_name,
         first_ip_address=__ret__.first_ip_address,
         id=__ret__.id,
+        instance_type=__ret__.instance_type,
         ip_addresses=__ret__.ip_addresses,
         maintenance_version=__ret__.maintenance_version,
         master_instance_name=__ret__.master_instance_name,

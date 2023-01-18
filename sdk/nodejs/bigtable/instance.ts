@@ -148,7 +148,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -226,7 +226,7 @@ export interface InstanceState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      */
     name?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface InstanceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      */
     name?: pulumi.Input<string>;
     /**

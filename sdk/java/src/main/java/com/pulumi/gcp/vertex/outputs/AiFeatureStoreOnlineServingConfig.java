@@ -4,8 +4,11 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiFeatureStoreOnlineServingConfigScaling;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiFeatureStoreOnlineServingConfig {
@@ -13,15 +16,29 @@ public final class AiFeatureStoreOnlineServingConfig {
      * @return The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
      */
-    private Integer fixedNodeCount;
+    private @Nullable Integer fixedNodeCount;
+    /**
+     * @return Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiFeatureStoreOnlineServingConfigScaling scaling;
 
     private AiFeatureStoreOnlineServingConfig() {}
     /**
      * @return The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
      */
-    public Integer fixedNodeCount() {
-        return this.fixedNodeCount;
+    public Optional<Integer> fixedNodeCount() {
+        return Optional.ofNullable(this.fixedNodeCount);
+    }
+    /**
+     * @return Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiFeatureStoreOnlineServingConfigScaling> scaling() {
+        return Optional.ofNullable(this.scaling);
     }
 
     public static Builder builder() {
@@ -33,21 +50,29 @@ public final class AiFeatureStoreOnlineServingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer fixedNodeCount;
+        private @Nullable Integer fixedNodeCount;
+        private @Nullable AiFeatureStoreOnlineServingConfigScaling scaling;
         public Builder() {}
         public Builder(AiFeatureStoreOnlineServingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedNodeCount = defaults.fixedNodeCount;
+    	      this.scaling = defaults.scaling;
         }
 
         @CustomType.Setter
-        public Builder fixedNodeCount(Integer fixedNodeCount) {
-            this.fixedNodeCount = Objects.requireNonNull(fixedNodeCount);
+        public Builder fixedNodeCount(@Nullable Integer fixedNodeCount) {
+            this.fixedNodeCount = fixedNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scaling(@Nullable AiFeatureStoreOnlineServingConfigScaling scaling) {
+            this.scaling = scaling;
             return this;
         }
         public AiFeatureStoreOnlineServingConfig build() {
             final var o = new AiFeatureStoreOnlineServingConfig();
             o.fixedNodeCount = fixedNodeCount;
+            o.scaling = scaling;
             return o;
         }
     }

@@ -16,6 +16,7 @@ public final class GetCertificateResult {
     private Integer certificateId;
     private String creationTimestamp;
     private String description;
+    private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -39,6 +40,9 @@ public final class GetCertificateResult {
     }
     public String description() {
         return this.description;
+    }
+    public String expireTime() {
+        return this.expireTime;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -76,6 +80,7 @@ public final class GetCertificateResult {
         private Integer certificateId;
         private String creationTimestamp;
         private String description;
+        private String expireTime;
         private String id;
         private String name;
         private String namePrefix;
@@ -89,6 +94,7 @@ public final class GetCertificateResult {
     	      this.certificateId = defaults.certificateId;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
+    	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.namePrefix = defaults.namePrefix;
@@ -115,6 +121,11 @@ public final class GetCertificateResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expireTime(String expireTime) {
+            this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
         @CustomType.Setter
@@ -153,6 +164,7 @@ public final class GetCertificateResult {
             o.certificateId = certificateId;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
+            o.expireTime = expireTime;
             o.id = id;
             o.name = name;
             o.namePrefix = namePrefix;

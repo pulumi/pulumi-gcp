@@ -126,6 +126,10 @@ export class SSLCertificate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Expire time of the certificate in RFC3339 text format.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -172,6 +176,7 @@ export class SSLCertificate extends pulumi.CustomResource {
             resourceInputs["certificateId"] = state ? state.certificateId : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
@@ -193,6 +198,7 @@ export class SSLCertificate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -225,6 +231,10 @@ export interface SSLCertificateState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Expire time of the certificate in RFC3339 text format.
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

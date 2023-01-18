@@ -32,7 +32,7 @@ class ConnectionProfileArgs:
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this connection profile is located in.
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
@@ -100,7 +100,7 @@ class ConnectionProfileArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The name of the location this repository is located in.
+        The name of the location this connection profile is located in.
         """
         return pulumi.get(self, "location")
 
@@ -250,7 +250,7 @@ class _ConnectionProfileState:
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this connection profile is located in.
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -368,7 +368,7 @@ class _ConnectionProfileState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the location this repository is located in.
+        The name of the location this connection profile is located in.
         """
         return pulumi.get(self, "location")
 
@@ -535,6 +535,9 @@ class ConnectionProfile(pulumi.CustomResource):
                 bucket="my-bucket",
                 root_path="/path",
             ),
+            labels={
+                "key": "value",
+            },
             location="us-central1")
         ```
         ### Datastream Connection Profile Postgres
@@ -615,7 +618,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this connection profile is located in.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']] oracle_profile: Oracle database profile.
@@ -696,6 +699,9 @@ class ConnectionProfile(pulumi.CustomResource):
                 bucket="my-bucket",
                 root_path="/path",
             ),
+            labels={
+                "key": "value",
+            },
             location="us-central1")
         ```
         ### Datastream Connection Profile Postgres
@@ -859,7 +865,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this connection profile is located in.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -945,7 +951,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The name of the location this repository is located in.
+        The name of the location this connection profile is located in.
         """
         return pulumi.get(self, "location")
 

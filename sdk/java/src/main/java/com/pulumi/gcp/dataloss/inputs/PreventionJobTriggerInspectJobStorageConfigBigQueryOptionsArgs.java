@@ -5,9 +5,11 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,25 @@ import javax.annotation.Nullable;
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs Empty = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs();
+
+    /**
+     * Specifies the BigQuery fields that will be returned with findings.
+     * If not specified, no identifying fields will be returned for findings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="identifyingFields")
+    private @Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>> identifyingFields;
+
+    /**
+     * @return Specifies the BigQuery fields that will be returned with findings.
+     * If not specified, no identifying fields will be returned for findings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>>> identifyingFields() {
+        return Optional.ofNullable(this.identifyingFields);
+    }
 
     /**
      * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
@@ -96,6 +117,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs() {}
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs $) {
+        this.identifyingFields = $.identifyingFields;
         this.rowsLimit = $.rowsLimit;
         this.rowsLimitPercent = $.rowsLimitPercent;
         this.sampleMethod = $.sampleMethod;
@@ -118,6 +140,43 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
 
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs defaults) {
             $ = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param identifyingFields Specifies the BigQuery fields that will be returned with findings.
+         * If not specified, no identifying fields will be returned for findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifyingFields(@Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>> identifyingFields) {
+            $.identifyingFields = identifyingFields;
+            return this;
+        }
+
+        /**
+         * @param identifyingFields Specifies the BigQuery fields that will be returned with findings.
+         * If not specified, no identifying fields will be returned for findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifyingFields(List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs> identifyingFields) {
+            return identifyingFields(Output.of(identifyingFields));
+        }
+
+        /**
+         * @param identifyingFields Specifies the BigQuery fields that will be returned with findings.
+         * If not specified, no identifying fields will be returned for findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifyingFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs... identifyingFields) {
+            return identifyingFields(List.of(identifyingFields));
         }
 
         /**

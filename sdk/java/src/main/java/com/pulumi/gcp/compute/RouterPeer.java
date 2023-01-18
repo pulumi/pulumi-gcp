@@ -142,6 +142,140 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Router Peer Router Appliance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.RouterInterface;
+ * import com.pulumi.gcp.compute.RouterInterfaceArgs;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork(&#34;subnetwork&#34;, SubnetworkArgs.builder()        
+ *             .network(network.selfLink())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var addrIntf = new Address(&#34;addrIntf&#34;, AddressArgs.builder()        
+ *             .region(subnetwork.region())
+ *             .subnetwork(subnetwork.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .build());
+ * 
+ *         var addrIntfRedundant = new Address(&#34;addrIntfRedundant&#34;, AddressArgs.builder()        
+ *             .region(subnetwork.region())
+ *             .subnetwork(subnetwork.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .build());
+ * 
+ *         var addrPeer = new Address(&#34;addrPeer&#34;, AddressArgs.builder()        
+ *             .region(subnetwork.region())
+ *             .subnetwork(subnetwork.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .build());
+ * 
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .canIpForward(true)
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .networkIp(addrPeer.address())
+ *                 .subnetwork(subnetwork.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *         var hub = new Hub(&#34;hub&#34;);
+ * 
+ *         var spoke = new Spoke(&#34;spoke&#34;, SpokeArgs.builder()        
+ *             .location(subnetwork.region())
+ *             .hub(hub.id())
+ *             .linkedRouterApplianceInstances(SpokeLinkedRouterApplianceInstancesArgs.builder()
+ *                 .instances(SpokeLinkedRouterApplianceInstancesInstanceArgs.builder()
+ *                     .virtualMachine(instance.selfLink())
+ *                     .ipAddress(addrPeer.address())
+ *                     .build())
+ *                 .siteToSiteDataTransfer(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .region(subnetwork.region())
+ *             .network(network.selfLink())
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(64514)
+ *                 .build())
+ *             .build());
+ * 
+ *         var interfaceRedundant = new RouterInterface(&#34;interfaceRedundant&#34;, RouterInterfaceArgs.builder()        
+ *             .region(router.region())
+ *             .router(router.name())
+ *             .subnetwork(subnetwork.selfLink())
+ *             .privateIpAddress(addrIntfRedundant.address())
+ *             .build());
+ * 
+ *         var interface_ = new RouterInterface(&#34;interface&#34;, RouterInterfaceArgs.builder()        
+ *             .region(router.region())
+ *             .router(router.name())
+ *             .subnetwork(subnetwork.selfLink())
+ *             .privateIpAddress(addrIntf.address())
+ *             .redundantInterface(interfaceRedundant.name())
+ *             .build());
+ * 
+ *         var peer = new RouterPeer(&#34;peer&#34;, RouterPeerArgs.builder()        
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .interface_(interface_.name())
+ *             .routerApplianceInstance(instance.selfLink())
+ *             .peerAsn(65513)
+ *             .peerIpAddress(addrPeer.address())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -437,6 +571,26 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> router() {
         return this.router;
+    }
+    /**
+     * The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     * 
+     */
+    @Export(name="routerApplianceInstance", type=String.class, parameters={})
+    private Output</* @Nullable */ String> routerApplianceInstance;
+
+    /**
+     * @return The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     * 
+     */
+    public Output<Optional<String>> routerApplianceInstance() {
+        return Codegen.optional(this.routerApplianceInstance);
     }
 
     /**

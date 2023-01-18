@@ -36,7 +36,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
      */
     private @Nullable String location;
     /**
-     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
      * 
      */
     private @Nullable Boolean pointInTimeRecoveryEnabled;
@@ -83,7 +83,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+     * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
      * 
      */
     public Optional<Boolean> pointInTimeRecoveryEnabled() {

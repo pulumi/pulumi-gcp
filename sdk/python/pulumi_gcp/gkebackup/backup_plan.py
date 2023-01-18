@@ -456,6 +456,14 @@ class BackupPlan(pulumi.CustomResource):
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
                  __props__=None):
         """
+        Represents a Backup Plan instance.
+
+        To get more information about BackupPlan, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+
         ## Example Usage
         ### Gkebackup Backupplan Basic
 
@@ -473,8 +481,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -482,8 +489,7 @@ class BackupPlan(pulumi.CustomResource):
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Autopilot
 
@@ -502,8 +508,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -511,8 +516,7 @@ class BackupPlan(pulumi.CustomResource):
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Cmek
 
@@ -530,12 +534,9 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
             cluster=primary.id,
             location="us-central1",
@@ -551,8 +552,7 @@ class BackupPlan(pulumi.CustomResource):
                 encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
                     gcp_kms_encryption_key=crypto_key.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Full
 
@@ -570,8 +570,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
@@ -597,8 +596,7 @@ class BackupPlan(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -646,6 +644,14 @@ class BackupPlan(pulumi.CustomResource):
                  args: BackupPlanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Backup Plan instance.
+
+        To get more information about BackupPlan, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+
         ## Example Usage
         ### Gkebackup Backupplan Basic
 
@@ -663,8 +669,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -672,8 +677,7 @@ class BackupPlan(pulumi.CustomResource):
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Autopilot
 
@@ -692,8 +696,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -701,8 +704,7 @@ class BackupPlan(pulumi.CustomResource):
                 include_volume_data=True,
                 include_secrets=True,
                 all_namespaces=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Cmek
 
@@ -720,12 +722,9 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
             cluster=primary.id,
             location="us-central1",
@@ -741,8 +740,7 @@ class BackupPlan(pulumi.CustomResource):
                 encryption_key=gcp.gkebackup.BackupPlanBackupConfigEncryptionKeyArgs(
                     gcp_kms_encryption_key=crypto_key.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkebackup Backupplan Full
 
@@ -760,8 +758,7 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
@@ -787,8 +784,7 @@ class BackupPlan(pulumi.CustomResource):
                         ),
                     ],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

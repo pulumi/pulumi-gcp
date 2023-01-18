@@ -223,6 +223,11 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateMessage!: pulumi.Output<string>;
     /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     */
+    public readonly telemetryConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceTelemetryConfig>;
+    /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
@@ -263,6 +268,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
+            resourceInputs["telemetryConfig"] = state ? state.telemetryConfig : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
@@ -283,6 +289,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["artifactGcsUri"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;
@@ -390,6 +397,11 @@ export interface MetastoreServiceState {
      */
     stateMessage?: pulumi.Input<string>;
     /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     */
+    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
+    /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.
      */
@@ -472,6 +484,11 @@ export interface MetastoreServiceArgs {
      * 3 and 63 characters.
      */
     serviceId: pulumi.Input<string>;
+    /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     */
+    telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
     /**
      * The tier of the service.
      * Possible values are `DEVELOPER` and `ENTERPRISE`.

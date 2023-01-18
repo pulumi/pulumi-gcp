@@ -20,6 +20,30 @@ __all__ = [
     'ConnectionProfilePrivateConnectivityArgs',
     'PrivateConnectionErrorArgs',
     'PrivateConnectionVpcPeeringConfigArgs',
+    'StreamBackfillAllArgs',
+    'StreamBackfillAllMysqlExcludedObjectsArgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
+    'StreamBackfillNoneArgs',
+    'StreamDestinationConfigArgs',
+    'StreamDestinationConfigBigqueryDestinationConfigArgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs',
+    'StreamDestinationConfigGcsDestinationConfigArgs',
+    'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs',
+    'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs',
+    'StreamSourceConfigArgs',
+    'StreamSourceConfigMysqlSourceConfigArgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
 ]
 
 @pulumi.input_type
@@ -644,5 +668,1168 @@ class PrivateConnectionVpcPeeringConfigArgs:
     @vpc.setter
     def vpc(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllArgs:
+    def __init__(__self__, *,
+                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None):
+        """
+        :param pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+               Structure is documented below.
+        """
+        if mysql_excluded_objects is not None:
+            pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
+
+    @property
+    @pulumi.getter(name="mysqlExcludedObjects")
+    def mysql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]:
+        """
+        MySQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_excluded_objects")
+
+    @mysql_excluded_objects.setter
+    def mysql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]):
+        pulumi.set(self, "mysql_excluded_objects", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllMysqlExcludedObjectsArgs:
+    def __init__(__self__, *,
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+    @mysql_databases.setter
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]):
+        pulumi.set(self, "mysql_databases", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+    @mysql_tables.setter
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]):
+        pulumi.set(self, "mysql_tables", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+    @mysql_columns.setter
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+        pulumi.set(self, "mysql_columns", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+    def __init__(__self__, *,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] collation: Column collation.
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param pulumi.Input[int] length: -
+               Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class StreamBackfillNoneArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class StreamDestinationConfigArgs:
+    def __init__(__self__, *,
+                 destination_connection_profile: pulumi.Input[str],
+                 bigquery_destination_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']] = None,
+                 gcs_destination_config: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs'] bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
+               Structure is documented below.
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs'] gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
+        if bigquery_destination_config is not None:
+            pulumi.set(__self__, "bigquery_destination_config", bigquery_destination_config)
+        if gcs_destination_config is not None:
+            pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
+
+    @property
+    @pulumi.getter(name="destinationConnectionProfile")
+    def destination_connection_profile(self) -> pulumi.Input[str]:
+        """
+        Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        return pulumi.get(self, "destination_connection_profile")
+
+    @destination_connection_profile.setter
+    def destination_connection_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_connection_profile", value)
+
+    @property
+    @pulumi.getter(name="bigqueryDestinationConfig")
+    def bigquery_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]:
+        """
+        A configuration for how data should be loaded to Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination_config")
+
+    @bigquery_destination_config.setter
+    def bigquery_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]):
+        pulumi.set(self, "bigquery_destination_config", value)
+
+    @property
+    @pulumi.getter(name="gcsDestinationConfig")
+    def gcs_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]:
+        """
+        A configuration for how data should be loaded to Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_destination_config")
+
+    @gcs_destination_config.setter
+    def gcs_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]):
+        pulumi.set(self, "gcs_destination_config", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigBigqueryDestinationConfigArgs:
+    def __init__(__self__, *,
+                 data_freshness: Optional[pulumi.Input[str]] = None,
+                 single_target_dataset: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']] = None,
+                 source_hierarchy_datasets: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']] = None):
+        """
+        :param pulumi.Input[str] data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream.
+               Editing this field will only affect new tables created in the future, but existing tables
+               will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs'] single_target_dataset: A single target dataset to which all data will be streamed.
+               Structure is documented below.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs'] source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+               Structure is documented below.
+        """
+        if data_freshness is not None:
+            pulumi.set(__self__, "data_freshness", data_freshness)
+        if single_target_dataset is not None:
+            pulumi.set(__self__, "single_target_dataset", single_target_dataset)
+        if source_hierarchy_datasets is not None:
+            pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+
+    @property
+    @pulumi.getter(name="dataFreshness")
+    def data_freshness(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guaranteed data freshness (in seconds) when querying tables created by the stream.
+        Editing this field will only affect new tables created in the future, but existing tables
+        will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        """
+        return pulumi.get(self, "data_freshness")
+
+    @data_freshness.setter
+    def data_freshness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_freshness", value)
+
+    @property
+    @pulumi.getter(name="singleTargetDataset")
+    def single_target_dataset(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]:
+        """
+        A single target dataset to which all data will be streamed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "single_target_dataset")
+
+    @single_target_dataset.setter
+    def single_target_dataset(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]):
+        pulumi.set(self, "single_target_dataset", value)
+
+    @property
+    @pulumi.getter(name="sourceHierarchyDatasets")
+    def source_hierarchy_datasets(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]:
+        """
+        Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_hierarchy_datasets")
+
+    @source_hierarchy_datasets.setter
+    def source_hierarchy_datasets(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]):
+        pulumi.set(self, "source_hierarchy_datasets", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset_id: Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs:
+    def __init__(__self__, *,
+                 dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
+        """
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'] dataset_template: Dataset template used for dynamic dataset creation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "dataset_template", dataset_template)
+
+    @property
+    @pulumi.getter(name="datasetTemplate")
+    def dataset_template(self) -> pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']:
+        """
+        Dataset template used for dynamic dataset creation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset_template")
+
+    @dataset_template.setter
+    def dataset_template(self, value: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
+        pulumi.set(self, "dataset_template", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str],
+                 dataset_id_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
+               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value.
+               The prefix and name will be separated by an underscore. i.e. _.
+        """
+        pulumi.set(__self__, "location", location)
+        if dataset_id_prefix is not None:
+            pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The geographic location where the dataset should reside.
+        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="datasetIdPrefix")
+    def dataset_id_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        If supplied, every created dataset will have its name prefixed by the provided value.
+        The prefix and name will be separated by an underscore. i.e. _.
+        """
+        return pulumi.get(self, "dataset_id_prefix")
+
+    @dataset_id_prefix.setter
+    def dataset_id_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id_prefix", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigGcsDestinationConfigArgs:
+    def __init__(__self__, *,
+                 avro_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']] = None,
+                 file_rotation_interval: Optional[pulumi.Input[str]] = None,
+                 file_rotation_mb: Optional[pulumi.Input[int]] = None,
+                 json_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
+        :param pulumi.Input[str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        :param pulumi.Input[int] file_rotation_mb: The maximum file size to be saved in the bucket.
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs'] json_file_format: JSON file format configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] path: Path inside the Cloud Storage bucket to write data to.
+        """
+        if avro_file_format is not None:
+            pulumi.set(__self__, "avro_file_format", avro_file_format)
+        if file_rotation_interval is not None:
+            pulumi.set(__self__, "file_rotation_interval", file_rotation_interval)
+        if file_rotation_mb is not None:
+            pulumi.set(__self__, "file_rotation_mb", file_rotation_mb)
+        if json_file_format is not None:
+            pulumi.set(__self__, "json_file_format", json_file_format)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="avroFileFormat")
+    def avro_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]:
+        """
+        AVRO file format configuration.
+        """
+        return pulumi.get(self, "avro_file_format")
+
+    @avro_file_format.setter
+    def avro_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]):
+        pulumi.set(self, "avro_file_format", value)
+
+    @property
+    @pulumi.getter(name="fileRotationInterval")
+    def file_rotation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration for which new events are added before a file is closed and a new file is created.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        """
+        return pulumi.get(self, "file_rotation_interval")
+
+    @file_rotation_interval.setter
+    def file_rotation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_rotation_interval", value)
+
+    @property
+    @pulumi.getter(name="fileRotationMb")
+    def file_rotation_mb(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum file size to be saved in the bucket.
+        """
+        return pulumi.get(self, "file_rotation_mb")
+
+    @file_rotation_mb.setter
+    def file_rotation_mb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "file_rotation_mb", value)
+
+    @property
+    @pulumi.getter(name="jsonFileFormat")
+    def json_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]:
+        """
+        JSON file format configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_file_format")
+
+    @json_file_format.setter
+    def json_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]):
+        pulumi.set(self, "json_file_format", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path inside the Cloud Storage bucket to write data to.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
+    def __init__(__self__, *,
+                 compression: Optional[pulumi.Input[str]] = None,
+                 schema_file_format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] compression: Compression of the loaded JSON file.
+               Possible values are `NO_COMPRESSION` and `GZIP`.
+        :param pulumi.Input[str] schema_file_format: The schema file format along JSON data files.
+               Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        """
+        if compression is not None:
+            pulumi.set(__self__, "compression", compression)
+        if schema_file_format is not None:
+            pulumi.set(__self__, "schema_file_format", schema_file_format)
+
+    @property
+    @pulumi.getter
+    def compression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compression of the loaded JSON file.
+        Possible values are `NO_COMPRESSION` and `GZIP`.
+        """
+        return pulumi.get(self, "compression")
+
+    @compression.setter
+    def compression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression", value)
+
+    @property
+    @pulumi.getter(name="schemaFileFormat")
+    def schema_file_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The schema file format along JSON data files.
+        Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        """
+        return pulumi.get(self, "schema_file_format")
+
+    @schema_file_format.setter
+    def schema_file_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_file_format", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigArgs:
+    def __init__(__self__, *,
+                 mysql_source_config: pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs'],
+                 source_connection_profile: pulumi.Input[str]):
+        """
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        pulumi.set(__self__, "mysql_source_config", mysql_source_config)
+        pulumi.set(__self__, "source_connection_profile", source_connection_profile)
+
+    @property
+    @pulumi.getter(name="mysqlSourceConfig")
+    def mysql_source_config(self) -> pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']:
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_source_config")
+
+    @mysql_source_config.setter
+    def mysql_source_config(self, value: pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']):
+        pulumi.set(self, "mysql_source_config", value)
+
+    @property
+    @pulumi.getter(name="sourceConnectionProfile")
+    def source_connection_profile(self) -> pulumi.Input[str]:
+        """
+        Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        return pulumi.get(self, "source_connection_profile")
+
+    @source_connection_profile.setter
+    def source_connection_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_connection_profile", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigArgs:
+    def __init__(__self__, *,
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs'] exclude_objects: MySQL objects to exclude from the stream.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs'] include_objects: MySQL objects to retrieve from the source.
+               Structure is documented below.
+        :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        """
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]:
+        """
+        MySQL objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]:
+        """
+        MySQL objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @max_concurrent_cdc_tasks.setter
+    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_cdc_tasks", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs:
+    def __init__(__self__, *,
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+    @mysql_databases.setter
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]):
+        pulumi.set(self, "mysql_databases", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+    @mysql_tables.setter
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+        pulumi.set(self, "mysql_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+    @mysql_columns.setter
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+        pulumi.set(self, "mysql_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+    def __init__(__self__, *,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] collation: Column collation.
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param pulumi.Input[int] length: -
+               Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs:
+    def __init__(__self__, *,
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+    @mysql_databases.setter
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]):
+        pulumi.set(self, "mysql_databases", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+    @mysql_tables.setter
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+        pulumi.set(self, "mysql_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+    @mysql_columns.setter
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+        pulumi.set(self, "mysql_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+    def __init__(__self__, *,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] collation: Column collation.
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param pulumi.Input[int] length: -
+               Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
 
 

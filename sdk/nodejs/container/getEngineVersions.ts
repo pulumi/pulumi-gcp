@@ -28,7 +28,8 @@ import * as utilities from "../utilities";
  *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
  *     initialNodeCount: 1,
  * });
- * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
+ * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
+ * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
  * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
@@ -98,6 +99,10 @@ export interface GetEngineVersionsResult {
      * A map from a release channel name to the channel's default version.
      */
     readonly releaseChannelDefaultVersion: {[key: string]: string};
+    /**
+     * A map from a release channel name to the channel's latest version.
+     */
+    readonly releaseChannelLatestVersion: {[key: string]: string};
     /**
      * A list of versions available in the given zone for use with master instances.
      */

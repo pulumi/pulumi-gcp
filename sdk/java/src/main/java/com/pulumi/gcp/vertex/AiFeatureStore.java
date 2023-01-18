@@ -67,6 +67,49 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Vertex Ai Featurestore Scaling
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStore;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigScalingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
+ *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .build())
+ *             .forceDestroy(true)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .scaling(AiFeatureStoreOnlineServingConfigScalingArgs.builder()
+ *                     .maxNodeCount(10)
+ *                     .minNodeCount(2)
+ *                     .build())
+ *                 .build())
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

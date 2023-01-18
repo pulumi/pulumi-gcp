@@ -138,6 +138,12 @@ namespace Pulumi.Gcp.CloudIds
         public Output<string> Severity { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        /// </summary>
+        [Output("threatExceptions")]
+        public Output<ImmutableArray<string>> ThreatExceptions { get; private set; } = null!;
+
+        /// <summary>
         /// Last update timestamp in RFC 3339 text format.
         /// </summary>
         [Output("updateTime")]
@@ -227,6 +233,18 @@ namespace Pulumi.Gcp.CloudIds
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
+        [Input("threatExceptions")]
+        private InputList<string>? _threatExceptions;
+
+        /// <summary>
+        /// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        /// </summary>
+        public InputList<string> ThreatExceptions
+        {
+            get => _threatExceptions ?? (_threatExceptions = new InputList<string>());
+            set => _threatExceptions = value;
+        }
+
         public EndpointArgs()
         {
         }
@@ -290,6 +308,18 @@ namespace Pulumi.Gcp.CloudIds
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
+
+        [Input("threatExceptions")]
+        private InputList<string>? _threatExceptions;
+
+        /// <summary>
+        /// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        /// </summary>
+        public InputList<string> ThreatExceptions
+        {
+            get => _threatExceptions ?? (_threatExceptions = new InputList<string>());
+            set => _threatExceptions = value;
+        }
 
         /// <summary>
         /// Last update timestamp in RFC 3339 text format.

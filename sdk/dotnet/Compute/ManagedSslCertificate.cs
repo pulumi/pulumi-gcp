@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Expire time of the certificate.
+        /// Expire time of the certificate in RFC3339 text format.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expire time of the certificate.
+        /// Expire time of the certificate in RFC3339 text format.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }

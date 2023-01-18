@@ -11,9 +11,12 @@ import (
 )
 
 type PreventionDeidentifyTemplateDeidentifyConfig struct {
-	// Specifies free-text based transformations to be applied to the dataset.
+	// Treat the dataset as free-form text and apply the same free text transformation everywhere
 	// Structure is documented below.
-	InfoTypeTransformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations `pulumi:"infoTypeTransformations"`
+	InfoTypeTransformations *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations `pulumi:"infoTypeTransformations"`
+	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+	// Structure is documented below.
+	RecordTransformations *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations `pulumi:"recordTransformations"`
 }
 
 // PreventionDeidentifyTemplateDeidentifyConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigOutput values.
@@ -28,9 +31,12 @@ type PreventionDeidentifyTemplateDeidentifyConfigInput interface {
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigArgs struct {
-	// Specifies free-text based transformations to be applied to the dataset.
+	// Treat the dataset as free-form text and apply the same free text transformation everywhere
 	// Structure is documented below.
-	InfoTypeTransformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsInput `pulumi:"infoTypeTransformations"`
+	InfoTypeTransformations PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrInput `pulumi:"infoTypeTransformations"`
+	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+	// Structure is documented below.
+	RecordTransformations PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput `pulumi:"recordTransformations"`
 }
 
 func (PreventionDeidentifyTemplateDeidentifyConfigArgs) ElementType() reflect.Type {
@@ -110,12 +116,20 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) ToPreventionDeidenti
 	}).(PreventionDeidentifyTemplateDeidentifyConfigPtrOutput)
 }
 
-// Specifies free-text based transformations to be applied to the dataset.
+// Treat the dataset as free-form text and apply the same free text transformation everywhere
 // Structure is documented below.
-func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput {
-	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
 		return v.InfoTypeTransformations
-	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsOutput)
+	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
+}
+
+// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigOutput) RecordTransformations() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+		return v.RecordTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput)
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
@@ -142,15 +156,26 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) Elem() Prevention
 	}).(PreventionDeidentifyTemplateDeidentifyConfigOutput)
 }
 
-// Specifies free-text based transformations to be applied to the dataset.
+// Treat the dataset as free-form text and apply the same free text transformation everywhere
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) InfoTypeTransformations() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
 		if v == nil {
 			return nil
 		}
-		return &v.InfoTypeTransformations
+		return v.InfoTypeTransformations
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsPtrOutput)
+}
+
+// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigPtrOutput) RecordTransformations() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+		if v == nil {
+			return nil
+		}
+		return v.RecordTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput)
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations struct {
@@ -301,7 +326,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// all findings that correspond to infoTypes that were requested in InspectConfig.
 	// Structure is documented below.
 	InfoTypes []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType `pulumi:"infoTypes"`
-	// Primitive transformation to apply to the infoType.
+	// Apply the transformation to the entire field.
+	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 	// Structure is documented below.
 	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation `pulumi:"primitiveTransformation"`
 }
@@ -322,7 +348,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// all findings that correspond to infoTypes that were requested in InspectConfig.
 	// Structure is documented below.
 	InfoTypes PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput `pulumi:"infoTypes"`
-	// Primitive transformation to apply to the infoType.
+	// Apply the transformation to the entire field.
+	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 	// Structure is documented below.
 	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput `pulumi:"primitiveTransformation"`
 }
@@ -387,7 +414,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput)
 }
 
-// Primitive transformation to apply to the infoType.
+// Apply the transformation to the entire field.
+// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) PrimitiveTransformation() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
@@ -416,7 +444,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name string `pulumi:"name"`
 }
 
@@ -432,7 +460,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -487,7 +515,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType) string {
 		return v.Name
@@ -515,8 +543,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation struct {
-	// Partially mask a string by replacing a given number of characters with a fixed character.
-	// Masking can start from the beginning or end of the string.
+	// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
 	// Structure is documented below.
 	CharacterMaskConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig `pulumi:"characterMaskConfig"`
 	// Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
@@ -526,7 +553,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 	// Structure is documented below.
 	CryptoReplaceFfxFpeConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig `pulumi:"cryptoReplaceFfxFpeConfig"`
-	// Replace each input value with a given value.
+	// Replace with a specified value.
 	// Structure is documented below.
 	ReplaceConfig *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig `pulumi:"replaceConfig"`
 	// Replace each matching finding with the name of the info type.
@@ -545,8 +572,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs struct {
-	// Partially mask a string by replacing a given number of characters with a fixed character.
-	// Masking can start from the beginning or end of the string.
+	// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
 	// Structure is documented below.
 	CharacterMaskConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
 	// Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
@@ -556,7 +582,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 	// Structure is documented below.
 	CryptoReplaceFfxFpeConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrInput `pulumi:"cryptoReplaceFfxFpeConfig"`
-	// Replace each input value with a given value.
+	// Replace with a specified value.
 	// Structure is documented below.
 	ReplaceConfig PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrInput `pulumi:"replaceConfig"`
 	// Replace each matching finding with the name of the info type.
@@ -589,8 +615,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	return o
 }
 
-// Partially mask a string by replacing a given number of characters with a fixed character.
-// Masking can start from the beginning or end of the string.
+// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) CharacterMaskConfig() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
@@ -615,7 +640,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput)
 }
 
-// Replace each input value with a given value.
+// Replace with a specified value.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput) ReplaceConfig() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
@@ -634,11 +659,9 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 	// Structure is documented below.
 	CharactersToIgnores []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore `pulumi:"charactersToIgnores"`
-	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-	// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-	// strings, and 0 for digits.
+	// is *
 	MaskingCharacter *string `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	// is -4
 	NumberToMask *int `pulumi:"numberToMask"`
 	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
 	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
@@ -660,11 +683,9 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 	// Structure is documented below.
 	CharactersToIgnores PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput `pulumi:"charactersToIgnores"`
-	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-	// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-	// strings, and 0 for digits.
+	// is *
 	MaskingCharacter pulumi.StringPtrInput `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	// is -4
 	NumberToMask pulumi.IntPtrInput `pulumi:"numberToMask"`
 	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
 	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
@@ -756,16 +777,14 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
 }
 
-// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-// strings, and 0 for digits.
+// is *
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) MaskingCharacter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *string {
 		return v.MaskingCharacter
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+// is -4
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) NumberToMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *int {
 		return v.NumberToMask
@@ -815,9 +834,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
 }
 
-// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-// strings, and 0 for digits.
+// is *
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) MaskingCharacter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *string {
 		if v == nil {
@@ -827,7 +844,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+// is -4
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) NumberToMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) *int {
 		if v == nil {
@@ -1199,7 +1216,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 }
 
@@ -1215,7 +1232,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -1296,7 +1313,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext) *string {
 		return v.Name
@@ -1327,7 +1344,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext) *string {
 		if v == nil {
@@ -1695,7 +1712,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name string `pulumi:"name"`
 }
 
@@ -1711,7 +1728,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1792,7 +1809,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient) string {
 		return v.Name
@@ -1823,7 +1840,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient) *string {
 		if v == nil {
@@ -1977,7 +1994,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 }
 
@@ -1993,7 +2010,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2074,7 +2091,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType) *string {
 		return v.Name
@@ -2105,7 +2122,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType) *string {
 		if v == nil {
@@ -2424,7 +2441,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 }
 
@@ -2440,7 +2457,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2521,7 +2538,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext) *string {
 		return v.Name
@@ -2552,7 +2569,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext) *string {
 		if v == nil {
@@ -2920,7 +2937,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name string `pulumi:"name"`
 }
 
@@ -2936,7 +2953,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3017,7 +3034,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient) string {
 		return v.Name
@@ -3048,7 +3065,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient) *string {
 		if v == nil {
@@ -3202,7 +3219,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 }
 
@@ -3218,7 +3235,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3299,7 +3316,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType) *string {
 		return v.Name
@@ -3330,7 +3347,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType) *string {
 		if v == nil {
@@ -3342,6 +3359,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig struct {
 	// Replace each input value with a given value.
+	// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
 	// Structure is documented below.
 	NewValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue `pulumi:"newValue"`
 }
@@ -3359,6 +3377,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs struct {
 	// Replace each input value with a given value.
+	// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
 	// Structure is documented below.
 	NewValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueInput `pulumi:"newValue"`
 }
@@ -3441,6 +3460,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Replace each input value with a given value.
+// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
@@ -3473,6 +3493,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Replace each input value with a given value.
+// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigPtrOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
@@ -3494,15 +3515,14 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
-	// An integer value.
+	// An integer value (int64 format)
 	IntegerValue *int `pulumi:"integerValue"`
 	// A string value.
 	StringValue *string `pulumi:"stringValue"`
 	// Represents a time of day.
 	// Structure is documented below.
 	TimeValue *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue `pulumi:"timeValue"`
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	TimestampValue *string `pulumi:"timestampValue"`
 }
 
@@ -3528,15 +3548,14 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
-	// An integer value.
+	// An integer value (int64 format)
 	IntegerValue pulumi.IntPtrInput `pulumi:"integerValue"`
 	// A string value.
 	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 	// Represents a time of day.
 	// Structure is documented below.
 	TimeValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput `pulumi:"timeValue"`
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
 }
 
@@ -3647,7 +3666,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.Float64PtrOutput)
 }
 
-// An integer value.
+// An integer value (int64 format)
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) IntegerValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *int {
 		return v.IntegerValue
@@ -3669,8 +3688,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
 }
 
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) TimestampValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		return v.TimestampValue
@@ -3743,7 +3761,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.Float64PtrOutput)
 }
 
-// An integer value.
+// An integer value (int64 format)
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) IntegerValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *int {
 		if v == nil {
@@ -3774,8 +3792,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
 }
 
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) TimestampValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		if v == nil {
@@ -3786,12 +3803,11 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue struct {
-	// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-	// year by itself or a year and month where the day is not significant.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 	Day *int `pulumi:"day"`
-	// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
-	// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 	Year *int `pulumi:"year"`
 }
 
@@ -3807,12 +3823,11 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs struct {
-	// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-	// year by itself or a year and month where the day is not significant.
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 	Day pulumi.IntPtrInput `pulumi:"day"`
-	// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
-	// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 	Year pulumi.IntPtrInput `pulumi:"year"`
 }
 
@@ -3893,22 +3908,21 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
 }
 
-// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-// year by itself or a year and month where the day is not significant.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		return v.Day
 	}).(pulumi.IntPtrOutput)
 }
 
-// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		return v.Month
 	}).(pulumi.IntPtrOutput)
 }
 
-// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		return v.Year
@@ -3939,8 +3953,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput)
 }
 
-// Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-// year by itself or a year and month where the day is not significant.
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		if v == nil {
@@ -3950,7 +3963,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.IntPtrOutput)
 }
 
-// Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Month() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		if v == nil {
@@ -3960,7 +3973,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.IntPtrOutput)
 }
 
-// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Year() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		if v == nil {
@@ -3971,13 +3984,13 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 	Hours *int `pulumi:"hours"`
 	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes *int `pulumi:"minutes"`
 	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 	Nanos *int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds *int `pulumi:"seconds"`
 }
 
@@ -3993,13 +4006,13 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntPtrInput `pulumi:"hours"`
 	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
 	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
 }
 
@@ -4080,7 +4093,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
 		return v.Hours
@@ -4101,7 +4114,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must normally be from 0 to 59.
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
 		return v.Seconds
@@ -4132,7 +4145,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23.
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
 		if v == nil {
@@ -4162,9 +4175,4511 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must normally be from 0 to 59.
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations struct {
+	// Transform the record by applying various field transformations.
+	// Structure is documented below.
+	FieldTransformations []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation `pulumi:"fieldTransformations"`
+	// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+	// Structure is documented below.
+	RecordSuppressions []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression `pulumi:"recordSuppressions"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs struct {
+	// Transform the record by applying various field transformations.
+	// Structure is documented below.
+	FieldTransformations PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayInput `pulumi:"fieldTransformations"`
+	// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+	// Structure is documented below.
+	RecordSuppressions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayInput `pulumi:"recordSuppressions"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput)
+}
+
+// Transform the record by applying various field transformations.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) FieldTransformations() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
+		return v.FieldTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput)
+}
+
+// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput) RecordSuppressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
+		return v.RecordSuppressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput)
+}
+
+// Transform the record by applying various field transformations.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) FieldTransformations() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.FieldTransformations
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput)
+}
+
+// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput) RecordSuppressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
+		if v == nil {
+			return nil
+		}
+		return v.RecordSuppressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation struct {
+	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+	// Structure is documented below.
+	Condition *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition `pulumi:"condition"`
+	// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+	// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+	// Structure is documented below.
+	Fields []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField `pulumi:"fields"`
+	// Apply the transformation to the entire field.
+	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+	// Structure is documented below.
+	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation `pulumi:"primitiveTransformation"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs struct {
+	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+	// Structure is documented below.
+	Condition PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput `pulumi:"condition"`
+	// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+	// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+	// Structure is documented below.
+	Fields PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayInput `pulumi:"fields"`
+	// Apply the transformation to the entire field.
+	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+	// Structure is documented below.
+	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationInput `pulumi:"primitiveTransformation"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput {
+	return o
+}
+
+// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) Condition() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
+		return v.Condition
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput)
+}
+
+// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) Fields() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField {
+		return v.Fields
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput)
+}
+
+// Apply the transformation to the entire field.
+// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) PrimitiveTransformation() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation {
+		return v.PrimitiveTransformation
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition struct {
+	// An expression, consisting of an operator and conditions.
+	// Structure is documented below.
+	Expressions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions `pulumi:"expressions"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs struct {
+	// An expression, consisting of an operator and conditions.
+	// Structure is documented below.
+	Expressions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput `pulumi:"expressions"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput) Expressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+		return v.Expressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput) Expressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions `pulumi:"conditions"`
+	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+	// Default value is `AND`.
+	// Possible values are `AND`.
+	LogicalOperator *string `pulumi:"logicalOperator"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
+	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+	// Default value is `AND`.
+	// Possible values are `AND`.
+	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput)
+}
+
+// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+// Default value is `AND`.
+// Possible values are `AND`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *string {
+		return v.LogicalOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput)
+}
+
+// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+// Default value is `AND`.
+// Possible values are `AND`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition `pulumi:"conditions"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayInput `pulumi:"conditions"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition {
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition struct {
+	// Field within the record this condition is evaluated against.
+	// Structure is documented below.
+	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	Operator string `pulumi:"operator"`
+	// Value to compare against. [Mandatory, except for EXISTS tests.]
+	// Structure is documented below.
+	Value *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue `pulumi:"value"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs struct {
+	// Field within the record this condition is evaluated against.
+	// Structure is documented below.
+	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value to compare against. [Mandatory, except for EXISTS tests.]
+	// Structure is documented below.
+	Value PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput `pulumi:"value"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput {
+	return o
+}
+
+// Field within the record this condition is evaluated against.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) Field() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField {
+		return v.Field
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput)
+}
+
+// Operator used to compare the field or infoType to the value.
+// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// Value to compare against. [Mandatory, except for EXISTS tests.]
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) Value() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue {
+		return v.Value
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField struct {
+	// Name describing the field.
+	Name *string `pulumi:"name"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs struct {
+	// Name describing the field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput {
+	return o
+}
+
+// Name describing the field.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue struct {
+	// A boolean value.
+	BooleanValue *bool `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue *float64 `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue *string `pulumi:"integerValue"`
+	// A string value.
+	StringValue *string `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue *string `pulumi:"timestampValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs struct {
+	// A boolean value.
+	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue pulumi.StringPtrInput `pulumi:"integerValue"`
+	// A string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *bool {
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *float64 {
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+		if v == nil {
+			return nil
+		}
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+		if v == nil {
+			return nil
+		}
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField struct {
+	// Name describing the field.
+	Name *string `pulumi:"name"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs struct {
+	// Name describing the field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput {
+	return o
+}
+
+// Name describing the field.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation struct {
+	// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+	// Structure is documented below.
+	CharacterMaskConfig *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig `pulumi:"characterMaskConfig"`
+	// Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+	RedactConfig *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig `pulumi:"redactConfig"`
+	// Replace with a specified value.
+	// Structure is documented below.
+	ReplaceConfig *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig `pulumi:"replaceConfig"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs struct {
+	// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+	// Structure is documented below.
+	CharacterMaskConfig PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
+	// Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+	RedactConfig PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput `pulumi:"redactConfig"`
+	// Replace with a specified value.
+	// Structure is documented below.
+	ReplaceConfig PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput `pulumi:"replaceConfig"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput {
+	return o
+}
+
+// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) CharacterMaskConfig() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
+		return v.CharacterMaskConfig
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+// Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) RedactConfig() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
+		return v.RedactConfig
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput)
+}
+
+// Replace with a specified value.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput) ReplaceConfig() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig {
+		return v.ReplaceConfig
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig struct {
+	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+	// Structure is documented below.
+	CharactersToIgnores []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore `pulumi:"charactersToIgnores"`
+	// is *
+	MaskingCharacter *string `pulumi:"maskingCharacter"`
+	// is -4
+	NumberToMask *int `pulumi:"numberToMask"`
+	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+	ReverseOrder *bool `pulumi:"reverseOrder"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs struct {
+	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+	// Structure is documented below.
+	CharactersToIgnores PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput `pulumi:"charactersToIgnores"`
+	// is *
+	MaskingCharacter pulumi.StringPtrInput `pulumi:"maskingCharacter"`
+	// is -4
+	NumberToMask pulumi.IntPtrInput `pulumi:"numberToMask"`
+	// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+	// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+	ReverseOrder pulumi.BoolPtrInput `pulumi:"reverseOrder"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
+}
+
+// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		return v.CharactersToIgnores
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+// is *
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *string {
+		return v.MaskingCharacter
+	}).(pulumi.StringPtrOutput)
+}
+
+// is -4
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) NumberToMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *int {
+		return v.NumberToMask
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput) ReverseOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *bool {
+		return v.ReverseOrder
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput)
+}
+
+// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		if v == nil {
+			return nil
+		}
+		return v.CharactersToIgnores
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+// is *
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaskingCharacter
+	}).(pulumi.StringPtrOutput)
+}
+
+// is -4
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) NumberToMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberToMask
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) ReverseOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReverseOrder
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore struct {
+	// Characters to not transform when masking.
+	CharactersToSkip *string `pulumi:"charactersToSkip"`
+	// Common characters to not transform when masking. Useful to avoid removing punctuation.
+	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	CommonCharactersToIgnore *string `pulumi:"commonCharactersToIgnore"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs struct {
+	// Characters to not transform when masking.
+	CharactersToSkip pulumi.StringPtrInput `pulumi:"charactersToSkip"`
+	// Common characters to not transform when masking. Useful to avoid removing punctuation.
+	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return o
+}
+
+// Characters to not transform when masking.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CharactersToSkip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
+		return v.CharactersToSkip
+	}).(pulumi.StringPtrOutput)
+}
+
+// Common characters to not transform when masking. Useful to avoid removing punctuation.
+// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CommonCharactersToIgnore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
+		return v.CommonCharactersToIgnore
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig struct {
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs struct {
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig struct {
+	// Replace each input value with a given value.
+	// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+	// Structure is documented below.
+	NewValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue `pulumi:"newValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs struct {
+	// Replace each input value with a given value.
+	// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+	// Structure is documented below.
+	NewValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueInput `pulumi:"newValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput)
+}
+
+// Replace each input value with a given value.
+// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+		return v.NewValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput)
+}
+
+// Replace each input value with a given value.
+// The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput) NewValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+		if v == nil {
+			return nil
+		}
+		return &v.NewValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue struct {
+	// A boolean value.
+	BooleanValue *bool `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue *float64 `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue *string `pulumi:"integerValue"`
+	// A string value.
+	StringValue *string `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue *string `pulumi:"timestampValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs struct {
+	// A boolean value.
+	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue pulumi.StringPtrInput `pulumi:"integerValue"`
+	// A string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *bool {
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *float64 {
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		if v == nil {
+			return nil
+		}
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		if v == nil {
+			return nil
+		}
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression struct {
+	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+	// Structure is documented below.
+	Condition *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition `pulumi:"condition"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs struct {
+	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+	// Structure is documented below.
+	Condition PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput `pulumi:"condition"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput {
+	return o
+}
+
+// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput) Condition() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
+		return v.Condition
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition struct {
+	// An expression, consisting of an operator and conditions.
+	// Structure is documented below.
+	Expressions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions `pulumi:"expressions"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs struct {
+	// An expression, consisting of an operator and conditions.
+	// Structure is documented below.
+	Expressions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput `pulumi:"expressions"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput) Expressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+		return v.Expressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput)
+}
+
+// An expression, consisting of an operator and conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput) Expressions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions `pulumi:"conditions"`
+	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+	// Default value is `AND`.
+	// Possible values are `AND`.
+	LogicalOperator *string `pulumi:"logicalOperator"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
+	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+	// Default value is `AND`.
+	// Possible values are `AND`.
+	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput)
+}
+
+// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+// Default value is `AND`.
+// Possible values are `AND`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *string {
+		return v.LogicalOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput)
+}
+
+// The operator to apply to the result of conditions. Default and currently only supported value is AND.
+// Default value is `AND`.
+// Possible values are `AND`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition `pulumi:"conditions"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs struct {
+	// A collection of conditions.
+	// Structure is documented below.
+	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayInput `pulumi:"conditions"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition {
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput)
+}
+
+// A collection of conditions.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions) []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition struct {
+	// Field within the record this condition is evaluated against.
+	// Structure is documented below.
+	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	Operator string `pulumi:"operator"`
+	// Value to compare against. [Mandatory, except for EXISTS tests.]
+	// Structure is documented below.
+	Value *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue `pulumi:"value"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs struct {
+	// Field within the record this condition is evaluated against.
+	// Structure is documented below.
+	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value to compare against. [Mandatory, except for EXISTS tests.]
+	// Structure is documented below.
+	Value PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput `pulumi:"value"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray{ PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs{...} }
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray []PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionInput
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput {
+	return o
+}
+
+// Field within the record this condition is evaluated against.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) Field() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField {
+		return v.Field
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput)
+}
+
+// Operator used to compare the field or infoType to the value.
+// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// Value to compare against. [Mandatory, except for EXISTS tests.]
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) Value() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue {
+		return v.Value
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition {
+		return vs[0].([]PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition)[vs[1].(int)]
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField struct {
+	// Name describing the field.
+	Name *string `pulumi:"name"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs struct {
+	// Name describing the field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput {
+	return o
+}
+
+// Name describing the field.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue struct {
+	// A boolean value.
+	BooleanValue *bool `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue *float64 `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue *string `pulumi:"integerValue"`
+	// A string value.
+	StringValue *string `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue *string `pulumi:"timestampValue"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs struct {
+	// A boolean value.
+	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
+	// Represents a whole or partial calendar date.
+	// Structure is documented below.
+	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput `pulumi:"dateValue"`
+	// Represents a day of the week.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
+	// A float value.
+	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
+	// An integer value (int64 format)
+	IntegerValue pulumi.StringPtrInput `pulumi:"integerValue"`
+	// A string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// Represents a time of day.
+	// Structure is documented below.
+	TimeValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput `pulumi:"timeValue"`
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *bool {
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *float64 {
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput)
+}
+
+// A boolean value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a whole or partial calendar date.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) DateValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+		if v == nil {
+			return nil
+		}
+		return v.DateValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Represents a day of the week.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeekValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A float value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) FloatValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FloatValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value (int64 format)
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) IntegerValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day.
+// Structure is documented below.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) TimeValue() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+		if v == nil {
+			return nil
+		}
+		return v.TimeValue
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueInput` via:
+//
+//	PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs{...}
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput)
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput).ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx)
+}
+
+// PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput is an input type that accepts PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs, PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtr and PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput values.
+// You can construct a concrete instance of `PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput` via:
+//
+//	        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput
+	ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput
+}
+
+type preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrType PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs
+
+func PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtr(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput {
+	return (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrType)(v)
+}
+
+func (*preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return i.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrType) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+		return &v
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) ToPreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Elem() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue
+		return ret
+	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue) *int {
 		if v == nil {
 			return nil
 		}
@@ -5479,6 +9994,8 @@ type PreventionInspectTemplateInspectConfigInfoType struct {
 	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name string `pulumi:"name"`
+	// Version of the information type to use. By default, the version is set to stable
+	Version *string `pulumi:"version"`
 }
 
 // PreventionInspectTemplateInspectConfigInfoTypeInput is an input type that accepts PreventionInspectTemplateInspectConfigInfoTypeArgs and PreventionInspectTemplateInspectConfigInfoTypeOutput values.
@@ -5496,6 +10013,8 @@ type PreventionInspectTemplateInspectConfigInfoTypeArgs struct {
 	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 	// or `projects/project-id/storedInfoTypes/432452342`.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Version of the information type to use. By default, the version is set to stable
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PreventionInspectTemplateInspectConfigInfoTypeArgs) ElementType() reflect.Type {
@@ -5553,6 +10072,11 @@ func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) ToPreventionInspec
 // or `projects/project-id/storedInfoTypes/432452342`.
 func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigInfoType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version of the information type to use. By default, the version is set to stable
+func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigInfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type PreventionInspectTemplateInspectConfigInfoTypeArrayOutput struct{ *pulumi.OutputState }
@@ -9224,6 +13748,10 @@ func (o PreventionJobTriggerInspectJobStorageConfigPtrOutput) TimespanConfig() P
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptions struct {
+	// Specifies the BigQuery fields that will be returned with findings.
+	// If not specified, no identifying fields will be returned for findings.
+	// Structure is documented below.
+	IdentifyingFields []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField `pulumi:"identifyingFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 	// specified. Cannot be used in conjunction with TimespanConfig.
@@ -9254,6 +13782,10 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput interface {
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs struct {
+	// Specifies the BigQuery fields that will be returned with findings.
+	// If not specified, no identifying fields will be returned for findings.
+	// Structure is documented below.
+	IdentifyingFields PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput `pulumi:"identifyingFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 	// specified. Cannot be used in conjunction with TimespanConfig.
@@ -9349,6 +13881,15 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) ToPrev
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput)
 }
 
+// Specifies the BigQuery fields that will be returned with findings.
+// If not specified, no identifying fields will be returned for findings.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) IdentifyingFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
+		return v.IdentifyingFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput)
+}
+
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 // If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 // specified. Cannot be used in conjunction with TimespanConfig.
@@ -9403,6 +13944,18 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Ele
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput)
 }
 
+// Specifies the BigQuery fields that will be returned with findings.
+// If not specified, no identifying fields will be returned for findings.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) IdentifyingFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifyingFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput)
+}
+
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 // If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 // specified. Cannot be used in conjunction with TimespanConfig.
@@ -9449,6 +14002,105 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Tab
 		}
 		return &v.TableReference
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField struct {
+	// Name of a BigQuery field to be returned with the findings.
+	Name string `pulumi:"name"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs struct {
+	// Name of a BigQuery field to be returned with the findings.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray{ PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs{...} }
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput {
+	return o
+}
+
+// Name of a BigQuery field to be returned with the findings.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput) Index(i pulumi.IntInput) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
+		return vs[0].([]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)[vs[1].(int)]
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput)
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference struct {
@@ -10464,7 +15116,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrOutput) Pa
 }
 
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind struct {
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name string `pulumi:"name"`
 }
 
@@ -10480,7 +15132,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindInput interf
 }
 
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs struct {
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10561,7 +15213,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput) T
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput)
 }
 
-// The name of the Datastore kind.
+// Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10590,7 +15242,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput)
 }
 
-// The name of the Datastore kind.
+// Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind) *string {
 		if v == nil {
@@ -10971,7 +15623,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrOutput) Time
 }
 
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField struct {
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name string `pulumi:"name"`
 }
 
@@ -10987,7 +15639,7 @@ type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInpu
 }
 
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs struct {
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11068,7 +15720,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldO
 	}).(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput)
 }
 
-// The name of the Datastore kind.
+// Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11097,7 +15749,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldP
 	}).(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput)
 }
 
-// The name of the Datastore kind.
+// Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField) *string {
 		if v == nil {
@@ -12963,6 +17615,59 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrInput)(nil)).Elem(), PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionInspectTemplateInspectConfigInput)(nil)).Elem(), PreventionInspectTemplateInspectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionInspectTemplateInspectConfigPtrInput)(nil)).Elem(), PreventionInspectTemplateInspectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionInspectTemplateInspectConfigCustomInfoTypeInput)(nil)).Elem(), PreventionInspectTemplateInspectConfigCustomInfoTypeArgs{})
@@ -13029,6 +17734,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{})
@@ -13120,6 +17827,59 @@ func init() {
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput{})
 	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueOutput{})
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValuePtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionInspectTemplateInspectConfigCustomInfoTypeOutput{})
@@ -13186,6 +17946,8 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput{})

@@ -16,6 +16,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     displayName: "Display Name Basic",
  *     packageName: "",
+ *     sha1Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+ *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
  * }, {
  *     provider: google_beta,
  * });
@@ -70,8 +72,8 @@ export class AndroidApp extends pulumi.CustomResource {
     }
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
@@ -81,11 +83,16 @@ export class AndroidApp extends pulumi.CustomResource {
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -98,6 +105,14 @@ export class AndroidApp extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     */
+    public readonly sha1Hashes!: pulumi.Output<string[] | undefined>;
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     */
+    public readonly sha256Hashes!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AndroidApp resource with the given unique name, arguments, and options.
@@ -115,9 +130,12 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["appId"] = state ? state.appId : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["packageName"] = state ? state.packageName : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sha1Hashes"] = state ? state.sha1Hashes : undefined;
+            resourceInputs["sha256Hashes"] = state ? state.sha256Hashes : undefined;
         } else {
             const args = argsOrState as AndroidAppArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -127,7 +145,10 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sha1Hashes"] = args ? args.sha1Hashes : undefined;
+            resourceInputs["sha256Hashes"] = args ? args.sha256Hashes : undefined;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -140,8 +161,8 @@ export class AndroidApp extends pulumi.CustomResource {
  */
 export interface AndroidAppState {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -151,11 +172,16 @@ export interface AndroidAppState {
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      */
     name?: pulumi.Input<string>;
     /**
@@ -168,6 +194,14 @@ export interface AndroidAppState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     */
+    sha1Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     */
+    sha256Hashes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -181,7 +215,7 @@ export interface AndroidAppArgs {
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      */
     displayName: pulumi.Input<string>;
     /**
@@ -194,4 +228,12 @@ export interface AndroidAppArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     */
+    sha1Hashes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     */
+    sha256Hashes?: pulumi.Input<pulumi.Input<string>[]>;
 }

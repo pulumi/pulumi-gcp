@@ -23,10 +23,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultService = new gcp.cloudrunv2.Service("default", {
- *     binaryAuthorization: {
- *         breakglassJustification: "Some justification",
- *         useDefault: true,
- *     },
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     location: "us-central1",
  *     template: {

@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
+ *     role: "roles/cloudkms.admin",
  * });
  * ```
  *
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *     },
  *     keyRingId: "your-key-ring-id",
  *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
+ *     role: "roles/cloudkms.admin",
  * });
  * ```
  *
@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     member: "user:jane@example.com",
- *     role: "roles/editor",
+ *     role: "roles/cloudkms.admin",
  * });
  * ```
  *
@@ -116,7 +116,7 @@ import * as utilities from "../utilities";
  *     },
  *     keyRingId: "your-key-ring-id",
  *     member: "user:jane@example.com",
- *     role: "roles/editor",
+ *     role: "roles/cloudkms.admin",
  * });
  * ```
  *
@@ -135,7 +135,7 @@ import * as utilities from "../utilities";
  * This binding resource can be imported using the `key_ring_id` and role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+ *  $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question.

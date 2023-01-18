@@ -22,14 +22,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore> charactersToIgnores;
     /**
-     * @return Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-     * strings, and 0 for digits.
+     * @return is *
      * 
      */
     private @Nullable String maskingCharacter;
     /**
-     * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * @return is -4
      * 
      */
     private @Nullable Integer numberToMask;
@@ -50,16 +48,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return this.charactersToIgnores == null ? List.of() : this.charactersToIgnores;
     }
     /**
-     * @return Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-     * strings, and 0 for digits.
+     * @return is *
      * 
      */
     public Optional<String> maskingCharacter() {
         return Optional.ofNullable(this.maskingCharacter);
     }
     /**
-     * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * @return is -4
      * 
      */
     public Optional<Integer> numberToMask() {

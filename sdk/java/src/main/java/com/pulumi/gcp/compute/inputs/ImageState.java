@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
+import com.pulumi.gcp.compute.inputs.ImageImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -122,6 +123,29 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<ImageGuestOsFeatureArgs>>> guestOsFeatures() {
         return Optional.ofNullable(this.guestOsFeatures);
+    }
+
+    /**
+     * Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="imageEncryptionKey")
+    private @Nullable Output<ImageImageEncryptionKeyArgs> imageEncryptionKey;
+
+    /**
+     * @return Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ImageImageEncryptionKeyArgs>> imageEncryptionKey() {
+        return Optional.ofNullable(this.imageEncryptionKey);
     }
 
     /**
@@ -325,6 +349,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.diskSizeGb = $.diskSizeGb;
         this.family = $.family;
         this.guestOsFeatures = $.guestOsFeatures;
+        this.imageEncryptionKey = $.imageEncryptionKey;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.licenses = $.licenses;
@@ -505,6 +530,35 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder guestOsFeatures(ImageGuestOsFeatureArgs... guestOsFeatures) {
             return guestOsFeatures(List.of(guestOsFeatures));
+        }
+
+        /**
+         * @param imageEncryptionKey Encrypts the image using a customer-supplied encryption key.
+         * After you encrypt an image with a customer-supplied key, you must
+         * provide the same key if you use the image later (e.g. to create a
+         * disk from the image)
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageEncryptionKey(@Nullable Output<ImageImageEncryptionKeyArgs> imageEncryptionKey) {
+            $.imageEncryptionKey = imageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param imageEncryptionKey Encrypts the image using a customer-supplied encryption key.
+         * After you encrypt an image with a customer-supplied key, you must
+         * provide the same key if you use the image later (e.g. to create a
+         * disk from the image)
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageEncryptionKey(ImageImageEncryptionKeyArgs imageEncryptionKey) {
+            return imageEncryptionKey(Output.of(imageEncryptionKey));
         }
 
         /**

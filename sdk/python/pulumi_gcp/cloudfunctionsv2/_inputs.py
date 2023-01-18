@@ -664,11 +664,13 @@ class FunctionIamMemberConditionArgs:
 class FunctionServiceConfigArgs:
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
+                 available_cpu: Optional[pulumi.Input[str]] = None,
                  available_memory: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gcf_uri: Optional[pulumi.Input[str]] = None,
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  max_instance_count: Optional[pulumi.Input[int]] = None,
+                 max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
                  secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
@@ -680,6 +682,7 @@ class FunctionServiceConfigArgs:
                  vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        :param pulumi.Input[str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param pulumi.Input[str] available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
@@ -691,6 +694,7 @@ class FunctionServiceConfigArgs:
                Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
         :param pulumi.Input[int] max_instance_count: The limit on the maximum number of function instances that may coexist at a
                given time.
+        :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration.
@@ -710,6 +714,8 @@ class FunctionServiceConfigArgs:
         """
         if all_traffic_on_latest_revision is not None:
             pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        if available_cpu is not None:
+            pulumi.set(__self__, "available_cpu", available_cpu)
         if available_memory is not None:
             pulumi.set(__self__, "available_memory", available_memory)
         if environment_variables is not None:
@@ -720,6 +726,8 @@ class FunctionServiceConfigArgs:
             pulumi.set(__self__, "ingress_settings", ingress_settings)
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
+        if max_instance_request_concurrency is not None:
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if secret_environment_variables is not None:
@@ -750,6 +758,18 @@ class FunctionServiceConfigArgs:
     @all_traffic_on_latest_revision.setter
     def all_traffic_on_latest_revision(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "all_traffic_on_latest_revision", value)
+
+    @property
+    @pulumi.getter(name="availableCpu")
+    def available_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        """
+        return pulumi.get(self, "available_cpu")
+
+    @available_cpu.setter
+    def available_cpu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "available_cpu", value)
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -816,6 +836,18 @@ class FunctionServiceConfigArgs:
     @max_instance_count.setter
     def max_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instance_count", value)
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
+
+    @max_instance_request_concurrency.setter
+    def max_instance_request_concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_request_concurrency", value)
 
     @property
     @pulumi.getter(name="minInstanceCount")

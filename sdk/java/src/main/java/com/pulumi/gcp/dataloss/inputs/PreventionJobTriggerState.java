@@ -81,14 +81,14 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the Datastore kind.
+     * Name of a BigQuery field to be returned with the findings.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Datastore kind.
+     * @return Name of a BigQuery field to be returned with the findings.
      * 
      */
     public Optional<Output<String>> name() {
@@ -266,7 +266,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the Datastore kind.
+         * @param name Name of a BigQuery field to be returned with the findings.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the Datastore kind.
+         * @param name Name of a BigQuery field to be returned with the findings.
          * 
          * @return builder
          * 

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionProfile{}
 	case "gcp:datastream/privateConnection:PrivateConnection":
 		r = &PrivateConnection{}
+	case "gcp:datastream/stream:Stream":
+		r = &Stream{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"datastream/privateConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"datastream/stream",
 		&module{version},
 	)
 }

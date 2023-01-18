@@ -56,6 +56,11 @@ public final class GetBackendServiceResult {
      */
     private String fingerprint;
     /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    private Integer generatedId;
+    /**
      * @return The set of HTTP/HTTPS health checks used by the Backend Service.
      * 
      */
@@ -161,6 +166,13 @@ public final class GetBackendServiceResult {
         return this.fingerprint;
     }
     /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Integer generatedId() {
+        return this.generatedId;
+    }
+    /**
      * @return The set of HTTP/HTTPS health checks used by the Backend Service.
      * 
      */
@@ -259,6 +271,7 @@ public final class GetBackendServiceResult {
         private String description;
         private Boolean enableCdn;
         private String fingerprint;
+        private Integer generatedId;
         private List<String> healthChecks;
         private List<GetBackendServiceIap> iaps;
         private String id;
@@ -291,6 +304,7 @@ public final class GetBackendServiceResult {
     	      this.description = defaults.description;
     	      this.enableCdn = defaults.enableCdn;
     	      this.fingerprint = defaults.fingerprint;
+    	      this.generatedId = defaults.generatedId;
     	      this.healthChecks = defaults.healthChecks;
     	      this.iaps = defaults.iaps;
     	      this.id = defaults.id;
@@ -390,6 +404,11 @@ public final class GetBackendServiceResult {
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder generatedId(Integer generatedId) {
+            this.generatedId = Objects.requireNonNull(generatedId);
             return this;
         }
         @CustomType.Setter
@@ -502,6 +521,7 @@ public final class GetBackendServiceResult {
             o.description = description;
             o.enableCdn = enableCdn;
             o.fingerprint = fingerprint;
+            o.generatedId = generatedId;
             o.healthChecks = healthChecks;
             o.iaps = iaps;
             o.id = id;

@@ -15,6 +15,7 @@ __all__ = [
     'FeatureMembershipConfigmanagementBinauthz',
     'FeatureMembershipConfigmanagementConfigSync',
     'FeatureMembershipConfigmanagementConfigSyncGit',
+    'FeatureMembershipConfigmanagementConfigSyncOci',
     'FeatureMembershipConfigmanagementHierarchyController',
     'FeatureMembershipConfigmanagementPolicyController',
     'FeatureMembershipConfigmanagementPolicyControllerMonitoring',
@@ -161,16 +162,21 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
 
     def __init__(__self__, *,
                  git: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit'] = None,
+                 oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
         """
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: -
                (Optional) Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: -
+               (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         :param bool prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if oci is not None:
+            pulumi.set(__self__, "oci", oci)
         if prevent_drift is not None:
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
@@ -184,6 +190,15 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter
+    def oci(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci']:
+        """
+        -
+        (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        """
+        return pulumi.get(self, "oci")
 
     @property
     @pulumi.getter(name="preventDrift")
@@ -245,14 +260,14 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
                  sync_rev: Optional[str] = None,
                  sync_wait_secs: Optional[str] = None):
         """
-        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
         :param str https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
-        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
-        :param str secret_type: Type of secret configured for access to the Git repo.
+        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        :param str secret_type: Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
         :param str sync_branch: The branch of the repository to sync from. Default: master.
-        :param str sync_repo: The URL of the Git repository to use as the source of truth.
+        :param str sync_repo: The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
         :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
-        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
+        :param str sync_wait_secs: Period in seconds(int64 format) between consecutive syncs. Default: 15.
         """
         if gcp_service_account_email is not None:
             pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
@@ -275,7 +290,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="gcpServiceAccountEmail")
     def gcp_service_account_email(self) -> Optional[str]:
         """
-        The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
         """
         return pulumi.get(self, "gcp_service_account_email")
 
@@ -291,7 +306,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="policyDir")
     def policy_dir(self) -> Optional[str]:
         """
-        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
         """
         return pulumi.get(self, "policy_dir")
 
@@ -299,7 +314,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="secretType")
     def secret_type(self) -> Optional[str]:
         """
-        Type of secret configured for access to the Git repo.
+        Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
         """
         return pulumi.get(self, "secret_type")
 
@@ -315,7 +330,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="syncRepo")
     def sync_repo(self) -> Optional[str]:
         """
-        The URL of the Git repository to use as the source of truth.
+        The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
         """
         return pulumi.get(self, "sync_repo")
 
@@ -331,7 +346,99 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="syncWaitSecs")
     def sync_wait_secs(self) -> Optional[str]:
         """
-        Period in seconds between consecutive syncs. Default: 15.
+        Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class FeatureMembershipConfigmanagementConfigSyncOci(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "secretType":
+            suggest = "secret_type"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementConfigSyncOci. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipConfigmanagementConfigSyncOci.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipConfigmanagementConfigSyncOci.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_service_account_email: Optional[str] = None,
+                 policy_dir: Optional[str] = None,
+                 secret_type: Optional[str] = None,
+                 sync_repo: Optional[str] = None,
+                 sync_wait_secs: Optional[str] = None):
+        """
+        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        :param str secret_type: Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        :param str sync_repo: The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        :param str sync_wait_secs: Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        """
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[str]:
+        """
+        The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[str]:
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[str]:
+        """
+        Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[str]:
+        """
+        The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[str]:
+        """
+        Period in seconds(int64 format) between consecutive syncs. Default: 15.
         """
         return pulumi.get(self, "sync_wait_secs")
 
@@ -564,7 +671,6 @@ class FeatureMembershipMesh(dict):
                  control_plane: Optional[str] = None,
                  management: Optional[str] = None):
         """
-        :param str control_plane: Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
         :param str management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
         if control_plane is not None:
@@ -575,9 +681,6 @@ class FeatureMembershipMesh(dict):
     @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional[str]:
-        """
-        Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
-        """
         return pulumi.get(self, "control_plane")
 
     @property

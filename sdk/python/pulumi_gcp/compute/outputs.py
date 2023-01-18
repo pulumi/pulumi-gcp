@@ -77,6 +77,7 @@ __all__ = [
     'ImageGuestOsFeature',
     'ImageIamBindingCondition',
     'ImageIamMemberCondition',
+    'ImageImageEncryptionKey',
     'ImageRawDisk',
     'InstanceAdvancedMachineFeatures',
     'InstanceAttachedDisk',
@@ -123,6 +124,8 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPolicies',
     'InstanceGroupManagerNamedPort',
     'InstanceGroupManagerStatefulDisk',
+    'InstanceGroupManagerStatefulExternalIp',
+    'InstanceGroupManagerStatefulInternalIp',
     'InstanceGroupManagerStatus',
     'InstanceGroupManagerStatusAllInstancesConfig',
     'InstanceGroupManagerStatusStateful',
@@ -151,6 +154,8 @@ __all__ = [
     'InstanceTemplateConfidentialInstanceConfig',
     'InstanceTemplateDisk',
     'InstanceTemplateDiskDiskEncryptionKey',
+    'InstanceTemplateDiskSourceImageEncryptionKey',
+    'InstanceTemplateDiskSourceSnapshotEncryptionKey',
     'InstanceTemplateGuestAccelerator',
     'InstanceTemplateNetworkInterface',
     'InstanceTemplateNetworkInterfaceAccessConfig',
@@ -231,6 +236,8 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPolicies',
     'RegionInstanceGroupManagerNamedPort',
     'RegionInstanceGroupManagerStatefulDisk',
+    'RegionInstanceGroupManagerStatefulExternalIp',
+    'RegionInstanceGroupManagerStatefulInternalIp',
     'RegionInstanceGroupManagerStatus',
     'RegionInstanceGroupManagerStatusAllInstancesConfig',
     'RegionInstanceGroupManagerStatusStateful',
@@ -499,6 +506,20 @@ __all__ = [
     'GetInstanceBootDiskResult',
     'GetInstanceBootDiskInitializeParamResult',
     'GetInstanceConfidentialInstanceConfigResult',
+    'GetInstanceGroupManagerAllInstancesConfigResult',
+    'GetInstanceGroupManagerAutoHealingPolicyResult',
+    'GetInstanceGroupManagerNamedPortResult',
+    'GetInstanceGroupManagerStatefulDiskResult',
+    'GetInstanceGroupManagerStatefulExternalIpResult',
+    'GetInstanceGroupManagerStatefulInternalIpResult',
+    'GetInstanceGroupManagerStatusResult',
+    'GetInstanceGroupManagerStatusAllInstancesConfigResult',
+    'GetInstanceGroupManagerStatusStatefulResult',
+    'GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult',
+    'GetInstanceGroupManagerStatusVersionTargetResult',
+    'GetInstanceGroupManagerUpdatePolicyResult',
+    'GetInstanceGroupManagerVersionResult',
+    'GetInstanceGroupManagerVersionTargetSizeResult',
     'GetInstanceGroupNamedPortResult',
     'GetInstanceGuestAcceleratorResult',
     'GetInstanceNetworkInterfaceResult',
@@ -517,6 +538,8 @@ __all__ = [
     'GetInstanceTemplateConfidentialInstanceConfigResult',
     'GetInstanceTemplateDiskResult',
     'GetInstanceTemplateDiskDiskEncryptionKeyResult',
+    'GetInstanceTemplateDiskSourceImageEncryptionKeyResult',
+    'GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult',
     'GetInstanceTemplateGuestAcceleratorResult',
     'GetInstanceTemplateNetworkInterfaceResult',
     'GetInstanceTemplateNetworkInterfaceAccessConfigResult',
@@ -5736,6 +5759,62 @@ class ImageIamMemberCondition(dict):
 
 
 @pulumi.output_type
+class ImageImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud
+               KMS.
+        :param str kms_key_service_account: The service account being used for the encryption request for the
+               given KMS key. If absent, the Compute Engine default service
+               account is used.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud
+        KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the
+        given KMS key. If absent, the Compute Engine default service
+        account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
 class ImageRawDisk(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8141,7 +8220,7 @@ class InstanceGroupManagerStatefulDisk(dict):
                  delete_rule: Optional[str] = None):
         """
         :param str device_name: , The device name of the disk to be attached.
-        :param str delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_rule is not None:
@@ -8159,9 +8238,101 @@ class InstanceGroupManagerStatefulDisk(dict):
     @pulumi.getter(name="deleteRule")
     def delete_rule(self) -> Optional[str]:
         """
-        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
         """
         return pulumi.get(self, "delete_rule")
+
+
+@pulumi.output_type
+class InstanceGroupManagerStatefulExternalIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteRule":
+            suggest = "delete_rule"
+        elif key == "interfaceName":
+            suggest = "interface_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatefulExternalIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatefulExternalIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatefulExternalIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_rule: Optional[str] = None,
+                 interface_name: Optional[str] = None):
+        """
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        if delete_rule is not None:
+            pulumi.set(__self__, "delete_rule", delete_rule)
+        if interface_name is not None:
+            pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> Optional[str]:
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> Optional[str]:
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class InstanceGroupManagerStatefulInternalIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteRule":
+            suggest = "delete_rule"
+        elif key == "interfaceName":
+            suggest = "interface_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatefulInternalIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatefulInternalIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatefulInternalIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_rule: Optional[str] = None,
+                 interface_name: Optional[str] = None):
+        """
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        if delete_rule is not None:
+            pulumi.set(__self__, "delete_rule", delete_rule)
+        if interface_name is not None:
+            pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> Optional[str]:
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> Optional[str]:
+        return pulumi.get(self, "interface_name")
 
 
 @pulumi.output_type
@@ -9738,6 +9909,12 @@ class InstanceTemplateDisk(dict):
             suggest = "resource_policies"
         elif key == "sourceImage":
             suggest = "source_image"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateDisk. Access the value via the '{suggest}' property getter instead.")
@@ -9764,6 +9941,9 @@ class InstanceTemplateDisk(dict):
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
+                 source_image_encryption_key: Optional['outputs.InstanceTemplateDiskSourceImageEncryptionKey'] = None,
+                 source_snapshot: Optional[str] = None,
+                 source_snapshot_encryption_key: Optional['outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey'] = None,
                  type: Optional[str] = None):
         """
         :param bool auto_delete: Whether or not the disk should be auto-deleted.
@@ -9792,14 +9972,22 @@ class InstanceTemplateDisk(dict):
         :param str resource_policies: -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
-               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         :param str source_image: The image from which to
                initialize this disk. This can be one of: the image's `self_link`,
                `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
                `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
                `{project}/{image}`, `{family}`, or `{image}`.
-               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param 'InstanceTemplateDiskSourceImageEncryptionKeyArgs' source_image_encryption_key: The customer-supplied encryption
+               key of the source image. Required if the source image is protected by a
+               customer-supplied encryption key.
+        :param str source_snapshot: The source snapshot to create this disk.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param 'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The customer-supplied encryption
+               key of the source snapshot. Structure
+               documented below.
         :param str type: The type of reservation from which this instance can consume resources.
         """
         if auto_delete is not None:
@@ -9828,6 +10016,12 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "source", source)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -9938,7 +10132,7 @@ class InstanceTemplateDisk(dict):
         """
         The name (**not self_link**)
         of the disk (such as those managed by `compute.Disk`) to attach.
-        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         """
         return pulumi.get(self, "source")
 
@@ -9952,9 +10146,38 @@ class InstanceTemplateDisk(dict):
         `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         `{project}/{image}`, `{family}`, or `{image}`.
-        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         """
         return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.InstanceTemplateDiskSourceImageEncryptionKey']:
+        """
+        The customer-supplied encryption
+        key of the source image. Required if the source image is protected by a
+        customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[str]:
+        """
+        The source snapshot to create this disk.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey']:
+        """
+        The customer-supplied encryption
+        key of the source snapshot. Structure
+        documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
 
     @property
     @pulumi.getter
@@ -9998,6 +10221,112 @@ class InstanceTemplateDiskDiskEncryptionKey(dict):
         The self link of the encryption key that is stored in Google Cloud KMS
         """
         return pulumi.get(self, "kms_key_self_link")
+
+
+@pulumi.output_type
+class InstanceTemplateDiskSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateDiskSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceTemplateDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceTemplateDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        :param str kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class InstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateDiskSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceTemplateDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceTemplateDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        :param str kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
 
 
 @pulumi.output_type
@@ -15605,7 +15934,7 @@ class RegionInstanceGroupManagerStatefulDisk(dict):
                  delete_rule: Optional[str] = None):
         """
         :param str device_name: , The device name of the disk to be attached.
-        :param str delete_rule: , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_rule is not None:
@@ -15623,9 +15952,101 @@ class RegionInstanceGroupManagerStatefulDisk(dict):
     @pulumi.getter(name="deleteRule")
     def delete_rule(self) -> Optional[str]:
         """
-        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
         """
         return pulumi.get(self, "delete_rule")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerStatefulExternalIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteRule":
+            suggest = "delete_rule"
+        elif key == "interfaceName":
+            suggest = "interface_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerStatefulExternalIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerStatefulExternalIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerStatefulExternalIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_rule: Optional[str] = None,
+                 interface_name: Optional[str] = None):
+        """
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        if delete_rule is not None:
+            pulumi.set(__self__, "delete_rule", delete_rule)
+        if interface_name is not None:
+            pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> Optional[str]:
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> Optional[str]:
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerStatefulInternalIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteRule":
+            suggest = "delete_rule"
+        elif key == "interfaceName":
+            suggest = "interface_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerStatefulInternalIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerStatefulInternalIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerStatefulInternalIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_rule: Optional[str] = None,
+                 interface_name: Optional[str] = None):
+        """
+        :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        if delete_rule is not None:
+            pulumi.set(__self__, "delete_rule", delete_rule)
+        if interface_name is not None:
+            pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> Optional[str]:
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> Optional[str]:
+        return pulumi.get(self, "interface_name")
 
 
 @pulumi.output_type
@@ -33268,6 +33689,333 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceGroupManagerAllInstancesConfigResult(dict):
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, str]):
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerAutoHealingPolicyResult(dict):
+    def __init__(__self__, *,
+                 health_check: str,
+                 initial_delay_sec: int):
+        pulumi.set(__self__, "health_check", health_check)
+        pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> str:
+        return pulumi.get(self, "health_check")
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> int:
+        return pulumi.get(self, "initial_delay_sec")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerNamedPortResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 port: int):
+        """
+        :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatefulDiskResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 device_name: str):
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "device_name", device_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        return pulumi.get(self, "device_name")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatefulExternalIpResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 interface_name: str):
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> str:
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatefulInternalIpResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 interface_name: str):
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> str:
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatusResult(dict):
+    def __init__(__self__, *,
+                 all_instances_configs: Sequence['outputs.GetInstanceGroupManagerStatusAllInstancesConfigResult'],
+                 is_stable: bool,
+                 statefuls: Sequence['outputs.GetInstanceGroupManagerStatusStatefulResult'],
+                 version_targets: Sequence['outputs.GetInstanceGroupManagerStatusVersionTargetResult']):
+        pulumi.set(__self__, "all_instances_configs", all_instances_configs)
+        pulumi.set(__self__, "is_stable", is_stable)
+        pulumi.set(__self__, "statefuls", statefuls)
+        pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="allInstancesConfigs")
+    def all_instances_configs(self) -> Sequence['outputs.GetInstanceGroupManagerStatusAllInstancesConfigResult']:
+        return pulumi.get(self, "all_instances_configs")
+
+    @property
+    @pulumi.getter(name="isStable")
+    def is_stable(self) -> bool:
+        return pulumi.get(self, "is_stable")
+
+    @property
+    @pulumi.getter
+    def statefuls(self) -> Sequence['outputs.GetInstanceGroupManagerStatusStatefulResult']:
+        return pulumi.get(self, "statefuls")
+
+    @property
+    @pulumi.getter(name="versionTargets")
+    def version_targets(self) -> Sequence['outputs.GetInstanceGroupManagerStatusVersionTargetResult']:
+        return pulumi.get(self, "version_targets")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatusAllInstancesConfigResult(dict):
+    def __init__(__self__, *,
+                 effective: bool):
+        pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter
+    def effective(self) -> bool:
+        return pulumi.get(self, "effective")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatusStatefulResult(dict):
+    def __init__(__self__, *,
+                 has_stateful_config: bool,
+                 per_instance_configs: Sequence['outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult']):
+        pulumi.set(__self__, "has_stateful_config", has_stateful_config)
+        pulumi.set(__self__, "per_instance_configs", per_instance_configs)
+
+    @property
+    @pulumi.getter(name="hasStatefulConfig")
+    def has_stateful_config(self) -> bool:
+        return pulumi.get(self, "has_stateful_config")
+
+    @property
+    @pulumi.getter(name="perInstanceConfigs")
+    def per_instance_configs(self) -> Sequence['outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult']:
+        return pulumi.get(self, "per_instance_configs")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 all_effective: bool):
+        pulumi.set(__self__, "all_effective", all_effective)
+
+    @property
+    @pulumi.getter(name="allEffective")
+    def all_effective(self) -> bool:
+        return pulumi.get(self, "all_effective")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerStatusVersionTargetResult(dict):
+    def __init__(__self__, *,
+                 is_reached: bool):
+        pulumi.set(__self__, "is_reached", is_reached)
+
+    @property
+    @pulumi.getter(name="isReached")
+    def is_reached(self) -> bool:
+        return pulumi.get(self, "is_reached")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerUpdatePolicyResult(dict):
+    def __init__(__self__, *,
+                 max_surge_fixed: int,
+                 max_surge_percent: int,
+                 max_unavailable_fixed: int,
+                 max_unavailable_percent: int,
+                 min_ready_sec: int,
+                 minimal_action: str,
+                 most_disruptive_allowed_action: str,
+                 replacement_method: str,
+                 type: str):
+        pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
+        pulumi.set(__self__, "max_surge_percent", max_surge_percent)
+        pulumi.set(__self__, "max_unavailable_fixed", max_unavailable_fixed)
+        pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
+        pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        pulumi.set(__self__, "minimal_action", minimal_action)
+        pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
+        pulumi.set(__self__, "replacement_method", replacement_method)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxSurgeFixed")
+    def max_surge_fixed(self) -> int:
+        return pulumi.get(self, "max_surge_fixed")
+
+    @property
+    @pulumi.getter(name="maxSurgePercent")
+    def max_surge_percent(self) -> int:
+        return pulumi.get(self, "max_surge_percent")
+
+    @property
+    @pulumi.getter(name="maxUnavailableFixed")
+    def max_unavailable_fixed(self) -> int:
+        return pulumi.get(self, "max_unavailable_fixed")
+
+    @property
+    @pulumi.getter(name="maxUnavailablePercent")
+    def max_unavailable_percent(self) -> int:
+        return pulumi.get(self, "max_unavailable_percent")
+
+    @property
+    @pulumi.getter(name="minReadySec")
+    def min_ready_sec(self) -> int:
+        return pulumi.get(self, "min_ready_sec")
+
+    @property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> str:
+        return pulumi.get(self, "minimal_action")
+
+    @property
+    @pulumi.getter(name="mostDisruptiveAllowedAction")
+    def most_disruptive_allowed_action(self) -> str:
+        return pulumi.get(self, "most_disruptive_allowed_action")
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> str:
+        return pulumi.get(self, "replacement_method")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerVersionResult(dict):
+    def __init__(__self__, *,
+                 instance_template: str,
+                 name: str,
+                 target_sizes: Sequence['outputs.GetInstanceGroupManagerVersionTargetSizeResult']):
+        """
+        :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        pulumi.set(__self__, "instance_template", instance_template)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "target_sizes", target_sizes)
+
+    @property
+    @pulumi.getter(name="instanceTemplate")
+    def instance_template(self) -> str:
+        return pulumi.get(self, "instance_template")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetSizes")
+    def target_sizes(self) -> Sequence['outputs.GetInstanceGroupManagerVersionTargetSizeResult']:
+        return pulumi.get(self, "target_sizes")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerVersionTargetSizeResult(dict):
+    def __init__(__self__, *,
+                 fixed: int,
+                 percent: int):
+        pulumi.set(__self__, "fixed", fixed)
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> int:
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
 class GetInstanceGroupNamedPortResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -33857,6 +34605,9 @@ class GetInstanceTemplateDiskResult(dict):
                  resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
+                 source_image_encryption_keys: Sequence['outputs.GetInstanceTemplateDiskSourceImageEncryptionKeyResult'],
+                 source_snapshot: str,
+                 source_snapshot_encryption_keys: Sequence['outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult'],
                  type: str):
         """
         :param bool auto_delete: Whether or not the disk should be auto-deleted.
@@ -33907,6 +34658,9 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
+        pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
+        pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -34032,6 +34786,21 @@ class GetInstanceTemplateDiskResult(dict):
         return pulumi.get(self, "source_image")
 
     @property
+    @pulumi.getter(name="sourceImageEncryptionKeys")
+    def source_image_encryption_keys(self) -> Sequence['outputs.GetInstanceTemplateDiskSourceImageEncryptionKeyResult']:
+        return pulumi.get(self, "source_image_encryption_keys")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> str:
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKeys")
+    def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult']:
+        return pulumi.get(self, "source_snapshot_encryption_keys")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -34056,6 +34825,56 @@ class GetInstanceTemplateDiskDiskEncryptionKeyResult(dict):
         The self link of the encryption key that is stored in Google Cloud KMS
         """
         return pulumi.get(self, "kms_key_self_link")
+
+
+@pulumi.output_type
+class GetInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
 
 
 @pulumi.output_type

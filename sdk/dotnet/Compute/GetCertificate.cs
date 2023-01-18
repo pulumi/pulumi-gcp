@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int CertificateId;
         public readonly string CreationTimestamp;
         public readonly string Description;
+        public readonly string ExpireTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -149,6 +150,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            string expireTime,
+
             string id,
 
             string name,
@@ -165,6 +168,7 @@ namespace Pulumi.Gcp.Compute
             CertificateId = certificateId;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            ExpireTime = expireTime;
             Id = id;
             Name = name;
             NamePrefix = namePrefix;

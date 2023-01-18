@@ -199,6 +199,14 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
     /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    public readonly statefulExternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulExternalIp[] | undefined>;
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    public readonly statefulInternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulInternalIp[] | undefined>;
+    /**
      * The status of this managed instance group.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.InstanceGroupManagerStatus[]>;
@@ -267,6 +275,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["statefulDisks"] = state ? state.statefulDisks : undefined;
+            resourceInputs["statefulExternalIps"] = state ? state.statefulExternalIps : undefined;
+            resourceInputs["statefulInternalIps"] = state ? state.statefulInternalIps : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["targetPools"] = state ? state.targetPools : undefined;
             resourceInputs["targetSize"] = state ? state.targetSize : undefined;
@@ -292,6 +302,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
+            resourceInputs["statefulExternalIps"] = args ? args.statefulExternalIps : undefined;
+            resourceInputs["statefulInternalIps"] = args ? args.statefulInternalIps : undefined;
             resourceInputs["targetPools"] = args ? args.targetPools : undefined;
             resourceInputs["targetSize"] = args ? args.targetSize : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
@@ -380,6 +392,14 @@ export interface InstanceGroupManagerState {
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
+    /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulExternalIp>[]>;
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulInternalIp>[]>;
     /**
      * The status of this managed instance group.
      */
@@ -481,6 +501,14 @@ export interface InstanceGroupManagerArgs {
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
+    /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulExternalIp>[]>;
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     */
+    statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulInternalIp>[]>;
     /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does

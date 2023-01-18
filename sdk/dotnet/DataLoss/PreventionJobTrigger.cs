@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> LastRunTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Datastore kind.
+        /// Name of a BigQuery field to be returned with the findings.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? LastRunTime { get; set; }
 
         /// <summary>
-        /// The name of the Datastore kind.
+        /// Name of a BigQuery field to be returned with the findings.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

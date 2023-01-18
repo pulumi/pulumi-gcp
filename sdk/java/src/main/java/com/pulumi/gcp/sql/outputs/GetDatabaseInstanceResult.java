@@ -31,6 +31,7 @@ public final class GetDatabaseInstanceResult {
      * 
      */
     private String id;
+    private String instanceType;
     private List<GetDatabaseInstanceIpAddress> ipAddresses;
     private String maintenanceVersion;
     private String masterInstanceName;
@@ -75,6 +76,9 @@ public final class GetDatabaseInstanceResult {
      */
     public String id() {
         return this.id;
+    }
+    public String instanceType() {
+        return this.instanceType;
     }
     public List<GetDatabaseInstanceIpAddress> ipAddresses() {
         return this.ipAddresses;
@@ -139,6 +143,7 @@ public final class GetDatabaseInstanceResult {
         private String encryptionKeyName;
         private String firstIpAddress;
         private String id;
+        private String instanceType;
         private List<GetDatabaseInstanceIpAddress> ipAddresses;
         private String maintenanceVersion;
         private String masterInstanceName;
@@ -165,6 +170,7 @@ public final class GetDatabaseInstanceResult {
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
+    	      this.instanceType = defaults.instanceType;
     	      this.ipAddresses = defaults.ipAddresses;
     	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.masterInstanceName = defaults.masterInstanceName;
@@ -226,6 +232,11 @@ public final class GetDatabaseInstanceResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceType(String instanceType) {
+            this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
         @CustomType.Setter
@@ -328,6 +339,7 @@ public final class GetDatabaseInstanceResult {
             o.encryptionKeyName = encryptionKeyName;
             o.firstIpAddress = firstIpAddress;
             o.id = id;
+            o.instanceType = instanceType;
             o.ipAddresses = ipAddresses;
             o.maintenanceVersion = maintenanceVersion;
             o.masterInstanceName = masterInstanceName;

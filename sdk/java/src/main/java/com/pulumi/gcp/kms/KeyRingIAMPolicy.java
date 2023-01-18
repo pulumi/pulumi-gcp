@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .role(&#34;roles/editor&#34;)
+ *             .role(&#34;roles/cloudkms.admin&#34;)
  *             .build());
  * 
  *     }
@@ -276,7 +276,7 @@ import javax.annotation.Nullable;
  * This binding resource can be imported using the `key_ring_id` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/viewer&#34;
+ *  $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/cloudkms.admin&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question.

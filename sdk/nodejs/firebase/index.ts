@@ -15,10 +15,25 @@ export type AppleApp = import("./appleApp").AppleApp;
 export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
 utilities.lazyLoad(exports, ["AppleApp"], () => require("./appleApp"));
 
+export { DatabaseInstanceArgs, DatabaseInstanceState } from "./databaseInstance";
+export type DatabaseInstance = import("./databaseInstance").DatabaseInstance;
+export const DatabaseInstance: typeof import("./databaseInstance").DatabaseInstance = null as any;
+utilities.lazyLoad(exports, ["DatabaseInstance"], () => require("./databaseInstance"));
+
 export { GetAndroidAppArgs, GetAndroidAppResult, GetAndroidAppOutputArgs } from "./getAndroidApp";
 export const getAndroidApp: typeof import("./getAndroidApp").getAndroidApp = null as any;
 export const getAndroidAppOutput: typeof import("./getAndroidApp").getAndroidAppOutput = null as any;
 utilities.lazyLoad(exports, ["getAndroidApp","getAndroidAppOutput"], () => require("./getAndroidApp"));
+
+export { GetAppleAppArgs, GetAppleAppResult, GetAppleAppOutputArgs } from "./getAppleApp";
+export const getAppleApp: typeof import("./getAppleApp").getAppleApp = null as any;
+export const getAppleAppOutput: typeof import("./getAppleApp").getAppleAppOutput = null as any;
+utilities.lazyLoad(exports, ["getAppleApp","getAppleAppOutput"], () => require("./getAppleApp"));
+
+export { GetAppleAppConfigArgs, GetAppleAppConfigResult, GetAppleAppConfigOutputArgs } from "./getAppleAppConfig";
+export const getAppleAppConfig: typeof import("./getAppleAppConfig").getAppleAppConfig = null as any;
+export const getAppleAppConfigOutput: typeof import("./getAppleAppConfig").getAppleAppConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getAppleAppConfig","getAppleAppConfigOutput"], () => require("./getAppleAppConfig"));
 
 export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
 export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
@@ -69,6 +84,8 @@ const _module = {
                 return new AndroidApp(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
                 return new AppleApp(name, <any>undefined, { urn })
+            case "gcp:firebase/databaseInstance:DatabaseInstance":
+                return new DatabaseInstance(name, <any>undefined, { urn })
             case "gcp:firebase/hostingChannel:HostingChannel":
                 return new HostingChannel(name, <any>undefined, { urn })
             case "gcp:firebase/hostingSite:HostingSite":
@@ -88,6 +105,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)

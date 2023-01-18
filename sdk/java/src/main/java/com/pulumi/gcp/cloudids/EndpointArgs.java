@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudids;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -109,6 +110,21 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         return this.severity;
     }
 
+    /**
+     * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     * 
+     */
+    @Import(name="threatExceptions")
+    private @Nullable Output<List<String>> threatExceptions;
+
+    /**
+     * @return Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     * 
+     */
+    public Optional<Output<List<String>>> threatExceptions() {
+        return Optional.ofNullable(this.threatExceptions);
+    }
+
     private EndpointArgs() {}
 
     private EndpointArgs(EndpointArgs $) {
@@ -118,6 +134,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.project = $.project;
         this.severity = $.severity;
+        this.threatExceptions = $.threatExceptions;
     }
 
     public static Builder builder() {
@@ -266,6 +283,37 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
+        }
+
+        /**
+         * @param threatExceptions Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threatExceptions(@Nullable Output<List<String>> threatExceptions) {
+            $.threatExceptions = threatExceptions;
+            return this;
+        }
+
+        /**
+         * @param threatExceptions Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threatExceptions(List<String> threatExceptions) {
+            return threatExceptions(Output.of(threatExceptions));
+        }
+
+        /**
+         * @param threatExceptions Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threatExceptions(String... threatExceptions) {
+            return threatExceptions(List.of(threatExceptions));
         }
 
         public EndpointArgs build() {

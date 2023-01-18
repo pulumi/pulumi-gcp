@@ -10,6 +10,332 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DnsManagedZoneIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DnsManagedZoneIamBindingConditionInput is an input type that accepts DnsManagedZoneIamBindingConditionArgs and DnsManagedZoneIamBindingConditionOutput values.
+// You can construct a concrete instance of `DnsManagedZoneIamBindingConditionInput` via:
+//
+//	DnsManagedZoneIamBindingConditionArgs{...}
+type DnsManagedZoneIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDnsManagedZoneIamBindingConditionOutput() DnsManagedZoneIamBindingConditionOutput
+	ToDnsManagedZoneIamBindingConditionOutputWithContext(context.Context) DnsManagedZoneIamBindingConditionOutput
+}
+
+type DnsManagedZoneIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DnsManagedZoneIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsManagedZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionOutput() DnsManagedZoneIamBindingConditionOutput {
+	return i.ToDnsManagedZoneIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingConditionOutput)
+}
+
+func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput {
+	return i.ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingConditionOutput).ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DnsManagedZoneIamBindingConditionPtrInput is an input type that accepts DnsManagedZoneIamBindingConditionArgs, DnsManagedZoneIamBindingConditionPtr and DnsManagedZoneIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DnsManagedZoneIamBindingConditionPtrInput` via:
+//
+//	        DnsManagedZoneIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsManagedZoneIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput
+	ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(context.Context) DnsManagedZoneIamBindingConditionPtrOutput
+}
+
+type dnsManagedZoneIamBindingConditionPtrType DnsManagedZoneIamBindingConditionArgs
+
+func DnsManagedZoneIamBindingConditionPtr(v *DnsManagedZoneIamBindingConditionArgs) DnsManagedZoneIamBindingConditionPtrInput {
+	return (*dnsManagedZoneIamBindingConditionPtrType)(v)
+}
+
+func (*dnsManagedZoneIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsManagedZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (i *dnsManagedZoneIamBindingConditionPtrType) ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput {
+	return i.ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsManagedZoneIamBindingConditionPtrType) ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingConditionPtrOutput)
+}
+
+type DnsManagedZoneIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DnsManagedZoneIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsManagedZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingConditionOutput() DnsManagedZoneIamBindingConditionOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingConditionOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput {
+	return o.ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsManagedZoneIamBindingCondition) *DnsManagedZoneIamBindingCondition {
+		return &v
+	}).(DnsManagedZoneIamBindingConditionPtrOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DnsManagedZoneIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsManagedZoneIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsManagedZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) Elem() DnsManagedZoneIamBindingConditionOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) DnsManagedZoneIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DnsManagedZoneIamBindingCondition
+		return ret
+	}).(DnsManagedZoneIamBindingConditionOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DnsManagedZoneIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DnsManagedZoneIamMemberConditionInput is an input type that accepts DnsManagedZoneIamMemberConditionArgs and DnsManagedZoneIamMemberConditionOutput values.
+// You can construct a concrete instance of `DnsManagedZoneIamMemberConditionInput` via:
+//
+//	DnsManagedZoneIamMemberConditionArgs{...}
+type DnsManagedZoneIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDnsManagedZoneIamMemberConditionOutput() DnsManagedZoneIamMemberConditionOutput
+	ToDnsManagedZoneIamMemberConditionOutputWithContext(context.Context) DnsManagedZoneIamMemberConditionOutput
+}
+
+type DnsManagedZoneIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DnsManagedZoneIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsManagedZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberConditionOutput() DnsManagedZoneIamMemberConditionOutput {
+	return i.ToDnsManagedZoneIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberConditionOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberConditionOutput)
+}
+
+func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput {
+	return i.ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberConditionOutput).ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DnsManagedZoneIamMemberConditionPtrInput is an input type that accepts DnsManagedZoneIamMemberConditionArgs, DnsManagedZoneIamMemberConditionPtr and DnsManagedZoneIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DnsManagedZoneIamMemberConditionPtrInput` via:
+//
+//	        DnsManagedZoneIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsManagedZoneIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput
+	ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(context.Context) DnsManagedZoneIamMemberConditionPtrOutput
+}
+
+type dnsManagedZoneIamMemberConditionPtrType DnsManagedZoneIamMemberConditionArgs
+
+func DnsManagedZoneIamMemberConditionPtr(v *DnsManagedZoneIamMemberConditionArgs) DnsManagedZoneIamMemberConditionPtrInput {
+	return (*dnsManagedZoneIamMemberConditionPtrType)(v)
+}
+
+func (*dnsManagedZoneIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsManagedZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (i *dnsManagedZoneIamMemberConditionPtrType) ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput {
+	return i.ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsManagedZoneIamMemberConditionPtrType) ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberConditionPtrOutput)
+}
+
+type DnsManagedZoneIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DnsManagedZoneIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsManagedZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditionOutput() DnsManagedZoneIamMemberConditionOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditionOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput {
+	return o.ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsManagedZoneIamMemberCondition) *DnsManagedZoneIamMemberCondition {
+		return &v
+	}).(DnsManagedZoneIamMemberConditionPtrOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsManagedZoneIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DnsManagedZoneIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsManagedZoneIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsManagedZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) Elem() DnsManagedZoneIamMemberConditionOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) DnsManagedZoneIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DnsManagedZoneIamMemberCondition
+		return ret
+	}).(DnsManagedZoneIamMemberConditionOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsManagedZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedZoneCloudLoggingConfig struct {
 	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
 	EnableLogging bool `pulumi:"enableLogging"`
@@ -5102,6 +5428,10 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeys
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionPtrInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamMemberConditionInput)(nil)).Elem(), DnsManagedZoneIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamMemberConditionPtrInput)(nil)).Elem(), DnsManagedZoneIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigPtrInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnssecConfigInput)(nil)).Elem(), ManagedZoneDnssecConfigArgs{})
@@ -5174,6 +5504,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArray{})
+	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DnsManagedZoneIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DnsManagedZoneIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigOutput{})

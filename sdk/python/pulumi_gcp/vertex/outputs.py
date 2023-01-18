@@ -30,6 +30,7 @@ __all__ = [
     'AiFeatureStoreIamBindingCondition',
     'AiFeatureStoreIamMemberCondition',
     'AiFeatureStoreOnlineServingConfig',
+    'AiFeatureStoreOnlineServingConfigScaling',
     'AiIndexDeployedIndex',
     'AiIndexIndexStat',
     'AiIndexMetadata',
@@ -928,19 +929,82 @@ class AiFeatureStoreOnlineServingConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 fixed_node_count: int):
+                 fixed_node_count: Optional[int] = None,
+                 scaling: Optional['outputs.AiFeatureStoreOnlineServingConfigScaling'] = None):
         """
         :param int fixed_node_count: The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+        :param 'AiFeatureStoreOnlineServingConfigScalingArgs' scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "fixed_node_count", fixed_node_count)
+        if fixed_node_count is not None:
+            pulumi.set(__self__, "fixed_node_count", fixed_node_count)
+        if scaling is not None:
+            pulumi.set(__self__, "scaling", scaling)
 
     @property
     @pulumi.getter(name="fixedNodeCount")
-    def fixed_node_count(self) -> int:
+    def fixed_node_count(self) -> Optional[int]:
         """
         The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
         """
         return pulumi.get(self, "fixed_node_count")
+
+    @property
+    @pulumi.getter
+    def scaling(self) -> Optional['outputs.AiFeatureStoreOnlineServingConfigScaling']:
+        """
+        Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling")
+
+
+@pulumi.output_type
+class AiFeatureStoreOnlineServingConfigScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureStoreOnlineServingConfigScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureStoreOnlineServingConfigScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureStoreOnlineServingConfigScaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_node_count: int,
+                 min_node_count: int):
+        """
+        :param int max_node_count: The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        :param int min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> int:
+        """
+        The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> int:
+        """
+        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_node_count")
 
 
 @pulumi.output_type

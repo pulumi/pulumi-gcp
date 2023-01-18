@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Sql
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string InstanceType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> IpAddresses;
         public readonly string MaintenanceVersion;
         public readonly string MasterInstanceName;
@@ -155,6 +156,8 @@ namespace Pulumi.Gcp.Sql
             string firstIpAddress,
 
             string id,
+
+            string instanceType,
 
             ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> ipAddresses,
 
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.Sql
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             Id = id;
+            InstanceType = instanceType;
             IpAddresses = ipAddresses;
             MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;

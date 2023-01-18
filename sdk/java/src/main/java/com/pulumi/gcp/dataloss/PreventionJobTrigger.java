@@ -296,14 +296,14 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.lastRunTime;
     }
     /**
-     * The name of the Datastore kind.
+     * Name of a BigQuery field to be returned with the findings.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the Datastore kind.
+     * @return Name of a BigQuery field to be returned with the findings.
      * 
      */
     public Output<String> name() {

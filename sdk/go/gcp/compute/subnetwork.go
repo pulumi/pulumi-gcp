@@ -300,7 +300,7 @@ type Subnetwork struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
-	PrivateIpGoogleAccess pulumi.BoolPtrOutput `pulumi:"privateIpGoogleAccess"`
+	PrivateIpGoogleAccess pulumi.BoolOutput `pulumi:"privateIpGoogleAccess"`
 	// The private IPv6 google access type for the VMs in this subnet.
 	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs.
@@ -825,8 +825,8 @@ func (o SubnetworkOutput) Network() pulumi.StringOutput {
 
 // When enabled, VMs in this subnetwork without external IP addresses can
 // access Google APIs and services by using Private Google Access.
-func (o SubnetworkOutput) PrivateIpGoogleAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Subnetwork) pulumi.BoolPtrOutput { return v.PrivateIpGoogleAccess }).(pulumi.BoolPtrOutput)
+func (o SubnetworkOutput) PrivateIpGoogleAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.PrivateIpGoogleAccess }).(pulumi.BoolOutput)
 }
 
 // The private IPv6 google access type for the VMs in this subnet.

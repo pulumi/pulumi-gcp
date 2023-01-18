@@ -25,6 +25,14 @@ namespace Pulumi.Gcp.Firebase
     ///         Project = "my-project-name",
     ///         DisplayName = "Display Name Basic",
     ///         PackageName = "",
+    ///         Sha1Hashes = new[]
+    ///         {
+    ///             "2145bdf698b8715039bd0e83f2069bed435ac21c",
+    ///         },
+    ///         Sha256Hashes = new[]
+    ///         {
+    ///             "2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -57,8 +65,8 @@ namespace Pulumi.Gcp.Firebase
     public partial class AndroidApp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        /// the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+        /// token, as the data format is not specified.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -72,13 +80,20 @@ namespace Pulumi.Gcp.Firebase
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The user-assigned display name of the App.
+        /// The user-assigned display name of the AndroidApp.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+        /// ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -96,6 +111,18 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha1Hashes")]
+        public Output<ImmutableArray<string>> Sha1Hashes { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha256Hashes")]
+        public Output<ImmutableArray<string>> Sha256Hashes { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,7 +179,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// The user-assigned display name of the App.
+        /// The user-assigned display name of the AndroidApp.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -171,6 +198,30 @@ namespace Pulumi.Gcp.Firebase
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("sha1Hashes")]
+        private InputList<string>? _sha1Hashes;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha1Hashes
+        {
+            get => _sha1Hashes ?? (_sha1Hashes = new InputList<string>());
+            set => _sha1Hashes = value;
+        }
+
+        [Input("sha256Hashes")]
+        private InputList<string>? _sha256Hashes;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha256Hashes
+        {
+            get => _sha256Hashes ?? (_sha256Hashes = new InputList<string>());
+            set => _sha256Hashes = value;
+        }
+
         public AndroidAppArgs()
         {
         }
@@ -180,8 +231,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class AndroidAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        /// the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+        /// token, as the data format is not specified.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -195,13 +246,20 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// The user-assigned display name of the App.
+        /// The user-assigned display name of the AndroidApp.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+        /// ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -219,6 +277,30 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("sha1Hashes")]
+        private InputList<string>? _sha1Hashes;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha1Hashes
+        {
+            get => _sha1Hashes ?? (_sha1Hashes = new InputList<string>());
+            set => _sha1Hashes = value;
+        }
+
+        [Input("sha256Hashes")]
+        private InputList<string>? _sha256Hashes;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha256Hashes
+        {
+            get => _sha256Hashes ?? (_sha256Hashes = new InputList<string>());
+            set => _sha256Hashes = value;
+        }
 
         public AndroidAppState()
         {

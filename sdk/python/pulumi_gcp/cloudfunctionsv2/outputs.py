@@ -634,6 +634,8 @@ class FunctionServiceConfig(dict):
         suggest = None
         if key == "allTrafficOnLatestRevision":
             suggest = "all_traffic_on_latest_revision"
+        elif key == "availableCpu":
+            suggest = "available_cpu"
         elif key == "availableMemory":
             suggest = "available_memory"
         elif key == "environmentVariables":
@@ -644,6 +646,8 @@ class FunctionServiceConfig(dict):
             suggest = "ingress_settings"
         elif key == "maxInstanceCount":
             suggest = "max_instance_count"
+        elif key == "maxInstanceRequestConcurrency":
+            suggest = "max_instance_request_concurrency"
         elif key == "minInstanceCount":
             suggest = "min_instance_count"
         elif key == "secretEnvironmentVariables":
@@ -672,11 +676,13 @@ class FunctionServiceConfig(dict):
 
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: Optional[bool] = None,
+                 available_cpu: Optional[str] = None,
                  available_memory: Optional[str] = None,
                  environment_variables: Optional[Mapping[str, str]] = None,
                  gcf_uri: Optional[str] = None,
                  ingress_settings: Optional[str] = None,
                  max_instance_count: Optional[int] = None,
+                 max_instance_request_concurrency: Optional[int] = None,
                  min_instance_count: Optional[int] = None,
                  secret_environment_variables: Optional[Sequence['outputs.FunctionServiceConfigSecretEnvironmentVariable']] = None,
                  secret_volumes: Optional[Sequence['outputs.FunctionServiceConfigSecretVolume']] = None,
@@ -688,6 +694,7 @@ class FunctionServiceConfig(dict):
                  vpc_connector_egress_settings: Optional[str] = None):
         """
         :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        :param str available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param str available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
@@ -699,6 +706,7 @@ class FunctionServiceConfig(dict):
                Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
         :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a
                given time.
+        :param int max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
         :param Sequence['FunctionServiceConfigSecretEnvironmentVariableArgs'] secret_environment_variables: Secret environment variables configuration.
@@ -718,6 +726,8 @@ class FunctionServiceConfig(dict):
         """
         if all_traffic_on_latest_revision is not None:
             pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        if available_cpu is not None:
+            pulumi.set(__self__, "available_cpu", available_cpu)
         if available_memory is not None:
             pulumi.set(__self__, "available_memory", available_memory)
         if environment_variables is not None:
@@ -728,6 +738,8 @@ class FunctionServiceConfig(dict):
             pulumi.set(__self__, "ingress_settings", ingress_settings)
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
+        if max_instance_request_concurrency is not None:
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if secret_environment_variables is not None:
@@ -754,6 +766,14 @@ class FunctionServiceConfig(dict):
         Whether 100% of traffic is routed to the latest revision. Defaults to true.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
+
+    @property
+    @pulumi.getter(name="availableCpu")
+    def available_cpu(self) -> Optional[str]:
+        """
+        The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        """
+        return pulumi.get(self, "available_cpu")
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -800,6 +820,14 @@ class FunctionServiceConfig(dict):
         given time.
         """
         return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> Optional[int]:
+        """
+        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
 
     @property
     @pulumi.getter(name="minInstanceCount")
@@ -1288,11 +1316,13 @@ class GetFunctionEventTriggerEventFilterResult(dict):
 class GetFunctionServiceConfigResult(dict):
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: bool,
+                 available_cpu: str,
                  available_memory: str,
                  environment_variables: Mapping[str, str],
                  gcf_uri: str,
                  ingress_settings: str,
                  max_instance_count: int,
+                 max_instance_request_concurrency: int,
                  min_instance_count: int,
                  secret_environment_variables: Sequence['outputs.GetFunctionServiceConfigSecretEnvironmentVariableResult'],
                  secret_volumes: Sequence['outputs.GetFunctionServiceConfigSecretVolumeResult'],
@@ -1303,11 +1333,13 @@ class GetFunctionServiceConfigResult(dict):
                  vpc_connector: str,
                  vpc_connector_egress_settings: str):
         pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        pulumi.set(__self__, "available_cpu", available_cpu)
         pulumi.set(__self__, "available_memory", available_memory)
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "gcf_uri", gcf_uri)
         pulumi.set(__self__, "ingress_settings", ingress_settings)
         pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
         pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         pulumi.set(__self__, "secret_volumes", secret_volumes)
@@ -1322,6 +1354,11 @@ class GetFunctionServiceConfigResult(dict):
     @pulumi.getter(name="allTrafficOnLatestRevision")
     def all_traffic_on_latest_revision(self) -> bool:
         return pulumi.get(self, "all_traffic_on_latest_revision")
+
+    @property
+    @pulumi.getter(name="availableCpu")
+    def available_cpu(self) -> str:
+        return pulumi.get(self, "available_cpu")
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -1347,6 +1384,11 @@ class GetFunctionServiceConfigResult(dict):
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> int:
         return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> int:
+        return pulumi.get(self, "max_instance_request_concurrency")
 
     @property
     @pulumi.getter(name="minInstanceCount")

@@ -21,6 +21,30 @@ __all__ = [
     'ConnectionProfilePrivateConnectivity',
     'PrivateConnectionError',
     'PrivateConnectionVpcPeeringConfig',
+    'StreamBackfillAll',
+    'StreamBackfillAllMysqlExcludedObjects',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabase',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn',
+    'StreamBackfillNone',
+    'StreamDestinationConfig',
+    'StreamDestinationConfigBigqueryDestinationConfig',
+    'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate',
+    'StreamDestinationConfigGcsDestinationConfig',
+    'StreamDestinationConfigGcsDestinationConfigAvroFileFormat',
+    'StreamDestinationConfigGcsDestinationConfigJsonFileFormat',
+    'StreamSourceConfig',
+    'StreamSourceConfigMysqlSourceConfig',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjects',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjects',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn',
 ]
 
 @pulumi.output_type
@@ -623,5 +647,1338 @@ class PrivateConnectionVpcPeeringConfig(dict):
         Format: projects/{project}/global/{networks}/{name}
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class StreamBackfillAll(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlExcludedObjects":
+            suggest = "mysql_excluded_objects"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAll. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAll.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAll.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None):
+        """
+        :param 'StreamBackfillAllMysqlExcludedObjectsArgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+               Structure is documented below.
+        """
+        if mysql_excluded_objects is not None:
+            pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
+
+    @property
+    @pulumi.getter(name="mysqlExcludedObjects")
+    def mysql_excluded_objects(self) -> Optional['outputs.StreamBackfillAllMysqlExcludedObjects']:
+        """
+        MySQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_excluded_objects")
+
+
+@pulumi.output_type
+class StreamBackfillAllMysqlExcludedObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlDatabases":
+            suggest = "mysql_databases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllMysqlExcludedObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllMysqlExcludedObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllMysqlExcludedObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_databases: Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase']):
+        """
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase']:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+
+@pulumi.output_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlTables":
+            suggest = "mysql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllMysqlExcludedObjectsMysqlDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 mysql_tables: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable']] = None):
+        """
+        :param str database: Database name.
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+
+@pulumi.output_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlColumns":
+            suggest = "mysql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 mysql_columns: Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[Sequence['outputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn']]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+
+@pulumi.output_type
+class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collation: Optional[str] = None,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 primary_key: Optional[bool] = None):
+        """
+        :param str collation: Column collation.
+        :param str column: Column name.
+        :param str data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param int length: -
+               Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[str]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+
+@pulumi.output_type
+class StreamBackfillNone(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class StreamDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationConnectionProfile":
+            suggest = "destination_connection_profile"
+        elif key == "bigqueryDestinationConfig":
+            suggest = "bigquery_destination_config"
+        elif key == "gcsDestinationConfig":
+            suggest = "gcs_destination_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_connection_profile: str,
+                 bigquery_destination_config: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfig'] = None,
+                 gcs_destination_config: Optional['outputs.StreamDestinationConfigGcsDestinationConfig'] = None):
+        """
+        :param str destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        :param 'StreamDestinationConfigBigqueryDestinationConfigArgs' bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
+               Structure is documented below.
+        :param 'StreamDestinationConfigGcsDestinationConfigArgs' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
+        if bigquery_destination_config is not None:
+            pulumi.set(__self__, "bigquery_destination_config", bigquery_destination_config)
+        if gcs_destination_config is not None:
+            pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
+
+    @property
+    @pulumi.getter(name="destinationConnectionProfile")
+    def destination_connection_profile(self) -> str:
+        """
+        Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        return pulumi.get(self, "destination_connection_profile")
+
+    @property
+    @pulumi.getter(name="bigqueryDestinationConfig")
+    def bigquery_destination_config(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfig']:
+        """
+        A configuration for how data should be loaded to Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination_config")
+
+    @property
+    @pulumi.getter(name="gcsDestinationConfig")
+    def gcs_destination_config(self) -> Optional['outputs.StreamDestinationConfigGcsDestinationConfig']:
+        """
+        A configuration for how data should be loaded to Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_destination_config")
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataFreshness":
+            suggest = "data_freshness"
+        elif key == "singleTargetDataset":
+            suggest = "single_target_dataset"
+        elif key == "sourceHierarchyDatasets":
+            suggest = "source_hierarchy_datasets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigBigqueryDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_freshness: Optional[str] = None,
+                 single_target_dataset: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset'] = None,
+                 source_hierarchy_datasets: Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets'] = None):
+        """
+        :param str data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream.
+               Editing this field will only affect new tables created in the future, but existing tables
+               will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs' single_target_dataset: A single target dataset to which all data will be streamed.
+               Structure is documented below.
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs' source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+               Structure is documented below.
+        """
+        if data_freshness is not None:
+            pulumi.set(__self__, "data_freshness", data_freshness)
+        if single_target_dataset is not None:
+            pulumi.set(__self__, "single_target_dataset", single_target_dataset)
+        if source_hierarchy_datasets is not None:
+            pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+
+    @property
+    @pulumi.getter(name="dataFreshness")
+    def data_freshness(self) -> Optional[str]:
+        """
+        The guaranteed data freshness (in seconds) when querying tables created by the stream.
+        Editing this field will only affect new tables created in the future, but existing tables
+        will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        """
+        return pulumi.get(self, "data_freshness")
+
+    @property
+    @pulumi.getter(name="singleTargetDataset")
+    def single_target_dataset(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset']:
+        """
+        A single target dataset to which all data will be streamed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "single_target_dataset")
+
+    @property
+    @pulumi.getter(name="sourceHierarchyDatasets")
+    def source_hierarchy_datasets(self) -> Optional['outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets']:
+        """
+        Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_hierarchy_datasets")
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str):
+        """
+        :param str dataset_id: Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        """
+        return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetTemplate":
+            suggest = "dataset_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_template: 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate'):
+        """
+        :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs' dataset_template: Dataset template used for dynamic dataset creation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "dataset_template", dataset_template)
+
+    @property
+    @pulumi.getter(name="datasetTemplate")
+    def dataset_template(self) -> 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate':
+        """
+        Dataset template used for dynamic dataset creation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset_template")
+
+
+@pulumi.output_type
+class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetIdPrefix":
+            suggest = "dataset_id_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location: str,
+                 dataset_id_prefix: Optional[str] = None):
+        """
+        :param str location: The geographic location where the dataset should reside.
+               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param str dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value.
+               The prefix and name will be separated by an underscore. i.e. _.
+        """
+        pulumi.set(__self__, "location", location)
+        if dataset_id_prefix is not None:
+            pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The geographic location where the dataset should reside.
+        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="datasetIdPrefix")
+    def dataset_id_prefix(self) -> Optional[str]:
+        """
+        If supplied, every created dataset will have its name prefixed by the provided value.
+        The prefix and name will be separated by an underscore. i.e. _.
+        """
+        return pulumi.get(self, "dataset_id_prefix")
+
+
+@pulumi.output_type
+class StreamDestinationConfigGcsDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avroFileFormat":
+            suggest = "avro_file_format"
+        elif key == "fileRotationInterval":
+            suggest = "file_rotation_interval"
+        elif key == "fileRotationMb":
+            suggest = "file_rotation_mb"
+        elif key == "jsonFileFormat":
+            suggest = "json_file_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigGcsDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigGcsDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigGcsDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avro_file_format: Optional['outputs.StreamDestinationConfigGcsDestinationConfigAvroFileFormat'] = None,
+                 file_rotation_interval: Optional[str] = None,
+                 file_rotation_mb: Optional[int] = None,
+                 json_file_format: Optional['outputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormat'] = None,
+                 path: Optional[str] = None):
+        """
+        :param 'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs' avro_file_format: AVRO file format configuration.
+        :param str file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        :param int file_rotation_mb: The maximum file size to be saved in the bucket.
+        :param 'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs' json_file_format: JSON file format configuration.
+               Structure is documented below.
+        :param str path: Path inside the Cloud Storage bucket to write data to.
+        """
+        if avro_file_format is not None:
+            pulumi.set(__self__, "avro_file_format", avro_file_format)
+        if file_rotation_interval is not None:
+            pulumi.set(__self__, "file_rotation_interval", file_rotation_interval)
+        if file_rotation_mb is not None:
+            pulumi.set(__self__, "file_rotation_mb", file_rotation_mb)
+        if json_file_format is not None:
+            pulumi.set(__self__, "json_file_format", json_file_format)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="avroFileFormat")
+    def avro_file_format(self) -> Optional['outputs.StreamDestinationConfigGcsDestinationConfigAvroFileFormat']:
+        """
+        AVRO file format configuration.
+        """
+        return pulumi.get(self, "avro_file_format")
+
+    @property
+    @pulumi.getter(name="fileRotationInterval")
+    def file_rotation_interval(self) -> Optional[str]:
+        """
+        The maximum duration for which new events are added before a file is closed and a new file is created.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        """
+        return pulumi.get(self, "file_rotation_interval")
+
+    @property
+    @pulumi.getter(name="fileRotationMb")
+    def file_rotation_mb(self) -> Optional[int]:
+        """
+        The maximum file size to be saved in the bucket.
+        """
+        return pulumi.get(self, "file_rotation_mb")
+
+    @property
+    @pulumi.getter(name="jsonFileFormat")
+    def json_file_format(self) -> Optional['outputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormat']:
+        """
+        JSON file format configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "json_file_format")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path inside the Cloud Storage bucket to write data to.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class StreamDestinationConfigGcsDestinationConfigAvroFileFormat(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaFileFormat":
+            suggest = "schema_file_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigGcsDestinationConfigJsonFileFormat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamDestinationConfigGcsDestinationConfigJsonFileFormat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamDestinationConfigGcsDestinationConfigJsonFileFormat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compression: Optional[str] = None,
+                 schema_file_format: Optional[str] = None):
+        """
+        :param str compression: Compression of the loaded JSON file.
+               Possible values are `NO_COMPRESSION` and `GZIP`.
+        :param str schema_file_format: The schema file format along JSON data files.
+               Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        """
+        if compression is not None:
+            pulumi.set(__self__, "compression", compression)
+        if schema_file_format is not None:
+            pulumi.set(__self__, "schema_file_format", schema_file_format)
+
+    @property
+    @pulumi.getter
+    def compression(self) -> Optional[str]:
+        """
+        Compression of the loaded JSON file.
+        Possible values are `NO_COMPRESSION` and `GZIP`.
+        """
+        return pulumi.get(self, "compression")
+
+    @property
+    @pulumi.getter(name="schemaFileFormat")
+    def schema_file_format(self) -> Optional[str]:
+        """
+        The schema file format along JSON data files.
+        Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        """
+        return pulumi.get(self, "schema_file_format")
+
+
+@pulumi.output_type
+class StreamSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlSourceConfig":
+            suggest = "mysql_source_config"
+        elif key == "sourceConnectionProfile":
+            suggest = "source_connection_profile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_source_config: 'outputs.StreamSourceConfigMysqlSourceConfig',
+                 source_connection_profile: str):
+        """
+        :param 'StreamSourceConfigMysqlSourceConfigArgs' mysql_source_config: MySQL data source configuration.
+               Structure is documented below.
+        :param str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        pulumi.set(__self__, "mysql_source_config", mysql_source_config)
+        pulumi.set(__self__, "source_connection_profile", source_connection_profile)
+
+    @property
+    @pulumi.getter(name="mysqlSourceConfig")
+    def mysql_source_config(self) -> 'outputs.StreamSourceConfigMysqlSourceConfig':
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_source_config")
+
+    @property
+    @pulumi.getter(name="sourceConnectionProfile")
+    def source_connection_profile(self) -> str:
+        """
+        Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        """
+        return pulumi.get(self, "source_connection_profile")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects'] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects'] = None,
+                 max_concurrent_cdc_tasks: Optional[int] = None):
+        """
+        :param 'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs' exclude_objects: MySQL objects to exclude from the stream.
+               Structure is documented below.
+        :param 'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs' include_objects: MySQL objects to retrieve from the source.
+               Structure is documented below.
+        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        """
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects']:
+        """
+        MySQL objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects']:
+        """
+        MySQL objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[int]:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlDatabases":
+            suggest = "mysql_databases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigExcludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase']):
+        """
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase']:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlTables":
+            suggest = "mysql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable']] = None):
+        """
+        :param str database: Database name.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlColumns":
+            suggest = "mysql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn']]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collation: Optional[str] = None,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 primary_key: Optional[bool] = None):
+        """
+        :param str collation: Column collation.
+        :param str column: Column name.
+        :param str data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param int length: -
+               Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[str]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlDatabases":
+            suggest = "mysql_databases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigIncludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mysql_databases: Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase']):
+        """
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs'] mysql_databases: MySQL databases on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mysql_databases", mysql_databases)
+
+    @property
+    @pulumi.getter(name="mysqlDatabases")
+    def mysql_databases(self) -> Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase']:
+        """
+        MySQL databases on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_databases")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlTables":
+            suggest = "mysql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 mysql_tables: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable']] = None):
+        """
+        :param str database: Database name.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs'] mysql_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "database", database)
+        if mysql_tables is not None:
+            pulumi.set(__self__, "mysql_tables", mysql_tables)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="mysqlTables")
+    def mysql_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mysqlColumns":
+            suggest = "mysql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 mysql_columns: Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs'] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if mysql_columns is not None:
+            pulumi.set(__self__, "mysql_columns", mysql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="mysqlColumns")
+    def mysql_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn']]:
+        """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collation: Optional[str] = None,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 primary_key: Optional[bool] = None):
+        """
+        :param str collation: Column collation.
+        :param str column: Column name.
+        :param str data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        :param int length: -
+               Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        """
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter
+    def collation(self) -> Optional[str]:
+        """
+        Column collation.
+        """
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        -
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
 
 

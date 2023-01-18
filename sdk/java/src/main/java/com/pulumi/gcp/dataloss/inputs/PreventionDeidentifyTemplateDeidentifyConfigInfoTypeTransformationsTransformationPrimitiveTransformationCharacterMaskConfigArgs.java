@@ -37,18 +37,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-     * strings, and 0 for digits.
+     * is *
      * 
      */
     @Import(name="maskingCharacter")
     private @Nullable Output<String> maskingCharacter;
 
     /**
-     * @return Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-     * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-     * strings, and 0 for digits.
+     * @return is *
      * 
      */
     public Optional<Output<String>> maskingCharacter() {
@@ -56,14 +52,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * is -4
      * 
      */
     @Import(name="numberToMask")
     private @Nullable Output<Integer> numberToMask;
 
     /**
-     * @return Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+     * @return is -4
      * 
      */
     public Optional<Output<Integer>> numberToMask() {
@@ -149,9 +145,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param maskingCharacter Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-         * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-         * strings, and 0 for digits.
+         * @param maskingCharacter is *
          * 
          * @return builder
          * 
@@ -162,9 +156,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param maskingCharacter Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-         * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-         * strings, and 0 for digits.
+         * @param maskingCharacter is *
          * 
          * @return builder
          * 
@@ -174,7 +166,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param numberToMask Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+         * @param numberToMask is -4
          * 
          * @return builder
          * 
@@ -185,7 +177,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param numberToMask Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+         * @param numberToMask is -4
          * 
          * @return builder
          * 

@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("identifyingFields")]
+        private InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldGetArgs>? _identifyingFields;
+
+        /// <summary>
+        /// Specifies the BigQuery fields that will be returned with findings.
+        /// If not specified, no identifying fields will be returned for findings.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldGetArgs> IdentifyingFields
+        {
+            get => _identifyingFields ?? (_identifyingFields = new InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldGetArgs>());
+            set => _identifyingFields = value;
+        }
+
         /// <summary>
         /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
         /// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be

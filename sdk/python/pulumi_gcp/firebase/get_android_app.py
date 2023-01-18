@@ -21,7 +21,7 @@ class GetAndroidAppResult:
     """
     A collection of values returned by getAndroidApp.
     """
-    def __init__(__self__, app_id=None, deletion_policy=None, display_name=None, id=None, name=None, package_name=None, project=None):
+    def __init__(__self__, app_id=None, deletion_policy=None, display_name=None, etag=None, id=None, name=None, package_name=None, project=None, sha1_hashes=None, sha256_hashes=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -31,6 +31,9 @@ class GetAndroidAppResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,6 +46,12 @@ class GetAndroidAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if sha1_hashes and not isinstance(sha1_hashes, list):
+            raise TypeError("Expected argument 'sha1_hashes' to be a list")
+        pulumi.set(__self__, "sha1_hashes", sha1_hashes)
+        if sha256_hashes and not isinstance(sha256_hashes, list):
+            raise TypeError("Expected argument 'sha256_hashes' to be a list")
+        pulumi.set(__self__, "sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="appId")
@@ -58,6 +67,11 @@ class GetAndroidAppResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -82,6 +96,16 @@ class GetAndroidAppResult:
     def project(self) -> str:
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter(name="sha1Hashes")
+    def sha1_hashes(self) -> Sequence[str]:
+        return pulumi.get(self, "sha1_hashes")
+
+    @property
+    @pulumi.getter(name="sha256Hashes")
+    def sha256_hashes(self) -> Sequence[str]:
+        return pulumi.get(self, "sha256_hashes")
+
 
 class AwaitableGetAndroidAppResult(GetAndroidAppResult):
     # pylint: disable=using-constant-test
@@ -92,10 +116,13 @@ class AwaitableGetAndroidAppResult(GetAndroidAppResult):
             app_id=self.app_id,
             deletion_policy=self.deletion_policy,
             display_name=self.display_name,
+            etag=self.etag,
             id=self.id,
             name=self.name,
             package_name=self.package_name,
-            project=self.project)
+            project=self.project,
+            sha1_hashes=self.sha1_hashes,
+            sha256_hashes=self.sha256_hashes)
 
 
 def get_android_app(app_id: Optional[str] = None,
@@ -103,7 +130,7 @@ def get_android_app(app_id: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str app_id: The app_ip of name of the Firebase androidApp.
+    :param str app_id: The app_id of name of the Firebase androidApp.
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -114,10 +141,13 @@ def get_android_app(app_id: Optional[str] = None,
         app_id=__ret__.app_id,
         deletion_policy=__ret__.deletion_policy,
         display_name=__ret__.display_name,
+        etag=__ret__.etag,
         id=__ret__.id,
         name=__ret__.name,
         package_name=__ret__.package_name,
-        project=__ret__.project)
+        project=__ret__.project,
+        sha1_hashes=__ret__.sha1_hashes,
+        sha256_hashes=__ret__.sha256_hashes)
 
 
 @_utilities.lift_output_func(get_android_app)
@@ -126,6 +156,6 @@ def get_android_app_output(app_id: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str app_id: The app_ip of name of the Firebase androidApp.
+    :param str app_id: The app_id of name of the Firebase androidApp.
     """
     ...

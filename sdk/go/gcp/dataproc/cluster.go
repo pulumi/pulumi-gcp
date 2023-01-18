@@ -192,6 +192,9 @@ type Cluster struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// Allows you to configure a virtual Dataproc on GKE cluster.
+	// Structure defined below.
+	VirtualClusterConfig ClusterVirtualClusterConfigOutput `pulumi:"virtualClusterConfig"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -242,6 +245,9 @@ type clusterState struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region *string `pulumi:"region"`
+	// Allows you to configure a virtual Dataproc on GKE cluster.
+	// Structure defined below.
+	VirtualClusterConfig *ClusterVirtualClusterConfig `pulumi:"virtualClusterConfig"`
 }
 
 type ClusterState struct {
@@ -264,6 +270,9 @@ type ClusterState struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrInput
+	// Allows you to configure a virtual Dataproc on GKE cluster.
+	// Structure defined below.
+	VirtualClusterConfig ClusterVirtualClusterConfigPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -290,6 +299,9 @@ type clusterArgs struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region *string `pulumi:"region"`
+	// Allows you to configure a virtual Dataproc on GKE cluster.
+	// Structure defined below.
+	VirtualClusterConfig *ClusterVirtualClusterConfig `pulumi:"virtualClusterConfig"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -313,6 +325,9 @@ type ClusterArgs struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrInput
+	// Allows you to configure a virtual Dataproc on GKE cluster.
+	// Structure defined below.
+	VirtualClusterConfig ClusterVirtualClusterConfigPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -437,6 +452,12 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 // Defaults to `global`.
 func (o ClusterOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Allows you to configure a virtual Dataproc on GKE cluster.
+// Structure defined below.
+func (o ClusterOutput) VirtualClusterConfig() ClusterVirtualClusterConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterVirtualClusterConfigOutput { return v.VirtualClusterConfig }).(ClusterVirtualClusterConfigOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

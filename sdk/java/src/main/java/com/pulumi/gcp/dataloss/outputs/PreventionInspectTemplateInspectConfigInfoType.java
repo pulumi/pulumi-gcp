@@ -6,6 +6,8 @@ package com.pulumi.gcp.dataloss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionInspectTemplateInspectConfigInfoType {
@@ -15,6 +17,11 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
      * 
      */
     private String name;
+    /**
+     * @return Version of the information type to use. By default, the version is set to stable
+     * 
+     */
+    private @Nullable String version;
 
     private PreventionInspectTemplateInspectConfigInfoType() {}
     /**
@@ -24,6 +31,13 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Version of the information type to use. By default, the version is set to stable
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -36,10 +50,12 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -47,9 +63,15 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+            this.version = version;
+            return this;
+        }
         public PreventionInspectTemplateInspectConfigInfoType build() {
             final var o = new PreventionInspectTemplateInspectConfigInfoType();
             o.name = name;
+            o.version = version;
             return o;
         }
     }

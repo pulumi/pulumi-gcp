@@ -16,6 +16,7 @@ public final class GetRegionSslCertificateResult {
     private Integer certificateId;
     private String creationTimestamp;
     private String description;
+    private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -40,6 +41,9 @@ public final class GetRegionSslCertificateResult {
     }
     public String description() {
         return this.description;
+    }
+    public String expireTime() {
+        return this.expireTime;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -80,6 +84,7 @@ public final class GetRegionSslCertificateResult {
         private Integer certificateId;
         private String creationTimestamp;
         private String description;
+        private String expireTime;
         private String id;
         private String name;
         private String namePrefix;
@@ -94,6 +99,7 @@ public final class GetRegionSslCertificateResult {
     	      this.certificateId = defaults.certificateId;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
+    	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.namePrefix = defaults.namePrefix;
@@ -121,6 +127,11 @@ public final class GetRegionSslCertificateResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expireTime(String expireTime) {
+            this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
         @CustomType.Setter
@@ -164,6 +175,7 @@ public final class GetRegionSslCertificateResult {
             o.certificateId = certificateId;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
+            o.expireTime = expireTime;
             o.id = id;
             o.name = name;
             o.namePrefix = namePrefix;

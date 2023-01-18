@@ -14,6 +14,8 @@ import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulInternalIp;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatus;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerUpdatePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerVersion;
@@ -377,6 +379,34 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<InstanceGroupManagerStatefulDisk>>> statefulDisks() {
         return Codegen.optional(this.statefulDisks);
+    }
+    /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Export(name="statefulExternalIps", type=List.class, parameters={InstanceGroupManagerStatefulExternalIp.class})
+    private Output</* @Nullable */ List<InstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
+
+    /**
+     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<InstanceGroupManagerStatefulExternalIp>>> statefulExternalIps() {
+        return Codegen.optional(this.statefulExternalIps);
+    }
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Export(name="statefulInternalIps", type=List.class, parameters={InstanceGroupManagerStatefulInternalIp.class})
+    private Output</* @Nullable */ List<InstanceGroupManagerStatefulInternalIp>> statefulInternalIps;
+
+    /**
+     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<InstanceGroupManagerStatefulInternalIp>>> statefulInternalIps() {
+        return Codegen.optional(this.statefulInternalIps);
     }
     /**
      * The status of this managed instance group.

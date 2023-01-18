@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsNodePoolConfig
     {
         /// <summary>
+        /// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+        /// </summary>
+        public readonly Outputs.AwsNodePoolConfigAutoscalingMetricsCollection? AutoscalingMetricsCollection;
+        /// <summary>
         /// The ARN of the AWS KMS key used to encrypt node pool configuration.
         /// </summary>
         public readonly Outputs.AwsNodePoolConfigConfigEncryption ConfigEncryption;
@@ -64,6 +68,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private AwsNodePoolConfig(
+            Outputs.AwsNodePoolConfigAutoscalingMetricsCollection? autoscalingMetricsCollection,
+
             Outputs.AwsNodePoolConfigConfigEncryption configEncryption,
 
             string iamInstanceProfile,
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.AwsNodePoolConfigTaint> taints)
         {
+            AutoscalingMetricsCollection = autoscalingMetricsCollection;
             ConfigEncryption = configEncryption;
             IamInstanceProfile = iamInstanceProfile;
             ImageType = imageType;

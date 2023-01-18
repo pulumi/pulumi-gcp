@@ -6,6 +6,7 @@ package com.pulumi.gcp.firebase.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +17,16 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     public static final AndroidAppState Empty = new AndroidAppState();
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+     * token, as the data format is not specified.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -52,14 +53,14 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The user-assigned display name of the App.
+     * @return The user-assigned display name of the AndroidApp.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -67,14 +68,31 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+     * ensure the client has an up-to-date value before proceeding.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
+     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+     * @return The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
      * 
      */
     public Optional<Output<String>> name() {
@@ -115,15 +133,48 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Import(name="sha1Hashes")
+    private @Nullable Output<List<String>> sha1Hashes;
+
+    /**
+     * @return The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Optional<Output<List<String>>> sha1Hashes() {
+        return Optional.ofNullable(this.sha1Hashes);
+    }
+
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Import(name="sha256Hashes")
+    private @Nullable Output<List<String>> sha256Hashes;
+
+    /**
+     * @return The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Optional<Output<List<String>>> sha256Hashes() {
+        return Optional.ofNullable(this.sha256Hashes);
+    }
+
     private AndroidAppState() {}
 
     private AndroidAppState(AndroidAppState $) {
         this.appId = $.appId;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
+        this.etag = $.etag;
         this.name = $.name;
         this.packageName = $.packageName;
         this.project = $.project;
+        this.sha1Hashes = $.sha1Hashes;
+        this.sha256Hashes = $.sha256Hashes;
     }
 
     public static Builder builder() {
@@ -145,8 +196,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+         * token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -157,8 +208,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+         * token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -193,7 +244,7 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The user-assigned display name of the App.
+         * @param displayName The user-assigned display name of the AndroidApp.
          * 
          * @return builder
          * 
@@ -204,7 +255,7 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The user-assigned display name of the App.
+         * @param displayName The user-assigned display name of the AndroidApp.
          * 
          * @return builder
          * 
@@ -214,7 +265,30 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+         * ensure the client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+         * ensure the client has an up-to-date value before proceeding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
+         * @param name The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
          * 
          * @return builder
          * 
@@ -225,7 +299,7 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+         * @param name The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
          * 
          * @return builder
          * 
@@ -278,6 +352,68 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(@Nullable Output<List<String>> sha1Hashes) {
+            $.sha1Hashes = sha1Hashes;
+            return this;
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(List<String> sha1Hashes) {
+            return sha1Hashes(Output.of(sha1Hashes));
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(String... sha1Hashes) {
+            return sha1Hashes(List.of(sha1Hashes));
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(@Nullable Output<List<String>> sha256Hashes) {
+            $.sha256Hashes = sha256Hashes;
+            return this;
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(List<String> sha256Hashes) {
+            return sha256Hashes(Output.of(sha256Hashes));
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(String... sha256Hashes) {
+            return sha256Hashes(List.of(sha256Hashes));
         }
 
         public AndroidAppState build() {

@@ -246,7 +246,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Specifies a custom placement policy for the
+     * Specifies a custom placement policy for the
      * nodes.
      * 
      */
@@ -254,7 +254,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<NodePoolPlacementPolicyArgs> placementPolicy;
 
     /**
-     * @return ) Specifies a custom placement policy for the
+     * @return Specifies a custom placement policy for the
      * nodes.
      * 
      */
@@ -668,7 +668,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementPolicy ) Specifies a custom placement policy for the
+         * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
          * 
          * @return builder
@@ -680,7 +680,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementPolicy ) Specifies a custom placement policy for the
+         * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
          * 
          * @return builder

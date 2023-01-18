@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataproc.ClusterArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterState;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterVirtualClusterConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -289,6 +290,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    /**
+     * Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     * 
+     */
+    @Export(name="virtualClusterConfig", type=ClusterVirtualClusterConfig.class, parameters={})
+    private Output<ClusterVirtualClusterConfig> virtualClusterConfig;
+
+    /**
+     * @return Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     * 
+     */
+    public Output<ClusterVirtualClusterConfig> virtualClusterConfig() {
+        return this.virtualClusterConfig;
     }
 
     /**

@@ -16,43 +16,43 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicNetworkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", {
- *     project: "my-project-name",
  *     description: "Sample global network firewall policy",
+ *     project: "my-project-name",
  * });
  * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
  * const basicKey = new gcp.tags.TagKey("basicKey", {
+ *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
- *     shortName: "tagkey",
  *     purpose: "GCE_FIREWALL",
+ *     shortName: "tagkey",
  *     purposeData: {
  *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
  *     },
- *     description: "For keyname resources.",
  * });
  * const basicValue = new gcp.tags.TagValue("basicValue", {
+ *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
  *     shortName: "tagvalue",
- *     description: "For valuename resources.",
  * });
  * const primary = new gcp.compute.NetworkFirewallPolicyRule("primary", {
- *     firewallPolicy: basicNetworkFirewallPolicy.name,
  *     action: "allow",
+ *     description: "This is a simple rule description",
  *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicNetworkFirewallPolicy.name,
  *     priority: 1000,
  *     ruleName: "test-rule",
- *     description: "This is a simple rule description",
+ *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
  *     match: {
+ *         srcIpRanges: ["10.100.0.1/32"],
  *         srcSecureTags: [{
  *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
  *         }],
- *         srcIpRanges: ["10.100.0.1/32"],
  *         layer4Configs: [{
  *             ipProtocol: "all",
  *         }],
  *     },
- *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
- *     enableLogging: true,
- *     disabled: false,
  * });
  * ```
  *

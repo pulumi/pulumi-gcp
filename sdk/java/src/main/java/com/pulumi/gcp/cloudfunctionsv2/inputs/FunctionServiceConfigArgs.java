@@ -37,6 +37,21 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
+    @Import(name="availableCpu")
+    private @Nullable Output<String> availableCpu;
+
+    /**
+     * @return The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
+    public Optional<Output<String>> availableCpu() {
+        return Optional.ofNullable(this.availableCpu);
+    }
+
+    /**
      * The amount of memory available for a function.
      * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
      * supplied the value is interpreted as bytes.
@@ -121,6 +136,21 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Integer>> maxInstanceCount() {
         return Optional.ofNullable(this.maxInstanceCount);
+    }
+
+    /**
+     * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
+    @Import(name="maxInstanceRequestConcurrency")
+    private @Nullable Output<Integer> maxInstanceRequestConcurrency;
+
+    /**
+     * @return Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
+    public Optional<Output<Integer>> maxInstanceRequestConcurrency() {
+        return Optional.ofNullable(this.maxInstanceRequestConcurrency);
     }
 
     /**
@@ -276,11 +306,13 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
 
     private FunctionServiceConfigArgs(FunctionServiceConfigArgs $) {
         this.allTrafficOnLatestRevision = $.allTrafficOnLatestRevision;
+        this.availableCpu = $.availableCpu;
         this.availableMemory = $.availableMemory;
         this.environmentVariables = $.environmentVariables;
         this.gcfUri = $.gcfUri;
         this.ingressSettings = $.ingressSettings;
         this.maxInstanceCount = $.maxInstanceCount;
+        this.maxInstanceRequestConcurrency = $.maxInstanceRequestConcurrency;
         this.minInstanceCount = $.minInstanceCount;
         this.secretEnvironmentVariables = $.secretEnvironmentVariables;
         this.secretVolumes = $.secretVolumes;
@@ -329,6 +361,27 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder allTrafficOnLatestRevision(Boolean allTrafficOnLatestRevision) {
             return allTrafficOnLatestRevision(Output.of(allTrafficOnLatestRevision));
+        }
+
+        /**
+         * @param availableCpu The number of CPUs used in a single container instance. Default value is calculated from available memory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableCpu(@Nullable Output<String> availableCpu) {
+            $.availableCpu = availableCpu;
+            return this;
+        }
+
+        /**
+         * @param availableCpu The number of CPUs used in a single container instance. Default value is calculated from available memory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableCpu(String availableCpu) {
+            return availableCpu(Output.of(availableCpu));
         }
 
         /**
@@ -446,6 +499,27 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder maxInstanceCount(Integer maxInstanceCount) {
             return maxInstanceCount(Output.of(maxInstanceCount));
+        }
+
+        /**
+         * @param maxInstanceRequestConcurrency Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceRequestConcurrency(@Nullable Output<Integer> maxInstanceRequestConcurrency) {
+            $.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            return this;
+        }
+
+        /**
+         * @param maxInstanceRequestConcurrency Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceRequestConcurrency(Integer maxInstanceRequestConcurrency) {
+            return maxInstanceRequestConcurrency(Output.of(maxInstanceRequestConcurrency));
         }
 
         /**

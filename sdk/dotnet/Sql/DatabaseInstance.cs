@@ -198,6 +198,12 @@ namespace Pulumi.Gcp.Sql
         [Output("firstIpAddress")]
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
         [Output("ipAddresses")]
         public Output<ImmutableArray<Outputs.DatabaseInstanceIpAddress>> IpAddresses { get; private set; } = null!;
 
@@ -529,6 +535,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("firstIpAddress")]
         public Input<string>? FirstIpAddress { get; set; }
+
+        /// <summary>
+        /// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         [Input("ipAddresses")]
         private InputList<Inputs.DatabaseInstanceIpAddressGetArgs>? _ipAddresses;

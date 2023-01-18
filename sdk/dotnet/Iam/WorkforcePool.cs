@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// Represents a collection of external workforces. Provides namespaces for
+    /// federated users that can be referenced in IAM policies.
+    /// 
+    /// To get more information about WorkforcePool, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools)
+    /// * How-to Guides
+    ///     * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
+    /// 
+    /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
+    /// your billing/quota project. The account team notifies you when the project is granted access.
+    /// 
     /// ## Example Usage
     /// ### Iam Workforce Pool Basic
     /// 
@@ -22,12 +34,9 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkforcePool("example", new()
     ///     {
-    ///         WorkforcePoolId = "example-pool",
-    ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Parent = "organizations/123456789",
+    ///         WorkforcePoolId = "example-pool",
     ///     });
     /// 
     /// });
@@ -43,16 +52,13 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkforcePool("example", new()
     ///     {
-    ///         WorkforcePoolId = "example-pool",
-    ///         Parent = "organizations/123456789",
-    ///         Location = "global",
-    ///         DisplayName = "Display name",
     ///         Description = "A sample workforce pool.",
     ///         Disabled = false,
+    ///         DisplayName = "Display name",
+    ///         Location = "global",
+    ///         Parent = "organizations/123456789",
     ///         SessionDuration = "7200s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         WorkforcePoolId = "example-pool",
     ///     });
     /// 
     /// });
@@ -124,9 +130,10 @@ namespace Pulumi.Gcp.Iam
         /// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
         /// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
         /// approximately 30 days. You can restore a soft-deleted pool using
-        /// [UndeleteWorkforcePool][WorkforcePools.UndeleteWorkforcePool]. You cannot reuse the ID of a soft-deleted pool until it
-        /// is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to access
-        /// resources. If the pool is undeleted, existing tokens grant access again.
+        /// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
+        /// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+        /// access again.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -293,9 +300,10 @@ namespace Pulumi.Gcp.Iam
         /// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
         /// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
         /// approximately 30 days. You can restore a soft-deleted pool using
-        /// [UndeleteWorkforcePool][WorkforcePools.UndeleteWorkforcePool]. You cannot reuse the ID of a soft-deleted pool until it
-        /// is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing tokens to access
-        /// resources. If the pool is undeleted, existing tokens grant access again.
+        /// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
+        /// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+        /// access again.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

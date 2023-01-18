@@ -15,6 +15,7 @@ import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMaintenanceWindow;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegration;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfig;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -488,6 +489,22 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stateMessage() {
         return this.stateMessage;
+    }
+    /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="telemetryConfig", type=MetastoreServiceTelemetryConfig.class, parameters={})
+    private Output<MetastoreServiceTelemetryConfig> telemetryConfig;
+
+    /**
+     * @return The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     * Structure is documented below.
+     * 
+     */
+    public Output<MetastoreServiceTelemetryConfig> telemetryConfig() {
+        return this.telemetryConfig;
     }
     /**
      * The tier of the service.

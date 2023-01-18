@@ -180,8 +180,10 @@ type DatabaseInstance struct {
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
-	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
-	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
+	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
+	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	InstanceType pulumi.StringOutput                  `pulumi:"instanceType"`
+	IpAddresses  DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
 	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// The name of the existing instance that will
@@ -291,8 +293,10 @@ type databaseInstanceState struct {
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
-	FirstIpAddress *string                     `pulumi:"firstIpAddress"`
-	IpAddresses    []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
+	FirstIpAddress *string `pulumi:"firstIpAddress"`
+	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	InstanceType *string                     `pulumi:"instanceType"`
+	IpAddresses  []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// The name of the existing instance that will
@@ -365,7 +369,9 @@ type DatabaseInstanceState struct {
 	EncryptionKeyName pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
-	IpAddresses    DatabaseInstanceIpAddressArrayInput
+	// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+	InstanceType pulumi.StringPtrInput
+	IpAddresses  DatabaseInstanceIpAddressArrayInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
 	MaintenanceVersion pulumi.StringPtrInput
 	// The name of the existing instance that will
@@ -658,6 +664,11 @@ func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 // The first IPv4 address of any type assigned.
 func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.FirstIpAddress }).(pulumi.StringOutput)
+}
+
+// The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+func (o DatabaseInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 func (o DatabaseInstanceOutput) IpAddresses() DatabaseInstanceIpAddressArrayOutput {

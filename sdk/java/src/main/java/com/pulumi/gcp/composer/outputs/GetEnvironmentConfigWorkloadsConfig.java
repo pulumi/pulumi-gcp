@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigScheduler;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigTriggerer;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigWebServer;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigWorker;
 import java.util.List;
@@ -13,12 +14,16 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfig {
     private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
+    private List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers;
     private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
     private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
 
     private GetEnvironmentConfigWorkloadsConfig() {}
     public List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers() {
         return this.schedulers;
+    }
+    public List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers() {
+        return this.triggerers;
     }
     public List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers() {
         return this.webServers;
@@ -37,12 +42,14 @@ public final class GetEnvironmentConfigWorkloadsConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
+        private List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers;
         private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
         private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
         public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.schedulers = defaults.schedulers;
+    	      this.triggerers = defaults.triggerers;
     	      this.webServers = defaults.webServers;
     	      this.workers = defaults.workers;
         }
@@ -54,6 +61,14 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         }
         public Builder schedulers(GetEnvironmentConfigWorkloadsConfigScheduler... schedulers) {
             return schedulers(List.of(schedulers));
+        }
+        @CustomType.Setter
+        public Builder triggerers(List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers) {
+            this.triggerers = Objects.requireNonNull(triggerers);
+            return this;
+        }
+        public Builder triggerers(GetEnvironmentConfigWorkloadsConfigTriggerer... triggerers) {
+            return triggerers(List.of(triggerers));
         }
         @CustomType.Setter
         public Builder webServers(List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers) {
@@ -74,6 +89,7 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         public GetEnvironmentConfigWorkloadsConfig build() {
             final var o = new GetEnvironmentConfigWorkloadsConfig();
             o.schedulers = schedulers;
+            o.triggerers = triggerers;
             o.webServers = webServers;
             o.workers = workers;
             return o;

@@ -20,6 +20,7 @@ class ImageArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,11 @@ class ImageArgs:
                RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input['ImageImageEncryptionKeyArgs'] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+               After you encrypt an image with a customer-supplied key, you must
+               provide the same key if you use the image later (e.g. to create a
+               disk from the image)
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -79,6 +85,8 @@ class ImageArgs:
             pulumi.set(__self__, "family", family)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if image_encryption_key is not None:
+            pulumi.set(__self__, "image_encryption_key", image_encryption_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if licenses is not None:
@@ -150,6 +158,22 @@ class ImageArgs:
     @guest_os_features.setter
     def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
+
+    @property
+    @pulumi.getter(name="imageEncryptionKey")
+    def image_encryption_key(self) -> Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]:
+        """
+        Encrypts the image using a customer-supplied encryption key.
+        After you encrypt an image with a customer-supplied key, you must
+        provide the same key if you use the image later (e.g. to create a
+        disk from the image)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_encryption_key")
+
+    @image_encryption_key.setter
+    def image_encryption_key(self, value: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]):
+        pulumi.set(self, "image_encryption_key", value)
 
     @property
     @pulumi.getter
@@ -278,6 +302,7 @@ class _ImageState:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
+                 image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -302,6 +327,11 @@ class _ImageState:
                RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input['ImageImageEncryptionKeyArgs'] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+               After you encrypt an image with a customer-supplied key, you must
+               provide the same key if you use the image later (e.g. to create a
+               disk from the image)
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
@@ -347,6 +377,8 @@ class _ImageState:
             pulumi.set(__self__, "family", family)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if image_encryption_key is not None:
+            pulumi.set(__self__, "image_encryption_key", image_encryption_key)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -446,6 +478,22 @@ class _ImageState:
     @guest_os_features.setter
     def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
+
+    @property
+    @pulumi.getter(name="imageEncryptionKey")
+    def image_encryption_key(self) -> Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]:
+        """
+        Encrypts the image using a customer-supplied encryption key.
+        After you encrypt an image with a customer-supplied key, you must
+        provide the same key if you use the image later (e.g. to create a
+        disk from the image)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_encryption_key")
+
+    @image_encryption_key.setter
+    def image_encryption_key(self, value: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']]):
+        pulumi.set(self, "image_encryption_key", value)
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -598,6 +646,7 @@ class Image(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+                 image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -690,6 +739,11 @@ class Image(pulumi.CustomResource):
                RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+               After you encrypt an image with a customer-supplied key, you must
+               provide the same key if you use the image later (e.g. to create a
+               disk from the image)
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -817,6 +871,7 @@ class Image(pulumi.CustomResource):
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+                 image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -838,6 +893,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["family"] = family
             __props__.__dict__["guest_os_features"] = guest_os_features
+            __props__.__dict__["image_encryption_key"] = image_encryption_key
             __props__.__dict__["labels"] = labels
             __props__.__dict__["licenses"] = licenses
             __props__.__dict__["name"] = name
@@ -866,6 +922,7 @@ class Image(pulumi.CustomResource):
             disk_size_gb: Optional[pulumi.Input[int]] = None,
             family: Optional[pulumi.Input[str]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
+            image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -895,6 +952,11 @@ class Image(pulumi.CustomResource):
                RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable images.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
+               After you encrypt an image with a customer-supplied key, you must
+               provide the same key if you use the image later (e.g. to create a
+               disk from the image)
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
@@ -938,6 +1000,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["disk_size_gb"] = disk_size_gb
         __props__.__dict__["family"] = family
         __props__.__dict__["guest_os_features"] = guest_os_features
+        __props__.__dict__["image_encryption_key"] = image_encryption_key
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["licenses"] = licenses
@@ -1004,6 +1067,18 @@ class Image(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter(name="imageEncryptionKey")
+    def image_encryption_key(self) -> pulumi.Output[Optional['outputs.ImageImageEncryptionKey']]:
+        """
+        Encrypts the image using a customer-supplied encryption key.
+        After you encrypt an image with a customer-supplied key, you must
+        provide the same key if you use the image later (e.g. to create a
+        disk from the image)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_encryption_key")
 
     @property
     @pulumi.getter(name="labelFingerprint")

@@ -140,6 +140,14 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.ImageGuestOsFeature[]>;
     /**
+     * Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     */
+    public readonly imageEncryptionKey!: pulumi.Output<outputs.compute.ImageImageEncryptionKey | undefined>;
+    /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
@@ -220,6 +228,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
             resourceInputs["family"] = state ? state.family : undefined;
             resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
+            resourceInputs["imageEncryptionKey"] = state ? state.imageEncryptionKey : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["licenses"] = state ? state.licenses : undefined;
@@ -236,6 +245,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             resourceInputs["family"] = args ? args.family : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
+            resourceInputs["imageEncryptionKey"] = args ? args.imageEncryptionKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["licenses"] = args ? args.licenses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -289,6 +299,14 @@ export interface ImageState {
      * Structure is documented below.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    /**
+     * Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     */
+    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -379,6 +397,14 @@ export interface ImageArgs {
      * Structure is documented below.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.ImageGuestOsFeature>[]>;
+    /**
+     * Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     */
+    imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
     /**
      * Labels to apply to this Image.
      */

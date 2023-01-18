@@ -26,6 +26,7 @@ __all__ = [
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
     'EnvironmentConfigWorkloadsConfig',
     'EnvironmentConfigWorkloadsConfigScheduler',
+    'EnvironmentConfigWorkloadsConfigTriggerer',
     'EnvironmentConfigWorkloadsConfigWebServer',
     'EnvironmentConfigWorkloadsConfigWorker',
     'GetEnvironmentConfigResult',
@@ -43,6 +44,7 @@ __all__ = [
     'GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult',
     'GetEnvironmentConfigWorkloadsConfigResult',
     'GetEnvironmentConfigWorkloadsConfigSchedulerResult',
+    'GetEnvironmentConfigWorkloadsConfigTriggererResult',
     'GetEnvironmentConfigWorkloadsConfigWebServerResult',
     'GetEnvironmentConfigWorkloadsConfigWorkerResult',
     'GetImageVersionsImageVersionResult',
@@ -859,10 +861,13 @@ class EnvironmentConfigWorkloadsConfig(dict):
 
     def __init__(__self__, *,
                  scheduler: Optional['outputs.EnvironmentConfigWorkloadsConfigScheduler'] = None,
+                 triggerer: Optional['outputs.EnvironmentConfigWorkloadsConfigTriggerer'] = None,
                  web_server: Optional['outputs.EnvironmentConfigWorkloadsConfigWebServer'] = None,
                  worker: Optional['outputs.EnvironmentConfigWorkloadsConfigWorker'] = None):
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
+        if triggerer is not None:
+            pulumi.set(__self__, "triggerer", triggerer)
         if web_server is not None:
             pulumi.set(__self__, "web_server", web_server)
         if worker is not None:
@@ -872,6 +877,11 @@ class EnvironmentConfigWorkloadsConfig(dict):
     @pulumi.getter
     def scheduler(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigScheduler']:
         return pulumi.get(self, "scheduler")
+
+    @property
+    @pulumi.getter
+    def triggerer(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigTriggerer']:
+        return pulumi.get(self, "triggerer")
 
     @property
     @pulumi.getter(name="webServer")
@@ -938,6 +948,49 @@ class EnvironmentConfigWorkloadsConfigScheduler(dict):
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> Optional[float]:
         return pulumi.get(self, "storage_gb")
+
+
+@pulumi.output_type
+class EnvironmentConfigWorkloadsConfigTriggerer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigWorkloadsConfigTriggerer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigWorkloadsConfigTriggerer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigWorkloadsConfigTriggerer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: int,
+                 cpu: float,
+                 memory_gb: float):
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        return pulumi.get(self, "memory_gb")
 
 
 @pulumi.output_type
@@ -1524,9 +1577,11 @@ class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict
 class GetEnvironmentConfigWorkloadsConfigResult(dict):
     def __init__(__self__, *,
                  schedulers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult'],
+                 triggerers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult'],
                  web_servers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigWebServerResult'],
                  workers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigWorkerResult']):
         pulumi.set(__self__, "schedulers", schedulers)
+        pulumi.set(__self__, "triggerers", triggerers)
         pulumi.set(__self__, "web_servers", web_servers)
         pulumi.set(__self__, "workers", workers)
 
@@ -1534,6 +1589,11 @@ class GetEnvironmentConfigWorkloadsConfigResult(dict):
     @pulumi.getter
     def schedulers(self) -> Sequence['outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult']:
         return pulumi.get(self, "schedulers")
+
+    @property
+    @pulumi.getter
+    def triggerers(self) -> Sequence['outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult']:
+        return pulumi.get(self, "triggerers")
 
     @property
     @pulumi.getter(name="webServers")
@@ -1577,6 +1637,32 @@ class GetEnvironmentConfigWorkloadsConfigSchedulerResult(dict):
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> float:
         return pulumi.get(self, "storage_gb")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigWorkloadsConfigTriggererResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 cpu: float,
+                 memory_gb: float):
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        return pulumi.get(self, "memory_gb")
 
 
 @pulumi.output_type

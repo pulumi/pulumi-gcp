@@ -10,6 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// A configuration for an external identity provider.
+    /// 
+    /// To get more information about WorkforcePoolProvider, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers)
+    /// * How-to Guides
+    ///     * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
+    /// 
+    /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
+    /// billing/quota project. The account team notifies you when the project is granted access.
+    /// 
     /// ## Example Usage
     /// ### Iam Workforce Pool Provider Saml Basic
     /// 
@@ -25,9 +36,6 @@ namespace Pulumi.Gcp.Iam
     ///         WorkforcePoolId = "example-pool",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
@@ -43,9 +51,6 @@ namespace Pulumi.Gcp.Iam
     ///         {
     ///             IdpMetadataXml = "&lt;?xml version=\"1.0\"?&gt;&lt;md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"&gt;&lt;md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"&gt; &lt;md:KeyDescriptor use=\"signing\"&gt;&lt;ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"&gt;&lt;ds:X509Data&gt;&lt;ds:X509Certificate&gt;MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv&lt;/ds:X509Certificate&gt;&lt;/ds:X509Data&gt;&lt;/ds:KeyInfo&gt;&lt;/md:KeyDescriptor&gt;&lt;md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/&gt;&lt;/md:IDPSSODescriptor&gt;&lt;/md:EntityDescriptor&gt;",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -64,9 +69,6 @@ namespace Pulumi.Gcp.Iam
     ///         WorkforcePoolId = "example-pool",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
@@ -86,9 +88,6 @@ namespace Pulumi.Gcp.Iam
     ///         Description = "A sample SAML workforce pool provider.",
     ///         Disabled = false,
     ///         AttributeCondition = "true",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -107,9 +106,6 @@ namespace Pulumi.Gcp.Iam
     ///         WorkforcePoolId = "example-pool",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
@@ -126,9 +122,6 @@ namespace Pulumi.Gcp.Iam
     ///             IssuerUri = "https://accounts.google.com",
     ///             ClientId = "client-id",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -147,9 +140,6 @@ namespace Pulumi.Gcp.Iam
     ///         WorkforcePoolId = "example-pool",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
@@ -170,9 +160,6 @@ namespace Pulumi.Gcp.Iam
     ///         Description = "A sample OIDC workforce pool provider.",
     ///         Disabled = false,
     ///         AttributeCondition = "true",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

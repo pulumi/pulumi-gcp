@@ -408,7 +408,7 @@ class Function(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.service_account.Account("account",
-            account_id="sa",
+            account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
@@ -639,7 +639,7 @@ class Function(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.service_account.Account("account",
-            account_id="sa",
+            account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",

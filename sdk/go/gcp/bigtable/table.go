@@ -49,6 +49,14 @@ import (
 //					pulumi.String("b"),
 //					pulumi.String("c"),
 //				},
+//				ColumnFamilies: bigtable.TableColumnFamilyArray{
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("family-first"),
+//					},
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("family-second"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -87,13 +95,11 @@ type Table struct {
 
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayOutput `pulumi:"columnFamilies"`
-	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-	// protection will be set to UNPROTECTED as it is the API default value.
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The name of the table.
+	// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -138,13 +144,11 @@ func GetTable(ctx *pulumi.Context,
 type tableState struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
-	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-	// protection will be set to UNPROTECTED as it is the API default value.
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// The name of the table.
+	// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -158,13 +162,11 @@ type tableState struct {
 type TableState struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
-	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-	// protection will be set to UNPROTECTED as it is the API default value.
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
-	// The name of the table.
+	// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -182,13 +184,11 @@ func (TableState) ElementType() reflect.Type {
 type tableArgs struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
-	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-	// protection will be set to UNPROTECTED as it is the API default value.
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
-	// The name of the table.
+	// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -203,13 +203,11 @@ type tableArgs struct {
 type TableArgs struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
-	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-	// protection will be set to UNPROTECTED as it is the API default value.
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
-	// The name of the table.
+	// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -312,9 +310,7 @@ func (o TableOutput) ColumnFamilies() TableColumnFamilyArrayOutput {
 	return o.ApplyT(func(v *Table) TableColumnFamilyArrayOutput { return v.ColumnFamilies }).(TableColumnFamilyArrayOutput)
 }
 
-// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-// protection will be set to UNPROTECTED as it is the API default value.
+// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
 func (o TableOutput) DeletionProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionProtection }).(pulumi.StringOutput)
 }
@@ -324,7 +320,7 @@ func (o TableOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The name of the table.
+// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
 func (o TableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

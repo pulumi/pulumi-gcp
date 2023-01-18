@@ -15,7 +15,7 @@ import (
 //
 // To get more information about WebApp, see:
 //
-// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
 // * How-to Guides
 //   - [Official Documentation](https://firebase.google.com/)
 //

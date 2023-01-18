@@ -17,10 +17,12 @@ class AndroidAppArgs:
                  display_name: pulumi.Input[str],
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
-        :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+        :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
@@ -28,6 +30,8 @@ class AndroidAppArgs:
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         pulumi.set(__self__, "display_name", display_name)
         if deletion_policy is not None:
@@ -36,12 +40,16 @@ class AndroidAppArgs:
             pulumi.set(__self__, "package_name", package_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sha1_hashes is not None:
+            pulumi.set(__self__, "sha1_hashes", sha1_hashes)
+        if sha256_hashes is not None:
+            pulumi.set(__self__, "sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The user-assigned display name of the App.
+        The user-assigned display name of the AndroidApp.
         """
         return pulumi.get(self, "display_name")
 
@@ -89,6 +97,30 @@ class AndroidAppArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sha1Hashes")
+    def sha1_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The SHA1 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha1_hashes")
+
+    @sha1_hashes.setter
+    def sha1_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sha1_hashes", value)
+
+    @property
+    @pulumi.getter(name="sha256Hashes")
+    def sha256_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The SHA256 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha256_hashes")
+
+    @sha256_hashes.setter
+    def sha256_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sha256_hashes", value)
+
 
 @pulumi.input_type
 class _AndroidAppState:
@@ -96,22 +128,29 @@ class _AndroidAppState:
                  app_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
-        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-               the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+               token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
-        :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+               ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -119,19 +158,25 @@ class _AndroidAppState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if package_name is not None:
             pulumi.set(__self__, "package_name", package_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sha1_hashes is not None:
+            pulumi.set(__self__, "sha1_hashes", sha1_hashes)
+        if sha256_hashes is not None:
+            pulumi.set(__self__, "sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+        token, as the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 
@@ -157,7 +202,7 @@ class _AndroidAppState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The user-assigned display name of the App.
+        The user-assigned display name of the AndroidApp.
         """
         return pulumi.get(self, "display_name")
 
@@ -167,9 +212,22 @@ class _AndroidAppState:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+        ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         """
         return pulumi.get(self, "name")
 
@@ -203,6 +261,30 @@ class _AndroidAppState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sha1Hashes")
+    def sha1_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The SHA1 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha1_hashes")
+
+    @sha1_hashes.setter
+    def sha1_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sha1_hashes", value)
+
+    @property
+    @pulumi.getter(name="sha256Hashes")
+    def sha256_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The SHA256 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha256_hashes")
+
+    @sha256_hashes.setter
+    def sha256_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sha256_hashes", value)
+
 
 class AndroidApp(pulumi.CustomResource):
     @overload
@@ -213,6 +295,8 @@ class AndroidApp(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -226,6 +310,8 @@ class AndroidApp(pulumi.CustomResource):
             project="my-project-name",
             display_name="Display Name Basic",
             package_name="",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -254,11 +340,13 @@ class AndroidApp(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
-        :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+        :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         ...
     @overload
@@ -278,6 +366,8 @@ class AndroidApp(pulumi.CustomResource):
             project="my-project-name",
             display_name="Display Name Basic",
             package_name="",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -320,6 +410,8 @@ class AndroidApp(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -335,7 +427,10 @@ class AndroidApp(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["package_name"] = package_name
             __props__.__dict__["project"] = project
+            __props__.__dict__["sha1_hashes"] = sha1_hashes
+            __props__.__dict__["sha256_hashes"] = sha256_hashes
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
         super(AndroidApp, __self__).__init__(
             'gcp:firebase/androidApp:AndroidApp',
@@ -350,9 +445,12 @@ class AndroidApp(pulumi.CustomResource):
             app_id: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             package_name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'AndroidApp':
+            project: Optional[pulumi.Input[str]] = None,
+            sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AndroidApp':
         """
         Get an existing AndroidApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -360,17 +458,21 @@ class AndroidApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-               the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+               token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
-        :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+               ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -379,17 +481,20 @@ class AndroidApp(pulumi.CustomResource):
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["name"] = name
         __props__.__dict__["package_name"] = package_name
         __props__.__dict__["project"] = project
+        __props__.__dict__["sha1_hashes"] = sha1_hashes
+        __props__.__dict__["sha256_hashes"] = sha256_hashes
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[str]:
         """
-        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+        token, as the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 
@@ -407,15 +512,24 @@ class AndroidApp(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The user-assigned display name of the App.
+        The user-assigned display name of the AndroidApp.
         """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+        ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+        The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
         """
         return pulumi.get(self, "name")
 
@@ -436,4 +550,20 @@ class AndroidApp(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sha1Hashes")
+    def sha1_hashes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The SHA1 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha1_hashes")
+
+    @property
+    @pulumi.getter(name="sha256Hashes")
+    def sha256_hashes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The SHA256 certificate hashes for the AndroidApp.
+        """
+        return pulumi.get(self, "sha256_hashes")
 

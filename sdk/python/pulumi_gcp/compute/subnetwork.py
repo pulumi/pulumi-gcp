@@ -1339,7 +1339,7 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpGoogleAccess")
-    def private_ip_google_access(self) -> pulumi.Output[Optional[bool]]:
+    def private_ip_google_access(self) -> pulumi.Output[bool]:
         """
         When enabled, VMs in this subnetwork without external IP addresses can
         access Google APIs and services by using Private Google Access.

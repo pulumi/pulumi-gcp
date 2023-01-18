@@ -131,14 +131,14 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this private connection is located in.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return The name of the location this repository is located in.
+     * @return The name of the location this private connection is located in.
      * 
      */
     public Output<String> location() {

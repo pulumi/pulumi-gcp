@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class GetFunctionServiceConfigResult
     {
         public readonly bool AllTrafficOnLatestRevision;
+        public readonly string AvailableCpu;
         public readonly string AvailableMemory;
         public readonly ImmutableDictionary<string, string> EnvironmentVariables;
         public readonly string GcfUri;
         public readonly string IngressSettings;
         public readonly int MaxInstanceCount;
+        public readonly int MaxInstanceRequestConcurrency;
         public readonly int MinInstanceCount;
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigSecretEnvironmentVariableResult> SecretEnvironmentVariables;
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigSecretVolumeResult> SecretVolumes;
@@ -33,6 +35,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         private GetFunctionServiceConfigResult(
             bool allTrafficOnLatestRevision,
 
+            string availableCpu,
+
             string availableMemory,
 
             ImmutableDictionary<string, string> environmentVariables,
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string ingressSettings,
 
             int maxInstanceCount,
+
+            int maxInstanceRequestConcurrency,
 
             int minInstanceCount,
 
@@ -62,11 +68,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string vpcConnectorEgressSettings)
         {
             AllTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            AvailableCpu = availableCpu;
             AvailableMemory = availableMemory;
             EnvironmentVariables = environmentVariables;
             GcfUri = gcfUri;
             IngressSettings = ingressSettings;
             MaxInstanceCount = maxInstanceCount;
+            MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             MinInstanceCount = minInstanceCount;
             SecretEnvironmentVariables = secretEnvironmentVariables;
             SecretVolumes = secretVolumes;

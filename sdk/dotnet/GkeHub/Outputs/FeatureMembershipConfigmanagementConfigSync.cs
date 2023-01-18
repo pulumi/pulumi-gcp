@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         /// <summary>
+        /// -
+        /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncOci? Oci;
+        /// <summary>
         /// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         public readonly bool? PreventDrift;
@@ -31,11 +36,14 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         private FeatureMembershipConfigmanagementConfigSync(
             Outputs.FeatureMembershipConfigmanagementConfigSyncGit? git,
 
+            Outputs.FeatureMembershipConfigmanagementConfigSyncOci? oci,
+
             bool? preventDrift,
 
             string? sourceFormat)
         {
             Git = git;
+            Oci = oci;
             PreventDrift = preventDrift;
             SourceFormat = sourceFormat;
         }

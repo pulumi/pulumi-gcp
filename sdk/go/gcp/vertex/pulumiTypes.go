@@ -2655,7 +2655,10 @@ func (o AiFeatureStoreIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutpu
 
 type AiFeatureStoreOnlineServingConfig struct {
 	// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
-	FixedNodeCount int `pulumi:"fixedNodeCount"`
+	FixedNodeCount *int `pulumi:"fixedNodeCount"`
+	// Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+	// Structure is documented below.
+	Scaling *AiFeatureStoreOnlineServingConfigScaling `pulumi:"scaling"`
 }
 
 // AiFeatureStoreOnlineServingConfigInput is an input type that accepts AiFeatureStoreOnlineServingConfigArgs and AiFeatureStoreOnlineServingConfigOutput values.
@@ -2671,7 +2674,10 @@ type AiFeatureStoreOnlineServingConfigInput interface {
 
 type AiFeatureStoreOnlineServingConfigArgs struct {
 	// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
-	FixedNodeCount pulumi.IntInput `pulumi:"fixedNodeCount"`
+	FixedNodeCount pulumi.IntPtrInput `pulumi:"fixedNodeCount"`
+	// Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+	// Structure is documented below.
+	Scaling AiFeatureStoreOnlineServingConfigScalingPtrInput `pulumi:"scaling"`
 }
 
 func (AiFeatureStoreOnlineServingConfigArgs) ElementType() reflect.Type {
@@ -2752,8 +2758,14 @@ func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingCo
 }
 
 // The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
-func (o AiFeatureStoreOnlineServingConfigOutput) FixedNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) int { return v.FixedNodeCount }).(pulumi.IntOutput)
+func (o AiFeatureStoreOnlineServingConfigOutput) FixedNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) *int { return v.FixedNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+// Structure is documented below.
+func (o AiFeatureStoreOnlineServingConfigOutput) Scaling() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfigScaling { return v.Scaling }).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
 }
 
 type AiFeatureStoreOnlineServingConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2786,7 +2798,174 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) FixedNodeCount() pulumi.IntP
 		if v == nil {
 			return nil
 		}
-		return &v.FixedNodeCount
+		return v.FixedNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+// Structure is documented below.
+func (o AiFeatureStoreOnlineServingConfigPtrOutput) Scaling() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfigScaling {
+		if v == nil {
+			return nil
+		}
+		return v.Scaling
+	}).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
+}
+
+type AiFeatureStoreOnlineServingConfigScaling struct {
+	// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// AiFeatureStoreOnlineServingConfigScalingInput is an input type that accepts AiFeatureStoreOnlineServingConfigScalingArgs and AiFeatureStoreOnlineServingConfigScalingOutput values.
+// You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigScalingInput` via:
+//
+//	AiFeatureStoreOnlineServingConfigScalingArgs{...}
+type AiFeatureStoreOnlineServingConfigScalingInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreOnlineServingConfigScalingOutput() AiFeatureStoreOnlineServingConfigScalingOutput
+	ToAiFeatureStoreOnlineServingConfigScalingOutputWithContext(context.Context) AiFeatureStoreOnlineServingConfigScalingOutput
+}
+
+type AiFeatureStoreOnlineServingConfigScalingArgs struct {
+	// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+}
+
+func (AiFeatureStoreOnlineServingConfigScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScaling)(nil)).Elem()
+}
+
+func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServingConfigScalingOutput() AiFeatureStoreOnlineServingConfigScalingOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigScalingOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServingConfigScalingOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigScalingOutput)
+}
+
+func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigScalingOutput).ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreOnlineServingConfigScalingPtrInput is an input type that accepts AiFeatureStoreOnlineServingConfigScalingArgs, AiFeatureStoreOnlineServingConfigScalingPtr and AiFeatureStoreOnlineServingConfigScalingPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreOnlineServingConfigScalingPtrInput` via:
+//
+//	        AiFeatureStoreOnlineServingConfigScalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreOnlineServingConfigScalingPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput
+	ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput
+}
+
+type aiFeatureStoreOnlineServingConfigScalingPtrType AiFeatureStoreOnlineServingConfigScalingArgs
+
+func AiFeatureStoreOnlineServingConfigScalingPtr(v *AiFeatureStoreOnlineServingConfigScalingArgs) AiFeatureStoreOnlineServingConfigScalingPtrInput {
+	return (*aiFeatureStoreOnlineServingConfigScalingPtrType)(v)
+}
+
+func (*aiFeatureStoreOnlineServingConfigScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreOnlineServingConfigScaling)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreOnlineServingConfigScalingPtrType) ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return i.ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreOnlineServingConfigScalingPtrType) ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
+}
+
+type AiFeatureStoreOnlineServingConfigScalingOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreOnlineServingConfigScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScaling)(nil)).Elem()
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToAiFeatureStoreOnlineServingConfigScalingOutput() AiFeatureStoreOnlineServingConfigScalingOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToAiFeatureStoreOnlineServingConfigScalingOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o.ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreOnlineServingConfigScaling) *AiFeatureStoreOnlineServingConfigScaling {
+		return &v
+	}).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
+}
+
+// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfigScaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+func (o AiFeatureStoreOnlineServingConfigScalingOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfigScaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+type AiFeatureStoreOnlineServingConfigScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreOnlineServingConfigScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreOnlineServingConfigScaling)(nil)).Elem()
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) Elem() AiFeatureStoreOnlineServingConfigScalingOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfigScaling) AiFeatureStoreOnlineServingConfigScaling {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreOnlineServingConfigScaling
+		return ret
+	}).(AiFeatureStoreOnlineServingConfigScalingOutput)
+}
+
+// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfigScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreOnlineServingConfigScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodeCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -4311,6 +4490,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScalingInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScalingPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexInput)(nil)).Elem(), AiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexArrayInput)(nil)).Elem(), AiIndexDeployedIndexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
@@ -4369,6 +4550,8 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigScalingOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigScalingPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     private @Nullable Integer hours;
@@ -27,14 +27,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable Integer nanos;
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59.
+     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
      * 
      */
     private @Nullable Integer seconds;
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue() {}
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     public Optional<Integer> hours() {
@@ -55,7 +55,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.nanos);
     }
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59.
+     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
      * 
      */
     public Optional<Integer> seconds() {

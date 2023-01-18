@@ -151,6 +151,7 @@ import javax.annotation.Nullable;
  *                 .bucket(&#34;my-bucket&#34;)
  *                 .rootPath(&#34;/path&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
@@ -355,14 +356,14 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this connection profile is located in.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return The name of the location this repository is located in.
+     * @return The name of the location this connection profile is located in.
      * 
      */
     public Output<String> location() {

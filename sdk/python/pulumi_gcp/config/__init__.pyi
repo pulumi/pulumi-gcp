@@ -94,6 +94,8 @@ computeCustomEndpoint: Optional[str]
 
 containerAnalysisCustomEndpoint: Optional[str]
 
+containerAttachedCustomEndpoint: Optional[str]
+
 containerAwsCustomEndpoint: Optional[str]
 
 containerAzureCustomEndpoint: Optional[str]
@@ -141,6 +143,8 @@ eventarcCustomEndpoint: Optional[str]
 filestoreCustomEndpoint: Optional[str]
 
 firebaseCustomEndpoint: Optional[str]
+
+firebaseDatabaseCustomEndpoint: Optional[str]
 
 firebaseHostingCustomEndpoint: Optional[str]
 

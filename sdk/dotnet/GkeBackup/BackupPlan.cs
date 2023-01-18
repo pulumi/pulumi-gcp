@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeBackup
 {
     /// <summary>
+    /// Represents a Backup Plan instance.
+    /// 
+    /// To get more information about BackupPlan, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+    /// 
     /// ## Example Usage
     /// ### Gkebackup Backupplan Basic
     /// 
@@ -35,9 +43,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -50,9 +55,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///             IncludeSecrets = true,
     ///             AllNamespaces = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -82,9 +84,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var autopilot = new Gcp.GkeBackup.BackupPlan("autopilot", new()
@@ -97,9 +96,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///             IncludeSecrets = true,
     ///             AllNamespaces = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -128,25 +124,16 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
     ///     {
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
     ///     {
     ///         KeyRing = keyRing.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cmek = new Gcp.GkeBackup.BackupPlan("cmek", new()
@@ -170,9 +157,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 GcpKmsEncryptionKey = cryptoKey.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -201,9 +185,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var full = new Gcp.GkeBackup.BackupPlan("full", new()
@@ -240,9 +221,6 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

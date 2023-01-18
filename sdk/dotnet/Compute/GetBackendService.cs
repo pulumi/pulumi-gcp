@@ -102,6 +102,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly int GeneratedId;
+        /// <summary>
         /// The set of HTTP/HTTPS health checks used by the Backend Service.
         /// </summary>
         public readonly ImmutableArray<string> HealthChecks;
@@ -167,6 +171,8 @@ namespace Pulumi.Gcp.Compute
 
             string fingerprint,
 
+            int generatedId,
+
             ImmutableArray<string> healthChecks,
 
             ImmutableArray<Outputs.GetBackendServiceIapResult> iaps,
@@ -212,6 +218,7 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             EnableCdn = enableCdn;
             Fingerprint = fingerprint;
+            GeneratedId = generatedId;
             HealthChecks = healthChecks;
             Iaps = iaps;
             Id = id;

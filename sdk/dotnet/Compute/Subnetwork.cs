@@ -296,7 +296,7 @@ namespace Pulumi.Gcp.Compute
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
         [Output("privateIpGoogleAccess")]
-        public Output<bool?> PrivateIpGoogleAccess { get; private set; } = null!;
+        public Output<bool> PrivateIpGoogleAccess { get; private set; } = null!;
 
         /// <summary>
         /// The private IPv6 google access type for the VMs in this subnet.

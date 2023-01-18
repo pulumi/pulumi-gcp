@@ -192,6 +192,10 @@ type RegionInstanceGroupManager struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
+	// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayOutput `pulumi:"statefulExternalIps"`
+	// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayOutput `pulumi:"statefulInternalIps"`
 	// The status of this managed instance group.
 	Statuses RegionInstanceGroupManagerStatusArrayOutput `pulumi:"statuses"`
 	// The full URL of all target pools to which new
@@ -300,6 +304,10 @@ type regionInstanceGroupManagerState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
+	// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
+	// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
 	// The status of this managed instance group.
 	Statuses []RegionInstanceGroupManagerStatus `pulumi:"statuses"`
 	// The full URL of all target pools to which new
@@ -374,6 +382,10 @@ type RegionInstanceGroupManagerState struct {
 	SelfLink pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
+	// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
+	// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
 	// The status of this managed instance group.
 	Statuses RegionInstanceGroupManagerStatusArrayInput
 	// The full URL of all target pools to which new
@@ -446,6 +458,10 @@ type regionInstanceGroupManagerArgs struct {
 	Region *string `pulumi:"region"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
+	// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
+	// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -513,6 +529,10 @@ type RegionInstanceGroupManagerArgs struct {
 	Region pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
+	// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
+	// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -722,6 +742,20 @@ func (o RegionInstanceGroupManagerOutput) StatefulDisks() RegionInstanceGroupMan
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStatefulDiskArrayOutput {
 		return v.StatefulDisks
 	}).(RegionInstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+func (o RegionInstanceGroupManagerOutput) StatefulExternalIps() RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+		return v.StatefulExternalIps
+	}).(RegionInstanceGroupManagerStatefulExternalIpArrayOutput)
+}
+
+// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+func (o RegionInstanceGroupManagerOutput) StatefulInternalIps() RegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+		return v.StatefulInternalIps
+	}).(RegionInstanceGroupManagerStatefulInternalIpArrayOutput)
 }
 
 // The status of this managed instance group.

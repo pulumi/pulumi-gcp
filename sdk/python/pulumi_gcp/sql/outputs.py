@@ -51,6 +51,25 @@ __all__ = [
     'GetDatabaseInstanceSettingMaintenanceWindowResult',
     'GetDatabaseInstanceSettingPasswordValidationPolicyResult',
     'GetDatabaseInstanceSettingSqlServerAuditConfigResult',
+    'GetDatabaseInstancesInstanceResult',
+    'GetDatabaseInstancesInstanceCloneResult',
+    'GetDatabaseInstancesInstanceIpAddressResult',
+    'GetDatabaseInstancesInstanceReplicaConfigurationResult',
+    'GetDatabaseInstancesInstanceRestoreBackupContextResult',
+    'GetDatabaseInstancesInstanceServerCaCertResult',
+    'GetDatabaseInstancesInstanceSettingResult',
+    'GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult',
+    'GetDatabaseInstancesInstanceSettingBackupConfigurationResult',
+    'GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult',
+    'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
+    'GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult',
+    'GetDatabaseInstancesInstanceSettingInsightsConfigResult',
+    'GetDatabaseInstancesInstanceSettingIpConfigurationResult',
+    'GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult',
+    'GetDatabaseInstancesInstanceSettingLocationPreferenceResult',
+    'GetDatabaseInstancesInstanceSettingMaintenanceWindowResult',
+    'GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult',
+    'GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult',
 ]
 
 @pulumi.output_type
@@ -508,6 +527,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "connector_enforcement"
         elif key == "databaseFlags":
             suggest = "database_flags"
+        elif key == "deletionProtectionEnabled":
+            suggest = "deletion_protection_enabled"
         elif key == "denyMaintenancePeriod":
             suggest = "deny_maintenance_period"
         elif key == "diskAutoresize":
@@ -557,6 +578,7 @@ class DatabaseInstanceSettings(dict):
                  collation: Optional[str] = None,
                  connector_enforcement: Optional[str] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
+                 deletion_protection_enabled: Optional[bool] = None,
                  deny_maintenance_period: Optional['outputs.DatabaseInstanceSettingsDenyMaintenancePeriod'] = None,
                  disk_autoresize: Optional[bool] = None,
                  disk_autoresize_limit: Optional[int] = None,
@@ -582,7 +604,7 @@ class DatabaseInstanceSettings(dict):
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
                `settings.backup_configuration.enabled` is set to `true`.
                For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-               For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+               For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param str collation: The name of server instance collation.
         :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
@@ -609,6 +631,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if disk_autoresize is not None:
@@ -672,7 +696,7 @@ class DatabaseInstanceSettings(dict):
         instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
         `settings.backup_configuration.enabled` is set to `true`.
         For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-        For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         is set to `true`. Defaults to `ZONAL`.
         """
         return pulumi.get(self, "availability_type")
@@ -702,6 +726,11 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
         return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "deletion_protection_enabled")
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -861,7 +890,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
                Can only be used with MySQL.
         :param bool enabled: True if backup configuration is enabled.
         :param str location: The region where the backup will be stored
-        :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+        :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         :param str start_time: `HH:MM` format time indicating when backup
                configuration starts.
         :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
@@ -918,7 +947,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> Optional[bool]:
         """
-        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
@@ -1593,7 +1622,7 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bucket: str,
+                 bucket: Optional[str] = None,
                  retention_interval: Optional[str] = None,
                  upload_interval: Optional[str] = None):
         """
@@ -1601,7 +1630,8 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
         :param str retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param str upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "bucket", bucket)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
         if retention_interval is not None:
             pulumi.set(__self__, "retention_interval", retention_interval)
         if upload_interval is not None:
@@ -1609,7 +1639,7 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
 
     @property
     @pulumi.getter
-    def bucket(self) -> str:
+    def bucket(self) -> Optional[str]:
         """
         The name of the destination bucket (e.g., gs://mybucket).
         """
@@ -2082,6 +2112,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  collation: str,
                  connector_enforcement: str,
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
+                 deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult'],
                  disk_autoresize: bool,
                  disk_autoresize_limit: int,
@@ -2105,6 +2136,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "database_flags", database_flags)
+        pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
@@ -2156,6 +2188,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']:
         return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> bool:
+        return pulumi.get(self, "deletion_protection_enabled")
 
     @property
     @pulumi.getter(name="denyMaintenancePeriods")
@@ -2587,6 +2624,938 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
 
 @pulumi.output_type
 class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 retention_interval: str,
+                 upload_interval: str):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "retention_interval", retention_interval)
+        pulumi.set(__self__, "upload_interval", upload_interval)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="retentionInterval")
+    def retention_interval(self) -> str:
+        return pulumi.get(self, "retention_interval")
+
+    @property
+    @pulumi.getter(name="uploadInterval")
+    def upload_interval(self) -> str:
+        return pulumi.get(self, "upload_interval")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 available_maintenance_versions: Sequence[str],
+                 clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
+                 connection_name: str,
+                 database_version: str,
+                 deletion_protection: bool,
+                 encryption_key_name: str,
+                 first_ip_address: str,
+                 instance_type: str,
+                 ip_addresses: Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult'],
+                 maintenance_version: str,
+                 master_instance_name: str,
+                 name: str,
+                 private_ip_address: str,
+                 project: str,
+                 public_ip_address: str,
+                 region: str,
+                 replica_configurations: Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult'],
+                 restore_backup_contexts: Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult'],
+                 root_password: str,
+                 self_link: str,
+                 server_ca_certs: Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult'],
+                 service_account_email_address: str,
+                 settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']):
+        """
+        :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.
+        :param str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+        :param str region: To filter out the Cloud SQL instances which are located in the specified region.
+        """
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+        pulumi.set(__self__, "clones", clones)
+        pulumi.set(__self__, "connection_name", connection_name)
+        pulumi.set(__self__, "database_version", database_version)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        pulumi.set(__self__, "first_ip_address", first_ip_address)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "ip_addresses", ip_addresses)
+        pulumi.set(__self__, "maintenance_version", maintenance_version)
+        pulumi.set(__self__, "master_instance_name", master_instance_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip_address", private_ip_address)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "replica_configurations", replica_configurations)
+        pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
+        pulumi.set(__self__, "root_password", root_password)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        pulumi.set(__self__, "service_account_email_address", service_account_email_address)
+        pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[str]:
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @property
+    @pulumi.getter
+    def clones(self) -> Sequence['outputs.GetDatabaseInstancesInstanceCloneResult']:
+        return pulumi.get(self, "clones")
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> str:
+        return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> str:
+        """
+        To filter out the Cloud SQL instances which are of the specified database version.
+        """
+        return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="encryptionKeyName")
+    def encryption_key_name(self) -> str:
+        return pulumi.get(self, "encryption_key_name")
+
+    @property
+    @pulumi.getter(name="firstIpAddress")
+    def first_ip_address(self) -> str:
+        return pulumi.get(self, "first_ip_address")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult']:
+        return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> str:
+        return pulumi.get(self, "maintenance_version")
+
+    @property
+    @pulumi.getter(name="masterInstanceName")
+    def master_instance_name(self) -> str:
+        return pulumi.get(self, "master_instance_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> str:
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> str:
+        return pulumi.get(self, "public_ip_address")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        To filter out the Cloud SQL instances which are located in the specified region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicaConfigurations")
+    def replica_configurations(self) -> Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult']:
+        return pulumi.get(self, "replica_configurations")
+
+    @property
+    @pulumi.getter(name="restoreBackupContexts")
+    def restore_backup_contexts(self) -> Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult']:
+        return pulumi.get(self, "restore_backup_contexts")
+
+    @property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> str:
+        return pulumi.get(self, "root_password")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serverCaCerts")
+    def server_ca_certs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult']:
+        return pulumi.get(self, "server_ca_certs")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmailAddress")
+    def service_account_email_address(self) -> str:
+        return pulumi.get(self, "service_account_email_address")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']:
+        return pulumi.get(self, "settings")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceCloneResult(dict):
+    def __init__(__self__, *,
+                 allocated_ip_range: str,
+                 point_in_time: str,
+                 source_instance_name: str):
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "source_instance_name", source_instance_name)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> str:
+        return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> str:
+        return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="sourceInstanceName")
+    def source_instance_name(self) -> str:
+        return pulumi.get(self, "source_instance_name")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceIpAddressResult(dict):
+    def __init__(__self__, *,
+                 ip_address: str,
+                 time_to_retire: str,
+                 type: str):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "time_to_retire", time_to_retire)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="timeToRetire")
+    def time_to_retire(self) -> str:
+        return pulumi.get(self, "time_to_retire")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
+    def __init__(__self__, *,
+                 ca_certificate: str,
+                 client_certificate: str,
+                 client_key: str,
+                 connect_retry_interval: int,
+                 dump_file_path: str,
+                 failover_target: bool,
+                 master_heartbeat_period: int,
+                 password: str,
+                 ssl_cipher: str,
+                 username: str,
+                 verify_server_certificate: bool):
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "connect_retry_interval", connect_retry_interval)
+        pulumi.set(__self__, "dump_file_path", dump_file_path)
+        pulumi.set(__self__, "failover_target", failover_target)
+        pulumi.set(__self__, "master_heartbeat_period", master_heartbeat_period)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "ssl_cipher", ssl_cipher)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "verify_server_certificate", verify_server_certificate)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> str:
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> str:
+        return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> str:
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="connectRetryInterval")
+    def connect_retry_interval(self) -> int:
+        return pulumi.get(self, "connect_retry_interval")
+
+    @property
+    @pulumi.getter(name="dumpFilePath")
+    def dump_file_path(self) -> str:
+        return pulumi.get(self, "dump_file_path")
+
+    @property
+    @pulumi.getter(name="failoverTarget")
+    def failover_target(self) -> bool:
+        return pulumi.get(self, "failover_target")
+
+    @property
+    @pulumi.getter(name="masterHeartbeatPeriod")
+    def master_heartbeat_period(self) -> int:
+        return pulumi.get(self, "master_heartbeat_period")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sslCipher")
+    def ssl_cipher(self) -> str:
+        return pulumi.get(self, "ssl_cipher")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="verifyServerCertificate")
+    def verify_server_certificate(self) -> bool:
+        return pulumi.get(self, "verify_server_certificate")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
+    def __init__(__self__, *,
+                 backup_run_id: int,
+                 instance_id: str,
+                 project: str):
+        """
+        :param str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "backup_run_id", backup_run_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="backupRunId")
+    def backup_run_id(self) -> int:
+        return pulumi.get(self, "backup_run_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceServerCaCertResult(dict):
+    def __init__(__self__, *,
+                 cert: str,
+                 common_name: str,
+                 create_time: str,
+                 expiration_time: str,
+                 sha1_fingerprint: str):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expiration_time", expiration_time)
+        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> str:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> str:
+        return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingResult(dict):
+    def __init__(__self__, *,
+                 activation_policy: str,
+                 active_directory_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult'],
+                 availability_type: str,
+                 backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
+                 collation: str,
+                 connector_enforcement: str,
+                 database_flags: Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult'],
+                 deletion_protection_enabled: bool,
+                 deny_maintenance_periods: Sequence['outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult'],
+                 disk_autoresize: bool,
+                 disk_autoresize_limit: int,
+                 disk_size: int,
+                 disk_type: str,
+                 insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
+                 ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
+                 location_preferences: Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult'],
+                 maintenance_windows: Sequence['outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult'],
+                 password_validation_policies: Sequence['outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult'],
+                 pricing_plan: str,
+                 sql_server_audit_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult'],
+                 tier: str,
+                 time_zone: str,
+                 user_labels: Mapping[str, str],
+                 version: int):
+        """
+        :param str tier: To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+        """
+        pulumi.set(__self__, "activation_policy", activation_policy)
+        pulumi.set(__self__, "active_directory_configs", active_directory_configs)
+        pulumi.set(__self__, "availability_type", availability_type)
+        pulumi.set(__self__, "backup_configurations", backup_configurations)
+        pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        pulumi.set(__self__, "database_flags", database_flags)
+        pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
+        pulumi.set(__self__, "disk_autoresize", disk_autoresize)
+        pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "insights_configs", insights_configs)
+        pulumi.set(__self__, "ip_configurations", ip_configurations)
+        pulumi.set(__self__, "location_preferences", location_preferences)
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        pulumi.set(__self__, "password_validation_policies", password_validation_policies)
+        pulumi.set(__self__, "pricing_plan", pricing_plan)
+        pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
+        pulumi.set(__self__, "tier", tier)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "user_labels", user_labels)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="activationPolicy")
+    def activation_policy(self) -> str:
+        return pulumi.get(self, "activation_policy")
+
+    @property
+    @pulumi.getter(name="activeDirectoryConfigs")
+    def active_directory_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult']:
+        return pulumi.get(self, "active_directory_configs")
+
+    @property
+    @pulumi.getter(name="availabilityType")
+    def availability_type(self) -> str:
+        return pulumi.get(self, "availability_type")
+
+    @property
+    @pulumi.getter(name="backupConfigurations")
+    def backup_configurations(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult']:
+        return pulumi.get(self, "backup_configurations")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> str:
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="connectorEnforcement")
+    def connector_enforcement(self) -> str:
+        return pulumi.get(self, "connector_enforcement")
+
+    @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult']:
+        return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> bool:
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriods")
+    def deny_maintenance_periods(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult']:
+        return pulumi.get(self, "deny_maintenance_periods")
+
+    @property
+    @pulumi.getter(name="diskAutoresize")
+    def disk_autoresize(self) -> bool:
+        return pulumi.get(self, "disk_autoresize")
+
+    @property
+    @pulumi.getter(name="diskAutoresizeLimit")
+    def disk_autoresize_limit(self) -> int:
+        return pulumi.get(self, "disk_autoresize_limit")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="insightsConfigs")
+    def insights_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult']:
+        return pulumi.get(self, "insights_configs")
+
+    @property
+    @pulumi.getter(name="ipConfigurations")
+    def ip_configurations(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult']:
+        return pulumi.get(self, "ip_configurations")
+
+    @property
+    @pulumi.getter(name="locationPreferences")
+    def location_preferences(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult']:
+        return pulumi.get(self, "location_preferences")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult']:
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter(name="passwordValidationPolicies")
+    def password_validation_policies(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult']:
+        return pulumi.get(self, "password_validation_policies")
+
+    @property
+    @pulumi.getter(name="pricingPlan")
+    def pricing_plan(self) -> str:
+        return pulumi.get(self, "pricing_plan")
+
+    @property
+    @pulumi.getter(name="sqlServerAuditConfigs")
+    def sql_server_audit_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult']:
+        return pulumi.get(self, "sql_server_audit_configs")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+        """
+        return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "user_labels")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
+    def __init__(__self__, *,
+                 domain: str):
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
+    def __init__(__self__, *,
+                 backup_retention_settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
+                 binary_log_enabled: bool,
+                 enabled: bool,
+                 location: str,
+                 point_in_time_recovery_enabled: bool,
+                 start_time: str,
+                 transaction_log_retention_days: int):
+        pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
+        pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "point_in_time_recovery_enabled", point_in_time_recovery_enabled)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
+
+    @property
+    @pulumi.getter(name="backupRetentionSettings")
+    def backup_retention_settings(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult']:
+        return pulumi.get(self, "backup_retention_settings")
+
+    @property
+    @pulumi.getter(name="binaryLogEnabled")
+    def binary_log_enabled(self) -> bool:
+        return pulumi.get(self, "binary_log_enabled")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="pointInTimeRecoveryEnabled")
+    def point_in_time_recovery_enabled(self) -> bool:
+        return pulumi.get(self, "point_in_time_recovery_enabled")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="transactionLogRetentionDays")
+    def transaction_log_retention_days(self) -> int:
+        return pulumi.get(self, "transaction_log_retention_days")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
+    def __init__(__self__, *,
+                 retained_backups: int,
+                 retention_unit: str):
+        pulumi.set(__self__, "retained_backups", retained_backups)
+        pulumi.set(__self__, "retention_unit", retention_unit)
+
+    @property
+    @pulumi.getter(name="retainedBackups")
+    def retained_backups(self) -> int:
+        return pulumi.get(self, "retained_backups")
+
+    @property
+    @pulumi.getter(name="retentionUnit")
+    def retention_unit(self) -> str:
+        return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
+    def __init__(__self__, *,
+                 end_date: str,
+                 start_date: str,
+                 time: str):
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def time(self) -> str:
+        return pulumi.get(self, "time")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
+    def __init__(__self__, *,
+                 query_insights_enabled: bool,
+                 query_plans_per_minute: int,
+                 query_string_length: int,
+                 record_application_tags: bool,
+                 record_client_address: bool):
+        pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
+        pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        pulumi.set(__self__, "query_string_length", query_string_length)
+        pulumi.set(__self__, "record_application_tags", record_application_tags)
+        pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryInsightsEnabled")
+    def query_insights_enabled(self) -> bool:
+        return pulumi.get(self, "query_insights_enabled")
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> int:
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> int:
+        return pulumi.get(self, "query_string_length")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> bool:
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> bool:
+        return pulumi.get(self, "record_client_address")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
+    def __init__(__self__, *,
+                 allocated_ip_range: str,
+                 authorized_networks: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult'],
+                 ipv4_enabled: bool,
+                 private_network: str,
+                 require_ssl: bool):
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "authorized_networks", authorized_networks)
+        pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
+        pulumi.set(__self__, "private_network", private_network)
+        pulumi.set(__self__, "require_ssl", require_ssl)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> str:
+        return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter(name="authorizedNetworks")
+    def authorized_networks(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult']:
+        return pulumi.get(self, "authorized_networks")
+
+    @property
+    @pulumi.getter(name="ipv4Enabled")
+    def ipv4_enabled(self) -> bool:
+        return pulumi.get(self, "ipv4_enabled")
+
+    @property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> str:
+        return pulumi.get(self, "private_network")
+
+    @property
+    @pulumi.getter(name="requireSsl")
+    def require_ssl(self) -> bool:
+        return pulumi.get(self, "require_ssl")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
+    def __init__(__self__, *,
+                 expiration_time: str,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "expiration_time", expiration_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
+    def __init__(__self__, *,
+                 follow_gae_application: str,
+                 secondary_zone: str,
+                 zone: str):
+        """
+        :param str zone: To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+        """
+        pulumi.set(__self__, "follow_gae_application", follow_gae_application)
+        pulumi.set(__self__, "secondary_zone", secondary_zone)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="followGaeApplication")
+    def follow_gae_application(self) -> str:
+        return pulumi.get(self, "follow_gae_application")
+
+    @property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> str:
+        return pulumi.get(self, "secondary_zone")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: int,
+                 hour: int,
+                 update_track: str):
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "hour", hour)
+        pulumi.set(__self__, "update_track", update_track)
+
+    @property
+    @pulumi.getter
+    def day(self) -> int:
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def hour(self) -> int:
+        return pulumi.get(self, "hour")
+
+    @property
+    @pulumi.getter(name="updateTrack")
+    def update_track(self) -> str:
+        return pulumi.get(self, "update_track")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
+    def __init__(__self__, *,
+                 complexity: str,
+                 disallow_username_substring: bool,
+                 enable_password_policy: bool,
+                 min_length: int,
+                 password_change_interval: str,
+                 reuse_interval: int):
+        pulumi.set(__self__, "complexity", complexity)
+        pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        pulumi.set(__self__, "enable_password_policy", enable_password_policy)
+        pulumi.set(__self__, "min_length", min_length)
+        pulumi.set(__self__, "password_change_interval", password_change_interval)
+        pulumi.set(__self__, "reuse_interval", reuse_interval)
+
+    @property
+    @pulumi.getter
+    def complexity(self) -> str:
+        return pulumi.get(self, "complexity")
+
+    @property
+    @pulumi.getter(name="disallowUsernameSubstring")
+    def disallow_username_substring(self) -> bool:
+        return pulumi.get(self, "disallow_username_substring")
+
+    @property
+    @pulumi.getter(name="enablePasswordPolicy")
+    def enable_password_policy(self) -> bool:
+        return pulumi.get(self, "enable_password_policy")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> int:
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter(name="passwordChangeInterval")
+    def password_change_interval(self) -> str:
+        return pulumi.get(self, "password_change_interval")
+
+    @property
+    @pulumi.getter(name="reuseInterval")
+    def reuse_interval(self) -> int:
+        return pulumi.get(self, "reuse_interval")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
     def __init__(__self__, *,
                  bucket: str,
                  retention_interval: str,

@@ -119,8 +119,16 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The customer-supplied encryption key of the snapshot. Required if the
-     * source snapshot is protected by a customer-supplied encryption key.
+     * Encrypts the snapshot using a customer-supplied encryption key.
+     * After you encrypt a snapshot using a customer-supplied key, you must
+     * provide the same key if you use the snapshot later. For example, you
+     * must provide the encryption key when you create a disk from the
+     * encrypted snapshot in a future request.
+     * Customer-supplied encryption keys do not protect access to metadata of
+     * the snapshot.
+     * If you do not provide an encryption key when creating the snapshot,
+     * then the snapshot will be encrypted using an automatically generated
+     * key and you do not need to provide a key to use the snapshot later.
      * Structure is documented below.
      * 
      */
@@ -128,8 +136,16 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<SnapshotSnapshotEncryptionKeyArgs> snapshotEncryptionKey;
 
     /**
-     * @return The customer-supplied encryption key of the snapshot. Required if the
-     * source snapshot is protected by a customer-supplied encryption key.
+     * @return Encrypts the snapshot using a customer-supplied encryption key.
+     * After you encrypt a snapshot using a customer-supplied key, you must
+     * provide the same key if you use the snapshot later. For example, you
+     * must provide the encryption key when you create a disk from the
+     * encrypted snapshot in a future request.
+     * Customer-supplied encryption keys do not protect access to metadata of
+     * the snapshot.
+     * If you do not provide an encryption key when creating the snapshot,
+     * then the snapshot will be encrypted using an automatically generated
+     * key and you do not need to provide a key to use the snapshot later.
      * Structure is documented below.
      * 
      */
@@ -366,8 +382,16 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotEncryptionKey The customer-supplied encryption key of the snapshot. Required if the
-         * source snapshot is protected by a customer-supplied encryption key.
+         * @param snapshotEncryptionKey Encrypts the snapshot using a customer-supplied encryption key.
+         * After you encrypt a snapshot using a customer-supplied key, you must
+         * provide the same key if you use the snapshot later. For example, you
+         * must provide the encryption key when you create a disk from the
+         * encrypted snapshot in a future request.
+         * Customer-supplied encryption keys do not protect access to metadata of
+         * the snapshot.
+         * If you do not provide an encryption key when creating the snapshot,
+         * then the snapshot will be encrypted using an automatically generated
+         * key and you do not need to provide a key to use the snapshot later.
          * Structure is documented below.
          * 
          * @return builder
@@ -379,8 +403,16 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotEncryptionKey The customer-supplied encryption key of the snapshot. Required if the
-         * source snapshot is protected by a customer-supplied encryption key.
+         * @param snapshotEncryptionKey Encrypts the snapshot using a customer-supplied encryption key.
+         * After you encrypt a snapshot using a customer-supplied key, you must
+         * provide the same key if you use the snapshot later. For example, you
+         * must provide the encryption key when you create a disk from the
+         * encrypted snapshot in a future request.
+         * Customer-supplied encryption keys do not protect access to metadata of
+         * the snapshot.
+         * If you do not provide an encryption key when creating the snapshot,
+         * then the snapshot will be encrypted using an automatically generated
+         * key and you do not need to provide a key to use the snapshot later.
          * Structure is documented below.
          * 
          * @return builder

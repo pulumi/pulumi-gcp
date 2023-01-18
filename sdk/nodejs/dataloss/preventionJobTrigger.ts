@@ -194,7 +194,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
-     * The name of the Datastore kind.
+     * Name of a BigQuery field to be returned with the findings.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -279,7 +279,7 @@ export interface PreventionJobTriggerState {
      */
     lastRunTime?: pulumi.Input<string>;
     /**
-     * The name of the Datastore kind.
+     * Name of a BigQuery field to be returned with the findings.
      */
     name?: pulumi.Input<string>;
     /**

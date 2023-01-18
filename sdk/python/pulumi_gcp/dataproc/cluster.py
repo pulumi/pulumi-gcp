@@ -21,7 +21,8 @@ class ClusterArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
@@ -37,6 +38,8 @@ class ClusterArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+               Structure defined below.
         """
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
@@ -50,6 +53,8 @@ class ClusterArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if virtual_cluster_config is not None:
+            pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterConfig")
@@ -130,6 +135,19 @@ class ClusterArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="virtualClusterConfig")
+    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+        """
+        Allows you to configure a virtual Dataproc on GKE cluster.
+        Structure defined below.
+        """
+        return pulumi.get(self, "virtual_cluster_config")
+
+    @virtual_cluster_config.setter
+    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+        pulumi.set(self, "virtual_cluster_config", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -139,7 +157,8 @@ class _ClusterState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
@@ -155,6 +174,8 @@ class _ClusterState:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+               Structure defined below.
         """
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
@@ -168,6 +189,8 @@ class _ClusterState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if virtual_cluster_config is not None:
+            pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterConfig")
@@ -248,6 +271,19 @@ class _ClusterState:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="virtualClusterConfig")
+    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+        """
+        Allows you to configure a virtual Dataproc on GKE cluster.
+        Structure defined below.
+        """
+        return pulumi.get(self, "virtual_cluster_config")
+
+    @virtual_cluster_config.setter
+    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+        pulumi.set(self, "virtual_cluster_config", value)
+
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -260,6 +296,7 @@ class Cluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
                  __props__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -378,6 +415,8 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+               Structure defined below.
         """
         ...
     @overload
@@ -508,6 +547,7 @@ class Cluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -523,6 +563,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
         super(Cluster, __self__).__init__(
             'gcp:dataproc/cluster:Cluster',
             resource_name,
@@ -538,7 +579,8 @@ class Cluster(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None) -> 'Cluster':
+            region: Optional[pulumi.Input[str]] = None,
+            virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -559,6 +601,8 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
+        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+               Structure defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -570,6 +614,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -626,4 +671,13 @@ class Cluster(pulumi.CustomResource):
         Defaults to `global`.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="virtualClusterConfig")
+    def virtual_cluster_config(self) -> pulumi.Output['outputs.ClusterVirtualClusterConfig']:
+        """
+        Allows you to configure a virtual Dataproc on GKE cluster.
+        Structure defined below.
+        """
+        return pulumi.get(self, "virtual_cluster_config")
 

@@ -10,6 +10,1251 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AttachedClusterAuthorization struct {
+	// Users that can perform operations as a cluster admin. A managed
+	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+	// to the users. Up to ten admin users can be provided.
+	// For more info on RBAC, see
+	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers []string `pulumi:"adminUsers"`
+}
+
+// AttachedClusterAuthorizationInput is an input type that accepts AttachedClusterAuthorizationArgs and AttachedClusterAuthorizationOutput values.
+// You can construct a concrete instance of `AttachedClusterAuthorizationInput` via:
+//
+//	AttachedClusterAuthorizationArgs{...}
+type AttachedClusterAuthorizationInput interface {
+	pulumi.Input
+
+	ToAttachedClusterAuthorizationOutput() AttachedClusterAuthorizationOutput
+	ToAttachedClusterAuthorizationOutputWithContext(context.Context) AttachedClusterAuthorizationOutput
+}
+
+type AttachedClusterAuthorizationArgs struct {
+	// Users that can perform operations as a cluster admin. A managed
+	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+	// to the users. Up to ten admin users can be provided.
+	// For more info on RBAC, see
+	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	AdminUsers pulumi.StringArrayInput `pulumi:"adminUsers"`
+}
+
+func (AttachedClusterAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterAuthorization)(nil)).Elem()
+}
+
+func (i AttachedClusterAuthorizationArgs) ToAttachedClusterAuthorizationOutput() AttachedClusterAuthorizationOutput {
+	return i.ToAttachedClusterAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterAuthorizationArgs) ToAttachedClusterAuthorizationOutputWithContext(ctx context.Context) AttachedClusterAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterAuthorizationOutput)
+}
+
+func (i AttachedClusterAuthorizationArgs) ToAttachedClusterAuthorizationPtrOutput() AttachedClusterAuthorizationPtrOutput {
+	return i.ToAttachedClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterAuthorizationArgs) ToAttachedClusterAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterAuthorizationOutput).ToAttachedClusterAuthorizationPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterAuthorizationPtrInput is an input type that accepts AttachedClusterAuthorizationArgs, AttachedClusterAuthorizationPtr and AttachedClusterAuthorizationPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterAuthorizationPtrInput` via:
+//
+//	        AttachedClusterAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterAuthorizationPtrOutput() AttachedClusterAuthorizationPtrOutput
+	ToAttachedClusterAuthorizationPtrOutputWithContext(context.Context) AttachedClusterAuthorizationPtrOutput
+}
+
+type attachedClusterAuthorizationPtrType AttachedClusterAuthorizationArgs
+
+func AttachedClusterAuthorizationPtr(v *AttachedClusterAuthorizationArgs) AttachedClusterAuthorizationPtrInput {
+	return (*attachedClusterAuthorizationPtrType)(v)
+}
+
+func (*attachedClusterAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterAuthorization)(nil)).Elem()
+}
+
+func (i *attachedClusterAuthorizationPtrType) ToAttachedClusterAuthorizationPtrOutput() AttachedClusterAuthorizationPtrOutput {
+	return i.ToAttachedClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterAuthorizationPtrType) ToAttachedClusterAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterAuthorizationPtrOutput)
+}
+
+type AttachedClusterAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterAuthorization)(nil)).Elem()
+}
+
+func (o AttachedClusterAuthorizationOutput) ToAttachedClusterAuthorizationOutput() AttachedClusterAuthorizationOutput {
+	return o
+}
+
+func (o AttachedClusterAuthorizationOutput) ToAttachedClusterAuthorizationOutputWithContext(ctx context.Context) AttachedClusterAuthorizationOutput {
+	return o
+}
+
+func (o AttachedClusterAuthorizationOutput) ToAttachedClusterAuthorizationPtrOutput() AttachedClusterAuthorizationPtrOutput {
+	return o.ToAttachedClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterAuthorizationOutput) ToAttachedClusterAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterAuthorization) *AttachedClusterAuthorization {
+		return &v
+	}).(AttachedClusterAuthorizationPtrOutput)
+}
+
+// Users that can perform operations as a cluster admin. A managed
+// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+// to the users. Up to ten admin users can be provided.
+// For more info on RBAC, see
+// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AttachedClusterAuthorizationOutput) AdminUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedClusterAuthorization) []string { return v.AdminUsers }).(pulumi.StringArrayOutput)
+}
+
+type AttachedClusterAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterAuthorization)(nil)).Elem()
+}
+
+func (o AttachedClusterAuthorizationPtrOutput) ToAttachedClusterAuthorizationPtrOutput() AttachedClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AttachedClusterAuthorizationPtrOutput) ToAttachedClusterAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o AttachedClusterAuthorizationPtrOutput) Elem() AttachedClusterAuthorizationOutput {
+	return o.ApplyT(func(v *AttachedClusterAuthorization) AttachedClusterAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterAuthorization
+		return ret
+	}).(AttachedClusterAuthorizationOutput)
+}
+
+// Users that can perform operations as a cluster admin. A managed
+// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+// to the users. Up to ten admin users can be provided.
+// For more info on RBAC, see
+// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+func (o AttachedClusterAuthorizationPtrOutput) AdminUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedClusterAuthorization) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsers
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttachedClusterError struct {
+	Message *string `pulumi:"message"`
+}
+
+// AttachedClusterErrorInput is an input type that accepts AttachedClusterErrorArgs and AttachedClusterErrorOutput values.
+// You can construct a concrete instance of `AttachedClusterErrorInput` via:
+//
+//	AttachedClusterErrorArgs{...}
+type AttachedClusterErrorInput interface {
+	pulumi.Input
+
+	ToAttachedClusterErrorOutput() AttachedClusterErrorOutput
+	ToAttachedClusterErrorOutputWithContext(context.Context) AttachedClusterErrorOutput
+}
+
+type AttachedClusterErrorArgs struct {
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AttachedClusterErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterError)(nil)).Elem()
+}
+
+func (i AttachedClusterErrorArgs) ToAttachedClusterErrorOutput() AttachedClusterErrorOutput {
+	return i.ToAttachedClusterErrorOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterErrorArgs) ToAttachedClusterErrorOutputWithContext(ctx context.Context) AttachedClusterErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterErrorOutput)
+}
+
+// AttachedClusterErrorArrayInput is an input type that accepts AttachedClusterErrorArray and AttachedClusterErrorArrayOutput values.
+// You can construct a concrete instance of `AttachedClusterErrorArrayInput` via:
+//
+//	AttachedClusterErrorArray{ AttachedClusterErrorArgs{...} }
+type AttachedClusterErrorArrayInput interface {
+	pulumi.Input
+
+	ToAttachedClusterErrorArrayOutput() AttachedClusterErrorArrayOutput
+	ToAttachedClusterErrorArrayOutputWithContext(context.Context) AttachedClusterErrorArrayOutput
+}
+
+type AttachedClusterErrorArray []AttachedClusterErrorInput
+
+func (AttachedClusterErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttachedClusterError)(nil)).Elem()
+}
+
+func (i AttachedClusterErrorArray) ToAttachedClusterErrorArrayOutput() AttachedClusterErrorArrayOutput {
+	return i.ToAttachedClusterErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterErrorArray) ToAttachedClusterErrorArrayOutputWithContext(ctx context.Context) AttachedClusterErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterErrorArrayOutput)
+}
+
+type AttachedClusterErrorOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterError)(nil)).Elem()
+}
+
+func (o AttachedClusterErrorOutput) ToAttachedClusterErrorOutput() AttachedClusterErrorOutput {
+	return o
+}
+
+func (o AttachedClusterErrorOutput) ToAttachedClusterErrorOutputWithContext(ctx context.Context) AttachedClusterErrorOutput {
+	return o
+}
+
+func (o AttachedClusterErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttachedClusterError)(nil)).Elem()
+}
+
+func (o AttachedClusterErrorArrayOutput) ToAttachedClusterErrorArrayOutput() AttachedClusterErrorArrayOutput {
+	return o
+}
+
+func (o AttachedClusterErrorArrayOutput) ToAttachedClusterErrorArrayOutputWithContext(ctx context.Context) AttachedClusterErrorArrayOutput {
+	return o
+}
+
+func (o AttachedClusterErrorArrayOutput) Index(i pulumi.IntInput) AttachedClusterErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttachedClusterError {
+		return vs[0].([]AttachedClusterError)[vs[1].(int)]
+	}).(AttachedClusterErrorOutput)
+}
+
+type AttachedClusterFleet struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this
+	// cluster. Membership names are formatted as
+	// projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership *string `pulumi:"membership"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+}
+
+// AttachedClusterFleetInput is an input type that accepts AttachedClusterFleetArgs and AttachedClusterFleetOutput values.
+// You can construct a concrete instance of `AttachedClusterFleetInput` via:
+//
+//	AttachedClusterFleetArgs{...}
+type AttachedClusterFleetInput interface {
+	pulumi.Input
+
+	ToAttachedClusterFleetOutput() AttachedClusterFleetOutput
+	ToAttachedClusterFleetOutputWithContext(context.Context) AttachedClusterFleetOutput
+}
+
+type AttachedClusterFleetArgs struct {
+	// -
+	// The name of the managed Hub Membership resource associated to this
+	// cluster. Membership names are formatted as
+	// projects/<project-number>/locations/global/membership/<cluster-id>.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (AttachedClusterFleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterFleet)(nil)).Elem()
+}
+
+func (i AttachedClusterFleetArgs) ToAttachedClusterFleetOutput() AttachedClusterFleetOutput {
+	return i.ToAttachedClusterFleetOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterFleetArgs) ToAttachedClusterFleetOutputWithContext(ctx context.Context) AttachedClusterFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterFleetOutput)
+}
+
+func (i AttachedClusterFleetArgs) ToAttachedClusterFleetPtrOutput() AttachedClusterFleetPtrOutput {
+	return i.ToAttachedClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterFleetArgs) ToAttachedClusterFleetPtrOutputWithContext(ctx context.Context) AttachedClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterFleetOutput).ToAttachedClusterFleetPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterFleetPtrInput is an input type that accepts AttachedClusterFleetArgs, AttachedClusterFleetPtr and AttachedClusterFleetPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterFleetPtrInput` via:
+//
+//	        AttachedClusterFleetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterFleetPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterFleetPtrOutput() AttachedClusterFleetPtrOutput
+	ToAttachedClusterFleetPtrOutputWithContext(context.Context) AttachedClusterFleetPtrOutput
+}
+
+type attachedClusterFleetPtrType AttachedClusterFleetArgs
+
+func AttachedClusterFleetPtr(v *AttachedClusterFleetArgs) AttachedClusterFleetPtrInput {
+	return (*attachedClusterFleetPtrType)(v)
+}
+
+func (*attachedClusterFleetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterFleet)(nil)).Elem()
+}
+
+func (i *attachedClusterFleetPtrType) ToAttachedClusterFleetPtrOutput() AttachedClusterFleetPtrOutput {
+	return i.ToAttachedClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterFleetPtrType) ToAttachedClusterFleetPtrOutputWithContext(ctx context.Context) AttachedClusterFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterFleetPtrOutput)
+}
+
+type AttachedClusterFleetOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterFleet)(nil)).Elem()
+}
+
+func (o AttachedClusterFleetOutput) ToAttachedClusterFleetOutput() AttachedClusterFleetOutput {
+	return o
+}
+
+func (o AttachedClusterFleetOutput) ToAttachedClusterFleetOutputWithContext(ctx context.Context) AttachedClusterFleetOutput {
+	return o
+}
+
+func (o AttachedClusterFleetOutput) ToAttachedClusterFleetPtrOutput() AttachedClusterFleetPtrOutput {
+	return o.ToAttachedClusterFleetPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterFleetOutput) ToAttachedClusterFleetPtrOutputWithContext(ctx context.Context) AttachedClusterFleetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterFleet) *AttachedClusterFleet {
+		return &v
+	}).(AttachedClusterFleetPtrOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this
+// cluster. Membership names are formatted as
+// projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AttachedClusterFleetOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o AttachedClusterFleetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedClusterFleet) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type AttachedClusterFleetPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterFleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterFleet)(nil)).Elem()
+}
+
+func (o AttachedClusterFleetPtrOutput) ToAttachedClusterFleetPtrOutput() AttachedClusterFleetPtrOutput {
+	return o
+}
+
+func (o AttachedClusterFleetPtrOutput) ToAttachedClusterFleetPtrOutputWithContext(ctx context.Context) AttachedClusterFleetPtrOutput {
+	return o
+}
+
+func (o AttachedClusterFleetPtrOutput) Elem() AttachedClusterFleetOutput {
+	return o.ApplyT(func(v *AttachedClusterFleet) AttachedClusterFleet {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterFleet
+		return ret
+	}).(AttachedClusterFleetOutput)
+}
+
+// -
+// The name of the managed Hub Membership resource associated to this
+// cluster. Membership names are formatted as
+// projects/<project-number>/locations/global/membership/<cluster-id>.
+func (o AttachedClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o AttachedClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterFleet) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterLoggingConfig struct {
+	// The configuration of the logging components
+	// Structure is documented below.
+	ComponentConfig *AttachedClusterLoggingConfigComponentConfig `pulumi:"componentConfig"`
+}
+
+// AttachedClusterLoggingConfigInput is an input type that accepts AttachedClusterLoggingConfigArgs and AttachedClusterLoggingConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterLoggingConfigInput` via:
+//
+//	AttachedClusterLoggingConfigArgs{...}
+type AttachedClusterLoggingConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterLoggingConfigOutput() AttachedClusterLoggingConfigOutput
+	ToAttachedClusterLoggingConfigOutputWithContext(context.Context) AttachedClusterLoggingConfigOutput
+}
+
+type AttachedClusterLoggingConfigArgs struct {
+	// The configuration of the logging components
+	// Structure is documented below.
+	ComponentConfig AttachedClusterLoggingConfigComponentConfigPtrInput `pulumi:"componentConfig"`
+}
+
+func (AttachedClusterLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterLoggingConfigArgs) ToAttachedClusterLoggingConfigOutput() AttachedClusterLoggingConfigOutput {
+	return i.ToAttachedClusterLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterLoggingConfigArgs) ToAttachedClusterLoggingConfigOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigOutput)
+}
+
+func (i AttachedClusterLoggingConfigArgs) ToAttachedClusterLoggingConfigPtrOutput() AttachedClusterLoggingConfigPtrOutput {
+	return i.ToAttachedClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterLoggingConfigArgs) ToAttachedClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigOutput).ToAttachedClusterLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterLoggingConfigPtrInput is an input type that accepts AttachedClusterLoggingConfigArgs, AttachedClusterLoggingConfigPtr and AttachedClusterLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterLoggingConfigPtrInput` via:
+//
+//	        AttachedClusterLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterLoggingConfigPtrOutput() AttachedClusterLoggingConfigPtrOutput
+	ToAttachedClusterLoggingConfigPtrOutputWithContext(context.Context) AttachedClusterLoggingConfigPtrOutput
+}
+
+type attachedClusterLoggingConfigPtrType AttachedClusterLoggingConfigArgs
+
+func AttachedClusterLoggingConfigPtr(v *AttachedClusterLoggingConfigArgs) AttachedClusterLoggingConfigPtrInput {
+	return (*attachedClusterLoggingConfigPtrType)(v)
+}
+
+func (*attachedClusterLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterLoggingConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterLoggingConfigPtrType) ToAttachedClusterLoggingConfigPtrOutput() AttachedClusterLoggingConfigPtrOutput {
+	return i.ToAttachedClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterLoggingConfigPtrType) ToAttachedClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigPtrOutput)
+}
+
+type AttachedClusterLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterLoggingConfigOutput) ToAttachedClusterLoggingConfigOutput() AttachedClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigOutput) ToAttachedClusterLoggingConfigOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigOutput) ToAttachedClusterLoggingConfigPtrOutput() AttachedClusterLoggingConfigPtrOutput {
+	return o.ToAttachedClusterLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterLoggingConfigOutput) ToAttachedClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterLoggingConfig) *AttachedClusterLoggingConfig {
+		return &v
+	}).(AttachedClusterLoggingConfigPtrOutput)
+}
+
+// The configuration of the logging components
+// Structure is documented below.
+func (o AttachedClusterLoggingConfigOutput) ComponentConfig() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v AttachedClusterLoggingConfig) *AttachedClusterLoggingConfigComponentConfig {
+		return v.ComponentConfig
+	}).(AttachedClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AttachedClusterLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterLoggingConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterLoggingConfigPtrOutput) ToAttachedClusterLoggingConfigPtrOutput() AttachedClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigPtrOutput) ToAttachedClusterLoggingConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigPtrOutput) Elem() AttachedClusterLoggingConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterLoggingConfig) AttachedClusterLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterLoggingConfig
+		return ret
+	}).(AttachedClusterLoggingConfigOutput)
+}
+
+// The configuration of the logging components
+// Structure is documented below.
+func (o AttachedClusterLoggingConfigPtrOutput) ComponentConfig() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterLoggingConfig) *AttachedClusterLoggingConfigComponentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentConfig
+	}).(AttachedClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AttachedClusterLoggingConfigComponentConfig struct {
+	// The components to be enabled.
+	// Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// AttachedClusterLoggingConfigComponentConfigInput is an input type that accepts AttachedClusterLoggingConfigComponentConfigArgs and AttachedClusterLoggingConfigComponentConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterLoggingConfigComponentConfigInput` via:
+//
+//	AttachedClusterLoggingConfigComponentConfigArgs{...}
+type AttachedClusterLoggingConfigComponentConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterLoggingConfigComponentConfigOutput() AttachedClusterLoggingConfigComponentConfigOutput
+	ToAttachedClusterLoggingConfigComponentConfigOutputWithContext(context.Context) AttachedClusterLoggingConfigComponentConfigOutput
+}
+
+type AttachedClusterLoggingConfigComponentConfigArgs struct {
+	// The components to be enabled.
+	// Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (AttachedClusterLoggingConfigComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterLoggingConfigComponentConfigArgs) ToAttachedClusterLoggingConfigComponentConfigOutput() AttachedClusterLoggingConfigComponentConfigOutput {
+	return i.ToAttachedClusterLoggingConfigComponentConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterLoggingConfigComponentConfigArgs) ToAttachedClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigComponentConfigOutput)
+}
+
+func (i AttachedClusterLoggingConfigComponentConfigArgs) ToAttachedClusterLoggingConfigComponentConfigPtrOutput() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterLoggingConfigComponentConfigArgs) ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigComponentConfigOutput).ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterLoggingConfigComponentConfigPtrInput is an input type that accepts AttachedClusterLoggingConfigComponentConfigArgs, AttachedClusterLoggingConfigComponentConfigPtr and AttachedClusterLoggingConfigComponentConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterLoggingConfigComponentConfigPtrInput` via:
+//
+//	        AttachedClusterLoggingConfigComponentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterLoggingConfigComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterLoggingConfigComponentConfigPtrOutput() AttachedClusterLoggingConfigComponentConfigPtrOutput
+	ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Context) AttachedClusterLoggingConfigComponentConfigPtrOutput
+}
+
+type attachedClusterLoggingConfigComponentConfigPtrType AttachedClusterLoggingConfigComponentConfigArgs
+
+func AttachedClusterLoggingConfigComponentConfigPtr(v *AttachedClusterLoggingConfigComponentConfigArgs) AttachedClusterLoggingConfigComponentConfigPtrInput {
+	return (*attachedClusterLoggingConfigComponentConfigPtrType)(v)
+}
+
+func (*attachedClusterLoggingConfigComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterLoggingConfigComponentConfigPtrType) ToAttachedClusterLoggingConfigComponentConfigPtrOutput() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return i.ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterLoggingConfigComponentConfigPtrType) ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+type AttachedClusterLoggingConfigComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterLoggingConfigComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigOutput) ToAttachedClusterLoggingConfigComponentConfigOutput() AttachedClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigOutput) ToAttachedClusterLoggingConfigComponentConfigOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigOutput) ToAttachedClusterLoggingConfigComponentConfigPtrOutput() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigOutput) ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterLoggingConfigComponentConfig) *AttachedClusterLoggingConfigComponentConfig {
+		return &v
+	}).(AttachedClusterLoggingConfigComponentConfigPtrOutput)
+}
+
+// The components to be enabled.
+// Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+func (o AttachedClusterLoggingConfigComponentConfigOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedClusterLoggingConfigComponentConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type AttachedClusterLoggingConfigComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterLoggingConfigComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterLoggingConfigComponentConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigPtrOutput) ToAttachedClusterLoggingConfigComponentConfigPtrOutput() AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigPtrOutput) ToAttachedClusterLoggingConfigComponentConfigPtrOutputWithContext(ctx context.Context) AttachedClusterLoggingConfigComponentConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterLoggingConfigComponentConfigPtrOutput) Elem() AttachedClusterLoggingConfigComponentConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterLoggingConfigComponentConfig) AttachedClusterLoggingConfigComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterLoggingConfigComponentConfig
+		return ret
+	}).(AttachedClusterLoggingConfigComponentConfigOutput)
+}
+
+// The components to be enabled.
+// Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+func (o AttachedClusterLoggingConfigComponentConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedClusterLoggingConfigComponentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttachedClusterMonitoringConfig struct {
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	// Structure is documented below.
+	ManagedPrometheusConfig *AttachedClusterMonitoringConfigManagedPrometheusConfig `pulumi:"managedPrometheusConfig"`
+}
+
+// AttachedClusterMonitoringConfigInput is an input type that accepts AttachedClusterMonitoringConfigArgs and AttachedClusterMonitoringConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterMonitoringConfigInput` via:
+//
+//	AttachedClusterMonitoringConfigArgs{...}
+type AttachedClusterMonitoringConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterMonitoringConfigOutput() AttachedClusterMonitoringConfigOutput
+	ToAttachedClusterMonitoringConfigOutputWithContext(context.Context) AttachedClusterMonitoringConfigOutput
+}
+
+type AttachedClusterMonitoringConfigArgs struct {
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	// Structure is documented below.
+	ManagedPrometheusConfig AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput `pulumi:"managedPrometheusConfig"`
+}
+
+func (AttachedClusterMonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterMonitoringConfigArgs) ToAttachedClusterMonitoringConfigOutput() AttachedClusterMonitoringConfigOutput {
+	return i.ToAttachedClusterMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterMonitoringConfigArgs) ToAttachedClusterMonitoringConfigOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigOutput)
+}
+
+func (i AttachedClusterMonitoringConfigArgs) ToAttachedClusterMonitoringConfigPtrOutput() AttachedClusterMonitoringConfigPtrOutput {
+	return i.ToAttachedClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterMonitoringConfigArgs) ToAttachedClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigOutput).ToAttachedClusterMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterMonitoringConfigPtrInput is an input type that accepts AttachedClusterMonitoringConfigArgs, AttachedClusterMonitoringConfigPtr and AttachedClusterMonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterMonitoringConfigPtrInput` via:
+//
+//	        AttachedClusterMonitoringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterMonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterMonitoringConfigPtrOutput() AttachedClusterMonitoringConfigPtrOutput
+	ToAttachedClusterMonitoringConfigPtrOutputWithContext(context.Context) AttachedClusterMonitoringConfigPtrOutput
+}
+
+type attachedClusterMonitoringConfigPtrType AttachedClusterMonitoringConfigArgs
+
+func AttachedClusterMonitoringConfigPtr(v *AttachedClusterMonitoringConfigArgs) AttachedClusterMonitoringConfigPtrInput {
+	return (*attachedClusterMonitoringConfigPtrType)(v)
+}
+
+func (*attachedClusterMonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterMonitoringConfigPtrType) ToAttachedClusterMonitoringConfigPtrOutput() AttachedClusterMonitoringConfigPtrOutput {
+	return i.ToAttachedClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterMonitoringConfigPtrType) ToAttachedClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigPtrOutput)
+}
+
+type AttachedClusterMonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterMonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterMonitoringConfigOutput) ToAttachedClusterMonitoringConfigOutput() AttachedClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigOutput) ToAttachedClusterMonitoringConfigOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigOutput) ToAttachedClusterMonitoringConfigPtrOutput() AttachedClusterMonitoringConfigPtrOutput {
+	return o.ToAttachedClusterMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterMonitoringConfigOutput) ToAttachedClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterMonitoringConfig) *AttachedClusterMonitoringConfig {
+		return &v
+	}).(AttachedClusterMonitoringConfigPtrOutput)
+}
+
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+// Structure is documented below.
+func (o AttachedClusterMonitoringConfigOutput) ManagedPrometheusConfig() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v AttachedClusterMonitoringConfig) *AttachedClusterMonitoringConfigManagedPrometheusConfig {
+		return v.ManagedPrometheusConfig
+	}).(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput)
+}
+
+type AttachedClusterMonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterMonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterMonitoringConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterMonitoringConfigPtrOutput) ToAttachedClusterMonitoringConfigPtrOutput() AttachedClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigPtrOutput) ToAttachedClusterMonitoringConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigPtrOutput) Elem() AttachedClusterMonitoringConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterMonitoringConfig) AttachedClusterMonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterMonitoringConfig
+		return ret
+	}).(AttachedClusterMonitoringConfigOutput)
+}
+
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+// Structure is documented below.
+func (o AttachedClusterMonitoringConfigPtrOutput) ManagedPrometheusConfig() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterMonitoringConfig) *AttachedClusterMonitoringConfigManagedPrometheusConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrometheusConfig
+	}).(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput)
+}
+
+type AttachedClusterMonitoringConfigManagedPrometheusConfig struct {
+	// Enable Managed Collection.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AttachedClusterMonitoringConfigManagedPrometheusConfigInput is an input type that accepts AttachedClusterMonitoringConfigManagedPrometheusConfigArgs and AttachedClusterMonitoringConfigManagedPrometheusConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterMonitoringConfigManagedPrometheusConfigInput` via:
+//
+//	AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{...}
+type AttachedClusterMonitoringConfigManagedPrometheusConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigOutput
+	ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutputWithContext(context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigOutput
+}
+
+type AttachedClusterMonitoringConfigManagedPrometheusConfigArgs struct {
+	// Enable Managed Collection.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterMonitoringConfigManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigOutput {
+	return i.ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigManagedPrometheusConfigOutput)
+}
+
+func (i AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return i.ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigManagedPrometheusConfigOutput).ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput is an input type that accepts AttachedClusterMonitoringConfigManagedPrometheusConfigArgs, AttachedClusterMonitoringConfigManagedPrometheusConfigPtr and AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput` via:
+//
+//	        AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput
+	ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput
+}
+
+type attachedClusterMonitoringConfigManagedPrometheusConfigPtrType AttachedClusterMonitoringConfigManagedPrometheusConfigArgs
+
+func AttachedClusterMonitoringConfigManagedPrometheusConfigPtr(v *AttachedClusterMonitoringConfigManagedPrometheusConfigArgs) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput {
+	return (*attachedClusterMonitoringConfigManagedPrometheusConfigPtrType)(v)
+}
+
+func (*attachedClusterMonitoringConfigManagedPrometheusConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterMonitoringConfigManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterMonitoringConfigManagedPrometheusConfigPtrType) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return i.ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterMonitoringConfigManagedPrometheusConfigPtrType) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput)
+}
+
+type AttachedClusterMonitoringConfigManagedPrometheusConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterMonitoringConfigManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o.ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterMonitoringConfigManagedPrometheusConfig) *AttachedClusterMonitoringConfigManagedPrometheusConfig {
+		return &v
+	}).(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput)
+}
+
+// Enable Managed Collection.
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttachedClusterMonitoringConfigManagedPrometheusConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterMonitoringConfigManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput() AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput) ToAttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput) Elem() AttachedClusterMonitoringConfigManagedPrometheusConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterMonitoringConfigManagedPrometheusConfig) AttachedClusterMonitoringConfigManagedPrometheusConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterMonitoringConfigManagedPrometheusConfig
+		return ret
+	}).(AttachedClusterMonitoringConfigManagedPrometheusConfigOutput)
+}
+
+// Enable Managed Collection.
+func (o AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterMonitoringConfigManagedPrometheusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AttachedClusterOidcConfig struct {
+	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+	IssuerUrl string `pulumi:"issuerUrl"`
+	// OIDC verification keys in JWKS format (RFC 7517).
+	Jwks *string `pulumi:"jwks"`
+}
+
+// AttachedClusterOidcConfigInput is an input type that accepts AttachedClusterOidcConfigArgs and AttachedClusterOidcConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterOidcConfigInput` via:
+//
+//	AttachedClusterOidcConfigArgs{...}
+type AttachedClusterOidcConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterOidcConfigOutput() AttachedClusterOidcConfigOutput
+	ToAttachedClusterOidcConfigOutputWithContext(context.Context) AttachedClusterOidcConfigOutput
+}
+
+type AttachedClusterOidcConfigArgs struct {
+	// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	// OIDC verification keys in JWKS format (RFC 7517).
+	Jwks pulumi.StringPtrInput `pulumi:"jwks"`
+}
+
+func (AttachedClusterOidcConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterOidcConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterOidcConfigArgs) ToAttachedClusterOidcConfigOutput() AttachedClusterOidcConfigOutput {
+	return i.ToAttachedClusterOidcConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterOidcConfigArgs) ToAttachedClusterOidcConfigOutputWithContext(ctx context.Context) AttachedClusterOidcConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterOidcConfigOutput)
+}
+
+func (i AttachedClusterOidcConfigArgs) ToAttachedClusterOidcConfigPtrOutput() AttachedClusterOidcConfigPtrOutput {
+	return i.ToAttachedClusterOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterOidcConfigArgs) ToAttachedClusterOidcConfigPtrOutputWithContext(ctx context.Context) AttachedClusterOidcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterOidcConfigOutput).ToAttachedClusterOidcConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterOidcConfigPtrInput is an input type that accepts AttachedClusterOidcConfigArgs, AttachedClusterOidcConfigPtr and AttachedClusterOidcConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterOidcConfigPtrInput` via:
+//
+//	        AttachedClusterOidcConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterOidcConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterOidcConfigPtrOutput() AttachedClusterOidcConfigPtrOutput
+	ToAttachedClusterOidcConfigPtrOutputWithContext(context.Context) AttachedClusterOidcConfigPtrOutput
+}
+
+type attachedClusterOidcConfigPtrType AttachedClusterOidcConfigArgs
+
+func AttachedClusterOidcConfigPtr(v *AttachedClusterOidcConfigArgs) AttachedClusterOidcConfigPtrInput {
+	return (*attachedClusterOidcConfigPtrType)(v)
+}
+
+func (*attachedClusterOidcConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterOidcConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterOidcConfigPtrType) ToAttachedClusterOidcConfigPtrOutput() AttachedClusterOidcConfigPtrOutput {
+	return i.ToAttachedClusterOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterOidcConfigPtrType) ToAttachedClusterOidcConfigPtrOutputWithContext(ctx context.Context) AttachedClusterOidcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterOidcConfigPtrOutput)
+}
+
+type AttachedClusterOidcConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterOidcConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterOidcConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterOidcConfigOutput) ToAttachedClusterOidcConfigOutput() AttachedClusterOidcConfigOutput {
+	return o
+}
+
+func (o AttachedClusterOidcConfigOutput) ToAttachedClusterOidcConfigOutputWithContext(ctx context.Context) AttachedClusterOidcConfigOutput {
+	return o
+}
+
+func (o AttachedClusterOidcConfigOutput) ToAttachedClusterOidcConfigPtrOutput() AttachedClusterOidcConfigPtrOutput {
+	return o.ToAttachedClusterOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterOidcConfigOutput) ToAttachedClusterOidcConfigPtrOutputWithContext(ctx context.Context) AttachedClusterOidcConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterOidcConfig) *AttachedClusterOidcConfig {
+		return &v
+	}).(AttachedClusterOidcConfigPtrOutput)
+}
+
+// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+func (o AttachedClusterOidcConfigOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedClusterOidcConfig) string { return v.IssuerUrl }).(pulumi.StringOutput)
+}
+
+// OIDC verification keys in JWKS format (RFC 7517).
+func (o AttachedClusterOidcConfigOutput) Jwks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterOidcConfig) *string { return v.Jwks }).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterOidcConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterOidcConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterOidcConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterOidcConfigPtrOutput) ToAttachedClusterOidcConfigPtrOutput() AttachedClusterOidcConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterOidcConfigPtrOutput) ToAttachedClusterOidcConfigPtrOutputWithContext(ctx context.Context) AttachedClusterOidcConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterOidcConfigPtrOutput) Elem() AttachedClusterOidcConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterOidcConfig) AttachedClusterOidcConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterOidcConfig
+		return ret
+	}).(AttachedClusterOidcConfigOutput)
+}
+
+// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+func (o AttachedClusterOidcConfigPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// OIDC verification keys in JWKS format (RFC 7517).
+func (o AttachedClusterOidcConfigPtrOutput) Jwks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Jwks
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterWorkloadIdentityConfig struct {
+	IdentityProvider *string `pulumi:"identityProvider"`
+	IssuerUri        *string `pulumi:"issuerUri"`
+	WorkloadPool     *string `pulumi:"workloadPool"`
+}
+
+// AttachedClusterWorkloadIdentityConfigInput is an input type that accepts AttachedClusterWorkloadIdentityConfigArgs and AttachedClusterWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterWorkloadIdentityConfigInput` via:
+//
+//	AttachedClusterWorkloadIdentityConfigArgs{...}
+type AttachedClusterWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterWorkloadIdentityConfigOutput() AttachedClusterWorkloadIdentityConfigOutput
+	ToAttachedClusterWorkloadIdentityConfigOutputWithContext(context.Context) AttachedClusterWorkloadIdentityConfigOutput
+}
+
+type AttachedClusterWorkloadIdentityConfigArgs struct {
+	IdentityProvider pulumi.StringPtrInput `pulumi:"identityProvider"`
+	IssuerUri        pulumi.StringPtrInput `pulumi:"issuerUri"`
+	WorkloadPool     pulumi.StringPtrInput `pulumi:"workloadPool"`
+}
+
+func (AttachedClusterWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterWorkloadIdentityConfigArgs) ToAttachedClusterWorkloadIdentityConfigOutput() AttachedClusterWorkloadIdentityConfigOutput {
+	return i.ToAttachedClusterWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterWorkloadIdentityConfigArgs) ToAttachedClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AttachedClusterWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterWorkloadIdentityConfigOutput)
+}
+
+// AttachedClusterWorkloadIdentityConfigArrayInput is an input type that accepts AttachedClusterWorkloadIdentityConfigArray and AttachedClusterWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `AttachedClusterWorkloadIdentityConfigArrayInput` via:
+//
+//	AttachedClusterWorkloadIdentityConfigArray{ AttachedClusterWorkloadIdentityConfigArgs{...} }
+type AttachedClusterWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToAttachedClusterWorkloadIdentityConfigArrayOutput() AttachedClusterWorkloadIdentityConfigArrayOutput
+	ToAttachedClusterWorkloadIdentityConfigArrayOutputWithContext(context.Context) AttachedClusterWorkloadIdentityConfigArrayOutput
+}
+
+type AttachedClusterWorkloadIdentityConfigArray []AttachedClusterWorkloadIdentityConfigInput
+
+func (AttachedClusterWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttachedClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterWorkloadIdentityConfigArray) ToAttachedClusterWorkloadIdentityConfigArrayOutput() AttachedClusterWorkloadIdentityConfigArrayOutput {
+	return i.ToAttachedClusterWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterWorkloadIdentityConfigArray) ToAttachedClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AttachedClusterWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterWorkloadIdentityConfigArrayOutput)
+}
+
+type AttachedClusterWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterWorkloadIdentityConfigOutput) ToAttachedClusterWorkloadIdentityConfigOutput() AttachedClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AttachedClusterWorkloadIdentityConfigOutput) ToAttachedClusterWorkloadIdentityConfigOutputWithContext(ctx context.Context) AttachedClusterWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o AttachedClusterWorkloadIdentityConfigOutput) IdentityProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterWorkloadIdentityConfig) *string { return v.IdentityProvider }).(pulumi.StringPtrOutput)
+}
+
+func (o AttachedClusterWorkloadIdentityConfigOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterWorkloadIdentityConfig) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AttachedClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttachedClusterWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterWorkloadIdentityConfigArrayOutput) ToAttachedClusterWorkloadIdentityConfigArrayOutput() AttachedClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AttachedClusterWorkloadIdentityConfigArrayOutput) ToAttachedClusterWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) AttachedClusterWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o AttachedClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) AttachedClusterWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttachedClusterWorkloadIdentityConfig {
+		return vs[0].([]AttachedClusterWorkloadIdentityConfig)[vs[1].(int)]
+	}).(AttachedClusterWorkloadIdentityConfigOutput)
+}
+
 type AwsClusterAuthorization struct {
 	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
 	AdminUsers []AwsClusterAuthorizationAdminUser `pulumi:"adminUsers"`
@@ -2750,6 +3995,8 @@ func (o AwsNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 }
 
 type AwsNodePoolConfig struct {
+	// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+	AutoscalingMetricsCollection *AwsNodePoolConfigAutoscalingMetricsCollection `pulumi:"autoscalingMetricsCollection"`
 	// The ARN of the AWS KMS key used to encrypt node pool configuration.
 	ConfigEncryption AwsNodePoolConfigConfigEncryption `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
@@ -2788,6 +4035,8 @@ type AwsNodePoolConfigInput interface {
 }
 
 type AwsNodePoolConfigArgs struct {
+	// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+	AutoscalingMetricsCollection AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput `pulumi:"autoscalingMetricsCollection"`
 	// The ARN of the AWS KMS key used to encrypt node pool configuration.
 	ConfigEncryption AwsNodePoolConfigConfigEncryptionInput `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
@@ -2891,6 +4140,13 @@ func (o AwsNodePoolConfigOutput) ToAwsNodePoolConfigPtrOutputWithContext(ctx con
 	}).(AwsNodePoolConfigPtrOutput)
 }
 
+// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+func (o AwsNodePoolConfigOutput) AutoscalingMetricsCollection() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigAutoscalingMetricsCollection {
+		return v.AutoscalingMetricsCollection
+	}).(AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput)
+}
+
 // The ARN of the AWS KMS key used to encrypt node pool configuration.
 func (o AwsNodePoolConfigOutput) ConfigEncryption() AwsNodePoolConfigConfigEncryptionOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) AwsNodePoolConfigConfigEncryption { return v.ConfigEncryption }).(AwsNodePoolConfigConfigEncryptionOutput)
@@ -2973,6 +4229,16 @@ func (o AwsNodePoolConfigPtrOutput) Elem() AwsNodePoolConfigOutput {
 		var ret AwsNodePoolConfig
 		return ret
 	}).(AwsNodePoolConfigOutput)
+}
+
+// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+func (o AwsNodePoolConfigPtrOutput) AutoscalingMetricsCollection() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigAutoscalingMetricsCollection {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingMetricsCollection
+	}).(AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput)
 }
 
 // The ARN of the AWS KMS key used to encrypt node pool configuration.
@@ -3093,6 +4359,162 @@ func (o AwsNodePoolConfigPtrOutput) Taints() AwsNodePoolConfigTaintArrayOutput {
 		}
 		return v.Taints
 	}).(AwsNodePoolConfigTaintArrayOutput)
+}
+
+type AwsNodePoolConfigAutoscalingMetricsCollection struct {
+	// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+	Granularity string `pulumi:"granularity"`
+	// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+	Metrics []string `pulumi:"metrics"`
+}
+
+// AwsNodePoolConfigAutoscalingMetricsCollectionInput is an input type that accepts AwsNodePoolConfigAutoscalingMetricsCollectionArgs and AwsNodePoolConfigAutoscalingMetricsCollectionOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigAutoscalingMetricsCollectionInput` via:
+//
+//	AwsNodePoolConfigAutoscalingMetricsCollectionArgs{...}
+type AwsNodePoolConfigAutoscalingMetricsCollectionInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigAutoscalingMetricsCollectionOutput() AwsNodePoolConfigAutoscalingMetricsCollectionOutput
+	ToAwsNodePoolConfigAutoscalingMetricsCollectionOutputWithContext(context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionOutput
+}
+
+type AwsNodePoolConfigAutoscalingMetricsCollectionArgs struct {
+	// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+	Granularity pulumi.StringInput `pulumi:"granularity"`
+	// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+}
+
+func (AwsNodePoolConfigAutoscalingMetricsCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigAutoscalingMetricsCollection)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigAutoscalingMetricsCollectionArgs) ToAwsNodePoolConfigAutoscalingMetricsCollectionOutput() AwsNodePoolConfigAutoscalingMetricsCollectionOutput {
+	return i.ToAwsNodePoolConfigAutoscalingMetricsCollectionOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigAutoscalingMetricsCollectionArgs) ToAwsNodePoolConfigAutoscalingMetricsCollectionOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigAutoscalingMetricsCollectionOutput)
+}
+
+func (i AwsNodePoolConfigAutoscalingMetricsCollectionArgs) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return i.ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigAutoscalingMetricsCollectionArgs) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigAutoscalingMetricsCollectionOutput).ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput is an input type that accepts AwsNodePoolConfigAutoscalingMetricsCollectionArgs, AwsNodePoolConfigAutoscalingMetricsCollectionPtr and AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput` via:
+//
+//	        AwsNodePoolConfigAutoscalingMetricsCollectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput
+	ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput
+}
+
+type awsNodePoolConfigAutoscalingMetricsCollectionPtrType AwsNodePoolConfigAutoscalingMetricsCollectionArgs
+
+func AwsNodePoolConfigAutoscalingMetricsCollectionPtr(v *AwsNodePoolConfigAutoscalingMetricsCollectionArgs) AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput {
+	return (*awsNodePoolConfigAutoscalingMetricsCollectionPtrType)(v)
+}
+
+func (*awsNodePoolConfigAutoscalingMetricsCollectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigAutoscalingMetricsCollection)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigAutoscalingMetricsCollectionPtrType) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return i.ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigAutoscalingMetricsCollectionPtrType) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput)
+}
+
+type AwsNodePoolConfigAutoscalingMetricsCollectionOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigAutoscalingMetricsCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigAutoscalingMetricsCollection)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionOutput() AwsNodePoolConfigAutoscalingMetricsCollectionOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o.ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigAutoscalingMetricsCollection) *AwsNodePoolConfigAutoscalingMetricsCollection {
+		return &v
+	}).(AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput)
+}
+
+// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) Granularity() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigAutoscalingMetricsCollection) string { return v.Granularity }).(pulumi.StringOutput)
+}
+
+// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigAutoscalingMetricsCollection) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+}
+
+type AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigAutoscalingMetricsCollection)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput() AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) ToAwsNodePoolConfigAutoscalingMetricsCollectionPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) Elem() AwsNodePoolConfigAutoscalingMetricsCollectionOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigAutoscalingMetricsCollection) AwsNodePoolConfigAutoscalingMetricsCollection {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigAutoscalingMetricsCollection
+		return ret
+	}).(AwsNodePoolConfigAutoscalingMetricsCollectionOutput)
+}
+
+// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) Granularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigAutoscalingMetricsCollection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Granularity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigAutoscalingMetricsCollection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(pulumi.StringArrayOutput)
 }
 
 type AwsNodePoolConfigConfigEncryption struct {
@@ -38015,6 +39437,24 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterErrorInput)(nil)).Elem(), AttachedClusterErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterErrorArrayInput)(nil)).Elem(), AttachedClusterErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterFleetInput)(nil)).Elem(), AttachedClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterFleetPtrInput)(nil)).Elem(), AttachedClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterLoggingConfigInput)(nil)).Elem(), AttachedClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterLoggingConfigPtrInput)(nil)).Elem(), AttachedClusterLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterLoggingConfigComponentConfigInput)(nil)).Elem(), AttachedClusterLoggingConfigComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterLoggingConfigComponentConfigPtrInput)(nil)).Elem(), AttachedClusterLoggingConfigComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterMonitoringConfigInput)(nil)).Elem(), AttachedClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterMonitoringConfigPtrInput)(nil)).Elem(), AttachedClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterMonitoringConfigManagedPrometheusConfigInput)(nil)).Elem(), AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput)(nil)).Elem(), AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterOidcConfigInput)(nil)).Elem(), AttachedClusterOidcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterOidcConfigPtrInput)(nil)).Elem(), AttachedClusterOidcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationPtrInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationAdminUserInput)(nil)).Elem(), AwsClusterAuthorizationAdminUserArgs{})
@@ -38051,6 +39491,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolAutoscalingPtrInput)(nil)).Elem(), AwsNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigInput)(nil)).Elem(), AwsNodePoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigAutoscalingMetricsCollectionInput)(nil)).Elem(), AwsNodePoolConfigAutoscalingMetricsCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigAutoscalingMetricsCollectionPtrInput)(nil)).Elem(), AwsNodePoolConfigAutoscalingMetricsCollectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigConfigEncryptionPtrInput)(nil)).Elem(), AwsNodePoolConfigConfigEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigInstancePlacementInput)(nil)).Elem(), AwsNodePoolConfigInstancePlacementArgs{})
@@ -38537,6 +39979,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
+	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterErrorOutput{})
+	pulumi.RegisterOutputType(AttachedClusterErrorArrayOutput{})
+	pulumi.RegisterOutputType(AttachedClusterFleetOutput{})
+	pulumi.RegisterOutputType(AttachedClusterFleetPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterLoggingConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterLoggingConfigComponentConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterLoggingConfigComponentConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterMonitoringConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterMonitoringConfigManagedPrometheusConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterOidcConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterOidcConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationAdminUserOutput{})
@@ -38573,6 +40033,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigAutoscalingMetricsCollectionOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigConfigEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigInstancePlacementOutput{})

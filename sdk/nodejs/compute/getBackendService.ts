@@ -70,6 +70,10 @@ export interface GetBackendServiceResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly generatedId: number;
+    /**
      * The set of HTTP/HTTPS health checks used by the Backend Service.
      */
     readonly healthChecks: string[];

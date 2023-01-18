@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basicNetworkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
-//				Project:     pulumi.String("my-project-name"),
 //				Description: pulumi.String("Sample global network firewall policy"),
+//				Project:     pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -42,37 +42,45 @@ import (
 //				return err
 //			}
 //			basicKey, err := tags.NewTagKey(ctx, "basicKey", &tags.TagKeyArgs{
-//				Parent:    pulumi.String("organizations/123456789"),
-//				ShortName: pulumi.String("tagkey"),
-//				Purpose:   pulumi.String("GCE_FIREWALL"),
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Purpose:     pulumi.String("GCE_FIREWALL"),
+//				ShortName:   pulumi.String("tagkey"),
 //				PurposeData: pulumi.StringMap{
 //					"network": basicNetwork.Name.ApplyT(func(name string) (string, error) {
 //						return fmt.Sprintf("my-project-name/%v", name), nil
 //					}).(pulumi.StringOutput),
 //				},
-//				Description: pulumi.String("For keyname resources."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basicValue", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
 //				Parent: basicKey.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				ShortName:   pulumi.String("tagvalue"),
-//				Description: pulumi.String("For valuename resources."),
+//				ShortName: pulumi.String("tagvalue"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetworkFirewallPolicyRule(ctx, "primary", &compute.NetworkFirewallPolicyRuleArgs{
-//				FirewallPolicy: basicNetworkFirewallPolicy.Name,
 //				Action:         pulumi.String("allow"),
+//				Description:    pulumi.String("This is a simple rule description"),
 //				Direction:      pulumi.String("INGRESS"),
+//				Disabled:       pulumi.Bool(false),
+//				EnableLogging:  pulumi.Bool(true),
+//				FirewallPolicy: basicNetworkFirewallPolicy.Name,
 //				Priority:       pulumi.Int(1000),
 //				RuleName:       pulumi.String("test-rule"),
-//				Description:    pulumi.String("This is a simple rule description"),
+//				TargetServiceAccounts: pulumi.StringArray{
+//					pulumi.String("emailAddress:my@service-account.com"),
+//				},
 //				Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
+//					SrcIpRanges: pulumi.StringArray{
+//						pulumi.String("10.100.0.1/32"),
+//					},
 //					SrcSecureTags: compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
 //							Name: basicValue.Name.ApplyT(func(name string) (string, error) {
@@ -80,20 +88,12 @@ import (
 //							}).(pulumi.StringOutput),
 //						},
 //					},
-//					SrcIpRanges: pulumi.StringArray{
-//						pulumi.String("10.100.0.1/32"),
-//					},
 //					Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
 //							IpProtocol: pulumi.String("all"),
 //						},
 //					},
 //				},
-//				TargetServiceAccounts: pulumi.StringArray{
-//					pulumi.String("emailAddress:my@service-account.com"),
-//				},
-//				EnableLogging: pulumi.Bool(true),
-//				Disabled:      pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

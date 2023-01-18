@@ -28,6 +28,12 @@ __all__ = [
     'TopicIAMMemberCondition',
     'TopicMessageStoragePolicy',
     'TopicSchemaSettings',
+    'GetSubscriptionBigqueryConfigResult',
+    'GetSubscriptionDeadLetterPolicyResult',
+    'GetSubscriptionExpirationPolicyResult',
+    'GetSubscriptionPushConfigResult',
+    'GetSubscriptionPushConfigOidcTokenResult',
+    'GetSubscriptionRetryPolicyResult',
     'GetTopicMessageStoragePolicyResult',
     'GetTopicSchemaSettingResult',
 ]
@@ -838,6 +844,134 @@ class TopicSchemaSettings(dict):
         Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
         """
         return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class GetSubscriptionBigqueryConfigResult(dict):
+    def __init__(__self__, *,
+                 drop_unknown_fields: bool,
+                 table: str,
+                 use_topic_schema: bool,
+                 write_metadata: bool):
+        pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        pulumi.set(__self__, "table", table)
+        pulumi.set(__self__, "use_topic_schema", use_topic_schema)
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="dropUnknownFields")
+    def drop_unknown_fields(self) -> bool:
+        return pulumi.get(self, "drop_unknown_fields")
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> bool:
+        return pulumi.get(self, "use_topic_schema")
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> bool:
+        return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class GetSubscriptionDeadLetterPolicyResult(dict):
+    def __init__(__self__, *,
+                 dead_letter_topic: str,
+                 max_delivery_attempts: int):
+        pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
+        pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
+
+    @property
+    @pulumi.getter(name="deadLetterTopic")
+    def dead_letter_topic(self) -> str:
+        return pulumi.get(self, "dead_letter_topic")
+
+    @property
+    @pulumi.getter(name="maxDeliveryAttempts")
+    def max_delivery_attempts(self) -> int:
+        return pulumi.get(self, "max_delivery_attempts")
+
+
+@pulumi.output_type
+class GetSubscriptionExpirationPolicyResult(dict):
+    def __init__(__self__, *,
+                 ttl: str):
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> str:
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetSubscriptionPushConfigResult(dict):
+    def __init__(__self__, *,
+                 attributes: Mapping[str, str],
+                 oidc_tokens: Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult'],
+                 push_endpoint: str):
+        pulumi.set(__self__, "attributes", attributes)
+        pulumi.set(__self__, "oidc_tokens", oidc_tokens)
+        pulumi.set(__self__, "push_endpoint", push_endpoint)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Mapping[str, str]:
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="oidcTokens")
+    def oidc_tokens(self) -> Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult']:
+        return pulumi.get(self, "oidc_tokens")
+
+    @property
+    @pulumi.getter(name="pushEndpoint")
+    def push_endpoint(self) -> str:
+        return pulumi.get(self, "push_endpoint")
+
+
+@pulumi.output_type
+class GetSubscriptionPushConfigOidcTokenResult(dict):
+    def __init__(__self__, *,
+                 audience: str,
+                 service_account_email: str):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
+class GetSubscriptionRetryPolicyResult(dict):
+    def __init__(__self__, *,
+                 maximum_backoff: str,
+                 minimum_backoff: str):
+        pulumi.set(__self__, "maximum_backoff", maximum_backoff)
+        pulumi.set(__self__, "minimum_backoff", minimum_backoff)
+
+    @property
+    @pulumi.getter(name="maximumBackoff")
+    def maximum_backoff(self) -> str:
+        return pulumi.get(self, "maximum_backoff")
+
+    @property
+    @pulumi.getter(name="minimumBackoff")
+    def minimum_backoff(self) -> str:
+        return pulumi.get(self, "minimum_backoff")
 
 
 @pulumi.output_type

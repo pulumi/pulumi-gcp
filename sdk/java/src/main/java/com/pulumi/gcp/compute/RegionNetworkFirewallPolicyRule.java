@@ -54,47 +54,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy(&#34;basicRegionalNetworkFirewallPolicy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
  *             .description(&#34;Sample regional network firewall policy&#34;)
+ *             .project(&#34;my-project-name&#34;)
  *             .region(&#34;us-west1&#34;)
  *             .build());
  * 
  *         var basicNetwork = new Network(&#34;basicNetwork&#34;);
  * 
  *         var basicKey = new TagKey(&#34;basicKey&#34;, TagKeyArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .shortName(&#34;tagkey&#34;)
- *             .purpose(&#34;GCE_FIREWALL&#34;)
- *             .purposeData(Map.of(&#34;network&#34;, basicNetwork.name().applyValue(name -&gt; String.format(&#34;my-project-name/%s&#34;, name))))
  *             .description(&#34;For keyname resources.&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .purpose(&#34;GCE_FIREWALL&#34;)
+ *             .shortName(&#34;tagkey&#34;)
+ *             .purposeData(Map.of(&#34;network&#34;, basicNetwork.name().applyValue(name -&gt; String.format(&#34;my-project-name/%s&#34;, name))))
  *             .build());
  * 
  *         var basicValue = new TagValue(&#34;basicValue&#34;, TagValueArgs.builder()        
+ *             .description(&#34;For valuename resources.&#34;)
  *             .parent(basicKey.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
  *             .shortName(&#34;tagvalue&#34;)
- *             .description(&#34;For valuename resources.&#34;)
  *             .build());
  * 
  *         var primary = new RegionNetworkFirewallPolicyRule(&#34;primary&#34;, RegionNetworkFirewallPolicyRuleArgs.builder()        
- *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
  *             .action(&#34;allow&#34;)
- *             .direction(&#34;INGRESS&#34;)
- *             .priority(1000)
- *             .ruleName(&#34;test-rule&#34;)
  *             .description(&#34;This is a simple rule description&#34;)
+ *             .direction(&#34;INGRESS&#34;)
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .region(&#34;us-west1&#34;)
+ *             .ruleName(&#34;test-rule&#34;)
+ *             .targetServiceAccounts(&#34;emailAddress:my@service-account.com&#34;)
  *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
- *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
- *                     .name(basicValue.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
- *                     .build())
  *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
  *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                     .ipProtocol(&#34;all&#34;)
  *                     .build())
+ *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
+ *                     .name(basicValue.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
+ *                     .build())
  *                 .build())
- *             .targetServiceAccounts(&#34;emailAddress:my@service-account.com&#34;)
- *             .region(&#34;us-west1&#34;)
- *             .enableLogging(true)
- *             .disabled(false)
  *             .build());
  * 
  *     }

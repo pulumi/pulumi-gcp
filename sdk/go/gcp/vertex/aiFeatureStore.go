@@ -54,6 +54,44 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Featurestore Scaling
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("kms-name"),
+//				},
+//				ForceDestroy: pulumi.Bool(true),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					Scaling: &vertex.AiFeatureStoreOnlineServingConfigScalingArgs{
+//						MaxNodeCount: pulumi.Int(10),
+//						MinNodeCount: pulumi.Int(2),
+//					},
+//				},
+//				Region: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

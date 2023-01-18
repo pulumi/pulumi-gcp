@@ -402,7 +402,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
-     * ) Specifies a custom placement policy for the
+     * Specifies a custom placement policy for the
      * nodes.
      * 
      */
@@ -410,7 +410,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ NodePoolPlacementPolicy> placementPolicy;
 
     /**
-     * @return ) Specifies a custom placement policy for the
+     * @return Specifies a custom placement policy for the
      * nodes.
      * 
      */

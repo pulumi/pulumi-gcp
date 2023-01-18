@@ -247,6 +247,18 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
 
         /// <summary>
+        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        [Output("statefulExternalIps")]
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulExternalIp>> StatefulExternalIps { get; private set; } = null!;
+
+        /// <summary>
+        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        [Output("statefulInternalIps")]
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulInternalIp>> StatefulInternalIps { get; private set; } = null!;
+
+        /// <summary>
         /// The status of this managed instance group.
         /// </summary>
         [Output("statuses")]
@@ -451,6 +463,30 @@ namespace Pulumi.Gcp.Compute
             set => _statefulDisks = value;
         }
 
+        [Input("statefulExternalIps")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs>? _statefulExternalIps;
+
+        /// <summary>
+        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs> StatefulExternalIps
+        {
+            get => _statefulExternalIps ?? (_statefulExternalIps = new InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs>());
+            set => _statefulExternalIps = value;
+        }
+
+        [Input("statefulInternalIps")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpArgs>? _statefulInternalIps;
+
+        /// <summary>
+        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpArgs> StatefulInternalIps
+        {
+            get => _statefulInternalIps ?? (_statefulInternalIps = new InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpArgs>());
+            set => _statefulInternalIps = value;
+        }
+
         [Input("targetPools")]
         private InputList<string>? _targetPools;
 
@@ -640,6 +676,30 @@ namespace Pulumi.Gcp.Compute
         {
             get => _statefulDisks ?? (_statefulDisks = new InputList<Inputs.RegionInstanceGroupManagerStatefulDiskGetArgs>());
             set => _statefulDisks = value;
+        }
+
+        [Input("statefulExternalIps")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs>? _statefulExternalIps;
+
+        /// <summary>
+        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs> StatefulExternalIps
+        {
+            get => _statefulExternalIps ?? (_statefulExternalIps = new InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs>());
+            set => _statefulExternalIps = value;
+        }
+
+        [Input("statefulInternalIps")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpGetArgs>? _statefulInternalIps;
+
+        /// <summary>
+        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpGetArgs> StatefulInternalIps
+        {
+            get => _statefulInternalIps ?? (_statefulInternalIps = new InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpGetArgs>());
+            set => _statefulInternalIps = value;
         }
 
         [Input("statuses")]

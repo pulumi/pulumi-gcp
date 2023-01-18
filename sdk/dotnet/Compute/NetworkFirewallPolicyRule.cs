@@ -23,51 +23,57 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", new()
     ///     {
-    ///         Project = "my-project-name",
     ///         Description = "Sample global network firewall policy",
+    ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
     /// 
     ///     var basicKey = new Gcp.Tags.TagKey("basicKey", new()
     ///     {
+    ///         Description = "For keyname resources.",
     ///         Parent = "organizations/123456789",
-    ///         ShortName = "tagkey",
     ///         Purpose = "GCE_FIREWALL",
+    ///         ShortName = "tagkey",
     ///         PurposeData = 
     ///         {
     ///             { "network", basicNetwork.Name.Apply(name =&gt; $"my-project-name/{name}") },
     ///         },
-    ///         Description = "For keyname resources.",
     ///     });
     /// 
     ///     var basicValue = new Gcp.Tags.TagValue("basicValue", new()
     ///     {
+    ///         Description = "For valuename resources.",
     ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "tagvalue",
-    ///         Description = "For valuename resources.",
     ///     });
     /// 
     ///     var primary = new Gcp.Compute.NetworkFirewallPolicyRule("primary", new()
     ///     {
-    ///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
     ///         Action = "allow",
+    ///         Description = "This is a simple rule description",
     ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         EnableLogging = true,
+    ///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
     ///         Priority = 1000,
     ///         RuleName = "test-rule",
-    ///         Description = "This is a simple rule description",
+    ///         TargetServiceAccounts = new[]
+    ///         {
+    ///             "emailAddress:my@service-account.com",
+    ///         },
     ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchArgs
     ///         {
+    ///             SrcIpRanges = new[]
+    ///             {
+    ///                 "10.100.0.1/32",
+    ///             },
     ///             SrcSecureTags = new[]
     ///             {
     ///                 new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs
     ///                 {
     ///                     Name = basicValue.Name.Apply(name =&gt; $"tagValues/{name}"),
     ///                 },
-    ///             },
-    ///             SrcIpRanges = new[]
-    ///             {
-    ///                 "10.100.0.1/32",
     ///             },
     ///             Layer4Configs = new[]
     ///             {
@@ -77,12 +83,6 @@ namespace Pulumi.Gcp.Compute
     ///                 },
     ///             },
     ///         },
-    ///         TargetServiceAccounts = new[]
-    ///         {
-    ///             "emailAddress:my@service-account.com",
-    ///         },
-    ///         EnableLogging = true,
-    ///         Disabled = false,
     ///     });
     /// 
     /// });

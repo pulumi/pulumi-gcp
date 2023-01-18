@@ -41,426 +41,26 @@ import * as utilities from "../utilities";
  *         description: "A test os policy",
  *         id: "policy",
  *         mode: "VALIDATION",
- *         resourceGroups: [
- *             {
- *                 inventoryFilters: [{
- *                     osShortName: "centos",
- *                     osVersion: "8.*",
- *                 }],
- *                 resources: [
- *                     {
- *                         id: "apt",
- *                         pkg: {
- *                             apt: {
- *                                 name: "bazel",
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
+ *         resourceGroups: [{
+ *             inventoryFilters: [{
+ *                 osShortName: "centos",
+ *                 osVersion: "8.*",
+ *             }],
+ *             resources: [{
+ *                 id: "apt",
+ *                 pkg: {
+ *                     apt: {
+ *                         name: "bazel",
  *                     },
- *                     {
- *                         id: "deb1",
- *                         pkg: {
- *                             deb: {
- *                                 source: {
- *                                     localPath: "$HOME/package.deb",
- *                                 },
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
- *                     },
- *                     {
- *                         id: "deb2",
- *                         pkg: {
- *                             deb: {
- *                                 pullDeps: true,
- *                                 source: {
- *                                     allowInsecure: true,
- *                                     remote: {
- *                                         sha256Checksum: "3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
- *                                         uri: "ftp.us.debian.org/debian/package.deb",
- *                                     },
- *                                 },
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
- *                     },
- *                     {
- *                         id: "deb3",
- *                         pkg: {
- *                             deb: {
- *                                 pullDeps: true,
- *                                 source: {
- *                                     gcs: {
- *                                         bucket: "test-bucket",
- *                                         generation: 1,
- *                                         object: "test-object",
- *                                     },
- *                                 },
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
- *                     },
- *                     {
- *                         id: "yum",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             yum: {
- *                                 name: "gstreamer-plugins-base-devel.x86_64",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "zypper",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             zypper: {
- *                                 name: "gcc",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "rpm1",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             rpm: {
- *                                 pullDeps: true,
- *                                 source: {
- *                                     localPath: "$HOME/package.rpm",
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "rpm2",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             rpm: {
- *                                 source: {
- *                                     allowInsecure: true,
- *                                     remote: {
- *                                         sha256Checksum: "3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
- *                                         uri: "https://mirror.jaleco.com/centos/8.3.2011/BaseOS/x86_64/os/Packages/efi-filesystem-3-2.el8.noarch.rpm",
- *                                     },
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "rpm3",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             rpm: {
- *                                 source: {
- *                                     gcs: {
- *                                         bucket: "test-bucket",
- *                                         generation: 1,
- *                                         object: "test-object",
- *                                     },
- *                                 },
- *                             },
- *                         },
- *                     },
- *                 ],
- *             },
- *             {
- *                 resources: [
- *                     {
- *                         id: "apt-to-deb",
- *                         pkg: {
- *                             apt: {
- *                                 name: "bazel",
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
- *                     },
- *                     {
- *                         id: "deb-local-path-to-gcs",
- *                         pkg: {
- *                             deb: {
- *                                 source: {
- *                                     localPath: "$HOME/package.deb",
- *                                 },
- *                             },
- *                             desiredState: "INSTALLED",
- *                         },
- *                     },
- *                     {
- *                         id: "googet",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             googet: {
- *                                 name: "gcc",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "msi1",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             msi: {
- *                                 properties: ["REBOOT=ReallySuppress"],
- *                                 source: {
- *                                     localPath: "$HOME/package.msi",
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "msi2",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             msi: {
- *                                 source: {
- *                                     allowInsecure: true,
- *                                     remote: {
- *                                         sha256Checksum: "3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
- *                                         uri: "https://remote.uri.com/package.msi",
- *                                     },
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "msi3",
- *                         pkg: {
- *                             desiredState: "INSTALLED",
- *                             msi: {
- *                                 source: {
- *                                     gcs: {
- *                                         bucket: "test-bucket",
- *                                         generation: 1,
- *                                         object: "test-object",
- *                                     },
- *                                 },
- *                             },
- *                         },
- *                     },
- *                 ],
- *             },
- *         ],
+ *                     desiredState: "INSTALLED",
+ *                 },
+ *             }],
+ *         }],
  *     }],
  *     project: "my-project-name",
  *     rollout: {
  *         disruptionBudget: {
  *             fixed: 1,
- *         },
- *         minWaitDuration: "3.5s",
- *     },
- * });
- * ```
- * ### Percent_os_policy_assignment
- * An example of an osconfig os policy assignment with percent rollout disruption budget
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.osconfig.OsPolicyAssignment("primary", {
- *     description: "A test os policy assignment",
- *     instanceFilter: {
- *         all: true,
- *     },
- *     location: "us-west1-a",
- *     osPolicies: [{
- *         id: "policy",
- *         mode: "VALIDATION",
- *         resourceGroups: [
- *             {
- *                 resources: [
- *                     {
- *                         id: "apt-to-yum",
- *                         repository: {
- *                             apt: {
- *                                 archiveType: "DEB",
- *                                 components: ["doc"],
- *                                 distribution: "debian",
- *                                 gpgKey: ".gnupg/pubring.kbx",
- *                                 uri: "https://atl.mirrors.clouvider.net/debian",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "yum",
- *                         repository: {
- *                             yum: {
- *                                 baseUrl: "http://centos.s.uw.edu/centos/",
- *                                 displayName: "yum",
- *                                 gpgKeys: ["RPM-GPG-KEY-CentOS-7"],
- *                                 id: "yum",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "zypper",
- *                         repository: {
- *                             zypper: {
- *                                 baseUrl: "http://mirror.dal10.us.leaseweb.net/opensuse",
- *                                 displayName: "zypper",
- *                                 gpgKeys: ["sample-key-uri"],
- *                                 id: "zypper",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         id: "goo",
- *                         repository: {
- *                             goo: {
- *                                 name: "goo",
- *                                 url: "https://foo.com/googet/bar",
- *                             },
- *                         },
- *                     },
- *                     {
- *                         exec: {
- *                             enforce: {
- *                                 args: ["arg1"],
- *                                 file: {
- *                                     allowInsecure: true,
- *                                     remote: {
- *                                         sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
- *                                         uri: "https://www.example.com/script.sh",
- *                                     },
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                             validate: {
- *                                 args: ["arg1"],
- *                                 file: {
- *                                     localPath: "$HOME/script.sh",
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                         },
- *                         id: "exec1",
- *                     },
- *                     {
- *                         exec: {
- *                             enforce: {
- *                                 args: ["arg1"],
- *                                 file: {
- *                                     localPath: "$HOME/script.sh",
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                             validate: {
- *                                 args: ["arg1"],
- *                                 file: {
- *                                     allowInsecure: true,
- *                                     remote: {
- *                                         sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
- *                                         uri: "https://www.example.com/script.sh",
- *                                     },
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                         },
- *                         id: "exec2",
- *                     },
- *                     {
- *                         exec: {
- *                             enforce: {
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                                 script: "pwd",
- *                             },
- *                             validate: {
- *                                 file: {
- *                                     allowInsecure: true,
- *                                     gcs: {
- *                                         bucket: "test-bucket",
- *                                         generation: 1,
- *                                         object: "test-object",
- *                                     },
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                         },
- *                         id: "exec3",
- *                     },
- *                     {
- *                         exec: {
- *                             enforce: {
- *                                 file: {
- *                                     allowInsecure: true,
- *                                     gcs: {
- *                                         bucket: "test-bucket",
- *                                         generation: 1,
- *                                         object: "test-object",
- *                                     },
- *                                 },
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                             },
- *                             validate: {
- *                                 interpreter: "SHELL",
- *                                 outputFilePath: "$HOME/out",
- *                                 script: "pwd",
- *                             },
- *                         },
- *                         id: "exec4",
- *                     },
- *                     {
- *                         file: {
- *                             file: {
- *                                 localPath: "$HOME/file",
- *                             },
- *                             path: "$HOME/file",
- *                             state: "PRESENT",
- *                         },
- *                         id: "file1",
- *                     },
- *                 ],
- *             },
- *             {
- *                 resources: [
- *                     {
- *                         file: {
- *                             file: {
- *                                 allowInsecure: true,
- *                                 remote: {
- *                                     sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
- *                                     uri: "https://www.example.com/file",
- *                                 },
- *                             },
- *                             path: "$HOME/file",
- *                             state: "PRESENT",
- *                         },
- *                         id: "file2",
- *                     },
- *                     {
- *                         file: {
- *                             file: {
- *                                 gcs: {
- *                                     bucket: "test-bucket",
- *                                     generation: 1,
- *                                     object: "test-object",
- *                                 },
- *                             },
- *                             path: "$HOME/file",
- *                             state: "PRESENT",
- *                         },
- *                         id: "file3",
- *                     },
- *                     {
- *                         file: {
- *                             content: "sample-content",
- *                             path: "$HOME/file",
- *                             state: "PRESENT",
- *                         },
- *                         id: "file4",
- *                     },
- *                 ],
- *             },
- *         ],
- *     }],
- *     project: "my-project-name",
- *     rollout: {
- *         disruptionBudget: {
- *             percent: 1,
  *         },
  *         minWaitDuration: "3.5s",
  *     },
@@ -573,6 +173,10 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly rolloutState!: pulumi.Output<string>;
     /**
+     * Set to true to skip awaiting rollout during resource creation and update.
+     */
+    public readonly skipAwaitRollout!: pulumi.Output<boolean | undefined>;
+    /**
      * Output only. Server generated unique id for the OS policy assignment resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -604,6 +208,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["revisionId"] = state ? state.revisionId : undefined;
             resourceInputs["rollout"] = state ? state.rollout : undefined;
             resourceInputs["rolloutState"] = state ? state.rolloutState : undefined;
+            resourceInputs["skipAwaitRollout"] = state ? state.skipAwaitRollout : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as OsPolicyAssignmentArgs | undefined;
@@ -626,6 +231,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["osPolicies"] = args ? args.osPolicies : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rollout"] = args ? args.rollout : undefined;
+            resourceInputs["skipAwaitRollout"] = args ? args.skipAwaitRollout : undefined;
             resourceInputs["baseline"] = undefined /*out*/;
             resourceInputs["deleted"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -706,6 +312,10 @@ export interface OsPolicyAssignmentState {
      */
     rolloutState?: pulumi.Input<string>;
     /**
+     * Set to true to skip awaiting rollout during resource creation and update.
+     */
+    skipAwaitRollout?: pulumi.Input<boolean>;
+    /**
      * Output only. Server generated unique id for the OS policy assignment resource.
      */
     uid?: pulumi.Input<string>;
@@ -743,4 +353,8 @@ export interface OsPolicyAssignmentArgs {
      * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
      */
     rollout: pulumi.Input<inputs.osconfig.OsPolicyAssignmentRollout>;
+    /**
+     * Set to true to skip awaiting rollout during resource creation and update.
+     */
+    skipAwaitRollout?: pulumi.Input<boolean>;
 }

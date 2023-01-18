@@ -16,7 +16,7 @@ public final class HostingSiteArgs extends com.pulumi.resources.ResourceArgs {
     public static final HostingSiteArgs Empty = new HostingSiteArgs();
 
     /**
-     * Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+     * Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      * 
      */
@@ -24,7 +24,7 @@ public final class HostingSiteArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> appId;
 
     /**
-     * @return Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+     * @return Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      * 
      */
@@ -95,7 +95,7 @@ public final class HostingSiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
          * associated with the Hosting site.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class HostingSiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
          * associated with the Hosting site.
          * 
          * @return builder

@@ -122,6 +122,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly severity!: pulumi.Output<string>;
     /**
+     * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     */
+    public readonly threatExceptions!: pulumi.Output<string[] | undefined>;
+    /**
      * Last update timestamp in RFC 3339 text format.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -148,6 +152,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["threatExceptions"] = state ? state.threatExceptions : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
@@ -166,6 +171,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["threatExceptions"] = args ? args.threatExceptions : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpointForwardingRule"] = undefined /*out*/;
             resourceInputs["endpointIp"] = undefined /*out*/;
@@ -219,6 +225,10 @@ export interface EndpointState {
      */
     severity?: pulumi.Input<string>;
     /**
+     * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     */
+    threatExceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Last update timestamp in RFC 3339 text format.
      */
     updateTime?: pulumi.Input<string>;
@@ -254,4 +264,8 @@ export interface EndpointArgs {
      * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
      */
     severity: pulumi.Input<string>;
+    /**
+     * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     */
+    threatExceptions?: pulumi.Input<pulumi.Input<string>[]>;
 }

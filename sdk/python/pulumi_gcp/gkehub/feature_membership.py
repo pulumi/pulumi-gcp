@@ -270,6 +270,48 @@ class FeatureMembership(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Config Management With OCI
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
+                version="1.12.0",
+                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
+                    oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
+                        sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        policy_dir="config-connector",
+                        sync_wait_secs="20",
+                        secret_type="gcpserviceaccount",
+                        gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Multi Cluster Service Discovery
 
         ```python
@@ -309,7 +351,6 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
-                control_plane="AUTOMATIC",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
@@ -385,6 +426,48 @@ class FeatureMembership(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Config Management With OCI
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
+                version="1.12.0",
+                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
+                    oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
+                        sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        policy_dir="config-connector",
+                        sync_wait_secs="20",
+                        secret_type="gcpserviceaccount",
+                        gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Multi Cluster Service Discovery
 
         ```python
@@ -424,7 +507,6 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
-                control_plane="AUTOMATIC",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```

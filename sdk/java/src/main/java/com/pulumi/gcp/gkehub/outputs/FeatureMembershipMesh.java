@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipMesh {
-    /**
-     * @return Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
-     * 
-     */
     private @Nullable String controlPlane;
     /**
      * @return Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -23,10 +19,6 @@ public final class FeatureMembershipMesh {
     private @Nullable String management;
 
     private FeatureMembershipMesh() {}
-    /**
-     * @return Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
-     * 
-     */
     public Optional<String> controlPlane() {
         return Optional.ofNullable(this.controlPlane);
     }

@@ -143,7 +143,7 @@ class _PreventionJobTriggerState:
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: The name of the Datastore kind.
+        :param pulumi.Input[str] name: Name of a BigQuery field to be returned with the findings.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -222,7 +222,7 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Datastore kind.
+        Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")
 
@@ -653,7 +653,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: The name of the Datastore kind.
+        :param pulumi.Input[str] name: Name of a BigQuery field to be returned with the findings.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -713,7 +713,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the Datastore kind.
+        Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")
 

@@ -48,6 +48,39 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Featurestore Scaling
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
+    ///     {
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
+    ///         ForceDestroy = true,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             Scaling = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigScalingArgs
+    ///             {
+    ///                 MaxNodeCount = 10,
+    ///                 MinNodeCount = 2,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

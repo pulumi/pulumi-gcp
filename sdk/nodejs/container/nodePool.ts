@@ -158,7 +158,7 @@ export class NodePool extends pulumi.CustomResource {
     public readonly nodeLocations!: pulumi.Output<string[]>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * ) Specifies a custom placement policy for the
+     * Specifies a custom placement policy for the
      * nodes.
      */
     public readonly placementPolicy!: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
@@ -327,7 +327,7 @@ export interface NodePoolState {
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     operation?: pulumi.Input<string>;
     /**
-     * ) Specifies a custom placement policy for the
+     * Specifies a custom placement policy for the
      * nodes.
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
@@ -426,7 +426,7 @@ export interface NodePoolArgs {
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ) Specifies a custom placement policy for the
+     * Specifies a custom placement policy for the
      * nodes.
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;

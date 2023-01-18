@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind
     {
         /// <summary>
-        /// The name of the Datastore kind.
+        /// Name of a BigQuery field to be returned with the findings.
         /// </summary>
         public readonly string Name;
 

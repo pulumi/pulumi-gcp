@@ -231,6 +231,9 @@ type MetastoreService struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	// Structure is documented below.
+	TelemetryConfig MetastoreServiceTelemetryConfigOutput `pulumi:"telemetryConfig"`
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -323,6 +326,9 @@ type metastoreServiceState struct {
 	State *string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage *string `pulumi:"stateMessage"`
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	// Structure is documented below.
+	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
@@ -384,6 +390,9 @@ type MetastoreServiceState struct {
 	State pulumi.StringPtrInput
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage pulumi.StringPtrInput
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	// Structure is documented below.
+	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
@@ -438,6 +447,9 @@ type metastoreServiceArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	ServiceId string `pulumi:"serviceId"`
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	// Structure is documented below.
+	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
@@ -487,6 +499,9 @@ type MetastoreServiceArgs struct {
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
 	ServiceId pulumi.StringInput
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	// Structure is documented below.
+	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
 	// The tier of the service.
 	// Possible values are `DEVELOPER` and `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
@@ -684,6 +699,12 @@ func (o MetastoreServiceOutput) State() pulumi.StringOutput {
 // Additional information about the current state of the metastore service, if available.
 func (o MetastoreServiceOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+// Structure is documented below.
+func (o MetastoreServiceOutput) TelemetryConfig() MetastoreServiceTelemetryConfigOutput {
+	return o.ApplyT(func(v *MetastoreService) MetastoreServiceTelemetryConfigOutput { return v.TelemetryConfig }).(MetastoreServiceTelemetryConfigOutput)
 }
 
 // The tier of the service.

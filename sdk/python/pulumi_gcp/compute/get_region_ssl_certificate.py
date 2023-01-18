@@ -21,7 +21,7 @@ class GetRegionSslCertificateResult:
     """
     A collection of values returned by getRegionSslCertificate.
     """
-    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, description=None, id=None, name=None, name_prefix=None, private_key=None, project=None, region=None, self_link=None):
+    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, id=None, name=None, name_prefix=None, private_key=None, project=None, region=None, self_link=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
@@ -34,6 +34,9 @@ class GetRegionSslCertificateResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -75,6 +78,11 @@ class GetRegionSslCertificateResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -125,6 +133,7 @@ class AwaitableGetRegionSslCertificateResult(GetRegionSslCertificateResult):
             certificate_id=self.certificate_id,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            expire_time=self.expire_time,
             id=self.id,
             name=self.name,
             name_prefix=self.name_prefix,
@@ -172,6 +181,7 @@ def get_region_ssl_certificate(name: Optional[str] = None,
         certificate_id=__ret__.certificate_id,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        expire_time=__ret__.expire_time,
         id=__ret__.id,
         name=__ret__.name,
         name_prefix=__ret__.name_prefix,

@@ -6,6 +6,7 @@ package com.pulumi.gcp.composer.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigTriggererArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWebServerArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWorkerArgs;
 import java.util.Objects;
@@ -22,6 +23,13 @@ public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resou
 
     public Optional<Output<EnvironmentConfigWorkloadsConfigSchedulerArgs>> scheduler() {
         return Optional.ofNullable(this.scheduler);
+    }
+
+    @Import(name="triggerer")
+    private @Nullable Output<EnvironmentConfigWorkloadsConfigTriggererArgs> triggerer;
+
+    public Optional<Output<EnvironmentConfigWorkloadsConfigTriggererArgs>> triggerer() {
+        return Optional.ofNullable(this.triggerer);
     }
 
     @Import(name="webServer")
@@ -42,6 +50,7 @@ public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resou
 
     private EnvironmentConfigWorkloadsConfigArgs(EnvironmentConfigWorkloadsConfigArgs $) {
         this.scheduler = $.scheduler;
+        this.triggerer = $.triggerer;
         this.webServer = $.webServer;
         this.worker = $.worker;
     }
@@ -71,6 +80,15 @@ public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resou
 
         public Builder scheduler(EnvironmentConfigWorkloadsConfigSchedulerArgs scheduler) {
             return scheduler(Output.of(scheduler));
+        }
+
+        public Builder triggerer(@Nullable Output<EnvironmentConfigWorkloadsConfigTriggererArgs> triggerer) {
+            $.triggerer = triggerer;
+            return this;
+        }
+
+        public Builder triggerer(EnvironmentConfigWorkloadsConfigTriggererArgs triggerer) {
+            return triggerer(Output.of(triggerer));
         }
 
         public Builder webServer(@Nullable Output<EnvironmentConfigWorkloadsConfigWebServerArgs> webServer) {

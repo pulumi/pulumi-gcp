@@ -64,14 +64,14 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Expire time of the certificate.
+     * Expire time of the certificate in RFC3339 text format.
      * 
      */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return Expire time of the certificate.
+     * @return Expire time of the certificate in RFC3339 text format.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -289,7 +289,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expireTime Expire time of the certificate.
+         * @param expireTime Expire time of the certificate in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expireTime Expire time of the certificate.
+         * @param expireTime Expire time of the certificate in RFC3339 text format.
          * 
          * @return builder
          * 

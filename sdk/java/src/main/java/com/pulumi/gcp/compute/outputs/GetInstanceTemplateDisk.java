@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskSourceImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,6 +98,9 @@ public final class GetInstanceTemplateDisk {
      * 
      */
     private String sourceImage;
+    private List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    private String sourceSnapshot;
+    private List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -211,6 +216,15 @@ public final class GetInstanceTemplateDisk {
     public String sourceImage() {
         return this.sourceImage;
     }
+    public List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys() {
+        return this.sourceImageEncryptionKeys;
+    }
+    public String sourceSnapshot() {
+        return this.sourceSnapshot;
+    }
+    public List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys() {
+        return this.sourceSnapshotEncryptionKeys;
+    }
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -241,6 +255,9 @@ public final class GetInstanceTemplateDisk {
         private List<String> resourcePolicies;
         private String source;
         private String sourceImage;
+        private List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+        private String sourceSnapshot;
+        private List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String type;
         public Builder() {}
         public Builder(GetInstanceTemplateDisk defaults) {
@@ -258,6 +275,9 @@ public final class GetInstanceTemplateDisk {
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
+    	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
+    	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.type = defaults.type;
         }
 
@@ -333,6 +353,27 @@ public final class GetInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceImageEncryptionKeys(List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
+            this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
+            return this;
+        }
+        public Builder sourceImageEncryptionKeys(GetInstanceTemplateDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
+            return sourceImageEncryptionKeys(List.of(sourceImageEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshot(String sourceSnapshot) {
+            this.sourceSnapshot = Objects.requireNonNull(sourceSnapshot);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshotEncryptionKeys(List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
+            this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
+            return this;
+        }
+        public Builder sourceSnapshotEncryptionKeys(GetInstanceTemplateDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
+            return sourceSnapshotEncryptionKeys(List.of(sourceSnapshotEncryptionKeys));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -352,6 +393,9 @@ public final class GetInstanceTemplateDisk {
             o.resourcePolicies = resourcePolicies;
             o.source = source;
             o.sourceImage = sourceImage;
+            o.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            o.sourceSnapshot = sourceSnapshot;
+            o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             o.type = type;
             return o;
         }
