@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<double>? FloatValue { get; set; }
 
         /// <summary>
-        /// An integer value.
+        /// An integer value (int64 format)
         /// </summary>
         [Input("integerValue")]
         public Input<int>? IntegerValue { get; set; }
@@ -58,8 +58,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueGetArgs>? TimeValue { get; set; }
 
         /// <summary>
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("timestampValue")]
         public Input<string>? TimestampValue { get; set; }

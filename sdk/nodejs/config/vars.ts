@@ -345,6 +345,14 @@ Object.defineProperty(exports, "containerAnalysisCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const containerAttachedCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "containerAttachedCustomEndpoint", {
+    get() {
+        return __config.get("containerAttachedCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const containerAwsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "containerAwsCustomEndpoint", {
     get() {
@@ -533,6 +541,14 @@ export declare const firebaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseCustomEndpoint", {
     get() {
         return __config.get("firebaseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firebaseDatabaseCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseDatabaseCustomEndpoint", {
+    get() {
+        return __config.get("firebaseDatabaseCustomEndpoint");
     },
     enumerable: true,
 });

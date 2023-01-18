@@ -25,7 +25,7 @@ class PrivateConnectionArgs:
         """
         The set of arguments for constructing a PrivateConnection resource.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between Datastream and the consumer's VPC.
@@ -59,7 +59,7 @@ class PrivateConnectionArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The name of the location this repository is located in.
+        The name of the location this private connection is located in.
         """
         return pulumi.get(self, "location")
 
@@ -136,7 +136,7 @@ class _PrivateConnectionState:
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -205,7 +205,7 @@ class _PrivateConnectionState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the location this repository is located in.
+        The name of the location this private connection is located in.
         """
         return pulumi.get(self, "location")
 
@@ -339,7 +339,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -475,7 +475,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -528,7 +528,7 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The name of the location this repository is located in.
+        The name of the location this private connection is located in.
         """
         return pulumi.get(self, "location")
 

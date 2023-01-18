@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentRolloutArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,6 +125,21 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         return this.rollout;
     }
 
+    /**
+     * Set to true to skip awaiting rollout during resource creation and update.
+     * 
+     */
+    @Import(name="skipAwaitRollout")
+    private @Nullable Output<Boolean> skipAwaitRollout;
+
+    /**
+     * @return Set to true to skip awaiting rollout during resource creation and update.
+     * 
+     */
+    public Optional<Output<Boolean>> skipAwaitRollout() {
+        return Optional.ofNullable(this.skipAwaitRollout);
+    }
+
     private OsPolicyAssignmentArgs() {}
 
     private OsPolicyAssignmentArgs(OsPolicyAssignmentArgs $) {
@@ -134,6 +150,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         this.osPolicies = $.osPolicies;
         this.project = $.project;
         this.rollout = $.rollout;
+        this.skipAwaitRollout = $.skipAwaitRollout;
     }
 
     public static Builder builder() {
@@ -309,6 +326,27 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
          */
         public Builder rollout(OsPolicyAssignmentRolloutArgs rollout) {
             return rollout(Output.of(rollout));
+        }
+
+        /**
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitRollout(@Nullable Output<Boolean> skipAwaitRollout) {
+            $.skipAwaitRollout = skipAwaitRollout;
+            return this;
+        }
+
+        /**
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitRollout(Boolean skipAwaitRollout) {
+            return skipAwaitRollout(Output.of(skipAwaitRollout));
         }
 
         public OsPolicyAssignmentArgs build() {

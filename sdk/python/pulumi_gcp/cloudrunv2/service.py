@@ -689,10 +689,6 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            binary_authorization=gcp.cloudrunv2.ServiceBinaryAuthorizationArgs(
-                breakglass_justification="Some justification",
-                use_default=True,
-            ),
             ingress="INGRESS_TRAFFIC_ALL",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(
@@ -936,10 +932,6 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Service("default",
-            binary_authorization=gcp.cloudrunv2.ServiceBinaryAuthorizationArgs(
-                breakglass_justification="Some justification",
-                use_default=True,
-            ),
             ingress="INGRESS_TRAFFIC_ALL",
             location="us-central1",
             template=gcp.cloudrunv2.ServiceTemplateArgs(

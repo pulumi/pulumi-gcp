@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The host the user can connect from. This is only supported
-        /// for MySQL instances. Don't set this field for PostgreSQL instances.
+        /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
         /// Can be an IP address. Changing this forces a new resource to be created.
         /// </summary>
         [Output("host")]
@@ -141,7 +141,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
         /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-        /// or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+        /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -227,7 +228,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The host the user can connect from. This is only supported
-        /// for MySQL instances. Don't set this field for PostgreSQL instances.
+        /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
         /// Can be an IP address. Changing this forces a new resource to be created.
         /// </summary>
         [Input("host")]
@@ -253,7 +254,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
         /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-        /// or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+        /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
         /// </summary>
         public Input<string>? Password
         {
@@ -301,7 +303,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The host the user can connect from. This is only supported
-        /// for MySQL instances. Don't set this field for PostgreSQL instances.
+        /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
         /// Can be an IP address. Changing this forces a new resource to be created.
         /// </summary>
         [Input("host")]
@@ -327,7 +329,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
         /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-        /// or CLOUD_IAM_SERVICE_ACCOUNT.
+        /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+        /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
         /// </summary>
         public Input<string>? Password
         {

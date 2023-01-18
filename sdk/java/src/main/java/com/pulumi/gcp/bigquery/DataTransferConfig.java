@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         var permissions = new IAMMember(&#34;permissions&#34;, IAMMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/iam.serviceAccountShortTermTokenMinter&#34;)
+ *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 

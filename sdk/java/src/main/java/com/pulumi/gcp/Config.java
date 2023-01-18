@@ -140,6 +140,9 @@ public final class Config {
     public Optional<String> containerAnalysisCustomEndpoint() {
         return Codegen.stringProp("containerAnalysisCustomEndpoint").config(config).get();
     }
+    public Optional<String> containerAttachedCustomEndpoint() {
+        return Codegen.stringProp("containerAttachedCustomEndpoint").config(config).get();
+    }
     public Optional<String> containerAwsCustomEndpoint() {
         return Codegen.stringProp("containerAwsCustomEndpoint").config(config).get();
     }
@@ -211,6 +214,9 @@ public final class Config {
     }
     public Optional<String> firebaseCustomEndpoint() {
         return Codegen.stringProp("firebaseCustomEndpoint").config(config).get();
+    }
+    public Optional<String> firebaseDatabaseCustomEndpoint() {
+        return Codegen.stringProp("firebaseDatabaseCustomEndpoint").config(config).get();
     }
     public Optional<String> firebaseHostingCustomEndpoint() {
         return Codegen.stringProp("firebaseHostingCustomEndpoint").config(config).get();

@@ -6,6 +6,8 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskDiskEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskSourceImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -213,7 +215,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     /**
      * The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     @Import(name="source")
@@ -222,7 +224,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<Output<String>> source() {
@@ -236,7 +238,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     @Import(name="sourceImage")
@@ -249,11 +251,66 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<Output<String>> sourceImage() {
         return Optional.ofNullable(this.sourceImage);
+    }
+
+    /**
+     * The customer-supplied encryption
+     * key of the source image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<InstanceTemplateDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption
+     * key of the source image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     */
+    public Optional<Output<InstanceTemplateDiskSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+
+    /**
+     * The source snapshot to create this disk.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * 
+     */
+    @Import(name="sourceSnapshot")
+    private @Nullable Output<String> sourceSnapshot;
+
+    /**
+     * @return The source snapshot to create this disk.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * 
+     */
+    public Optional<Output<String>> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+
+    /**
+     * The customer-supplied encryption
+     * key of the source snapshot. Structure
+     * documented below.
+     * 
+     */
+    @Import(name="sourceSnapshotEncryptionKey")
+    private @Nullable Output<InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption
+     * key of the source snapshot. Structure
+     * documented below.
+     * 
+     */
+    public Optional<Output<InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs>> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
     }
 
     /**
@@ -287,6 +344,9 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         this.resourcePolicies = $.resourcePolicies;
         this.source = $.source;
         this.sourceImage = $.sourceImage;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
+        this.sourceSnapshot = $.sourceSnapshot;
+        this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.type = $.type;
     }
 
@@ -568,7 +628,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         /**
          * @param source The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -581,7 +641,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         /**
          * @param source The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -597,7 +657,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -614,13 +674,86 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
          */
         public Builder sourceImage(String sourceImage) {
             return sourceImage(Output.of(sourceImage));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption
+         * key of the source image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<InstanceTemplateDiskSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption
+         * key of the source image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(InstanceTemplateDiskSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
+        }
+
+        /**
+         * @param sourceSnapshot The source snapshot to create this disk.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(@Nullable Output<String> sourceSnapshot) {
+            $.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshot The source snapshot to create this disk.
+         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(String sourceSnapshot) {
+            return sourceSnapshot(Output.of(sourceSnapshot));
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The customer-supplied encryption
+         * key of the source snapshot. Structure
+         * documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(@Nullable Output<InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey) {
+            $.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The customer-supplied encryption
+         * key of the source snapshot. Structure
+         * documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
+            return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
         }
 
         /**

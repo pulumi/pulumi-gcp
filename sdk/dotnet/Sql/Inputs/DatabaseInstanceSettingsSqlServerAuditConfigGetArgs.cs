@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// <summary>
         /// The name of the destination bucket (e.g., gs://mybucket).
         /// </summary>
-        [Input("bucket", required: true)]
-        public Input<string> Bucket { get; set; } = null!;
+        [Input("bucket")]
+        public Input<string>? Bucket { get; set; }
 
         /// <summary>
         /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".

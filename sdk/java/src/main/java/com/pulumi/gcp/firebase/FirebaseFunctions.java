@@ -10,11 +10,17 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppPlainArgs;
+import com.pulumi.gcp.firebase.inputs.GetAppleAppArgs;
+import com.pulumi.gcp.firebase.inputs.GetAppleAppConfigArgs;
+import com.pulumi.gcp.firebase.inputs.GetAppleAppConfigPlainArgs;
+import com.pulumi.gcp.firebase.inputs.GetAppleAppPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppPlainArgs;
 import com.pulumi.gcp.firebase.outputs.GetAndroidAppResult;
+import com.pulumi.gcp.firebase.outputs.GetAppleAppConfigResult;
+import com.pulumi.gcp.firebase.outputs.GetAppleAppResult;
 import com.pulumi.gcp.firebase.outputs.GetWebAppConfigResult;
 import com.pulumi.gcp.firebase.outputs.GetWebAppResult;
 import java.util.concurrent.CompletableFuture;
@@ -31,6 +37,30 @@ public final class FirebaseFunctions {
     }
     public static CompletableFuture<GetAndroidAppResult> getAndroidAppPlain(GetAndroidAppPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAppleAppResult> getAppleApp(GetAppleAppArgs args) {
+        return getAppleApp(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAppleAppResult> getAppleAppPlain(GetAppleAppPlainArgs args) {
+        return getAppleAppPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAppleAppResult> getAppleApp(GetAppleAppArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAppleApp:getAppleApp", TypeShape.of(GetAppleAppResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAppleAppResult> getAppleAppPlain(GetAppleAppPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:firebase/getAppleApp:getAppleApp", TypeShape.of(GetAppleAppResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAppleAppConfigResult> getAppleAppConfig(GetAppleAppConfigArgs args) {
+        return getAppleAppConfig(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAppleAppConfigResult> getAppleAppConfigPlain(GetAppleAppConfigPlainArgs args) {
+        return getAppleAppConfigPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAppleAppConfigResult> getAppleAppConfig(GetAppleAppConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", TypeShape.of(GetAppleAppConfigResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAppleAppConfigResult> getAppleAppConfigPlain(GetAppleAppConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:firebase/getAppleAppConfig:getAppleAppConfig", TypeShape.of(GetAppleAppConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
      * A Google Cloud Firebase web application instance

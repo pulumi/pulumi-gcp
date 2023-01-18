@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,10 +32,26 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         return this.name;
     }
 
+    /**
+     * Version of the information type to use. By default, the version is set to stable
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Version of the information type to use. By default, the version is set to stable
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private PreventionInspectTemplateInspectConfigInfoTypeArgs() {}
 
     private PreventionInspectTemplateInspectConfigInfoTypeArgs(PreventionInspectTemplateInspectConfigInfoTypeArgs $) {
         this.name = $.name;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -75,6 +93,27 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param version Version of the information type to use. By default, the version is set to stable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Version of the information type to use. By default, the version is set to stable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public PreventionInspectTemplateInspectConfigInfoTypeArgs build() {

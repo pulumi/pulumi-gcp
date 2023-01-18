@@ -19,7 +19,8 @@ class EndpointArgs:
                  severity: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] location: The location for the endpoint.
@@ -30,6 +31,7 @@ class EndpointArgs:
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
@@ -40,6 +42,8 @@ class EndpointArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if threat_exceptions is not None:
+            pulumi.set(__self__, "threat_exceptions", threat_exceptions)
 
     @property
     @pulumi.getter
@@ -115,6 +119,18 @@ class EndpointArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        """
+        return pulumi.get(self, "threat_exceptions")
+
+    @threat_exceptions.setter
+    def threat_exceptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "threat_exceptions", value)
+
 
 @pulumi.input_type
 class _EndpointState:
@@ -128,6 +144,7 @@ class _EndpointState:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
@@ -142,6 +159,7 @@ class _EndpointState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
                Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC 3339 text format.
         """
         if create_time is not None:
@@ -162,6 +180,8 @@ class _EndpointState:
             pulumi.set(__self__, "project", project)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
+        if threat_exceptions is not None:
+            pulumi.set(__self__, "threat_exceptions", threat_exceptions)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -276,6 +296,18 @@ class _EndpointState:
         pulumi.set(self, "severity", value)
 
     @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        """
+        return pulumi.get(self, "threat_exceptions")
+
+    @threat_exceptions.setter
+    def threat_exceptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "threat_exceptions", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -299,6 +331,7 @@ class Endpoint(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Cloud IDS is an intrusion detection service that provides threat detection for intrusions, malware, spyware, and command-and-control attacks on your network.
@@ -357,6 +390,7 @@ class Endpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
                Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         """
         ...
     @overload
@@ -432,6 +466,7 @@ class Endpoint(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,6 +488,7 @@ class Endpoint(pulumi.CustomResource):
             if severity is None and not opts.urn:
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
+            __props__.__dict__["threat_exceptions"] = threat_exceptions
             __props__.__dict__["create_time"] = None
             __props__.__dict__["endpoint_forwarding_rule"] = None
             __props__.__dict__["endpoint_ip"] = None
@@ -476,6 +512,7 @@ class Endpoint(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             severity: Optional[pulumi.Input[str]] = None,
+            threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
@@ -495,6 +532,7 @@ class Endpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
                Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC 3339 text format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -510,6 +548,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
         __props__.__dict__["severity"] = severity
+        __props__.__dict__["threat_exceptions"] = threat_exceptions
         __props__.__dict__["update_time"] = update_time
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -586,6 +625,14 @@ class Endpoint(pulumi.CustomResource):
         Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
         """
         return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+        """
+        return pulumi.get(self, "threat_exceptions")
 
     @property
     @pulumi.getter(name="updateTime")

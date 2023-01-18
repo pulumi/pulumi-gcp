@@ -966,16 +966,17 @@ type DatabaseInstanceSettings struct {
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+	// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 	// is set to `true`. Defaults to `ZONAL`.
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation *string `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
-	ConnectorEnforcement  *string                                        `pulumi:"connectorEnforcement"`
-	DatabaseFlags         []DatabaseInstanceSettingsDatabaseFlag         `pulumi:"databaseFlags"`
-	DenyMaintenancePeriod *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
+	ConnectorEnforcement      *string                                        `pulumi:"connectorEnforcement"`
+	DatabaseFlags             []DatabaseInstanceSettingsDatabaseFlag         `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled *bool                                          `pulumi:"deletionProtectionEnabled"`
+	DenyMaintenancePeriod     *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1023,16 +1024,17 @@ type DatabaseInstanceSettingsArgs struct {
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+	// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 	// is set to `true`. Defaults to `ZONAL`.
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
-	ConnectorEnforcement  pulumi.StringPtrInput                                 `pulumi:"connectorEnforcement"`
-	DatabaseFlags         DatabaseInstanceSettingsDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
-	DenyMaintenancePeriod DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
+	ConnectorEnforcement      pulumi.StringPtrInput                                 `pulumi:"connectorEnforcement"`
+	DatabaseFlags             DatabaseInstanceSettingsDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled pulumi.BoolPtrInput                                   `pulumi:"deletionProtectionEnabled"`
+	DenyMaintenancePeriod     DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1153,7 +1155,7 @@ func (o DatabaseInstanceSettingsOutput) ActiveDirectoryConfig() DatabaseInstance
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 // is set to `true`. Defaults to `ZONAL`.
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
@@ -1177,6 +1179,10 @@ func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrO
 
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) DenyMaintenancePeriod() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
@@ -1311,7 +1317,7 @@ func (o DatabaseInstanceSettingsPtrOutput) ActiveDirectoryConfig() DatabaseInsta
 // instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
 // is set to `true`. Defaults to `ZONAL`.
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
@@ -1358,6 +1364,15 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 		}
 		return v.DatabaseFlags
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionProtectionEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DenyMaintenancePeriod() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
@@ -1665,7 +1680,7 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The region where the backup will be stored
 	Location *string `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
@@ -1695,7 +1710,7 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The region where the backup will be stored
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
@@ -1804,7 +1819,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1885,7 +1900,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
 		if v == nil {
@@ -3535,7 +3550,7 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ReuseInterval
 
 type DatabaseInstanceSettingsSqlServerAuditConfig struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
-	Bucket string `pulumi:"bucket"`
+	Bucket *string `pulumi:"bucket"`
 	// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	RetentionInterval *string `pulumi:"retentionInterval"`
 	// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -3555,7 +3570,7 @@ type DatabaseInstanceSettingsSqlServerAuditConfigInput interface {
 
 type DatabaseInstanceSettingsSqlServerAuditConfigArgs struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
-	Bucket pulumi.StringInput `pulumi:"bucket"`
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	RetentionInterval pulumi.StringPtrInput `pulumi:"retentionInterval"`
 	// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -3640,8 +3655,8 @@ func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) ToDatabaseInstanceSe
 }
 
 // The name of the destination bucket (e.g., gs://mybucket).
-func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsSqlServerAuditConfig) string { return v.Bucket }).(pulumi.StringOutput)
+func (o DatabaseInstanceSettingsSqlServerAuditConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsSqlServerAuditConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
 // How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -3684,7 +3699,7 @@ func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) Bucket() pulumi.S
 		if v == nil {
 			return nil
 		}
-		return &v.Bucket
+		return v.Bucket
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4857,6 +4872,7 @@ type GetDatabaseInstanceSetting struct {
 	Collation                  string                                               `pulumi:"collation"`
 	ConnectorEnforcement       string                                               `pulumi:"connectorEnforcement"`
 	DatabaseFlags              []GetDatabaseInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled  bool                                                 `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     []GetDatabaseInstanceSettingDenyMaintenancePeriod    `pulumi:"denyMaintenancePeriods"`
 	DiskAutoresize             bool                                                 `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        int                                                  `pulumi:"diskAutoresizeLimit"`
@@ -4894,6 +4910,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
 	ConnectorEnforcement       pulumi.StringInput                                           `pulumi:"connectorEnforcement"`
 	DatabaseFlags              GetDatabaseInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled  pulumi.BoolInput                                             `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput    `pulumi:"denyMaintenancePeriods"`
 	DiskAutoresize             pulumi.BoolInput                                             `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        pulumi.IntInput                                              `pulumi:"diskAutoresizeLimit"`
@@ -4993,6 +5010,10 @@ func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOu
 
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDatabaseFlag { return v.DatabaseFlags }).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) DenyMaintenancePeriods() GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
@@ -6421,6 +6442,2432 @@ func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulum
 	}).(GetDatabaseInstanceSettingSqlServerAuditConfigOutput)
 }
 
+type GetDatabaseInstancesInstance struct {
+	AvailableMaintenanceVersions []string                            `pulumi:"availableMaintenanceVersions"`
+	Clones                       []GetDatabaseInstancesInstanceClone `pulumi:"clones"`
+	ConnectionName               string                              `pulumi:"connectionName"`
+	// To filter out the Cloud SQL instances which are of the specified database version.
+	DatabaseVersion    string                                  `pulumi:"databaseVersion"`
+	DeletionProtection bool                                    `pulumi:"deletionProtection"`
+	EncryptionKeyName  string                                  `pulumi:"encryptionKeyName"`
+	FirstIpAddress     string                                  `pulumi:"firstIpAddress"`
+	InstanceType       string                                  `pulumi:"instanceType"`
+	IpAddresses        []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
+	MaintenanceVersion string                                  `pulumi:"maintenanceVersion"`
+	MasterInstanceName string                                  `pulumi:"masterInstanceName"`
+	Name               string                                  `pulumi:"name"`
+	PrivateIpAddress   string                                  `pulumi:"privateIpAddress"`
+	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+	Project         string `pulumi:"project"`
+	PublicIpAddress string `pulumi:"publicIpAddress"`
+	// To filter out the Cloud SQL instances which are located in the specified region.
+	Region                     string                                             `pulumi:"region"`
+	ReplicaConfigurations      []GetDatabaseInstancesInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
+	RestoreBackupContexts      []GetDatabaseInstancesInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
+	RootPassword               string                                             `pulumi:"rootPassword"`
+	SelfLink                   string                                             `pulumi:"selfLink"`
+	ServerCaCerts              []GetDatabaseInstancesInstanceServerCaCert         `pulumi:"serverCaCerts"`
+	ServiceAccountEmailAddress string                                             `pulumi:"serviceAccountEmailAddress"`
+	Settings                   []GetDatabaseInstancesInstanceSetting              `pulumi:"settings"`
+}
+
+// GetDatabaseInstancesInstanceInput is an input type that accepts GetDatabaseInstancesInstanceArgs and GetDatabaseInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceInput` via:
+//
+//	GetDatabaseInstancesInstanceArgs{...}
+type GetDatabaseInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceOutput() GetDatabaseInstancesInstanceOutput
+	ToGetDatabaseInstancesInstanceOutputWithContext(context.Context) GetDatabaseInstancesInstanceOutput
+}
+
+type GetDatabaseInstancesInstanceArgs struct {
+	AvailableMaintenanceVersions pulumi.StringArrayInput                     `pulumi:"availableMaintenanceVersions"`
+	Clones                       GetDatabaseInstancesInstanceCloneArrayInput `pulumi:"clones"`
+	ConnectionName               pulumi.StringInput                          `pulumi:"connectionName"`
+	// To filter out the Cloud SQL instances which are of the specified database version.
+	DatabaseVersion    pulumi.StringInput                              `pulumi:"databaseVersion"`
+	DeletionProtection pulumi.BoolInput                                `pulumi:"deletionProtection"`
+	EncryptionKeyName  pulumi.StringInput                              `pulumi:"encryptionKeyName"`
+	FirstIpAddress     pulumi.StringInput                              `pulumi:"firstIpAddress"`
+	InstanceType       pulumi.StringInput                              `pulumi:"instanceType"`
+	IpAddresses        GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
+	MaintenanceVersion pulumi.StringInput                              `pulumi:"maintenanceVersion"`
+	MasterInstanceName pulumi.StringInput                              `pulumi:"masterInstanceName"`
+	Name               pulumi.StringInput                              `pulumi:"name"`
+	PrivateIpAddress   pulumi.StringInput                              `pulumi:"privateIpAddress"`
+	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+	Project         pulumi.StringInput `pulumi:"project"`
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
+	// To filter out the Cloud SQL instances which are located in the specified region.
+	Region                     pulumi.StringInput                                         `pulumi:"region"`
+	ReplicaConfigurations      GetDatabaseInstancesInstanceReplicaConfigurationArrayInput `pulumi:"replicaConfigurations"`
+	RestoreBackupContexts      GetDatabaseInstancesInstanceRestoreBackupContextArrayInput `pulumi:"restoreBackupContexts"`
+	RootPassword               pulumi.StringInput                                         `pulumi:"rootPassword"`
+	SelfLink                   pulumi.StringInput                                         `pulumi:"selfLink"`
+	ServerCaCerts              GetDatabaseInstancesInstanceServerCaCertArrayInput         `pulumi:"serverCaCerts"`
+	ServiceAccountEmailAddress pulumi.StringInput                                         `pulumi:"serviceAccountEmailAddress"`
+	Settings                   GetDatabaseInstancesInstanceSettingArrayInput              `pulumi:"settings"`
+}
+
+func (GetDatabaseInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstance)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceArgs) ToGetDatabaseInstancesInstanceOutput() GetDatabaseInstancesInstanceOutput {
+	return i.ToGetDatabaseInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceArgs) ToGetDatabaseInstancesInstanceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceOutput)
+}
+
+// GetDatabaseInstancesInstanceArrayInput is an input type that accepts GetDatabaseInstancesInstanceArray and GetDatabaseInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceArray{ GetDatabaseInstancesInstanceArgs{...} }
+type GetDatabaseInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceArrayOutput() GetDatabaseInstancesInstanceArrayOutput
+	ToGetDatabaseInstancesInstanceArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceArrayOutput
+}
+
+type GetDatabaseInstancesInstanceArray []GetDatabaseInstancesInstanceInput
+
+func (GetDatabaseInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstance)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceArray) ToGetDatabaseInstancesInstanceArrayOutput() GetDatabaseInstancesInstanceArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceArray) ToGetDatabaseInstancesInstanceArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstance)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ToGetDatabaseInstancesInstanceOutput() GetDatabaseInstancesInstanceOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ToGetDatabaseInstancesInstanceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) Clones() GetDatabaseInstancesInstanceCloneArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceClone { return v.Clones }).(GetDatabaseInstancesInstanceCloneArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// To filter out the Cloud SQL instances which are of the specified database version.
+func (o GetDatabaseInstancesInstanceOutput) DatabaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) FirstIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FirstIpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) IpAddresses() GetDatabaseInstancesInstanceIpAddressArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceIpAddress { return v.IpAddresses }).(GetDatabaseInstancesInstanceIpAddressArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) MasterInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.MasterInstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+func (o GetDatabaseInstancesInstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+// To filter out the Cloud SQL instances which are located in the specified region.
+func (o GetDatabaseInstancesInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ReplicaConfigurations() GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceReplicaConfiguration {
+		return v.ReplicaConfigurations
+	}).(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) RestoreBackupContexts() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceRestoreBackupContext {
+		return v.RestoreBackupContexts
+	}).(GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) RootPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ServerCaCerts() GetDatabaseInstancesInstanceServerCaCertArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceServerCaCert {
+		return v.ServerCaCerts
+	}).(GetDatabaseInstancesInstanceServerCaCertArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) ServiceAccountEmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.ServiceAccountEmailAddress }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) Settings() GetDatabaseInstancesInstanceSettingArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceSetting { return v.Settings }).(GetDatabaseInstancesInstanceSettingArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstance)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceArrayOutput) ToGetDatabaseInstancesInstanceArrayOutput() GetDatabaseInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceArrayOutput) ToGetDatabaseInstancesInstanceArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstance {
+		return vs[0].([]GetDatabaseInstancesInstance)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceOutput)
+}
+
+type GetDatabaseInstancesInstanceClone struct {
+	AllocatedIpRange   string `pulumi:"allocatedIpRange"`
+	PointInTime        string `pulumi:"pointInTime"`
+	SourceInstanceName string `pulumi:"sourceInstanceName"`
+}
+
+// GetDatabaseInstancesInstanceCloneInput is an input type that accepts GetDatabaseInstancesInstanceCloneArgs and GetDatabaseInstancesInstanceCloneOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceCloneInput` via:
+//
+//	GetDatabaseInstancesInstanceCloneArgs{...}
+type GetDatabaseInstancesInstanceCloneInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceCloneOutput() GetDatabaseInstancesInstanceCloneOutput
+	ToGetDatabaseInstancesInstanceCloneOutputWithContext(context.Context) GetDatabaseInstancesInstanceCloneOutput
+}
+
+type GetDatabaseInstancesInstanceCloneArgs struct {
+	AllocatedIpRange   pulumi.StringInput `pulumi:"allocatedIpRange"`
+	PointInTime        pulumi.StringInput `pulumi:"pointInTime"`
+	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
+}
+
+func (GetDatabaseInstancesInstanceCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceClone)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceCloneArgs) ToGetDatabaseInstancesInstanceCloneOutput() GetDatabaseInstancesInstanceCloneOutput {
+	return i.ToGetDatabaseInstancesInstanceCloneOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceCloneArgs) ToGetDatabaseInstancesInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceCloneOutput)
+}
+
+// GetDatabaseInstancesInstanceCloneArrayInput is an input type that accepts GetDatabaseInstancesInstanceCloneArray and GetDatabaseInstancesInstanceCloneArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceCloneArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceCloneArray{ GetDatabaseInstancesInstanceCloneArgs{...} }
+type GetDatabaseInstancesInstanceCloneArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceCloneArrayOutput() GetDatabaseInstancesInstanceCloneArrayOutput
+	ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceCloneArrayOutput
+}
+
+type GetDatabaseInstancesInstanceCloneArray []GetDatabaseInstancesInstanceCloneInput
+
+func (GetDatabaseInstancesInstanceCloneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceClone)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceCloneArray) ToGetDatabaseInstancesInstanceCloneArrayOutput() GetDatabaseInstancesInstanceCloneArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceCloneArray) ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceCloneArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceCloneOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceClone)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) ToGetDatabaseInstancesInstanceCloneOutput() GetDatabaseInstancesInstanceCloneOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) ToGetDatabaseInstancesInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceCloneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceCloneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceClone)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceCloneArrayOutput) ToGetDatabaseInstancesInstanceCloneArrayOutput() GetDatabaseInstancesInstanceCloneArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceCloneArrayOutput) ToGetDatabaseInstancesInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceCloneArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceCloneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceClone {
+		return vs[0].([]GetDatabaseInstancesInstanceClone)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceCloneOutput)
+}
+
+type GetDatabaseInstancesInstanceIpAddress struct {
+	IpAddress    string `pulumi:"ipAddress"`
+	TimeToRetire string `pulumi:"timeToRetire"`
+	Type         string `pulumi:"type"`
+}
+
+// GetDatabaseInstancesInstanceIpAddressInput is an input type that accepts GetDatabaseInstancesInstanceIpAddressArgs and GetDatabaseInstancesInstanceIpAddressOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceIpAddressInput` via:
+//
+//	GetDatabaseInstancesInstanceIpAddressArgs{...}
+type GetDatabaseInstancesInstanceIpAddressInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceIpAddressOutput() GetDatabaseInstancesInstanceIpAddressOutput
+	ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(context.Context) GetDatabaseInstancesInstanceIpAddressOutput
+}
+
+type GetDatabaseInstancesInstanceIpAddressArgs struct {
+	IpAddress    pulumi.StringInput `pulumi:"ipAddress"`
+	TimeToRetire pulumi.StringInput `pulumi:"timeToRetire"`
+	Type         pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseInstancesInstanceIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceIpAddressArgs) ToGetDatabaseInstancesInstanceIpAddressOutput() GetDatabaseInstancesInstanceIpAddressOutput {
+	return i.ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceIpAddressArgs) ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceIpAddressOutput)
+}
+
+// GetDatabaseInstancesInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstancesInstanceIpAddressArray and GetDatabaseInstancesInstanceIpAddressArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceIpAddressArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceIpAddressArray{ GetDatabaseInstancesInstanceIpAddressArgs{...} }
+type GetDatabaseInstancesInstanceIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceIpAddressArrayOutput
+	ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceIpAddressArrayOutput
+}
+
+type GetDatabaseInstancesInstanceIpAddressArray []GetDatabaseInstancesInstanceIpAddressInput
+
+func (GetDatabaseInstancesInstanceIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceIpAddressArray) ToGetDatabaseInstancesInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceIpAddressArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceIpAddressArray) ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceIpAddressArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceIpAddressOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressOutput) ToGetDatabaseInstancesInstanceIpAddressOutput() GetDatabaseInstancesInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressOutput) ToGetDatabaseInstancesInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceIpAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressOutput) TimeToRetire() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceIpAddress) string { return v.TimeToRetire }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceIpAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) ToGetDatabaseInstancesInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) ToGetDatabaseInstancesInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceIpAddress {
+		return vs[0].([]GetDatabaseInstancesInstanceIpAddress)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceIpAddressOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicaConfiguration struct {
+	CaCertificate           string `pulumi:"caCertificate"`
+	ClientCertificate       string `pulumi:"clientCertificate"`
+	ClientKey               string `pulumi:"clientKey"`
+	ConnectRetryInterval    int    `pulumi:"connectRetryInterval"`
+	DumpFilePath            string `pulumi:"dumpFilePath"`
+	FailoverTarget          bool   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   int    `pulumi:"masterHeartbeatPeriod"`
+	Password                string `pulumi:"password"`
+	SslCipher               string `pulumi:"sslCipher"`
+	Username                string `pulumi:"username"`
+	VerifyServerCertificate bool   `pulumi:"verifyServerCertificate"`
+}
+
+// GetDatabaseInstancesInstanceReplicaConfigurationInput is an input type that accepts GetDatabaseInstancesInstanceReplicaConfigurationArgs and GetDatabaseInstancesInstanceReplicaConfigurationOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceReplicaConfigurationInput` via:
+//
+//	GetDatabaseInstancesInstanceReplicaConfigurationArgs{...}
+type GetDatabaseInstancesInstanceReplicaConfigurationInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceReplicaConfigurationOutput() GetDatabaseInstancesInstanceReplicaConfigurationOutput
+	ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(context.Context) GetDatabaseInstancesInstanceReplicaConfigurationOutput
+}
+
+type GetDatabaseInstancesInstanceReplicaConfigurationArgs struct {
+	CaCertificate           pulumi.StringInput `pulumi:"caCertificate"`
+	ClientCertificate       pulumi.StringInput `pulumi:"clientCertificate"`
+	ClientKey               pulumi.StringInput `pulumi:"clientKey"`
+	ConnectRetryInterval    pulumi.IntInput    `pulumi:"connectRetryInterval"`
+	DumpFilePath            pulumi.StringInput `pulumi:"dumpFilePath"`
+	FailoverTarget          pulumi.BoolInput   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   pulumi.IntInput    `pulumi:"masterHeartbeatPeriod"`
+	Password                pulumi.StringInput `pulumi:"password"`
+	SslCipher               pulumi.StringInput `pulumi:"sslCipher"`
+	Username                pulumi.StringInput `pulumi:"username"`
+	VerifyServerCertificate pulumi.BoolInput   `pulumi:"verifyServerCertificate"`
+}
+
+func (GetDatabaseInstancesInstanceReplicaConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceReplicaConfigurationArgs) ToGetDatabaseInstancesInstanceReplicaConfigurationOutput() GetDatabaseInstancesInstanceReplicaConfigurationOutput {
+	return i.ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceReplicaConfigurationArgs) ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicaConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicaConfigurationOutput)
+}
+
+// GetDatabaseInstancesInstanceReplicaConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceReplicaConfigurationArray and GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceReplicaConfigurationArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceReplicaConfigurationArray{ GetDatabaseInstancesInstanceReplicaConfigurationArgs{...} }
+type GetDatabaseInstancesInstanceReplicaConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutput() GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput
+	ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput
+}
+
+type GetDatabaseInstancesInstanceReplicaConfigurationArray []GetDatabaseInstancesInstanceReplicaConfigurationInput
+
+func (GetDatabaseInstancesInstanceReplicaConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceReplicaConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceReplicaConfigurationArray) ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutput() GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceReplicaConfigurationArray) ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicaConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceReplicaConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToGetDatabaseInstancesInstanceReplicaConfigurationOutput() GetDatabaseInstancesInstanceReplicaConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToGetDatabaseInstancesInstanceReplicaConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicaConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.ClientCertificate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) int { return v.ConnectRetryInterval }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.DumpFilePath }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) FailoverTarget() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) bool { return v.FailoverTarget }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) MasterHeartbeatPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) int { return v.MasterHeartbeatPeriod }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) SslCipher() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.SslCipher }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) VerifyServerCertificate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) bool { return v.VerifyServerCertificate }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceReplicaConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutput() GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) ToGetDatabaseInstancesInstanceReplicaConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceReplicaConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceReplicaConfiguration {
+		return vs[0].([]GetDatabaseInstancesInstanceReplicaConfiguration)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceReplicaConfigurationOutput)
+}
+
+type GetDatabaseInstancesInstanceRestoreBackupContext struct {
+	BackupRunId int    `pulumi:"backupRunId"`
+	InstanceId  string `pulumi:"instanceId"`
+	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+}
+
+// GetDatabaseInstancesInstanceRestoreBackupContextInput is an input type that accepts GetDatabaseInstancesInstanceRestoreBackupContextArgs and GetDatabaseInstancesInstanceRestoreBackupContextOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceRestoreBackupContextInput` via:
+//
+//	GetDatabaseInstancesInstanceRestoreBackupContextArgs{...}
+type GetDatabaseInstancesInstanceRestoreBackupContextInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceRestoreBackupContextOutput() GetDatabaseInstancesInstanceRestoreBackupContextOutput
+	ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(context.Context) GetDatabaseInstancesInstanceRestoreBackupContextOutput
+}
+
+type GetDatabaseInstancesInstanceRestoreBackupContextArgs struct {
+	BackupRunId pulumi.IntInput    `pulumi:"backupRunId"`
+	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (GetDatabaseInstancesInstanceRestoreBackupContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceRestoreBackupContextArgs) ToGetDatabaseInstancesInstanceRestoreBackupContextOutput() GetDatabaseInstancesInstanceRestoreBackupContextOutput {
+	return i.ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceRestoreBackupContextArgs) ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceRestoreBackupContextOutput)
+}
+
+// GetDatabaseInstancesInstanceRestoreBackupContextArrayInput is an input type that accepts GetDatabaseInstancesInstanceRestoreBackupContextArray and GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceRestoreBackupContextArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceRestoreBackupContextArray{ GetDatabaseInstancesInstanceRestoreBackupContextArgs{...} }
+type GetDatabaseInstancesInstanceRestoreBackupContextArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutput() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput
+	ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput
+}
+
+type GetDatabaseInstancesInstanceRestoreBackupContextArray []GetDatabaseInstancesInstanceRestoreBackupContextInput
+
+func (GetDatabaseInstancesInstanceRestoreBackupContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceRestoreBackupContextArray) ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutput() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceRestoreBackupContextArray) ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextOutput() GetDatabaseInstancesInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) BackupRunId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceRestoreBackupContext) int { return v.BackupRunId }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceRestoreBackupContext) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+func (o GetDatabaseInstancesInstanceRestoreBackupContextOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceRestoreBackupContext) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutput() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstancesInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceRestoreBackupContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceRestoreBackupContext {
+		return vs[0].([]GetDatabaseInstancesInstanceRestoreBackupContext)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceRestoreBackupContextOutput)
+}
+
+type GetDatabaseInstancesInstanceServerCaCert struct {
+	Cert            string `pulumi:"cert"`
+	CommonName      string `pulumi:"commonName"`
+	CreateTime      string `pulumi:"createTime"`
+	ExpirationTime  string `pulumi:"expirationTime"`
+	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
+}
+
+// GetDatabaseInstancesInstanceServerCaCertInput is an input type that accepts GetDatabaseInstancesInstanceServerCaCertArgs and GetDatabaseInstancesInstanceServerCaCertOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceServerCaCertInput` via:
+//
+//	GetDatabaseInstancesInstanceServerCaCertArgs{...}
+type GetDatabaseInstancesInstanceServerCaCertInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceServerCaCertOutput() GetDatabaseInstancesInstanceServerCaCertOutput
+	ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(context.Context) GetDatabaseInstancesInstanceServerCaCertOutput
+}
+
+type GetDatabaseInstancesInstanceServerCaCertArgs struct {
+	Cert            pulumi.StringInput `pulumi:"cert"`
+	CommonName      pulumi.StringInput `pulumi:"commonName"`
+	CreateTime      pulumi.StringInput `pulumi:"createTime"`
+	ExpirationTime  pulumi.StringInput `pulumi:"expirationTime"`
+	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
+}
+
+func (GetDatabaseInstancesInstanceServerCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceServerCaCert)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceServerCaCertArgs) ToGetDatabaseInstancesInstanceServerCaCertOutput() GetDatabaseInstancesInstanceServerCaCertOutput {
+	return i.ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceServerCaCertArgs) ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceServerCaCertOutput)
+}
+
+// GetDatabaseInstancesInstanceServerCaCertArrayInput is an input type that accepts GetDatabaseInstancesInstanceServerCaCertArray and GetDatabaseInstancesInstanceServerCaCertArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceServerCaCertArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceServerCaCertArray{ GetDatabaseInstancesInstanceServerCaCertArgs{...} }
+type GetDatabaseInstancesInstanceServerCaCertArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceServerCaCertArrayOutput() GetDatabaseInstancesInstanceServerCaCertArrayOutput
+	ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceServerCaCertArrayOutput
+}
+
+type GetDatabaseInstancesInstanceServerCaCertArray []GetDatabaseInstancesInstanceServerCaCertInput
+
+func (GetDatabaseInstancesInstanceServerCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceServerCaCert)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceServerCaCertArray) ToGetDatabaseInstancesInstanceServerCaCertArrayOutput() GetDatabaseInstancesInstanceServerCaCertArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceServerCaCertArray) ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceServerCaCertArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceServerCaCertOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceServerCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceServerCaCert)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) ToGetDatabaseInstancesInstanceServerCaCertOutput() GetDatabaseInstancesInstanceServerCaCertOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) ToGetDatabaseInstancesInstanceServerCaCertOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceServerCaCert) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceServerCaCert) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceServerCaCert) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceServerCaCert) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceServerCaCert) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceServerCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceServerCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceServerCaCert)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) ToGetDatabaseInstancesInstanceServerCaCertArrayOutput() GetDatabaseInstancesInstanceServerCaCertArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) ToGetDatabaseInstancesInstanceServerCaCertArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceServerCaCertArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceServerCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceServerCaCert {
+		return vs[0].([]GetDatabaseInstancesInstanceServerCaCert)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceServerCaCertOutput)
+}
+
+type GetDatabaseInstancesInstanceSetting struct {
+	ActivationPolicy           string                                                        `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs     []GetDatabaseInstancesInstanceSettingActiveDirectoryConfig    `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType           string                                                        `pulumi:"availabilityType"`
+	BackupConfigurations       []GetDatabaseInstancesInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
+	Collation                  string                                                        `pulumi:"collation"`
+	ConnectorEnforcement       string                                                        `pulumi:"connectorEnforcement"`
+	DatabaseFlags              []GetDatabaseInstancesInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled  bool                                                          `pulumi:"deletionProtectionEnabled"`
+	DenyMaintenancePeriods     []GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod    `pulumi:"denyMaintenancePeriods"`
+	DiskAutoresize             bool                                                          `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit        int                                                           `pulumi:"diskAutoresizeLimit"`
+	DiskSize                   int                                                           `pulumi:"diskSize"`
+	DiskType                   string                                                        `pulumi:"diskType"`
+	InsightsConfigs            []GetDatabaseInstancesInstanceSettingInsightsConfig           `pulumi:"insightsConfigs"`
+	IpConfigurations           []GetDatabaseInstancesInstanceSettingIpConfiguration          `pulumi:"ipConfigurations"`
+	LocationPreferences        []GetDatabaseInstancesInstanceSettingLocationPreference       `pulumi:"locationPreferences"`
+	MaintenanceWindows         []GetDatabaseInstancesInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
+	PasswordValidationPolicies []GetDatabaseInstancesInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
+	PricingPlan                string                                                        `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs      []GetDatabaseInstancesInstanceSettingSqlServerAuditConfig     `pulumi:"sqlServerAuditConfigs"`
+	// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+	Tier       string            `pulumi:"tier"`
+	TimeZone   string            `pulumi:"timeZone"`
+	UserLabels map[string]string `pulumi:"userLabels"`
+	Version    int               `pulumi:"version"`
+}
+
+// GetDatabaseInstancesInstanceSettingInput is an input type that accepts GetDatabaseInstancesInstanceSettingArgs and GetDatabaseInstancesInstanceSettingOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingArgs{...}
+type GetDatabaseInstancesInstanceSettingInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingOutput() GetDatabaseInstancesInstanceSettingOutput
+	ToGetDatabaseInstancesInstanceSettingOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingOutput
+}
+
+type GetDatabaseInstancesInstanceSettingArgs struct {
+	ActivationPolicy           pulumi.StringInput                                                    `pulumi:"activationPolicy"`
+	ActiveDirectoryConfigs     GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput    `pulumi:"activeDirectoryConfigs"`
+	AvailabilityType           pulumi.StringInput                                                    `pulumi:"availabilityType"`
+	BackupConfigurations       GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
+	Collation                  pulumi.StringInput                                                    `pulumi:"collation"`
+	ConnectorEnforcement       pulumi.StringInput                                                    `pulumi:"connectorEnforcement"`
+	DatabaseFlags              GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
+	DeletionProtectionEnabled  pulumi.BoolInput                                                      `pulumi:"deletionProtectionEnabled"`
+	DenyMaintenancePeriods     GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput    `pulumi:"denyMaintenancePeriods"`
+	DiskAutoresize             pulumi.BoolInput                                                      `pulumi:"diskAutoresize"`
+	DiskAutoresizeLimit        pulumi.IntInput                                                       `pulumi:"diskAutoresizeLimit"`
+	DiskSize                   pulumi.IntInput                                                       `pulumi:"diskSize"`
+	DiskType                   pulumi.StringInput                                                    `pulumi:"diskType"`
+	InsightsConfigs            GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput           `pulumi:"insightsConfigs"`
+	IpConfigurations           GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput          `pulumi:"ipConfigurations"`
+	LocationPreferences        GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput       `pulumi:"locationPreferences"`
+	MaintenanceWindows         GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
+	PasswordValidationPolicies GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
+	PricingPlan                pulumi.StringInput                                                    `pulumi:"pricingPlan"`
+	SqlServerAuditConfigs      GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput     `pulumi:"sqlServerAuditConfigs"`
+	// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+	Tier       pulumi.StringInput    `pulumi:"tier"`
+	TimeZone   pulumi.StringInput    `pulumi:"timeZone"`
+	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
+	Version    pulumi.IntInput       `pulumi:"version"`
+}
+
+func (GetDatabaseInstancesInstanceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingArgs) ToGetDatabaseInstancesInstanceSettingOutput() GetDatabaseInstancesInstanceSettingOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingArgs) ToGetDatabaseInstancesInstanceSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingArray and GetDatabaseInstancesInstanceSettingArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingArray{ GetDatabaseInstancesInstanceSettingArgs{...} }
+type GetDatabaseInstancesInstanceSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingArrayOutput() GetDatabaseInstancesInstanceSettingArrayOutput
+	ToGetDatabaseInstancesInstanceSettingArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingArray []GetDatabaseInstancesInstanceSettingInput
+
+func (GetDatabaseInstancesInstanceSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingArray) ToGetDatabaseInstancesInstanceSettingArrayOutput() GetDatabaseInstancesInstanceSettingArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingArray) ToGetDatabaseInstancesInstanceSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) ToGetDatabaseInstancesInstanceSettingOutput() GetDatabaseInstancesInstanceSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) ToGetDatabaseInstancesInstanceSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) ActivationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ActivationPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) ActiveDirectoryConfigs() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
+		return v.ActiveDirectoryConfigs
+	}).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.AvailabilityType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) BackupConfigurations() GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingBackupConfiguration {
+		return v.BackupConfigurations
+	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DatabaseFlags() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingDatabaseFlag {
+		return v.DatabaseFlags
+	}).(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DenyMaintenancePeriods() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod {
+		return v.DenyMaintenancePeriods
+	}).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DiskAutoresize() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.DiskAutoresize }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DiskAutoresizeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) InsightsConfigs() GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingInsightsConfig {
+		return v.InsightsConfigs
+	}).(GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) IpConfigurations() GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingIpConfiguration {
+		return v.IpConfigurations
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) LocationPreferences() GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingLocationPreference {
+		return v.LocationPreferences
+	}).(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) MaintenanceWindows() GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) PasswordValidationPolicies() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
+		return v.PasswordValidationPolicies
+	}).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) SqlServerAuditConfigs() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
+		return v.SqlServerAuditConfigs
+	}).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput)
+}
+
+// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+func (o GetDatabaseInstancesInstanceSettingOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingArrayOutput) ToGetDatabaseInstancesInstanceSettingArrayOutput() GetDatabaseInstancesInstanceSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingArrayOutput) ToGetDatabaseInstancesInstanceSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSetting {
+		return vs[0].([]GetDatabaseInstancesInstanceSetting)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfig struct {
+	Domain string `pulumi:"domain"`
+}
+
+// GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs and GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput
+	ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs struct {
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray and GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray{ GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray []GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput
+
+func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput() GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfiguration struct {
+	BackupRetentionSettings     []GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
+	BinaryLogEnabled            bool                                                                           `pulumi:"binaryLogEnabled"`
+	Enabled                     bool                                                                           `pulumi:"enabled"`
+	Location                    string                                                                         `pulumi:"location"`
+	PointInTimeRecoveryEnabled  bool                                                                           `pulumi:"pointInTimeRecoveryEnabled"`
+	StartTime                   string                                                                         `pulumi:"startTime"`
+	TransactionLogRetentionDays int                                                                            `pulumi:"transactionLogRetentionDays"`
+}
+
+// GetDatabaseInstancesInstanceSettingBackupConfigurationInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationArgs and GetDatabaseInstancesInstanceSettingBackupConfigurationOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingBackupConfigurationArgs{...}
+type GetDatabaseInstancesInstanceSettingBackupConfigurationInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationOutput
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationArgs struct {
+	BackupRetentionSettings     GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
+	BinaryLogEnabled            pulumi.BoolInput                                                                       `pulumi:"binaryLogEnabled"`
+	Enabled                     pulumi.BoolInput                                                                       `pulumi:"enabled"`
+	Location                    pulumi.StringInput                                                                     `pulumi:"location"`
+	PointInTimeRecoveryEnabled  pulumi.BoolInput                                                                       `pulumi:"pointInTimeRecoveryEnabled"`
+	StartTime                   pulumi.StringInput                                                                     `pulumi:"startTime"`
+	TransactionLogRetentionDays pulumi.IntInput                                                                        `pulumi:"transactionLogRetentionDays"`
+}
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArgs) ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArgs) ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationArray and GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingBackupConfigurationArray{ GetDatabaseInstancesInstanceSettingBackupConfigurationArgs{...} }
+type GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationArray []GetDatabaseInstancesInstanceSettingBackupConfigurationInput
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingBackupConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArray) ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationArray) ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) BackupRetentionSettings() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) []GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
+		return v.BackupRetentionSettings
+	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) bool { return v.BinaryLogEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) bool {
+		return v.PointInTimeRecoveryEnabled
+	}).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) TransactionLogRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) int {
+		return v.TransactionLogRetentionDays
+	}).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingBackupConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingBackupConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingBackupConfiguration {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingBackupConfiguration)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting struct {
+	RetainedBackups int    `pulumi:"retainedBackups"`
+	RetentionUnit   string `pulumi:"retentionUnit"`
+}
+
+// GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs and GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...}
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs struct {
+	RetainedBackups pulumi.IntInput    `pulumi:"retainedBackups"`
+	RetentionUnit   pulumi.StringInput `pulumi:"retentionUnit"`
+}
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray and GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray{ GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...} }
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput
+	ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray []GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetainedBackups() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting) int {
+		return v.RetainedBackups
+	}).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetentionUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting) string {
+		return v.RetentionUnit
+	}).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDatabaseFlag struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetDatabaseInstancesInstanceSettingDatabaseFlagInput is an input type that accepts GetDatabaseInstancesInstanceSettingDatabaseFlagArgs and GetDatabaseInstancesInstanceSettingDatabaseFlagOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDatabaseFlagInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDatabaseFlagArgs{...}
+type GetDatabaseInstancesInstanceSettingDatabaseFlagInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagOutput
+	ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDatabaseFlagArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDatabaseInstancesInstanceSettingDatabaseFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArgs) ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArgs) ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDatabaseFlagArray and GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDatabaseFlagArray{ GetDatabaseInstancesInstanceSettingDatabaseFlagArgs{...} }
+type GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput
+	ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDatabaseFlagArray []GetDatabaseInstancesInstanceSettingDatabaseFlagInput
+
+func (GetDatabaseInstancesInstanceSettingDatabaseFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDatabaseFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArray) ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDatabaseFlagArray) ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDatabaseFlagOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDatabaseFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDatabaseFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) ToGetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDatabaseFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingDatabaseFlag {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingDatabaseFlag)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod struct {
+	EndDate   string `pulumi:"endDate"`
+	StartDate string `pulumi:"startDate"`
+	Time      string `pulumi:"time"`
+}
+
+// GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput is an input type that accepts GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs and GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{...}
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput
+	ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs struct {
+	EndDate   pulumi.StringInput `pulumi:"endDate"`
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	Time      pulumi.StringInput `pulumi:"time"`
+}
+
+func (GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray and GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray{ GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{...} }
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput
+	ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray []GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput
+
+func (GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod) string { return v.EndDate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingInsightsConfig struct {
+	QueryInsightsEnabled  bool `pulumi:"queryInsightsEnabled"`
+	QueryPlansPerMinute   int  `pulumi:"queryPlansPerMinute"`
+	QueryStringLength     int  `pulumi:"queryStringLength"`
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	RecordClientAddress   bool `pulumi:"recordClientAddress"`
+}
+
+// GetDatabaseInstancesInstanceSettingInsightsConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingInsightsConfigArgs and GetDatabaseInstancesInstanceSettingInsightsConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingInsightsConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingInsightsConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingInsightsConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingInsightsConfigOutput() GetDatabaseInstancesInstanceSettingInsightsConfigOutput
+	ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingInsightsConfigArgs struct {
+	QueryInsightsEnabled  pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
+	QueryPlansPerMinute   pulumi.IntInput  `pulumi:"queryPlansPerMinute"`
+	QueryStringLength     pulumi.IntInput  `pulumi:"queryStringLength"`
+	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
+	RecordClientAddress   pulumi.BoolInput `pulumi:"recordClientAddress"`
+}
+
+func (GetDatabaseInstancesInstanceSettingInsightsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingInsightsConfigArgs) ToGetDatabaseInstancesInstanceSettingInsightsConfigOutput() GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingInsightsConfigArgs) ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingInsightsConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingInsightsConfigArray and GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingInsightsConfigArray{ GetDatabaseInstancesInstanceSettingInsightsConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingInsightsConfigArray []GetDatabaseInstancesInstanceSettingInsightsConfigInput
+
+func (GetDatabaseInstancesInstanceSettingInsightsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingInsightsConfigArray) ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingInsightsConfigArray) ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingInsightsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigOutput() GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigOutput) RecordClientAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingInsightsConfig) bool { return v.RecordClientAddress }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingInsightsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingInsightsConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingInsightsConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingInsightsConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
+	AllocatedIpRange   string                                                                `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	Ipv4Enabled        bool                                                                  `pulumi:"ipv4Enabled"`
+	PrivateNetwork     string                                                                `pulumi:"privateNetwork"`
+	RequireSsl         bool                                                                  `pulumi:"requireSsl"`
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationArgs and GetDatabaseInstancesInstanceSettingIpConfigurationOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationArgs{...}
+type GetDatabaseInstancesInstanceSettingIpConfigurationInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationOutput() GetDatabaseInstancesInstanceSettingIpConfigurationOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
+	AllocatedIpRange   pulumi.StringInput                                                            `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	Ipv4Enabled        pulumi.BoolInput                                                              `pulumi:"ipv4Enabled"`
+	PrivateNetwork     pulumi.StringInput                                                            `pulumi:"privateNetwork"`
+	RequireSsl         pulumi.BoolInput                                                              `pulumi:"requireSsl"`
+}
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationOutput() GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationArray and GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationArray{ GetDatabaseInstancesInstanceSettingIpConfigurationArgs{...} }
+type GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationArray []GetDatabaseInstancesInstanceSettingIpConfigurationInput
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfiguration)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationOutput() GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) AuthorizedNetworks() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
+		return v.AuthorizedNetworks
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) Ipv4Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) bool { return v.Ipv4Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) PrivateNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.PrivateNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) bool { return v.RequireSsl }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfiguration)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfiguration {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfiguration)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork struct {
+	ExpirationTime string `pulumi:"expirationTime"`
+	Name           string `pulumi:"name"`
+	Value          string `pulumi:"value"`
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs and GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs{...}
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs struct {
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	Name           pulumi.StringInput `pulumi:"name"`
+	Value          pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray and GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray{ GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs{...} }
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork) string {
+		return v.ExpirationTime
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingLocationPreference struct {
+	FollowGaeApplication string `pulumi:"followGaeApplication"`
+	SecondaryZone        string `pulumi:"secondaryZone"`
+	// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+	Zone string `pulumi:"zone"`
+}
+
+// GetDatabaseInstancesInstanceSettingLocationPreferenceInput is an input type that accepts GetDatabaseInstancesInstanceSettingLocationPreferenceArgs and GetDatabaseInstancesInstanceSettingLocationPreferenceOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingLocationPreferenceInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingLocationPreferenceArgs{...}
+type GetDatabaseInstancesInstanceSettingLocationPreferenceInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceOutput
+	ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput
+}
+
+type GetDatabaseInstancesInstanceSettingLocationPreferenceArgs struct {
+	FollowGaeApplication pulumi.StringInput `pulumi:"followGaeApplication"`
+	SecondaryZone        pulumi.StringInput `pulumi:"secondaryZone"`
+	// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetDatabaseInstancesInstanceSettingLocationPreferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreference)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArgs) ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArgs) ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingLocationPreferenceArray and GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingLocationPreferenceArray{ GetDatabaseInstancesInstanceSettingLocationPreferenceArgs{...} }
+type GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput
+	ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingLocationPreferenceArray []GetDatabaseInstancesInstanceSettingLocationPreferenceInput
+
+func (GetDatabaseInstancesInstanceSettingLocationPreferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingLocationPreference)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArray) ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingLocationPreferenceArray) ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingLocationPreferenceOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreference)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) FollowGaeApplication() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingLocationPreference) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) SecondaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingLocationPreference) string { return v.SecondaryZone }).(pulumi.StringOutput)
+}
+
+// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingLocationPreference) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingLocationPreference)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput() GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) ToGetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingLocationPreferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingLocationPreference {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingLocationPreference)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingMaintenanceWindow struct {
+	Day         int    `pulumi:"day"`
+	Hour        int    `pulumi:"hour"`
+	UpdateTrack string `pulumi:"updateTrack"`
+}
+
+// GetDatabaseInstancesInstanceSettingMaintenanceWindowInput is an input type that accepts GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs and GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingMaintenanceWindowInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs{...}
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput
+	ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput
+}
+
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs struct {
+	Day         pulumi.IntInput    `pulumi:"day"`
+	Hour        pulumi.IntInput    `pulumi:"hour"`
+	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
+}
+
+func (GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingMaintenanceWindowArray and GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingMaintenanceWindowArray{ GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs{...} }
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput
+	ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowArray []GetDatabaseInstancesInstanceSettingMaintenanceWindowInput
+
+func (GetDatabaseInstancesInstanceSettingMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArray) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingMaintenanceWindowArray) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingMaintenanceWindow) int { return v.Day }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingMaintenanceWindow) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput) UpdateTrack() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingMaintenanceWindow) string { return v.UpdateTrack }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput() GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) ToGetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingMaintenanceWindow {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingMaintenanceWindow)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicy struct {
+	Complexity                string `pulumi:"complexity"`
+	DisallowUsernameSubstring bool   `pulumi:"disallowUsernameSubstring"`
+	EnablePasswordPolicy      bool   `pulumi:"enablePasswordPolicy"`
+	MinLength                 int    `pulumi:"minLength"`
+	PasswordChangeInterval    string `pulumi:"passwordChangeInterval"`
+	ReuseInterval             int    `pulumi:"reuseInterval"`
+}
+
+// GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput is an input type that accepts GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs and GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs{...}
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput
+	ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput
+}
+
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs struct {
+	Complexity                pulumi.StringInput `pulumi:"complexity"`
+	DisallowUsernameSubstring pulumi.BoolInput   `pulumi:"disallowUsernameSubstring"`
+	EnablePasswordPolicy      pulumi.BoolInput   `pulumi:"enablePasswordPolicy"`
+	MinLength                 pulumi.IntInput    `pulumi:"minLength"`
+	PasswordChangeInterval    pulumi.StringInput `pulumi:"passwordChangeInterval"`
+	ReuseInterval             pulumi.IntInput    `pulumi:"reuseInterval"`
+}
+
+func (GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray and GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray{ GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs{...} }
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput
+	ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray []GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput
+
+func (GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) Complexity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) string { return v.Complexity }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) bool {
+		return v.DisallowUsernameSubstring
+	}).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) bool {
+		return v.EnablePasswordPolicy
+	}).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) string {
+		return v.PasswordChangeInterval
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput) ReuseInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPasswordValidationPolicy) int { return v.ReuseInterval }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput() GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) ToGetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingPasswordValidationPolicy)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfig struct {
+	Bucket            string `pulumi:"bucket"`
+	RetentionInterval string `pulumi:"retentionInterval"`
+	UploadInterval    string `pulumi:"uploadInterval"`
+}
+
+// GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs and GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput
+	ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs struct {
+	Bucket            pulumi.StringInput `pulumi:"bucket"`
+	RetentionInterval pulumi.StringInput `pulumi:"retentionInterval"`
+	UploadInterval    pulumi.StringInput `pulumi:"uploadInterval"`
+}
+
+func (GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray and GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray{ GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray []GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput
+
+func (GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingSqlServerAuditConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingSqlServerAuditConfig) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput) UploadInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingSqlServerAuditConfig) string { return v.UploadInterval }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingSqlServerAuditConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
@@ -6502,6 +8949,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingPasswordValidationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceInput)(nil)).Elem(), GetDatabaseInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContextInput)(nil)).Elem(), GetDatabaseInstancesInstanceRestoreBackupContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContextArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceRestoreBackupContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceServerCaCertInput)(nil)).Elem(), GetDatabaseInstancesInstanceServerCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceServerCaCertArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceServerCaCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingInsightsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingInsightsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
@@ -6582,4 +9067,42 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceRestoreBackupContextOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceServerCaCertOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceServerCaCertArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingInsightsConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput{})
 }

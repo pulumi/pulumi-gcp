@@ -14,15 +14,24 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfig
     {
         /// <summary>
-        /// Specifies free-text based transformations to be applied to the dataset.
+        /// Treat the dataset as free-form text and apply the same free text transformation everywhere
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations InfoTypeTransformations;
+        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations? InfoTypeTransformations;
+        /// <summary>
+        /// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? RecordTransformations;
 
         [OutputConstructor]
-        private PreventionDeidentifyTemplateDeidentifyConfig(Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations)
+        private PreventionDeidentifyTemplateDeidentifyConfig(
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations? infoTypeTransformations,
+
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? recordTransformations)
         {
             InfoTypeTransformations = infoTypeTransformations;
+            RecordTransformations = recordTransformations;
         }
     }
 }

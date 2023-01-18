@@ -15,6 +15,11 @@ export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
 utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
 
+export { StreamArgs, StreamState } from "./stream";
+export type Stream = import("./stream").Stream;
+export const Stream: typeof import("./stream").Stream = null as any;
+utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +29,8 @@ const _module = {
                 return new ConnectionProfile(name, <any>undefined, { urn })
             case "gcp:datastream/privateConnection:PrivateConnection":
                 return new PrivateConnection(name, <any>undefined, { urn })
+            case "gcp:datastream/stream:Stream":
+                return new Stream(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "datastream/connectionProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "datastream/privateConnection", _module)
+pulumi.runtime.registerResourceModule("gcp", "datastream/stream", _module)

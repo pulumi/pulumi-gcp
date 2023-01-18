@@ -19,7 +19,8 @@ public final class AuthorityConfigX509ConfigCaOptions {
     private Boolean isCa;
     /**
      * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
-     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+     * requires setting `zero_max_issuer_path_length = true`.
      * 
      */
     private @Nullable Integer maxIssuerPathLength;
@@ -31,7 +32,7 @@ public final class AuthorityConfigX509ConfigCaOptions {
     private @Nullable Boolean nonCa;
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
@@ -47,7 +48,8 @@ public final class AuthorityConfigX509ConfigCaOptions {
     }
     /**
      * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
-     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+     * requires setting `zero_max_issuer_path_length = true`.
      * 
      */
     public Optional<Integer> maxIssuerPathLength() {
@@ -63,7 +65,7 @@ public final class AuthorityConfigX509ConfigCaOptions {
     }
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
-     * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+     * If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */

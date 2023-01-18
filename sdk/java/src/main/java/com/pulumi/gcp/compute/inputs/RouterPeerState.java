@@ -307,6 +307,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.router);
     }
 
+    /**
+     * The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     * 
+     */
+    @Import(name="routerApplianceInstance")
+    private @Nullable Output<String> routerApplianceInstance;
+
+    /**
+     * @return The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     * 
+     */
+    public Optional<Output<String>> routerApplianceInstance() {
+        return Optional.ofNullable(this.routerApplianceInstance);
+    }
+
     private RouterPeerState() {}
 
     private RouterPeerState(RouterPeerState $) {
@@ -325,6 +346,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.region = $.region;
         this.router = $.router;
+        this.routerApplianceInstance = $.routerApplianceInstance;
     }
 
     public static Builder builder() {
@@ -749,6 +771,33 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder router(String router) {
             return router(Output.of(router));
+        }
+
+        /**
+         * @param routerApplianceInstance The URI of the VM instance that is used as third-party router appliances
+         * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+         * The VM instance must be located in zones contained in the same region as
+         * this Cloud Router. The VM instance is the peer side of the BGP session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routerApplianceInstance(@Nullable Output<String> routerApplianceInstance) {
+            $.routerApplianceInstance = routerApplianceInstance;
+            return this;
+        }
+
+        /**
+         * @param routerApplianceInstance The URI of the VM instance that is used as third-party router appliances
+         * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+         * The VM instance must be located in zones contained in the same region as
+         * this Cloud Router. The VM instance is the peer side of the BGP session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routerApplianceInstance(String routerApplianceInstance) {
+            return routerApplianceInstance(Output.of(routerApplianceInstance));
         }
 
         public RouterPeerState build() {

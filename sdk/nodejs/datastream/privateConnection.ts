@@ -94,7 +94,7 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this private connection is located in.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -189,7 +189,7 @@ export interface PrivateConnectionState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this private connection is located in.
      */
     location?: pulumi.Input<string>;
     /**
@@ -230,7 +230,7 @@ export interface PrivateConnectionArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this private connection is located in.
      */
     location: pulumi.Input<string>;
     /**

@@ -90,7 +90,7 @@ export class RouterInterface extends pulumi.CustomResource {
      * The name of the interface that is redundant to
      * this interface. Changing this forces a new interface to be created.
      */
-    public readonly redundantInterface!: pulumi.Output<string | undefined>;
+    public readonly redundantInterface!: pulumi.Output<string>;
     /**
      * The region this interface's router sits in.
      * If not specified, the project region will be used. Changing this forces a new interface to be created.

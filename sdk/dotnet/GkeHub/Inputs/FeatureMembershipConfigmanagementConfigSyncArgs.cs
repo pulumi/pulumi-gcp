@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs>? Git { get; set; }
 
         /// <summary>
+        /// -
+        /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        /// </summary>
+        [Input("oci")]
+        public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs>? Oci { get; set; }
+
+        /// <summary>
         /// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         [Input("preventDrift")]

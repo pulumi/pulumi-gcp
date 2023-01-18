@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:container/attachedCluster:AttachedCluster":
+		r = &AttachedCluster{}
 	case "gcp:container/awsCluster:AwsCluster":
 		r = &AwsCluster{}
 	case "gcp:container/awsNodePool:AwsNodePool":
@@ -50,6 +52,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"container/attachedCluster",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"container/awsCluster",

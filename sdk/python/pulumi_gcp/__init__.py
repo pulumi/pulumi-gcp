@@ -625,6 +625,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/syncAuthorization",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/syncAuthorization:SyncAuthorization": "SyncAuthorization"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "appengine/application",
   "fqn": "pulumi_gcp.appengine",
   "classes": {
@@ -725,6 +733,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.assuredworkloads",
   "classes": {
    "gcp:assuredworkloads/workload:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/appConnection",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/appConnection:AppConnection": "AppConnection"
   }
  },
  {
@@ -2521,6 +2537,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "container/attachedCluster",
+  "fqn": "pulumi_gcp.container",
+  "classes": {
+   "gcp:container/attachedCluster:AttachedCluster": "AttachedCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "container/awsCluster",
   "fqn": "pulumi_gcp.container",
   "classes": {
@@ -3025,6 +3049,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "datastream/stream",
+  "fqn": "pulumi_gcp.datastream",
+  "classes": {
+   "gcp:datastream/stream:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "deploymentmanager/deployment",
   "fqn": "pulumi_gcp.deploymentmanager",
   "classes": {
@@ -3125,6 +3157,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/intent:Intent": "Intent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dns/dnsManagedZoneIamBinding",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": "DnsManagedZoneIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dns/dnsManagedZoneIamMember",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": "DnsManagedZoneIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dns/dnsManagedZoneIamPolicy",
+  "fqn": "pulumi_gcp.dns",
+  "classes": {
+   "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": "DnsManagedZoneIamPolicy"
   }
  },
  {
@@ -3309,6 +3365,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/appleApp:AppleApp": "AppleApp"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/databaseInstance",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/databaseInstance:DatabaseInstance": "DatabaseInstance"
   }
  },
  {

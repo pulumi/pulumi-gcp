@@ -305,6 +305,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     public Output<String> firstIpAddress() {
         return this.firstIpAddress;
     }
+    /**
+     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * 
+     */
+    @Export(name="instanceType", type=String.class, parameters={})
+    private Output<String> instanceType;
+
+    /**
+     * @return The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * 
+     */
+    public Output<String> instanceType() {
+        return this.instanceType;
+    }
     @Export(name="ipAddresses", type=List.class, parameters={DatabaseInstanceIpAddress.class})
     private Output<List<DatabaseInstanceIpAddress>> ipAddresses;
 

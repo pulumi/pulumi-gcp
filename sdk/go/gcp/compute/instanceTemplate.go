@@ -151,7 +151,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
 //				Family:  pulumi.StringRef("debian-11"),
 //				Project: pulumi.StringRef("debian-cloud"),
 //			}, nil)
@@ -164,7 +164,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.Any(google_compute_image.My_image.Self_link),
+//						SourceImage: pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //			})

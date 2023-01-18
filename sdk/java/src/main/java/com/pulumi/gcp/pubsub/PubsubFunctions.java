@@ -8,12 +8,171 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+import com.pulumi.gcp.pubsub.inputs.GetSubscriptionPlainArgs;
 import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
 import com.pulumi.gcp.pubsub.inputs.GetTopicPlainArgs;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionResult;
 import com.pulumi.gcp.pubsub.outputs.GetTopicResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class PubsubFunctions {
+    /**
+     * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
+     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubscriptionResult> getSubscription(GetSubscriptionArgs args) {
+        return getSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
+     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubscriptionResult> getSubscriptionPlain(GetSubscriptionPlainArgs args) {
+        return getSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
+     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubscriptionResult> getSubscription(GetSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getSubscription:getSubscription", TypeShape.of(GetSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
+     *             .name(&#34;my-pubsub-subscription&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubscriptionResult> getSubscriptionPlain(GetSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:pubsub/getSubscription:getSubscription", TypeShape.of(GetSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Get information about a Google Cloud Pub/Sub Topic. For more information see
      * the [official documentation](https://cloud.google.com/pubsub/docs/)

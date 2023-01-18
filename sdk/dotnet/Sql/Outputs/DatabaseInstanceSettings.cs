@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
         /// `settings.backup_configuration.enabled` is set to `true`.
         /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-        /// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        /// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         /// is set to `true`. Defaults to `ZONAL`.
         /// </summary>
         public readonly string? AvailabilityType;
@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? ConnectorEnforcement;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
+        public readonly bool? DeletionProtectionEnabled;
         public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
         /// <summary>
         /// Enables auto-resizing of the storage size. Defaults to `true`.
@@ -97,6 +98,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
+            bool? deletionProtectionEnabled,
+
             Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? denyMaintenancePeriod,
 
             bool? diskAutoresize,
@@ -136,6 +139,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             DatabaseFlags = databaseFlags;
+            DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriod = denyMaintenancePeriod;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;

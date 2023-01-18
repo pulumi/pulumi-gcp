@@ -14,6 +14,8 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAllInstancesConf
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulDisk;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulExternalIp;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatefulInternalIp;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerStatus;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerUpdatePolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerVersion;
@@ -406,6 +408,34 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<List<RegionInstanceGroupManagerStatefulDisk>>> statefulDisks() {
         return Codegen.optional(this.statefulDisks);
+    }
+    /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Export(name="statefulExternalIps", type=List.class, parameters={RegionInstanceGroupManagerStatefulExternalIp.class})
+    private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
+
+    /**
+     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<RegionInstanceGroupManagerStatefulExternalIp>>> statefulExternalIps() {
+        return Codegen.optional(this.statefulExternalIps);
+    }
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Export(name="statefulInternalIps", type=List.class, parameters={RegionInstanceGroupManagerStatefulInternalIp.class})
+    private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulInternalIp>> statefulInternalIps;
+
+    /**
+     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<RegionInstanceGroupManagerStatefulInternalIp>>> statefulInternalIps() {
+        return Codegen.optional(this.statefulInternalIps);
     }
     /**
      * The status of this managed instance group.

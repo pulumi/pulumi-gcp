@@ -290,6 +290,7 @@ class _DatabaseInstanceState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
                  first_ip_address: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
@@ -333,6 +334,7 @@ class _DatabaseInstanceState:
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -370,6 +372,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         if first_ip_address is not None:
             pulumi.set(__self__, "first_ip_address", first_ip_address)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if maintenance_version is not None:
@@ -503,6 +507,18 @@ class _DatabaseInstanceState:
     @first_ip_address.setter
     def first_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "first_ip_address", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="ipAddresses")
@@ -970,6 +986,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
             __props__.__dict__["first_ip_address"] = None
+            __props__.__dict__["instance_type"] = None
             __props__.__dict__["ip_addresses"] = None
             __props__.__dict__["private_ip_address"] = None
             __props__.__dict__["public_ip_address"] = None
@@ -995,6 +1012,7 @@ class DatabaseInstance(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
             maintenance_version: Optional[pulumi.Input[str]] = None,
             master_instance_name: Optional[pulumi.Input[str]] = None,
@@ -1043,6 +1061,7 @@ class DatabaseInstance(pulumi.CustomResource):
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
@@ -1077,6 +1096,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["encryption_key_name"] = encryption_key_name
         __props__.__dict__["first_ip_address"] = first_ip_address
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ip_addresses"] = ip_addresses
         __props__.__dict__["maintenance_version"] = maintenance_version
         __props__.__dict__["master_instance_name"] = master_instance_name
@@ -1168,6 +1188,14 @@ class DatabaseInstance(pulumi.CustomResource):
         The first IPv4 address of any type assigned.
         """
         return pulumi.get(self, "first_ip_address")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[str]:
+        """
+        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="ipAddresses")

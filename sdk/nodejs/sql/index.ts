@@ -25,10 +25,20 @@ export const getCaCerts: typeof import("./getCaCerts").getCaCerts = null as any;
 export const getCaCertsOutput: typeof import("./getCaCerts").getCaCertsOutput = null as any;
 utilities.lazyLoad(exports, ["getCaCerts","getCaCertsOutput"], () => require("./getCaCerts"));
 
+export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
+export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
+export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
+
 export { GetDatabaseInstanceArgs, GetDatabaseInstanceResult, GetDatabaseInstanceOutputArgs } from "./getDatabaseInstance";
 export const getDatabaseInstance: typeof import("./getDatabaseInstance").getDatabaseInstance = null as any;
 export const getDatabaseInstanceOutput: typeof import("./getDatabaseInstance").getDatabaseInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
+
+export { GetDatabaseInstancesArgs, GetDatabaseInstancesResult, GetDatabaseInstancesOutputArgs } from "./getDatabaseInstances";
+export const getDatabaseInstances: typeof import("./getDatabaseInstances").getDatabaseInstances = null as any;
+export const getDatabaseInstancesOutput: typeof import("./getDatabaseInstances").getDatabaseInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseInstances","getDatabaseInstancesOutput"], () => require("./getDatabaseInstances"));
 
 export { SourceRepresentationInstanceArgs, SourceRepresentationInstanceState } from "./sourceRepresentationInstance";
 export type SourceRepresentationInstance = import("./sourceRepresentationInstance").SourceRepresentationInstance;

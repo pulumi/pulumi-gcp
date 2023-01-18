@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The name (**not self_link**)
         /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-        /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -112,10 +112,33 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`.
-        /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption
+        /// key of the source image. Required if the source image is protected by a
+        /// customer-supplied encryption key.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.InstanceTemplateDiskSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The source snapshot to create this disk.
+        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// </summary>
+        [Input("sourceSnapshot")]
+        public Input<string>? SourceSnapshot { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption
+        /// key of the source snapshot. Structure
+        /// documented below.
+        /// </summary>
+        [Input("sourceSnapshotEncryptionKey")]
+        public Input<Inputs.InstanceTemplateDiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
         /// The type of reservation from which this instance can consume resources.

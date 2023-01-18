@@ -15,7 +15,7 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
      * @return The name of the destination bucket (e.g., gs://mybucket).
      * 
      */
-    private String bucket;
+    private @Nullable String bucket;
     /**
      * @return How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -32,8 +32,8 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
      * @return The name of the destination bucket (e.g., gs://mybucket).
      * 
      */
-    public String bucket() {
-        return this.bucket;
+    public Optional<String> bucket() {
+        return Optional.ofNullable(this.bucket);
     }
     /**
      * @return How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -59,7 +59,7 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String bucket;
+        private @Nullable String bucket;
         private @Nullable String retentionInterval;
         private @Nullable String uploadInterval;
         public Builder() {}
@@ -71,8 +71,8 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
         }
 
         @CustomType.Setter
-        public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+        public Builder bucket(@Nullable String bucket) {
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter

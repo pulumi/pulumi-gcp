@@ -46,7 +46,8 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["stableChannelVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
         ///     };
         /// });
         /// ```
@@ -91,7 +92,8 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["stableChannelVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
         ///     };
         /// });
         /// ```
@@ -200,6 +202,10 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly ImmutableDictionary<string, string> ReleaseChannelDefaultVersion;
         /// <summary>
+        /// A map from a release channel name to the channel's latest version.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ReleaseChannelLatestVersion;
+        /// <summary>
         /// A list of versions available in the given zone for use with master instances.
         /// </summary>
         public readonly ImmutableArray<string> ValidMasterVersions;
@@ -225,6 +231,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableDictionary<string, string> releaseChannelDefaultVersion,
 
+            ImmutableDictionary<string, string> releaseChannelLatestVersion,
+
             ImmutableArray<string> validMasterVersions,
 
             ImmutableArray<string> validNodeVersions,
@@ -238,6 +246,7 @@ namespace Pulumi.Gcp.Container
             Location = location;
             Project = project;
             ReleaseChannelDefaultVersion = releaseChannelDefaultVersion;
+            ReleaseChannelLatestVersion = releaseChannelLatestVersion;
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;

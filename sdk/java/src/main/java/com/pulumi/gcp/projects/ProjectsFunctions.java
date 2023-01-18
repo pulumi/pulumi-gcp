@@ -12,8 +12,11 @@ import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
 import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectPlainArgs;
+import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+import com.pulumi.gcp.projects.inputs.GetProjectServicePlainArgs;
 import com.pulumi.gcp.projects.outputs.GetOrganizationPolicyResult;
 import com.pulumi.gcp.projects.outputs.GetProjectResult;
+import com.pulumi.gcp.projects.outputs.GetProjectServiceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProjectsFunctions {
@@ -360,5 +363,201 @@ public final class ProjectsFunctions {
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:projects/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+     * 
+     * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+     * or run `gcloud services list --available`.
+     * 
+     * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+     * to use.
+     * 
+     * To get more information about `gcp.projects.Service`, see:
+     * 
+     * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+     * * How-to Guides
+     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
+     *             .service(&#34;my-project-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args) {
+        return getProjectService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+     * 
+     * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+     * or run `gcloud services list --available`.
+     * 
+     * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+     * to use.
+     * 
+     * To get more information about `gcp.projects.Service`, see:
+     * 
+     * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+     * * How-to Guides
+     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
+     *             .service(&#34;my-project-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetProjectServiceResult> getProjectServicePlain(GetProjectServicePlainArgs args) {
+        return getProjectServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+     * 
+     * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+     * or run `gcloud services list --available`.
+     * 
+     * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+     * to use.
+     * 
+     * To get more information about `gcp.projects.Service`, see:
+     * 
+     * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+     * * How-to Guides
+     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
+     *             .service(&#34;my-project-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getProjectService:getProjectService", TypeShape.of(GetProjectServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+     * 
+     * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+     * or run `gcloud services list --available`.
+     * 
+     * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+     * to use.
+     * 
+     * To get more information about `gcp.projects.Service`, see:
+     * 
+     * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+     * * How-to Guides
+     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
+     *             .service(&#34;my-project-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetProjectServiceResult> getProjectServicePlain(GetProjectServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:projects/getProjectService:getProjectService", TypeShape.of(GetProjectServiceResult.class), args, Utilities.withVersion(options));
     }
 }

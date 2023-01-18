@@ -29,6 +29,8 @@ class RegionInstanceGroupManagerArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -69,6 +71,8 @@ class RegionInstanceGroupManagerArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -106,6 +110,10 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "region", region)
         if stateful_disks is not None:
             pulumi.set(__self__, "stateful_disks", stateful_disks)
+        if stateful_external_ips is not None:
+            pulumi.set(__self__, "stateful_external_ips", stateful_external_ips)
+        if stateful_internal_ips is not None:
+            pulumi.set(__self__, "stateful_internal_ips", stateful_internal_ips)
         if target_pools is not None:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
@@ -294,6 +302,30 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "stateful_disks", value)
 
     @property
+    @pulumi.getter(name="statefulExternalIps")
+    def stateful_external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
+        """
+        ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_external_ips")
+
+    @stateful_external_ips.setter
+    def stateful_external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
+        pulumi.set(self, "stateful_external_ips", value)
+
+    @property
+    @pulumi.getter(name="statefulInternalIps")
+    def stateful_internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
+        """
+        ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_internal_ips")
+
+    @stateful_internal_ips.setter
+    def stateful_internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
+        pulumi.set(self, "stateful_internal_ips", value)
+
+    @property
     @pulumi.getter(name="targetPools")
     def target_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -379,6 +411,8 @@ class _RegionInstanceGroupManagerState:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
@@ -421,6 +455,8 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
@@ -468,6 +504,10 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "self_link", self_link)
         if stateful_disks is not None:
             pulumi.set(__self__, "stateful_disks", stateful_disks)
+        if stateful_external_ips is not None:
+            pulumi.set(__self__, "stateful_external_ips", stateful_external_ips)
+        if stateful_internal_ips is not None:
+            pulumi.set(__self__, "stateful_internal_ips", stateful_internal_ips)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
         if target_pools is not None:
@@ -682,6 +722,30 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "stateful_disks", value)
 
     @property
+    @pulumi.getter(name="statefulExternalIps")
+    def stateful_external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
+        """
+        ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_external_ips")
+
+    @stateful_external_ips.setter
+    def stateful_external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
+        pulumi.set(self, "stateful_external_ips", value)
+
+    @property
+    @pulumi.getter(name="statefulInternalIps")
+    def stateful_internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
+        """
+        ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_internal_ips")
+
+    @stateful_internal_ips.setter
+    def stateful_internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
+        pulumi.set(self, "stateful_internal_ips", value)
+
+    @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]]:
         """
@@ -792,6 +856,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
+                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
+                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
@@ -919,6 +985,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] stateful_external_ips: ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] stateful_internal_ips: ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -1056,6 +1124,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
+                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
+                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']]] = None,
@@ -1085,6 +1155,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["stateful_disks"] = stateful_disks
+            __props__.__dict__["stateful_external_ips"] = stateful_external_ips
+            __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
             __props__.__dict__["update_policy"] = update_policy
@@ -1122,6 +1194,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]]] = None,
+            stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
+            stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatusArgs']]]]] = None,
             target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_size: Optional[pulumi.Input[int]] = None,
@@ -1169,6 +1243,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] stateful_external_ips: ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] stateful_internal_ips: ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatusArgs']]]] statuses: The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
@@ -1205,6 +1281,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stateful_disks"] = stateful_disks
+        __props__.__dict__["stateful_external_ips"] = stateful_external_ips
+        __props__.__dict__["stateful_internal_ips"] = stateful_internal_ips
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["target_pools"] = target_pools
         __props__.__dict__["target_size"] = target_size
@@ -1351,6 +1429,22 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         """
         return pulumi.get(self, "stateful_disks")
+
+    @property
+    @pulumi.getter(name="statefulExternalIps")
+    def stateful_external_ips(self) -> pulumi.Output[Optional[Sequence['outputs.RegionInstanceGroupManagerStatefulExternalIp']]]:
+        """
+        ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_external_ips")
+
+    @property
+    @pulumi.getter(name="statefulInternalIps")
+    def stateful_internal_ips(self) -> pulumi.Output[Optional[Sequence['outputs.RegionInstanceGroupManagerStatefulInternalIp']]]:
+        """
+        ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        """
+        return pulumi.get(self, "stateful_internal_ips")
 
     @property
     @pulumi.getter

@@ -603,11 +603,12 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
         """
         :param pulumi.Input[bool] is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
         :param pulumi.Input[int] max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+               requires setting `zero_max_issuer_path_length = true`.
         :param pulumi.Input[bool] non_ca: When true, the "CA" in Basic Constraints extension will be set to false.
                If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
         :param pulumi.Input[bool] zero_max_issuer_path_length: When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-               if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+               If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
                the max path length will be omitted from the CA certificate.
         """
         pulumi.set(__self__, "is_ca", is_ca)
@@ -635,7 +636,8 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
     def max_issuer_path_length(self) -> Optional[pulumi.Input[int]]:
         """
         Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+        requires setting `zero_max_issuer_path_length = true`.
         """
         return pulumi.get(self, "max_issuer_path_length")
 
@@ -661,7 +663,7 @@ class AuthorityConfigX509ConfigCaOptionsArgs:
     def zero_max_issuer_path_length(self) -> Optional[pulumi.Input[bool]]:
         """
         When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-        if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
+        If both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
         the max path length will be omitted from the CA certificate.
         """
         return pulumi.get(self, "zero_max_issuer_path_length")

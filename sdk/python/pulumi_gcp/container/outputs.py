@@ -11,6 +11,15 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AttachedClusterAuthorization',
+    'AttachedClusterError',
+    'AttachedClusterFleet',
+    'AttachedClusterLoggingConfig',
+    'AttachedClusterLoggingConfigComponentConfig',
+    'AttachedClusterMonitoringConfig',
+    'AttachedClusterMonitoringConfigManagedPrometheusConfig',
+    'AttachedClusterOidcConfig',
+    'AttachedClusterWorkloadIdentityConfig',
     'AwsClusterAuthorization',
     'AwsClusterAuthorizationAdminUser',
     'AwsClusterControlPlane',
@@ -29,6 +38,7 @@ __all__ = [
     'AwsClusterWorkloadIdentityConfig',
     'AwsNodePoolAutoscaling',
     'AwsNodePoolConfig',
+    'AwsNodePoolConfigAutoscalingMetricsCollection',
     'AwsNodePoolConfigConfigEncryption',
     'AwsNodePoolConfigInstancePlacement',
     'AwsNodePoolConfigProxyConfig',
@@ -273,6 +283,331 @@ __all__ = [
     'GetClusterVerticalPodAutoscalingResult',
     'GetClusterWorkloadIdentityConfigResult',
 ]
+
+@pulumi.output_type
+class AttachedClusterAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminUsers":
+            suggest = "admin_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_users: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] admin_users: Users that can perform operations as a cluster admin. A managed
+               ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+               to the users. Up to ten admin users can be provided.
+               For more info on RBAC, see
+               https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        if admin_users is not None:
+            pulumi.set(__self__, "admin_users", admin_users)
+
+    @property
+    @pulumi.getter(name="adminUsers")
+    def admin_users(self) -> Optional[Sequence[str]]:
+        """
+        Users that can perform operations as a cluster admin. A managed
+        ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+        to the users. Up to ten admin users can be provided.
+        For more info on RBAC, see
+        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_users")
+
+
+@pulumi.output_type
+class AttachedClusterError(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None):
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AttachedClusterFleet(dict):
+    def __init__(__self__, *,
+                 project: str,
+                 membership: Optional[str] = None):
+        """
+        :param str project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param str membership: -
+               The name of the managed Hub Membership resource associated to this
+               cluster. Membership names are formatted as
+               projects/<project-number>/locations/global/membership/<cluster-id>.
+        """
+        pulumi.set(__self__, "project", project)
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[str]:
+        """
+        -
+        The name of the managed Hub Membership resource associated to this
+        cluster. Membership names are formatted as
+        projects/<project-number>/locations/global/membership/<cluster-id>.
+        """
+        return pulumi.get(self, "membership")
+
+
+@pulumi.output_type
+class AttachedClusterLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentConfig":
+            suggest = "component_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_config: Optional['outputs.AttachedClusterLoggingConfigComponentConfig'] = None):
+        """
+        :param 'AttachedClusterLoggingConfigComponentConfigArgs' component_config: The configuration of the logging components
+               Structure is documented below.
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional['outputs.AttachedClusterLoggingConfigComponentConfig']:
+        """
+        The configuration of the logging components
+        Structure is documented below.
+        """
+        return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
+class AttachedClusterLoggingConfigComponentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterLoggingConfigComponentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterLoggingConfigComponentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] enable_components: The components to be enabled.
+               Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[Sequence[str]]:
+        """
+        The components to be enabled.
+        Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
+class AttachedClusterMonitoringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedPrometheusConfig":
+            suggest = "managed_prometheus_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterMonitoringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterMonitoringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterMonitoringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 managed_prometheus_config: Optional['outputs.AttachedClusterMonitoringConfigManagedPrometheusConfig'] = None):
+        """
+        :param 'AttachedClusterMonitoringConfigManagedPrometheusConfigArgs' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
+               Structure is documented below.
+        """
+        if managed_prometheus_config is not None:
+            pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
+
+    @property
+    @pulumi.getter(name="managedPrometheusConfig")
+    def managed_prometheus_config(self) -> Optional['outputs.AttachedClusterMonitoringConfigManagedPrometheusConfig']:
+        """
+        Enable Google Cloud Managed Service for Prometheus in the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_prometheus_config")
+
+
+@pulumi.output_type
+class AttachedClusterMonitoringConfigManagedPrometheusConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable Managed Collection.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable Managed Collection.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AttachedClusterOidcConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issuerUrl":
+            suggest = "issuer_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterOidcConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterOidcConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterOidcConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issuer_url: str,
+                 jwks: Optional[str] = None):
+        """
+        :param str issuer_url: A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+        :param str jwks: OIDC verification keys in JWKS format (RFC 7517).
+        """
+        pulumi.set(__self__, "issuer_url", issuer_url)
+        if jwks is not None:
+            pulumi.set(__self__, "jwks", jwks)
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> str:
+        """
+        A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+        """
+        return pulumi.get(self, "issuer_url")
+
+    @property
+    @pulumi.getter
+    def jwks(self) -> Optional[str]:
+        """
+        OIDC verification keys in JWKS format (RFC 7517).
+        """
+        return pulumi.get(self, "jwks")
+
+
+@pulumi.output_type
+class AttachedClusterWorkloadIdentityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProvider":
+            suggest = "identity_provider"
+        elif key == "issuerUri":
+            suggest = "issuer_uri"
+        elif key == "workloadPool":
+            suggest = "workload_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterWorkloadIdentityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterWorkloadIdentityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterWorkloadIdentityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider: Optional[str] = None,
+                 issuer_uri: Optional[str] = None,
+                 workload_pool: Optional[str] = None):
+        if identity_provider is not None:
+            pulumi.set(__self__, "identity_provider", identity_provider)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if workload_pool is not None:
+            pulumi.set(__self__, "workload_pool", workload_pool)
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider")
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[str]:
+        return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="workloadPool")
+    def workload_pool(self) -> Optional[str]:
+        return pulumi.get(self, "workload_pool")
+
 
 @pulumi.output_type
 class AwsClusterAuthorization(dict):
@@ -1181,6 +1516,8 @@ class AwsNodePoolConfig(dict):
             suggest = "config_encryption"
         elif key == "iamInstanceProfile":
             suggest = "iam_instance_profile"
+        elif key == "autoscalingMetricsCollection":
+            suggest = "autoscaling_metrics_collection"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "instancePlacement":
@@ -1210,6 +1547,7 @@ class AwsNodePoolConfig(dict):
     def __init__(__self__, *,
                  config_encryption: 'outputs.AwsNodePoolConfigConfigEncryption',
                  iam_instance_profile: str,
+                 autoscaling_metrics_collection: Optional['outputs.AwsNodePoolConfigAutoscalingMetricsCollection'] = None,
                  image_type: Optional[str] = None,
                  instance_placement: Optional['outputs.AwsNodePoolConfigInstancePlacement'] = None,
                  instance_type: Optional[str] = None,
@@ -1223,6 +1561,7 @@ class AwsNodePoolConfig(dict):
         """
         :param 'AwsNodePoolConfigConfigEncryptionArgs' config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param str iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
+        :param 'AwsNodePoolConfigAutoscalingMetricsCollectionArgs' autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
         :param str image_type: (Beta only) The OS image type to use on node pool instances.
         :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
@@ -1236,6 +1575,8 @@ class AwsNodePoolConfig(dict):
         """
         pulumi.set(__self__, "config_encryption", config_encryption)
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if autoscaling_metrics_collection is not None:
+            pulumi.set(__self__, "autoscaling_metrics_collection", autoscaling_metrics_collection)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if instance_placement is not None:
@@ -1272,6 +1613,14 @@ class AwsNodePoolConfig(dict):
         The name of the AWS IAM role assigned to nodes in the pool.
         """
         return pulumi.get(self, "iam_instance_profile")
+
+    @property
+    @pulumi.getter(name="autoscalingMetricsCollection")
+    def autoscaling_metrics_collection(self) -> Optional['outputs.AwsNodePoolConfigAutoscalingMetricsCollection']:
+        """
+        Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+        """
+        return pulumi.get(self, "autoscaling_metrics_collection")
 
     @property
     @pulumi.getter(name="imageType")
@@ -1352,6 +1701,36 @@ class AwsNodePoolConfig(dict):
         Optional. The initial taints assigned to nodes of this node pool.
         """
         return pulumi.get(self, "taints")
+
+
+@pulumi.output_type
+class AwsNodePoolConfigAutoscalingMetricsCollection(dict):
+    def __init__(__self__, *,
+                 granularity: str,
+                 metrics: Optional[Sequence[str]] = None):
+        """
+        :param str granularity: The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+        :param Sequence[str] metrics: The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        """
+        pulumi.set(__self__, "granularity", granularity)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> str:
+        """
+        The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+        """
+        return pulumi.get(self, "granularity")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[Sequence[str]]:
+        """
+        The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        """
+        return pulumi.get(self, "metrics")
 
 
 @pulumi.output_type

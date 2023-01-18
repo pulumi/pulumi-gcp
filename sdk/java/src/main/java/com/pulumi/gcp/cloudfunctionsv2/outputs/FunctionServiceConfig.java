@@ -23,6 +23,11 @@ public final class FunctionServiceConfig {
      */
     private @Nullable Boolean allTrafficOnLatestRevision;
     /**
+     * @return The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
+    private @Nullable String availableCpu;
+    /**
      * @return The amount of memory available for a function.
      * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
      * supplied the value is interpreted as bytes.
@@ -53,6 +58,11 @@ public final class FunctionServiceConfig {
      * 
      */
     private @Nullable Integer maxInstanceCount;
+    /**
+     * @return Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
+    private @Nullable Integer maxInstanceRequestConcurrency;
     /**
      * @return The limit on the minimum number of function instances that may coexist at a
      * given time.
@@ -115,6 +125,13 @@ public final class FunctionServiceConfig {
         return Optional.ofNullable(this.allTrafficOnLatestRevision);
     }
     /**
+     * @return The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
+    public Optional<String> availableCpu() {
+        return Optional.ofNullable(this.availableCpu);
+    }
+    /**
      * @return The amount of memory available for a function.
      * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
      * supplied the value is interpreted as bytes.
@@ -154,6 +171,13 @@ public final class FunctionServiceConfig {
      */
     public Optional<Integer> maxInstanceCount() {
         return Optional.ofNullable(this.maxInstanceCount);
+    }
+    /**
+     * @return Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
+    public Optional<Integer> maxInstanceRequestConcurrency() {
+        return Optional.ofNullable(this.maxInstanceRequestConcurrency);
     }
     /**
      * @return The limit on the minimum number of function instances that may coexist at a
@@ -236,11 +260,13 @@ public final class FunctionServiceConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allTrafficOnLatestRevision;
+        private @Nullable String availableCpu;
         private @Nullable String availableMemory;
         private @Nullable Map<String,String> environmentVariables;
         private @Nullable String gcfUri;
         private @Nullable String ingressSettings;
         private @Nullable Integer maxInstanceCount;
+        private @Nullable Integer maxInstanceRequestConcurrency;
         private @Nullable Integer minInstanceCount;
         private @Nullable List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
         private @Nullable List<FunctionServiceConfigSecretVolume> secretVolumes;
@@ -254,11 +280,13 @@ public final class FunctionServiceConfig {
         public Builder(FunctionServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTrafficOnLatestRevision = defaults.allTrafficOnLatestRevision;
+    	      this.availableCpu = defaults.availableCpu;
     	      this.availableMemory = defaults.availableMemory;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.gcfUri = defaults.gcfUri;
     	      this.ingressSettings = defaults.ingressSettings;
     	      this.maxInstanceCount = defaults.maxInstanceCount;
+    	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.minInstanceCount = defaults.minInstanceCount;
     	      this.secretEnvironmentVariables = defaults.secretEnvironmentVariables;
     	      this.secretVolumes = defaults.secretVolumes;
@@ -273,6 +301,11 @@ public final class FunctionServiceConfig {
         @CustomType.Setter
         public Builder allTrafficOnLatestRevision(@Nullable Boolean allTrafficOnLatestRevision) {
             this.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availableCpu(@Nullable String availableCpu) {
+            this.availableCpu = availableCpu;
             return this;
         }
         @CustomType.Setter
@@ -298,6 +331,11 @@ public final class FunctionServiceConfig {
         @CustomType.Setter
         public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
             this.maxInstanceCount = maxInstanceCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInstanceRequestConcurrency(@Nullable Integer maxInstanceRequestConcurrency) {
+            this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
         }
         @CustomType.Setter
@@ -354,11 +392,13 @@ public final class FunctionServiceConfig {
         public FunctionServiceConfig build() {
             final var o = new FunctionServiceConfig();
             o.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            o.availableCpu = availableCpu;
             o.availableMemory = availableMemory;
             o.environmentVariables = environmentVariables;
             o.gcfUri = gcfUri;
             o.ingressSettings = ingressSettings;
             o.maxInstanceCount = maxInstanceCount;
+            o.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             o.minInstanceCount = minInstanceCount;
             o.secretEnvironmentVariables = secretEnvironmentVariables;
             o.secretVolumes = secretVolumes;

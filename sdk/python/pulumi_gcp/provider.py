@@ -57,6 +57,7 @@ class ProviderArgs:
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_attached_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -81,6 +82,7 @@ class ProviderArgs:
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -232,6 +234,8 @@ class ProviderArgs:
             pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
         if container_analysis_custom_endpoint is not None:
             pulumi.set(__self__, "container_analysis_custom_endpoint", container_analysis_custom_endpoint)
+        if container_attached_custom_endpoint is not None:
+            pulumi.set(__self__, "container_attached_custom_endpoint", container_attached_custom_endpoint)
         if container_aws_custom_endpoint is not None:
             pulumi.set(__self__, "container_aws_custom_endpoint", container_aws_custom_endpoint)
         if container_azure_custom_endpoint is not None:
@@ -280,6 +284,8 @@ class ProviderArgs:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
+        if firebase_database_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_database_custom_endpoint", firebase_database_custom_endpoint)
         if firebase_hosting_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
         if firebase_storage_custom_endpoint is not None:
@@ -794,6 +800,15 @@ class ProviderArgs:
         pulumi.set(self, "container_analysis_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="containerAttachedCustomEndpoint")
+    def container_attached_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "container_attached_custom_endpoint")
+
+    @container_attached_custom_endpoint.setter
+    def container_attached_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_attached_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="containerAwsCustomEndpoint")
     def container_aws_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "container_aws_custom_endpoint")
@@ -1008,6 +1023,15 @@ class ProviderArgs:
     @firebase_custom_endpoint.setter
     def firebase_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "firebase_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="firebaseDatabaseCustomEndpoint")
+    def firebase_database_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_database_custom_endpoint")
+
+    @firebase_database_custom_endpoint.setter
+    def firebase_database_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_database_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="firebaseHostingCustomEndpoint")
@@ -1633,6 +1657,7 @@ class Provider(pulumi.ProviderResource):
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_attached_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1657,6 +1682,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1800,6 +1826,7 @@ class Provider(pulumi.ProviderResource):
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 container_attached_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1824,6 +1851,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1939,6 +1967,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
+            __props__.__dict__["container_attached_custom_endpoint"] = container_attached_custom_endpoint
             __props__.__dict__["container_aws_custom_endpoint"] = container_aws_custom_endpoint
             __props__.__dict__["container_azure_custom_endpoint"] = container_azure_custom_endpoint
             __props__.__dict__["container_custom_endpoint"] = container_custom_endpoint
@@ -1963,6 +1992,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
+            __props__.__dict__["firebase_database_custom_endpoint"] = firebase_database_custom_endpoint
             __props__.__dict__["firebase_hosting_custom_endpoint"] = firebase_hosting_custom_endpoint
             __props__.__dict__["firebase_storage_custom_endpoint"] = firebase_storage_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
@@ -2245,6 +2275,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "container_analysis_custom_endpoint")
 
     @property
+    @pulumi.getter(name="containerAttachedCustomEndpoint")
+    def container_attached_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "container_attached_custom_endpoint")
+
+    @property
     @pulumi.getter(name="containerAwsCustomEndpoint")
     def container_aws_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "container_aws_custom_endpoint")
@@ -2358,6 +2393,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firebaseCustomEndpoint")
     def firebase_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebase_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="firebaseDatabaseCustomEndpoint")
+    def firebase_database_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebase_database_custom_endpoint")
 
     @property
     @pulumi.getter(name="firebaseHostingCustomEndpoint")

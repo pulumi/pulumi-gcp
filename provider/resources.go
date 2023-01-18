@@ -375,8 +375,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
 
 			// Beyondcorp
-			"google_beyondcorp_app_connector": {Tok: gcpResource(gcpBeyondcorp, "AppConnector")},
-			"google_beyondcorp_app_gateway":   {Tok: gcpResource(gcpBeyondcorp, "AppGateway")},
+			"google_beyondcorp_app_connection": {Tok: gcpResource(gcpBeyondcorp, "AppConnection")},
+			"google_beyondcorp_app_connector":  {Tok: gcpResource(gcpBeyondcorp, "AppConnector")},
+			"google_beyondcorp_app_gateway":    {Tok: gcpResource(gcpBeyondcorp, "AppGateway")},
 
 			// BigQuery Analytics Hub
 			"google_bigquery_analytics_hub_data_exchange": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchange")},
@@ -690,13 +691,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Data Stream
-			"google_datastream_connection_profile": {
-				Tok: gcpResource(gcpDatastream, "ConnectionProfile"),
-			},
-
-			"google_datastream_private_connection": {
-				Tok: gcpResource(gcpDatastream, "PrivateConnection"),
-			},
+			"google_datastream_connection_profile": {Tok: gcpResource(gcpDatastream, "ConnectionProfile")},
+			"google_datastream_private_connection": {Tok: gcpResource(gcpDatastream, "PrivateConnection")},
+			"google_datastream_stream":             {Tok: gcpResource(gcpDatastream, "Stream")},
 
 			// Cloud Scheduler
 			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
@@ -1245,14 +1242,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Container/Kubernetes resources
-			"google_container_cluster":         {Tok: gcpResource(gcpKubernetes, "Cluster")},
-			"google_container_node_pool":       {Tok: gcpResource(gcpKubernetes, "NodePool")},
-			"google_container_registry":        {Tok: gcpResource(gcpKubernetes, "Registry")},
-			"google_container_aws_cluster":     {Tok: gcpResource(gcpKubernetes, "AwsCluster")},
-			"google_container_aws_node_pool":   {Tok: gcpResource(gcpKubernetes, "AwsNodePool")},
-			"google_container_azure_client":    {Tok: gcpResource(gcpKubernetes, "AzureClient")},
-			"google_container_azure_cluster":   {Tok: gcpResource(gcpKubernetes, "AzureCluster")},
-			"google_container_azure_node_pool": {Tok: gcpResource(gcpKubernetes, "AzureNodePool")},
+			"google_container_cluster":          {Tok: gcpResource(gcpKubernetes, "Cluster")},
+			"google_container_node_pool":        {Tok: gcpResource(gcpKubernetes, "NodePool")},
+			"google_container_registry":         {Tok: gcpResource(gcpKubernetes, "Registry")},
+			"google_container_aws_cluster":      {Tok: gcpResource(gcpKubernetes, "AwsCluster")},
+			"google_container_aws_node_pool":    {Tok: gcpResource(gcpKubernetes, "AwsNodePool")},
+			"google_container_azure_client":     {Tok: gcpResource(gcpKubernetes, "AzureClient")},
+			"google_container_azure_cluster":    {Tok: gcpResource(gcpKubernetes, "AzureCluster")},
+			"google_container_azure_node_pool":  {Tok: gcpResource(gcpKubernetes, "AzureNodePool")},
+			"google_container_attached_cluster": {Tok: gcpResource(gcpKubernetes, "AttachedCluster")},
 
 			// Data Flow resources
 			"google_dataflow_job":               {Tok: gcpResource(gcpDataFlow, "Job")},
@@ -1369,6 +1367,24 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"google_dns_managed_zone_iam_binding": {
+				Tok: gcpResource(gcpDNS, "DnsManagedZoneIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dns_managed_zone_iam.html.markdown",
+				},
+			},
+			"google_dns_managed_zone_iam_member": {
+				Tok: gcpResource(gcpDNS, "DnsManagedZoneIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dns_managed_zone_iam.html.markdown",
+				},
+			},
+			"google_dns_managed_zone_iam_policy": {
+				Tok: gcpResource(gcpDNS, "DnsManagedZoneIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dns_managed_zone_iam.html.markdown",
+				},
+			},
 			"google_dns_policy": {Tok: gcpResource(gcpDNS, "Policy")},
 			"google_dns_record_set": {
 				Tok: gcpResource(gcpDNS, "RecordSet"),
@@ -1434,13 +1450,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
-			"google_firebase_android_app":      {Tok: gcpResource(gcpFirebase, "AndroidApp")},
-			"google_firebase_apple_app":        {Tok: gcpResource(gcpFirebase, "AppleApp")},
-			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
-			"google_firebase_hosting_channel":  {Tok: gcpResource(gcpFirebase, "HostingChannel")},
-			"google_firebase_hosting_site":     {Tok: gcpResource(gcpFirebase, "HostingSite")},
-			"google_firebase_storage_bucket":   {Tok: gcpResource(gcpFirebase, "StorageBucket")},
+			"google_firebase_project_location":  {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
+			"google_firebase_android_app":       {Tok: gcpResource(gcpFirebase, "AndroidApp")},
+			"google_firebase_apple_app":         {Tok: gcpResource(gcpFirebase, "AppleApp")},
+			"google_firebase_web_app":           {Tok: gcpResource(gcpFirebase, "WebApp")},
+			"google_firebase_hosting_channel":   {Tok: gcpResource(gcpFirebase, "HostingChannel")},
+			"google_firebase_hosting_site":      {Tok: gcpResource(gcpFirebase, "HostingSite")},
+			"google_firebase_storage_bucket":    {Tok: gcpResource(gcpFirebase, "StorageBucket")},
+			"google_firebase_database_instance": {Tok: gcpResource(gcpFirebase, "DatabaseInstance")},
 
 			// Firebaserules
 			"google_firebaserules_release": {Tok: gcpResource(gcpFirebaserules, "Release")},
@@ -2549,6 +2566,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_apigee_endpoint_attachment": {Tok: gcpResource(gcpApigee, "EndpointAttachment")},
 			"google_apigee_nat_address":         {Tok: gcpResource(gcpApigee, "NatAddress")},
+			"google_apigee_sync_authorization":  {Tok: gcpResource(gcpApigee, "SyncAuthorization")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -3040,6 +3058,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "container_azure_versions.html.markdown",
 				},
 			},
+			"google_container_attached_install_manifest": {
+				Tok: gcpDataSource(gcpKubernetes, "getAttachedInstallManifest"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_attached_install_manifest.html.markdown",
+				},
+			},
+			"google_container_attached_versions": {
+				Tok: gcpDataSource(gcpKubernetes, "getAttachedVersions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_attached_versions.html.markdown",
+				},
+			},
 
 			"google_dns_managed_zone": {
 				Tok: gcpDataSource(gcpDNS, "getManagedZone"),
@@ -3124,6 +3154,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_project_organization_policy.html.markdown",
 				},
 			},
+			"google_project_service": {
+				Tok: gcpDataSource(gcpProject, "getProjectService"),
+			},
 			"google_storage_bucket_object": {
 				Tok: gcpDataSource(gcpStorage, "getBucketObject"),
 				Docs: &tfbridge.DocInfo{
@@ -3195,6 +3228,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_instance_serial_port.html.markdown",
 				},
 			},
+			"google_compute_instance_group_manager": {Tok: gcpDataSource(gcpCompute, "getInstanceGroupManager")},
 			"google_bigquery_default_service_account": {
 				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
@@ -3205,9 +3239,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_sql_ca_certs.html.markdown",
 				},
 			},
-			"google_sql_database_instance": {
-				Tok: gcpDataSource(gcpSQL, "getDatabaseInstance"),
-			},
+			"google_sql_database":           {Tok: gcpDataSource(gcpSQL, "getDatabase")},
+			"google_sql_database_instance":  {Tok: gcpDataSource(gcpSQL, "getDatabaseInstance")},
+			"google_sql_database_instances": {Tok: gcpDataSource(gcpSQL, "getDatabaseInstances")},
 			"google_service_networking_peered_dns_domain": {
 				Tok: gcpDataSource(gcpServiceNetworking, "getPeeredDnsDomain"),
 				// At the time of writing this data source does not have any upstream docs at all, so we override
@@ -3243,19 +3277,31 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firebase_android_app": {
 				Tok: gcpDataSource(gcpFirebase, "getAndroidApp"),
 				Docs: &tfbridge.DocInfo{
-					Source: "datasource_firebase_android_app.html.markdown",
+					Source: "firebase_android_app.html.markdown",
+				},
+			},
+			"google_firebase_apple_app_config": {
+				Tok: gcpDataSource(gcpFirebase, "getAppleAppConfig"),
+				Docs: &tfbridge.DocInfo{
+					Source: "firebase_apple_app_config.html.markdown",
+				},
+			},
+			"google_firebase_apple_app": {
+				Tok: gcpDataSource(gcpFirebase, "getAppleApp"),
+				Docs: &tfbridge.DocInfo{
+					Source: "firebase_apple_app.html.markdown",
 				},
 			},
 			"google_firebase_web_app_config": {
 				Tok: gcpDataSource(gcpFirebase, "getWebAppConfig"),
 				Docs: &tfbridge.DocInfo{
-					Source: "datasource_firebase_web_app_config.html.markdown",
+					Source: "firebase_web_app_config.html.markdown",
 				},
 			},
 			"google_firebase_web_app": {
 				Tok: gcpDataSource(gcpFirebase, "getWebApp"),
 				Docs: &tfbridge.DocInfo{
-					Source: "datasource_firebase_web_app.html.markdown",
+					Source: "firebase_web_app.html.markdown",
 				},
 			},
 
@@ -3282,7 +3328,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Pubsub
-			"google_pubsub_topic": {Tok: gcpDataSource(gcpPubSub, "getTopic")},
+			"google_pubsub_topic":        {Tok: gcpDataSource(gcpPubSub, "getTopic")},
+			"google_pubsub_subscription": {Tok: gcpDataSource(gcpPubSub, "getSubscription")},
 
 			//Cloud Run
 			"google_cloud_run_service":   {Tok: gcpDataSource(gcpCloudRun, "getService")},
@@ -3318,6 +3365,14 @@ func Provider() tfbridge.ProviderInfo {
 
 			// VPC Access
 			"google_vpc_access_connector": {Tok: gcpDataSource(gcpVpcAccess, "getConnector")},
+
+			// Beyondcorp
+			"google_beyondcorp_app_connection": {Tok: gcpDataSource(gcpBeyondcorp, "getAppConnection")},
+			"google_beyondcorp_app_connector":  {Tok: gcpDataSource(gcpBeyondcorp, "getAppConnector")},
+			"google_beyondcorp_app_gateway":    {Tok: gcpDataSource(gcpBeyondcorp, "getAppGateway")},
+
+			// Cloudbuild
+			"google_cloudbuild_trigger": {Tok: gcpDataSource(gcpCloudBuild, "getTrigger")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

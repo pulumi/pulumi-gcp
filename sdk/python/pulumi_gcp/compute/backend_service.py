@@ -575,6 +575,7 @@ class _BackendServiceState:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
+                 generated_id: Optional[pulumi.Input[int]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -626,6 +627,7 @@ class _BackendServiceState:
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
@@ -716,6 +718,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
+        if generated_id is not None:
+            pulumi.set(__self__, "generated_id", generated_id)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
@@ -923,6 +927,18 @@ class _BackendServiceState:
     @fingerprint.setter
     def fingerprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "generated_id")
+
+    @generated_id.setter
+    def generated_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generated_id", value)
 
     @property
     @pulumi.getter(name="healthChecks")
@@ -1569,6 +1585,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["generated_id"] = None
             __props__.__dict__["self_link"] = None
         super(BackendService, __self__).__init__(
             'gcp:compute/backendService:BackendService',
@@ -1593,6 +1610,7 @@ class BackendService(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
+            generated_id: Optional[pulumi.Input[int]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
             iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -1649,6 +1667,7 @@ class BackendService(pulumi.CustomResource):
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
                check can be specified.
@@ -1730,6 +1749,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["generated_id"] = generated_id
         __props__.__dict__["health_checks"] = health_checks
         __props__.__dict__["iap"] = iap
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
@@ -1871,6 +1891,14 @@ class BackendService(pulumi.CustomResource):
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "generated_id")
 
     @property
     @pulumi.getter(name="healthChecks")

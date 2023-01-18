@@ -6,6 +6,7 @@ package com.pulumi.gcp.firebase;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,14 +36,14 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user-assigned display name of the App.
+     * The user-assigned display name of the AndroidApp.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return The user-assigned display name of the App.
+     * @return The user-assigned display name of the AndroidApp.
      * 
      */
     public Output<String> displayName() {
@@ -83,6 +84,36 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Import(name="sha1Hashes")
+    private @Nullable Output<List<String>> sha1Hashes;
+
+    /**
+     * @return The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Optional<Output<List<String>>> sha1Hashes() {
+        return Optional.ofNullable(this.sha1Hashes);
+    }
+
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    @Import(name="sha256Hashes")
+    private @Nullable Output<List<String>> sha256Hashes;
+
+    /**
+     * @return The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
+    public Optional<Output<List<String>>> sha256Hashes() {
+        return Optional.ofNullable(this.sha256Hashes);
+    }
+
     private AndroidAppArgs() {}
 
     private AndroidAppArgs(AndroidAppArgs $) {
@@ -90,6 +121,8 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.packageName = $.packageName;
         this.project = $.project;
+        this.sha1Hashes = $.sha1Hashes;
+        this.sha256Hashes = $.sha256Hashes;
     }
 
     public static Builder builder() {
@@ -136,7 +169,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The user-assigned display name of the App.
+         * @param displayName The user-assigned display name of the AndroidApp.
          * 
          * @return builder
          * 
@@ -147,7 +180,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The user-assigned display name of the App.
+         * @param displayName The user-assigned display name of the AndroidApp.
          * 
          * @return builder
          * 
@@ -200,6 +233,68 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(@Nullable Output<List<String>> sha1Hashes) {
+            $.sha1Hashes = sha1Hashes;
+            return this;
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(List<String> sha1Hashes) {
+            return sha1Hashes(Output.of(sha1Hashes));
+        }
+
+        /**
+         * @param sha1Hashes The SHA1 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha1Hashes(String... sha1Hashes) {
+            return sha1Hashes(List.of(sha1Hashes));
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(@Nullable Output<List<String>> sha256Hashes) {
+            $.sha256Hashes = sha256Hashes;
+            return this;
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(List<String> sha256Hashes) {
+            return sha256Hashes(Output.of(sha256Hashes));
+        }
+
+        /**
+         * @param sha256Hashes The SHA256 certificate hashes for the AndroidApp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sha256Hashes(String... sha256Hashes) {
+            return sha256Hashes(List.of(sha256Hashes));
         }
 
         public AndroidAppArgs build() {

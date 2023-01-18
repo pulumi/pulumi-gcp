@@ -29,7 +29,8 @@ class RouterPeerArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouterPeer resource.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
@@ -74,6 +75,10 @@ class RouterPeerArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
+               such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+               The VM instance must be located in zones contained in the same region as
+               this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "peer_asn", peer_asn)
@@ -99,6 +104,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if router_appliance_instance is not None:
+            pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
 
     @property
     @pulumi.getter
@@ -296,6 +303,21 @@ class RouterPeerArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="routerApplianceInstance")
+    def router_appliance_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the VM instance that is used as third-party router appliances
+        such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        The VM instance must be located in zones contained in the same region as
+        this Cloud Router. The VM instance is the peer side of the BGP session.
+        """
+        return pulumi.get(self, "router_appliance_instance")
+
+    @router_appliance_instance.setter
+    def router_appliance_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_appliance_instance", value)
+
 
 @pulumi.input_type
 class _RouterPeerState:
@@ -314,7 +336,8 @@ class _RouterPeerState:
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 router: Optional[pulumi.Input[str]] = None):
+                 router: Optional[pulumi.Input[str]] = None,
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterPeer resources.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
@@ -363,6 +386,10 @@ class _RouterPeerState:
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
+        :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
+               such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+               The VM instance must be located in zones contained in the same region as
+               this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         if advertise_mode is not None:
             pulumi.set(__self__, "advertise_mode", advertise_mode)
@@ -394,6 +421,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "region", region)
         if router is not None:
             pulumi.set(__self__, "router", router)
+        if router_appliance_instance is not None:
+            pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
 
     @property
     @pulumi.getter(name="advertiseMode")
@@ -606,6 +635,21 @@ class _RouterPeerState:
     def router(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "router", value)
 
+    @property
+    @pulumi.getter(name="routerApplianceInstance")
+    def router_appliance_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the VM instance that is used as third-party router appliances
+        such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        The VM instance must be located in zones contained in the same region as
+        this Cloud Router. The VM instance is the peer side of the BGP session.
+        """
+        return pulumi.get(self, "router_appliance_instance")
+
+    @router_appliance_instance.setter
+    def router_appliance_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_appliance_instance", value)
+
 
 class RouterPeer(pulumi.CustomResource):
     @overload
@@ -626,6 +670,7 @@ class RouterPeer(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         BGP information that must be configured into the routing stack to
@@ -688,6 +733,78 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address="169.254.1.2",
             region="us-central1",
             router="my-router")
+        ```
+        ### Router Peer Router Appliance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            network=network.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        addr_intf = gcp.compute.Address("addrIntf",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        addr_peer = gcp.compute.Address("addrPeer",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        instance = gcp.compute.Instance("instance",
+            zone="us-central1-a",
+            machine_type="e2-medium",
+            can_ip_forward=True,
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network_ip=addr_peer.address,
+                subnetwork=subnetwork.self_link,
+            )])
+        hub = gcp.networkconnectivity.Hub("hub")
+        spoke = gcp.networkconnectivity.Spoke("spoke",
+            location=subnetwork.region,
+            hub=hub.id,
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+                    virtual_machine=instance.self_link,
+                    ip_address=addr_peer.address,
+                )],
+                site_to_site_data_transfer=False,
+            ))
+        router = gcp.compute.Router("router",
+            region=subnetwork.region,
+            network=network.self_link,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
+            region=router.region,
+            router=router.name,
+            subnetwork=subnetwork.self_link,
+            private_ip_address=addr_intf_redundant.address)
+        interface = gcp.compute.RouterInterface("interface",
+            region=router.region,
+            router=router.name,
+            subnetwork=subnetwork.self_link,
+            private_ip_address=addr_intf.address,
+            redundant_interface=interface_redundant.name)
+        peer = gcp.compute.RouterPeer("peer",
+            router=router.name,
+            region=router.region,
+            interface=interface.name,
+            router_appliance_instance=instance.self_link,
+            peer_asn=65513,
+            peer_ip_address=addr_peer.address)
         ```
 
         ## Import
@@ -754,6 +871,10 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
+        :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
+               such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+               The VM instance must be located in zones contained in the same region as
+               this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         ...
     @overload
@@ -823,6 +944,78 @@ class RouterPeer(pulumi.CustomResource):
             region="us-central1",
             router="my-router")
         ```
+        ### Router Peer Router Appliance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            network=network.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        addr_intf = gcp.compute.Address("addrIntf",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        addr_intf_redundant = gcp.compute.Address("addrIntfRedundant",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        addr_peer = gcp.compute.Address("addrPeer",
+            region=subnetwork.region,
+            subnetwork=subnetwork.id,
+            address_type="INTERNAL")
+        instance = gcp.compute.Instance("instance",
+            zone="us-central1-a",
+            machine_type="e2-medium",
+            can_ip_forward=True,
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network_ip=addr_peer.address,
+                subnetwork=subnetwork.self_link,
+            )])
+        hub = gcp.networkconnectivity.Hub("hub")
+        spoke = gcp.networkconnectivity.Spoke("spoke",
+            location=subnetwork.region,
+            hub=hub.id,
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+                    virtual_machine=instance.self_link,
+                    ip_address=addr_peer.address,
+                )],
+                site_to_site_data_transfer=False,
+            ))
+        router = gcp.compute.Router("router",
+            region=subnetwork.region,
+            network=network.self_link,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
+            region=router.region,
+            router=router.name,
+            subnetwork=subnetwork.self_link,
+            private_ip_address=addr_intf_redundant.address)
+        interface = gcp.compute.RouterInterface("interface",
+            region=router.region,
+            router=router.name,
+            subnetwork=subnetwork.self_link,
+            private_ip_address=addr_intf.address,
+            redundant_interface=interface_redundant.name)
+        peer = gcp.compute.RouterPeer("peer",
+            router=router.name,
+            region=router.region,
+            interface=interface.name,
+            router_appliance_instance=instance.self_link,
+            peer_asn=65513,
+            peer_ip_address=addr_peer.address)
+        ```
 
         ## Import
 
@@ -873,6 +1066,7 @@ class RouterPeer(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -904,6 +1098,7 @@ class RouterPeer(pulumi.CustomResource):
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
+            __props__.__dict__["router_appliance_instance"] = router_appliance_instance
             __props__.__dict__["management_type"] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
@@ -929,7 +1124,8 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            router: Optional[pulumi.Input[str]] = None) -> 'RouterPeer':
+            router: Optional[pulumi.Input[str]] = None,
+            router_appliance_instance: Optional[pulumi.Input[str]] = None) -> 'RouterPeer':
         """
         Get an existing RouterPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -983,6 +1179,10 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
+        :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
+               such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+               The VM instance must be located in zones contained in the same region as
+               this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1003,6 +1203,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
+        __props__.__dict__["router_appliance_instance"] = router_appliance_instance
         return RouterPeer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1155,4 +1356,15 @@ class RouterPeer(pulumi.CustomResource):
         The name of the Cloud Router in which this BgpPeer will be configured.
         """
         return pulumi.get(self, "router")
+
+    @property
+    @pulumi.getter(name="routerApplianceInstance")
+    def router_appliance_instance(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URI of the VM instance that is used as third-party router appliances
+        such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        The VM instance must be located in zones contained in the same region as
+        this Cloud Router. The VM instance is the peer side of the BGP session.
+        """
+        return pulumi.get(self, "router_appliance_instance")
 

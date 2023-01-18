@@ -166,6 +166,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.firstIpAddress);
     }
 
+    /**
+     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
     @Import(name="ipAddresses")
     private @Nullable Output<List<DatabaseInstanceIpAddressArgs>> ipAddresses;
 
@@ -403,6 +418,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.deletionProtection = $.deletionProtection;
         this.encryptionKeyName = $.encryptionKeyName;
         this.firstIpAddress = $.firstIpAddress;
+        this.instanceType = $.instanceType;
         this.ipAddresses = $.ipAddresses;
         this.maintenanceVersion = $.maintenanceVersion;
         this.masterInstanceName = $.masterInstanceName;
@@ -631,6 +647,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder firstIpAddress(String firstIpAddress) {
             return firstIpAddress(Output.of(firstIpAddress));
+        }
+
+        /**
+         * @param instanceType The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         public Builder ipAddresses(@Nullable Output<List<DatabaseInstanceIpAddressArgs>> ipAddresses) {

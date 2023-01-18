@@ -232,6 +232,8 @@ type BackendService struct {
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntOutput `pulumi:"generatedId"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
@@ -388,6 +390,8 @@ type backendServiceState struct {
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId *int `pulumi:"generatedId"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
@@ -516,6 +520,8 @@ type BackendServiceState struct {
 	EnableCdn pulumi.BoolPtrInput
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntPtrInput
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
 	// check can be specified.
@@ -1016,6 +1022,11 @@ func (o BackendServiceOutput) EnableCdn() pulumi.BoolPtrOutput {
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 func (o BackendServiceOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o BackendServiceOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.IntOutput { return v.GeneratedId }).(pulumi.IntOutput)
 }
 
 // The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource

@@ -219,6 +219,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
      * check can be specified.
@@ -353,6 +357,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["generatedId"] = state ? state.generatedId : undefined;
             resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
             resourceInputs["iap"] = state ? state.iap : undefined;
             resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
@@ -397,6 +402,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["generatedId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -481,6 +487,10 @@ export interface BackendServiceState {
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    generatedId?: pulumi.Input<number>;
     /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health

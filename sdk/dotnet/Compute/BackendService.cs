@@ -266,6 +266,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("generatedId")]
+        public Output<int> GeneratedId { get; private set; } = null!;
+
+        /// <summary>
         /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         /// for health checking this BackendService. Currently at most one health
         /// check can be specified.
@@ -810,6 +816,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("generatedId")]
+        public Input<int>? GeneratedId { get; set; }
 
         /// <summary>
         /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource

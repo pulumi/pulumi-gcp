@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions
     {
         /// <summary>
+        /// Specifies the BigQuery fields that will be returned with findings.
+        /// If not specified, no identifying fields will be returned for findings.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> IdentifyingFields;
+        /// <summary>
         /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
         /// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
         /// specified. Cannot be used in conjunction with TimespanConfig.
@@ -40,6 +46,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(
+            ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields,
+
             int? rowsLimit,
 
             int? rowsLimitPercent,
@@ -48,6 +56,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference)
         {
+            IdentifyingFields = identifyingFields;
             RowsLimit = rowsLimit;
             RowsLimitPercent = rowsLimitPercent;
             SampleMethod = sampleMethod;

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudids.EndpointArgs;
 import com.pulumi.gcp.cloudids.inputs.EndpointState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -225,6 +226,20 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> severity() {
         return this.severity;
+    }
+    /**
+     * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     * 
+     */
+    @Export(name="threatExceptions", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> threatExceptions;
+
+    /**
+     * @return Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+     * 
+     */
+    public Output<Optional<List<String>>> threatExceptions() {
+        return Codegen.optional(this.threatExceptions);
     }
     /**
      * Last update timestamp in RFC 3339 text format.

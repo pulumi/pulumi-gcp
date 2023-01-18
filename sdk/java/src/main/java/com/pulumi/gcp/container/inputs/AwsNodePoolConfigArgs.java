@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.AwsNodePoolConfigAutoscalingMetricsCollectionArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigConfigEncryptionArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
@@ -22,6 +23,21 @@ import javax.annotation.Nullable;
 public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AwsNodePoolConfigArgs Empty = new AwsNodePoolConfigArgs();
+
+    /**
+     * Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+     * 
+     */
+    @Import(name="autoscalingMetricsCollection")
+    private @Nullable Output<AwsNodePoolConfigAutoscalingMetricsCollectionArgs> autoscalingMetricsCollection;
+
+    /**
+     * @return Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+     * 
+     */
+    public Optional<Output<AwsNodePoolConfigAutoscalingMetricsCollectionArgs>> autoscalingMetricsCollection() {
+        return Optional.ofNullable(this.autoscalingMetricsCollection);
+    }
 
     /**
      * The ARN of the AWS KMS key used to encrypt node pool configuration.
@@ -206,6 +222,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     private AwsNodePoolConfigArgs() {}
 
     private AwsNodePoolConfigArgs(AwsNodePoolConfigArgs $) {
+        this.autoscalingMetricsCollection = $.autoscalingMetricsCollection;
         this.configEncryption = $.configEncryption;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageType = $.imageType;
@@ -236,6 +253,27 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(AwsNodePoolConfigArgs defaults) {
             $ = new AwsNodePoolConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingMetricsCollection Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingMetricsCollection(@Nullable Output<AwsNodePoolConfigAutoscalingMetricsCollectionArgs> autoscalingMetricsCollection) {
+            $.autoscalingMetricsCollection = autoscalingMetricsCollection;
+            return this;
+        }
+
+        /**
+         * @param autoscalingMetricsCollection Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingMetricsCollection(AwsNodePoolConfigAutoscalingMetricsCollectionArgs autoscalingMetricsCollection) {
+            return autoscalingMetricsCollection(Output.of(autoscalingMetricsCollection));
         }
 
         /**

@@ -242,7 +242,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    public readonly privateIpGoogleAccess!: pulumi.Output<boolean | undefined>;
+    public readonly privateIpGoogleAccess!: pulumi.Output<boolean>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */

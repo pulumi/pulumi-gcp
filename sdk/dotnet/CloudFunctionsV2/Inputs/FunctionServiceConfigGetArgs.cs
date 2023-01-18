@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<bool>? AllTrafficOnLatestRevision { get; set; }
 
         /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        /// </summary>
+        [Input("availableCpu")]
+        public Input<string>? AvailableCpu { get; set; }
+
+        /// <summary>
         /// The amount of memory available for a function.
         /// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
         /// supplied the value is interpreted as bytes.
@@ -59,6 +65,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         /// </summary>
         [Input("maxInstanceCount")]
         public Input<int>? MaxInstanceCount { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
+        [Input("maxInstanceRequestConcurrency")]
+        public Input<int>? MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a

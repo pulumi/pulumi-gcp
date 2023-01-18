@@ -1093,7 +1093,7 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             region="us-central1",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=google_compute_image["my_image"]["self_link"],
+                source_image=my_image.self_link,
             )])
         ```
 
@@ -1298,7 +1298,7 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             region="us-central1",
             disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=google_compute_image["my_image"]["self_link"],
+                source_image=my_image.self_link,
             )])
         ```
 

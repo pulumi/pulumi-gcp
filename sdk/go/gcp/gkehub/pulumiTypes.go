@@ -372,6 +372,9 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	// -
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	// -
+	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	Oci *FeatureMembershipConfigmanagementConfigSyncOci `pulumi:"oci"`
 	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
@@ -393,6 +396,9 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// -
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// -
+	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	Oci FeatureMembershipConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
 	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
@@ -484,6 +490,14 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// -
+// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncOci {
+		return v.Oci
+	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
+}
+
 // Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.PreventDrift }).(pulumi.BoolPtrOutput)
@@ -529,6 +543,17 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// -
+// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncOci {
+		if v == nil {
+			return nil
+		}
+		return v.Oci
+	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
+}
+
 // Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
@@ -550,21 +575,21 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pul
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGit struct {
-	// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+	// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
 	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy *string `pulumi:"httpsProxy"`
-	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
 	PolicyDir *string `pulumi:"policyDir"`
-	// Type of secret configured for access to the Git repo.
+	// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
 	SecretType *string `pulumi:"secretType"`
 	// The branch of the repository to sync from. Default: master.
 	SyncBranch *string `pulumi:"syncBranch"`
-	// The URL of the Git repository to use as the source of truth.
+	// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
 	SyncRepo *string `pulumi:"syncRepo"`
 	// Git revision (tag or hash) to check out. Default HEAD.
 	SyncRev *string `pulumi:"syncRev"`
-	// Period in seconds between consecutive syncs. Default: 15.
+	// Period in seconds(int64 format) between consecutive syncs. Default: 15.
 	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
 }
 
@@ -580,21 +605,21 @@ type FeatureMembershipConfigmanagementConfigSyncGitInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGitArgs struct {
-	// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+	// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
 	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
 	// URL for the HTTPS proxy to be used when communicating with the Git repo.
 	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
-	// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
 	PolicyDir pulumi.StringPtrInput `pulumi:"policyDir"`
-	// Type of secret configured for access to the Git repo.
+	// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
 	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
 	// The branch of the repository to sync from. Default: master.
 	SyncBranch pulumi.StringPtrInput `pulumi:"syncBranch"`
-	// The URL of the Git repository to use as the source of truth.
+	// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
 	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
 	// Git revision (tag or hash) to check out. Default HEAD.
 	SyncRev pulumi.StringPtrInput `pulumi:"syncRev"`
-	// Period in seconds between consecutive syncs. Default: 15.
+	// Period in seconds(int64 format) between consecutive syncs. Default: 15.
 	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
 }
 
@@ -675,7 +700,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
-// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.GcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -685,12 +710,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) HttpsProxy() pulum
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
 }
 
-// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) PolicyDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.PolicyDir }).(pulumi.StringPtrOutput)
 }
 
-// Type of secret configured for access to the Git repo.
+// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SecretType }).(pulumi.StringPtrOutput)
 }
@@ -700,7 +725,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncBranch() pulum
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncBranch }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Git repository to use as the source of truth.
+// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncRepo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncRepo }).(pulumi.StringPtrOutput)
 }
@@ -710,7 +735,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncRev() pulumi.S
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncRev }).(pulumi.StringPtrOutput)
 }
 
-// Period in seconds between consecutive syncs. Default: 15.
+// Period in seconds(int64 format) between consecutive syncs. Default: 15.
 func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) SyncWaitSecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncGit) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
 }
@@ -739,7 +764,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureM
 	}).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
 }
 
-// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
 		if v == nil {
@@ -759,7 +784,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) HttpsProxy() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) PolicyDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
 		if v == nil {
@@ -769,7 +794,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) PolicyDir() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of secret configured for access to the Git repo.
+// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
 		if v == nil {
@@ -789,7 +814,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncBranch() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Git repository to use as the source of truth.
+// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncRepo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
 		if v == nil {
@@ -809,9 +834,222 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncRev() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Period in seconds between consecutive syncs. Default: 15.
+// Period in seconds(int64 format) between consecutive syncs. Default: 15.
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) SyncWaitSecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncWaitSecs
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncOci struct {
+	// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+	PolicyDir *string `pulumi:"policyDir"`
+	// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+	SecretType *string `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+	SyncRepo *string `pulumi:"syncRepo"`
+	// Period in seconds(int64 format) between consecutive syncs. Default: 15.
+	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
+}
+
+// FeatureMembershipConfigmanagementConfigSyncOciInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncOciArgs and FeatureMembershipConfigmanagementConfigSyncOciOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncOciInput` via:
+//
+//	FeatureMembershipConfigmanagementConfigSyncOciArgs{...}
+type FeatureMembershipConfigmanagementConfigSyncOciInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncOciOutput() FeatureMembershipConfigmanagementConfigSyncOciOutput
+	ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncOciOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncOciArgs struct {
+	// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+	PolicyDir pulumi.StringPtrInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
+	// Period in seconds(int64 format) between consecutive syncs. Default: 15.
+	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
+}
+
+func (FeatureMembershipConfigmanagementConfigSyncOciArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciOutput() FeatureMembershipConfigmanagementConfigSyncOciOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciOutput)
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciOutput).ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipConfigmanagementConfigSyncOciPtrInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncOciArgs, FeatureMembershipConfigmanagementConfigSyncOciPtr and FeatureMembershipConfigmanagementConfigSyncOciPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncOciPtrInput` via:
+//
+//	        FeatureMembershipConfigmanagementConfigSyncOciArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipConfigmanagementConfigSyncOciPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput
+	ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput
+}
+
+type featureMembershipConfigmanagementConfigSyncOciPtrType FeatureMembershipConfigmanagementConfigSyncOciArgs
+
+func FeatureMembershipConfigmanagementConfigSyncOciPtr(v *FeatureMembershipConfigmanagementConfigSyncOciArgs) FeatureMembershipConfigmanagementConfigSyncOciPtrInput {
+	return (*featureMembershipConfigmanagementConfigSyncOciPtrType)(v)
+}
+
+func (*featureMembershipConfigmanagementConfigSyncOciPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncOciOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncOciOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershipConfigmanagementConfigSyncOciOutput() FeatureMembershipConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncOci) *FeatureMembershipConfigmanagementConfigSyncOci {
+		return &v
+	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
+}
+
+// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncOci) *string { return v.GcpServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncOci) *string { return v.PolicyDir }).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncOci) *string { return v.SecretType }).(pulumi.StringPtrOutput)
+}
+
+// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncOci) *string { return v.SyncRepo }).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds(int64 format) between consecutive syncs. Default: 15.
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncOci) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncOciPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOciOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) FeatureMembershipConfigmanagementConfigSyncOci {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipConfigmanagementConfigSyncOci
+		return ret
+	}).(FeatureMembershipConfigmanagementConfigSyncOciOutput)
+}
+
+// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRepo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds(int64 format) between consecutive syncs. Default: 15.
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSyncOci) *string {
 		if v == nil {
 			return nil
 		}
@@ -1402,7 +1640,6 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Ba
 }
 
 type FeatureMembershipMesh struct {
-	// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
 	ControlPlane *string `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management *string `pulumi:"management"`
@@ -1420,7 +1657,6 @@ type FeatureMembershipMeshInput interface {
 }
 
 type FeatureMembershipMeshArgs struct {
-	// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
 	ControlPlane pulumi.StringPtrInput `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management pulumi.StringPtrInput `pulumi:"management"`
@@ -1503,7 +1739,6 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
-// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
 func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
 }
@@ -1537,7 +1772,6 @@ func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
 	}).(FeatureMembershipMeshOutput)
 }
 
-// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
 func (o FeatureMembershipMeshPtrOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipMesh) *string {
 		if v == nil {
@@ -2877,6 +3111,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGitInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncGitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGitPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncOciInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncOciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncOciPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncOciArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyControllerInput)(nil)).Elem(), FeatureMembershipConfigmanagementHierarchyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementHierarchyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementHierarchyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
@@ -2913,6 +3149,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOciOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerOutput{})

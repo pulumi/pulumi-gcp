@@ -207,6 +207,13 @@ namespace Pulumi.Gcp.Dataproc
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// Allows you to configure a virtual Dataproc on GKE cluster.
+        /// Structure defined below.
+        /// </summary>
+        [Output("virtualClusterConfig")]
+        public Output<Outputs.ClusterVirtualClusterConfig> VirtualClusterConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Cluster resource with the given unique name, arguments, and options.
@@ -302,6 +309,13 @@ namespace Pulumi.Gcp.Dataproc
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Allows you to configure a virtual Dataproc on GKE cluster.
+        /// Structure defined below.
+        /// </summary>
+        [Input("virtualClusterConfig")]
+        public Input<Inputs.ClusterVirtualClusterConfigArgs>? VirtualClusterConfig { get; set; }
+
         public ClusterArgs()
         {
         }
@@ -358,6 +372,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Allows you to configure a virtual Dataproc on GKE cluster.
+        /// Structure defined below.
+        /// </summary>
+        [Input("virtualClusterConfig")]
+        public Input<Inputs.ClusterVirtualClusterConfigGetArgs>? VirtualClusterConfig { get; set; }
 
         public ClusterState()
         {

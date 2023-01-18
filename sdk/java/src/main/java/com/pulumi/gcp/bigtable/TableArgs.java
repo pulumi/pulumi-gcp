@@ -33,18 +33,14 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<String> deletionProtection;
 
     /**
-     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-     * protection will be set to UNPROTECTED as it is the API default value.
+     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
      */
     public Optional<Output<String>> deletionProtection() {
@@ -67,14 +63,14 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the table.
+     * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the table.
+     * @return The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      * 
      */
     public Optional<Output<String>> name() {
@@ -178,9 +174,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-         * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-         * protection will be set to UNPROTECTED as it is the API default value.
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
          * 
          * @return builder
          * 
@@ -191,9 +185,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-         * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-         * protection will be set to UNPROTECTED as it is the API default value.
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
          * 
          * @return builder
          * 
@@ -224,7 +216,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the table.
+         * @param name The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
          * 
          * @return builder
          * 
@@ -235,7 +227,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the table.
+         * @param name The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
          * 
          * @return builder
          * 

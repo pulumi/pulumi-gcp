@@ -9,6 +9,8 @@ import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulInternalIpArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatusArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerUpdatePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
@@ -247,6 +249,36 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Import(name="statefulExternalIps")
+    private @Nullable Output<List<InstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps;
+
+    /**
+     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceGroupManagerStatefulExternalIpArgs>>> statefulExternalIps() {
+        return Optional.ofNullable(this.statefulExternalIps);
+    }
+
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Import(name="statefulInternalIps")
+    private @Nullable Output<List<InstanceGroupManagerStatefulInternalIpArgs>> statefulInternalIps;
+
+    /**
+     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceGroupManagerStatefulInternalIpArgs>>> statefulInternalIps() {
+        return Optional.ofNullable(this.statefulInternalIps);
+    }
+
+    /**
      * The status of this managed instance group.
      * 
      */
@@ -402,6 +434,8 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         this.project = $.project;
         this.selfLink = $.selfLink;
         this.statefulDisks = $.statefulDisks;
+        this.statefulExternalIps = $.statefulExternalIps;
+        this.statefulInternalIps = $.statefulInternalIps;
         this.statuses = $.statuses;
         this.targetPools = $.targetPools;
         this.targetSize = $.targetSize;
@@ -744,6 +778,68 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
          */
         public Builder statefulDisks(InstanceGroupManagerStatefulDiskArgs... statefulDisks) {
             return statefulDisks(List.of(statefulDisks));
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(@Nullable Output<List<InstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps) {
+            $.statefulExternalIps = statefulExternalIps;
+            return this;
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(List<InstanceGroupManagerStatefulExternalIpArgs> statefulExternalIps) {
+            return statefulExternalIps(Output.of(statefulExternalIps));
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(InstanceGroupManagerStatefulExternalIpArgs... statefulExternalIps) {
+            return statefulExternalIps(List.of(statefulExternalIps));
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(@Nullable Output<List<InstanceGroupManagerStatefulInternalIpArgs>> statefulInternalIps) {
+            $.statefulInternalIps = statefulInternalIps;
+            return this;
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(List<InstanceGroupManagerStatefulInternalIpArgs> statefulInternalIps) {
+            return statefulInternalIps(Output.of(statefulInternalIps));
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(InstanceGroupManagerStatefulInternalIpArgs... statefulInternalIps) {
+            return statefulInternalIps(List.of(statefulInternalIps));
         }
 
         /**

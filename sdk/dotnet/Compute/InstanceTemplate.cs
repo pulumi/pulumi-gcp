@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = google_compute_image.My_image.Self_link,
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
     ///             },
     ///         },
     ///     });

@@ -8,6 +8,10 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
+import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestPlainArgs;
+import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+import com.pulumi.gcp.container.inputs.GetAttachedVersionsPlainArgs;
 import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
 import com.pulumi.gcp.container.inputs.GetAwsVersionsPlainArgs;
 import com.pulumi.gcp.container.inputs.GetAzureVersionsArgs;
@@ -20,6 +24,8 @@ import com.pulumi.gcp.container.inputs.GetRegistryImageArgs;
 import com.pulumi.gcp.container.inputs.GetRegistryImagePlainArgs;
 import com.pulumi.gcp.container.inputs.GetRegistryRepositoryArgs;
 import com.pulumi.gcp.container.inputs.GetRegistryRepositoryPlainArgs;
+import com.pulumi.gcp.container.outputs.GetAttachedInstallManifestResult;
+import com.pulumi.gcp.container.outputs.GetAttachedVersionsResult;
 import com.pulumi.gcp.container.outputs.GetAwsVersionsResult;
 import com.pulumi.gcp.container.outputs.GetAzureVersionsResult;
 import com.pulumi.gcp.container.outputs.GetClusterResult;
@@ -29,6 +35,326 @@ import com.pulumi.gcp.container.outputs.GetRegistryRepositoryResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ContainerFunctions {
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .clusterId(&#34;test-cluster-1&#34;)
+     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttachedInstallManifestResult> getAttachedInstallManifest(GetAttachedInstallManifestArgs args) {
+        return getAttachedInstallManifest(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .clusterId(&#34;test-cluster-1&#34;)
+     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttachedInstallManifestResult> getAttachedInstallManifestPlain(GetAttachedInstallManifestPlainArgs args) {
+        return getAttachedInstallManifestPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .clusterId(&#34;test-cluster-1&#34;)
+     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttachedInstallManifestResult> getAttachedInstallManifest(GetAttachedInstallManifestArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", TypeShape.of(GetAttachedInstallManifestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedInstallManifestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var manifest = ContainerFunctions.getAttachedInstallManifest(GetAttachedInstallManifestArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .clusterId(&#34;test-cluster-1&#34;)
+     *             .platformVersion(&#34;1.25.0-gke.1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;installManifest&#34;, manifest.applyValue(getAttachedInstallManifestResult -&gt; getAttachedInstallManifestResult));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttachedInstallManifestResult> getAttachedInstallManifestPlain(GetAttachedInstallManifestPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", TypeShape.of(GetAttachedInstallManifestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttachedVersionsResult> getAttachedVersions(GetAttachedVersionsArgs args) {
+        return getAttachedVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttachedVersionsResult> getAttachedVersionsPlain(GetAttachedVersionsPlainArgs args) {
+        return getAttachedVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttachedVersionsResult> getAttachedVersions(GetAttachedVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:container/getAttachedVersions:getAttachedVersions", TypeShape.of(GetAttachedVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available platform versions in a location for a given project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var uswest = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+     *             .location(&#34;us-west1&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstAvailableVersion&#34;, data.google_container_attached_versions().versions().valid_versions()[0]);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttachedVersionsResult> getAttachedVersionsPlain(GetAttachedVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:container/getAttachedVersions:getAttachedVersions", TypeShape.of(GetAttachedVersionsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
@@ -709,7 +1035,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```
@@ -762,7 +1089,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```
@@ -815,7 +1143,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```
@@ -868,7 +1197,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```
@@ -921,7 +1251,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```
@@ -974,7 +1305,8 @@ public final class ContainerFunctions {
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export(&#34;stableChannelVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelDefaultVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
+     *         ctx.export(&#34;stableChannelLatestVersion&#34;, central1b.applyValue(getEngineVersionsResult -&gt; getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
      *     }
      * }
      * ```

@@ -714,6 +714,20 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return this.fingerprint;
     }
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="generatedId", type=Integer.class, parameters={})
+    private Output<Integer> generatedId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> generatedId() {
+        return this.generatedId;
+    }
+    /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
      * check can be specified.

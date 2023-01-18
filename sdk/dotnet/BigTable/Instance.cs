@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+        /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

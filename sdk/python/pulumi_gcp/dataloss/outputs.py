@@ -36,6 +36,34 @@ __all__ = [
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue',
     'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue',
+    'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue',
     'PreventionInspectTemplateInspectConfig',
     'PreventionInspectTemplateInspectConfigCustomInfoType',
     'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary',
@@ -70,6 +98,7 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable',
     'PreventionJobTriggerInspectJobStorageConfig',
     'PreventionJobTriggerInspectJobStorageConfigBigQueryOptions',
+    'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField',
     'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference',
     'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions',
     'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet',
@@ -100,6 +129,8 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
         suggest = None
         if key == "infoTypeTransformations":
             suggest = "info_type_transformations"
+        elif key == "recordTransformations":
+            suggest = "record_transformations"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfig. Access the value via the '{suggest}' property getter instead.")
@@ -113,21 +144,36 @@ class PreventionDeidentifyTemplateDeidentifyConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 info_type_transformations: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'):
+                 info_type_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations'] = None,
+                 record_transformations: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs' info_type_transformations: Specifies free-text based transformations to be applied to the dataset.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs' info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs' record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
                Structure is documented below.
         """
-        pulumi.set(__self__, "info_type_transformations", info_type_transformations)
+        if info_type_transformations is not None:
+            pulumi.set(__self__, "info_type_transformations", info_type_transformations)
+        if record_transformations is not None:
+            pulumi.set(__self__, "record_transformations", record_transformations)
 
     @property
     @pulumi.getter(name="infoTypeTransformations")
-    def info_type_transformations(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations':
+    def info_type_transformations(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations']:
         """
-        Specifies free-text based transformations to be applied to the dataset.
+        Treat the dataset as free-form text and apply the same free text transformation everywhere
         Structure is documented below.
         """
         return pulumi.get(self, "info_type_transformations")
+
+    @property
+    @pulumi.getter(name="recordTransformations")
+    def record_transformations(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations']:
+        """
+        Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "record_transformations")
 
 
 @pulumi.output_type
@@ -175,7 +221,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
                  info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Primitive transformation to apply to the infoType.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+               The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Structure is documented below.
         :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
                all findings that correspond to infoTypes that were requested in InspectConfig.
@@ -189,7 +236,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="primitiveTransformation")
     def primitive_transformation(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation':
         """
-        Primitive transformation to apply to the infoType.
+        Apply the transformation to the entire field.
+        The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
         Structure is documented below.
         """
         return pulumi.get(self, "primitive_transformation")
@@ -210,7 +258,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         pulumi.set(__self__, "name", name)
 
@@ -218,7 +266,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -257,15 +305,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig'] = None,
                  replace_with_info_type_config: Optional[bool] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character.
-               Masking can start from the beginning or end of the string.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs' crypto_deterministic_config: Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
                Structure is documented below.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs' crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace each input value with a given value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace with a specified value.
                Structure is documented below.
         :param bool replace_with_info_type_config: Replace each matching finding with the name of the info type.
         """
@@ -284,8 +331,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="characterMaskConfig")
     def character_mask_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig']:
         """
-        Partially mask a string by replacing a given number of characters with a fixed character.
-        Masking can start from the beginning or end of the string.
+        Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
         Structure is documented below.
         """
         return pulumi.get(self, "character_mask_config")
@@ -313,7 +359,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="replaceConfig")
     def replace_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig']:
         """
-        Replace each input value with a given value.
+        Replace with a specified value.
         Structure is documented below.
         """
         return pulumi.get(self, "replace_config")
@@ -360,10 +406,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
                Structure is documented below.
-        :param str masking_character: Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-               such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-               strings, and 0 for digits.
-        :param int number_to_mask: Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        :param str masking_character: is *
+        :param int number_to_mask: is -4
         :param bool reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
                input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
         """
@@ -389,9 +433,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="maskingCharacter")
     def masking_character(self) -> Optional[str]:
         """
-        Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-        such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-        strings, and 0 for digits.
+        is *
         """
         return pulumi.get(self, "masking_character")
 
@@ -399,7 +441,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="numberToMask")
     def number_to_mask(self) -> Optional[int]:
         """
-        Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        is -4
         """
         return pulumi.get(self, "number_to_mask")
 
@@ -560,7 +602,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -569,7 +611,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -695,7 +737,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         pulumi.set(__self__, "name", name)
 
@@ -703,7 +745,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -733,7 +775,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -742,7 +784,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -886,7 +928,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -895,7 +937,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -1021,7 +1063,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1029,7 +1071,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -1059,7 +1101,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name describing the field.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1068,7 +1110,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -1096,6 +1138,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue'):
         """
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+               The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
                Structure is documented below.
         """
         pulumi.set(__self__, "new_value", new_value)
@@ -1105,6 +1148,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def new_value(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue':
         """
         Replace each input value with a given value.
+        The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
         Structure is documented below.
         """
         return pulumi.get(self, "new_value")
@@ -1159,12 +1203,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param str day_of_week_value: Represents a day of the week.
                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         :param float float_value: A float value.
-        :param int integer_value: An integer value.
+        :param int integer_value: An integer value (int64 format)
         :param str string_value: A string value.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
                Structure is documented below.
-        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         if boolean_value is not None:
             pulumi.set(__self__, "boolean_value", boolean_value)
@@ -1221,7 +1264,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="integerValue")
     def integer_value(self) -> Optional[int]:
         """
-        An integer value.
+        An integer value (int64 format)
         """
         return pulumi.get(self, "integer_value")
 
@@ -1246,8 +1289,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="timestampValue")
     def timestamp_value(self) -> Optional[str]:
         """
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "timestamp_value")
 
@@ -1259,10 +1301,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  month: Optional[int] = None,
                  year: Optional[int] = None):
         """
-        :param int day: Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-               year by itself or a year and month where the day is not significant.
-        :param int month: Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
-        :param int year: Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -1275,8 +1316,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def day(self) -> Optional[int]:
         """
-        Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        year by itself or a year and month where the day is not significant.
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
         """
         return pulumi.get(self, "day")
 
@@ -1284,7 +1324,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def month(self) -> Optional[int]:
         """
-        Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         """
         return pulumi.get(self, "month")
 
@@ -1292,7 +1332,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def year(self) -> Optional[int]:
         """
-        Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
 
@@ -1305,10 +1345,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  nanos: Optional[int] = None,
                  seconds: Optional[int] = None):
         """
-        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         :param int minutes: Minutes of hour of day. Must be from 0 to 59.
         :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -1323,7 +1363,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def hours(self) -> Optional[int]:
         """
-        Hours of day in 24 hour format. Should be from 0 to 23.
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         """
         return pulumi.get(self, "hours")
 
@@ -1347,7 +1387,1454 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        Seconds of minutes of the time. Must normally be from 0 to 59.
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldTransformations":
+            suggest = "field_transformations"
+        elif key == "recordSuppressions":
+            suggest = "record_suppressions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_transformations: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation']] = None,
+                 record_suppressions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression']] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs'] field_transformations: Transform the record by applying various field transformations.
+               Structure is documented below.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs'] record_suppressions: Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+               Structure is documented below.
+        """
+        if field_transformations is not None:
+            pulumi.set(__self__, "field_transformations", field_transformations)
+        if record_suppressions is not None:
+            pulumi.set(__self__, "record_suppressions", record_suppressions)
+
+    @property
+    @pulumi.getter(name="fieldTransformations")
+    def field_transformations(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation']]:
+        """
+        Transform the record by applying various field transformations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "field_transformations")
+
+    @property
+    @pulumi.getter(name="recordSuppressions")
+    def record_suppressions(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression']]:
+        """
+        Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "record_suppressions")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primitiveTransformation":
+            suggest = "primitive_transformation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fields: Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField'],
+                 primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation',
+                 condition: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition'] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs'] fields: Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+               FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+               The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs' condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField']:
+        """
+        Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+        FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @property
+    @pulumi.getter(name="primitiveTransformation")
+    def primitive_transformation(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation':
+        """
+        Apply the transformation to the entire field.
+        The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primitive_transformation")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition']:
+        """
+        A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition(dict):
+    def __init__(__self__, *,
+                 expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs' expressions: An expression, consisting of an operator and conditions.
+               Structure is documented below.
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions']:
+        """
+        An expression, consisting of an operator and conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expressions")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions'] = None,
+                 logical_operator: Optional[str] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs' conditions: A collection of conditions.
+               Structure is documented below.
+        :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
+               Default value is `AND`.
+               Possible values are `AND`.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if logical_operator is not None:
+            pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions']:
+        """
+        A collection of conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> Optional[str]:
+        """
+        The operator to apply to the result of conditions. Default and currently only supported value is AND.
+        Default value is `AND`.
+        Possible values are `AND`.
+        """
+        return pulumi.get(self, "logical_operator")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions(dict):
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition']] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs'] conditions: A collection of conditions.
+               Structure is documented below.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition']]:
+        """
+        A collection of conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition(dict):
+    def __init__(__self__, *,
+                 field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField',
+                 operator: str,
+                 value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
+               Structure is documented below.
+        :param str operator: Operator used to compare the field or infoType to the value.
+               Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField':
+        """
+        Field within the record this condition is evaluated against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operator used to compare the field or infoType to the value.
+        Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue']:
+        """
+        Value to compare against. [Mandatory, except for EXISTS tests.]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: Name describing the field.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name describing the field.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "dayOfWeekValue":
+            suggest = "day_of_week_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timeValue":
+            suggest = "time_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_value: Optional[bool] = None,
+                 date_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue'] = None,
+                 day_of_week_value: Optional[str] = None,
+                 float_value: Optional[float] = None,
+                 integer_value: Optional[str] = None,
+                 string_value: Optional[str] = None,
+                 time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue'] = None,
+                 timestamp_value: Optional[str] = None):
+        """
+        :param bool boolean_value: A boolean value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+               Structure is documented below.
+        :param str day_of_week_value: Represents a day of the week.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param float float_value: A float value.
+        :param str integer_value: An integer value (int64 format)
+        :param str string_value: A string value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs' time_value: Represents a time of day.
+               Structure is documented below.
+        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if boolean_value is not None:
+            pulumi.set(__self__, "boolean_value", boolean_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if day_of_week_value is not None:
+            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+        if float_value is not None:
+            pulumi.set(__self__, "float_value", float_value)
+        if integer_value is not None:
+            pulumi.set(__self__, "integer_value", integer_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if time_value is not None:
+            pulumi.set(__self__, "time_value", time_value)
+        if timestamp_value is not None:
+            pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> Optional[bool]:
+        """
+        A boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue']:
+        """
+        Represents a whole or partial calendar date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="dayOfWeekValue")
+    def day_of_week_value(self) -> Optional[str]:
+        """
+        Represents a day of the week.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week_value")
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> Optional[float]:
+        """
+        A float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @property
+    @pulumi.getter(name="integerValue")
+    def integer_value(self) -> Optional[str]:
+        """
+        An integer value (int64 format)
+        """
+        return pulumi.get(self, "integer_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="timeValue")
+    def time_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue']:
+        """
+        Represents a time of day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_value")
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> Optional[str]:
+        """
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "timestamp_value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue(dict):
+    def __init__(__self__, *,
+                 day: Optional[int] = None,
+                 month: Optional[int] = None,
+                 year: Optional[int] = None):
+        """
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue(dict):
+    def __init__(__self__, *,
+                 hours: Optional[int] = None,
+                 minutes: Optional[int] = None,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[int] = None):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[int]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: Name describing the field.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name describing the field.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterMaskConfig":
+            suggest = "character_mask_config"
+        elif key == "redactConfig":
+            suggest = "redact_config"
+        elif key == "replaceConfig":
+            suggest = "replace_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 character_mask_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig'] = None,
+                 redact_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig'] = None,
+                 replace_config: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs' character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+               Structure is documented below.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs' redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs' replace_config: Replace with a specified value.
+               Structure is documented below.
+        """
+        if character_mask_config is not None:
+            pulumi.set(__self__, "character_mask_config", character_mask_config)
+        if redact_config is not None:
+            pulumi.set(__self__, "redact_config", redact_config)
+        if replace_config is not None:
+            pulumi.set(__self__, "replace_config", replace_config)
+
+    @property
+    @pulumi.getter(name="characterMaskConfig")
+    def character_mask_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig']:
+        """
+        Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "character_mask_config")
+
+    @property
+    @pulumi.getter(name="redactConfig")
+    def redact_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig']:
+        """
+        Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+        """
+        return pulumi.get(self, "redact_config")
+
+    @property
+    @pulumi.getter(name="replaceConfig")
+    def replace_config(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig']:
+        """
+        Replace with a specified value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replace_config")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "charactersToIgnores":
+            suggest = "characters_to_ignores"
+        elif key == "maskingCharacter":
+            suggest = "masking_character"
+        elif key == "numberToMask":
+            suggest = "number_to_mask"
+        elif key == "reverseOrder":
+            suggest = "reverse_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 characters_to_ignores: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']] = None,
+                 masking_character: Optional[str] = None,
+                 number_to_mask: Optional[int] = None,
+                 reverse_order: Optional[bool] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+               Structure is documented below.
+        :param str masking_character: is *
+        :param int number_to_mask: is -4
+        :param bool reverse_order: Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+               input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+        """
+        if characters_to_ignores is not None:
+            pulumi.set(__self__, "characters_to_ignores", characters_to_ignores)
+        if masking_character is not None:
+            pulumi.set(__self__, "masking_character", masking_character)
+        if number_to_mask is not None:
+            pulumi.set(__self__, "number_to_mask", number_to_mask)
+        if reverse_order is not None:
+            pulumi.set(__self__, "reverse_order", reverse_order)
+
+    @property
+    @pulumi.getter(name="charactersToIgnores")
+    def characters_to_ignores(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']]:
+        """
+        Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "characters_to_ignores")
+
+    @property
+    @pulumi.getter(name="maskingCharacter")
+    def masking_character(self) -> Optional[str]:
+        """
+        is *
+        """
+        return pulumi.get(self, "masking_character")
+
+    @property
+    @pulumi.getter(name="numberToMask")
+    def number_to_mask(self) -> Optional[int]:
+        """
+        is -4
+        """
+        return pulumi.get(self, "number_to_mask")
+
+    @property
+    @pulumi.getter(name="reverseOrder")
+    def reverse_order(self) -> Optional[bool]:
+        """
+        Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
+        input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+        """
+        return pulumi.get(self, "reverse_order")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "charactersToSkip":
+            suggest = "characters_to_skip"
+        elif key == "commonCharactersToIgnore":
+            suggest = "common_characters_to_ignore"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 characters_to_skip: Optional[str] = None,
+                 common_characters_to_ignore: Optional[str] = None):
+        """
+        :param str characters_to_skip: Characters to not transform when masking.
+        :param str common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
+               Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        """
+        if characters_to_skip is not None:
+            pulumi.set(__self__, "characters_to_skip", characters_to_skip)
+        if common_characters_to_ignore is not None:
+            pulumi.set(__self__, "common_characters_to_ignore", common_characters_to_ignore)
+
+    @property
+    @pulumi.getter(name="charactersToSkip")
+    def characters_to_skip(self) -> Optional[str]:
+        """
+        Characters to not transform when masking.
+        """
+        return pulumi.get(self, "characters_to_skip")
+
+    @property
+    @pulumi.getter(name="commonCharactersToIgnore")
+    def common_characters_to_ignore(self) -> Optional[str]:
+        """
+        Common characters to not transform when masking. Useful to avoid removing punctuation.
+        Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        """
+        return pulumi.get(self, "common_characters_to_ignore")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newValue":
+            suggest = "new_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 new_value: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue'):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueArgs' new_value: Replace each input value with a given value.
+               The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "new_value", new_value)
+
+    @property
+    @pulumi.getter(name="newValue")
+    def new_value(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue':
+        """
+        Replace each input value with a given value.
+        The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "new_value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "dayOfWeekValue":
+            suggest = "day_of_week_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timeValue":
+            suggest = "time_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_value: Optional[bool] = None,
+                 date_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue'] = None,
+                 day_of_week_value: Optional[str] = None,
+                 float_value: Optional[float] = None,
+                 integer_value: Optional[str] = None,
+                 string_value: Optional[str] = None,
+                 time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue'] = None,
+                 timestamp_value: Optional[str] = None):
+        """
+        :param bool boolean_value: A boolean value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+               Structure is documented below.
+        :param str day_of_week_value: Represents a day of the week.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param float float_value: A float value.
+        :param str integer_value: An integer value (int64 format)
+        :param str string_value: A string value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs' time_value: Represents a time of day.
+               Structure is documented below.
+        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if boolean_value is not None:
+            pulumi.set(__self__, "boolean_value", boolean_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if day_of_week_value is not None:
+            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+        if float_value is not None:
+            pulumi.set(__self__, "float_value", float_value)
+        if integer_value is not None:
+            pulumi.set(__self__, "integer_value", integer_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if time_value is not None:
+            pulumi.set(__self__, "time_value", time_value)
+        if timestamp_value is not None:
+            pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> Optional[bool]:
+        """
+        A boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue']:
+        """
+        Represents a whole or partial calendar date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="dayOfWeekValue")
+    def day_of_week_value(self) -> Optional[str]:
+        """
+        Represents a day of the week.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week_value")
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> Optional[float]:
+        """
+        A float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @property
+    @pulumi.getter(name="integerValue")
+    def integer_value(self) -> Optional[str]:
+        """
+        An integer value (int64 format)
+        """
+        return pulumi.get(self, "integer_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="timeValue")
+    def time_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue']:
+        """
+        Represents a time of day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_value")
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> Optional[str]:
+        """
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "timestamp_value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(dict):
+    def __init__(__self__, *,
+                 day: Optional[int] = None,
+                 month: Optional[int] = None,
+                 year: Optional[int] = None):
+        """
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue(dict):
+    def __init__(__self__, *,
+                 hours: Optional[int] = None,
+                 minutes: Optional[int] = None,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[int] = None):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[int]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression(dict):
+    def __init__(__self__, *,
+                 condition: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs' condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+               Structure is documented below.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition']:
+        """
+        A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition(dict):
+    def __init__(__self__, *,
+                 expressions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs' expressions: An expression, consisting of an operator and conditions.
+               Structure is documented below.
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions']:
+        """
+        An expression, consisting of an operator and conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expressions")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions'] = None,
+                 logical_operator: Optional[str] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs' conditions: A collection of conditions.
+               Structure is documented below.
+        :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
+               Default value is `AND`.
+               Possible values are `AND`.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if logical_operator is not None:
+            pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions']:
+        """
+        A collection of conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> Optional[str]:
+        """
+        The operator to apply to the result of conditions. Default and currently only supported value is AND.
+        Default value is `AND`.
+        Possible values are `AND`.
+        """
+        return pulumi.get(self, "logical_operator")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions(dict):
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition']] = None):
+        """
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs'] conditions: A collection of conditions.
+               Structure is documented below.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition']]:
+        """
+        A collection of conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition(dict):
+    def __init__(__self__, *,
+                 field: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField',
+                 operator: str,
+                 value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue'] = None):
+        """
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
+               Structure is documented below.
+        :param str operator: Operator used to compare the field or infoType to the value.
+               Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField':
+        """
+        Field within the record this condition is evaluated against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operator used to compare the field or infoType to the value.
+        Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue']:
+        """
+        Value to compare against. [Mandatory, except for EXISTS tests.]
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: Name describing the field.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name describing the field.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "dayOfWeekValue":
+            suggest = "day_of_week_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timeValue":
+            suggest = "time_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_value: Optional[bool] = None,
+                 date_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue'] = None,
+                 day_of_week_value: Optional[str] = None,
+                 float_value: Optional[float] = None,
+                 integer_value: Optional[str] = None,
+                 string_value: Optional[str] = None,
+                 time_value: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue'] = None,
+                 timestamp_value: Optional[str] = None):
+        """
+        :param bool boolean_value: A boolean value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
+               Structure is documented below.
+        :param str day_of_week_value: Represents a day of the week.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param float float_value: A float value.
+        :param str integer_value: An integer value (int64 format)
+        :param str string_value: A string value.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs' time_value: Represents a time of day.
+               Structure is documented below.
+        :param str timestamp_value: A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        if boolean_value is not None:
+            pulumi.set(__self__, "boolean_value", boolean_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if day_of_week_value is not None:
+            pulumi.set(__self__, "day_of_week_value", day_of_week_value)
+        if float_value is not None:
+            pulumi.set(__self__, "float_value", float_value)
+        if integer_value is not None:
+            pulumi.set(__self__, "integer_value", integer_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if time_value is not None:
+            pulumi.set(__self__, "time_value", time_value)
+        if timestamp_value is not None:
+            pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> Optional[bool]:
+        """
+        A boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue']:
+        """
+        Represents a whole or partial calendar date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="dayOfWeekValue")
+    def day_of_week_value(self) -> Optional[str]:
+        """
+        Represents a day of the week.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week_value")
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> Optional[float]:
+        """
+        A float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @property
+    @pulumi.getter(name="integerValue")
+    def integer_value(self) -> Optional[str]:
+        """
+        An integer value (int64 format)
+        """
+        return pulumi.get(self, "integer_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="timeValue")
+    def time_value(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue']:
+        """
+        Represents a time of day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_value")
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> Optional[str]:
+        """
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "timestamp_value")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue(dict):
+    def __init__(__self__, *,
+                 day: Optional[int] = None,
+                 month: Optional[int] = None,
+                 year: Optional[int] = None):
+        """
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue(dict):
+    def __init__(__self__, *,
+                 hours: Optional[int] = None,
+                 minutes: Optional[int] = None,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[int] = None):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[int]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[int]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
 
@@ -1807,12 +3294,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(dict):
 @pulumi.output_type
 class PreventionInspectTemplateInspectConfigInfoType(dict):
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 version: Optional[str] = None):
         """
         :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
                or `projects/project-id/storedInfoTypes/432452342`.
+        :param str version: Version of the information type to use. By default, the version is set to stable
         """
         pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1822,6 +3313,14 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
         or `projects/project-id/storedInfoTypes/432452342`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the information type to use. By default, the version is set to stable
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -2993,6 +4492,8 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         suggest = None
         if key == "tableReference":
             suggest = "table_reference"
+        elif key == "identifyingFields":
+            suggest = "identifying_fields"
         elif key == "rowsLimit":
             suggest = "rows_limit"
         elif key == "rowsLimitPercent":
@@ -3013,11 +4514,15 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
 
     def __init__(__self__, *,
                  table_reference: 'outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference',
+                 identifying_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField']] = None,
                  rows_limit: Optional[int] = None,
                  rows_limit_percent: Optional[int] = None,
                  sample_method: Optional[str] = None):
         """
         :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs' table_reference: Set of files to scan.
+               Structure is documented below.
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs'] identifying_fields: Specifies the BigQuery fields that will be returned with findings.
+               If not specified, no identifying fields will be returned for findings.
                Structure is documented below.
         :param int rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
                If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -3031,6 +4536,8 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
                Possible values are `TOP` and `RANDOM_START`.
         """
         pulumi.set(__self__, "table_reference", table_reference)
+        if identifying_fields is not None:
+            pulumi.set(__self__, "identifying_fields", identifying_fields)
         if rows_limit is not None:
             pulumi.set(__self__, "rows_limit", rows_limit)
         if rows_limit_percent is not None:
@@ -3046,6 +4553,16 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "table_reference")
+
+    @property
+    @pulumi.getter(name="identifyingFields")
+    def identifying_fields(self) -> Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField']]:
+        """
+        Specifies the BigQuery fields that will be returned with findings.
+        If not specified, no identifying fields will be returned for findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identifying_fields")
 
     @property
     @pulumi.getter(name="rowsLimit")
@@ -3077,6 +4594,24 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         Possible values are `TOP` and `RANDOM_START`.
         """
         return pulumi.get(self, "sample_method")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of a BigQuery field to be returned with the findings.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of a BigQuery field to be returned with the findings.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -3453,7 +4988,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: The name of the Datastore kind.
+        :param str name: Name of a BigQuery field to be returned with the findings.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3461,7 +4996,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Datastore kind.
+        Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")
 
@@ -3603,7 +5138,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: The name of the Datastore kind.
+        :param str name: Name of a BigQuery field to be returned with the findings.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3611,7 +5146,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Datastore kind.
+        Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")
 

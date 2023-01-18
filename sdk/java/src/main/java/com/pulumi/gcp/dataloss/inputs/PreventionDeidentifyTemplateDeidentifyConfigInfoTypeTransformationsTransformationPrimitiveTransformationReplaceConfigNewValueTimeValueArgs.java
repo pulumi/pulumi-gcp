@@ -16,14 +16,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs();
 
     /**
-     * Hours of day in 24 hour format. Should be from 0 to 23.
+     * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     @Import(name="hours")
     private @Nullable Output<Integer> hours;
 
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23.
+     * @return Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
      * 
      */
     public Optional<Output<Integer>> hours() {
@@ -61,14 +61,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * Seconds of minutes of the time. Must normally be from 0 to 59.
+     * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59.
+     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -103,7 +103,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
+         * @param hours Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
+         * @param hours Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value &#34;24:00:00&#34; for scenarios like business closing time.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59.
+         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59.
+         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          * 
          * @return builder
          * 

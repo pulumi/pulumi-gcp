@@ -2947,6 +2947,618 @@ func (o TopicSchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSubscriptionBigqueryConfig struct {
+	DropUnknownFields bool   `pulumi:"dropUnknownFields"`
+	Table             string `pulumi:"table"`
+	UseTopicSchema    bool   `pulumi:"useTopicSchema"`
+	WriteMetadata     bool   `pulumi:"writeMetadata"`
+}
+
+// GetSubscriptionBigqueryConfigInput is an input type that accepts GetSubscriptionBigqueryConfigArgs and GetSubscriptionBigqueryConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigqueryConfigInput` via:
+//
+//	GetSubscriptionBigqueryConfigArgs{...}
+type GetSubscriptionBigqueryConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigqueryConfigOutput() GetSubscriptionBigqueryConfigOutput
+	ToGetSubscriptionBigqueryConfigOutputWithContext(context.Context) GetSubscriptionBigqueryConfigOutput
+}
+
+type GetSubscriptionBigqueryConfigArgs struct {
+	DropUnknownFields pulumi.BoolInput   `pulumi:"dropUnknownFields"`
+	Table             pulumi.StringInput `pulumi:"table"`
+	UseTopicSchema    pulumi.BoolInput   `pulumi:"useTopicSchema"`
+	WriteMetadata     pulumi.BoolInput   `pulumi:"writeMetadata"`
+}
+
+func (GetSubscriptionBigqueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigqueryConfigArgs) ToGetSubscriptionBigqueryConfigOutput() GetSubscriptionBigqueryConfigOutput {
+	return i.ToGetSubscriptionBigqueryConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigqueryConfigArgs) ToGetSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) GetSubscriptionBigqueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigqueryConfigOutput)
+}
+
+// GetSubscriptionBigqueryConfigArrayInput is an input type that accepts GetSubscriptionBigqueryConfigArray and GetSubscriptionBigqueryConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigqueryConfigArrayInput` via:
+//
+//	GetSubscriptionBigqueryConfigArray{ GetSubscriptionBigqueryConfigArgs{...} }
+type GetSubscriptionBigqueryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigqueryConfigArrayOutput() GetSubscriptionBigqueryConfigArrayOutput
+	ToGetSubscriptionBigqueryConfigArrayOutputWithContext(context.Context) GetSubscriptionBigqueryConfigArrayOutput
+}
+
+type GetSubscriptionBigqueryConfigArray []GetSubscriptionBigqueryConfigInput
+
+func (GetSubscriptionBigqueryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigqueryConfigArray) ToGetSubscriptionBigqueryConfigArrayOutput() GetSubscriptionBigqueryConfigArrayOutput {
+	return i.ToGetSubscriptionBigqueryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigqueryConfigArray) ToGetSubscriptionBigqueryConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionBigqueryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigqueryConfigArrayOutput)
+}
+
+type GetSubscriptionBigqueryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigqueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) ToGetSubscriptionBigqueryConfigOutput() GetSubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) ToGetSubscriptionBigqueryConfigOutputWithContext(ctx context.Context) GetSubscriptionBigqueryConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
+}
+
+func (o GetSubscriptionBigqueryConfigOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type GetSubscriptionBigqueryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigqueryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigqueryConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigqueryConfigArrayOutput) ToGetSubscriptionBigqueryConfigArrayOutput() GetSubscriptionBigqueryConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigqueryConfigArrayOutput) ToGetSubscriptionBigqueryConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionBigqueryConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigqueryConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionBigqueryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionBigqueryConfig {
+		return vs[0].([]GetSubscriptionBigqueryConfig)[vs[1].(int)]
+	}).(GetSubscriptionBigqueryConfigOutput)
+}
+
+type GetSubscriptionDeadLetterPolicy struct {
+	DeadLetterTopic     string `pulumi:"deadLetterTopic"`
+	MaxDeliveryAttempts int    `pulumi:"maxDeliveryAttempts"`
+}
+
+// GetSubscriptionDeadLetterPolicyInput is an input type that accepts GetSubscriptionDeadLetterPolicyArgs and GetSubscriptionDeadLetterPolicyOutput values.
+// You can construct a concrete instance of `GetSubscriptionDeadLetterPolicyInput` via:
+//
+//	GetSubscriptionDeadLetterPolicyArgs{...}
+type GetSubscriptionDeadLetterPolicyInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionDeadLetterPolicyOutput() GetSubscriptionDeadLetterPolicyOutput
+	ToGetSubscriptionDeadLetterPolicyOutputWithContext(context.Context) GetSubscriptionDeadLetterPolicyOutput
+}
+
+type GetSubscriptionDeadLetterPolicyArgs struct {
+	DeadLetterTopic     pulumi.StringInput `pulumi:"deadLetterTopic"`
+	MaxDeliveryAttempts pulumi.IntInput    `pulumi:"maxDeliveryAttempts"`
+}
+
+func (GetSubscriptionDeadLetterPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionDeadLetterPolicyArgs) ToGetSubscriptionDeadLetterPolicyOutput() GetSubscriptionDeadLetterPolicyOutput {
+	return i.ToGetSubscriptionDeadLetterPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionDeadLetterPolicyArgs) ToGetSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) GetSubscriptionDeadLetterPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionDeadLetterPolicyOutput)
+}
+
+// GetSubscriptionDeadLetterPolicyArrayInput is an input type that accepts GetSubscriptionDeadLetterPolicyArray and GetSubscriptionDeadLetterPolicyArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionDeadLetterPolicyArrayInput` via:
+//
+//	GetSubscriptionDeadLetterPolicyArray{ GetSubscriptionDeadLetterPolicyArgs{...} }
+type GetSubscriptionDeadLetterPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionDeadLetterPolicyArrayOutput() GetSubscriptionDeadLetterPolicyArrayOutput
+	ToGetSubscriptionDeadLetterPolicyArrayOutputWithContext(context.Context) GetSubscriptionDeadLetterPolicyArrayOutput
+}
+
+type GetSubscriptionDeadLetterPolicyArray []GetSubscriptionDeadLetterPolicyInput
+
+func (GetSubscriptionDeadLetterPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionDeadLetterPolicyArray) ToGetSubscriptionDeadLetterPolicyArrayOutput() GetSubscriptionDeadLetterPolicyArrayOutput {
+	return i.ToGetSubscriptionDeadLetterPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionDeadLetterPolicyArray) ToGetSubscriptionDeadLetterPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionDeadLetterPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionDeadLetterPolicyArrayOutput)
+}
+
+type GetSubscriptionDeadLetterPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionDeadLetterPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionDeadLetterPolicyOutput) ToGetSubscriptionDeadLetterPolicyOutput() GetSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionDeadLetterPolicyOutput) ToGetSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) GetSubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionDeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionDeadLetterPolicy) string { return v.DeadLetterTopic }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionDeadLetterPolicyOutput) MaxDeliveryAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSubscriptionDeadLetterPolicy) int { return v.MaxDeliveryAttempts }).(pulumi.IntOutput)
+}
+
+type GetSubscriptionDeadLetterPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionDeadLetterPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionDeadLetterPolicyArrayOutput) ToGetSubscriptionDeadLetterPolicyArrayOutput() GetSubscriptionDeadLetterPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionDeadLetterPolicyArrayOutput) ToGetSubscriptionDeadLetterPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionDeadLetterPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionDeadLetterPolicyArrayOutput) Index(i pulumi.IntInput) GetSubscriptionDeadLetterPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionDeadLetterPolicy {
+		return vs[0].([]GetSubscriptionDeadLetterPolicy)[vs[1].(int)]
+	}).(GetSubscriptionDeadLetterPolicyOutput)
+}
+
+type GetSubscriptionExpirationPolicy struct {
+	Ttl string `pulumi:"ttl"`
+}
+
+// GetSubscriptionExpirationPolicyInput is an input type that accepts GetSubscriptionExpirationPolicyArgs and GetSubscriptionExpirationPolicyOutput values.
+// You can construct a concrete instance of `GetSubscriptionExpirationPolicyInput` via:
+//
+//	GetSubscriptionExpirationPolicyArgs{...}
+type GetSubscriptionExpirationPolicyInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionExpirationPolicyOutput() GetSubscriptionExpirationPolicyOutput
+	ToGetSubscriptionExpirationPolicyOutputWithContext(context.Context) GetSubscriptionExpirationPolicyOutput
+}
+
+type GetSubscriptionExpirationPolicyArgs struct {
+	Ttl pulumi.StringInput `pulumi:"ttl"`
+}
+
+func (GetSubscriptionExpirationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionExpirationPolicyArgs) ToGetSubscriptionExpirationPolicyOutput() GetSubscriptionExpirationPolicyOutput {
+	return i.ToGetSubscriptionExpirationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionExpirationPolicyArgs) ToGetSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) GetSubscriptionExpirationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionExpirationPolicyOutput)
+}
+
+// GetSubscriptionExpirationPolicyArrayInput is an input type that accepts GetSubscriptionExpirationPolicyArray and GetSubscriptionExpirationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionExpirationPolicyArrayInput` via:
+//
+//	GetSubscriptionExpirationPolicyArray{ GetSubscriptionExpirationPolicyArgs{...} }
+type GetSubscriptionExpirationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionExpirationPolicyArrayOutput() GetSubscriptionExpirationPolicyArrayOutput
+	ToGetSubscriptionExpirationPolicyArrayOutputWithContext(context.Context) GetSubscriptionExpirationPolicyArrayOutput
+}
+
+type GetSubscriptionExpirationPolicyArray []GetSubscriptionExpirationPolicyInput
+
+func (GetSubscriptionExpirationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionExpirationPolicyArray) ToGetSubscriptionExpirationPolicyArrayOutput() GetSubscriptionExpirationPolicyArrayOutput {
+	return i.ToGetSubscriptionExpirationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionExpirationPolicyArray) ToGetSubscriptionExpirationPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionExpirationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionExpirationPolicyArrayOutput)
+}
+
+type GetSubscriptionExpirationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionExpirationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionExpirationPolicyOutput) ToGetSubscriptionExpirationPolicyOutput() GetSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionExpirationPolicyOutput) ToGetSubscriptionExpirationPolicyOutputWithContext(ctx context.Context) GetSubscriptionExpirationPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionExpirationPolicyOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionExpirationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionExpirationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionExpirationPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionExpirationPolicyArrayOutput) ToGetSubscriptionExpirationPolicyArrayOutput() GetSubscriptionExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionExpirationPolicyArrayOutput) ToGetSubscriptionExpirationPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionExpirationPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionExpirationPolicyArrayOutput) Index(i pulumi.IntInput) GetSubscriptionExpirationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionExpirationPolicy {
+		return vs[0].([]GetSubscriptionExpirationPolicy)[vs[1].(int)]
+	}).(GetSubscriptionExpirationPolicyOutput)
+}
+
+type GetSubscriptionPushConfig struct {
+	Attributes   map[string]string                    `pulumi:"attributes"`
+	OidcTokens   []GetSubscriptionPushConfigOidcToken `pulumi:"oidcTokens"`
+	PushEndpoint string                               `pulumi:"pushEndpoint"`
+}
+
+// GetSubscriptionPushConfigInput is an input type that accepts GetSubscriptionPushConfigArgs and GetSubscriptionPushConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigInput` via:
+//
+//	GetSubscriptionPushConfigArgs{...}
+type GetSubscriptionPushConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigOutput() GetSubscriptionPushConfigOutput
+	ToGetSubscriptionPushConfigOutputWithContext(context.Context) GetSubscriptionPushConfigOutput
+}
+
+type GetSubscriptionPushConfigArgs struct {
+	Attributes   pulumi.StringMapInput                        `pulumi:"attributes"`
+	OidcTokens   GetSubscriptionPushConfigOidcTokenArrayInput `pulumi:"oidcTokens"`
+	PushEndpoint pulumi.StringInput                           `pulumi:"pushEndpoint"`
+}
+
+func (GetSubscriptionPushConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigArgs) ToGetSubscriptionPushConfigOutput() GetSubscriptionPushConfigOutput {
+	return i.ToGetSubscriptionPushConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigArgs) ToGetSubscriptionPushConfigOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigOutput)
+}
+
+// GetSubscriptionPushConfigArrayInput is an input type that accepts GetSubscriptionPushConfigArray and GetSubscriptionPushConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigArrayInput` via:
+//
+//	GetSubscriptionPushConfigArray{ GetSubscriptionPushConfigArgs{...} }
+type GetSubscriptionPushConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigArrayOutput() GetSubscriptionPushConfigArrayOutput
+	ToGetSubscriptionPushConfigArrayOutputWithContext(context.Context) GetSubscriptionPushConfigArrayOutput
+}
+
+type GetSubscriptionPushConfigArray []GetSubscriptionPushConfigInput
+
+func (GetSubscriptionPushConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigArray) ToGetSubscriptionPushConfigArrayOutput() GetSubscriptionPushConfigArrayOutput {
+	return i.ToGetSubscriptionPushConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigArray) ToGetSubscriptionPushConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigArrayOutput)
+}
+
+type GetSubscriptionPushConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigOutput) ToGetSubscriptionPushConfigOutput() GetSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOutput) ToGetSubscriptionPushConfigOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+}
+
+func (o GetSubscriptionPushConfigOutput) OidcTokens() GetSubscriptionPushConfigOidcTokenArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfig) []GetSubscriptionPushConfigOidcToken { return v.OidcTokens }).(GetSubscriptionPushConfigOidcTokenArrayOutput)
+}
+
+func (o GetSubscriptionPushConfigOutput) PushEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionPushConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigArrayOutput) ToGetSubscriptionPushConfigArrayOutput() GetSubscriptionPushConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigArrayOutput) ToGetSubscriptionPushConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionPushConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionPushConfig {
+		return vs[0].([]GetSubscriptionPushConfig)[vs[1].(int)]
+	}).(GetSubscriptionPushConfigOutput)
+}
+
+type GetSubscriptionPushConfigOidcToken struct {
+	Audience            string `pulumi:"audience"`
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// GetSubscriptionPushConfigOidcTokenInput is an input type that accepts GetSubscriptionPushConfigOidcTokenArgs and GetSubscriptionPushConfigOidcTokenOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigOidcTokenInput` via:
+//
+//	GetSubscriptionPushConfigOidcTokenArgs{...}
+type GetSubscriptionPushConfigOidcTokenInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigOidcTokenOutput() GetSubscriptionPushConfigOidcTokenOutput
+	ToGetSubscriptionPushConfigOidcTokenOutputWithContext(context.Context) GetSubscriptionPushConfigOidcTokenOutput
+}
+
+type GetSubscriptionPushConfigOidcTokenArgs struct {
+	Audience            pulumi.StringInput `pulumi:"audience"`
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (GetSubscriptionPushConfigOidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigOidcTokenArgs) ToGetSubscriptionPushConfigOidcTokenOutput() GetSubscriptionPushConfigOidcTokenOutput {
+	return i.ToGetSubscriptionPushConfigOidcTokenOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigOidcTokenArgs) ToGetSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigOidcTokenOutput)
+}
+
+// GetSubscriptionPushConfigOidcTokenArrayInput is an input type that accepts GetSubscriptionPushConfigOidcTokenArray and GetSubscriptionPushConfigOidcTokenArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigOidcTokenArrayInput` via:
+//
+//	GetSubscriptionPushConfigOidcTokenArray{ GetSubscriptionPushConfigOidcTokenArgs{...} }
+type GetSubscriptionPushConfigOidcTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigOidcTokenArrayOutput() GetSubscriptionPushConfigOidcTokenArrayOutput
+	ToGetSubscriptionPushConfigOidcTokenArrayOutputWithContext(context.Context) GetSubscriptionPushConfigOidcTokenArrayOutput
+}
+
+type GetSubscriptionPushConfigOidcTokenArray []GetSubscriptionPushConfigOidcTokenInput
+
+func (GetSubscriptionPushConfigOidcTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigOidcTokenArray) ToGetSubscriptionPushConfigOidcTokenArrayOutput() GetSubscriptionPushConfigOidcTokenArrayOutput {
+	return i.ToGetSubscriptionPushConfigOidcTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigOidcTokenArray) ToGetSubscriptionPushConfigOidcTokenArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOidcTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigOidcTokenArrayOutput)
+}
+
+type GetSubscriptionPushConfigOidcTokenOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigOidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigOidcTokenOutput) ToGetSubscriptionPushConfigOidcTokenOutput() GetSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOidcTokenOutput) ToGetSubscriptionPushConfigOidcTokenOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOidcTokenOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfigOidcToken) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionPushConfigOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionPushConfigOidcTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigOidcTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfigOidcToken)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigOidcTokenArrayOutput) ToGetSubscriptionPushConfigOidcTokenArrayOutput() GetSubscriptionPushConfigOidcTokenArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOidcTokenArrayOutput) ToGetSubscriptionPushConfigOidcTokenArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigOidcTokenArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigOidcTokenArrayOutput) Index(i pulumi.IntInput) GetSubscriptionPushConfigOidcTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionPushConfigOidcToken {
+		return vs[0].([]GetSubscriptionPushConfigOidcToken)[vs[1].(int)]
+	}).(GetSubscriptionPushConfigOidcTokenOutput)
+}
+
+type GetSubscriptionRetryPolicy struct {
+	MaximumBackoff string `pulumi:"maximumBackoff"`
+	MinimumBackoff string `pulumi:"minimumBackoff"`
+}
+
+// GetSubscriptionRetryPolicyInput is an input type that accepts GetSubscriptionRetryPolicyArgs and GetSubscriptionRetryPolicyOutput values.
+// You can construct a concrete instance of `GetSubscriptionRetryPolicyInput` via:
+//
+//	GetSubscriptionRetryPolicyArgs{...}
+type GetSubscriptionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionRetryPolicyOutput() GetSubscriptionRetryPolicyOutput
+	ToGetSubscriptionRetryPolicyOutputWithContext(context.Context) GetSubscriptionRetryPolicyOutput
+}
+
+type GetSubscriptionRetryPolicyArgs struct {
+	MaximumBackoff pulumi.StringInput `pulumi:"maximumBackoff"`
+	MinimumBackoff pulumi.StringInput `pulumi:"minimumBackoff"`
+}
+
+func (GetSubscriptionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionRetryPolicyArgs) ToGetSubscriptionRetryPolicyOutput() GetSubscriptionRetryPolicyOutput {
+	return i.ToGetSubscriptionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionRetryPolicyArgs) ToGetSubscriptionRetryPolicyOutputWithContext(ctx context.Context) GetSubscriptionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionRetryPolicyOutput)
+}
+
+// GetSubscriptionRetryPolicyArrayInput is an input type that accepts GetSubscriptionRetryPolicyArray and GetSubscriptionRetryPolicyArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionRetryPolicyArrayInput` via:
+//
+//	GetSubscriptionRetryPolicyArray{ GetSubscriptionRetryPolicyArgs{...} }
+type GetSubscriptionRetryPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionRetryPolicyArrayOutput() GetSubscriptionRetryPolicyArrayOutput
+	ToGetSubscriptionRetryPolicyArrayOutputWithContext(context.Context) GetSubscriptionRetryPolicyArrayOutput
+}
+
+type GetSubscriptionRetryPolicyArray []GetSubscriptionRetryPolicyInput
+
+func (GetSubscriptionRetryPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (i GetSubscriptionRetryPolicyArray) ToGetSubscriptionRetryPolicyArrayOutput() GetSubscriptionRetryPolicyArrayOutput {
+	return i.ToGetSubscriptionRetryPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionRetryPolicyArray) ToGetSubscriptionRetryPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionRetryPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionRetryPolicyArrayOutput)
+}
+
+type GetSubscriptionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionRetryPolicyOutput) ToGetSubscriptionRetryPolicyOutput() GetSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionRetryPolicyOutput) ToGetSubscriptionRetryPolicyOutputWithContext(ctx context.Context) GetSubscriptionRetryPolicyOutput {
+	return o
+}
+
+func (o GetSubscriptionRetryPolicyOutput) MaximumBackoff() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionRetryPolicy) string { return v.MaximumBackoff }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionRetryPolicyOutput) MinimumBackoff() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionRetryPolicy) string { return v.MinimumBackoff }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionRetryPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionRetryPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionRetryPolicy)(nil)).Elem()
+}
+
+func (o GetSubscriptionRetryPolicyArrayOutput) ToGetSubscriptionRetryPolicyArrayOutput() GetSubscriptionRetryPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionRetryPolicyArrayOutput) ToGetSubscriptionRetryPolicyArrayOutputWithContext(ctx context.Context) GetSubscriptionRetryPolicyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubscriptionRetryPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionRetryPolicy {
+		return vs[0].([]GetSubscriptionRetryPolicy)[vs[1].(int)]
+	}).(GetSubscriptionRetryPolicyOutput)
+}
+
 type GetTopicMessageStoragePolicy struct {
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
 }
@@ -3176,6 +3788,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyPtrInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsPtrInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigArrayInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyArrayInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyArrayInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigInput)(nil)).Elem(), GetSubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigArrayInput)(nil)).Elem(), GetSubscriptionPushConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigOidcTokenInput)(nil)).Elem(), GetSubscriptionPushConfigOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigOidcTokenArrayInput)(nil)).Elem(), GetSubscriptionPushConfigOidcTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionRetryPolicyInput)(nil)).Elem(), GetSubscriptionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionRetryPolicyArrayInput)(nil)).Elem(), GetSubscriptionRetryPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyInput)(nil)).Elem(), GetTopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyArrayInput)(nil)).Elem(), GetTopicMessageStoragePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSchemaSettingInput)(nil)).Elem(), GetTopicSchemaSettingArgs{})
@@ -3214,6 +3838,18 @@ func init() {
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigOidcTokenOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigOidcTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionRetryPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})

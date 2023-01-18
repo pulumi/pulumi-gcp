@@ -152,7 +152,7 @@ type Instance struct {
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -207,7 +207,7 @@ type instanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]string `pulumi:"labels"`
-	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -234,7 +234,7 @@ type InstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.StringMapInput
-	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -265,7 +265,7 @@ type instanceArgs struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]string `pulumi:"labels"`
-	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -293,7 +293,7 @@ type InstanceArgs struct {
 	InstanceType pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.StringMapInput
-	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -421,7 +421,7 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -264,6 +264,20 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Expire time of the certificate in RFC3339 text format.
+     * 
+     */
+    @Export(name="expireTime", type=String.class, parameters={})
+    private Output<String> expireTime;
+
+    /**
+     * @return Expire time of the certificate in RFC3339 text format.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
+    }
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match

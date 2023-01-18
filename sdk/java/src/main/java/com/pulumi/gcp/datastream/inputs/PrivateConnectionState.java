@@ -65,14 +65,14 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the location this repository is located in.
+     * The name of the location this private connection is located in.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The name of the location this repository is located in.
+     * @return The name of the location this private connection is located in.
      * 
      */
     public Optional<Output<String>> location() {
@@ -266,7 +266,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location The name of the location this repository is located in.
+         * @param location The name of the location this private connection is located in.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location The name of the location this repository is located in.
+         * @param location The name of the location this private connection is located in.
          * 
          * @return builder
          * 

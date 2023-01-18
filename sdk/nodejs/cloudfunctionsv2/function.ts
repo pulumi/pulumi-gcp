@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     member: gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`),
  * });
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "sa",
+ *     accountId: "gcf-sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
  * });
  * // Permissions on the service account used by the function and Eventarc trigger

@@ -21,7 +21,7 @@ func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...p
 
 // A collection of arguments for invoking getAndroidApp.
 type LookupAndroidAppArgs struct {
-	// The appIp of name of the Firebase androidApp.
+	// The appId of name of the Firebase androidApp.
 	AppId string `pulumi:"appId"`
 }
 
@@ -30,11 +30,14 @@ type LookupAndroidAppResult struct {
 	AppId          string `pulumi:"appId"`
 	DeletionPolicy string `pulumi:"deletionPolicy"`
 	DisplayName    string `pulumi:"displayName"`
+	Etag           string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	PackageName string `pulumi:"packageName"`
-	Project     string `pulumi:"project"`
+	Id           string   `pulumi:"id"`
+	Name         string   `pulumi:"name"`
+	PackageName  string   `pulumi:"packageName"`
+	Project      string   `pulumi:"project"`
+	Sha1Hashes   []string `pulumi:"sha1Hashes"`
+	Sha256Hashes []string `pulumi:"sha256Hashes"`
 }
 
 func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidAppResultOutput {
@@ -52,7 +55,7 @@ func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs
 
 // A collection of arguments for invoking getAndroidApp.
 type LookupAndroidAppOutputArgs struct {
-	// The appIp of name of the Firebase androidApp.
+	// The appId of name of the Firebase androidApp.
 	AppId pulumi.StringInput `pulumi:"appId"`
 }
 
@@ -87,6 +90,10 @@ func (o LookupAndroidAppResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupAndroidAppResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAndroidAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Id }).(pulumi.StringOutput)
@@ -102,6 +109,14 @@ func (o LookupAndroidAppResultOutput) PackageName() pulumi.StringOutput {
 
 func (o LookupAndroidAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupAndroidAppResultOutput) Sha1Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha1Hashes }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupAndroidAppResultOutput) Sha256Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha256Hashes }).(pulumi.StringArrayOutput)
 }
 
 func init() {

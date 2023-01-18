@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsNodePoolConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+        /// </summary>
+        [Input("autoscalingMetricsCollection")]
+        public Input<Inputs.AwsNodePoolConfigAutoscalingMetricsCollectionGetArgs>? AutoscalingMetricsCollection { get; set; }
+
+        /// <summary>
         /// The ARN of the AWS KMS key used to encrypt node pool configuration.
         /// </summary>
         [Input("configEncryption", required: true)]

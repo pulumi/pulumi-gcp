@@ -71,6 +71,88 @@ import * as utilities from "../utilities";
  *     router: "my-router",
  * });
  * ```
+ * ### Router Peer Router Appliance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     network: network.selfLink,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ * });
+ * const addrIntf = new gcp.compute.Address("addrIntf", {
+ *     region: subnetwork.region,
+ *     subnetwork: subnetwork.id,
+ *     addressType: "INTERNAL",
+ * });
+ * const addrIntfRedundant = new gcp.compute.Address("addrIntfRedundant", {
+ *     region: subnetwork.region,
+ *     subnetwork: subnetwork.id,
+ *     addressType: "INTERNAL",
+ * });
+ * const addrPeer = new gcp.compute.Address("addrPeer", {
+ *     region: subnetwork.region,
+ *     subnetwork: subnetwork.id,
+ *     addressType: "INTERNAL",
+ * });
+ * const instance = new gcp.compute.Instance("instance", {
+ *     zone: "us-central1-a",
+ *     machineType: "e2-medium",
+ *     canIpForward: true,
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         networkIp: addrPeer.address,
+ *         subnetwork: subnetwork.selfLink,
+ *     }],
+ * });
+ * const hub = new gcp.networkconnectivity.Hub("hub", {});
+ * const spoke = new gcp.networkconnectivity.Spoke("spoke", {
+ *     location: subnetwork.region,
+ *     hub: hub.id,
+ *     linkedRouterApplianceInstances: {
+ *         instances: [{
+ *             virtualMachine: instance.selfLink,
+ *             ipAddress: addrPeer.address,
+ *         }],
+ *         siteToSiteDataTransfer: false,
+ *     },
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     region: subnetwork.region,
+ *     network: network.selfLink,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const interfaceRedundant = new gcp.compute.RouterInterface("interfaceRedundant", {
+ *     region: router.region,
+ *     router: router.name,
+ *     subnetwork: subnetwork.selfLink,
+ *     privateIpAddress: addrIntfRedundant.address,
+ * });
+ * const _interface = new gcp.compute.RouterInterface("interface", {
+ *     region: router.region,
+ *     router: router.name,
+ *     subnetwork: subnetwork.selfLink,
+ *     privateIpAddress: addrIntf.address,
+ *     redundantInterface: interfaceRedundant.name,
+ * });
+ * const peer = new gcp.compute.RouterPeer("peer", {
+ *     router: router.name,
+ *     region: router.region,
+ *     "interface": _interface.name,
+ *     routerApplianceInstance: instance.selfLink,
+ *     peerAsn: 65513,
+ *     peerIpAddress: addrPeer.address,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -211,6 +293,13 @@ export class RouterPeer extends pulumi.CustomResource {
      * The name of the Cloud Router in which this BgpPeer will be configured.
      */
     public readonly router!: pulumi.Output<string>;
+    /**
+     * The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     */
+    public readonly routerApplianceInstance!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterPeer resource with the given unique name, arguments, and options.
@@ -240,6 +329,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["routerApplianceInstance"] = state ? state.routerApplianceInstance : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
             if ((!args || args.interface === undefined) && !opts.urn) {
@@ -268,6 +358,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["routerApplianceInstance"] = args ? args.routerApplianceInstance : undefined;
             resourceInputs["managementType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -370,6 +461,13 @@ export interface RouterPeerState {
      * The name of the Cloud Router in which this BgpPeer will be configured.
      */
     router?: pulumi.Input<string>;
+    /**
+     * The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     */
+    routerApplianceInstance?: pulumi.Input<string>;
 }
 
 /**
@@ -460,4 +558,11 @@ export interface RouterPeerArgs {
      * The name of the Cloud Router in which this BgpPeer will be configured.
      */
     router: pulumi.Input<string>;
+    /**
+     * The URI of the VM instance that is used as third-party router appliances
+     * such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+     * The VM instance must be located in zones contained in the same region as
+     * this Cloud Router. The VM instance is the peer side of the BGP session.
+     */
+    routerApplianceInstance?: pulumi.Input<string>;
 }

@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			account, err := serviceAccount.NewAccount(ctx, "account", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("sa"),
+//				AccountId:   pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
 //			if err != nil {

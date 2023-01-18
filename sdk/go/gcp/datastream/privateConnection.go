@@ -90,7 +90,7 @@ type PrivateConnection struct {
 	Errors PrivateConnectionErrorArrayOutput `pulumi:"errors"`
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this private connection is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -154,7 +154,7 @@ type privateConnectionState struct {
 	Errors []PrivateConnectionError `pulumi:"errors"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this private connection is located in.
 	Location *string `pulumi:"location"`
 	// The resource's name.
 	Name *string `pulumi:"name"`
@@ -178,7 +178,7 @@ type PrivateConnectionState struct {
 	Errors PrivateConnectionErrorArrayInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the location this private connection is located in.
 	Location pulumi.StringPtrInput
 	// The resource's name.
 	Name pulumi.StringPtrInput
@@ -204,7 +204,7 @@ type privateConnectionArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the location this private connection is located in.
 	Location string `pulumi:"location"`
 	// The private connectivity identifier.
 	PrivateConnectionId string `pulumi:"privateConnectionId"`
@@ -223,7 +223,7 @@ type PrivateConnectionArgs struct {
 	DisplayName pulumi.StringInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the location this private connection is located in.
 	Location pulumi.StringInput
 	// The private connectivity identifier.
 	PrivateConnectionId pulumi.StringInput
@@ -338,7 +338,7 @@ func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the location this repository is located in.
+// The name of the location this private connection is located in.
 func (o PrivateConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

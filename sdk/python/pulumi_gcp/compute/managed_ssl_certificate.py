@@ -159,7 +159,7 @@ class _ManagedSslCertificateState:
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] expire_time: Expire time of the certificate.
+        :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
         :param pulumi.Input['ManagedSslCertificateManagedArgs'] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
@@ -240,7 +240,7 @@ class _ManagedSslCertificateState:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire time of the certificate.
+        Expire time of the certificate in RFC3339 text format.
         """
         return pulumi.get(self, "expire_time")
 
@@ -534,7 +534,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] expire_time: Expire time of the certificate.
+        :param pulumi.Input[str] expire_time: Expire time of the certificate in RFC3339 text format.
         :param pulumi.Input[pulumi.InputType['ManagedSslCertificateManagedArgs']] managed: Properties relevant to a managed certificate.  These will be used if the
                certificate is managed (as indicated by a value of `MANAGED` in `type`).
                Structure is documented below.
@@ -598,7 +598,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
-        Expire time of the certificate.
+        Expire time of the certificate in RFC3339 text format.
         """
         return pulumi.get(self, "expire_time")
 

@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Version of the information type to use. By default, the version is set to stable
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public PreventionInspectTemplateInspectConfigInfoTypeArgs()
         {
         }

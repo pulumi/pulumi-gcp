@@ -22,7 +22,8 @@ class OsPolicyAssignmentArgs:
                  rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 skip_await_rollout: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a OsPolicyAssignment resource.
         :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Required. Filter to select VMs.
@@ -32,6 +33,7 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] name: Required. The name of the repository.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         """
         pulumi.set(__self__, "instance_filter", instance_filter)
         pulumi.set(__self__, "location", location)
@@ -43,6 +45,8 @@ class OsPolicyAssignmentArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_await_rollout is not None:
+            pulumi.set(__self__, "skip_await_rollout", skip_await_rollout)
 
     @property
     @pulumi.getter(name="instanceFilter")
@@ -128,6 +132,18 @@ class OsPolicyAssignmentArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="skipAwaitRollout")
+    def skip_await_rollout(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to skip awaiting rollout during resource creation and update.
+        """
+        return pulumi.get(self, "skip_await_rollout")
+
+    @skip_await_rollout.setter
+    def skip_await_rollout(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_await_rollout", value)
+
 
 @pulumi.input_type
 class _OsPolicyAssignmentState:
@@ -146,6 +162,7 @@ class _OsPolicyAssignmentState:
                  revision_id: Optional[pulumi.Input[str]] = None,
                  rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
                  rollout_state: Optional[pulumi.Input[str]] = None,
+                 skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OsPolicyAssignment resources.
@@ -168,6 +185,7 @@ class _OsPolicyAssignmentState:
         :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
                CANCELLED, SUCCEEDED
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment resource.
         """
         if baseline is not None:
@@ -198,6 +216,8 @@ class _OsPolicyAssignmentState:
             pulumi.set(__self__, "rollout", rollout)
         if rollout_state is not None:
             pulumi.set(__self__, "rollout_state", rollout_state)
+        if skip_await_rollout is not None:
+            pulumi.set(__self__, "skip_await_rollout", skip_await_rollout)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -375,6 +395,18 @@ class _OsPolicyAssignmentState:
         pulumi.set(self, "rollout_state", value)
 
     @property
+    @pulumi.getter(name="skipAwaitRollout")
+    def skip_await_rollout(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to skip awaiting rollout during resource creation and update.
+        """
+        return pulumi.get(self, "skip_await_rollout")
+
+    @skip_await_rollout.setter
+    def skip_await_rollout(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_await_rollout", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -399,6 +431,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Represents an OSPolicyAssignment resource.
@@ -435,425 +468,26 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 description="A test os policy",
                 id="policy",
                 mode="VALIDATION",
-                resource_groups=[
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                            os_short_name="centos",
-                            os_version="8.*",
-                        )],
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
-                                        name="bazel",
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                        os_short_name="centos",
+                        os_version="8.*",
+                    )],
+                    resources=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                        id="apt",
+                        pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
+                            apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
+                                name="bazel",
                             ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            local_path="$HOME/package.deb",
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="ftp.us.debian.org/debian/package.deb",
-                                            ),
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="yum",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    yum=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs(
-                                        name="gstreamer-plugins-base-devel.x86_64",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="zypper",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    zypper=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs(
-                                        name="gcc",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            local_path="$HOME/package.rpm",
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="https://mirror.jaleco.com/centos/8.3.2011/BaseOS/x86_64/os/Packages/efi-filesystem-3-2.el8.noarch.rpm",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ],
-                    ),
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt-to-deb",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
-                                        name="bazel",
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb-local-path-to-gcs",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            local_path="$HOME/package.deb",
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="googet",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    googet=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs(
-                                        name="gcc",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        properties=["REBOOT=ReallySuppress"],
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            local_path="$HOME/package.msi",
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="https://remote.uri.com/package.msi",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ],
-                    ),
-                ],
+                            desired_state="INSTALLED",
+                        ),
+                    )],
+                )],
             )],
             project="my-project-name",
             rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
                 disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
                     fixed=1,
-                ),
-                min_wait_duration="3.5s",
-            ))
-        ```
-        ### Percent_os_policy_assignment
-        An example of an osconfig os policy assignment with percent rollout disruption budget
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.osconfig.OsPolicyAssignment("primary",
-            description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=True,
-            ),
-            location="us-west1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt-to-yum",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                        archive_type="DEB",
-                                        components=["doc"],
-                                        distribution="debian",
-                                        gpg_key=".gnupg/pubring.kbx",
-                                        uri="https://atl.mirrors.clouvider.net/debian",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="yum",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    yum=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs(
-                                        base_url="http://centos.s.uw.edu/centos/",
-                                        display_name="yum",
-                                        gpg_keys=["RPM-GPG-KEY-CentOS-7"],
-                                        id="yum",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="zypper",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    zypper=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs(
-                                        base_url="http://mirror.dal10.us.leaseweb.net/opensuse",
-                                        display_name="zypper",
-                                        gpg_keys=["sample-key-uri"],
-                                        id="zypper",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="goo",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    goo=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs(
-                                        name="goo",
-                                        url="https://foo.com/googet/bar",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                                sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                                uri="https://www.example.com/script.sh",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            local_path="$HOME/script.sh",
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec1",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            local_path="$HOME/script.sh",
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs(
-                                                sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                                uri="https://www.example.com/script.sh",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec2",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                        script="pwd",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            allow_insecure=True,
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec3",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            allow_insecure=True,
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                        script="pwd",
-                                    ),
-                                ),
-                                id="exec4",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        local_path="$HOME/file",
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file1",
-                            ),
-                        ],
-                    ),
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs(
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                            uri="https://www.example.com/file",
-                                        ),
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file2",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs(
-                                            bucket="test-bucket",
-                                            generation=1,
-                                            object="test-object",
-                                        ),
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file3",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    content="sample-content",
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file4",
-                            ),
-                        ],
-                    ),
-                ],
-            )],
-            project="my-project-name",
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=1,
                 ),
                 min_wait_duration="3.5s",
             ))
@@ -884,6 +518,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         """
         ...
     @overload
@@ -926,425 +561,26 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 description="A test os policy",
                 id="policy",
                 mode="VALIDATION",
-                resource_groups=[
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
-                            os_short_name="centos",
-                            os_version="8.*",
-                        )],
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
-                                        name="bazel",
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                        os_short_name="centos",
+                        os_version="8.*",
+                    )],
+                    resources=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                        id="apt",
+                        pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
+                            apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
+                                name="bazel",
                             ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            local_path="$HOME/package.deb",
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="ftp.us.debian.org/debian/package.deb",
-                                            ),
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="yum",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    yum=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs(
-                                        name="gstreamer-plugins-base-devel.x86_64",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="zypper",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    zypper=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs(
-                                        name="gcc",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        pull_deps=True,
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            local_path="$HOME/package.rpm",
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="https://mirror.jaleco.com/centos/8.3.2011/BaseOS/x86_64/os/Packages/efi-filesystem-3-2.el8.noarch.rpm",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="rpm3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    rpm=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ],
-                    ),
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt-to-deb",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs(
-                                        name="bazel",
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="deb-local-path-to-gcs",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    deb=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs(
-                                            local_path="$HOME/package.deb",
-                                        ),
-                                    ),
-                                    desired_state="INSTALLED",
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="googet",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    googet=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs(
-                                        name="gcc",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi1",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        properties=["REBOOT=ReallySuppress"],
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            local_path="$HOME/package.msi",
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi2",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs(
-                                                sha256_checksum="3bbfd1043cd7afdb78cf9afec36c0c5370d2fea98166537b4e67f3816f256025",
-                                                uri="https://remote.uri.com/package.msi",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="msi3",
-                                pkg=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs(
-                                    desired_state="INSTALLED",
-                                    msi=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs(
-                                        source=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs(
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ],
-                    ),
-                ],
+                            desired_state="INSTALLED",
+                        ),
+                    )],
+                )],
             )],
             project="my-project-name",
             rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
                 disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
                     fixed=1,
-                ),
-                min_wait_duration="3.5s",
-            ))
-        ```
-        ### Percent_os_policy_assignment
-        An example of an osconfig os policy assignment with percent rollout disruption budget
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.osconfig.OsPolicyAssignment("primary",
-            description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
-                all=True,
-            ),
-            location="us-west1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
-                id="policy",
-                mode="VALIDATION",
-                resource_groups=[
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="apt-to-yum",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
-                                        archive_type="DEB",
-                                        components=["doc"],
-                                        distribution="debian",
-                                        gpg_key=".gnupg/pubring.kbx",
-                                        uri="https://atl.mirrors.clouvider.net/debian",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="yum",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    yum=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs(
-                                        base_url="http://centos.s.uw.edu/centos/",
-                                        display_name="yum",
-                                        gpg_keys=["RPM-GPG-KEY-CentOS-7"],
-                                        id="yum",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="zypper",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    zypper=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs(
-                                        base_url="http://mirror.dal10.us.leaseweb.net/opensuse",
-                                        display_name="zypper",
-                                        gpg_keys=["sample-key-uri"],
-                                        id="zypper",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                id="goo",
-                                repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                    goo=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs(
-                                        name="goo",
-                                        url="https://foo.com/googet/bar",
-                                    ),
-                                ),
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
-                                                sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                                uri="https://www.example.com/script.sh",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            local_path="$HOME/script.sh",
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec1",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            local_path="$HOME/script.sh",
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        args=["arg1"],
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            allow_insecure=True,
-                                            remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs(
-                                                sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                                uri="https://www.example.com/script.sh",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec2",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                        script="pwd",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
-                                            allow_insecure=True,
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                ),
-                                id="exec3",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                    enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
-                                        file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
-                                            allow_insecure=True,
-                                            gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs(
-                                                bucket="test-bucket",
-                                                generation=1,
-                                                object="test-object",
-                                            ),
-                                        ),
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                    ),
-                                    validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
-                                        interpreter="SHELL",
-                                        output_file_path="$HOME/out",
-                                        script="pwd",
-                                    ),
-                                ),
-                                id="exec4",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        local_path="$HOME/file",
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file1",
-                            ),
-                        ],
-                    ),
-                    gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                        resources=[
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs(
-                                            sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
-                                            uri="https://www.example.com/file",
-                                        ),
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file2",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs(
-                                        gcs=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs(
-                                            bucket="test-bucket",
-                                            generation=1,
-                                            object="test-object",
-                                        ),
-                                    ),
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file3",
-                            ),
-                            gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                                file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs(
-                                    content="sample-content",
-                                    path="$HOME/file",
-                                    state="PRESENT",
-                                ),
-                                id="file4",
-                            ),
-                        ],
-                    ),
-                ],
-            )],
-            project="my-project-name",
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
-                    percent=1,
                 ),
                 min_wait_duration="3.5s",
             ))
@@ -1388,6 +624,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1412,6 +649,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             if rollout is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout'")
             __props__.__dict__["rollout"] = rollout
+            __props__.__dict__["skip_await_rollout"] = skip_await_rollout
             __props__.__dict__["baseline"] = None
             __props__.__dict__["deleted"] = None
             __props__.__dict__["etag"] = None
@@ -1444,6 +682,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             revision_id: Optional[pulumi.Input[str]] = None,
             rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
             rollout_state: Optional[pulumi.Input[str]] = None,
+            skip_await_rollout: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'OsPolicyAssignment':
         """
         Get an existing OsPolicyAssignment resource's state with the given name, id, and optional extra
@@ -1471,6 +710,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
                CANCELLED, SUCCEEDED
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1491,6 +731,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         __props__.__dict__["revision_id"] = revision_id
         __props__.__dict__["rollout"] = rollout
         __props__.__dict__["rollout_state"] = rollout_state
+        __props__.__dict__["skip_await_rollout"] = skip_await_rollout
         __props__.__dict__["uid"] = uid
         return OsPolicyAssignment(resource_name, opts=opts, __props__=__props__)
 
@@ -1610,6 +851,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
         CANCELLED, SUCCEEDED
         """
         return pulumi.get(self, "rollout_state")
+
+    @property
+    @pulumi.getter(name="skipAwaitRollout")
+    def skip_await_rollout(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to true to skip awaiting rollout during resource creation and update.
+        """
+        return pulumi.get(self, "skip_await_rollout")
 
     @property
     @pulumi.getter

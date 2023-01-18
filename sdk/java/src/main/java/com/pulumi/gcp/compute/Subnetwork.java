@@ -482,15 +482,15 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="privateIpGoogleAccess", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> privateIpGoogleAccess;
+    private Output<Boolean> privateIpGoogleAccess;
 
     /**
      * @return When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      * 
      */
-    public Output<Optional<Boolean>> privateIpGoogleAccess() {
-        return Codegen.optional(this.privateIpGoogleAccess);
+    public Output<Boolean> privateIpGoogleAccess() {
+        return this.privateIpGoogleAccess;
     }
     /**
      * The private IPv6 google access type for the VMs in this subnet.

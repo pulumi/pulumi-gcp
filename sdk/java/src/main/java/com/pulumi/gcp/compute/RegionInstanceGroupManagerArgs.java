@@ -9,6 +9,8 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfi
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulDiskArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulExternalIpArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerStatefulInternalIpArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerUpdatePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
 import java.lang.Boolean;
@@ -241,6 +243,36 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     }
 
     /**
+     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Import(name="statefulExternalIps")
+    private @Nullable Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps;
+
+    /**
+     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>>> statefulExternalIps() {
+        return Optional.ofNullable(this.statefulExternalIps);
+    }
+
+    /**
+     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    @Import(name="statefulInternalIps")
+    private @Nullable Output<List<RegionInstanceGroupManagerStatefulInternalIpArgs>> statefulInternalIps;
+
+    /**
+     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionInstanceGroupManagerStatefulInternalIpArgs>>> statefulInternalIps() {
+        return Optional.ofNullable(this.statefulInternalIps);
+    }
+
+    /**
      * The full URL of all target pools to which new
      * instances in the group are added. Updating the target pools attribute does
      * not affect existing instances.
@@ -363,6 +395,8 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         this.project = $.project;
         this.region = $.region;
         this.statefulDisks = $.statefulDisks;
+        this.statefulExternalIps = $.statefulExternalIps;
+        this.statefulInternalIps = $.statefulInternalIps;
         this.targetPools = $.targetPools;
         this.targetSize = $.targetSize;
         this.updatePolicy = $.updatePolicy;
@@ -707,6 +741,68 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
          */
         public Builder statefulDisks(RegionInstanceGroupManagerStatefulDiskArgs... statefulDisks) {
             return statefulDisks(List.of(statefulDisks));
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(@Nullable Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps) {
+            $.statefulExternalIps = statefulExternalIps;
+            return this;
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(List<RegionInstanceGroupManagerStatefulExternalIpArgs> statefulExternalIps) {
+            return statefulExternalIps(Output.of(statefulExternalIps));
+        }
+
+        /**
+         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulExternalIps(RegionInstanceGroupManagerStatefulExternalIpArgs... statefulExternalIps) {
+            return statefulExternalIps(List.of(statefulExternalIps));
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(@Nullable Output<List<RegionInstanceGroupManagerStatefulInternalIpArgs>> statefulInternalIps) {
+            $.statefulInternalIps = statefulInternalIps;
+            return this;
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(List<RegionInstanceGroupManagerStatefulInternalIpArgs> statefulInternalIps) {
+            return statefulInternalIps(Output.of(statefulInternalIps));
+        }
+
+        /**
+         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulInternalIps(RegionInstanceGroupManagerStatefulInternalIpArgs... statefulInternalIps) {
+            return statefulInternalIps(List.of(statefulInternalIps));
         }
 
         /**

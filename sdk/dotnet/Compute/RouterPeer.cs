@@ -93,6 +93,129 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Peer Router Appliance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Network = network.SelfLink,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var addrIntf = new Gcp.Compute.Address("addrIntf", new()
+    ///     {
+    ///         Region = subnetwork.Region,
+    ///         Subnetwork = subnetwork.Id,
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var addrIntfRedundant = new Gcp.Compute.Address("addrIntfRedundant", new()
+    ///     {
+    ///         Region = subnetwork.Region,
+    ///         Subnetwork = subnetwork.Id,
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var addrPeer = new Gcp.Compute.Address("addrPeer", new()
+    ///     {
+    ///         Region = subnetwork.Region,
+    ///         Subnetwork = subnetwork.Id,
+    ///         AddressType = "INTERNAL",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Compute.Instance("instance", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = true,
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 NetworkIp = addrPeer.IPAddress,
+    ///                 Subnetwork = subnetwork.SelfLink,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var hub = new Gcp.NetworkConnectivity.Hub("hub");
+    /// 
+    ///     var spoke = new Gcp.NetworkConnectivity.Spoke("spoke", new()
+    ///     {
+    ///         Location = subnetwork.Region,
+    ///         Hub = hub.Id,
+    ///         LinkedRouterApplianceInstances = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesArgs
+    ///         {
+    ///             Instances = new[]
+    ///             {
+    ///                 new Gcp.NetworkConnectivity.Inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs
+    ///                 {
+    ///                     VirtualMachine = instance.SelfLink,
+    ///                     IpAddress = addrPeer.IPAddress,
+    ///                 },
+    ///             },
+    ///             SiteToSiteDataTransfer = false,
+    ///         },
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = subnetwork.Region,
+    ///         Network = network.SelfLink,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    ///     var interfaceRedundant = new Gcp.Compute.RouterInterface("interfaceRedundant", new()
+    ///     {
+    ///         Region = router.Region,
+    ///         Router = router.Name,
+    ///         Subnetwork = subnetwork.SelfLink,
+    ///         PrivateIpAddress = addrIntfRedundant.IPAddress,
+    ///     });
+    /// 
+    ///     var @interface = new Gcp.Compute.RouterInterface("interface", new()
+    ///     {
+    ///         Region = router.Region,
+    ///         Router = router.Name,
+    ///         Subnetwork = subnetwork.SelfLink,
+    ///         PrivateIpAddress = addrIntf.IPAddress,
+    ///         RedundantInterface = interfaceRedundant.Name,
+    ///     });
+    /// 
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
+    ///     {
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         Interface = @interface.Name,
+    ///         RouterApplianceInstance = instance.SelfLink,
+    ///         PeerAsn = 65513,
+    ///         PeerIpAddress = addrPeer.IPAddress,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -237,6 +360,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of the VM instance that is used as third-party router appliances
+        /// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        /// The VM instance must be located in zones contained in the same region as
+        /// this Cloud Router. The VM instance is the peer side of the BGP session.
+        /// </summary>
+        [Output("routerApplianceInstance")]
+        public Output<string?> RouterApplianceInstance { get; private set; } = null!;
 
 
         /// <summary>
@@ -408,6 +540,15 @@ namespace Pulumi.Gcp.Compute
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
 
+        /// <summary>
+        /// The URI of the VM instance that is used as third-party router appliances
+        /// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        /// The VM instance must be located in zones contained in the same region as
+        /// this Cloud Router. The VM instance is the peer side of the BGP session.
+        /// </summary>
+        [Input("routerApplianceInstance")]
+        public Input<string>? RouterApplianceInstance { get; set; }
+
         public RouterPeerArgs()
         {
         }
@@ -548,6 +689,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }
+
+        /// <summary>
+        /// The URI of the VM instance that is used as third-party router appliances
+        /// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        /// The VM instance must be located in zones contained in the same region as
+        /// this Cloud Router. The VM instance is the peer side of the BGP session.
+        /// </summary>
+        [Input("routerApplianceInstance")]
+        public Input<string>? RouterApplianceInstance { get; set; }
 
         public RouterPeerState()
         {

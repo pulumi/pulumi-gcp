@@ -15,8 +15,15 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// <summary>
         /// The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
         /// </summary>
-        [Input("fixedNodeCount", required: true)]
-        public Input<int> FixedNodeCount { get; set; } = null!;
+        [Input("fixedNodeCount")]
+        public Input<int>? FixedNodeCount { get; set; }
+
+        /// <summary>
+        /// Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scaling")]
+        public Input<Inputs.AiFeatureStoreOnlineServingConfigScalingArgs>? Scaling { get; set; }
 
         public AiFeatureStoreOnlineServingConfigArgs()
         {

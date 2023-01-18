@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about ProjectLocation, see:
  * 
- * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.defaultLocation/finalize)
+ * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
  * * How-to Guides
  *     * [Official Documentation](https://firebase.google.com/)
  * 

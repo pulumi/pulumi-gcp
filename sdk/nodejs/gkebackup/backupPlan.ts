@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a Backup Plan instance.
+ *
+ * To get more information about BackupPlan, see:
+ *
+ * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ *
  * ## Example Usage
  * ### Gkebackup Backupplan Basic
  *
@@ -25,8 +33,6 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -36,8 +42,6 @@ import * as utilities from "../utilities";
  *         includeSecrets: true,
  *         allNamespaces: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Gkebackup Backupplan Autopilot
@@ -58,8 +62,6 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
  *     cluster: primary.id,
@@ -69,8 +71,6 @@ import * as utilities from "../utilities";
  *         includeSecrets: true,
  *         allNamespaces: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Gkebackup Backupplan Cmek
@@ -90,15 +90,9 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id}, {
- *     provider: google_beta,
- * });
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
  * const cmek = new gcp.gkebackup.BackupPlan("cmek", {
  *     cluster: primary.id,
  *     location: "us-central1",
@@ -115,8 +109,6 @@ import * as utilities from "../utilities";
  *             gcpKmsEncryptionKey: cryptoKey.id,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Gkebackup Backupplan Full
@@ -136,8 +128,6 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const full = new gcp.gkebackup.BackupPlan("full", {
  *     cluster: primary.id,
@@ -165,8 +155,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

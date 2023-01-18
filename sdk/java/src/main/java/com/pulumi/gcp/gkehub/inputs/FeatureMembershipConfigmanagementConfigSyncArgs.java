@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -32,6 +33,23 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
      */
     public Optional<Output<FeatureMembershipConfigmanagementConfigSyncGitArgs>> git() {
         return Optional.ofNullable(this.git);
+    }
+
+    /**
+     * - 
+     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     */
+    @Import(name="oci")
+    private @Nullable Output<FeatureMembershipConfigmanagementConfigSyncOciArgs> oci;
+
+    /**
+     * @return -
+     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureMembershipConfigmanagementConfigSyncOciArgs>> oci() {
+        return Optional.ofNullable(this.oci);
     }
 
     /**
@@ -68,6 +86,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
 
     private FeatureMembershipConfigmanagementConfigSyncArgs(FeatureMembershipConfigmanagementConfigSyncArgs $) {
         this.git = $.git;
+        this.oci = $.oci;
         this.preventDrift = $.preventDrift;
         this.sourceFormat = $.sourceFormat;
     }
@@ -111,6 +130,29 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
          */
         public Builder git(FeatureMembershipConfigmanagementConfigSyncGitArgs git) {
             return git(Output.of(git));
+        }
+
+        /**
+         * @param oci -
+         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oci(@Nullable Output<FeatureMembershipConfigmanagementConfigSyncOciArgs> oci) {
+            $.oci = oci;
+            return this;
+        }
+
+        /**
+         * @param oci -
+         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oci(FeatureMembershipConfigmanagementConfigSyncOciArgs oci) {
+            return oci(Output.of(oci));
         }
 
         /**

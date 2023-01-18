@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         }
 
         /// <summary>
-        /// Primitive transformation to apply to the infoType.
+        /// Apply the transformation to the entire field.
+        /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
         /// Structure is documented below.
         /// </summary>
         [Input("primitiveTransformation", required: true)]

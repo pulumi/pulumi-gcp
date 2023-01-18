@@ -47,7 +47,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("stableChannelVersion", central1b.ReleaseChannelDefaultVersion.STABLE)
+//			ctx.Export("stableChannelDefaultVersion", central1b.ReleaseChannelDefaultVersion.STABLE)
+//			ctx.Export("stableChannelLatestVersion", central1b.ReleaseChannelLatestVersion.STABLE)
 //			return nil
 //		})
 //	}
@@ -95,6 +96,8 @@ type GetEngineVersionsResult struct {
 	Project           *string `pulumi:"project"`
 	// A map from a release channel name to the channel's default version.
 	ReleaseChannelDefaultVersion map[string]string `pulumi:"releaseChannelDefaultVersion"`
+	// A map from a release channel name to the channel's latest version.
+	ReleaseChannelLatestVersion map[string]string `pulumi:"releaseChannelLatestVersion"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.
@@ -184,6 +187,11 @@ func (o GetEngineVersionsResultOutput) Project() pulumi.StringPtrOutput {
 // A map from a release channel name to the channel's default version.
 func (o GetEngineVersionsResultOutput) ReleaseChannelDefaultVersion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelDefaultVersion }).(pulumi.StringMapOutput)
+}
+
+// A map from a release channel name to the channel's latest version.
+func (o GetEngineVersionsResultOutput) ReleaseChannelLatestVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEngineVersionsResult) map[string]string { return v.ReleaseChannelLatestVersion }).(pulumi.StringMapOutput)
 }
 
 // A list of versions available in the given zone for use with master instances.

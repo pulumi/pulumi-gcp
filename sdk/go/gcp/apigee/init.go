@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
 		r = &Organization{}
+	case "gcp:apigee/syncAuthorization:SyncAuthorization":
+		r = &SyncAuthorization{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -109,6 +111,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/syncAuthorization",
 		&module{version},
 	)
 }

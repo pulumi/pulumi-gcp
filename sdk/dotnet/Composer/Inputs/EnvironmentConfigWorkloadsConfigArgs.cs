@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("scheduler")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs>? Scheduler { get; set; }
 
+        [Input("triggerer")]
+        public Input<Inputs.EnvironmentConfigWorkloadsConfigTriggererArgs>? Triggerer { get; set; }
+
         [Input("webServer")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigWebServerArgs>? WebServer { get; set; }
 

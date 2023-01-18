@@ -38,6 +38,17 @@ __all__ = [
     'ClusterClusterConfigWorkerConfigDiskConfigArgs',
     'ClusterIAMBindingConditionArgs',
     'ClusterIAMMemberConditionArgs',
+    'ClusterVirtualClusterConfigArgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs',
     'JobHadoopConfigArgs',
     'JobHadoopConfigLoggingConfigArgs',
     'JobHiveConfigArgs',
@@ -72,6 +83,7 @@ __all__ = [
     'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs',
     'MetastoreServiceNetworkConfigArgs',
     'MetastoreServiceNetworkConfigConsumerArgs',
+    'MetastoreServiceTelemetryConfigArgs',
     'WorkflowTemplateJobArgs',
     'WorkflowTemplateJobHadoopJobArgs',
     'WorkflowTemplateJobHadoopJobLoggingConfigArgs',
@@ -2376,6 +2388,581 @@ class ClusterIAMMemberConditionArgs:
 
 
 @pulumi.input_type
+class ClusterVirtualClusterConfigArgs:
+    def __init__(__self__, *,
+                 auxiliary_services_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']] = None,
+                 kubernetes_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']] = None,
+                 staging_bucket: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs'] auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
+               Structure defined below.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs'] kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
+               Structure defined below.
+               - - -
+        :param pulumi.Input[str] staging_bucket: The Cloud Storage staging bucket used to stage files,
+               such as Hadoop jars, between client machines and the cluster.
+               Note: If you don't explicitly specify a `staging_bucket`
+               then GCP will auto create / assign one for you. However, you are not guaranteed
+               an auto generated bucket which is solely dedicated to your cluster; it may be shared
+               with other clusters in the same region/zone also choosing to use the auto generation
+               option.
+        """
+        if auxiliary_services_config is not None:
+            pulumi.set(__self__, "auxiliary_services_config", auxiliary_services_config)
+        if kubernetes_cluster_config is not None:
+            pulumi.set(__self__, "kubernetes_cluster_config", kubernetes_cluster_config)
+        if staging_bucket is not None:
+            pulumi.set(__self__, "staging_bucket", staging_bucket)
+
+    @property
+    @pulumi.getter(name="auxiliaryServicesConfig")
+    def auxiliary_services_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']]:
+        """
+        Configuration of auxiliary services used by this cluster. 
+        Structure defined below.
+        """
+        return pulumi.get(self, "auxiliary_services_config")
+
+    @auxiliary_services_config.setter
+    def auxiliary_services_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']]):
+        pulumi.set(self, "auxiliary_services_config", value)
+
+    @property
+    @pulumi.getter(name="kubernetesClusterConfig")
+    def kubernetes_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']]:
+        """
+        The configuration for running the Dataproc cluster on Kubernetes.
+        Structure defined below.
+        - - -
+        """
+        return pulumi.get(self, "kubernetes_cluster_config")
+
+    @kubernetes_cluster_config.setter
+    def kubernetes_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']]):
+        pulumi.set(self, "kubernetes_cluster_config", value)
+
+    @property
+    @pulumi.getter(name="stagingBucket")
+    def staging_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Storage staging bucket used to stage files,
+        such as Hadoop jars, between client machines and the cluster.
+        Note: If you don't explicitly specify a `staging_bucket`
+        then GCP will auto create / assign one for you. However, you are not guaranteed
+        an auto generated bucket which is solely dedicated to your cluster; it may be shared
+        with other clusters in the same region/zone also choosing to use the auto generation
+        option.
+        """
+        return pulumi.get(self, "staging_bucket")
+
+    @staging_bucket.setter
+    def staging_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "staging_bucket", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs:
+    def __init__(__self__, *,
+                 metastore_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']] = None,
+                 spark_history_server_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']] = None):
+        """
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs'] metastore_config: The config setting for metastore service with the cluster.
+               Structure defined below.
+               - - -
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs'] spark_history_server_config: The Spark History Server configuration for the workload.
+        """
+        if metastore_config is not None:
+            pulumi.set(__self__, "metastore_config", metastore_config)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreConfig")
+    def metastore_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']]:
+        """
+        The config setting for metastore service with the cluster.
+        Structure defined below.
+        - - -
+        """
+        return pulumi.get(self, "metastore_config")
+
+    @metastore_config.setter
+    def metastore_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']]):
+        pulumi.set(self, "metastore_config", value)
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']]:
+        """
+        The Spark History Server configuration for the workload.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+    @spark_history_server_config.setter
+    def spark_history_server_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']]):
+        pulumi.set(self, "spark_history_server_config", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs:
+    def __init__(__self__, *,
+                 dataproc_metastore_service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataproc_metastore_service: Resource name of an existing Dataproc Metastore service.
+        """
+        if dataproc_metastore_service is not None:
+            pulumi.set(__self__, "dataproc_metastore_service", dataproc_metastore_service)
+
+    @property
+    @pulumi.getter(name="dataprocMetastoreService")
+    def dataproc_metastore_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        return pulumi.get(self, "dataproc_metastore_service")
+
+    @dataproc_metastore_service.setter
+    def dataproc_metastore_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_metastore_service", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs:
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+               - - -
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        - - -
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+    @dataproc_cluster.setter
+    def dataproc_cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_cluster", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
+    def __init__(__self__, *,
+                 gke_cluster_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs'],
+                 kubernetes_software_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs'],
+                 kubernetes_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs'] gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs'] kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
+        :param pulumi.Input[str] kubernetes_namespace: A namespace within the Kubernetes cluster to deploy into. 
+               If this namespace does not exist, it is created.
+               If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+               If not specified, the name of the Dataproc Cluster is used.
+        """
+        pulumi.set(__self__, "gke_cluster_config", gke_cluster_config)
+        pulumi.set(__self__, "kubernetes_software_config", kubernetes_software_config)
+        if kubernetes_namespace is not None:
+            pulumi.set(__self__, "kubernetes_namespace", kubernetes_namespace)
+
+    @property
+    @pulumi.getter(name="gkeClusterConfig")
+    def gke_cluster_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs']:
+        """
+        The configuration for running the Dataproc cluster on GKE.
+        """
+        return pulumi.get(self, "gke_cluster_config")
+
+    @gke_cluster_config.setter
+    def gke_cluster_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs']):
+        pulumi.set(self, "gke_cluster_config", value)
+
+    @property
+    @pulumi.getter(name="kubernetesSoftwareConfig")
+    def kubernetes_software_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs']:
+        """
+        The software configuration for this Dataproc cluster running on Kubernetes.
+        """
+        return pulumi.get(self, "kubernetes_software_config")
+
+    @kubernetes_software_config.setter
+    def kubernetes_software_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs']):
+        pulumi.set(self, "kubernetes_software_config", value)
+
+    @property
+    @pulumi.getter(name="kubernetesNamespace")
+    def kubernetes_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        A namespace within the Kubernetes cluster to deploy into. 
+        If this namespace does not exist, it is created.
+        If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+        If not specified, the name of the Dataproc Cluster is used.
+        """
+        return pulumi.get(self, "kubernetes_namespace")
+
+    @kubernetes_namespace.setter
+    def kubernetes_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_namespace", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
+    def __init__(__self__, *,
+                 gke_cluster_target: Optional[pulumi.Input[str]] = None,
+                 node_pool_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]] = None):
+        """
+        :param pulumi.Input[str] gke_cluster_target: A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+               (the GKE cluster can be zonal or regional)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+               GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+               Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+        """
+        if gke_cluster_target is not None:
+            pulumi.set(__self__, "gke_cluster_target", gke_cluster_target)
+        if node_pool_targets is not None:
+            pulumi.set(__self__, "node_pool_targets", node_pool_targets)
+
+    @property
+    @pulumi.getter(name="gkeClusterTarget")
+    def gke_cluster_target(self) -> Optional[pulumi.Input[str]]:
+        """
+        A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+        (the GKE cluster can be zonal or regional)
+        """
+        return pulumi.get(self, "gke_cluster_target")
+
+    @gke_cluster_target.setter
+    def gke_cluster_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_cluster_target", value)
+
+    @property
+    @pulumi.getter(name="nodePoolTargets")
+    def node_pool_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]]:
+        """
+        GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+        Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+        """
+        return pulumi.get(self, "node_pool_targets")
+
+    @node_pool_targets.setter
+    def node_pool_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]]):
+        pulumi.set(self, "node_pool_targets", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs:
+    def __init__(__self__, *,
+                 node_pool: pulumi.Input[str],
+                 roles: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 node_pool_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] node_pool: The target GKE node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles associated with the GKE node pool. 
+               One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs'] node_pool_config: The configuration for the GKE node pool. 
+               If specified, Dataproc attempts to create a node pool with the specified shape.
+               If one with the same name already exists, it is verified against all specified fields.
+               If a field differs, the virtual cluster creation will fail.
+        """
+        pulumi.set(__self__, "node_pool", node_pool)
+        pulumi.set(__self__, "roles", roles)
+        if node_pool_config is not None:
+            pulumi.set(__self__, "node_pool_config", node_pool_config)
+
+    @property
+    @pulumi.getter(name="nodePool")
+    def node_pool(self) -> pulumi.Input[str]:
+        """
+        The target GKE node pool.
+        """
+        return pulumi.get(self, "node_pool")
+
+    @node_pool.setter
+    def node_pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_pool", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The roles associated with the GKE node pool. 
+        One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter(name="nodePoolConfig")
+    def node_pool_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']]:
+        """
+        The configuration for the GKE node pool. 
+        If specified, Dataproc attempts to create a node pool with the specified shape.
+        If one with the same name already exists, it is verified against all specified fields.
+        If a field differs, the virtual cluster creation will fail.
+        """
+        return pulumi.get(self, "node_pool_config")
+
+    @node_pool_config.setter
+    def node_pool_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']]):
+        pulumi.set(self, "node_pool_config", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 autoscaling: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']] = None,
+                 config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Compute Engine zones where node pool nodes associated 
+               with a Dataproc on GKE virtual cluster will be located.
+               - - -
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs'] autoscaling: The autoscaler configuration for this node pool. 
+               The autoscaler is enabled only when a valid configuration is present.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs'] config: The node pool configuration.
+        """
+        pulumi.set(__self__, "locations", locations)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of Compute Engine zones where node pool nodes associated 
+        with a Dataproc on GKE virtual cluster will be located.
+        - - -
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']]:
+        """
+        The autoscaler configuration for this node pool. 
+        The autoscaler is enabled only when a valid configuration is present.
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']]:
+        """
+        The node pool configuration.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs:
+    def __init__(__self__, *,
+                 max_node_count: Optional[pulumi.Input[int]] = None,
+                 min_node_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+        """
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: Optional[pulumi.Input[int]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 preemptible: Optional[pulumi.Input[bool]] = None,
+                 spot: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] local_ssd_count: The number of local SSD disks to attach to the node, 
+               which is limited by the maximum number of disks allowable per zone.
+        :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type
+               to create for the worker nodes. If not specified, GCP will default to a predetermined
+               computed value (currently `n1-standard-4`).
+        :param pulumi.Input[str] min_cpu_platform: The name of a minimum generation of CPU family
+               for the master. If not specified, GCP will default to a predetermined computed value
+               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+               for details about which CPU families are available (and defaulted) for each zone.
+        :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances. 
+               Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+               CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        :param pulumi.Input[bool] spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        """
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if preemptible is not None:
+            pulumi.set(__self__, "preemptible", preemptible)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of local SSD disks to attach to the node, 
+        which is limited by the maximum number of disks allowable per zone.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "local_ssd_count", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a Google Compute Engine machine type
+        to create for the worker nodes. If not specified, GCP will default to a predetermined
+        computed value (currently `n1-standard-4`).
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a minimum generation of CPU family
+        for the master. If not specified, GCP will default to a predetermined computed value
+        for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        for details about which CPU families are available (and defaulted) for each zone.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the nodes are created as preemptible VM instances. 
+        Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+        CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        """
+        return pulumi.get(self, "preemptible")
+
+    @preemptible.setter
+    def preemptible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        """
+        return pulumi.get(self, "spot")
+
+    @spot.setter
+    def spot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "spot", value)
+
+
+@pulumi.input_type
+class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs:
+    def __init__(__self__, *,
+                 component_version: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] component_version: The components that should be installed in this Dataproc cluster. The key must be a string from the   
+               KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+               * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+               for example spark:spark.kubernetes.container.image.
+        """
+        pulumi.set(__self__, "component_version", component_version)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter(name="componentVersion")
+    def component_version(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The components that should be installed in this Dataproc cluster. The key must be a string from the   
+        KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+        * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+        """
+        return pulumi.get(self, "component_version")
+
+    @component_version.setter
+    def component_version(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "component_version", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        for example spark:spark.kubernetes.container.image.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+
+@pulumi.input_type
 class JobHadoopConfigArgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4116,6 +4703,33 @@ class MetastoreServiceNetworkConfigConsumerArgs:
     @endpoint_uri.setter
     def endpoint_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_uri", value)
+
+
+@pulumi.input_type
+class MetastoreServiceTelemetryConfigArgs:
+    def __init__(__self__, *,
+                 log_format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] log_format: The output format of the Dataproc Metastore service's logs.
+               Default value is `JSON`.
+               Possible values are `LEGACY` and `JSON`.
+        """
+        if log_format is not None:
+            pulumi.set(__self__, "log_format", log_format)
+
+    @property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output format of the Dataproc Metastore service's logs.
+        Default value is `JSON`.
+        Possible values are `LEGACY` and `JSON`.
+        """
+        return pulumi.get(self, "log_format")
+
+    @log_format.setter
+    def log_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_format", value)
 
 
 @pulumi.input_type

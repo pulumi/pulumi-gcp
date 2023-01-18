@@ -326,6 +326,13 @@ namespace Pulumi.Gcp
             set => _containerAnalysisCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _containerAttachedCustomEndpoint = new __Value<string?>(() => __config.Get("containerAttachedCustomEndpoint"));
+        public static string? ContainerAttachedCustomEndpoint
+        {
+            get => _containerAttachedCustomEndpoint.Get();
+            set => _containerAttachedCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _containerAwsCustomEndpoint = new __Value<string?>(() => __config.Get("containerAwsCustomEndpoint"));
         public static string? ContainerAwsCustomEndpoint
         {
@@ -492,6 +499,13 @@ namespace Pulumi.Gcp
         {
             get => _firebaseCustomEndpoint.Get();
             set => _firebaseCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _firebaseDatabaseCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseDatabaseCustomEndpoint"));
+        public static string? FirebaseDatabaseCustomEndpoint
+        {
+            get => _firebaseDatabaseCustomEndpoint.Get();
+            set => _firebaseDatabaseCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _firebaseHostingCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseHostingCustomEndpoint"));

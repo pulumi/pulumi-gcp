@@ -14,14 +14,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTime
     public static final PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs Empty = new PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs();
 
     /**
-     * The name of the Datastore kind.
+     * Name of a BigQuery field to be returned with the findings.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Datastore kind.
+     * @return Name of a BigQuery field to be returned with the findings.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTime
         }
 
         /**
-         * @param name The name of the Datastore kind.
+         * @param name Name of a BigQuery field to be returned with the findings.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTime
         }
 
         /**
-         * @param name The name of the Datastore kind.
+         * @param name Name of a BigQuery field to be returned with the findings.
          * 
          * @return builder
          * 

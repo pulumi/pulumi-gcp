@@ -96,6 +96,88 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Config Management With OCI
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;my-membership&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
+ *                 .version(&#34;1.12.0&#34;)
+ *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
+ *                     .oci(FeatureMembershipConfigmanagementConfigSyncOciArgs.builder()
+ *                         .syncRepo(&#34;us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest&#34;)
+ *                         .policyDir(&#34;config-connector&#34;)
+ *                         .syncWaitSecs(&#34;20&#34;)
+ *                         .secretType(&#34;gcpserviceaccount&#34;)
+ *                         .gcpServiceAccountEmail(&#34;sa@project-id.iam.gserviceaccount.com&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Multi Cluster Service Discovery
  * ```java
  * package generated_program;
@@ -191,7 +273,6 @@ import javax.annotation.Nullable;
  *             .membership(membership.membershipId())
  *             .mesh(FeatureMembershipMeshArgs.builder()
  *                 .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
- *                 .controlPlane(&#34;AUTOMATIC&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

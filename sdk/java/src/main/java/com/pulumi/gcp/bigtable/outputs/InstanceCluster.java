@@ -19,7 +19,7 @@ public final class InstanceCluster {
      */
     private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
     /**
-     * @return The ID of the Cloud Bigtable cluster.
+     * @return The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     private String clusterId;
@@ -30,8 +30,7 @@ public final class InstanceCluster {
     private @Nullable String kmsKeyName;
     /**
      * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-     * for a `DEVELOPMENT` instance.
+     * Required, with a minimum of `1` for each cluster in an instance.
      * 
      */
     private @Nullable Integer numNodes;
@@ -58,7 +57,7 @@ public final class InstanceCluster {
         return Optional.ofNullable(this.autoscalingConfig);
     }
     /**
-     * @return The ID of the Cloud Bigtable cluster.
+     * @return The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     public String clusterId() {
@@ -73,8 +72,7 @@ public final class InstanceCluster {
     }
     /**
      * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-     * for a `DEVELOPMENT` instance.
+     * Required, with a minimum of `1` for each cluster in an instance.
      * 
      */
     public Optional<Integer> numNodes() {

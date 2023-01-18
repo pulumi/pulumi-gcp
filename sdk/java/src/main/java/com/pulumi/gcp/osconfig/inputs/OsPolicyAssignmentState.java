@@ -241,6 +241,21 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Set to true to skip awaiting rollout during resource creation and update.
+     * 
+     */
+    @Import(name="skipAwaitRollout")
+    private @Nullable Output<Boolean> skipAwaitRollout;
+
+    /**
+     * @return Set to true to skip awaiting rollout during resource creation and update.
+     * 
+     */
+    public Optional<Output<Boolean>> skipAwaitRollout() {
+        return Optional.ofNullable(this.skipAwaitRollout);
+    }
+
+    /**
      * Output only. Server generated unique id for the OS policy assignment resource.
      * 
      */
@@ -272,6 +287,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         this.revisionId = $.revisionId;
         this.rollout = $.rollout;
         this.rolloutState = $.rolloutState;
+        this.skipAwaitRollout = $.skipAwaitRollout;
         this.uid = $.uid;
     }
 
@@ -605,6 +621,27 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
          */
         public Builder rolloutState(String rolloutState) {
             return rolloutState(Output.of(rolloutState));
+        }
+
+        /**
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitRollout(@Nullable Output<Boolean> skipAwaitRollout) {
+            $.skipAwaitRollout = skipAwaitRollout;
+            return this;
+        }
+
+        /**
+         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitRollout(Boolean skipAwaitRollout) {
+            return skipAwaitRollout(Output.of(skipAwaitRollout));
         }
 
         /**

@@ -2677,6 +2677,40 @@ export namespace assuredworkloads {
 }
 
 export namespace beyondcorp {
+    export interface AppConnectionApplicationEndpoint {
+        /**
+         * Hostname or IP address of the remote application endpoint.
+         */
+        host: string;
+        /**
+         * Port of the remote application endpoint.
+         */
+        port: number;
+    }
+
+    export interface AppConnectionGateway {
+        /**
+         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+         */
+        appGateway: string;
+        /**
+         * -
+         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+         */
+        ingressPort: number;
+        /**
+         * The type of hosting used by the gateway. Refer to
+         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+         * for a list of possible values.
+         */
+        type?: string;
+        /**
+         * -
+         * Server-defined URI for this resource.
+         */
+        uri: string;
+    }
+
     export interface AppConnectorPrincipalInfo {
         /**
          * ServiceAccount represents a GCP service account.
@@ -2695,6 +2729,31 @@ export namespace beyondcorp {
     export interface AppGatewayAllocatedConnection {
         ingressPort?: number;
         pscUri?: string;
+    }
+
+    export interface GetAppConnectionApplicationEndpoint {
+        host: string;
+        port: number;
+    }
+
+    export interface GetAppConnectionGateway {
+        appGateway: string;
+        ingressPort: number;
+        type: string;
+        uri: string;
+    }
+
+    export interface GetAppConnectorPrincipalInfo {
+        serviceAccounts: outputs.beyondcorp.GetAppConnectorPrincipalInfoServiceAccount[];
+    }
+
+    export interface GetAppConnectorPrincipalInfoServiceAccount {
+        email: string;
+    }
+
+    export interface GetAppGatewayAllocatedConnection {
+        ingressPort: number;
+        pscUri: string;
     }
 
 }
@@ -3997,7 +4056,7 @@ export namespace bigtable {
          */
         autoscalingConfig?: outputs.bigtable.InstanceClusterAutoscalingConfig;
         /**
-         * The ID of the Cloud Bigtable cluster.
+         * The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
          */
         clusterId: string;
         /**
@@ -4006,8 +4065,7 @@ export namespace bigtable {
         kmsKeyName: string;
         /**
          * The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-         * for a `DEVELOPMENT` instance.
+         * Required, with a minimum of `1` for each cluster in an instance.
          */
         numNodes: number;
         /**
@@ -4592,7 +4650,8 @@ export namespace certificateauthority {
         isCa: boolean;
         /**
          * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+         * requires setting `zeroMaxIssuerPathLength = true`.
          */
         maxIssuerPathLength?: number;
         /**
@@ -4602,7 +4661,7 @@ export namespace certificateauthority {
         nonCa?: boolean;
         /**
          * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          */
         zeroMaxIssuerPathLength?: boolean;
@@ -6387,6 +6446,174 @@ export namespace cloudasset {
 }
 
 export namespace cloudbuild {
+    export interface GetTriggerApprovalConfig {
+        approvalRequired: boolean;
+    }
+
+    export interface GetTriggerBuild {
+        artifacts: outputs.cloudbuild.GetTriggerBuildArtifact[];
+        availableSecrets: outputs.cloudbuild.GetTriggerBuildAvailableSecret[];
+        images: string[];
+        logsBucket: string;
+        options: outputs.cloudbuild.GetTriggerBuildOption[];
+        queueTtl: string;
+        secrets: outputs.cloudbuild.GetTriggerBuildSecret[];
+        sources: outputs.cloudbuild.GetTriggerBuildSource[];
+        steps: outputs.cloudbuild.GetTriggerBuildStep[];
+        substitutions: {[key: string]: string};
+        tags: string[];
+        timeout: string;
+    }
+
+    export interface GetTriggerBuildArtifact {
+        images: string[];
+        objects: outputs.cloudbuild.GetTriggerBuildArtifactObject[];
+    }
+
+    export interface GetTriggerBuildArtifactObject {
+        /**
+         * The Cloud Build location for the trigger.
+         */
+        location: string;
+        paths: string[];
+        timings: outputs.cloudbuild.GetTriggerBuildArtifactObjectTiming[];
+    }
+
+    export interface GetTriggerBuildArtifactObjectTiming {
+        endTime: string;
+        startTime: string;
+    }
+
+    export interface GetTriggerBuildAvailableSecret {
+        secretManagers: outputs.cloudbuild.GetTriggerBuildAvailableSecretSecretManager[];
+    }
+
+    export interface GetTriggerBuildAvailableSecretSecretManager {
+        env: string;
+        versionName: string;
+    }
+
+    export interface GetTriggerBuildOption {
+        diskSizeGb: number;
+        dynamicSubstitutions: boolean;
+        envs: string[];
+        logStreamingOption: string;
+        logging: string;
+        machineType: string;
+        requestedVerifyOption: string;
+        secretEnvs: string[];
+        sourceProvenanceHashes: string[];
+        substitutionOption: string;
+        volumes: outputs.cloudbuild.GetTriggerBuildOptionVolume[];
+        workerPool: string;
+    }
+
+    export interface GetTriggerBuildOptionVolume {
+        name: string;
+        path: string;
+    }
+
+    export interface GetTriggerBuildSecret {
+        kmsKeyName: string;
+        secretEnv: {[key: string]: string};
+    }
+
+    export interface GetTriggerBuildSource {
+        repoSources: outputs.cloudbuild.GetTriggerBuildSourceRepoSource[];
+        storageSources: outputs.cloudbuild.GetTriggerBuildSourceStorageSource[];
+    }
+
+    export interface GetTriggerBuildSourceRepoSource {
+        branchName: string;
+        commitSha: string;
+        dir: string;
+        invertRegex: boolean;
+        projectId: string;
+        repoName: string;
+        substitutions: {[key: string]: string};
+        tagName: string;
+    }
+
+    export interface GetTriggerBuildSourceStorageSource {
+        bucket: string;
+        generation: string;
+        object: string;
+    }
+
+    export interface GetTriggerBuildStep {
+        args: string[];
+        dir: string;
+        entrypoint: string;
+        envs: string[];
+        id: string;
+        name: string;
+        script: string;
+        secretEnvs: string[];
+        timeout: string;
+        timing: string;
+        volumes: outputs.cloudbuild.GetTriggerBuildStepVolume[];
+        waitFors: string[];
+    }
+
+    export interface GetTriggerBuildStepVolume {
+        name: string;
+        path: string;
+    }
+
+    export interface GetTriggerGitFileSource {
+        path: string;
+        repoType: string;
+        revision: string;
+        uri: string;
+    }
+
+    export interface GetTriggerGithub {
+        name: string;
+        owner: string;
+        pullRequests: outputs.cloudbuild.GetTriggerGithubPullRequest[];
+        pushes: outputs.cloudbuild.GetTriggerGithubPush[];
+    }
+
+    export interface GetTriggerGithubPullRequest {
+        branch: string;
+        commentControl: string;
+        invertRegex: boolean;
+    }
+
+    export interface GetTriggerGithubPush {
+        branch: string;
+        invertRegex: boolean;
+        tag: string;
+    }
+
+    export interface GetTriggerPubsubConfig {
+        serviceAccountEmail: string;
+        state: string;
+        subscription: string;
+        topic: string;
+    }
+
+    export interface GetTriggerSourceToBuild {
+        ref: string;
+        repoType: string;
+        uri: string;
+    }
+
+    export interface GetTriggerTriggerTemplate {
+        branchName: string;
+        commitSha: string;
+        dir: string;
+        invertRegex: boolean;
+        projectId: string;
+        repoName: string;
+        tagName: string;
+    }
+
+    export interface GetTriggerWebhookConfig {
+        secret: string;
+        state: string;
+    }
+
     export interface TriggerApprovalConfig {
         /**
          * Whether or not approval is needed. If this is set on a build, it will become pending when run,
@@ -7456,6 +7683,10 @@ export namespace cloudfunctionsv2 {
          */
         allTrafficOnLatestRevision?: boolean;
         /**
+         * The number of CPUs used in a single container instance. Default value is calculated from available memory.
+         */
+        availableCpu: string;
+        /**
          * The amount of memory available for a function.
          * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
          * supplied the value is interpreted as bytes.
@@ -7481,6 +7712,10 @@ export namespace cloudfunctionsv2 {
          * given time.
          */
         maxInstanceCount?: number;
+        /**
+         * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+         */
+        maxInstanceRequestConcurrency: number;
         /**
          * The limit on the minimum number of function instances that may coexist at a
          * given time.
@@ -7625,11 +7860,13 @@ export namespace cloudfunctionsv2 {
 
     export interface GetFunctionServiceConfig {
         allTrafficOnLatestRevision: boolean;
+        availableCpu: string;
         availableMemory: string;
         environmentVariables: {[key: string]: string};
         gcfUri: string;
         ingressSettings: string;
         maxInstanceCount: number;
+        maxInstanceRequestConcurrency: number;
         minInstanceCount: number;
         secretEnvironmentVariables: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretEnvironmentVariable[];
         secretVolumes: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretVolume[];
@@ -10064,6 +10301,7 @@ export namespace composer {
 
     export interface EnvironmentConfigWorkloadsConfig {
         scheduler?: outputs.composer.EnvironmentConfigWorkloadsConfigScheduler;
+        triggerer?: outputs.composer.EnvironmentConfigWorkloadsConfigTriggerer;
         webServer?: outputs.composer.EnvironmentConfigWorkloadsConfigWebServer;
         worker?: outputs.composer.EnvironmentConfigWorkloadsConfigWorker;
     }
@@ -10073,6 +10311,12 @@ export namespace composer {
         cpu?: number;
         memoryGb?: number;
         storageGb?: number;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigTriggerer {
+        count: number;
+        cpu: number;
+        memoryGb: number;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWebServer {
@@ -10187,6 +10431,7 @@ export namespace composer {
 
     export interface GetEnvironmentConfigWorkloadsConfig {
         schedulers: outputs.composer.GetEnvironmentConfigWorkloadsConfigScheduler[];
+        triggerers: outputs.composer.GetEnvironmentConfigWorkloadsConfigTriggerer[];
         webServers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWebServer[];
         workers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWorker[];
     }
@@ -10196,6 +10441,12 @@ export namespace composer {
         cpu: number;
         memoryGb: number;
         storageGb: number;
+    }
+
+    export interface GetEnvironmentConfigWorkloadsConfigTriggerer {
+        count: number;
+        cpu: number;
+        memoryGb: number;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigWebServer {
@@ -11863,6 +12114,89 @@ export namespace compute {
         enableConfidentialCompute: boolean;
     }
 
+    export interface GetInstanceGroupManagerAllInstancesConfig {
+        labels: {[key: string]: string};
+        metadata: {[key: string]: string};
+    }
+
+    export interface GetInstanceGroupManagerAutoHealingPolicy {
+        healthCheck: string;
+        initialDelaySec: number;
+    }
+
+    export interface GetInstanceGroupManagerNamedPort {
+        /**
+         * The name of the instance group. Either `name` or `selfLink` must be provided.
+         */
+        name: string;
+        port: number;
+    }
+
+    export interface GetInstanceGroupManagerStatefulDisk {
+        deleteRule: string;
+        deviceName: string;
+    }
+
+    export interface GetInstanceGroupManagerStatefulExternalIp {
+        deleteRule: string;
+        interfaceName: string;
+    }
+
+    export interface GetInstanceGroupManagerStatefulInternalIp {
+        deleteRule: string;
+        interfaceName: string;
+    }
+
+    export interface GetInstanceGroupManagerStatus {
+        allInstancesConfigs: outputs.compute.GetInstanceGroupManagerStatusAllInstancesConfig[];
+        isStable: boolean;
+        statefuls: outputs.compute.GetInstanceGroupManagerStatusStateful[];
+        versionTargets: outputs.compute.GetInstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface GetInstanceGroupManagerStatusAllInstancesConfig {
+        effective: boolean;
+    }
+
+    export interface GetInstanceGroupManagerStatusStateful {
+        hasStatefulConfig: boolean;
+        perInstanceConfigs: outputs.compute.GetInstanceGroupManagerStatusStatefulPerInstanceConfig[];
+    }
+
+    export interface GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+        allEffective: boolean;
+    }
+
+    export interface GetInstanceGroupManagerStatusVersionTarget {
+        isReached: boolean;
+    }
+
+    export interface GetInstanceGroupManagerUpdatePolicy {
+        maxSurgeFixed: number;
+        maxSurgePercent: number;
+        maxUnavailableFixed: number;
+        maxUnavailablePercent: number;
+        minReadySec: number;
+        minimalAction: string;
+        mostDisruptiveAllowedAction: string;
+        replacementMethod: string;
+        type: string;
+    }
+
+    export interface GetInstanceGroupManagerVersion {
+        instanceTemplate: string;
+        /**
+         * The name of the instance group. Either `name` or `selfLink` must be provided.
+         */
+        name: string;
+        targetSizes: outputs.compute.GetInstanceGroupManagerVersionTargetSize[];
+    }
+
+    export interface GetInstanceGroupManagerVersionTargetSize {
+        fixed: number;
+        percent: number;
+    }
+
     export interface GetInstanceGroupNamedPort {
         /**
          * The name of the instance group. Either `name` or `selfLink` must be provided.
@@ -12120,6 +12454,9 @@ export namespace compute {
          * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
+        sourceImageEncryptionKeys: outputs.compute.GetInstanceTemplateDiskSourceImageEncryptionKey[];
+        sourceSnapshot: string;
+        sourceSnapshotEncryptionKeys: outputs.compute.GetInstanceTemplateDiskSourceSnapshotEncryptionKey[];
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
@@ -12131,6 +12468,22 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+    }
+
+    export interface GetInstanceTemplateDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+    }
+
+    export interface GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
     }
 
     export interface GetInstanceTemplateGuestAccelerator {
@@ -12929,6 +13282,20 @@ export namespace compute {
         title: string;
     }
 
+    export interface ImageImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud
+         * KMS.
+         */
+        kmsKeySelfLink?: string;
+        /**
+         * The service account being used for the encryption request for the
+         * given KMS key. If absent, the Compute Engine default service
+         * account is used.
+         */
+        kmsKeyServiceAccount?: string;
+    }
+
     export interface ImageRawDisk {
         /**
          * The format used to encode and transmit the block device, which
@@ -13365,13 +13732,29 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: string;
         /**
          * , The device name of the disk to be attached.
          */
         deviceName: string;
+    }
+
+    export interface InstanceGroupManagerStatefulExternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: string;
+        interfaceName?: string;
+    }
+
+    export interface InstanceGroupManagerStatefulInternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: string;
+        interfaceName?: string;
     }
 
     export interface InstanceGroupManagerStatus {
@@ -13880,7 +14263,7 @@ export namespace compute {
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         source?: string;
         /**
@@ -13890,9 +14273,26 @@ export namespace compute {
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
+        /**
+         * The customer-supplied encryption
+         * key of the source image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         */
+        sourceImageEncryptionKey?: outputs.compute.InstanceTemplateDiskSourceImageEncryptionKey;
+        /**
+         * The source snapshot to create this disk.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceSnapshot?: string;
+        /**
+         * The customer-supplied encryption
+         * key of the source snapshot. Structure
+         * documented below.
+         */
+        sourceSnapshotEncryptionKey?: outputs.compute.InstanceTemplateDiskSourceSnapshotEncryptionKey;
         /**
          * The type of reservation from which this instance can consume resources.
          */
@@ -13904,6 +14304,32 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+    }
+
+    export interface InstanceTemplateDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: string;
+    }
+
+    export interface InstanceTemplateDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: string;
     }
 
     export interface InstanceTemplateGuestAccelerator {
@@ -15672,13 +16098,29 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: string;
         /**
          * , The device name of the disk to be attached.
          */
         deviceName: string;
+    }
+
+    export interface RegionInstanceGroupManagerStatefulExternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: string;
+        interfaceName?: string;
+    }
+
+    export interface RegionInstanceGroupManagerStatefulInternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: string;
+        interfaceName?: string;
     }
 
     export interface RegionInstanceGroupManagerStatus {
@@ -20451,6 +20893,84 @@ export namespace config {
 }
 
 export namespace container {
+    export interface AttachedClusterAuthorization {
+        /**
+         * Users that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the users. Up to ten admin users can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminUsers?: string[];
+    }
+
+    export interface AttachedClusterError {
+        message?: string;
+    }
+
+    export interface AttachedClusterFleet {
+        /**
+         * -
+         * The name of the managed Hub Membership resource associated to this
+         * cluster. Membership names are formatted as
+         * projects/<project-number>/locations/global/membership/<cluster-id>.
+         */
+        membership: string;
+        /**
+         * The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         */
+        project: string;
+    }
+
+    export interface AttachedClusterLoggingConfig {
+        /**
+         * The configuration of the logging components
+         * Structure is documented below.
+         */
+        componentConfig?: outputs.container.AttachedClusterLoggingConfigComponentConfig;
+    }
+
+    export interface AttachedClusterLoggingConfigComponentConfig {
+        /**
+         * The components to be enabled.
+         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         */
+        enableComponents?: string[];
+    }
+
+    export interface AttachedClusterMonitoringConfig {
+        /**
+         * Enable Google Cloud Managed Service for Prometheus in the cluster.
+         * Structure is documented below.
+         */
+        managedPrometheusConfig?: outputs.container.AttachedClusterMonitoringConfigManagedPrometheusConfig;
+    }
+
+    export interface AttachedClusterMonitoringConfigManagedPrometheusConfig {
+        /**
+         * Enable Managed Collection.
+         */
+        enabled?: boolean;
+    }
+
+    export interface AttachedClusterOidcConfig {
+        /**
+         * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+         */
+        issuerUrl: string;
+        /**
+         * OIDC verification keys in JWKS format (RFC 7517).
+         */
+        jwks?: string;
+    }
+
+    export interface AttachedClusterWorkloadIdentityConfig {
+        identityProvider?: string;
+        issuerUri?: string;
+        workloadPool?: string;
+    }
+
     export interface AwsClusterAuthorization {
         /**
          * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
@@ -20672,6 +21192,10 @@ export namespace container {
 
     export interface AwsNodePoolConfig {
         /**
+         * Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+         */
+        autoscalingMetricsCollection?: outputs.container.AwsNodePoolConfigAutoscalingMetricsCollection;
+        /**
          * The ARN of the AWS KMS key used to encrypt node pool configuration.
          */
         configEncryption: outputs.container.AwsNodePoolConfigConfigEncryption;
@@ -20719,6 +21243,17 @@ export namespace container {
          * Optional. The initial taints assigned to nodes of this node pool.
          */
         taints?: outputs.container.AwsNodePoolConfigTaint[];
+    }
+
+    export interface AwsNodePoolConfigAutoscalingMetricsCollection {
+        /**
+         * The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+         */
+        granularity: string;
+        /**
+         * The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+         */
+        metrics?: string[];
     }
 
     export interface AwsNodePoolConfigConfigEncryption {
@@ -21974,7 +22509,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolAutoscaling {
-        locationPolicy?: string;
+        locationPolicy: string;
         maxNodeCount?: number;
         minNodeCount?: number;
         totalMaxNodeCount?: number;
@@ -23125,7 +23660,7 @@ export namespace container {
          * * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
          * and reduce preemption risk for Spot VMs.
          */
-        locationPolicy?: string;
+        locationPolicy: string;
         /**
          * Maximum number of nodes per zone in the NodePool.
          * Must be >= min_node_count. Cannot be used with total limits.
@@ -23693,10 +24228,15 @@ export namespace datafusion {
 export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfig {
         /**
-         * Specifies free-text based transformations to be applied to the dataset.
+         * Treat the dataset as free-form text and apply the same free text transformation everywhere
          * Structure is documented below.
          */
-        infoTypeTransformations: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations;
+        infoTypeTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations;
+        /**
+         * Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+         * Structure is documented below.
+         */
+        recordTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
@@ -23715,7 +24255,8 @@ export namespace dataloss {
          */
         infoTypes?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType[];
         /**
-         * Primitive transformation to apply to the infoType.
+         * Apply the transformation to the entire field.
+         * The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
          * Structure is documented below.
          */
         primitiveTransformation: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation;
@@ -23723,15 +24264,14 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
         /**
-         * Partially mask a string by replacing a given number of characters with a fixed character.
-         * Masking can start from the beginning or end of the string.
+         * Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
          * Structure is documented below.
          */
         characterMaskConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig;
@@ -23747,7 +24287,7 @@ export namespace dataloss {
          */
         cryptoReplaceFfxFpeConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig;
         /**
-         * Replace each input value with a given value.
+         * Replace with a specified value.
          * Structure is documented below.
          */
         replaceConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig;
@@ -23764,13 +24304,11 @@ export namespace dataloss {
          */
         charactersToIgnores?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore[];
         /**
-         * Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-         * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-         * strings, and 0 for digits.
+         * is *
          */
         maskingCharacter?: string;
         /**
-         * Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+         * is -4
          */
         numberToMask?: number;
         /**
@@ -23823,7 +24361,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: string;
     }
@@ -23860,7 +24398,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: string;
     }
@@ -23875,7 +24413,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: string;
     }
@@ -23925,7 +24463,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: string;
     }
@@ -23962,7 +24500,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: string;
     }
@@ -23977,7 +24515,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: string;
     }
@@ -23985,6 +24523,7 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
         /**
          * Replace each input value with a given value.
+         * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
          * Structure is documented below.
          */
         newValue: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue;
@@ -24010,7 +24549,7 @@ export namespace dataloss {
          */
         floatValue?: number;
         /**
-         * An integer value.
+         * An integer value (int64 format)
          */
         integerValue?: number;
         /**
@@ -24023,31 +24562,29 @@ export namespace dataloss {
          */
         timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue;
         /**
-         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         timestampValue?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
-         * Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-         * year by itself or a year and month where the day is not significant.
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
          */
         day?: number;
         /**
-         * Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
          */
         month?: number;
         /**
-         * Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
          */
         year?: number;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
         /**
-         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
          */
         hours?: number;
         /**
@@ -24059,7 +24596,443 @@ export namespace dataloss {
          */
         nanos?: number;
         /**
-         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+        /**
+         * Transform the record by applying various field transformations.
+         * Structure is documented below.
+         */
+        fieldTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation[];
+        /**
+         * Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+         * Structure is documented below.
+         */
+        recordSuppressions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
+        /**
+         * A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+         * Structure is documented below.
+         */
+        condition?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition;
+        /**
+         * Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+         * FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+         * Structure is documented below.
+         */
+        fields: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField[];
+        /**
+         * Apply the transformation to the entire field.
+         * The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+         * Structure is documented below.
+         */
+        primitiveTransformation: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
+        /**
+         * An expression, consisting of an operator and conditions.
+         * Structure is documented below.
+         */
+        expressions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions;
+        /**
+         * The operator to apply to the result of conditions. Default and currently only supported value is AND.
+         * Default value is `AND`.
+         * Possible values are `AND`.
+         */
+        logicalOperator?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition {
+        /**
+         * Field within the record this condition is evaluated against.
+         * Structure is documented below.
+         */
+        field: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField;
+        /**
+         * Operator used to compare the field or infoType to the value.
+         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         */
+        operator: string;
+        /**
+         * Value to compare against. [Mandatory, except for EXISTS tests.]
+         * Structure is documented below.
+         */
+        value?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation {
+        /**
+         * Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+         * Structure is documented below.
+         */
+        characterMaskConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig;
+        /**
+         * Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+         */
+        redactConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig;
+        /**
+         * Replace with a specified value.
+         * Structure is documented below.
+         */
+        replaceConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
+        /**
+         * Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+         * Structure is documented below.
+         */
+        charactersToIgnores?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore[];
+        /**
+         * is *
+         */
+        maskingCharacter?: string;
+        /**
+         * is -4
+         */
+        numberToMask?: number;
+        /**
+         * Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+         * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+         */
+        reverseOrder?: boolean;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+        /**
+         * Characters to not transform when masking.
+         */
+        charactersToSkip?: string;
+        /**
+         * Common characters to not transform when masking. Useful to avoid removing punctuation.
+         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         */
+        commonCharactersToIgnore?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig {
+        /**
+         * Replace each input value with a given value.
+         * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+         * Structure is documented below.
+         */
+        newValue: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
+        /**
+         * A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+         * Structure is documented below.
+         */
+        condition?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
+        /**
+         * An expression, consisting of an operator and conditions.
+         * Structure is documented below.
+         */
+        expressions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions;
+        /**
+         * The operator to apply to the result of conditions. Default and currently only supported value is AND.
+         * Default value is `AND`.
+         * Possible values are `AND`.
+         */
+        logicalOperator?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition {
+        /**
+         * Field within the record this condition is evaluated against.
+         * Structure is documented below.
+         */
+        field: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField;
+        /**
+         * Operator used to compare the field or infoType to the value.
+         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         */
+        operator: string;
+        /**
+         * Value to compare against. [Mandatory, except for EXISTS tests.]
+         * Structure is documented below.
+         */
+        value?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          */
         seconds?: number;
     }
@@ -24208,6 +25181,10 @@ export namespace dataloss {
          * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable
+         */
+        version?: string;
     }
 
     export interface PreventionInspectTemplateInspectConfigLimits {
@@ -24529,6 +25506,12 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         /**
+         * Specifies the BigQuery fields that will be returned with findings.
+         * If not specified, no identifying fields will be returned for findings.
+         * Structure is documented below.
+         */
+        identifyingFields?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField[];
+        /**
          * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
          * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
          * specified. Cannot be used in conjunction with TimespanConfig.
@@ -24552,6 +25535,13 @@ export namespace dataloss {
          * Structure is documented below.
          */
         tableReference: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
+        /**
+         * Name of a BigQuery field to be returned with the findings.
+         */
+        name: string;
     }
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
@@ -24658,7 +25648,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
         /**
-         * The name of the Datastore kind.
+         * Name of a BigQuery field to be returned with the findings.
          */
         name: string;
     }
@@ -24698,7 +25688,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
         /**
-         * The name of the Datastore kind.
+         * Name of a BigQuery field to be returned with the findings.
          */
         name: string;
     }
@@ -25676,6 +26666,183 @@ export namespace dataproc {
         title: string;
     }
 
+    export interface ClusterVirtualClusterConfig {
+        /**
+         * Configuration of auxiliary services used by this cluster. 
+         * Structure defined below.
+         */
+        auxiliaryServicesConfig: outputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfig;
+        /**
+         * The configuration for running the Dataproc cluster on Kubernetes.
+         * Structure defined below.
+         * - - -
+         */
+        kubernetesClusterConfig: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfig;
+        /**
+         * The Cloud Storage staging bucket used to stage files,
+         * such as Hadoop jars, between client machines and the cluster.
+         * Note: If you don't explicitly specify a `stagingBucket`
+         * then GCP will auto create / assign one for you. However, you are not guaranteed
+         * an auto generated bucket which is solely dedicated to your cluster; it may be shared
+         * with other clusters in the same region/zone also choosing to use the auto generation
+         * option.
+         */
+        stagingBucket?: string;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+        /**
+         * The config setting for metastore service with the cluster.
+         * Structure defined below.
+         * - - -
+         */
+        metastoreConfig?: outputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig;
+        /**
+         * The Spark History Server configuration for the workload.
+         */
+        sparkHistoryServerConfig?: outputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+        /**
+         * Resource name of an existing Dataproc Metastore service.
+         */
+        dataprocMetastoreService?: string;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+        /**
+         * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+         * - - -
+         */
+        dataprocCluster?: string;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfig {
+        /**
+         * The configuration for running the Dataproc cluster on GKE.
+         */
+        gkeClusterConfig: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig;
+        /**
+         * A namespace within the Kubernetes cluster to deploy into. 
+         * If this namespace does not exist, it is created.
+         * If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+         * If not specified, the name of the Dataproc Cluster is used.
+         */
+        kubernetesNamespace?: string;
+        /**
+         * The software configuration for this Dataproc cluster running on Kubernetes.
+         */
+        kubernetesSoftwareConfig: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+        /**
+         * A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+         * (the GKE cluster can be zonal or regional)
+         */
+        gkeClusterTarget?: string;
+        /**
+         * GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+         * GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+         * Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+         */
+        nodePoolTargets?: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget[];
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
+        /**
+         * The target GKE node pool.
+         */
+        nodePool: string;
+        /**
+         * The configuration for the GKE node pool. 
+         * If specified, Dataproc attempts to create a node pool with the specified shape.
+         * If one with the same name already exists, it is verified against all specified fields.
+         * If a field differs, the virtual cluster creation will fail.
+         */
+        nodePoolConfig: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig;
+        /**
+         * The roles associated with the GKE node pool. 
+         * One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+         */
+        roles: string[];
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
+        /**
+         * The autoscaler configuration for this node pool. 
+         * The autoscaler is enabled only when a valid configuration is present.
+         */
+        autoscaling: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling;
+        /**
+         * The node pool configuration.
+         */
+        config: outputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig;
+        /**
+         * The list of Compute Engine zones where node pool nodes associated 
+         * with a Dataproc on GKE virtual cluster will be located.
+         * - - -
+         */
+        locations: string[];
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+        /**
+         * The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+         */
+        maxNodeCount?: number;
+        /**
+         * The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+         */
+        minNodeCount?: number;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+        /**
+         * The number of local SSD disks to attach to the node, 
+         * which is limited by the maximum number of disks allowable per zone.
+         */
+        localSsdCount?: number;
+        /**
+         * The name of a Google Compute Engine machine type
+         * to create for the worker nodes. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
+         */
+        machineType?: string;
+        /**
+         * The name of a minimum generation of CPU family
+         * for the master. If not specified, GCP will default to a predetermined computed value
+         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for details about which CPU families are available (and defaulted) for each zone.
+         */
+        minCpuPlatform?: string;
+        /**
+         * Whether the nodes are created as preemptible VM instances. 
+         * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+         * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+         */
+        preemptible?: boolean;
+        /**
+         * Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+         */
+        spot?: boolean;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+        /**
+         * The components that should be installed in this Dataproc cluster. The key must be a string from the   
+         * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+         * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+         */
+        componentVersion: {[key: string]: string};
+        /**
+         * The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+         * for example spark:spark.kubernetes.container.image.
+         */
+        properties: {[key: string]: string};
+    }
+
     export interface JobHadoopConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -26099,6 +27266,15 @@ export namespace dataproc {
          * `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
          */
         subnetwork: string;
+    }
+
+    export interface MetastoreServiceTelemetryConfig {
+        /**
+         * The output format of the Dataproc Metastore service's logs.
+         * Default value is `JSON`.
+         * Possible values are `LEGACY` and `JSON`.
+         */
+        logFormat?: string;
     }
 
     export interface WorkflowTemplateJob {
@@ -27312,6 +28488,348 @@ export namespace datastream {
         vpc: string;
     }
 
+    export interface StreamBackfillAll {
+        /**
+         * MySQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        mysqlExcludedObjects?: outputs.datastream.StreamBackfillAllMysqlExcludedObjects;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: outputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase[];
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: outputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable[];
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: outputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: string;
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: string;
+        /**
+         * -
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+    }
+
+    export interface StreamBackfillNone {
+    }
+
+    export interface StreamDestinationConfig {
+        /**
+         * A configuration for how data should be loaded to Cloud Storage.
+         * Structure is documented below.
+         */
+        bigqueryDestinationConfig?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfig;
+        /**
+         * Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+         */
+        destinationConnectionProfile: string;
+        /**
+         * A configuration for how data should be loaded to Cloud Storage.
+         * Structure is documented below.
+         */
+        gcsDestinationConfig?: outputs.datastream.StreamDestinationConfigGcsDestinationConfig;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfig {
+        /**
+         * The guaranteed data freshness (in seconds) when querying tables created by the stream.
+         * Editing this field will only affect new tables created in the future, but existing tables
+         * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+         */
+        dataFreshness?: string;
+        /**
+         * A single target dataset to which all data will be streamed.
+         * Structure is documented below.
+         */
+        singleTargetDataset?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset;
+        /**
+         * Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+         * Structure is documented below.
+         */
+        sourceHierarchyDatasets?: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+        /**
+         * Dataset ID in the format projects/{project}/datasets/{dataset_id}
+         */
+        datasetId: string;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+        /**
+         * Dataset template used for dynamic dataset creation.
+         * Structure is documented below.
+         */
+        datasetTemplate: outputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+        /**
+         * If supplied, every created dataset will have its name prefixed by the provided value.
+         * The prefix and name will be separated by an underscore. i.e. _.
+         */
+        datasetIdPrefix?: string;
+        /**
+         * The geographic location where the dataset should reside.
+         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         */
+        location: string;
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfig {
+        /**
+         * AVRO file format configuration.
+         */
+        avroFileFormat?: outputs.datastream.StreamDestinationConfigGcsDestinationConfigAvroFileFormat;
+        /**
+         * The maximum duration for which new events are added before a file is closed and a new file is created.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+         */
+        fileRotationInterval: string;
+        /**
+         * The maximum file size to be saved in the bucket.
+         */
+        fileRotationMb: number;
+        /**
+         * JSON file format configuration.
+         * Structure is documented below.
+         */
+        jsonFileFormat?: outputs.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormat;
+        /**
+         * Path inside the Cloud Storage bucket to write data to.
+         */
+        path?: string;
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+        /**
+         * Compression of the loaded JSON file.
+         * Possible values are `NO_COMPRESSION` and `GZIP`.
+         */
+        compression?: string;
+        /**
+         * The schema file format along JSON data files.
+         * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+         */
+        schemaFileFormat?: string;
+    }
+
+    export interface StreamSourceConfig {
+        /**
+         * MySQL data source configuration.
+         * Structure is documented below.
+         */
+        mysqlSourceConfig: outputs.datastream.StreamSourceConfigMysqlSourceConfig;
+        /**
+         * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+         */
+        sourceConnectionProfile: string;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfig {
+        /**
+         * MySQL objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: outputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjects;
+        /**
+         * MySQL objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: outputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjects;
+        /**
+         * Maximum number of concurrent CDC tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentCdcTasks: number;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: outputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase[];
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: outputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable[];
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: outputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: string;
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: string;
+        /**
+         * -
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: outputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase[];
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: string;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: outputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable[];
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: outputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: string;
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: string;
+        /**
+         * -
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+    }
+
 }
 
 export namespace deploymentmanager {
@@ -27980,6 +29498,18 @@ export namespace diagflow {
 }
 
 export namespace dns {
+    export interface DnsManagedZoneIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DnsManagedZoneIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface GetKeysKeySigningKey {
         /**
          * String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
@@ -29280,6 +30810,11 @@ export namespace gkehub {
          */
         git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
         /**
+         * -
+         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         */
+        oci?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci;
+        /**
          * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
          */
         preventDrift: boolean;
@@ -29291,7 +30826,7 @@ export namespace gkehub {
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
         /**
-         * The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+         * The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
          */
         gcpServiceAccountEmail?: string;
         /**
@@ -29299,11 +30834,11 @@ export namespace gkehub {
          */
         httpsProxy?: string;
         /**
-         * The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image.
          */
         policyDir?: string;
         /**
-         * Type of secret configured for access to the Git repo.
+         * Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
          */
         secretType?: string;
         /**
@@ -29311,7 +30846,7 @@ export namespace gkehub {
          */
         syncBranch?: string;
         /**
-         * The URL of the Git repository to use as the source of truth.
+         * The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
          */
         syncRepo?: string;
         /**
@@ -29319,7 +30854,30 @@ export namespace gkehub {
          */
         syncRev?: string;
         /**
-         * Period in seconds between consecutive syncs. Default: 15.
+         * Period in seconds(int64 format) between consecutive syncs. Default: 15.
+         */
+        syncWaitSecs?: string;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncOci {
+        /**
+         * The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+         */
+        gcpServiceAccountEmail?: string;
+        /**
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+         */
+        policyDir?: string;
+        /**
+         * Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+         */
+        secretType?: string;
+        /**
+         * The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+         */
+        syncRepo?: string;
+        /**
+         * Period in seconds(int64 format) between consecutive syncs. Default: 15.
          */
         syncWaitSecs?: string;
     }
@@ -29379,9 +30937,6 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipMesh {
-        /**
-         * Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
-         */
         controlPlane?: string;
         /**
          * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -35915,6 +37470,38 @@ export namespace projects {
 }
 
 export namespace pubsub {
+    export interface GetSubscriptionBigqueryConfig {
+        dropUnknownFields: boolean;
+        table: string;
+        useTopicSchema: boolean;
+        writeMetadata: boolean;
+    }
+
+    export interface GetSubscriptionDeadLetterPolicy {
+        deadLetterTopic: string;
+        maxDeliveryAttempts: number;
+    }
+
+    export interface GetSubscriptionExpirationPolicy {
+        ttl: string;
+    }
+
+    export interface GetSubscriptionPushConfig {
+        attributes: {[key: string]: string};
+        oidcTokens: outputs.pubsub.GetSubscriptionPushConfigOidcToken[];
+        pushEndpoint: string;
+    }
+
+    export interface GetSubscriptionPushConfigOidcToken {
+        audience: string;
+        serviceAccountEmail: string;
+    }
+
+    export interface GetSubscriptionRetryPolicy {
+        maximumBackoff: string;
+        minimumBackoff: string;
+    }
+
     export interface GetTopicMessageStoragePolicy {
         allowedPersistenceRegions: string[];
     }
@@ -36865,7 +38452,7 @@ export namespace sql {
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          */
         availabilityType?: string;
@@ -36879,6 +38466,7 @@ export namespace sql {
          */
         connectorEnforcement: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
+        deletionProtectionEnabled?: boolean;
         denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
         /**
          * Enables auto-resizing of the storage size. Defaults to `true`.
@@ -36950,7 +38538,7 @@ export namespace sql {
          */
         location?: string;
         /**
-         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
          */
         pointInTimeRecoveryEnabled?: boolean;
         /**
@@ -37135,7 +38723,7 @@ export namespace sql {
         /**
          * The name of the destination bucket (e.g., gs://mybucket).
          */
-        bucket: string;
+        bucket?: string;
         /**
          * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
@@ -37220,6 +38808,7 @@ export namespace sql {
         collation: string;
         connectorEnforcement: string;
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
+        deletionProtectionEnabled: boolean;
         denyMaintenancePeriods: outputs.sql.GetDatabaseInstanceSettingDenyMaintenancePeriod[];
         diskAutoresize: boolean;
         diskAutoresizeLimit: number;
@@ -37318,6 +38907,196 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceSettingSqlServerAuditConfig {
+        bucket: string;
+        retentionInterval: string;
+        uploadInterval: string;
+    }
+
+    export interface GetDatabaseInstancesInstance {
+        availableMaintenanceVersions: string[];
+        clones: outputs.sql.GetDatabaseInstancesInstanceClone[];
+        connectionName: string;
+        /**
+         * To filter out the Cloud SQL instances which are of the specified database version.
+         */
+        databaseVersion: string;
+        deletionProtection: boolean;
+        encryptionKeyName: string;
+        firstIpAddress: string;
+        instanceType: string;
+        ipAddresses: outputs.sql.GetDatabaseInstancesInstanceIpAddress[];
+        maintenanceVersion: string;
+        masterInstanceName: string;
+        name: string;
+        privateIpAddress: string;
+        /**
+         * The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+         */
+        project: string;
+        publicIpAddress: string;
+        /**
+         * To filter out the Cloud SQL instances which are located in the specified region.
+         */
+        region: string;
+        replicaConfigurations: outputs.sql.GetDatabaseInstancesInstanceReplicaConfiguration[];
+        restoreBackupContexts: outputs.sql.GetDatabaseInstancesInstanceRestoreBackupContext[];
+        rootPassword: string;
+        selfLink: string;
+        serverCaCerts: outputs.sql.GetDatabaseInstancesInstanceServerCaCert[];
+        serviceAccountEmailAddress: string;
+        settings: outputs.sql.GetDatabaseInstancesInstanceSetting[];
+    }
+
+    export interface GetDatabaseInstancesInstanceClone {
+        allocatedIpRange: string;
+        pointInTime: string;
+        sourceInstanceName: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceIpAddress {
+        ipAddress: string;
+        timeToRetire: string;
+        type: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceReplicaConfiguration {
+        caCertificate: string;
+        clientCertificate: string;
+        clientKey: string;
+        connectRetryInterval: number;
+        dumpFilePath: string;
+        failoverTarget: boolean;
+        masterHeartbeatPeriod: number;
+        password: string;
+        sslCipher: string;
+        username: string;
+        verifyServerCertificate: boolean;
+    }
+
+    export interface GetDatabaseInstancesInstanceRestoreBackupContext {
+        backupRunId: number;
+        instanceId: string;
+        /**
+         * The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+         */
+        project: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceServerCaCert {
+        cert: string;
+        commonName: string;
+        createTime: string;
+        expirationTime: string;
+        sha1Fingerprint: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSetting {
+        activationPolicy: string;
+        activeDirectoryConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingActiveDirectoryConfig[];
+        availabilityType: string;
+        backupConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingBackupConfiguration[];
+        collation: string;
+        connectorEnforcement: string;
+        databaseFlags: outputs.sql.GetDatabaseInstancesInstanceSettingDatabaseFlag[];
+        deletionProtectionEnabled: boolean;
+        denyMaintenancePeriods: outputs.sql.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod[];
+        diskAutoresize: boolean;
+        diskAutoresizeLimit: number;
+        diskSize: number;
+        diskType: string;
+        insightsConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingInsightsConfig[];
+        ipConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfiguration[];
+        locationPreferences: outputs.sql.GetDatabaseInstancesInstanceSettingLocationPreference[];
+        maintenanceWindows: outputs.sql.GetDatabaseInstancesInstanceSettingMaintenanceWindow[];
+        passwordValidationPolicies: outputs.sql.GetDatabaseInstancesInstanceSettingPasswordValidationPolicy[];
+        pricingPlan: string;
+        sqlServerAuditConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingSqlServerAuditConfig[];
+        /**
+         * To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+         */
+        tier: string;
+        timeZone: string;
+        userLabels: {[key: string]: string};
+        version: number;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
+        domain: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingBackupConfiguration {
+        backupRetentionSettings: outputs.sql.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting[];
+        binaryLogEnabled: boolean;
+        enabled: boolean;
+        location: string;
+        pointInTimeRecoveryEnabled: boolean;
+        startTime: string;
+        transactionLogRetentionDays: number;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
+        retainedBackups: number;
+        retentionUnit: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingDatabaseFlag {
+        name: string;
+        value: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod {
+        endDate: string;
+        startDate: string;
+        time: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingInsightsConfig {
+        queryInsightsEnabled: boolean;
+        queryPlansPerMinute: number;
+        queryStringLength: number;
+        recordApplicationTags: boolean;
+        recordClientAddress: boolean;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingIpConfiguration {
+        allocatedIpRange: string;
+        authorizedNetworks: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork[];
+        ipv4Enabled: boolean;
+        privateNetwork: string;
+        requireSsl: boolean;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
+        expirationTime: string;
+        name: string;
+        value: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingLocationPreference {
+        followGaeApplication: string;
+        secondaryZone: string;
+        /**
+         * To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
+         */
+        zone: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingMaintenanceWindow {
+        day: number;
+        hour: number;
+        updateTrack: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
+        complexity: string;
+        disallowUsernameSubstring: boolean;
+        enablePasswordPolicy: boolean;
+        minLength: number;
+        passwordChangeInterval: string;
+        reuseInterval: number;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
         bucket: string;
         retentionInterval: string;
         uploadInterval: string;
@@ -38117,7 +39896,23 @@ export namespace vertex {
         /**
          * The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
          */
-        fixedNodeCount: number;
+        fixedNodeCount?: number;
+        /**
+         * Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+         * Structure is documented below.
+         */
+        scaling?: outputs.vertex.AiFeatureStoreOnlineServingConfigScaling;
+    }
+
+    export interface AiFeatureStoreOnlineServingConfigScaling {
+        /**
+         * The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+         */
+        maxNodeCount: number;
+        /**
+         * The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+         */
+        minNodeCount: number;
     }
 
     export interface AiIndexDeployedIndex {

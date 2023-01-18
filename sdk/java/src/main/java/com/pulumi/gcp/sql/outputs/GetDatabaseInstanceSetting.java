@@ -30,6 +30,7 @@ public final class GetDatabaseInstanceSetting {
     private String collation;
     private String connectorEnforcement;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+    private Boolean deletionProtectionEnabled;
     private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
     private Boolean diskAutoresize;
     private Integer diskAutoresizeLimit;
@@ -68,6 +69,9 @@ public final class GetDatabaseInstanceSetting {
     }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
+    }
+    public Boolean deletionProtectionEnabled() {
+        return this.deletionProtectionEnabled;
     }
     public List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods() {
         return this.denyMaintenancePeriods;
@@ -134,6 +138,7 @@ public final class GetDatabaseInstanceSetting {
         private String collation;
         private String connectorEnforcement;
         private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+        private Boolean deletionProtectionEnabled;
         private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
         private Boolean diskAutoresize;
         private Integer diskAutoresizeLimit;
@@ -160,6 +165,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.databaseFlags = defaults.databaseFlags;
+    	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriods = defaults.denyMaintenancePeriods;
     	      this.diskAutoresize = defaults.diskAutoresize;
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
@@ -221,6 +227,11 @@ public final class GetDatabaseInstanceSetting {
         }
         public Builder databaseFlags(GetDatabaseInstanceSettingDatabaseFlag... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
+        }
+        @CustomType.Setter
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            this.deletionProtectionEnabled = Objects.requireNonNull(deletionProtectionEnabled);
+            return this;
         }
         @CustomType.Setter
         public Builder denyMaintenancePeriods(List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods) {
@@ -332,6 +343,7 @@ public final class GetDatabaseInstanceSetting {
             o.collation = collation;
             o.connectorEnforcement = connectorEnforcement;
             o.databaseFlags = databaseFlags;
+            o.deletionProtectionEnabled = deletionProtectionEnabled;
             o.denyMaintenancePeriods = denyMaintenancePeriods;
             o.diskAutoresize = diskAutoresize;
             o.diskAutoresizeLimit = diskAutoresizeLimit;

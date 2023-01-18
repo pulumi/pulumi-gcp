@@ -6,7 +6,10 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,26 +17,44 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
     public static final PreventionDeidentifyTemplateDeidentifyConfigArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigArgs();
 
     /**
-     * Specifies free-text based transformations to be applied to the dataset.
+     * Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
      * 
      */
-    @Import(name="infoTypeTransformations", required=true)
-    private Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> infoTypeTransformations;
+    @Import(name="infoTypeTransformations")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> infoTypeTransformations;
 
     /**
-     * @return Specifies free-text based transformations to be applied to the dataset.
+     * @return Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
      * 
      */
-    public Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> infoTypeTransformations() {
-        return this.infoTypeTransformations;
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs>> infoTypeTransformations() {
+        return Optional.ofNullable(this.infoTypeTransformations);
+    }
+
+    /**
+     * Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="recordTransformations")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs> recordTransformations;
+
+    /**
+     * @return Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs>> recordTransformations() {
+        return Optional.ofNullable(this.recordTransformations);
     }
 
     private PreventionDeidentifyTemplateDeidentifyConfigArgs() {}
 
     private PreventionDeidentifyTemplateDeidentifyConfigArgs(PreventionDeidentifyTemplateDeidentifyConfigArgs $) {
         this.infoTypeTransformations = $.infoTypeTransformations;
+        this.recordTransformations = $.recordTransformations;
     }
 
     public static Builder builder() {
@@ -55,19 +76,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
         }
 
         /**
-         * @param infoTypeTransformations Specifies free-text based transformations to be applied to the dataset.
+         * @param infoTypeTransformations Treat the dataset as free-form text and apply the same free text transformation everywhere
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder infoTypeTransformations(Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> infoTypeTransformations) {
+        public Builder infoTypeTransformations(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> infoTypeTransformations) {
             $.infoTypeTransformations = infoTypeTransformations;
             return this;
         }
 
         /**
-         * @param infoTypeTransformations Specifies free-text based transformations to be applied to the dataset.
+         * @param infoTypeTransformations Treat the dataset as free-form text and apply the same free text transformation everywhere
          * Structure is documented below.
          * 
          * @return builder
@@ -77,8 +98,30 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
             return infoTypeTransformations(Output.of(infoTypeTransformations));
         }
 
+        /**
+         * @param recordTransformations Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordTransformations(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs> recordTransformations) {
+            $.recordTransformations = recordTransformations;
+            return this;
+        }
+
+        /**
+         * @param recordTransformations Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordTransformations(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs recordTransformations) {
+            return recordTransformations(Output.of(recordTransformations));
+        }
+
         public PreventionDeidentifyTemplateDeidentifyConfigArgs build() {
-            $.infoTypeTransformations = Objects.requireNonNull($.infoTypeTransformations, "expected parameter 'infoTypeTransformations' to be non-null");
             return $;
         }
     }

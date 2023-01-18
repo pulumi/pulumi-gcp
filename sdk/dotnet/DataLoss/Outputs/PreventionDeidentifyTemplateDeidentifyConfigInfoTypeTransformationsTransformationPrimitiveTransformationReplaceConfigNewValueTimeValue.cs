@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue
     {
         /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23.
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         /// </summary>
         public readonly int? Hours;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly int? Nanos;
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59.
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         /// </summary>
         public readonly int? Seconds;
 

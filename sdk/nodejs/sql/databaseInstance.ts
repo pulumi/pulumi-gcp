@@ -172,6 +172,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The first IPv4 address of any type assigned.
      */
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
+    /**
+     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     */
+    public /*out*/ readonly instanceType!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
     /**
      * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -256,6 +260,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
             resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
@@ -292,6 +297,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["firstIpAddress"] = undefined /*out*/;
+            resourceInputs["instanceType"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
             resourceInputs["publicIpAddress"] = undefined /*out*/;
@@ -357,6 +363,10 @@ export interface DatabaseInstanceState {
      * The first IPv4 address of any type assigned.
      */
     firstIpAddress?: pulumi.Input<string>;
+    /**
+     * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+     */
+    instanceType?: pulumi.Input<string>;
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
     /**
      * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.

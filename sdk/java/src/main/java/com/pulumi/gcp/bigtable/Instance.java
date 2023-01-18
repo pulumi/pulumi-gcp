@@ -228,14 +228,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * @return The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     public Output<String> name() {

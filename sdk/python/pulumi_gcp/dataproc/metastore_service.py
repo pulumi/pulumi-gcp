@@ -29,6 +29,7 @@ class MetastoreServiceArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
@@ -61,6 +62,8 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are `CANARY` and `STABLE`.
+        :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         """
@@ -89,6 +92,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "project", project)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
+        if telemetry_config is not None:
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
 
@@ -265,6 +270,19 @@ class MetastoreServiceArgs:
         pulumi.set(self, "release_channel", value)
 
     @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telemetry_config")
+
+    @telemetry_config.setter
+    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+        pulumi.set(self, "telemetry_config", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -299,6 +317,7 @@ class _MetastoreServiceState:
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
@@ -338,6 +357,8 @@ class _MetastoreServiceState:
                3 and 63 characters.
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
+        :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
@@ -378,6 +399,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "state", state)
         if state_message is not None:
             pulumi.set(__self__, "state_message", state_message)
+        if telemetry_config is not None:
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if uid is not None:
@@ -617,6 +640,19 @@ class _MetastoreServiceState:
         pulumi.set(self, "state_message", value)
 
     @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telemetry_config")
+
+    @telemetry_config.setter
+    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+        pulumi.set(self, "telemetry_config", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -660,6 +696,7 @@ class MetastoreService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -785,6 +822,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         """
@@ -914,6 +953,7 @@ class MetastoreService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -939,6 +979,7 @@ class MetastoreService(pulumi.CustomResource):
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None
             __props__.__dict__["endpoint_uri"] = None
@@ -974,6 +1015,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
+            telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'MetastoreService':
         """
@@ -1018,6 +1060,8 @@ class MetastoreService(pulumi.CustomResource):
                3 and 63 characters.
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are `DEVELOPER` and `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
@@ -1044,6 +1088,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
+        __props__.__dict__["telemetry_config"] = telemetry_config
         __props__.__dict__["tier"] = tier
         __props__.__dict__["uid"] = uid
         return MetastoreService(resource_name, opts=opts, __props__=__props__)
@@ -1208,6 +1253,15 @@ class MetastoreService(pulumi.CustomResource):
         Additional information about the current state of the metastore service, if available.
         """
         return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> pulumi.Output['outputs.MetastoreServiceTelemetryConfig']:
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telemetry_config")
 
     @property
     @pulumi.getter

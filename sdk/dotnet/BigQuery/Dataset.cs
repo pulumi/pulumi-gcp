@@ -340,7 +340,7 @@ namespace Pulumi.Gcp.BigQuery
         /// organize and group your datasets
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.

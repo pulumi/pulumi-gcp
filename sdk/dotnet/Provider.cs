@@ -141,6 +141,9 @@ namespace Pulumi.Gcp
         [Output("containerAnalysisCustomEndpoint")]
         public Output<string?> ContainerAnalysisCustomEndpoint { get; private set; } = null!;
 
+        [Output("containerAttachedCustomEndpoint")]
+        public Output<string?> ContainerAttachedCustomEndpoint { get; private set; } = null!;
+
         [Output("containerAwsCustomEndpoint")]
         public Output<string?> ContainerAwsCustomEndpoint { get; private set; } = null!;
 
@@ -209,6 +212,9 @@ namespace Pulumi.Gcp
 
         [Output("firebaseCustomEndpoint")]
         public Output<string?> FirebaseCustomEndpoint { get; private set; } = null!;
+
+        [Output("firebaseDatabaseCustomEndpoint")]
+        public Output<string?> FirebaseDatabaseCustomEndpoint { get; private set; } = null!;
 
         [Output("firebaseHostingCustomEndpoint")]
         public Output<string?> FirebaseHostingCustomEndpoint { get; private set; } = null!;
@@ -547,6 +553,9 @@ namespace Pulumi.Gcp
         [Input("containerAnalysisCustomEndpoint")]
         public Input<string>? ContainerAnalysisCustomEndpoint { get; set; }
 
+        [Input("containerAttachedCustomEndpoint")]
+        public Input<string>? ContainerAttachedCustomEndpoint { get; set; }
+
         [Input("containerAwsCustomEndpoint")]
         public Input<string>? ContainerAwsCustomEndpoint { get; set; }
 
@@ -618,6 +627,9 @@ namespace Pulumi.Gcp
 
         [Input("firebaseCustomEndpoint")]
         public Input<string>? FirebaseCustomEndpoint { get; set; }
+
+        [Input("firebaseDatabaseCustomEndpoint")]
+        public Input<string>? FirebaseDatabaseCustomEndpoint { get; set; }
 
         [Input("firebaseHostingCustomEndpoint")]
         public Input<string>? FirebaseHostingCustomEndpoint { get; set; }

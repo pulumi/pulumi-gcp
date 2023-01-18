@@ -20,7 +20,7 @@ export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetAndroidAppArgs {
     /**
-     * The appIp of name of the Firebase androidApp.
+     * The appId of name of the Firebase androidApp.
      */
     appId: string;
 }
@@ -32,6 +32,7 @@ export interface GetAndroidAppResult {
     readonly appId: string;
     readonly deletionPolicy: string;
     readonly displayName: string;
+    readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -39,6 +40,8 @@ export interface GetAndroidAppResult {
     readonly name: string;
     readonly packageName: string;
     readonly project: string;
+    readonly sha1Hashes: string[];
+    readonly sha256Hashes: string[];
 }
 
 export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {
@@ -50,7 +53,7 @@ export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi
  */
 export interface GetAndroidAppOutputArgs {
     /**
-     * The appIp of name of the Firebase androidApp.
+     * The appId of name of the Firebase androidApp.
      */
     appId: pulumi.Input<string>;
 }

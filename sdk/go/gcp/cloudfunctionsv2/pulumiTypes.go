@@ -1639,6 +1639,8 @@ func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type FunctionServiceConfig struct {
 	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision *bool `pulumi:"allTrafficOnLatestRevision"`
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+	AvailableCpu *string `pulumi:"availableCpu"`
 	// The amount of memory available for a function.
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
@@ -1655,6 +1657,8 @@ type FunctionServiceConfig struct {
 	// The limit on the maximum number of function instances that may coexist at a
 	// given time.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a
 	// given time.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
@@ -1696,6 +1700,8 @@ type FunctionServiceConfigInput interface {
 type FunctionServiceConfigArgs struct {
 	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision pulumi.BoolPtrInput `pulumi:"allTrafficOnLatestRevision"`
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+	AvailableCpu pulumi.StringPtrInput `pulumi:"availableCpu"`
 	// The amount of memory available for a function.
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
@@ -1712,6 +1718,8 @@ type FunctionServiceConfigArgs struct {
 	// The limit on the maximum number of function instances that may coexist at a
 	// given time.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a
 	// given time.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
@@ -1821,6 +1829,11 @@ func (o FunctionServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolPtr
 	return o.ApplyT(func(v FunctionServiceConfig) *bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+func (o FunctionServiceConfigOutput) AvailableCpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.AvailableCpu }).(pulumi.StringPtrOutput)
+}
+
 // The amount of memory available for a function.
 // Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 // supplied the value is interpreted as bytes.
@@ -1850,6 +1863,11 @@ func (o FunctionServiceConfigOutput) IngressSettings() pulumi.StringPtrOutput {
 // given time.
 func (o FunctionServiceConfigOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+func (o FunctionServiceConfigOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
 
 // The limit on the minimum number of function instances that may coexist at a
@@ -1940,6 +1958,16 @@ func (o FunctionServiceConfigPtrOutput) AllTrafficOnLatestRevision() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+func (o FunctionServiceConfigPtrOutput) AvailableCpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableCpu
+	}).(pulumi.StringPtrOutput)
+}
+
 // The amount of memory available for a function.
 // Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 // supplied the value is interpreted as bytes.
@@ -1993,6 +2021,16 @@ func (o FunctionServiceConfigPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+func (o FunctionServiceConfigPtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstanceRequestConcurrency
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3157,21 +3195,23 @@ func (o GetFunctionEventTriggerEventFilterArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetFunctionServiceConfig struct {
-	AllTrafficOnLatestRevision bool                                                `pulumi:"allTrafficOnLatestRevision"`
-	AvailableMemory            string                                              `pulumi:"availableMemory"`
-	EnvironmentVariables       map[string]string                                   `pulumi:"environmentVariables"`
-	GcfUri                     string                                              `pulumi:"gcfUri"`
-	IngressSettings            string                                              `pulumi:"ingressSettings"`
-	MaxInstanceCount           int                                                 `pulumi:"maxInstanceCount"`
-	MinInstanceCount           int                                                 `pulumi:"minInstanceCount"`
-	SecretEnvironmentVariables []GetFunctionServiceConfigSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
-	SecretVolumes              []GetFunctionServiceConfigSecretVolume              `pulumi:"secretVolumes"`
-	Service                    string                                              `pulumi:"service"`
-	ServiceAccountEmail        string                                              `pulumi:"serviceAccountEmail"`
-	TimeoutSeconds             int                                                 `pulumi:"timeoutSeconds"`
-	Uri                        string                                              `pulumi:"uri"`
-	VpcConnector               string                                              `pulumi:"vpcConnector"`
-	VpcConnectorEgressSettings string                                              `pulumi:"vpcConnectorEgressSettings"`
+	AllTrafficOnLatestRevision    bool                                                `pulumi:"allTrafficOnLatestRevision"`
+	AvailableCpu                  string                                              `pulumi:"availableCpu"`
+	AvailableMemory               string                                              `pulumi:"availableMemory"`
+	EnvironmentVariables          map[string]string                                   `pulumi:"environmentVariables"`
+	GcfUri                        string                                              `pulumi:"gcfUri"`
+	IngressSettings               string                                              `pulumi:"ingressSettings"`
+	MaxInstanceCount              int                                                 `pulumi:"maxInstanceCount"`
+	MaxInstanceRequestConcurrency int                                                 `pulumi:"maxInstanceRequestConcurrency"`
+	MinInstanceCount              int                                                 `pulumi:"minInstanceCount"`
+	SecretEnvironmentVariables    []GetFunctionServiceConfigSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	SecretVolumes                 []GetFunctionServiceConfigSecretVolume              `pulumi:"secretVolumes"`
+	Service                       string                                              `pulumi:"service"`
+	ServiceAccountEmail           string                                              `pulumi:"serviceAccountEmail"`
+	TimeoutSeconds                int                                                 `pulumi:"timeoutSeconds"`
+	Uri                           string                                              `pulumi:"uri"`
+	VpcConnector                  string                                              `pulumi:"vpcConnector"`
+	VpcConnectorEgressSettings    string                                              `pulumi:"vpcConnectorEgressSettings"`
 }
 
 // GetFunctionServiceConfigInput is an input type that accepts GetFunctionServiceConfigArgs and GetFunctionServiceConfigOutput values.
@@ -3186,21 +3226,23 @@ type GetFunctionServiceConfigInput interface {
 }
 
 type GetFunctionServiceConfigArgs struct {
-	AllTrafficOnLatestRevision pulumi.BoolInput                                            `pulumi:"allTrafficOnLatestRevision"`
-	AvailableMemory            pulumi.StringInput                                          `pulumi:"availableMemory"`
-	EnvironmentVariables       pulumi.StringMapInput                                       `pulumi:"environmentVariables"`
-	GcfUri                     pulumi.StringInput                                          `pulumi:"gcfUri"`
-	IngressSettings            pulumi.StringInput                                          `pulumi:"ingressSettings"`
-	MaxInstanceCount           pulumi.IntInput                                             `pulumi:"maxInstanceCount"`
-	MinInstanceCount           pulumi.IntInput                                             `pulumi:"minInstanceCount"`
-	SecretEnvironmentVariables GetFunctionServiceConfigSecretEnvironmentVariableArrayInput `pulumi:"secretEnvironmentVariables"`
-	SecretVolumes              GetFunctionServiceConfigSecretVolumeArrayInput              `pulumi:"secretVolumes"`
-	Service                    pulumi.StringInput                                          `pulumi:"service"`
-	ServiceAccountEmail        pulumi.StringInput                                          `pulumi:"serviceAccountEmail"`
-	TimeoutSeconds             pulumi.IntInput                                             `pulumi:"timeoutSeconds"`
-	Uri                        pulumi.StringInput                                          `pulumi:"uri"`
-	VpcConnector               pulumi.StringInput                                          `pulumi:"vpcConnector"`
-	VpcConnectorEgressSettings pulumi.StringInput                                          `pulumi:"vpcConnectorEgressSettings"`
+	AllTrafficOnLatestRevision    pulumi.BoolInput                                            `pulumi:"allTrafficOnLatestRevision"`
+	AvailableCpu                  pulumi.StringInput                                          `pulumi:"availableCpu"`
+	AvailableMemory               pulumi.StringInput                                          `pulumi:"availableMemory"`
+	EnvironmentVariables          pulumi.StringMapInput                                       `pulumi:"environmentVariables"`
+	GcfUri                        pulumi.StringInput                                          `pulumi:"gcfUri"`
+	IngressSettings               pulumi.StringInput                                          `pulumi:"ingressSettings"`
+	MaxInstanceCount              pulumi.IntInput                                             `pulumi:"maxInstanceCount"`
+	MaxInstanceRequestConcurrency pulumi.IntInput                                             `pulumi:"maxInstanceRequestConcurrency"`
+	MinInstanceCount              pulumi.IntInput                                             `pulumi:"minInstanceCount"`
+	SecretEnvironmentVariables    GetFunctionServiceConfigSecretEnvironmentVariableArrayInput `pulumi:"secretEnvironmentVariables"`
+	SecretVolumes                 GetFunctionServiceConfigSecretVolumeArrayInput              `pulumi:"secretVolumes"`
+	Service                       pulumi.StringInput                                          `pulumi:"service"`
+	ServiceAccountEmail           pulumi.StringInput                                          `pulumi:"serviceAccountEmail"`
+	TimeoutSeconds                pulumi.IntInput                                             `pulumi:"timeoutSeconds"`
+	Uri                           pulumi.StringInput                                          `pulumi:"uri"`
+	VpcConnector                  pulumi.StringInput                                          `pulumi:"vpcConnector"`
+	VpcConnectorEgressSettings    pulumi.StringInput                                          `pulumi:"vpcConnectorEgressSettings"`
 }
 
 func (GetFunctionServiceConfigArgs) ElementType() reflect.Type {
@@ -3258,6 +3300,10 @@ func (o GetFunctionServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.Bool
 	return o.ApplyT(func(v GetFunctionServiceConfig) bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolOutput)
 }
 
+func (o GetFunctionServiceConfigOutput) AvailableCpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.AvailableCpu }).(pulumi.StringOutput)
+}
+
 func (o GetFunctionServiceConfigOutput) AvailableMemory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.AvailableMemory }).(pulumi.StringOutput)
 }
@@ -3276,6 +3322,10 @@ func (o GetFunctionServiceConfigOutput) IngressSettings() pulumi.StringOutput {
 
 func (o GetFunctionServiceConfigOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfig) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
 }
 
 func (o GetFunctionServiceConfigOutput) MinInstanceCount() pulumi.IntOutput {

@@ -467,6 +467,7 @@ class DatabaseInstanceSettingsArgs:
                  collation: Optional[pulumi.Input[str]] = None,
                  connector_enforcement: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
@@ -492,7 +493,7 @@ class DatabaseInstanceSettingsArgs:
                instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
                `settings.backup_configuration.enabled` is set to `true`.
                For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-               For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+               For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param pulumi.Input[str] collation: The name of server instance collation.
         :param pulumi.Input[str] connector_enforcement: Specifies if connections must use Cloud SQL connectors.
@@ -519,6 +520,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if disk_autoresize is not None:
@@ -594,7 +597,7 @@ class DatabaseInstanceSettingsArgs:
         instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
         `settings.backup_configuration.enabled` is set to `true`.
         For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-        For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+        For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
         is set to `true`. Defaults to `ZONAL`.
         """
         return pulumi.get(self, "availability_type")
@@ -644,6 +647,15 @@ class DatabaseInstanceSettingsArgs:
     @database_flags.setter
     def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]):
         pulumi.set(self, "database_flags", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -842,7 +854,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                Can only be used with MySQL.
         :param pulumi.Input[bool] enabled: True if backup configuration is enabled.
         :param pulumi.Input[str] location: The region where the backup will be stored
-        :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+        :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         :param pulumi.Input[str] start_time: `HH:MM` format time indicating when backup
                configuration starts.
         :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
@@ -915,7 +927,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+        True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
@@ -1545,7 +1557,7 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
 @pulumi.input_type
 class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
     def __init__(__self__, *,
-                 bucket: pulumi.Input[str],
+                 bucket: Optional[pulumi.Input[str]] = None,
                  retention_interval: Optional[pulumi.Input[str]] = None,
                  upload_interval: Optional[pulumi.Input[str]] = None):
         """
@@ -1553,7 +1565,8 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
         :param pulumi.Input[str] retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
-        pulumi.set(__self__, "bucket", bucket)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
         if retention_interval is not None:
             pulumi.set(__self__, "retention_interval", retention_interval)
         if upload_interval is not None:
@@ -1561,14 +1574,14 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
 
     @property
     @pulumi.getter
-    def bucket(self) -> pulumi.Input[str]:
+    def bucket(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the destination bucket (e.g., gs://mybucket).
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: pulumi.Input[str]):
+    def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
 
     @property

@@ -35,10 +35,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
-//				BinaryAuthorization: &cloudrunv2.ServiceBinaryAuthorizationArgs{
-//					BreakglassJustification: pulumi.String("Some justification"),
-//					UseDefault:              pulumi.Bool(true),
-//				},
 //				Ingress:  pulumi.String("INGRESS_TRAFFIC_ALL"),
 //				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{

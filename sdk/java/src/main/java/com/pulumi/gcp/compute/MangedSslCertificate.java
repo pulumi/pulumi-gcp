@@ -197,14 +197,14 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Expire time of the certificate.
+     * Expire time of the certificate in RFC3339 text format.
      * 
      */
     @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
-     * @return Expire time of the certificate.
+     * @return Expire time of the certificate in RFC3339 text format.
      * 
      */
     public Output<String> expireTime() {

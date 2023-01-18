@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     region: "us-central1",
  *     disks: [{
- *         sourceImage: google_compute_image.my_image.self_link,
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
  *     }],
  * });
  * ```

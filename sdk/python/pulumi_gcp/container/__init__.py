@@ -5,12 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .attached_cluster import *
 from .aws_cluster import *
 from .aws_node_pool import *
 from .azure_client import *
 from .azure_cluster import *
 from .azure_node_pool import *
 from .cluster import *
+from .get_attached_install_manifest import *
+from .get_attached_versions import *
 from .get_aws_versions import *
 from .get_azure_versions import *
 from .get_cluster import *

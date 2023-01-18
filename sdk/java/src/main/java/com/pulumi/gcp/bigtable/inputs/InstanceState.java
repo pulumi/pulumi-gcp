@@ -117,14 +117,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+     * @return The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
     public Optional<Output<String>> name() {
@@ -318,7 +318,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+         * @param name The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
+         * @param name The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
          * 
          * @return builder
          * 

@@ -30,6 +30,12 @@ import (
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Display Name Basic"),
 //				PackageName: pulumi.String(""),
+//				Sha1Hashes: pulumi.StringArray{
+//					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21c"),
+//				},
+//				Sha256Hashes: pulumi.StringArray{
+//					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -70,16 +76,19 @@ import (
 type AndroidApp struct {
 	pulumi.CustomResourceState
 
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+	// token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Default to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
-	// The user-assigned display name of the App.
+	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+	// ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -87,6 +96,10 @@ type AndroidApp struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes pulumi.StringArrayOutput `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes pulumi.StringArrayOutput `pulumi:"sha256Hashes"`
 }
 
 // NewAndroidApp registers a new resource with the given unique name, arguments, and options.
@@ -121,16 +134,19 @@ func GetAndroidApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AndroidApp resources.
 type androidAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+	// token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Default to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
-	// The user-assigned display name of the App.
+	// The user-assigned display name of the AndroidApp.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+	// ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
 	Name *string `pulumi:"name"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -138,19 +154,26 @@ type androidAppState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes []string `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes []string `pulumi:"sha256Hashes"`
 }
 
 type AndroidAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+	// token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Default to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
-	// The user-assigned display name of the App.
+	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringPtrInput
-	// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+	// ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
+	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
 	Name pulumi.StringPtrInput
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -158,6 +181,10 @@ type AndroidAppState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes pulumi.StringArrayInput
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes pulumi.StringArrayInput
 }
 
 func (AndroidAppState) ElementType() reflect.Type {
@@ -169,7 +196,7 @@ type androidAppArgs struct {
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Default to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
-	// The user-assigned display name of the App.
+	// The user-assigned display name of the AndroidApp.
 	DisplayName string `pulumi:"displayName"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -177,6 +204,10 @@ type androidAppArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes []string `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes []string `pulumi:"sha256Hashes"`
 }
 
 // The set of arguments for constructing a AndroidApp resource.
@@ -185,7 +216,7 @@ type AndroidAppArgs struct {
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Default to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
-	// The user-assigned display name of the App.
+	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringInput
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -193,6 +224,10 @@ type AndroidAppArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes pulumi.StringArrayInput
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes pulumi.StringArrayInput
 }
 
 func (AndroidAppArgs) ElementType() reflect.Type {
@@ -282,8 +317,8 @@ func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) And
 	return o
 }
 
-// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-// the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
+// token, as the data format is not specified.
 func (o AndroidAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -295,12 +330,18 @@ func (o AndroidAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The user-assigned display name of the App.
+// The user-assigned display name of the AndroidApp.
 func (o AndroidAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The fully qualified resource name of the App, for example: projects/projectId/androidApps/appId
+// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
+// ensure the client has an up-to-date value before proceeding.
+func (o AndroidAppOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
 func (o AndroidAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -315,6 +356,16 @@ func (o AndroidAppOutput) PackageName() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o AndroidAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The SHA1 certificate hashes for the AndroidApp.
+func (o AndroidAppOutput) Sha1Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringArrayOutput { return v.Sha1Hashes }).(pulumi.StringArrayOutput)
+}
+
+// The SHA256 certificate hashes for the AndroidApp.
+func (o AndroidAppOutput) Sha256Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringArrayOutput { return v.Sha256Hashes }).(pulumi.StringArrayOutput)
 }
 
 type AndroidAppArrayOutput struct{ *pulumi.OutputState }

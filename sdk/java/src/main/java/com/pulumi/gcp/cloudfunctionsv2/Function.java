@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .accountId(&#34;sa&#34;)
+ *             .accountId(&#34;gcf-sa&#34;)
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
  *             .build());
  * 

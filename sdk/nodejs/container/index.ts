@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AttachedClusterArgs, AttachedClusterState } from "./attachedCluster";
+export type AttachedCluster = import("./attachedCluster").AttachedCluster;
+export const AttachedCluster: typeof import("./attachedCluster").AttachedCluster = null as any;
+utilities.lazyLoad(exports, ["AttachedCluster"], () => require("./attachedCluster"));
+
 export { AwsClusterArgs, AwsClusterState } from "./awsCluster";
 export type AwsCluster = import("./awsCluster").AwsCluster;
 export const AwsCluster: typeof import("./awsCluster").AwsCluster = null as any;
@@ -34,6 +39,16 @@ export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { GetAttachedInstallManifestArgs, GetAttachedInstallManifestResult, GetAttachedInstallManifestOutputArgs } from "./getAttachedInstallManifest";
+export const getAttachedInstallManifest: typeof import("./getAttachedInstallManifest").getAttachedInstallManifest = null as any;
+export const getAttachedInstallManifestOutput: typeof import("./getAttachedInstallManifest").getAttachedInstallManifestOutput = null as any;
+utilities.lazyLoad(exports, ["getAttachedInstallManifest","getAttachedInstallManifestOutput"], () => require("./getAttachedInstallManifest"));
+
+export { GetAttachedVersionsArgs, GetAttachedVersionsResult, GetAttachedVersionsOutputArgs } from "./getAttachedVersions";
+export const getAttachedVersions: typeof import("./getAttachedVersions").getAttachedVersions = null as any;
+export const getAttachedVersionsOutput: typeof import("./getAttachedVersions").getAttachedVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAttachedVersions","getAttachedVersionsOutput"], () => require("./getAttachedVersions"));
 
 export { GetAwsVersionsArgs, GetAwsVersionsResult, GetAwsVersionsOutputArgs } from "./getAwsVersions";
 export const getAwsVersions: typeof import("./getAwsVersions").getAwsVersions = null as any;
@@ -80,6 +95,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:container/attachedCluster:AttachedCluster":
+                return new AttachedCluster(name, <any>undefined, { urn })
             case "gcp:container/awsCluster:AwsCluster":
                 return new AwsCluster(name, <any>undefined, { urn })
             case "gcp:container/awsNodePool:AwsNodePool":
@@ -101,6 +118,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "container/attachedCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/awsCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/awsNodePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "container/azureClient", _module)

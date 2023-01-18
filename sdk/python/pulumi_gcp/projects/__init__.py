@@ -10,6 +10,7 @@ from .api_key import *
 from .default_service_accounts import *
 from .get_organization_policy import *
 from .get_project import *
+from .get_project_service import *
 from .iam_audit_config import *
 from .iam_binding import *
 from .iam_custom_role import *

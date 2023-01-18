@@ -433,12 +433,18 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            location="us-central1",
-            repository_id="my-repository")
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
 
         ## Import
@@ -521,12 +527,18 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            location="us-central1",
-            repository_id="my-repository")
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
 
         ## Import

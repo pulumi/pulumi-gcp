@@ -37,7 +37,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The host the user can connect from. This is only supported
-     * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+     * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      * 
      */
@@ -46,7 +46,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The host the user can connect from. This is only supported
-     * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+     * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      * 
      */
@@ -91,7 +91,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-     * or CLOUD_IAM_SERVICE_ACCOUNT.
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      * 
      */
     @Import(name="password")
@@ -100,7 +101,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-     * or CLOUD_IAM_SERVICE_ACCOUNT.
+     * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+     * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      * 
      */
     public Optional<Output<String>> password() {
@@ -208,7 +210,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host the user can connect from. This is only supported
-         * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+         * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
          * Can be an IP address. Changing this forces a new resource to be created.
          * 
          * @return builder
@@ -221,7 +223,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host the user can connect from. This is only supported
-         * for MySQL instances. Don&#39;t set this field for PostgreSQL instances.
+         * for BUILT_IN users in MySQL instances. Don&#39;t set this field for PostgreSQL and SQL Server instances.
          * Can be an IP address. Changing this forces a new resource to be created.
          * 
          * @return builder
@@ -280,7 +282,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param password The password for the user. Can be updated. For Postgres
          * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-         * or CLOUD_IAM_SERVICE_ACCOUNT.
+         * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+         * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
          * 
          * @return builder
          * 
@@ -293,7 +296,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param password The password for the user. Can be updated. For Postgres
          * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-         * or CLOUD_IAM_SERVICE_ACCOUNT.
+         * or CLOUD_IAM_SERVICE_ACCOUNT. Don&#39;t set this field for CLOUD_IAM_USER
+         * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
          * 
          * @return builder
          * 

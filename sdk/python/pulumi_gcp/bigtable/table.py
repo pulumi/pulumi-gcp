@@ -26,10 +26,8 @@ class TableArgs:
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-               protection will be set to UNPROTECTED as it is the API default value.
-        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+        :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
@@ -76,9 +74,7 @@ class TableArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[str]]:
         """
-        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        protection will be set to UNPROTECTED as it is the API default value.
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -90,7 +86,7 @@ class TableArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the table.
+        The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         """
         return pulumi.get(self, "name")
 
@@ -138,11 +134,9 @@ class _TableState:
         """
         Input properties used for looking up and filtering Table resources.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-               protection will be set to UNPROTECTED as it is the API default value.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
@@ -178,9 +172,7 @@ class _TableState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[str]]:
         """
-        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        protection will be set to UNPROTECTED as it is the API default value.
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -204,7 +196,7 @@ class _TableState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the table.
+        The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         """
         return pulumi.get(self, "name")
 
@@ -275,6 +267,14 @@ class Table(pulumi.CustomResource):
                 "a",
                 "b",
                 "c",
+            ],
+            column_families=[
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-first",
+                ),
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-second",
+                ),
             ])
         ```
 
@@ -299,11 +299,9 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-               protection will be set to UNPROTECTED as it is the API default value.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
@@ -339,6 +337,14 @@ class Table(pulumi.CustomResource):
                 "a",
                 "b",
                 "c",
+            ],
+            column_families=[
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-first",
+                ),
+                gcp.bigtable.TableColumnFamilyArgs(
+                    family="family-second",
+                ),
             ])
         ```
 
@@ -422,11 +428,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-               protection will be set to UNPROTECTED as it is the API default value.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[str] name: The name of the table.
+        :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
@@ -457,9 +461,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[str]:
         """
-        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
-        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
-        protection will be set to UNPROTECTED as it is the API default value.
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -475,7 +477,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the table.
+        The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         """
         return pulumi.get(self, "name")
 

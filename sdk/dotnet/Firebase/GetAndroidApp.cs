@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAndroidAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_ip of name of the Firebase androidApp.
+        /// The app_id of name of the Firebase androidApp.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAndroidAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The app_ip of name of the Firebase androidApp.
+        /// The app_id of name of the Firebase androidApp.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Firebase
         public readonly string AppId;
         public readonly string DeletionPolicy;
         public readonly string DisplayName;
+        public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -61,6 +62,8 @@ namespace Pulumi.Gcp.Firebase
         public readonly string Name;
         public readonly string PackageName;
         public readonly string Project;
+        public readonly ImmutableArray<string> Sha1Hashes;
+        public readonly ImmutableArray<string> Sha256Hashes;
 
         [OutputConstructor]
         private GetAndroidAppResult(
@@ -70,21 +73,30 @@ namespace Pulumi.Gcp.Firebase
 
             string displayName,
 
+            string etag,
+
             string id,
 
             string name,
 
             string packageName,
 
-            string project)
+            string project,
+
+            ImmutableArray<string> sha1Hashes,
+
+            ImmutableArray<string> sha256Hashes)
         {
             AppId = appId;
             DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
+            Etag = etag;
             Id = id;
             Name = name;
             PackageName = packageName;
             Project = project;
+            Sha1Hashes = sha1Hashes;
+            Sha256Hashes = sha256Hashes;
         }
     }
 }

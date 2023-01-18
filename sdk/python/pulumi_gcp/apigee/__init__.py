@@ -16,5 +16,6 @@ from .instance import *
 from .instance_attachment import *
 from .nat_address import *
 from .organization import *
+from .sync_authorization import *
 from ._inputs import *
 from . import outputs

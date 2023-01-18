@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// or `projects/project-id/storedInfoTypes/432452342`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Version of the information type to use. By default, the version is set to stable
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private PreventionInspectTemplateInspectConfigInfoType(string name)
+        private PreventionInspectTemplateInspectConfigInfoType(
+            string name,
+
+            string? version)
         {
             Name = name;
+            Version = version;
         }
     }
 }

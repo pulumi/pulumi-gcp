@@ -134,6 +134,9 @@ func GetComputeCustomEndpoint(ctx *pulumi.Context) string {
 func GetContainerAnalysisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerAnalysisCustomEndpoint")
 }
+func GetContainerAttachedCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:containerAttachedCustomEndpoint")
+}
 func GetContainerAwsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerAwsCustomEndpoint")
 }
@@ -205,6 +208,9 @@ func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseCustomEndpoint")
+}
+func GetFirebaseDatabaseCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseDatabaseCustomEndpoint")
 }
 func GetFirebaseHostingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseHostingCustomEndpoint")

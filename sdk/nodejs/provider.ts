@@ -68,6 +68,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAnalysisCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly containerAttachedCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAwsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAzureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -91,6 +92,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseHostingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseStorageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -206,6 +208,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             resourceInputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
             resourceInputs["containerAnalysisCustomEndpoint"] = args ? args.containerAnalysisCustomEndpoint : undefined;
+            resourceInputs["containerAttachedCustomEndpoint"] = args ? args.containerAttachedCustomEndpoint : undefined;
             resourceInputs["containerAwsCustomEndpoint"] = args ? args.containerAwsCustomEndpoint : undefined;
             resourceInputs["containerAzureCustomEndpoint"] = args ? args.containerAzureCustomEndpoint : undefined;
             resourceInputs["containerCustomEndpoint"] = args ? args.containerCustomEndpoint : undefined;
@@ -230,6 +233,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
+            resourceInputs["firebaseDatabaseCustomEndpoint"] = args ? args.firebaseDatabaseCustomEndpoint : undefined;
             resourceInputs["firebaseHostingCustomEndpoint"] = args ? args.firebaseHostingCustomEndpoint : undefined;
             resourceInputs["firebaseStorageCustomEndpoint"] = args ? args.firebaseStorageCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
@@ -346,6 +350,7 @@ export interface ProviderArgs {
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string>;
+    containerAttachedCustomEndpoint?: pulumi.Input<string>;
     containerAwsCustomEndpoint?: pulumi.Input<string>;
     containerAzureCustomEndpoint?: pulumi.Input<string>;
     containerCustomEndpoint?: pulumi.Input<string>;
@@ -370,6 +375,7 @@ export interface ProviderArgs {
     eventarcCustomEndpoint?: pulumi.Input<string>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
+    firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
     firebaseHostingCustomEndpoint?: pulumi.Input<string>;
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;

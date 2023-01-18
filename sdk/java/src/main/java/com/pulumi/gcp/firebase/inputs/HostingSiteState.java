@@ -16,7 +16,7 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     public static final HostingSiteState Empty = new HostingSiteState();
 
     /**
-     * Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+     * Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      * 
      */
@@ -24,7 +24,7 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> appId;
 
     /**
-     * @return Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+     * @return Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      * 
      */
@@ -50,9 +50,9 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     /**
      * Output only. The fully-qualified resource name of the Hosting site, in the format:
      * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * ***(recommended)*** or its
-     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
@@ -62,9 +62,9 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Output only. The fully-qualified resource name of the Hosting site, in the format:
      * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * ***(recommended)*** or its
-     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
@@ -137,7 +137,7 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
          * associated with the Hosting site.
          * 
          * @return builder
@@ -149,7 +149,7 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+         * @param appId Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
          * associated with the Hosting site.
          * 
          * @return builder
@@ -183,9 +183,9 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Output only. The fully-qualified resource name of the Hosting site, in the format:
          * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * ***(recommended)*** or its
-         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder
@@ -199,9 +199,9 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Output only. The fully-qualified resource name of the Hosting site, in the format:
          * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * ***(recommended)*** or its
-         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder

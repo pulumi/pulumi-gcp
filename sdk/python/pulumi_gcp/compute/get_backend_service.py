@@ -22,7 +22,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -62,6 +62,9 @@ class GetBackendServiceResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if generated_id and not isinstance(generated_id, int):
+            raise TypeError("Expected argument 'generated_id' to be a int")
+        pulumi.set(__self__, "generated_id", generated_id)
         if health_checks and not isinstance(health_checks, list):
             raise TypeError("Expected argument 'health_checks' to be a list")
         pulumi.set(__self__, "health_checks", health_checks)
@@ -192,6 +195,14 @@ class GetBackendServiceResult:
         return pulumi.get(self, "fingerprint")
 
     @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> int:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "generated_id")
+
+    @property
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> Sequence[str]:
         """
@@ -312,6 +323,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             description=self.description,
             enable_cdn=self.enable_cdn,
             fingerprint=self.fingerprint,
+            generated_id=self.generated_id,
             health_checks=self.health_checks,
             iaps=self.iaps,
             id=self.id,
@@ -362,6 +374,7 @@ def get_backend_service(name: Optional[str] = None,
         description=__ret__.description,
         enable_cdn=__ret__.enable_cdn,
         fingerprint=__ret__.fingerprint,
+        generated_id=__ret__.generated_id,
         health_checks=__ret__.health_checks,
         iaps=__ret__.iaps,
         id=__ret__.id,

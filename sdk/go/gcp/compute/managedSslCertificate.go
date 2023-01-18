@@ -68,7 +68,7 @@ type ManagedSslCertificate struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Expire time of the certificate.
+	// Expire time of the certificate in RFC3339 text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Properties relevant to a managed certificate.  These will be used if the
 	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -137,7 +137,7 @@ type managedSslCertificateState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Expire time of the certificate.
+	// Expire time of the certificate in RFC3339 text format.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Properties relevant to a managed certificate.  These will be used if the
 	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -172,7 +172,7 @@ type ManagedSslCertificateState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Expire time of the certificate.
+	// Expire time of the certificate in RFC3339 text format.
 	ExpireTime pulumi.StringPtrInput
 	// Properties relevant to a managed certificate.  These will be used if the
 	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
@@ -361,7 +361,7 @@ func (o ManagedSslCertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedSslCertificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Expire time of the certificate.
+// Expire time of the certificate in RFC3339 text format.
 func (o ManagedSslCertificateOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedSslCertificate) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }

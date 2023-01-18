@@ -224,7 +224,7 @@ type PreventionJobTrigger struct {
 	InspectJob PreventionJobTriggerInspectJobPtrOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -282,7 +282,7 @@ type preventionJobTriggerState struct {
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime *string `pulumi:"lastRunTime"`
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name *string `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -306,7 +306,7 @@ type PreventionJobTriggerState struct {
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringPtrInput
-	// The name of the Datastore kind.
+	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -473,7 +473,7 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
 }
 
-// The name of the Datastore kind.
+// Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

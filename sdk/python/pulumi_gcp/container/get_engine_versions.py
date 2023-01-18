@@ -21,7 +21,7 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
+    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, release_channel_latest_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         pulumi.set(__self__, "default_cluster_version", default_cluster_version)
@@ -43,6 +43,9 @@ class GetEngineVersionsResult:
         if release_channel_default_version and not isinstance(release_channel_default_version, dict):
             raise TypeError("Expected argument 'release_channel_default_version' to be a dict")
         pulumi.set(__self__, "release_channel_default_version", release_channel_default_version)
+        if release_channel_latest_version and not isinstance(release_channel_latest_version, dict):
+            raise TypeError("Expected argument 'release_channel_latest_version' to be a dict")
+        pulumi.set(__self__, "release_channel_latest_version", release_channel_latest_version)
         if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError("Expected argument 'valid_master_versions' to be a list")
         pulumi.set(__self__, "valid_master_versions", valid_master_versions)
@@ -104,6 +107,14 @@ class GetEngineVersionsResult:
         return pulumi.get(self, "release_channel_default_version")
 
     @property
+    @pulumi.getter(name="releaseChannelLatestVersion")
+    def release_channel_latest_version(self) -> Mapping[str, str]:
+        """
+        A map from a release channel name to the channel's latest version.
+        """
+        return pulumi.get(self, "release_channel_latest_version")
+
+    @property
     @pulumi.getter(name="validMasterVersions")
     def valid_master_versions(self) -> Sequence[str]:
         """
@@ -138,6 +149,7 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             location=self.location,
             project=self.project,
             release_channel_default_version=self.release_channel_default_version,
+            release_channel_latest_version=self.release_channel_latest_version,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
             version_prefix=self.version_prefix)
@@ -185,6 +197,7 @@ def get_engine_versions(location: Optional[str] = None,
         location=__ret__.location,
         project=__ret__.project,
         release_channel_default_version=__ret__.release_channel_default_version,
+        release_channel_latest_version=__ret__.release_channel_latest_version,
         valid_master_versions=__ret__.valid_master_versions,
         valid_node_versions=__ret__.valid_node_versions,
         version_prefix=__ret__.version_prefix)

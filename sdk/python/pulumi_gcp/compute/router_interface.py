@@ -655,7 +655,7 @@ class RouterInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redundantInterface")
-    def redundant_interface(self) -> pulumi.Output[Optional[str]]:
+    def redundant_interface(self) -> pulumi.Output[str]:
         """
         The name of the interface that is redundant to
         this interface. Changing this forces a new interface to be created.

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ImageArgs;
 import com.pulumi.gcp.compute.inputs.ImageState;
 import com.pulumi.gcp.compute.outputs.ImageGuestOsFeature;
+import com.pulumi.gcp.compute.outputs.ImageImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.ImageRawDisk;
 import java.lang.Integer;
 import java.lang.String;
@@ -233,6 +234,28 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ImageGuestOsFeature>> guestOsFeatures() {
         return this.guestOsFeatures;
+    }
+    /**
+     * Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="imageEncryptionKey", type=ImageImageEncryptionKey.class, parameters={})
+    private Output</* @Nullable */ ImageImageEncryptionKey> imageEncryptionKey;
+
+    /**
+     * @return Encrypts the image using a customer-supplied encryption key.
+     * After you encrypt an image with a customer-supplied key, you must
+     * provide the same key if you use the image later (e.g. to create a
+     * disk from the image)
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ImageImageEncryptionKey>> imageEncryptionKey() {
+        return Codegen.optional(this.imageEncryptionKey);
     }
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.

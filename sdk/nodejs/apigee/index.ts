@@ -60,6 +60,11 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { SyncAuthorizationArgs, SyncAuthorizationState } from "./syncAuthorization";
+export type SyncAuthorization = import("./syncAuthorization").SyncAuthorization;
+export const SyncAuthorization: typeof import("./syncAuthorization").SyncAuthorization = null as any;
+utilities.lazyLoad(exports, ["SyncAuthorization"], () => require("./syncAuthorization"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -87,6 +92,8 @@ const _module = {
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "gcp:apigee/syncAuthorization:SyncAuthorization":
+                return new SyncAuthorization(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -103,3 +110,4 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/syncAuthorization", _module)

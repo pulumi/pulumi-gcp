@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Kms
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
+    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });
@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.Kms
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/editor",
+    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Kms
     ///     {
     ///         KeyRingId = "your-key-ring-id",
     ///         Member = "user:jane@example.com",
-    ///         Role = "roles/editor",
+    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });
@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///         KeyRingId = "your-key-ring-id",
     ///         Member = "user:jane@example.com",
-    ///         Role = "roles/editor",
+    ///         Role = "roles/cloudkms.admin",
     ///     });
     /// 
     /// });
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Kms
     /// This binding resource can be imported using the `key_ring_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+    ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.

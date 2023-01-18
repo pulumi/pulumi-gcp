@@ -37,7 +37,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * Primitive transformation to apply to the infoType.
+     * Apply the transformation to the entire field.
+     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
      * Structure is documented below.
      * 
      */
@@ -45,7 +46,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs> primitiveTransformation;
 
     /**
-     * @return Primitive transformation to apply to the infoType.
+     * @return Apply the transformation to the entire field.
+     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
      * Structure is documented below.
      * 
      */
@@ -116,7 +118,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param primitiveTransformation Primitive transformation to apply to the infoType.
+         * @param primitiveTransformation Apply the transformation to the entire field.
+         * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
          * Structure is documented below.
          * 
          * @return builder
@@ -128,7 +131,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param primitiveTransformation Primitive transformation to apply to the infoType.
+         * @param primitiveTransformation Apply the transformation to the entire field.
+         * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
          * Structure is documented below.
          * 
          * @return builder

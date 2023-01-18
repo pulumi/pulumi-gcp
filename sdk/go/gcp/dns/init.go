@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding":
+		r = &DnsManagedZoneIamBinding{}
+	case "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember":
+		r = &DnsManagedZoneIamMember{}
+	case "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy":
+		r = &DnsManagedZoneIamPolicy{}
 	case "gcp:dns/managedZone:ManagedZone":
 		r = &ManagedZone{}
 	case "gcp:dns/policy:Policy":
@@ -44,6 +50,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/dnsManagedZoneIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/dnsManagedZoneIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dns/dnsManagedZoneIamPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dns/managedZone",

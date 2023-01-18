@@ -37,7 +37,7 @@ public final class DatabaseInstanceSettings {
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-     * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+     * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * 
      */
@@ -54,6 +54,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable String connectorEnforcement;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
+    private @Nullable Boolean deletionProtectionEnabled;
     private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
     /**
      * @return Enables auto-resizing of the storage size. Defaults to `true`.
@@ -122,7 +123,7 @@ public final class DatabaseInstanceSettings {
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-     * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+     * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * 
      */
@@ -148,6 +149,9 @@ public final class DatabaseInstanceSettings {
     }
     public List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags() {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
+    }
+    public Optional<Boolean> deletionProtectionEnabled() {
+        return Optional.ofNullable(this.deletionProtectionEnabled);
     }
     public Optional<DatabaseInstanceSettingsDenyMaintenancePeriod> denyMaintenancePeriod() {
         return Optional.ofNullable(this.denyMaintenancePeriod);
@@ -248,6 +252,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable String collation;
         private @Nullable String connectorEnforcement;
         private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
+        private @Nullable Boolean deletionProtectionEnabled;
         private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
         private @Nullable Boolean diskAutoresize;
         private @Nullable Integer diskAutoresizeLimit;
@@ -274,6 +279,7 @@ public final class DatabaseInstanceSettings {
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.databaseFlags = defaults.databaseFlags;
+    	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriod = defaults.denyMaintenancePeriod;
     	      this.diskAutoresize = defaults.diskAutoresize;
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
@@ -329,6 +335,11 @@ public final class DatabaseInstanceSettings {
         }
         public Builder databaseFlags(DatabaseInstanceSettingsDatabaseFlag... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
+        }
+        @CustomType.Setter
+        public Builder deletionProtectionEnabled(@Nullable Boolean deletionProtectionEnabled) {
+            this.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
         }
         @CustomType.Setter
         public Builder denyMaintenancePeriod(@Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod) {
@@ -419,6 +430,7 @@ public final class DatabaseInstanceSettings {
             o.collation = collation;
             o.connectorEnforcement = connectorEnforcement;
             o.databaseFlags = databaseFlags;
+            o.deletionProtectionEnabled = deletionProtectionEnabled;
             o.denyMaintenancePeriod = denyMaintenancePeriod;
             o.diskAutoresize = diskAutoresize;
             o.diskAutoresizeLimit = diskAutoresizeLimit;

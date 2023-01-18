@@ -41,6 +41,11 @@ public final class GetEngineVersionsResult {
      */
     private Map<String,String> releaseChannelDefaultVersion;
     /**
+     * @return A map from a release channel name to the channel&#39;s latest version.
+     * 
+     */
+    private Map<String,String> releaseChannelLatestVersion;
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -95,6 +100,13 @@ public final class GetEngineVersionsResult {
         return this.releaseChannelDefaultVersion;
     }
     /**
+     * @return A map from a release channel name to the channel&#39;s latest version.
+     * 
+     */
+    public Map<String,String> releaseChannelLatestVersion() {
+        return this.releaseChannelLatestVersion;
+    }
+    /**
      * @return A list of versions available in the given zone for use with master instances.
      * 
      */
@@ -128,6 +140,7 @@ public final class GetEngineVersionsResult {
         private @Nullable String location;
         private @Nullable String project;
         private Map<String,String> releaseChannelDefaultVersion;
+        private Map<String,String> releaseChannelLatestVersion;
         private List<String> validMasterVersions;
         private List<String> validNodeVersions;
         private @Nullable String versionPrefix;
@@ -141,6 +154,7 @@ public final class GetEngineVersionsResult {
     	      this.location = defaults.location;
     	      this.project = defaults.project;
     	      this.releaseChannelDefaultVersion = defaults.releaseChannelDefaultVersion;
+    	      this.releaseChannelLatestVersion = defaults.releaseChannelLatestVersion;
     	      this.validMasterVersions = defaults.validMasterVersions;
     	      this.validNodeVersions = defaults.validNodeVersions;
     	      this.versionPrefix = defaults.versionPrefix;
@@ -182,6 +196,11 @@ public final class GetEngineVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder releaseChannelLatestVersion(Map<String,String> releaseChannelLatestVersion) {
+            this.releaseChannelLatestVersion = Objects.requireNonNull(releaseChannelLatestVersion);
+            return this;
+        }
+        @CustomType.Setter
         public Builder validMasterVersions(List<String> validMasterVersions) {
             this.validMasterVersions = Objects.requireNonNull(validMasterVersions);
             return this;
@@ -211,6 +230,7 @@ public final class GetEngineVersionsResult {
             o.location = location;
             o.project = project;
             o.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
+            o.releaseChannelLatestVersion = releaseChannelLatestVersion;
             o.validMasterVersions = validMasterVersions;
             o.validNodeVersions = validNodeVersions;
             o.versionPrefix = versionPrefix;

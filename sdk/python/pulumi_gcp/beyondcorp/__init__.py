@@ -5,7 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .app_connection import *
 from .app_connector import *
 from .app_gateway import *
+from .get_app_connection import *
+from .get_app_connector import *
+from .get_app_gateway import *
 from ._inputs import *
 from . import outputs

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly bool? AllTrafficOnLatestRevision;
         /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        /// </summary>
+        public readonly string? AvailableCpu;
+        /// <summary>
         /// The amount of memory available for a function.
         /// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
         /// supplied the value is interpreted as bytes.
@@ -43,6 +47,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// given time.
         /// </summary>
         public readonly int? MaxInstanceCount;
+        /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
+        public readonly int? MaxInstanceRequestConcurrency;
         /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a
         /// given time.
@@ -91,6 +99,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         private FunctionServiceConfig(
             bool? allTrafficOnLatestRevision,
 
+            string? availableCpu,
+
             string? availableMemory,
 
             ImmutableDictionary<string, string>? environmentVariables,
@@ -100,6 +110,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string? ingressSettings,
 
             int? maxInstanceCount,
+
+            int? maxInstanceRequestConcurrency,
 
             int? minInstanceCount,
 
@@ -120,11 +132,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string? vpcConnectorEgressSettings)
         {
             AllTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            AvailableCpu = availableCpu;
             AvailableMemory = availableMemory;
             EnvironmentVariables = environmentVariables;
             GcfUri = gcfUri;
             IngressSettings = ingressSettings;
             MaxInstanceCount = maxInstanceCount;
+            MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             MinInstanceCount = minInstanceCount;
             SecretEnvironmentVariables = secretEnvironmentVariables;
             SecretVolumes = secretVolumes;

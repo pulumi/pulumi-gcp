@@ -5,8 +5,11 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigScalingArgs;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiFeatureStoreOnlineServingConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,21 +20,39 @@ public final class AiFeatureStoreOnlineServingConfigArgs extends com.pulumi.reso
      * The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
      */
-    @Import(name="fixedNodeCount", required=true)
-    private Output<Integer> fixedNodeCount;
+    @Import(name="fixedNodeCount")
+    private @Nullable Output<Integer> fixedNodeCount;
 
     /**
      * @return The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
      * 
      */
-    public Output<Integer> fixedNodeCount() {
-        return this.fixedNodeCount;
+    public Optional<Output<Integer>> fixedNodeCount() {
+        return Optional.ofNullable(this.fixedNodeCount);
+    }
+
+    /**
+     * Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scaling")
+    private @Nullable Output<AiFeatureStoreOnlineServingConfigScalingArgs> scaling;
+
+    /**
+     * @return Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureStoreOnlineServingConfigScalingArgs>> scaling() {
+        return Optional.ofNullable(this.scaling);
     }
 
     private AiFeatureStoreOnlineServingConfigArgs() {}
 
     private AiFeatureStoreOnlineServingConfigArgs(AiFeatureStoreOnlineServingConfigArgs $) {
         this.fixedNodeCount = $.fixedNodeCount;
+        this.scaling = $.scaling;
     }
 
     public static Builder builder() {
@@ -58,7 +79,7 @@ public final class AiFeatureStoreOnlineServingConfigArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder fixedNodeCount(Output<Integer> fixedNodeCount) {
+        public Builder fixedNodeCount(@Nullable Output<Integer> fixedNodeCount) {
             $.fixedNodeCount = fixedNodeCount;
             return this;
         }
@@ -73,8 +94,30 @@ public final class AiFeatureStoreOnlineServingConfigArgs extends com.pulumi.reso
             return fixedNodeCount(Output.of(fixedNodeCount));
         }
 
+        /**
+         * @param scaling Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaling(@Nullable Output<AiFeatureStoreOnlineServingConfigScalingArgs> scaling) {
+            $.scaling = scaling;
+            return this;
+        }
+
+        /**
+         * @param scaling Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaling(AiFeatureStoreOnlineServingConfigScalingArgs scaling) {
+            return scaling(Output.of(scaling));
+        }
+
         public AiFeatureStoreOnlineServingConfigArgs build() {
-            $.fixedNodeCount = Objects.requireNonNull($.fixedNodeCount, "expected parameter 'fixedNodeCount' to be non-null");
             return $;
         }
     }

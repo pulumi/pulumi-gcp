@@ -65,6 +65,7 @@ type LookupDatabaseInstanceResult struct {
 	FirstIpAddress               string                     `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                    `pulumi:"id"`
+	InstanceType               string                                    `pulumi:"instanceType"`
 	IpAddresses                []GetDatabaseInstanceIpAddress            `pulumi:"ipAddresses"`
 	MaintenanceVersion         string                                    `pulumi:"maintenanceVersion"`
 	MasterInstanceName         string                                    `pulumi:"masterInstanceName"`
@@ -153,6 +154,10 @@ func (o LookupDatabaseInstanceResultOutput) FirstIpAddress() pulumi.StringOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) IpAddresses() GetDatabaseInstanceIpAddressArrayOutput {

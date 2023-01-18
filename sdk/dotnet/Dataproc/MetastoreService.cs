@@ -279,6 +279,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> StateMessage { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("telemetryConfig")]
+        public Output<Outputs.MetastoreServiceTelemetryConfig> TelemetryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The tier of the service.
         /// Possible values are `DEVELOPER` and `ENTERPRISE`.
         /// </summary>
@@ -438,6 +445,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
+        /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("telemetryConfig")]
+        public Input<Inputs.MetastoreServiceTelemetryConfigArgs>? TelemetryConfig { get; set; }
+
+        /// <summary>
         /// The tier of the service.
         /// Possible values are `DEVELOPER` and `ENTERPRISE`.
         /// </summary>
@@ -582,6 +596,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("stateMessage")]
         public Input<string>? StateMessage { get; set; }
+
+        /// <summary>
+        /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("telemetryConfig")]
+        public Input<Inputs.MetastoreServiceTelemetryConfigGetArgs>? TelemetryConfig { get; set; }
 
         /// <summary>
         /// The tier of the service.

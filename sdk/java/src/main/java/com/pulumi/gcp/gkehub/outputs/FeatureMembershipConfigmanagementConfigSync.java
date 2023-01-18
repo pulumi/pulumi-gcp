@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSyncGit;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSyncOci;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,12 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
+    /**
+     * @return -
+     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     */
+    private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
     /**
      * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
@@ -38,6 +45,14 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncGit> git() {
         return Optional.ofNullable(this.git);
+    }
+    /**
+     * @return -
+     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     */
+    public Optional<FeatureMembershipConfigmanagementConfigSyncOci> oci() {
+        return Optional.ofNullable(this.oci);
     }
     /**
      * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
@@ -64,12 +79,14 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
+        private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
         private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
         public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.git = defaults.git;
+    	      this.oci = defaults.oci;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
         }
@@ -77,6 +94,11 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         @CustomType.Setter
         public Builder git(@Nullable FeatureMembershipConfigmanagementConfigSyncGit git) {
             this.git = git;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oci(@Nullable FeatureMembershipConfigmanagementConfigSyncOci oci) {
+            this.oci = oci;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +114,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         public FeatureMembershipConfigmanagementConfigSync build() {
             final var o = new FeatureMembershipConfigmanagementConfigSync();
             o.git = git;
+            o.oci = oci;
             o.preventDrift = preventDrift;
             o.sourceFormat = sourceFormat;
             return o;

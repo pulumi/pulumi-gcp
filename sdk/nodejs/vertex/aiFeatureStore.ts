@@ -36,6 +36,29 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * ### Vertex Ai Featurestore Scaling
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
+ *     forceDestroy: true,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     onlineServingConfig: {
+ *         scaling: {
+ *             maxNodeCount: 10,
+ *             minNodeCount: 2,
+ *         },
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *

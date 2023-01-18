@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateDiskDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.InstanceTemplateDiskSourceImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,7 +88,7 @@ public final class InstanceTemplateDisk {
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     private @Nullable String source;
@@ -97,10 +99,30 @@ public final class InstanceTemplateDisk {
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     private @Nullable String sourceImage;
+    /**
+     * @return The customer-supplied encryption
+     * key of the source image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     */
+    private @Nullable InstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey;
+    /**
+     * @return The source snapshot to create this disk.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * 
+     */
+    private @Nullable String sourceSnapshot;
+    /**
+     * @return The customer-supplied encryption
+     * key of the source snapshot. Structure
+     * documented below.
+     * 
+     */
+    private @Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
     /**
      * @return The type of reservation from which this instance can consume resources.
      * 
@@ -201,7 +223,7 @@ public final class InstanceTemplateDisk {
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<String> source() {
@@ -214,11 +236,37 @@ public final class InstanceTemplateDisk {
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<String> sourceImage() {
         return Optional.ofNullable(this.sourceImage);
+    }
+    /**
+     * @return The customer-supplied encryption
+     * key of the source image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     */
+    public Optional<InstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+    /**
+     * @return The source snapshot to create this disk.
+     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * 
+     */
+    public Optional<String> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+    /**
+     * @return The customer-supplied encryption
+     * key of the source snapshot. Structure
+     * documented below.
+     * 
+     */
+    public Optional<InstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
     }
     /**
      * @return The type of reservation from which this instance can consume resources.
@@ -250,6 +298,9 @@ public final class InstanceTemplateDisk {
         private @Nullable String resourcePolicies;
         private @Nullable String source;
         private @Nullable String sourceImage;
+        private @Nullable InstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey;
+        private @Nullable String sourceSnapshot;
+        private @Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
         private @Nullable String type;
         public Builder() {}
         public Builder(InstanceTemplateDisk defaults) {
@@ -267,6 +318,9 @@ public final class InstanceTemplateDisk {
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
+    	      this.sourceImageEncryptionKey = defaults.sourceImageEncryptionKey;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
+    	      this.sourceSnapshotEncryptionKey = defaults.sourceSnapshotEncryptionKey;
     	      this.type = defaults.type;
         }
 
@@ -336,6 +390,21 @@ public final class InstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceImageEncryptionKey(@Nullable InstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey) {
+            this.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+            this.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshotEncryptionKey(@Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey) {
+            this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
@@ -355,6 +424,9 @@ public final class InstanceTemplateDisk {
             o.resourcePolicies = resourcePolicies;
             o.source = source;
             o.sourceImage = sourceImage;
+            o.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            o.sourceSnapshot = sourceSnapshot;
+            o.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             o.type = type;
             return o;
         }

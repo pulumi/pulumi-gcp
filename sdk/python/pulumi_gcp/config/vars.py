@@ -185,6 +185,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('containerAnalysisCustomEndpoint')
 
     @property
+    def container_attached_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('containerAttachedCustomEndpoint')
+
+    @property
     def container_aws_custom_endpoint(self) -> Optional[str]:
         return __config__.get('containerAwsCustomEndpoint')
 
@@ -279,6 +283,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def firebase_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseCustomEndpoint')
+
+    @property
+    def firebase_database_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseDatabaseCustomEndpoint')
 
     @property
     def firebase_hosting_custom_endpoint(self) -> Optional[str]:

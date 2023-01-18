@@ -58,7 +58,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-     * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+     * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * 
      */
@@ -70,7 +70,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-     * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+     * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
      * is set to `true`. Defaults to `ZONAL`.
      * 
      */
@@ -120,6 +120,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
     public Optional<Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>>> databaseFlags() {
         return Optional.ofNullable(this.databaseFlags);
+    }
+
+    @Import(name="deletionProtectionEnabled")
+    private @Nullable Output<Boolean> deletionProtectionEnabled;
+
+    public Optional<Output<Boolean>> deletionProtectionEnabled() {
+        return Optional.ofNullable(this.deletionProtectionEnabled);
     }
 
     @Import(name="denyMaintenancePeriod")
@@ -312,6 +319,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.collation = $.collation;
         this.connectorEnforcement = $.connectorEnforcement;
         this.databaseFlags = $.databaseFlags;
+        this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.diskAutoresize = $.diskAutoresize;
         this.diskAutoresizeLimit = $.diskAutoresizeLimit;
@@ -385,7 +393,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          * 
          * @return builder
@@ -401,7 +409,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          * 
          * @return builder
@@ -473,6 +481,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
+        }
+
+        public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
+            $.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
+        }
+
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
         }
 
         public Builder denyMaintenancePeriod(@Nullable Output<DatabaseInstanceSettingsDenyMaintenancePeriodArgs> denyMaintenancePeriod) {

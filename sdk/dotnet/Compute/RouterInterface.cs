@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Compute
         /// this interface. Changing this forces a new interface to be created.
         /// </summary>
         [Output("redundantInterface")]
-        public Output<string?> RedundantInterface { get; private set; } = null!;
+        public Output<string> RedundantInterface { get; private set; } = null!;
 
         /// <summary>
         /// The region this interface's router sits in.

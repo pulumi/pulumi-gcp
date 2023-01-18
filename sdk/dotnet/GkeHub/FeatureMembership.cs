@@ -79,6 +79,78 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Config Management With OCI
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Version = "1.12.0",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Oci = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs
+    ///                 {
+    ///                     SyncRepo = "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+    ///                     PolicyDir = "config-connector",
+    ///                     SyncWaitSecs = "20",
+    ///                     SecretType = "gcpserviceaccount",
+    ///                     GcpServiceAccountEmail = "sa@project-id.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Multi Cluster Service Discovery
     /// 
     /// ```csharp
@@ -151,7 +223,6 @@ namespace Pulumi.Gcp.GkeHub
     ///         Mesh = new Gcp.GkeHub.Inputs.FeatureMembershipMeshArgs
     ///         {
     ///             Management = "MANAGEMENT_AUTOMATIC",
-    ///             ControlPlane = "AUTOMATIC",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

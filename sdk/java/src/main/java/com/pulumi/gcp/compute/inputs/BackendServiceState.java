@@ -264,6 +264,21 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="generatedId")
+    private @Nullable Output<Integer> generatedId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> generatedId() {
+        return Optional.ofNullable(this.generatedId);
+    }
+
+    /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
      * check can be specified.
@@ -600,6 +615,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.enableCdn = $.enableCdn;
         this.fingerprint = $.fingerprint;
+        this.generatedId = $.generatedId;
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
         this.loadBalancingScheme = $.loadBalancingScheme;
@@ -981,6 +997,27 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder fingerprint(String fingerprint) {
             return fingerprint(Output.of(fingerprint));
+        }
+
+        /**
+         * @param generatedId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generatedId(@Nullable Output<Integer> generatedId) {
+            $.generatedId = generatedId;
+            return this;
+        }
+
+        /**
+         * @param generatedId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generatedId(Integer generatedId) {
+            return generatedId(Output.of(generatedId));
         }
 
         /**

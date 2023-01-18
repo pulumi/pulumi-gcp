@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSyncGit {
     /**
-     * @return The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
      * 
      */
     private @Nullable String gcpServiceAccountEmail;
@@ -22,12 +22,12 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
      */
     private @Nullable String httpsProxy;
     /**
-     * @return The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+     * @return The absolute path of the directory that contains the local resources. Default: the root directory of the image.
      * 
      */
     private @Nullable String policyDir;
     /**
-     * @return Type of secret configured for access to the Git repo.
+     * @return Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
      * 
      */
     private @Nullable String secretType;
@@ -37,7 +37,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
      */
     private @Nullable String syncBranch;
     /**
-     * @return The URL of the Git repository to use as the source of truth.
+     * @return The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
      * 
      */
     private @Nullable String syncRepo;
@@ -47,14 +47,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
      */
     private @Nullable String syncRev;
     /**
-     * @return Period in seconds between consecutive syncs. Default: 15.
+     * @return Period in seconds(int64 format) between consecutive syncs. Default: 15.
      * 
      */
     private @Nullable String syncWaitSecs;
 
     private FeatureMembershipConfigmanagementConfigSyncGit() {}
     /**
-     * @return The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
      * 
      */
     public Optional<String> gcpServiceAccountEmail() {
@@ -68,14 +68,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
         return Optional.ofNullable(this.httpsProxy);
     }
     /**
-     * @return The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+     * @return The absolute path of the directory that contains the local resources. Default: the root directory of the image.
      * 
      */
     public Optional<String> policyDir() {
         return Optional.ofNullable(this.policyDir);
     }
     /**
-     * @return Type of secret configured for access to the Git repo.
+     * @return Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
      * 
      */
     public Optional<String> secretType() {
@@ -89,7 +89,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
         return Optional.ofNullable(this.syncBranch);
     }
     /**
-     * @return The URL of the Git repository to use as the source of truth.
+     * @return The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
      * 
      */
     public Optional<String> syncRepo() {
@@ -103,7 +103,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
         return Optional.ofNullable(this.syncRev);
     }
     /**
-     * @return Period in seconds between consecutive syncs. Default: 15.
+     * @return Period in seconds(int64 format) between consecutive syncs. Default: 15.
      * 
      */
     public Optional<String> syncWaitSecs() {

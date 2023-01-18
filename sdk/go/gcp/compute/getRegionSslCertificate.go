@@ -67,6 +67,7 @@ type LookupRegionSslCertificateResult struct {
 	CertificateId     int    `pulumi:"certificateId"`
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	Description       string `pulumi:"description"`
+	ExpireTime        string `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	Name       string  `pulumi:"name"`
@@ -135,6 +136,10 @@ func (o LookupRegionSslCertificateResultOutput) CreationTimestamp() pulumi.Strin
 
 func (o LookupRegionSslCertificateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionSslCertificateResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

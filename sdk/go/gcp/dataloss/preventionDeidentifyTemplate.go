@@ -46,7 +46,7 @@ type PreventionDeidentifyTemplate struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the template in any of the following formats:
 	// * `projects/{{project}}`
@@ -98,7 +98,7 @@ type preventionDeidentifyTemplateState struct {
 	Description *string `pulumi:"description"`
 	// User set display name of the template.
 	DisplayName *string `pulumi:"displayName"`
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 	// The parent of the template in any of the following formats:
 	// * `projects/{{project}}`
@@ -116,7 +116,7 @@ type PreventionDeidentifyTemplateState struct {
 	Description pulumi.StringPtrInput
 	// User set display name of the template.
 	DisplayName pulumi.StringPtrInput
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name describing the field.
 	Name pulumi.StringPtrInput
 	// The parent of the template in any of the following formats:
 	// * `projects/{{project}}`
@@ -268,7 +268,7 @@ func (o PreventionDeidentifyTemplateOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name describing the field.
 func (o PreventionDeidentifyTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

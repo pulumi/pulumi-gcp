@@ -5950,6 +5950,1947 @@ func (o ClusterIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterVirtualClusterConfig struct {
+	// Configuration of auxiliary services used by this cluster.
+	// Structure defined below.
+	AuxiliaryServicesConfig *ClusterVirtualClusterConfigAuxiliaryServicesConfig `pulumi:"auxiliaryServicesConfig"`
+	// The configuration for running the Dataproc cluster on Kubernetes.
+	// Structure defined below.
+	// ***
+	KubernetesClusterConfig *ClusterVirtualClusterConfigKubernetesClusterConfig `pulumi:"kubernetesClusterConfig"`
+	// The Cloud Storage staging bucket used to stage files,
+	// such as Hadoop jars, between client machines and the cluster.
+	// Note: If you don't explicitly specify a `stagingBucket`
+	// then GCP will auto create / assign one for you. However, you are not guaranteed
+	// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+	// with other clusters in the same region/zone also choosing to use the auto generation
+	// option.
+	StagingBucket *string `pulumi:"stagingBucket"`
+}
+
+// ClusterVirtualClusterConfigInput is an input type that accepts ClusterVirtualClusterConfigArgs and ClusterVirtualClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigInput` via:
+//
+//	ClusterVirtualClusterConfigArgs{...}
+type ClusterVirtualClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigOutput() ClusterVirtualClusterConfigOutput
+	ToClusterVirtualClusterConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigOutput
+}
+
+type ClusterVirtualClusterConfigArgs struct {
+	// Configuration of auxiliary services used by this cluster.
+	// Structure defined below.
+	AuxiliaryServicesConfig ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput `pulumi:"auxiliaryServicesConfig"`
+	// The configuration for running the Dataproc cluster on Kubernetes.
+	// Structure defined below.
+	// ***
+	KubernetesClusterConfig ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput `pulumi:"kubernetesClusterConfig"`
+	// The Cloud Storage staging bucket used to stage files,
+	// such as Hadoop jars, between client machines and the cluster.
+	// Note: If you don't explicitly specify a `stagingBucket`
+	// then GCP will auto create / assign one for you. However, you are not guaranteed
+	// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+	// with other clusters in the same region/zone also choosing to use the auto generation
+	// option.
+	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
+}
+
+func (ClusterVirtualClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigOutput() ClusterVirtualClusterConfigOutput {
+	return i.ToClusterVirtualClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigArgs) ToClusterVirtualClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigOutput).ToClusterVirtualClusterConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigArgs, ClusterVirtualClusterConfigPtr and ClusterVirtualClusterConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput
+	ToClusterVirtualClusterConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigPtrType ClusterVirtualClusterConfigArgs
+
+func ClusterVirtualClusterConfigPtr(v *ClusterVirtualClusterConfigArgs) ClusterVirtualClusterConfigPtrInput {
+	return (*clusterVirtualClusterConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigPtrType) ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigPtrType) ToClusterVirtualClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigOutput) ToClusterVirtualClusterConfigOutput() ClusterVirtualClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigOutput) ToClusterVirtualClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigOutput) ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigOutput) ToClusterVirtualClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfig) *ClusterVirtualClusterConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigPtrOutput)
+}
+
+// Configuration of auxiliary services used by this cluster.
+// Structure defined below.
+func (o ClusterVirtualClusterConfigOutput) AuxiliaryServicesConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+		return v.AuxiliaryServicesConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+// Structure defined below.
+// ***
+func (o ClusterVirtualClusterConfigOutput) KubernetesClusterConfig() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfig {
+		return v.KubernetesClusterConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
+}
+
+// The Cloud Storage staging bucket used to stage files,
+// such as Hadoop jars, between client machines and the cluster.
+// Note: If you don't explicitly specify a `stagingBucket`
+// then GCP will auto create / assign one for you. However, you are not guaranteed
+// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+// with other clusters in the same region/zone also choosing to use the auto generation
+// option.
+func (o ClusterVirtualClusterConfigOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigPtrOutput) ToClusterVirtualClusterConfigPtrOutput() ClusterVirtualClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigPtrOutput) ToClusterVirtualClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfig) ClusterVirtualClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfig
+		return ret
+	}).(ClusterVirtualClusterConfigOutput)
+}
+
+// Configuration of auxiliary services used by this cluster.
+// Structure defined below.
+func (o ClusterVirtualClusterConfigPtrOutput) AuxiliaryServicesConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryServicesConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+// Structure defined below.
+// ***
+func (o ClusterVirtualClusterConfigPtrOutput) KubernetesClusterConfig() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesClusterConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
+}
+
+// The Cloud Storage staging bucket used to stage files,
+// such as Hadoop jars, between client machines and the cluster.
+// Note: If you don't explicitly specify a `stagingBucket`
+// then GCP will auto create / assign one for you. However, you are not guaranteed
+// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+// with other clusters in the same region/zone also choosing to use the auto generation
+// option.
+func (o ClusterVirtualClusterConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StagingBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfig struct {
+	// The config setting for metastore service with the cluster.
+	// Structure defined below.
+	// ***
+	MetastoreConfig *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig `pulumi:"metastoreConfig"`
+	// The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig `pulumi:"sparkHistoryServerConfig"`
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs and ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigInput` via:
+//
+//	ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs{...}
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs struct {
+	// The config setting for metastore service with the cluster.
+	// Structure defined below.
+	// ***
+	MetastoreConfig ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput `pulumi:"metastoreConfig"`
+	// The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput `pulumi:"sparkHistoryServerConfig"`
+}
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput).ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs, ClusterVirtualClusterConfigAuxiliaryServicesConfigPtr and ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs
+
+func ClusterVirtualClusterConfigAuxiliaryServicesConfigPtr(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput {
+	return (*clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput)
+}
+
+// The config setting for metastore service with the cluster.
+// Structure defined below.
+// ***
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) MetastoreConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+		return v.MetastoreConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
+}
+
+// The Spark History Server configuration for the workload.
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput) SparkHistoryServerConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+		return v.SparkHistoryServerConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfig) ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigAuxiliaryServicesConfig
+		return ret
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput)
+}
+
+// The config setting for metastore service with the cluster.
+// Structure defined below.
+// ***
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) MetastoreConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
+}
+
+// The Spark History Server configuration for the workload.
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput) SparkHistoryServerConfig() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkHistoryServerConfig
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig struct {
+	// Resource name of an existing Dataproc Metastore service.
+	DataprocMetastoreService *string `pulumi:"dataprocMetastoreService"`
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs and ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigInput` via:
+//
+//	ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs{...}
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs struct {
+	// Resource name of an existing Dataproc Metastore service.
+	DataprocMetastoreService pulumi.StringPtrInput `pulumi:"dataprocMetastoreService"`
+}
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput).ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs, ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtr and ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs
+
+func ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtr(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput {
+	return (*clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig) *string {
+		return v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig) ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig
+		return ret
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service.
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+	// ***
+	DataprocCluster *string `pulumi:"dataprocCluster"`
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs and ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigInput` via:
+//
+//	ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs{...}
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+	// ***
+	DataprocCluster pulumi.StringPtrInput `pulumi:"dataprocCluster"`
+}
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput).ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs, ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtr and ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput
+	ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs
+
+func ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtr(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput {
+	return (*clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrType) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig) *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+// ***
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig) *string {
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) ToClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) Elem() ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig) ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
+		return ret
+	}).(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+// ***
+func (o ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfig struct {
+	// The configuration for running the Dataproc cluster on GKE.
+	GkeClusterConfig ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig `pulumi:"gkeClusterConfig"`
+	// A namespace within the Kubernetes cluster to deploy into.
+	// If this namespace does not exist, it is created.
+	// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+	// If not specified, the name of the Dataproc Cluster is used.
+	KubernetesNamespace *string `pulumi:"kubernetesNamespace"`
+	// The software configuration for this Dataproc cluster running on Kubernetes.
+	KubernetesSoftwareConfig ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig `pulumi:"kubernetesSoftwareConfig"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigArgs and ClusterVirtualClusterConfigKubernetesClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigArgs struct {
+	// The configuration for running the Dataproc cluster on GKE.
+	GkeClusterConfig ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigInput `pulumi:"gkeClusterConfig"`
+	// A namespace within the Kubernetes cluster to deploy into.
+	// If this namespace does not exist, it is created.
+	// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+	// If not specified, the name of the Dataproc Cluster is used.
+	KubernetesNamespace pulumi.StringPtrInput `pulumi:"kubernetesNamespace"`
+	// The software configuration for this Dataproc cluster running on Kubernetes.
+	KubernetesSoftwareConfig ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput `pulumi:"kubernetesSoftwareConfig"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigArgs, ClusterVirtualClusterConfigKubernetesClusterConfigPtr and ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigPtrType ClusterVirtualClusterConfigKubernetesClusterConfigArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigArgs) ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on GKE.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) GkeClusterConfig() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfig) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+		return v.GkeClusterConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput)
+}
+
+// A namespace within the Kubernetes cluster to deploy into.
+// If this namespace does not exist, it is created.
+// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+// If not specified, the name of the Dataproc Cluster is used.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfig) *string { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigOutput) KubernetesSoftwareConfig() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfig) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+		return v.KubernetesSoftwareConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfig) ClusterVirtualClusterConfigKubernetesClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfig
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigOutput)
+}
+
+// The configuration for running the Dataproc cluster on GKE.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) GkeClusterConfig() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeClusterConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput)
+}
+
+// A namespace within the Kubernetes cluster to deploy into.
+// If this namespace does not exist, it is created.
+// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+// If not specified, the name of the Dataproc Cluster is used.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput) KubernetesSoftwareConfig() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesSoftwareConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig struct {
+	// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
+	// (the GKE cluster can be zonal or regional)
+	GkeClusterTarget *string `pulumi:"gkeClusterTarget"`
+	// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
+	// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+	// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+	NodePoolTargets []ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget `pulumi:"nodePoolTargets"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs struct {
+	// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
+	// (the GKE cluster can be zonal or regional)
+	GkeClusterTarget pulumi.StringPtrInput `pulumi:"gkeClusterTarget"`
+	// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
+	// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+	// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+	NodePoolTargets ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput `pulumi:"nodePoolTargets"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs, ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtr and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput)
+}
+
+// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
+// (the GKE cluster can be zonal or regional)
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) GkeClusterTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) *string {
+		return v.GkeClusterTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
+// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput) NodePoolTargets() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) []ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
+		return v.NodePoolTargets
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput)
+}
+
+// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
+// (the GKE cluster can be zonal or regional)
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) GkeClusterTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusterTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
+// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput) NodePoolTargets() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig) []ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolTargets
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget struct {
+	// The target GKE node pool.
+	NodePool string `pulumi:"nodePool"`
+	// The configuration for the GKE node pool.
+	// If specified, Dataproc attempts to create a node pool with the specified shape.
+	// If one with the same name already exists, it is verified against all specified fields.
+	// If a field differs, the virtual cluster creation will fail.
+	NodePoolConfig *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig `pulumi:"nodePoolConfig"`
+	// The roles associated with the GKE node pool.
+	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+	Roles []string `pulumi:"roles"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs struct {
+	// The target GKE node pool.
+	NodePool pulumi.StringInput `pulumi:"nodePool"`
+	// The configuration for the GKE node pool.
+	// If specified, Dataproc attempts to create a node pool with the specified shape.
+	// If one with the same name already exists, it is verified against all specified fields.
+	// If a field differs, the virtual cluster creation will fail.
+	NodePoolConfig ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
+	// The roles associated with the GKE node pool.
+	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray{ ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs{...} }
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray []ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetInput
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
+	return o
+}
+
+// The target GKE node pool.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) NodePool() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) string {
+		return v.NodePool
+	}).(pulumi.StringOutput)
+}
+
+// The configuration for the GKE node pool.
+// If specified, Dataproc attempts to create a node pool with the specified shape.
+// If one with the same name already exists, it is verified against all specified fields.
+// If a field differs, the virtual cluster creation will fail.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) NodePoolConfig() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
+		return v.NodePoolConfig
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
+}
+
+// The roles associated with the GKE node pool.
+// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) []string {
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput) Index(i pulumi.IntInput) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
+		return vs[0].([]ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget)[vs[1].(int)]
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig struct {
+	// The autoscaler configuration for this node pool.
+	// The autoscaler is enabled only when a valid configuration is present.
+	Autoscaling *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling `pulumi:"autoscaling"`
+	// The node pool configuration.
+	Config *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig `pulumi:"config"`
+	// The list of Compute Engine zones where node pool nodes associated
+	// with a Dataproc on GKE virtual cluster will be located.
+	// ***
+	Locations []string `pulumi:"locations"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs struct {
+	// The autoscaler configuration for this node pool.
+	// The autoscaler is enabled only when a valid configuration is present.
+	Autoscaling ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput `pulumi:"autoscaling"`
+	// The node pool configuration.
+	Config ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput `pulumi:"config"`
+	// The list of Compute Engine zones where node pool nodes associated
+	// with a Dataproc on GKE virtual cluster will be located.
+	// ***
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs, ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtr and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
+}
+
+// The autoscaler configuration for this node pool.
+// The autoscaler is enabled only when a valid configuration is present.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) Autoscaling() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+		return v.Autoscaling
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
+}
+
+// The node pool configuration.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) Config() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+		return v.Config
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
+}
+
+// The list of Compute Engine zones where node pool nodes associated
+// with a Dataproc on GKE virtual cluster will be located.
+// ***
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput)
+}
+
+// The autoscaler configuration for this node pool.
+// The autoscaler is enabled only when a valid configuration is present.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Autoscaling() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+		if v == nil {
+			return nil
+		}
+		return v.Autoscaling
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
+}
+
+// The node pool configuration.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Config() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
+}
+
+// The list of Compute Engine zones where node pool nodes associated
+// with a Dataproc on GKE virtual cluster will be located.
+// ***
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling struct {
+	// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+	MinNodeCount *int `pulumi:"minNodeCount"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs struct {
+	// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs, ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtr and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput)
+}
+
+// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *int {
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *int {
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput)
+}
+
+// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig struct {
+	// The number of local SSD disks to attach to the node,
+	// which is limited by the maximum number of disks allowable per zone.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type
+	// to create for the worker nodes. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
+	MachineType *string `pulumi:"machineType"`
+	// The name of a minimum generation of CPU family
+	// for the master. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Whether the nodes are created as preemptible VM instances.
+	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+	// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	Preemptible *bool `pulumi:"preemptible"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot *bool `pulumi:"spot"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs struct {
+	// The number of local SSD disks to attach to the node,
+	// which is limited by the maximum number of disks allowable per zone.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type
+	// to create for the worker nodes. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The name of a minimum generation of CPU family
+	// for the master. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Whether the nodes are created as preemptible VM instances.
+	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+	// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs, ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtr and ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput)
+}
+
+// The number of local SSD disks to attach to the node,
+// which is limited by the maximum number of disks allowable per zone.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *int {
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of a Google Compute Engine machine type
+// to create for the worker nodes. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of a minimum generation of CPU family
+// for the master. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the nodes are created as preemptible VM instances.
+// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput)
+}
+
+// The number of local SSD disks to attach to the node,
+// which is limited by the maximum number of disks allowable per zone.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of a Google Compute Engine machine type
+// to create for the worker nodes. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of a minimum generation of CPU family
+// for the master. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the nodes are created as preemptible VM instances.
+// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig struct {
+	// The components that should be installed in this Dataproc cluster. The key must be a string from the\
+	// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+	// * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+	ComponentVersion map[string]string `pulumi:"componentVersion"`
+	// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+	// for example spark:spark.kubernetes.container.image.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs and ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput` via:
+//
+//	ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{...}
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs struct {
+	// The components that should be installed in this Dataproc cluster. The key must be a string from the\
+	// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+	// * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+	ComponentVersion pulumi.StringMapInput `pulumi:"componentVersion"`
+	// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+	// for example spark:spark.kubernetes.container.image.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput)
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput).ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput is an input type that accepts ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs, ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtr and ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput` via:
+//
+//	        ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput
+	ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput
+}
+
+type clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs
+
+func ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtr(v *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput {
+	return (*clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType)(v)
+}
+
+func (*clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return i.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrType) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return o.ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+		return &v
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput)
+}
+
+// The components that should be installed in this Dataproc cluster. The key must be a string from the\
+// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+// * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) ComponentVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) map[string]string {
+		return v.ComponentVersion
+	}).(pulumi.StringMapOutput)
+}
+
+// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+// for example spark:spark.kubernetes.container.image.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) map[string]string {
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+type ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ToClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) Elem() ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
+		return ret
+	}).(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput)
+}
+
+// The components that should be installed in this Dataproc cluster. The key must be a string from the\
+// KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+// * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) ComponentVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentVersion
+	}).(pulumi.StringMapOutput)
+}
+
+// The properties to set on daemon config files. Property keys are specified in prefix:property format,
+// for example spark:spark.kubernetes.container.image.
+func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
 type JobHadoopConfig struct {
 	// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -11666,6 +13607,151 @@ func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetastoreServiceNetworkConfigConsumer {
 		return vs[0].([]MetastoreServiceNetworkConfigConsumer)[vs[1].(int)]
 	}).(MetastoreServiceNetworkConfigConsumerOutput)
+}
+
+type MetastoreServiceTelemetryConfig struct {
+	// The output format of the Dataproc Metastore service's logs.
+	// Default value is `JSON`.
+	// Possible values are `LEGACY` and `JSON`.
+	LogFormat *string `pulumi:"logFormat"`
+}
+
+// MetastoreServiceTelemetryConfigInput is an input type that accepts MetastoreServiceTelemetryConfigArgs and MetastoreServiceTelemetryConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceTelemetryConfigInput` via:
+//
+//	MetastoreServiceTelemetryConfigArgs{...}
+type MetastoreServiceTelemetryConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceTelemetryConfigOutput() MetastoreServiceTelemetryConfigOutput
+	ToMetastoreServiceTelemetryConfigOutputWithContext(context.Context) MetastoreServiceTelemetryConfigOutput
+}
+
+type MetastoreServiceTelemetryConfigArgs struct {
+	// The output format of the Dataproc Metastore service's logs.
+	// Default value is `JSON`.
+	// Possible values are `LEGACY` and `JSON`.
+	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
+}
+
+func (MetastoreServiceTelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigOutput() MetastoreServiceTelemetryConfigOutput {
+	return i.ToMetastoreServiceTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceTelemetryConfigOutput)
+}
+
+func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput {
+	return i.ToMetastoreServiceTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceTelemetryConfigArgs) ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceTelemetryConfigOutput).ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceTelemetryConfigPtrInput is an input type that accepts MetastoreServiceTelemetryConfigArgs, MetastoreServiceTelemetryConfigPtr and MetastoreServiceTelemetryConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceTelemetryConfigPtrInput` via:
+//
+//	        MetastoreServiceTelemetryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceTelemetryConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput
+	ToMetastoreServiceTelemetryConfigPtrOutputWithContext(context.Context) MetastoreServiceTelemetryConfigPtrOutput
+}
+
+type metastoreServiceTelemetryConfigPtrType MetastoreServiceTelemetryConfigArgs
+
+func MetastoreServiceTelemetryConfigPtr(v *MetastoreServiceTelemetryConfigArgs) MetastoreServiceTelemetryConfigPtrInput {
+	return (*metastoreServiceTelemetryConfigPtrType)(v)
+}
+
+func (*metastoreServiceTelemetryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceTelemetryConfigPtrType) ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput {
+	return i.ToMetastoreServiceTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceTelemetryConfigPtrType) ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceTelemetryConfigPtrOutput)
+}
+
+type MetastoreServiceTelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceTelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfigOutput() MetastoreServiceTelemetryConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfigOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput {
+	return o.ToMetastoreServiceTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceTelemetryConfig) *MetastoreServiceTelemetryConfig {
+		return &v
+	}).(MetastoreServiceTelemetryConfigPtrOutput)
+}
+
+// The output format of the Dataproc Metastore service's logs.
+// Default value is `JSON`.
+// Possible values are `LEGACY` and `JSON`.
+func (o MetastoreServiceTelemetryConfigOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceTelemetryConfig) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceTelemetryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceTelemetryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceTelemetryConfigPtrOutput) ToMetastoreServiceTelemetryConfigPtrOutput() MetastoreServiceTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceTelemetryConfigPtrOutput) ToMetastoreServiceTelemetryConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceTelemetryConfigPtrOutput) Elem() MetastoreServiceTelemetryConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceTelemetryConfig) MetastoreServiceTelemetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceTelemetryConfig
+		return ret
+	}).(MetastoreServiceTelemetryConfigOutput)
+}
+
+// The output format of the Dataproc Metastore service's logs.
+// Default value is `JSON`.
+// Possible values are `LEGACY` and `JSON`.
+func (o MetastoreServiceTelemetryConfigPtrOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceTelemetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplateJob struct {
@@ -22041,6 +24127,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionPtrInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionPtrInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigPtrInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigLoggingConfigInput)(nil)).Elem(), JobHadoopConfigLoggingConfigArgs{})
@@ -22109,6 +24217,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigPtrInput)(nil)).Elem(), MetastoreServiceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigPtrInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobArrayInput)(nil)).Elem(), WorkflowTemplateJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobHadoopJobInput)(nil)).Elem(), WorkflowTemplateJobHadoopJobArgs{})
@@ -22277,6 +24387,28 @@ func init() {
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(ClusterIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrayOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigLoggingConfigOutput{})
@@ -22345,6 +24477,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobOutput{})

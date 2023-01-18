@@ -152,15 +152,15 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="redundantInterface", type=String.class, parameters={})
-    private Output</* @Nullable */ String> redundantInterface;
+    private Output<String> redundantInterface;
 
     /**
      * @return The name of the interface that is redundant to
      * this interface. Changing this forces a new interface to be created.
      * 
      */
-    public Output<Optional<String>> redundantInterface() {
-        return Codegen.optional(this.redundantInterface);
+    public Output<String> redundantInterface() {
+        return this.redundantInterface;
     }
     /**
      * The region this interface&#39;s router sits in.

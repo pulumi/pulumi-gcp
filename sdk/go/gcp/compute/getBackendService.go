@@ -50,6 +50,8 @@ type LookupBackendServiceResult struct {
 	EnableCdn bool `pulumi:"enableCdn"`
 	// The fingerprint of the Backend Service.
 	Fingerprint string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId int `pulumi:"generatedId"`
 	// The set of HTTP/HTTPS health checks used by the Backend Service.
 	HealthChecks []string               `pulumi:"healthChecks"`
 	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
@@ -170,6 +172,11 @@ func (o LookupBackendServiceResultOutput) EnableCdn() pulumi.BoolOutput {
 // The fingerprint of the Backend Service.
 func (o LookupBackendServiceResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupBackendServiceResultOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) int { return v.GeneratedId }).(pulumi.IntOutput)
 }
 
 // The set of HTTP/HTTPS health checks used by the Backend Service.

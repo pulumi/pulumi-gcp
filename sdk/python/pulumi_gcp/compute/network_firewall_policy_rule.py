@@ -468,40 +468,40 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy")
+            description="Sample global network firewall policy",
+            project="my-project-name")
         basic_network = gcp.compute.Network("basicNetwork")
         basic_key = gcp.tags.TagKey("basicKey",
+            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="tagkey",
             purpose="GCE_FIREWALL",
+            short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            },
-            description="For keyname resources.")
+            })
         basic_value = gcp.tags.TagValue("basicValue",
+            description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue",
-            description="For valuename resources.")
+            short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
-            firewall_policy=basic_network_firewall_policy.name,
             action="allow",
+            description="This is a simple rule description",
             direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
             priority=1000,
             rule_name="test-rule",
-            description="This is a simple rule description",
+            target_service_accounts=["emailAddress:my@service-account.com"],
             match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
+                src_ip_ranges=["10.100.0.1/32"],
                 src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
-                src_ip_ranges=["10.100.0.1/32"],
                 layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
-            ),
-            target_service_accounts=["emailAddress:my@service-account.com"],
-            enable_logging=True,
-            disabled=False)
+            ))
         ```
 
         ## Import
@@ -551,40 +551,40 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
-            project="my-project-name",
-            description="Sample global network firewall policy")
+            description="Sample global network firewall policy",
+            project="my-project-name")
         basic_network = gcp.compute.Network("basicNetwork")
         basic_key = gcp.tags.TagKey("basicKey",
+            description="For keyname resources.",
             parent="organizations/123456789",
-            short_name="tagkey",
             purpose="GCE_FIREWALL",
+            short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            },
-            description="For keyname resources.")
+            })
         basic_value = gcp.tags.TagValue("basicValue",
+            description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue",
-            description="For valuename resources.")
+            short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
-            firewall_policy=basic_network_firewall_policy.name,
             action="allow",
+            description="This is a simple rule description",
             direction="INGRESS",
+            disabled=False,
+            enable_logging=True,
+            firewall_policy=basic_network_firewall_policy.name,
             priority=1000,
             rule_name="test-rule",
-            description="This is a simple rule description",
+            target_service_accounts=["emailAddress:my@service-account.com"],
             match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
+                src_ip_ranges=["10.100.0.1/32"],
                 src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
-                src_ip_ranges=["10.100.0.1/32"],
                 layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
-            ),
-            target_service_accounts=["emailAddress:my@service-account.com"],
-            enable_logging=True,
-            disabled=False)
+            ))
         ```
 
         ## Import

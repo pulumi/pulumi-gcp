@@ -186,7 +186,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
             key_ring_id="your-key-ring-id",
             members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         With IAM Conditions:
@@ -203,7 +203,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
             ),
             key_ring_id="your-key-ring-id",
             members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         ## google\\_kms\\_key\\_ring\\_iam\\_member
@@ -215,7 +215,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRingIAMMember("keyRing",
             key_ring_id="your-key-ring-id",
             member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         With IAM Conditions:
@@ -232,7 +232,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
             ),
             key_ring_id="your-key-ring-id",
             member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         ## Import
@@ -250,7 +250,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         This binding resource can be imported using the `key_ring_id` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+         $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
         ```
 
          IAM policy imports use the identifier of the resource in question.
@@ -333,7 +333,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
             key_ring_id="your-key-ring-id",
             members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         With IAM Conditions:
@@ -350,7 +350,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
             ),
             key_ring_id="your-key-ring-id",
             members=["user:jane@example.com"],
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         ## google\\_kms\\_key\\_ring\\_iam\\_member
@@ -362,7 +362,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRingIAMMember("keyRing",
             key_ring_id="your-key-ring-id",
             member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         With IAM Conditions:
@@ -379,7 +379,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
             ),
             key_ring_id="your-key-ring-id",
             member="user:jane@example.com",
-            role="roles/editor")
+            role="roles/cloudkms.admin")
         ```
 
         ## Import
@@ -397,7 +397,7 @@ class KeyRingIAMPolicy(pulumi.CustomResource):
         This binding resource can be imported using the `key_ring_id` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+         $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
         ```
 
          IAM policy imports use the identifier of the resource in question.

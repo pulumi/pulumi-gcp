@@ -79,6 +79,77 @@ import (
 //	}
 //
 // ```
+// ### Config Management With OCI
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+//					Version: pulumi.String("1.12.0"),
+//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Oci: &gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs{
+//							SyncRepo:               pulumi.String("us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest"),
+//							PolicyDir:              pulumi.String("config-connector"),
+//							SyncWaitSecs:           pulumi.String("20"),
+//							SecretType:             pulumi.String("gcpserviceaccount"),
+//							GcpServiceAccountEmail: pulumi.String("sa@project-id.iam.gserviceaccount.com"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Multi Cluster Service Discovery
 //
 // ```go
@@ -155,8 +226,7 @@ import (
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
 //				Mesh: &gkehub.FeatureMembershipMeshArgs{
-//					Management:   pulumi.String("MANAGEMENT_AUTOMATIC"),
-//					ControlPlane: pulumi.String("AUTOMATIC"),
+//					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {

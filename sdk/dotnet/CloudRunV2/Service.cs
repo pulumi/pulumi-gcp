@@ -30,11 +30,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Service("default", new()
     ///     {
-    ///         BinaryAuthorization = new Gcp.CloudRunV2.Inputs.ServiceBinaryAuthorizationArgs
-    ///         {
-    ///             BreakglassJustification = "Some justification",
-    ///             UseDefault = true,
-    ///         },
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
+
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;

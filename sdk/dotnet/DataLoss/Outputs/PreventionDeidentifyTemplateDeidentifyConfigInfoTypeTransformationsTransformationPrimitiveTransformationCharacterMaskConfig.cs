@@ -19,13 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore> CharactersToIgnores;
         /// <summary>
-        /// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-        /// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-        /// strings, and 0 for digits.
+        /// is *
         /// </summary>
         public readonly string? MaskingCharacter;
         /// <summary>
-        /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+        /// is -4
         /// </summary>
         public readonly int? NumberToMask;
         /// <summary>

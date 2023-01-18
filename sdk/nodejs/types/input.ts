@@ -2669,6 +2669,40 @@ export namespace assuredworkloads {
 }
 
 export namespace beyondcorp {
+    export interface AppConnectionApplicationEndpoint {
+        /**
+         * Hostname or IP address of the remote application endpoint.
+         */
+        host: pulumi.Input<string>;
+        /**
+         * Port of the remote application endpoint.
+         */
+        port: pulumi.Input<number>;
+    }
+
+    export interface AppConnectionGateway {
+        /**
+         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+         */
+        appGateway: pulumi.Input<string>;
+        /**
+         * -
+         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+         */
+        ingressPort?: pulumi.Input<number>;
+        /**
+         * The type of hosting used by the gateway. Refer to
+         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+         * for a list of possible values.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * -
+         * Server-defined URI for this resource.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
     export interface AppConnectorPrincipalInfo {
         /**
          * ServiceAccount represents a GCP service account.
@@ -2688,6 +2722,7 @@ export namespace beyondcorp {
         ingressPort?: pulumi.Input<number>;
         pscUri?: pulumi.Input<string>;
     }
+
 }
 
 export namespace bigquery {
@@ -3985,7 +4020,7 @@ export namespace bigtable {
          */
         autoscalingConfig?: pulumi.Input<inputs.bigtable.InstanceClusterAutoscalingConfig>;
         /**
-         * The ID of the Cloud Bigtable cluster.
+         * The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
          */
         clusterId: pulumi.Input<string>;
         /**
@@ -3994,8 +4029,7 @@ export namespace bigtable {
         kmsKeyName?: pulumi.Input<string>;
         /**
          * The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-         * for a `DEVELOPMENT` instance.
+         * Required, with a minimum of `1` for each cluster in an instance.
          */
         numNodes?: pulumi.Input<number>;
         /**
@@ -4577,7 +4611,8 @@ export namespace certificateauthority {
         isCa: pulumi.Input<boolean>;
         /**
          * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+         * requires setting `zeroMaxIssuerPathLength = true`.
          */
         maxIssuerPathLength?: pulumi.Input<number>;
         /**
@@ -4587,7 +4622,7 @@ export namespace certificateauthority {
         nonCa?: pulumi.Input<boolean>;
         /**
          * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-         * if both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
+         * If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
          * the max path length will be omitted from the CA certificate.
          */
         zeroMaxIssuerPathLength?: pulumi.Input<boolean>;
@@ -7240,6 +7275,10 @@ export namespace cloudfunctionsv2 {
          */
         allTrafficOnLatestRevision?: pulumi.Input<boolean>;
         /**
+         * The number of CPUs used in a single container instance. Default value is calculated from available memory.
+         */
+        availableCpu?: pulumi.Input<string>;
+        /**
          * The amount of memory available for a function.
          * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
          * supplied the value is interpreted as bytes.
@@ -7265,6 +7304,10 @@ export namespace cloudfunctionsv2 {
          * given time.
          */
         maxInstanceCount?: pulumi.Input<number>;
+        /**
+         * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+         */
+        maxInstanceRequestConcurrency?: pulumi.Input<number>;
         /**
          * The limit on the minimum number of function instances that may coexist at a
          * given time.
@@ -9453,6 +9496,7 @@ export namespace composer {
 
     export interface EnvironmentConfigWorkloadsConfig {
         scheduler?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigScheduler>;
+        triggerer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigTriggerer>;
         webServer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWebServer>;
         worker?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWorker>;
     }
@@ -9462,6 +9506,12 @@ export namespace composer {
         cpu?: pulumi.Input<number>;
         memoryGb?: pulumi.Input<number>;
         storageGb?: pulumi.Input<number>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigTriggerer {
+        count: pulumi.Input<number>;
+        cpu: pulumi.Input<number>;
+        memoryGb: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWebServer {
@@ -11144,6 +11194,20 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
+    export interface ImageImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud
+         * KMS.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the
+         * given KMS key. If absent, the Compute Engine default service
+         * account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+    }
+
     export interface ImageRawDisk {
         /**
          * The format used to encode and transmit the block device, which
@@ -11580,13 +11644,29 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
         /**
          * , The device name of the disk to be attached.
          */
         deviceName: pulumi.Input<string>;
+    }
+
+    export interface InstanceGroupManagerStatefulExternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        interfaceName?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGroupManagerStatefulInternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        interfaceName?: pulumi.Input<string>;
     }
 
     export interface InstanceGroupManagerStatus {
@@ -12095,7 +12175,7 @@ export namespace compute {
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         source?: pulumi.Input<string>;
         /**
@@ -12105,9 +12185,26 @@ export namespace compute {
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage?: pulumi.Input<string>;
+        /**
+         * The customer-supplied encryption
+         * key of the source image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         */
+        sourceImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceTemplateDiskSourceImageEncryptionKey>;
+        /**
+         * The source snapshot to create this disk.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceSnapshot?: pulumi.Input<string>;
+        /**
+         * The customer-supplied encryption
+         * key of the source snapshot. Structure
+         * documented below.
+         */
+        sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.InstanceTemplateDiskSourceSnapshotEncryptionKey>;
         /**
          * The type of reservation from which this instance can consume resources.
          */
@@ -12119,6 +12216,32 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: pulumi.Input<string>;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: pulumi.Input<string>;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateGuestAccelerator {
@@ -13887,13 +14010,29 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatefulDisk {
         /**
-         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
         /**
          * , The device name of the disk to be attached.
          */
         deviceName: pulumi.Input<string>;
+    }
+
+    export interface RegionInstanceGroupManagerStatefulExternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        interfaceName?: pulumi.Input<string>;
+    }
+
+    export interface RegionInstanceGroupManagerStatefulInternalIp {
+        /**
+         * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        interfaceName?: pulumi.Input<string>;
     }
 
     export interface RegionInstanceGroupManagerStatus {
@@ -18602,6 +18741,84 @@ export namespace config {
 }
 
 export namespace container {
+    export interface AttachedClusterAuthorization {
+        /**
+         * Users that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the users. Up to ten admin users can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AttachedClusterError {
+        message?: pulumi.Input<string>;
+    }
+
+    export interface AttachedClusterFleet {
+        /**
+         * -
+         * The name of the managed Hub Membership resource associated to this
+         * cluster. Membership names are formatted as
+         * projects/<project-number>/locations/global/membership/<cluster-id>.
+         */
+        membership?: pulumi.Input<string>;
+        /**
+         * The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         */
+        project: pulumi.Input<string>;
+    }
+
+    export interface AttachedClusterLoggingConfig {
+        /**
+         * The configuration of the logging components
+         * Structure is documented below.
+         */
+        componentConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfigComponentConfig>;
+    }
+
+    export interface AttachedClusterLoggingConfigComponentConfig {
+        /**
+         * The components to be enabled.
+         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         */
+        enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AttachedClusterMonitoringConfig {
+        /**
+         * Enable Google Cloud Managed Service for Prometheus in the cluster.
+         * Structure is documented below.
+         */
+        managedPrometheusConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfigManagedPrometheusConfig>;
+    }
+
+    export interface AttachedClusterMonitoringConfigManagedPrometheusConfig {
+        /**
+         * Enable Managed Collection.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AttachedClusterOidcConfig {
+        /**
+         * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+         */
+        issuerUrl: pulumi.Input<string>;
+        /**
+         * OIDC verification keys in JWKS format (RFC 7517).
+         */
+        jwks?: pulumi.Input<string>;
+    }
+
+    export interface AttachedClusterWorkloadIdentityConfig {
+        identityProvider?: pulumi.Input<string>;
+        issuerUri?: pulumi.Input<string>;
+        workloadPool?: pulumi.Input<string>;
+    }
+
     export interface AwsClusterAuthorization {
         /**
          * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
@@ -18823,6 +19040,10 @@ export namespace container {
 
     export interface AwsNodePoolConfig {
         /**
+         * Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+         */
+        autoscalingMetricsCollection?: pulumi.Input<inputs.container.AwsNodePoolConfigAutoscalingMetricsCollection>;
+        /**
          * The ARN of the AWS KMS key used to encrypt node pool configuration.
          */
         configEncryption: pulumi.Input<inputs.container.AwsNodePoolConfigConfigEncryption>;
@@ -18870,6 +19091,17 @@ export namespace container {
          * Optional. The initial taints assigned to nodes of this node pool.
          */
         taints?: pulumi.Input<pulumi.Input<inputs.container.AwsNodePoolConfigTaint>[]>;
+    }
+
+    export interface AwsNodePoolConfigAutoscalingMetricsCollection {
+        /**
+         * The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
+         */
+        granularity: pulumi.Input<string>;
+        /**
+         * The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+         */
+        metrics?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AwsNodePoolConfigConfigEncryption {
@@ -21268,10 +21500,15 @@ export namespace datafusion {
 export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfig {
         /**
-         * Specifies free-text based transformations to be applied to the dataset.
+         * Treat the dataset as free-form text and apply the same free text transformation everywhere
          * Structure is documented below.
          */
-        infoTypeTransformations: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations>;
+        infoTypeTransformations?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations>;
+        /**
+         * Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+         * Structure is documented below.
+         */
+        recordTransformations?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
@@ -21290,7 +21527,8 @@ export namespace dataloss {
          */
         infoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>[]>;
         /**
-         * Primitive transformation to apply to the infoType.
+         * Apply the transformation to the entire field.
+         * The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
          * Structure is documented below.
          */
         primitiveTransformation: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation>;
@@ -21298,15 +21536,14 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: pulumi.Input<string>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
         /**
-         * Partially mask a string by replacing a given number of characters with a fixed character.
-         * Masking can start from the beginning or end of the string.
+         * Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
          * Structure is documented below.
          */
         characterMaskConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig>;
@@ -21322,7 +21559,7 @@ export namespace dataloss {
          */
         cryptoReplaceFfxFpeConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig>;
         /**
-         * Replace each input value with a given value.
+         * Replace with a specified value.
          * Structure is documented below.
          */
         replaceConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig>;
@@ -21339,13 +21576,11 @@ export namespace dataloss {
          */
         charactersToIgnores?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>[]>;
         /**
-         * Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
-         * such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
-         * strings, and 0 for digits.
+         * is *
          */
         maskingCharacter?: pulumi.Input<string>;
         /**
-         * Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+         * is -4
          */
         numberToMask?: pulumi.Input<number>;
         /**
@@ -21398,7 +21633,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: pulumi.Input<string>;
     }
@@ -21435,7 +21670,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: pulumi.Input<string>;
     }
@@ -21450,7 +21685,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: pulumi.Input<string>;
     }
@@ -21500,7 +21735,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: pulumi.Input<string>;
     }
@@ -21537,7 +21772,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name: pulumi.Input<string>;
     }
@@ -21552,7 +21787,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType {
         /**
-         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * Name describing the field.
          */
         name?: pulumi.Input<string>;
     }
@@ -21560,6 +21795,7 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
         /**
          * Replace each input value with a given value.
+         * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
          * Structure is documented below.
          */
         newValue: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue>;
@@ -21585,7 +21821,7 @@ export namespace dataloss {
          */
         floatValue?: pulumi.Input<number>;
         /**
-         * An integer value.
+         * An integer value (int64 format)
          */
         integerValue?: pulumi.Input<number>;
         /**
@@ -21598,31 +21834,29 @@ export namespace dataloss {
          */
         timeValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue>;
         /**
-         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         timestampValue?: pulumi.Input<string>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
-         * Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-         * year by itself or a year and month where the day is not significant.
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
          */
         day?: pulumi.Input<number>;
         /**
-         * Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
          */
         month?: pulumi.Input<number>;
         /**
-         * Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
          */
         year?: pulumi.Input<number>;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
         /**
-         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
          */
         hours?: pulumi.Input<number>;
         /**
@@ -21634,7 +21868,443 @@ export namespace dataloss {
          */
         nanos?: pulumi.Input<number>;
         /**
-         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
+        /**
+         * Transform the record by applying various field transformations.
+         * Structure is documented below.
+         */
+        fieldTransformations?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>[]>;
+        /**
+         * Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
+         * Structure is documented below.
+         */
+        recordSuppressions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>[]>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
+        /**
+         * A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+         * Structure is documented below.
+         */
+        condition?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition>;
+        /**
+         * Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
+         * FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
+         * Structure is documented below.
+         */
+        fields: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField>[]>;
+        /**
+         * Apply the transformation to the entire field.
+         * The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+         * Structure is documented below.
+         */
+        primitiveTransformation: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
+        /**
+         * An expression, consisting of an operator and conditions.
+         * Structure is documented below.
+         */
+        expressions?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions>;
+        /**
+         * The operator to apply to the result of conditions. Default and currently only supported value is AND.
+         * Default value is `AND`.
+         * Possible values are `AND`.
+         */
+        logicalOperator?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition>[]>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition {
+        /**
+         * Field within the record this condition is evaluated against.
+         * Structure is documented below.
+         */
+        field: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField>;
+        /**
+         * Operator used to compare the field or infoType to the value.
+         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Value to compare against. [Mandatory, except for EXISTS tests.]
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField {
+        /**
+         * Name describing the field.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue>;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: pulumi.Input<string>;
+        /**
+         * A float value.
+         */
+        floatValue?: pulumi.Input<number>;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: pulumi.Input<string>;
+        /**
+         * A string value.
+         */
+        stringValue?: pulumi.Input<string>;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue>;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField {
+        /**
+         * Name describing the field.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation {
+        /**
+         * Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
+         * Structure is documented below.
+         */
+        characterMaskConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig>;
+        /**
+         * Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
+         */
+        redactConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig>;
+        /**
+         * Replace with a specified value.
+         * Structure is documented below.
+         */
+        replaceConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
+        /**
+         * Characters to skip when doing de-identification of a value. These will be left alone and skipped.
+         * Structure is documented below.
+         */
+        charactersToIgnores?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>[]>;
+        /**
+         * is *
+         */
+        maskingCharacter?: pulumi.Input<string>;
+        /**
+         * is -4
+         */
+        numberToMask?: pulumi.Input<number>;
+        /**
+         * Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
+         * input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+         */
+        reverseOrder?: pulumi.Input<boolean>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
+        /**
+         * Characters to not transform when masking.
+         */
+        charactersToSkip?: pulumi.Input<string>;
+        /**
+         * Common characters to not transform when masking. Useful to avoid removing punctuation.
+         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         */
+        commonCharactersToIgnore?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig {
+        /**
+         * Replace each input value with a given value.
+         * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
+         * Structure is documented below.
+         */
+        newValue: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue>;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: pulumi.Input<string>;
+        /**
+         * A float value.
+         */
+        floatValue?: pulumi.Input<number>;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: pulumi.Input<string>;
+        /**
+         * A string value.
+         */
+        stringValue?: pulumi.Input<string>;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue>;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
+        /**
+         * A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+         * Structure is documented below.
+         */
+        condition?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition {
+        /**
+         * An expression, consisting of an operator and conditions.
+         * Structure is documented below.
+         */
+        expressions?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions>;
+        /**
+         * The operator to apply to the result of conditions. Default and currently only supported value is AND.
+         * Default value is `AND`.
+         * Possible values are `AND`.
+         */
+        logicalOperator?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
+        /**
+         * A collection of conditions.
+         * Structure is documented below.
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition>[]>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition {
+        /**
+         * Field within the record this condition is evaluated against.
+         * Structure is documented below.
+         */
+        field: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField>;
+        /**
+         * Operator used to compare the field or infoType to the value.
+         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Value to compare against. [Mandatory, except for EXISTS tests.]
+         * Structure is documented below.
+         */
+        value?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField {
+        /**
+         * Name describing the field.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue>;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: pulumi.Input<string>;
+        /**
+         * A float value.
+         */
+        floatValue?: pulumi.Input<number>;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: pulumi.Input<string>;
+        /**
+         * A string value.
+         */
+        stringValue?: pulumi.Input<string>;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue>;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: pulumi.Input<string>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          */
         seconds?: pulumi.Input<number>;
     }
@@ -21783,6 +22453,10 @@ export namespace dataloss {
          * or `projects/project-id/storedInfoTypes/432452342`.
          */
         name: pulumi.Input<string>;
+        /**
+         * Version of the information type to use. By default, the version is set to stable
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface PreventionInspectTemplateInspectConfigLimits {
@@ -22104,6 +22778,12 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         /**
+         * Specifies the BigQuery fields that will be returned with findings.
+         * If not specified, no identifying fields will be returned for findings.
+         * Structure is documented below.
+         */
+        identifyingFields?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField>[]>;
+        /**
          * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
          * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
          * specified. Cannot be used in conjunction with TimespanConfig.
@@ -22127,6 +22807,13 @@ export namespace dataloss {
          * Structure is documented below.
          */
         tableReference: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference>;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
+        /**
+         * Name of a BigQuery field to be returned with the findings.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
@@ -22233,7 +22920,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
         /**
-         * The name of the Datastore kind.
+         * Name of a BigQuery field to be returned with the findings.
          */
         name: pulumi.Input<string>;
     }
@@ -22273,7 +22960,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
         /**
-         * The name of the Datastore kind.
+         * Name of a BigQuery field to be returned with the findings.
          */
         name: pulumi.Input<string>;
     }
@@ -23249,6 +23936,183 @@ export namespace dataproc {
         title: pulumi.Input<string>;
     }
 
+    export interface ClusterVirtualClusterConfig {
+        /**
+         * Configuration of auxiliary services used by this cluster. 
+         * Structure defined below.
+         */
+        auxiliaryServicesConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfig>;
+        /**
+         * The configuration for running the Dataproc cluster on Kubernetes.
+         * Structure defined below.
+         * - - -
+         */
+        kubernetesClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfig>;
+        /**
+         * The Cloud Storage staging bucket used to stage files,
+         * such as Hadoop jars, between client machines and the cluster.
+         * Note: If you don't explicitly specify a `stagingBucket`
+         * then GCP will auto create / assign one for you. However, you are not guaranteed
+         * an auto generated bucket which is solely dedicated to your cluster; it may be shared
+         * with other clusters in the same region/zone also choosing to use the auto generation
+         * option.
+         */
+        stagingBucket?: pulumi.Input<string>;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfig {
+        /**
+         * The config setting for metastore service with the cluster.
+         * Structure defined below.
+         * - - -
+         */
+        metastoreConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig>;
+        /**
+         * The Spark History Server configuration for the workload.
+         */
+        sparkHistoryServerConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig>;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
+        /**
+         * Resource name of an existing Dataproc Metastore service.
+         */
+        dataprocMetastoreService?: pulumi.Input<string>;
+    }
+
+    export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
+        /**
+         * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+         * - - -
+         */
+        dataprocCluster?: pulumi.Input<string>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfig {
+        /**
+         * The configuration for running the Dataproc cluster on GKE.
+         */
+        gkeClusterConfig: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig>;
+        /**
+         * A namespace within the Kubernetes cluster to deploy into. 
+         * If this namespace does not exist, it is created.
+         * If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
+         * If not specified, the name of the Dataproc Cluster is used.
+         */
+        kubernetesNamespace?: pulumi.Input<string>;
+        /**
+         * The software configuration for this Dataproc cluster running on Kubernetes.
+         */
+        kubernetesSoftwareConfig: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
+        /**
+         * A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+         * (the GKE cluster can be zonal or regional)
+         */
+        gkeClusterTarget?: pulumi.Input<string>;
+        /**
+         * GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+         * GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
+         * Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
+         */
+        nodePoolTargets?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>[]>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
+        /**
+         * The target GKE node pool.
+         */
+        nodePool: pulumi.Input<string>;
+        /**
+         * The configuration for the GKE node pool. 
+         * If specified, Dataproc attempts to create a node pool with the specified shape.
+         * If one with the same name already exists, it is verified against all specified fields.
+         * If a field differs, the virtual cluster creation will fail.
+         */
+        nodePoolConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig>;
+        /**
+         * The roles associated with the GKE node pool. 
+         * One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+         */
+        roles: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
+        /**
+         * The autoscaler configuration for this node pool. 
+         * The autoscaler is enabled only when a valid configuration is present.
+         */
+        autoscaling?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling>;
+        /**
+         * The node pool configuration.
+         */
+        config?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig>;
+        /**
+         * The list of Compute Engine zones where node pool nodes associated 
+         * with a Dataproc on GKE virtual cluster will be located.
+         * - - -
+         */
+        locations: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
+        /**
+         * The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
+         */
+        maxNodeCount?: pulumi.Input<number>;
+        /**
+         * The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
+         */
+        minNodeCount?: pulumi.Input<number>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
+        /**
+         * The number of local SSD disks to attach to the node, 
+         * which is limited by the maximum number of disks allowable per zone.
+         */
+        localSsdCount?: pulumi.Input<number>;
+        /**
+         * The name of a Google Compute Engine machine type
+         * to create for the worker nodes. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * The name of a minimum generation of CPU family
+         * for the master. If not specified, GCP will default to a predetermined computed value
+         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for details about which CPU families are available (and defaulted) for each zone.
+         */
+        minCpuPlatform?: pulumi.Input<string>;
+        /**
+         * Whether the nodes are created as preemptible VM instances. 
+         * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
+         * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+         */
+        preemptible?: pulumi.Input<boolean>;
+        /**
+         * Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+         */
+        spot?: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
+        /**
+         * The components that should be installed in this Dataproc cluster. The key must be a string from the   
+         * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+         * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
+         */
+        componentVersion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+         * for example spark:spark.kubernetes.container.image.
+         */
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface JobHadoopConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -23672,6 +24536,15 @@ export namespace dataproc {
          * `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
          */
         subnetwork: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceTelemetryConfig {
+        /**
+         * The output format of the Dataproc Metastore service's logs.
+         * Default value is `JSON`.
+         * Possible values are `LEGACY` and `JSON`.
+         */
+        logFormat?: pulumi.Input<string>;
     }
 
     export interface WorkflowTemplateJob {
@@ -24882,6 +25755,348 @@ export namespace datastream {
          */
         vpc: pulumi.Input<string>;
     }
+
+    export interface StreamBackfillAll {
+        /**
+         * MySQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        mysqlExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllMysqlExcludedObjects>;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabase>[]>;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>[]>;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: pulumi.Input<string>;
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * -
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+    }
+
+    export interface StreamBackfillNone {
+    }
+
+    export interface StreamDestinationConfig {
+        /**
+         * A configuration for how data should be loaded to Cloud Storage.
+         * Structure is documented below.
+         */
+        bigqueryDestinationConfig?: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfig>;
+        /**
+         * Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+         */
+        destinationConnectionProfile: pulumi.Input<string>;
+        /**
+         * A configuration for how data should be loaded to Cloud Storage.
+         * Structure is documented below.
+         */
+        gcsDestinationConfig?: pulumi.Input<inputs.datastream.StreamDestinationConfigGcsDestinationConfig>;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfig {
+        /**
+         * The guaranteed data freshness (in seconds) when querying tables created by the stream.
+         * Editing this field will only affect new tables created in the future, but existing tables
+         * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+         */
+        dataFreshness?: pulumi.Input<string>;
+        /**
+         * A single target dataset to which all data will be streamed.
+         * Structure is documented below.
+         */
+        singleTargetDataset?: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset>;
+        /**
+         * Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+         * Structure is documented below.
+         */
+        sourceHierarchyDatasets?: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets>;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
+        /**
+         * Dataset ID in the format projects/{project}/datasets/{dataset_id}
+         */
+        datasetId: pulumi.Input<string>;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
+        /**
+         * Dataset template used for dynamic dataset creation.
+         * Structure is documented below.
+         */
+        datasetTemplate: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate>;
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate {
+        /**
+         * If supplied, every created dataset will have its name prefixed by the provided value.
+         * The prefix and name will be separated by an underscore. i.e. _.
+         */
+        datasetIdPrefix?: pulumi.Input<string>;
+        /**
+         * The geographic location where the dataset should reside.
+         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         */
+        location: pulumi.Input<string>;
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfig {
+        /**
+         * AVRO file format configuration.
+         */
+        avroFileFormat?: pulumi.Input<inputs.datastream.StreamDestinationConfigGcsDestinationConfigAvroFileFormat>;
+        /**
+         * The maximum duration for which new events are added before a file is closed and a new file is created.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+         */
+        fileRotationInterval?: pulumi.Input<string>;
+        /**
+         * The maximum file size to be saved in the bucket.
+         */
+        fileRotationMb?: pulumi.Input<number>;
+        /**
+         * JSON file format configuration.
+         * Structure is documented below.
+         */
+        jsonFileFormat?: pulumi.Input<inputs.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormat>;
+        /**
+         * Path inside the Cloud Storage bucket to write data to.
+         */
+        path?: pulumi.Input<string>;
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
+    }
+
+    export interface StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
+        /**
+         * Compression of the loaded JSON file.
+         * Possible values are `NO_COMPRESSION` and `GZIP`.
+         */
+        compression?: pulumi.Input<string>;
+        /**
+         * The schema file format along JSON data files.
+         * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+         */
+        schemaFileFormat?: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfig {
+        /**
+         * MySQL data source configuration.
+         * Structure is documented below.
+         */
+        mysqlSourceConfig: pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfig>;
+        /**
+         * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+         */
+        sourceConnectionProfile: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfig {
+        /**
+         * MySQL objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjects>;
+        /**
+         * MySQL objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjects>;
+        /**
+         * Maximum number of concurrent CDC tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentCdcTasks?: pulumi.Input<number>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase>[]>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable>[]>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: pulumi.Input<string>;
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * -
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjects {
+        /**
+         * MySQL databases on the server
+         * Structure is documented below.
+         */
+        mysqlDatabases: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase>[]>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
+        /**
+         * Database name.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        mysqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>[]>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable {
+        /**
+         * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        mysqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
+        /**
+         * Column collation.
+         */
+        collation?: pulumi.Input<string>;
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * -
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+    }
 }
 
 export namespace deploymentmanager {
@@ -25548,6 +26763,18 @@ export namespace diagflow {
 }
 
 export namespace dns {
+    export interface DnsManagedZoneIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DnsManagedZoneIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface ManagedZoneCloudLoggingConfig {
         /**
          * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -26702,6 +27929,11 @@ export namespace gkehub {
          */
         git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
         /**
+         * -
+         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         */
+        oci?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci>;
+        /**
          * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
          */
         preventDrift?: pulumi.Input<boolean>;
@@ -26713,7 +27945,7 @@ export namespace gkehub {
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
         /**
-         * The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+         * The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
          */
         gcpServiceAccountEmail?: pulumi.Input<string>;
         /**
@@ -26721,11 +27953,11 @@ export namespace gkehub {
          */
         httpsProxy?: pulumi.Input<string>;
         /**
-         * The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image.
          */
         policyDir?: pulumi.Input<string>;
         /**
-         * Type of secret configured for access to the Git repo.
+         * Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
          */
         secretType?: pulumi.Input<string>;
         /**
@@ -26733,7 +27965,7 @@ export namespace gkehub {
          */
         syncBranch?: pulumi.Input<string>;
         /**
-         * The URL of the Git repository to use as the source of truth.
+         * The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
          */
         syncRepo?: pulumi.Input<string>;
         /**
@@ -26741,7 +27973,30 @@ export namespace gkehub {
          */
         syncRev?: pulumi.Input<string>;
         /**
-         * Period in seconds between consecutive syncs. Default: 15.
+         * Period in seconds(int64 format) between consecutive syncs. Default: 15.
+         */
+        syncWaitSecs?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncOci {
+        /**
+         * The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
+         */
+        gcpServiceAccountEmail?: pulumi.Input<string>;
+        /**
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+         */
+        policyDir?: pulumi.Input<string>;
+        /**
+         * Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+         */
+        secretType?: pulumi.Input<string>;
+        /**
+         * The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+         */
+        syncRepo?: pulumi.Input<string>;
+        /**
+         * Period in seconds(int64 format) between consecutive syncs. Default: 15.
          */
         syncWaitSecs?: pulumi.Input<string>;
     }
@@ -26801,9 +28056,6 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipMesh {
-        /**
-         * Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
-         */
         controlPlane?: pulumi.Input<string>;
         /**
          * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -34051,7 +35303,7 @@ export namespace sql {
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
-         * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
+         * For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
          * is set to `true`. Defaults to `ZONAL`.
          */
         availabilityType?: pulumi.Input<string>;
@@ -34065,6 +35317,7 @@ export namespace sql {
          */
         connectorEnforcement?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
+        deletionProtectionEnabled?: pulumi.Input<boolean>;
         denyMaintenancePeriod?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod>;
         /**
          * Enables auto-resizing of the storage size. Defaults to `true`.
@@ -34136,7 +35389,7 @@ export namespace sql {
          */
         location?: pulumi.Input<string>;
         /**
-         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
+         * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
          */
         pointInTimeRecoveryEnabled?: pulumi.Input<boolean>;
         /**
@@ -34321,7 +35574,7 @@ export namespace sql {
         /**
          * The name of the destination bucket (e.g., gs://mybucket).
          */
-        bucket: pulumi.Input<string>;
+        bucket?: pulumi.Input<string>;
         /**
          * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
@@ -35050,7 +36303,23 @@ export namespace vertex {
         /**
          * The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
          */
-        fixedNodeCount: pulumi.Input<number>;
+        fixedNodeCount?: pulumi.Input<number>;
+        /**
+         * Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+         * Structure is documented below.
+         */
+        scaling?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfigScaling>;
+    }
+
+    export interface AiFeatureStoreOnlineServingConfigScaling {
+        /**
+         * The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+         */
+        maxNodeCount: pulumi.Input<number>;
+        /**
+         * The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+         */
+        minNodeCount: pulumi.Input<number>;
     }
 
     export interface AiIndexDeployedIndex {

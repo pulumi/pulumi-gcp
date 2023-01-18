@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly double? FloatValue;
         /// <summary>
-        /// An integer value.
+        /// An integer value (int64 format)
         /// </summary>
         public readonly int? IntegerValue;
         /// <summary>
@@ -45,8 +45,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue? TimeValue;
         /// <summary>
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         public readonly string? TimestampValue;
 

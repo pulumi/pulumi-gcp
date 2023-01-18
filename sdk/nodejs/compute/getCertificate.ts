@@ -56,6 +56,7 @@ export interface GetCertificateResult {
     readonly certificateId: number;
     readonly creationTimestamp: string;
     readonly description: string;
+    readonly expireTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

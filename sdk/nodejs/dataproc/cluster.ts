@@ -172,6 +172,11 @@ export class Cluster extends pulumi.CustomResource {
      * Defaults to `global`.
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     */
+    public readonly virtualClusterConfig!: pulumi.Output<outputs.dataproc.ClusterVirtualClusterConfig>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -192,6 +197,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["virtualClusterConfig"] = state ? state.virtualClusterConfig : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
@@ -200,6 +206,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["virtualClusterConfig"] = args ? args.virtualClusterConfig : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -241,6 +248,11 @@ export interface ClusterState {
      * Defaults to `global`.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     */
+    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig>;
 }
 
 /**
@@ -278,4 +290,9 @@ export interface ClusterArgs {
      * Defaults to `global`.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Allows you to configure a virtual Dataproc on GKE cluster.
+     * Structure defined below.
+     */
+    virtualClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfig>;
 }

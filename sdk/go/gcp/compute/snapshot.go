@@ -190,8 +190,16 @@ type Snapshot struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.
+	// Encrypts the snapshot using a customer-supplied encryption key.
+	// After you encrypt a snapshot using a customer-supplied key, you must
+	// provide the same key if you use the snapshot later. For example, you
+	// must provide the encryption key when you create a disk from the
+	// encrypted snapshot in a future request.
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the snapshot.
+	// If you do not provide an encryption key when creating the snapshot,
+	// then the snapshot will be encrypted using an automatically generated
+	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrOutput `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
@@ -278,8 +286,16 @@ type snapshotState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.
+	// Encrypts the snapshot using a customer-supplied encryption key.
+	// After you encrypt a snapshot using a customer-supplied key, you must
+	// provide the same key if you use the snapshot later. For example, you
+	// must provide the encryption key when you create a disk from the
+	// encrypted snapshot in a future request.
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the snapshot.
+	// If you do not provide an encryption key when creating the snapshot,
+	// then the snapshot will be encrypted using an automatically generated
+	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
@@ -335,8 +351,16 @@ type SnapshotState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.
+	// Encrypts the snapshot using a customer-supplied encryption key.
+	// After you encrypt a snapshot using a customer-supplied key, you must
+	// provide the same key if you use the snapshot later. For example, you
+	// must provide the encryption key when you create a disk from the
+	// encrypted snapshot in a future request.
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the snapshot.
+	// If you do not provide an encryption key when creating the snapshot,
+	// then the snapshot will be encrypted using an automatically generated
+	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// The unique identifier for the resource.
@@ -384,8 +408,16 @@ type snapshotArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.
+	// Encrypts the snapshot using a customer-supplied encryption key.
+	// After you encrypt a snapshot using a customer-supplied key, you must
+	// provide the same key if you use the snapshot later. For example, you
+	// must provide the encryption key when you create a disk from the
+	// encrypted snapshot in a future request.
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the snapshot.
+	// If you do not provide an encryption key when creating the snapshot,
+	// then the snapshot will be encrypted using an automatically generated
+	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// A reference to the disk used to create this snapshot.
@@ -425,8 +457,16 @@ type SnapshotArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The customer-supplied encryption key of the snapshot. Required if the
-	// source snapshot is protected by a customer-supplied encryption key.
+	// Encrypts the snapshot using a customer-supplied encryption key.
+	// After you encrypt a snapshot using a customer-supplied key, you must
+	// provide the same key if you use the snapshot later. For example, you
+	// must provide the encryption key when you create a disk from the
+	// encrypted snapshot in a future request.
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the snapshot.
+	// If you do not provide an encryption key when creating the snapshot,
+	// then the snapshot will be encrypted using an automatically generated
+	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// A reference to the disk used to create this snapshot.
@@ -593,8 +633,16 @@ func (o SnapshotOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The customer-supplied encryption key of the snapshot. Required if the
-// source snapshot is protected by a customer-supplied encryption key.
+// Encrypts the snapshot using a customer-supplied encryption key.
+// After you encrypt a snapshot using a customer-supplied key, you must
+// provide the same key if you use the snapshot later. For example, you
+// must provide the encryption key when you create a disk from the
+// encrypted snapshot in a future request.
+// Customer-supplied encryption keys do not protect access to metadata of
+// the snapshot.
+// If you do not provide an encryption key when creating the snapshot,
+// then the snapshot will be encrypted using an automatically generated
+// key and you do not need to provide a key to use the snapshot later.
 // Structure is documented below.
 func (o SnapshotOutput) SnapshotEncryptionKey() SnapshotSnapshotEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Snapshot) SnapshotSnapshotEncryptionKeyPtrOutput { return v.SnapshotEncryptionKey }).(SnapshotSnapshotEncryptionKeyPtrOutput)

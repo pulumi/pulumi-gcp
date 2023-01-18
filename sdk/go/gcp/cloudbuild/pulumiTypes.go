@@ -5051,6 +5051,2611 @@ func (o WorkerPoolWorkerConfigPtrOutput) NoExternalIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetTriggerApprovalConfig struct {
+	ApprovalRequired bool `pulumi:"approvalRequired"`
+}
+
+// GetTriggerApprovalConfigInput is an input type that accepts GetTriggerApprovalConfigArgs and GetTriggerApprovalConfigOutput values.
+// You can construct a concrete instance of `GetTriggerApprovalConfigInput` via:
+//
+//	GetTriggerApprovalConfigArgs{...}
+type GetTriggerApprovalConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerApprovalConfigOutput() GetTriggerApprovalConfigOutput
+	ToGetTriggerApprovalConfigOutputWithContext(context.Context) GetTriggerApprovalConfigOutput
+}
+
+type GetTriggerApprovalConfigArgs struct {
+	ApprovalRequired pulumi.BoolInput `pulumi:"approvalRequired"`
+}
+
+func (GetTriggerApprovalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerApprovalConfig)(nil)).Elem()
+}
+
+func (i GetTriggerApprovalConfigArgs) ToGetTriggerApprovalConfigOutput() GetTriggerApprovalConfigOutput {
+	return i.ToGetTriggerApprovalConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerApprovalConfigArgs) ToGetTriggerApprovalConfigOutputWithContext(ctx context.Context) GetTriggerApprovalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerApprovalConfigOutput)
+}
+
+// GetTriggerApprovalConfigArrayInput is an input type that accepts GetTriggerApprovalConfigArray and GetTriggerApprovalConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerApprovalConfigArrayInput` via:
+//
+//	GetTriggerApprovalConfigArray{ GetTriggerApprovalConfigArgs{...} }
+type GetTriggerApprovalConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerApprovalConfigArrayOutput() GetTriggerApprovalConfigArrayOutput
+	ToGetTriggerApprovalConfigArrayOutputWithContext(context.Context) GetTriggerApprovalConfigArrayOutput
+}
+
+type GetTriggerApprovalConfigArray []GetTriggerApprovalConfigInput
+
+func (GetTriggerApprovalConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerApprovalConfig)(nil)).Elem()
+}
+
+func (i GetTriggerApprovalConfigArray) ToGetTriggerApprovalConfigArrayOutput() GetTriggerApprovalConfigArrayOutput {
+	return i.ToGetTriggerApprovalConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerApprovalConfigArray) ToGetTriggerApprovalConfigArrayOutputWithContext(ctx context.Context) GetTriggerApprovalConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerApprovalConfigArrayOutput)
+}
+
+type GetTriggerApprovalConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerApprovalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerApprovalConfig)(nil)).Elem()
+}
+
+func (o GetTriggerApprovalConfigOutput) ToGetTriggerApprovalConfigOutput() GetTriggerApprovalConfigOutput {
+	return o
+}
+
+func (o GetTriggerApprovalConfigOutput) ToGetTriggerApprovalConfigOutputWithContext(ctx context.Context) GetTriggerApprovalConfigOutput {
+	return o
+}
+
+func (o GetTriggerApprovalConfigOutput) ApprovalRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerApprovalConfig) bool { return v.ApprovalRequired }).(pulumi.BoolOutput)
+}
+
+type GetTriggerApprovalConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerApprovalConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerApprovalConfig)(nil)).Elem()
+}
+
+func (o GetTriggerApprovalConfigArrayOutput) ToGetTriggerApprovalConfigArrayOutput() GetTriggerApprovalConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerApprovalConfigArrayOutput) ToGetTriggerApprovalConfigArrayOutputWithContext(ctx context.Context) GetTriggerApprovalConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerApprovalConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerApprovalConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerApprovalConfig {
+		return vs[0].([]GetTriggerApprovalConfig)[vs[1].(int)]
+	}).(GetTriggerApprovalConfigOutput)
+}
+
+type GetTriggerBuild struct {
+	Artifacts        []GetTriggerBuildArtifact        `pulumi:"artifacts"`
+	AvailableSecrets []GetTriggerBuildAvailableSecret `pulumi:"availableSecrets"`
+	Images           []string                         `pulumi:"images"`
+	LogsBucket       string                           `pulumi:"logsBucket"`
+	Options          []GetTriggerBuildOption          `pulumi:"options"`
+	QueueTtl         string                           `pulumi:"queueTtl"`
+	Secrets          []GetTriggerBuildSecret          `pulumi:"secrets"`
+	Sources          []GetTriggerBuildSource          `pulumi:"sources"`
+	Steps            []GetTriggerBuildStep            `pulumi:"steps"`
+	Substitutions    map[string]string                `pulumi:"substitutions"`
+	Tags             []string                         `pulumi:"tags"`
+	Timeout          string                           `pulumi:"timeout"`
+}
+
+// GetTriggerBuildInput is an input type that accepts GetTriggerBuildArgs and GetTriggerBuildOutput values.
+// You can construct a concrete instance of `GetTriggerBuildInput` via:
+//
+//	GetTriggerBuildArgs{...}
+type GetTriggerBuildInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildOutput() GetTriggerBuildOutput
+	ToGetTriggerBuildOutputWithContext(context.Context) GetTriggerBuildOutput
+}
+
+type GetTriggerBuildArgs struct {
+	Artifacts        GetTriggerBuildArtifactArrayInput        `pulumi:"artifacts"`
+	AvailableSecrets GetTriggerBuildAvailableSecretArrayInput `pulumi:"availableSecrets"`
+	Images           pulumi.StringArrayInput                  `pulumi:"images"`
+	LogsBucket       pulumi.StringInput                       `pulumi:"logsBucket"`
+	Options          GetTriggerBuildOptionArrayInput          `pulumi:"options"`
+	QueueTtl         pulumi.StringInput                       `pulumi:"queueTtl"`
+	Secrets          GetTriggerBuildSecretArrayInput          `pulumi:"secrets"`
+	Sources          GetTriggerBuildSourceArrayInput          `pulumi:"sources"`
+	Steps            GetTriggerBuildStepArrayInput            `pulumi:"steps"`
+	Substitutions    pulumi.StringMapInput                    `pulumi:"substitutions"`
+	Tags             pulumi.StringArrayInput                  `pulumi:"tags"`
+	Timeout          pulumi.StringInput                       `pulumi:"timeout"`
+}
+
+func (GetTriggerBuildArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuild)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArgs) ToGetTriggerBuildOutput() GetTriggerBuildOutput {
+	return i.ToGetTriggerBuildOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArgs) ToGetTriggerBuildOutputWithContext(ctx context.Context) GetTriggerBuildOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOutput)
+}
+
+// GetTriggerBuildArrayInput is an input type that accepts GetTriggerBuildArray and GetTriggerBuildArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArrayInput` via:
+//
+//	GetTriggerBuildArray{ GetTriggerBuildArgs{...} }
+type GetTriggerBuildArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArrayOutput() GetTriggerBuildArrayOutput
+	ToGetTriggerBuildArrayOutputWithContext(context.Context) GetTriggerBuildArrayOutput
+}
+
+type GetTriggerBuildArray []GetTriggerBuildInput
+
+func (GetTriggerBuildArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuild)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArray) ToGetTriggerBuildArrayOutput() GetTriggerBuildArrayOutput {
+	return i.ToGetTriggerBuildArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArray) ToGetTriggerBuildArrayOutputWithContext(ctx context.Context) GetTriggerBuildArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArrayOutput)
+}
+
+type GetTriggerBuildOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuild)(nil)).Elem()
+}
+
+func (o GetTriggerBuildOutput) ToGetTriggerBuildOutput() GetTriggerBuildOutput {
+	return o
+}
+
+func (o GetTriggerBuildOutput) ToGetTriggerBuildOutputWithContext(ctx context.Context) GetTriggerBuildOutput {
+	return o
+}
+
+func (o GetTriggerBuildOutput) Artifacts() GetTriggerBuildArtifactArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildArtifact { return v.Artifacts }).(GetTriggerBuildArtifactArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) AvailableSecrets() GetTriggerBuildAvailableSecretArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildAvailableSecret { return v.AvailableSecrets }).(GetTriggerBuildAvailableSecretArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) LogsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuild) string { return v.LogsBucket }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOutput) Options() GetTriggerBuildOptionArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildOption { return v.Options }).(GetTriggerBuildOptionArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) QueueTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuild) string { return v.QueueTtl }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOutput) Secrets() GetTriggerBuildSecretArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildSecret { return v.Secrets }).(GetTriggerBuildSecretArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) Sources() GetTriggerBuildSourceArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildSource { return v.Sources }).(GetTriggerBuildSourceArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) Steps() GetTriggerBuildStepArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []GetTriggerBuildStep { return v.Steps }).(GetTriggerBuildStepArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTriggerBuild) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+func (o GetTriggerBuildOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuild) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuild)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArrayOutput) ToGetTriggerBuildArrayOutput() GetTriggerBuildArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArrayOutput) ToGetTriggerBuildArrayOutputWithContext(ctx context.Context) GetTriggerBuildArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuild {
+		return vs[0].([]GetTriggerBuild)[vs[1].(int)]
+	}).(GetTriggerBuildOutput)
+}
+
+type GetTriggerBuildArtifact struct {
+	Images  []string                        `pulumi:"images"`
+	Objects []GetTriggerBuildArtifactObject `pulumi:"objects"`
+}
+
+// GetTriggerBuildArtifactInput is an input type that accepts GetTriggerBuildArtifactArgs and GetTriggerBuildArtifactOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactInput` via:
+//
+//	GetTriggerBuildArtifactArgs{...}
+type GetTriggerBuildArtifactInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactOutput() GetTriggerBuildArtifactOutput
+	ToGetTriggerBuildArtifactOutputWithContext(context.Context) GetTriggerBuildArtifactOutput
+}
+
+type GetTriggerBuildArtifactArgs struct {
+	Images  pulumi.StringArrayInput                 `pulumi:"images"`
+	Objects GetTriggerBuildArtifactObjectArrayInput `pulumi:"objects"`
+}
+
+func (GetTriggerBuildArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifact)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactArgs) ToGetTriggerBuildArtifactOutput() GetTriggerBuildArtifactOutput {
+	return i.ToGetTriggerBuildArtifactOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactArgs) ToGetTriggerBuildArtifactOutputWithContext(ctx context.Context) GetTriggerBuildArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactOutput)
+}
+
+// GetTriggerBuildArtifactArrayInput is an input type that accepts GetTriggerBuildArtifactArray and GetTriggerBuildArtifactArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactArrayInput` via:
+//
+//	GetTriggerBuildArtifactArray{ GetTriggerBuildArtifactArgs{...} }
+type GetTriggerBuildArtifactArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactArrayOutput() GetTriggerBuildArtifactArrayOutput
+	ToGetTriggerBuildArtifactArrayOutputWithContext(context.Context) GetTriggerBuildArtifactArrayOutput
+}
+
+type GetTriggerBuildArtifactArray []GetTriggerBuildArtifactInput
+
+func (GetTriggerBuildArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifact)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactArray) ToGetTriggerBuildArtifactArrayOutput() GetTriggerBuildArtifactArrayOutput {
+	return i.ToGetTriggerBuildArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactArray) ToGetTriggerBuildArtifactArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactArrayOutput)
+}
+
+type GetTriggerBuildArtifactOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifact)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactOutput) ToGetTriggerBuildArtifactOutput() GetTriggerBuildArtifactOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactOutput) ToGetTriggerBuildArtifactOutputWithContext(ctx context.Context) GetTriggerBuildArtifactOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifact) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildArtifactOutput) Objects() GetTriggerBuildArtifactObjectArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifact) []GetTriggerBuildArtifactObject { return v.Objects }).(GetTriggerBuildArtifactObjectArrayOutput)
+}
+
+type GetTriggerBuildArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifact)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactArrayOutput) ToGetTriggerBuildArtifactArrayOutput() GetTriggerBuildArtifactArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactArrayOutput) ToGetTriggerBuildArtifactArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifact {
+		return vs[0].([]GetTriggerBuildArtifact)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactOutput)
+}
+
+type GetTriggerBuildArtifactObject struct {
+	// The Cloud Build location for the trigger.
+	Location string                                `pulumi:"location"`
+	Paths    []string                              `pulumi:"paths"`
+	Timings  []GetTriggerBuildArtifactObjectTiming `pulumi:"timings"`
+}
+
+// GetTriggerBuildArtifactObjectInput is an input type that accepts GetTriggerBuildArtifactObjectArgs and GetTriggerBuildArtifactObjectOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactObjectInput` via:
+//
+//	GetTriggerBuildArtifactObjectArgs{...}
+type GetTriggerBuildArtifactObjectInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactObjectOutput() GetTriggerBuildArtifactObjectOutput
+	ToGetTriggerBuildArtifactObjectOutputWithContext(context.Context) GetTriggerBuildArtifactObjectOutput
+}
+
+type GetTriggerBuildArtifactObjectArgs struct {
+	// The Cloud Build location for the trigger.
+	Location pulumi.StringInput                            `pulumi:"location"`
+	Paths    pulumi.StringArrayInput                       `pulumi:"paths"`
+	Timings  GetTriggerBuildArtifactObjectTimingArrayInput `pulumi:"timings"`
+}
+
+func (GetTriggerBuildArtifactObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactObject)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactObjectArgs) ToGetTriggerBuildArtifactObjectOutput() GetTriggerBuildArtifactObjectOutput {
+	return i.ToGetTriggerBuildArtifactObjectOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactObjectArgs) ToGetTriggerBuildArtifactObjectOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectOutput)
+}
+
+// GetTriggerBuildArtifactObjectArrayInput is an input type that accepts GetTriggerBuildArtifactObjectArray and GetTriggerBuildArtifactObjectArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactObjectArrayInput` via:
+//
+//	GetTriggerBuildArtifactObjectArray{ GetTriggerBuildArtifactObjectArgs{...} }
+type GetTriggerBuildArtifactObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactObjectArrayOutput() GetTriggerBuildArtifactObjectArrayOutput
+	ToGetTriggerBuildArtifactObjectArrayOutputWithContext(context.Context) GetTriggerBuildArtifactObjectArrayOutput
+}
+
+type GetTriggerBuildArtifactObjectArray []GetTriggerBuildArtifactObjectInput
+
+func (GetTriggerBuildArtifactObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactObject)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactObjectArray) ToGetTriggerBuildArtifactObjectArrayOutput() GetTriggerBuildArtifactObjectArrayOutput {
+	return i.ToGetTriggerBuildArtifactObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactObjectArray) ToGetTriggerBuildArtifactObjectArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectArrayOutput)
+}
+
+type GetTriggerBuildArtifactObjectOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactObject)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactObjectOutput) ToGetTriggerBuildArtifactObjectOutput() GetTriggerBuildArtifactObjectOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectOutput) ToGetTriggerBuildArtifactObjectOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectOutput {
+	return o
+}
+
+// The Cloud Build location for the trigger.
+func (o GetTriggerBuildArtifactObjectOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactObject) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactObjectOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactObject) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildArtifactObjectOutput) Timings() GetTriggerBuildArtifactObjectTimingArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactObject) []GetTriggerBuildArtifactObjectTiming { return v.Timings }).(GetTriggerBuildArtifactObjectTimingArrayOutput)
+}
+
+type GetTriggerBuildArtifactObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactObject)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactObjectArrayOutput) ToGetTriggerBuildArtifactObjectArrayOutput() GetTriggerBuildArtifactObjectArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectArrayOutput) ToGetTriggerBuildArtifactObjectArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactObject {
+		return vs[0].([]GetTriggerBuildArtifactObject)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactObjectOutput)
+}
+
+type GetTriggerBuildArtifactObjectTiming struct {
+	EndTime   string `pulumi:"endTime"`
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetTriggerBuildArtifactObjectTimingInput is an input type that accepts GetTriggerBuildArtifactObjectTimingArgs and GetTriggerBuildArtifactObjectTimingOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactObjectTimingInput` via:
+//
+//	GetTriggerBuildArtifactObjectTimingArgs{...}
+type GetTriggerBuildArtifactObjectTimingInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactObjectTimingOutput() GetTriggerBuildArtifactObjectTimingOutput
+	ToGetTriggerBuildArtifactObjectTimingOutputWithContext(context.Context) GetTriggerBuildArtifactObjectTimingOutput
+}
+
+type GetTriggerBuildArtifactObjectTimingArgs struct {
+	EndTime   pulumi.StringInput `pulumi:"endTime"`
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetTriggerBuildArtifactObjectTimingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactObjectTiming)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactObjectTimingArgs) ToGetTriggerBuildArtifactObjectTimingOutput() GetTriggerBuildArtifactObjectTimingOutput {
+	return i.ToGetTriggerBuildArtifactObjectTimingOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactObjectTimingArgs) ToGetTriggerBuildArtifactObjectTimingOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectTimingOutput)
+}
+
+// GetTriggerBuildArtifactObjectTimingArrayInput is an input type that accepts GetTriggerBuildArtifactObjectTimingArray and GetTriggerBuildArtifactObjectTimingArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactObjectTimingArrayInput` via:
+//
+//	GetTriggerBuildArtifactObjectTimingArray{ GetTriggerBuildArtifactObjectTimingArgs{...} }
+type GetTriggerBuildArtifactObjectTimingArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactObjectTimingArrayOutput() GetTriggerBuildArtifactObjectTimingArrayOutput
+	ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(context.Context) GetTriggerBuildArtifactObjectTimingArrayOutput
+}
+
+type GetTriggerBuildArtifactObjectTimingArray []GetTriggerBuildArtifactObjectTimingInput
+
+func (GetTriggerBuildArtifactObjectTimingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactObjectTiming)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactObjectTimingArray) ToGetTriggerBuildArtifactObjectTimingArrayOutput() GetTriggerBuildArtifactObjectTimingArrayOutput {
+	return i.ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactObjectTimingArray) ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectTimingArrayOutput)
+}
+
+type GetTriggerBuildArtifactObjectTimingOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactObjectTimingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactObjectTiming)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactObjectTimingOutput) ToGetTriggerBuildArtifactObjectTimingOutput() GetTriggerBuildArtifactObjectTimingOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingOutput) ToGetTriggerBuildArtifactObjectTimingOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactObjectTiming) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactObjectTimingOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactObjectTiming) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildArtifactObjectTimingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactObjectTimingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactObjectTiming)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactObjectTimingArrayOutput) ToGetTriggerBuildArtifactObjectTimingArrayOutput() GetTriggerBuildArtifactObjectTimingArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingArrayOutput) ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactObjectTimingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactObjectTiming {
+		return vs[0].([]GetTriggerBuildArtifactObjectTiming)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactObjectTimingOutput)
+}
+
+type GetTriggerBuildAvailableSecret struct {
+	SecretManagers []GetTriggerBuildAvailableSecretSecretManager `pulumi:"secretManagers"`
+}
+
+// GetTriggerBuildAvailableSecretInput is an input type that accepts GetTriggerBuildAvailableSecretArgs and GetTriggerBuildAvailableSecretOutput values.
+// You can construct a concrete instance of `GetTriggerBuildAvailableSecretInput` via:
+//
+//	GetTriggerBuildAvailableSecretArgs{...}
+type GetTriggerBuildAvailableSecretInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildAvailableSecretOutput() GetTriggerBuildAvailableSecretOutput
+	ToGetTriggerBuildAvailableSecretOutputWithContext(context.Context) GetTriggerBuildAvailableSecretOutput
+}
+
+type GetTriggerBuildAvailableSecretArgs struct {
+	SecretManagers GetTriggerBuildAvailableSecretSecretManagerArrayInput `pulumi:"secretManagers"`
+}
+
+func (GetTriggerBuildAvailableSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildAvailableSecret)(nil)).Elem()
+}
+
+func (i GetTriggerBuildAvailableSecretArgs) ToGetTriggerBuildAvailableSecretOutput() GetTriggerBuildAvailableSecretOutput {
+	return i.ToGetTriggerBuildAvailableSecretOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildAvailableSecretArgs) ToGetTriggerBuildAvailableSecretOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretOutput)
+}
+
+// GetTriggerBuildAvailableSecretArrayInput is an input type that accepts GetTriggerBuildAvailableSecretArray and GetTriggerBuildAvailableSecretArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildAvailableSecretArrayInput` via:
+//
+//	GetTriggerBuildAvailableSecretArray{ GetTriggerBuildAvailableSecretArgs{...} }
+type GetTriggerBuildAvailableSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildAvailableSecretArrayOutput() GetTriggerBuildAvailableSecretArrayOutput
+	ToGetTriggerBuildAvailableSecretArrayOutputWithContext(context.Context) GetTriggerBuildAvailableSecretArrayOutput
+}
+
+type GetTriggerBuildAvailableSecretArray []GetTriggerBuildAvailableSecretInput
+
+func (GetTriggerBuildAvailableSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildAvailableSecret)(nil)).Elem()
+}
+
+func (i GetTriggerBuildAvailableSecretArray) ToGetTriggerBuildAvailableSecretArrayOutput() GetTriggerBuildAvailableSecretArrayOutput {
+	return i.ToGetTriggerBuildAvailableSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildAvailableSecretArray) ToGetTriggerBuildAvailableSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretArrayOutput)
+}
+
+type GetTriggerBuildAvailableSecretOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildAvailableSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildAvailableSecret)(nil)).Elem()
+}
+
+func (o GetTriggerBuildAvailableSecretOutput) ToGetTriggerBuildAvailableSecretOutput() GetTriggerBuildAvailableSecretOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretOutput) ToGetTriggerBuildAvailableSecretOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretOutput) SecretManagers() GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildAvailableSecret) []GetTriggerBuildAvailableSecretSecretManager {
+		return v.SecretManagers
+	}).(GetTriggerBuildAvailableSecretSecretManagerArrayOutput)
+}
+
+type GetTriggerBuildAvailableSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildAvailableSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildAvailableSecret)(nil)).Elem()
+}
+
+func (o GetTriggerBuildAvailableSecretArrayOutput) ToGetTriggerBuildAvailableSecretArrayOutput() GetTriggerBuildAvailableSecretArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretArrayOutput) ToGetTriggerBuildAvailableSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildAvailableSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildAvailableSecret {
+		return vs[0].([]GetTriggerBuildAvailableSecret)[vs[1].(int)]
+	}).(GetTriggerBuildAvailableSecretOutput)
+}
+
+type GetTriggerBuildAvailableSecretSecretManager struct {
+	Env         string `pulumi:"env"`
+	VersionName string `pulumi:"versionName"`
+}
+
+// GetTriggerBuildAvailableSecretSecretManagerInput is an input type that accepts GetTriggerBuildAvailableSecretSecretManagerArgs and GetTriggerBuildAvailableSecretSecretManagerOutput values.
+// You can construct a concrete instance of `GetTriggerBuildAvailableSecretSecretManagerInput` via:
+//
+//	GetTriggerBuildAvailableSecretSecretManagerArgs{...}
+type GetTriggerBuildAvailableSecretSecretManagerInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildAvailableSecretSecretManagerOutput() GetTriggerBuildAvailableSecretSecretManagerOutput
+	ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(context.Context) GetTriggerBuildAvailableSecretSecretManagerOutput
+}
+
+type GetTriggerBuildAvailableSecretSecretManagerArgs struct {
+	Env         pulumi.StringInput `pulumi:"env"`
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (GetTriggerBuildAvailableSecretSecretManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildAvailableSecretSecretManager)(nil)).Elem()
+}
+
+func (i GetTriggerBuildAvailableSecretSecretManagerArgs) ToGetTriggerBuildAvailableSecretSecretManagerOutput() GetTriggerBuildAvailableSecretSecretManagerOutput {
+	return i.ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildAvailableSecretSecretManagerArgs) ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretSecretManagerOutput)
+}
+
+// GetTriggerBuildAvailableSecretSecretManagerArrayInput is an input type that accepts GetTriggerBuildAvailableSecretSecretManagerArray and GetTriggerBuildAvailableSecretSecretManagerArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildAvailableSecretSecretManagerArrayInput` via:
+//
+//	GetTriggerBuildAvailableSecretSecretManagerArray{ GetTriggerBuildAvailableSecretSecretManagerArgs{...} }
+type GetTriggerBuildAvailableSecretSecretManagerArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildAvailableSecretSecretManagerArrayOutput() GetTriggerBuildAvailableSecretSecretManagerArrayOutput
+	ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(context.Context) GetTriggerBuildAvailableSecretSecretManagerArrayOutput
+}
+
+type GetTriggerBuildAvailableSecretSecretManagerArray []GetTriggerBuildAvailableSecretSecretManagerInput
+
+func (GetTriggerBuildAvailableSecretSecretManagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildAvailableSecretSecretManager)(nil)).Elem()
+}
+
+func (i GetTriggerBuildAvailableSecretSecretManagerArray) ToGetTriggerBuildAvailableSecretSecretManagerArrayOutput() GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
+	return i.ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildAvailableSecretSecretManagerArray) ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretSecretManagerArrayOutput)
+}
+
+type GetTriggerBuildAvailableSecretSecretManagerOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildAvailableSecretSecretManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildAvailableSecretSecretManager)(nil)).Elem()
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerOutput) ToGetTriggerBuildAvailableSecretSecretManagerOutput() GetTriggerBuildAvailableSecretSecretManagerOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerOutput) ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerOutput) Env() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildAvailableSecretSecretManager) string { return v.Env }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildAvailableSecretSecretManager) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildAvailableSecretSecretManagerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildAvailableSecretSecretManager)(nil)).Elem()
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ToGetTriggerBuildAvailableSecretSecretManagerArrayOutput() GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildAvailableSecretSecretManagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildAvailableSecretSecretManager {
+		return vs[0].([]GetTriggerBuildAvailableSecretSecretManager)[vs[1].(int)]
+	}).(GetTriggerBuildAvailableSecretSecretManagerOutput)
+}
+
+type GetTriggerBuildOption struct {
+	DiskSizeGb             int                           `pulumi:"diskSizeGb"`
+	DynamicSubstitutions   bool                          `pulumi:"dynamicSubstitutions"`
+	Envs                   []string                      `pulumi:"envs"`
+	LogStreamingOption     string                        `pulumi:"logStreamingOption"`
+	Logging                string                        `pulumi:"logging"`
+	MachineType            string                        `pulumi:"machineType"`
+	RequestedVerifyOption  string                        `pulumi:"requestedVerifyOption"`
+	SecretEnvs             []string                      `pulumi:"secretEnvs"`
+	SourceProvenanceHashes []string                      `pulumi:"sourceProvenanceHashes"`
+	SubstitutionOption     string                        `pulumi:"substitutionOption"`
+	Volumes                []GetTriggerBuildOptionVolume `pulumi:"volumes"`
+	WorkerPool             string                        `pulumi:"workerPool"`
+}
+
+// GetTriggerBuildOptionInput is an input type that accepts GetTriggerBuildOptionArgs and GetTriggerBuildOptionOutput values.
+// You can construct a concrete instance of `GetTriggerBuildOptionInput` via:
+//
+//	GetTriggerBuildOptionArgs{...}
+type GetTriggerBuildOptionInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildOptionOutput() GetTriggerBuildOptionOutput
+	ToGetTriggerBuildOptionOutputWithContext(context.Context) GetTriggerBuildOptionOutput
+}
+
+type GetTriggerBuildOptionArgs struct {
+	DiskSizeGb             pulumi.IntInput                       `pulumi:"diskSizeGb"`
+	DynamicSubstitutions   pulumi.BoolInput                      `pulumi:"dynamicSubstitutions"`
+	Envs                   pulumi.StringArrayInput               `pulumi:"envs"`
+	LogStreamingOption     pulumi.StringInput                    `pulumi:"logStreamingOption"`
+	Logging                pulumi.StringInput                    `pulumi:"logging"`
+	MachineType            pulumi.StringInput                    `pulumi:"machineType"`
+	RequestedVerifyOption  pulumi.StringInput                    `pulumi:"requestedVerifyOption"`
+	SecretEnvs             pulumi.StringArrayInput               `pulumi:"secretEnvs"`
+	SourceProvenanceHashes pulumi.StringArrayInput               `pulumi:"sourceProvenanceHashes"`
+	SubstitutionOption     pulumi.StringInput                    `pulumi:"substitutionOption"`
+	Volumes                GetTriggerBuildOptionVolumeArrayInput `pulumi:"volumes"`
+	WorkerPool             pulumi.StringInput                    `pulumi:"workerPool"`
+}
+
+func (GetTriggerBuildOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildOption)(nil)).Elem()
+}
+
+func (i GetTriggerBuildOptionArgs) ToGetTriggerBuildOptionOutput() GetTriggerBuildOptionOutput {
+	return i.ToGetTriggerBuildOptionOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildOptionArgs) ToGetTriggerBuildOptionOutputWithContext(ctx context.Context) GetTriggerBuildOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionOutput)
+}
+
+// GetTriggerBuildOptionArrayInput is an input type that accepts GetTriggerBuildOptionArray and GetTriggerBuildOptionArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildOptionArrayInput` via:
+//
+//	GetTriggerBuildOptionArray{ GetTriggerBuildOptionArgs{...} }
+type GetTriggerBuildOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildOptionArrayOutput() GetTriggerBuildOptionArrayOutput
+	ToGetTriggerBuildOptionArrayOutputWithContext(context.Context) GetTriggerBuildOptionArrayOutput
+}
+
+type GetTriggerBuildOptionArray []GetTriggerBuildOptionInput
+
+func (GetTriggerBuildOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildOption)(nil)).Elem()
+}
+
+func (i GetTriggerBuildOptionArray) ToGetTriggerBuildOptionArrayOutput() GetTriggerBuildOptionArrayOutput {
+	return i.ToGetTriggerBuildOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildOptionArray) ToGetTriggerBuildOptionArrayOutputWithContext(ctx context.Context) GetTriggerBuildOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionArrayOutput)
+}
+
+type GetTriggerBuildOptionOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildOption)(nil)).Elem()
+}
+
+func (o GetTriggerBuildOptionOutput) ToGetTriggerBuildOptionOutput() GetTriggerBuildOptionOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionOutput) ToGetTriggerBuildOptionOutputWithContext(ctx context.Context) GetTriggerBuildOptionOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) DynamicSubstitutions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) bool { return v.DynamicSubstitutions }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) Envs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) []string { return v.Envs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) LogStreamingOption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.LogStreamingOption }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) Logging() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.Logging }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) RequestedVerifyOption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.RequestedVerifyOption }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) SecretEnvs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) SourceProvenanceHashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) []string { return v.SourceProvenanceHashes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) SubstitutionOption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.SubstitutionOption }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) Volumes() GetTriggerBuildOptionVolumeArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) []GetTriggerBuildOptionVolume { return v.Volumes }).(GetTriggerBuildOptionVolumeArrayOutput)
+}
+
+func (o GetTriggerBuildOptionOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOption) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildOption)(nil)).Elem()
+}
+
+func (o GetTriggerBuildOptionArrayOutput) ToGetTriggerBuildOptionArrayOutput() GetTriggerBuildOptionArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionArrayOutput) ToGetTriggerBuildOptionArrayOutputWithContext(ctx context.Context) GetTriggerBuildOptionArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildOption {
+		return vs[0].([]GetTriggerBuildOption)[vs[1].(int)]
+	}).(GetTriggerBuildOptionOutput)
+}
+
+type GetTriggerBuildOptionVolume struct {
+	Name string `pulumi:"name"`
+	Path string `pulumi:"path"`
+}
+
+// GetTriggerBuildOptionVolumeInput is an input type that accepts GetTriggerBuildOptionVolumeArgs and GetTriggerBuildOptionVolumeOutput values.
+// You can construct a concrete instance of `GetTriggerBuildOptionVolumeInput` via:
+//
+//	GetTriggerBuildOptionVolumeArgs{...}
+type GetTriggerBuildOptionVolumeInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildOptionVolumeOutput() GetTriggerBuildOptionVolumeOutput
+	ToGetTriggerBuildOptionVolumeOutputWithContext(context.Context) GetTriggerBuildOptionVolumeOutput
+}
+
+type GetTriggerBuildOptionVolumeArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetTriggerBuildOptionVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildOptionVolume)(nil)).Elem()
+}
+
+func (i GetTriggerBuildOptionVolumeArgs) ToGetTriggerBuildOptionVolumeOutput() GetTriggerBuildOptionVolumeOutput {
+	return i.ToGetTriggerBuildOptionVolumeOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildOptionVolumeArgs) ToGetTriggerBuildOptionVolumeOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionVolumeOutput)
+}
+
+// GetTriggerBuildOptionVolumeArrayInput is an input type that accepts GetTriggerBuildOptionVolumeArray and GetTriggerBuildOptionVolumeArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildOptionVolumeArrayInput` via:
+//
+//	GetTriggerBuildOptionVolumeArray{ GetTriggerBuildOptionVolumeArgs{...} }
+type GetTriggerBuildOptionVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildOptionVolumeArrayOutput() GetTriggerBuildOptionVolumeArrayOutput
+	ToGetTriggerBuildOptionVolumeArrayOutputWithContext(context.Context) GetTriggerBuildOptionVolumeArrayOutput
+}
+
+type GetTriggerBuildOptionVolumeArray []GetTriggerBuildOptionVolumeInput
+
+func (GetTriggerBuildOptionVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildOptionVolume)(nil)).Elem()
+}
+
+func (i GetTriggerBuildOptionVolumeArray) ToGetTriggerBuildOptionVolumeArrayOutput() GetTriggerBuildOptionVolumeArrayOutput {
+	return i.ToGetTriggerBuildOptionVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildOptionVolumeArray) ToGetTriggerBuildOptionVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionVolumeArrayOutput)
+}
+
+type GetTriggerBuildOptionVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildOptionVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildOptionVolume)(nil)).Elem()
+}
+
+func (o GetTriggerBuildOptionVolumeOutput) ToGetTriggerBuildOptionVolumeOutput() GetTriggerBuildOptionVolumeOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionVolumeOutput) ToGetTriggerBuildOptionVolumeOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOptionVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildOptionVolumeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildOptionVolume) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildOptionVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildOptionVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildOptionVolume)(nil)).Elem()
+}
+
+func (o GetTriggerBuildOptionVolumeArrayOutput) ToGetTriggerBuildOptionVolumeArrayOutput() GetTriggerBuildOptionVolumeArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionVolumeArrayOutput) ToGetTriggerBuildOptionVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildOptionVolumeArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOptionVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildOptionVolume {
+		return vs[0].([]GetTriggerBuildOptionVolume)[vs[1].(int)]
+	}).(GetTriggerBuildOptionVolumeOutput)
+}
+
+type GetTriggerBuildSecret struct {
+	KmsKeyName string            `pulumi:"kmsKeyName"`
+	SecretEnv  map[string]string `pulumi:"secretEnv"`
+}
+
+// GetTriggerBuildSecretInput is an input type that accepts GetTriggerBuildSecretArgs and GetTriggerBuildSecretOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSecretInput` via:
+//
+//	GetTriggerBuildSecretArgs{...}
+type GetTriggerBuildSecretInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSecretOutput() GetTriggerBuildSecretOutput
+	ToGetTriggerBuildSecretOutputWithContext(context.Context) GetTriggerBuildSecretOutput
+}
+
+type GetTriggerBuildSecretArgs struct {
+	KmsKeyName pulumi.StringInput    `pulumi:"kmsKeyName"`
+	SecretEnv  pulumi.StringMapInput `pulumi:"secretEnv"`
+}
+
+func (GetTriggerBuildSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSecret)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSecretArgs) ToGetTriggerBuildSecretOutput() GetTriggerBuildSecretOutput {
+	return i.ToGetTriggerBuildSecretOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSecretArgs) ToGetTriggerBuildSecretOutputWithContext(ctx context.Context) GetTriggerBuildSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSecretOutput)
+}
+
+// GetTriggerBuildSecretArrayInput is an input type that accepts GetTriggerBuildSecretArray and GetTriggerBuildSecretArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSecretArrayInput` via:
+//
+//	GetTriggerBuildSecretArray{ GetTriggerBuildSecretArgs{...} }
+type GetTriggerBuildSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSecretArrayOutput() GetTriggerBuildSecretArrayOutput
+	ToGetTriggerBuildSecretArrayOutputWithContext(context.Context) GetTriggerBuildSecretArrayOutput
+}
+
+type GetTriggerBuildSecretArray []GetTriggerBuildSecretInput
+
+func (GetTriggerBuildSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSecret)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSecretArray) ToGetTriggerBuildSecretArrayOutput() GetTriggerBuildSecretArrayOutput {
+	return i.ToGetTriggerBuildSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSecretArray) ToGetTriggerBuildSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSecretArrayOutput)
+}
+
+type GetTriggerBuildSecretOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSecret)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSecretOutput) ToGetTriggerBuildSecretOutput() GetTriggerBuildSecretOutput {
+	return o
+}
+
+func (o GetTriggerBuildSecretOutput) ToGetTriggerBuildSecretOutputWithContext(ctx context.Context) GetTriggerBuildSecretOutput {
+	return o
+}
+
+func (o GetTriggerBuildSecretOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSecret) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSecretOutput) SecretEnv() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTriggerBuildSecret) map[string]string { return v.SecretEnv }).(pulumi.StringMapOutput)
+}
+
+type GetTriggerBuildSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSecret)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSecretArrayOutput) ToGetTriggerBuildSecretArrayOutput() GetTriggerBuildSecretArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSecretArrayOutput) ToGetTriggerBuildSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildSecretArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSecretArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildSecret {
+		return vs[0].([]GetTriggerBuildSecret)[vs[1].(int)]
+	}).(GetTriggerBuildSecretOutput)
+}
+
+type GetTriggerBuildSource struct {
+	RepoSources    []GetTriggerBuildSourceRepoSource    `pulumi:"repoSources"`
+	StorageSources []GetTriggerBuildSourceStorageSource `pulumi:"storageSources"`
+}
+
+// GetTriggerBuildSourceInput is an input type that accepts GetTriggerBuildSourceArgs and GetTriggerBuildSourceOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceInput` via:
+//
+//	GetTriggerBuildSourceArgs{...}
+type GetTriggerBuildSourceInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceOutput() GetTriggerBuildSourceOutput
+	ToGetTriggerBuildSourceOutputWithContext(context.Context) GetTriggerBuildSourceOutput
+}
+
+type GetTriggerBuildSourceArgs struct {
+	RepoSources    GetTriggerBuildSourceRepoSourceArrayInput    `pulumi:"repoSources"`
+	StorageSources GetTriggerBuildSourceStorageSourceArrayInput `pulumi:"storageSources"`
+}
+
+func (GetTriggerBuildSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceArgs) ToGetTriggerBuildSourceOutput() GetTriggerBuildSourceOutput {
+	return i.ToGetTriggerBuildSourceOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceArgs) ToGetTriggerBuildSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceOutput)
+}
+
+// GetTriggerBuildSourceArrayInput is an input type that accepts GetTriggerBuildSourceArray and GetTriggerBuildSourceArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceArrayInput` via:
+//
+//	GetTriggerBuildSourceArray{ GetTriggerBuildSourceArgs{...} }
+type GetTriggerBuildSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceArrayOutput() GetTriggerBuildSourceArrayOutput
+	ToGetTriggerBuildSourceArrayOutputWithContext(context.Context) GetTriggerBuildSourceArrayOutput
+}
+
+type GetTriggerBuildSourceArray []GetTriggerBuildSourceInput
+
+func (GetTriggerBuildSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceArray) ToGetTriggerBuildSourceArrayOutput() GetTriggerBuildSourceArrayOutput {
+	return i.ToGetTriggerBuildSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceArray) ToGetTriggerBuildSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceArrayOutput)
+}
+
+type GetTriggerBuildSourceOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceOutput) ToGetTriggerBuildSourceOutput() GetTriggerBuildSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceOutput) ToGetTriggerBuildSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceOutput) RepoSources() GetTriggerBuildSourceRepoSourceArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildSource) []GetTriggerBuildSourceRepoSource { return v.RepoSources }).(GetTriggerBuildSourceRepoSourceArrayOutput)
+}
+
+func (o GetTriggerBuildSourceOutput) StorageSources() GetTriggerBuildSourceStorageSourceArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildSource) []GetTriggerBuildSourceStorageSource { return v.StorageSources }).(GetTriggerBuildSourceStorageSourceArrayOutput)
+}
+
+type GetTriggerBuildSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceArrayOutput) ToGetTriggerBuildSourceArrayOutput() GetTriggerBuildSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceArrayOutput) ToGetTriggerBuildSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildSource {
+		return vs[0].([]GetTriggerBuildSource)[vs[1].(int)]
+	}).(GetTriggerBuildSourceOutput)
+}
+
+type GetTriggerBuildSourceRepoSource struct {
+	BranchName    string            `pulumi:"branchName"`
+	CommitSha     string            `pulumi:"commitSha"`
+	Dir           string            `pulumi:"dir"`
+	InvertRegex   bool              `pulumi:"invertRegex"`
+	ProjectId     string            `pulumi:"projectId"`
+	RepoName      string            `pulumi:"repoName"`
+	Substitutions map[string]string `pulumi:"substitutions"`
+	TagName       string            `pulumi:"tagName"`
+}
+
+// GetTriggerBuildSourceRepoSourceInput is an input type that accepts GetTriggerBuildSourceRepoSourceArgs and GetTriggerBuildSourceRepoSourceOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceRepoSourceInput` via:
+//
+//	GetTriggerBuildSourceRepoSourceArgs{...}
+type GetTriggerBuildSourceRepoSourceInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceRepoSourceOutput() GetTriggerBuildSourceRepoSourceOutput
+	ToGetTriggerBuildSourceRepoSourceOutputWithContext(context.Context) GetTriggerBuildSourceRepoSourceOutput
+}
+
+type GetTriggerBuildSourceRepoSourceArgs struct {
+	BranchName    pulumi.StringInput    `pulumi:"branchName"`
+	CommitSha     pulumi.StringInput    `pulumi:"commitSha"`
+	Dir           pulumi.StringInput    `pulumi:"dir"`
+	InvertRegex   pulumi.BoolInput      `pulumi:"invertRegex"`
+	ProjectId     pulumi.StringInput    `pulumi:"projectId"`
+	RepoName      pulumi.StringInput    `pulumi:"repoName"`
+	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
+	TagName       pulumi.StringInput    `pulumi:"tagName"`
+}
+
+func (GetTriggerBuildSourceRepoSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceRepoSourceArgs) ToGetTriggerBuildSourceRepoSourceOutput() GetTriggerBuildSourceRepoSourceOutput {
+	return i.ToGetTriggerBuildSourceRepoSourceOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceRepoSourceArgs) ToGetTriggerBuildSourceRepoSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceRepoSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceRepoSourceOutput)
+}
+
+// GetTriggerBuildSourceRepoSourceArrayInput is an input type that accepts GetTriggerBuildSourceRepoSourceArray and GetTriggerBuildSourceRepoSourceArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceRepoSourceArrayInput` via:
+//
+//	GetTriggerBuildSourceRepoSourceArray{ GetTriggerBuildSourceRepoSourceArgs{...} }
+type GetTriggerBuildSourceRepoSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceRepoSourceArrayOutput() GetTriggerBuildSourceRepoSourceArrayOutput
+	ToGetTriggerBuildSourceRepoSourceArrayOutputWithContext(context.Context) GetTriggerBuildSourceRepoSourceArrayOutput
+}
+
+type GetTriggerBuildSourceRepoSourceArray []GetTriggerBuildSourceRepoSourceInput
+
+func (GetTriggerBuildSourceRepoSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceRepoSourceArray) ToGetTriggerBuildSourceRepoSourceArrayOutput() GetTriggerBuildSourceRepoSourceArrayOutput {
+	return i.ToGetTriggerBuildSourceRepoSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceRepoSourceArray) ToGetTriggerBuildSourceRepoSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceRepoSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceRepoSourceArrayOutput)
+}
+
+type GetTriggerBuildSourceRepoSourceOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceRepoSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) ToGetTriggerBuildSourceRepoSourceOutput() GetTriggerBuildSourceRepoSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) ToGetTriggerBuildSourceRepoSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceRepoSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceRepoSource) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildSourceRepoSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceRepoSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSourceRepoSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceRepoSourceArrayOutput) ToGetTriggerBuildSourceRepoSourceArrayOutput() GetTriggerBuildSourceRepoSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceRepoSourceArrayOutput) ToGetTriggerBuildSourceRepoSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceRepoSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceRepoSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceRepoSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildSourceRepoSource {
+		return vs[0].([]GetTriggerBuildSourceRepoSource)[vs[1].(int)]
+	}).(GetTriggerBuildSourceRepoSourceOutput)
+}
+
+type GetTriggerBuildSourceStorageSource struct {
+	Bucket     string `pulumi:"bucket"`
+	Generation string `pulumi:"generation"`
+	Object     string `pulumi:"object"`
+}
+
+// GetTriggerBuildSourceStorageSourceInput is an input type that accepts GetTriggerBuildSourceStorageSourceArgs and GetTriggerBuildSourceStorageSourceOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceStorageSourceInput` via:
+//
+//	GetTriggerBuildSourceStorageSourceArgs{...}
+type GetTriggerBuildSourceStorageSourceInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceStorageSourceOutput() GetTriggerBuildSourceStorageSourceOutput
+	ToGetTriggerBuildSourceStorageSourceOutputWithContext(context.Context) GetTriggerBuildSourceStorageSourceOutput
+}
+
+type GetTriggerBuildSourceStorageSourceArgs struct {
+	Bucket     pulumi.StringInput `pulumi:"bucket"`
+	Generation pulumi.StringInput `pulumi:"generation"`
+	Object     pulumi.StringInput `pulumi:"object"`
+}
+
+func (GetTriggerBuildSourceStorageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceStorageSourceArgs) ToGetTriggerBuildSourceStorageSourceOutput() GetTriggerBuildSourceStorageSourceOutput {
+	return i.ToGetTriggerBuildSourceStorageSourceOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceStorageSourceArgs) ToGetTriggerBuildSourceStorageSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceStorageSourceOutput)
+}
+
+// GetTriggerBuildSourceStorageSourceArrayInput is an input type that accepts GetTriggerBuildSourceStorageSourceArray and GetTriggerBuildSourceStorageSourceArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildSourceStorageSourceArrayInput` via:
+//
+//	GetTriggerBuildSourceStorageSourceArray{ GetTriggerBuildSourceStorageSourceArgs{...} }
+type GetTriggerBuildSourceStorageSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildSourceStorageSourceArrayOutput() GetTriggerBuildSourceStorageSourceArrayOutput
+	ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(context.Context) GetTriggerBuildSourceStorageSourceArrayOutput
+}
+
+type GetTriggerBuildSourceStorageSourceArray []GetTriggerBuildSourceStorageSourceInput
+
+func (GetTriggerBuildSourceStorageSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (i GetTriggerBuildSourceStorageSourceArray) ToGetTriggerBuildSourceStorageSourceArrayOutput() GetTriggerBuildSourceStorageSourceArrayOutput {
+	return i.ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildSourceStorageSourceArray) ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceStorageSourceArrayOutput)
+}
+
+type GetTriggerBuildSourceStorageSourceOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceStorageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) ToGetTriggerBuildSourceStorageSourceOutput() GetTriggerBuildSourceStorageSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) ToGetTriggerBuildSourceStorageSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceStorageSource) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceStorageSource) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildSourceStorageSource) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildSourceStorageSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildSourceStorageSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildSourceStorageSource)(nil)).Elem()
+}
+
+func (o GetTriggerBuildSourceStorageSourceArrayOutput) ToGetTriggerBuildSourceStorageSourceArrayOutput() GetTriggerBuildSourceStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceArrayOutput) ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceStorageSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildSourceStorageSource {
+		return vs[0].([]GetTriggerBuildSourceStorageSource)[vs[1].(int)]
+	}).(GetTriggerBuildSourceStorageSourceOutput)
+}
+
+type GetTriggerBuildStep struct {
+	Args       []string                    `pulumi:"args"`
+	Dir        string                      `pulumi:"dir"`
+	Entrypoint string                      `pulumi:"entrypoint"`
+	Envs       []string                    `pulumi:"envs"`
+	Id         string                      `pulumi:"id"`
+	Name       string                      `pulumi:"name"`
+	Script     string                      `pulumi:"script"`
+	SecretEnvs []string                    `pulumi:"secretEnvs"`
+	Timeout    string                      `pulumi:"timeout"`
+	Timing     string                      `pulumi:"timing"`
+	Volumes    []GetTriggerBuildStepVolume `pulumi:"volumes"`
+	WaitFors   []string                    `pulumi:"waitFors"`
+}
+
+// GetTriggerBuildStepInput is an input type that accepts GetTriggerBuildStepArgs and GetTriggerBuildStepOutput values.
+// You can construct a concrete instance of `GetTriggerBuildStepInput` via:
+//
+//	GetTriggerBuildStepArgs{...}
+type GetTriggerBuildStepInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildStepOutput() GetTriggerBuildStepOutput
+	ToGetTriggerBuildStepOutputWithContext(context.Context) GetTriggerBuildStepOutput
+}
+
+type GetTriggerBuildStepArgs struct {
+	Args       pulumi.StringArrayInput             `pulumi:"args"`
+	Dir        pulumi.StringInput                  `pulumi:"dir"`
+	Entrypoint pulumi.StringInput                  `pulumi:"entrypoint"`
+	Envs       pulumi.StringArrayInput             `pulumi:"envs"`
+	Id         pulumi.StringInput                  `pulumi:"id"`
+	Name       pulumi.StringInput                  `pulumi:"name"`
+	Script     pulumi.StringInput                  `pulumi:"script"`
+	SecretEnvs pulumi.StringArrayInput             `pulumi:"secretEnvs"`
+	Timeout    pulumi.StringInput                  `pulumi:"timeout"`
+	Timing     pulumi.StringInput                  `pulumi:"timing"`
+	Volumes    GetTriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
+	WaitFors   pulumi.StringArrayInput             `pulumi:"waitFors"`
+}
+
+func (GetTriggerBuildStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildStep)(nil)).Elem()
+}
+
+func (i GetTriggerBuildStepArgs) ToGetTriggerBuildStepOutput() GetTriggerBuildStepOutput {
+	return i.ToGetTriggerBuildStepOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildStepArgs) ToGetTriggerBuildStepOutputWithContext(ctx context.Context) GetTriggerBuildStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepOutput)
+}
+
+// GetTriggerBuildStepArrayInput is an input type that accepts GetTriggerBuildStepArray and GetTriggerBuildStepArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildStepArrayInput` via:
+//
+//	GetTriggerBuildStepArray{ GetTriggerBuildStepArgs{...} }
+type GetTriggerBuildStepArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildStepArrayOutput() GetTriggerBuildStepArrayOutput
+	ToGetTriggerBuildStepArrayOutputWithContext(context.Context) GetTriggerBuildStepArrayOutput
+}
+
+type GetTriggerBuildStepArray []GetTriggerBuildStepInput
+
+func (GetTriggerBuildStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildStep)(nil)).Elem()
+}
+
+func (i GetTriggerBuildStepArray) ToGetTriggerBuildStepArrayOutput() GetTriggerBuildStepArrayOutput {
+	return i.ToGetTriggerBuildStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildStepArray) ToGetTriggerBuildStepArrayOutputWithContext(ctx context.Context) GetTriggerBuildStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepArrayOutput)
+}
+
+type GetTriggerBuildStepOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildStep)(nil)).Elem()
+}
+
+func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutput() GetTriggerBuildStepOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutputWithContext(ctx context.Context) GetTriggerBuildStepOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Entrypoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Entrypoint }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Envs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Script }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) SecretEnvs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Timing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) string { return v.Timing }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepOutput) Volumes() GetTriggerBuildStepVolumeArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []GetTriggerBuildStepVolume { return v.Volumes }).(GetTriggerBuildStepVolumeArrayOutput)
+}
+
+func (o GetTriggerBuildStepOutput) WaitFors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []string { return v.WaitFors }).(pulumi.StringArrayOutput)
+}
+
+type GetTriggerBuildStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildStep)(nil)).Elem()
+}
+
+func (o GetTriggerBuildStepArrayOutput) ToGetTriggerBuildStepArrayOutput() GetTriggerBuildStepArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepArrayOutput) ToGetTriggerBuildStepArrayOutputWithContext(ctx context.Context) GetTriggerBuildStepArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildStep {
+		return vs[0].([]GetTriggerBuildStep)[vs[1].(int)]
+	}).(GetTriggerBuildStepOutput)
+}
+
+type GetTriggerBuildStepVolume struct {
+	Name string `pulumi:"name"`
+	Path string `pulumi:"path"`
+}
+
+// GetTriggerBuildStepVolumeInput is an input type that accepts GetTriggerBuildStepVolumeArgs and GetTriggerBuildStepVolumeOutput values.
+// You can construct a concrete instance of `GetTriggerBuildStepVolumeInput` via:
+//
+//	GetTriggerBuildStepVolumeArgs{...}
+type GetTriggerBuildStepVolumeInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildStepVolumeOutput() GetTriggerBuildStepVolumeOutput
+	ToGetTriggerBuildStepVolumeOutputWithContext(context.Context) GetTriggerBuildStepVolumeOutput
+}
+
+type GetTriggerBuildStepVolumeArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetTriggerBuildStepVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildStepVolume)(nil)).Elem()
+}
+
+func (i GetTriggerBuildStepVolumeArgs) ToGetTriggerBuildStepVolumeOutput() GetTriggerBuildStepVolumeOutput {
+	return i.ToGetTriggerBuildStepVolumeOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildStepVolumeArgs) ToGetTriggerBuildStepVolumeOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepVolumeOutput)
+}
+
+// GetTriggerBuildStepVolumeArrayInput is an input type that accepts GetTriggerBuildStepVolumeArray and GetTriggerBuildStepVolumeArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildStepVolumeArrayInput` via:
+//
+//	GetTriggerBuildStepVolumeArray{ GetTriggerBuildStepVolumeArgs{...} }
+type GetTriggerBuildStepVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildStepVolumeArrayOutput() GetTriggerBuildStepVolumeArrayOutput
+	ToGetTriggerBuildStepVolumeArrayOutputWithContext(context.Context) GetTriggerBuildStepVolumeArrayOutput
+}
+
+type GetTriggerBuildStepVolumeArray []GetTriggerBuildStepVolumeInput
+
+func (GetTriggerBuildStepVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildStepVolume)(nil)).Elem()
+}
+
+func (i GetTriggerBuildStepVolumeArray) ToGetTriggerBuildStepVolumeArrayOutput() GetTriggerBuildStepVolumeArrayOutput {
+	return i.ToGetTriggerBuildStepVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildStepVolumeArray) ToGetTriggerBuildStepVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepVolumeArrayOutput)
+}
+
+type GetTriggerBuildStepVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildStepVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildStepVolume)(nil)).Elem()
+}
+
+func (o GetTriggerBuildStepVolumeOutput) ToGetTriggerBuildStepVolumeOutput() GetTriggerBuildStepVolumeOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepVolumeOutput) ToGetTriggerBuildStepVolumeOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStepVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildStepVolumeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildStepVolume) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildStepVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildStepVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildStepVolume)(nil)).Elem()
+}
+
+func (o GetTriggerBuildStepVolumeArrayOutput) ToGetTriggerBuildStepVolumeArrayOutput() GetTriggerBuildStepVolumeArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepVolumeArrayOutput) ToGetTriggerBuildStepVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildStepVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildStepVolume {
+		return vs[0].([]GetTriggerBuildStepVolume)[vs[1].(int)]
+	}).(GetTriggerBuildStepVolumeOutput)
+}
+
+type GetTriggerGitFileSource struct {
+	Path     string `pulumi:"path"`
+	RepoType string `pulumi:"repoType"`
+	Revision string `pulumi:"revision"`
+	Uri      string `pulumi:"uri"`
+}
+
+// GetTriggerGitFileSourceInput is an input type that accepts GetTriggerGitFileSourceArgs and GetTriggerGitFileSourceOutput values.
+// You can construct a concrete instance of `GetTriggerGitFileSourceInput` via:
+//
+//	GetTriggerGitFileSourceArgs{...}
+type GetTriggerGitFileSourceInput interface {
+	pulumi.Input
+
+	ToGetTriggerGitFileSourceOutput() GetTriggerGitFileSourceOutput
+	ToGetTriggerGitFileSourceOutputWithContext(context.Context) GetTriggerGitFileSourceOutput
+}
+
+type GetTriggerGitFileSourceArgs struct {
+	Path     pulumi.StringInput `pulumi:"path"`
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	Revision pulumi.StringInput `pulumi:"revision"`
+	Uri      pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetTriggerGitFileSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGitFileSource)(nil)).Elem()
+}
+
+func (i GetTriggerGitFileSourceArgs) ToGetTriggerGitFileSourceOutput() GetTriggerGitFileSourceOutput {
+	return i.ToGetTriggerGitFileSourceOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGitFileSourceArgs) ToGetTriggerGitFileSourceOutputWithContext(ctx context.Context) GetTriggerGitFileSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGitFileSourceOutput)
+}
+
+// GetTriggerGitFileSourceArrayInput is an input type that accepts GetTriggerGitFileSourceArray and GetTriggerGitFileSourceArrayOutput values.
+// You can construct a concrete instance of `GetTriggerGitFileSourceArrayInput` via:
+//
+//	GetTriggerGitFileSourceArray{ GetTriggerGitFileSourceArgs{...} }
+type GetTriggerGitFileSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerGitFileSourceArrayOutput() GetTriggerGitFileSourceArrayOutput
+	ToGetTriggerGitFileSourceArrayOutputWithContext(context.Context) GetTriggerGitFileSourceArrayOutput
+}
+
+type GetTriggerGitFileSourceArray []GetTriggerGitFileSourceInput
+
+func (GetTriggerGitFileSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGitFileSource)(nil)).Elem()
+}
+
+func (i GetTriggerGitFileSourceArray) ToGetTriggerGitFileSourceArrayOutput() GetTriggerGitFileSourceArrayOutput {
+	return i.ToGetTriggerGitFileSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGitFileSourceArray) ToGetTriggerGitFileSourceArrayOutputWithContext(ctx context.Context) GetTriggerGitFileSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGitFileSourceArrayOutput)
+}
+
+type GetTriggerGitFileSourceOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGitFileSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGitFileSource)(nil)).Elem()
+}
+
+func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutput() GetTriggerGitFileSourceOutput {
+	return o
+}
+
+func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutputWithContext(ctx context.Context) GetTriggerGitFileSourceOutput {
+	return o
+}
+
+func (o GetTriggerGitFileSourceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGitFileSourceOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGitFileSourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetTriggerGitFileSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGitFileSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGitFileSource)(nil)).Elem()
+}
+
+func (o GetTriggerGitFileSourceArrayOutput) ToGetTriggerGitFileSourceArrayOutput() GetTriggerGitFileSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerGitFileSourceArrayOutput) ToGetTriggerGitFileSourceArrayOutputWithContext(ctx context.Context) GetTriggerGitFileSourceArrayOutput {
+	return o
+}
+
+func (o GetTriggerGitFileSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerGitFileSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerGitFileSource {
+		return vs[0].([]GetTriggerGitFileSource)[vs[1].(int)]
+	}).(GetTriggerGitFileSourceOutput)
+}
+
+type GetTriggerGithub struct {
+	Name         string                        `pulumi:"name"`
+	Owner        string                        `pulumi:"owner"`
+	PullRequests []GetTriggerGithubPullRequest `pulumi:"pullRequests"`
+	Pushes       []GetTriggerGithubPush        `pulumi:"pushes"`
+}
+
+// GetTriggerGithubInput is an input type that accepts GetTriggerGithubArgs and GetTriggerGithubOutput values.
+// You can construct a concrete instance of `GetTriggerGithubInput` via:
+//
+//	GetTriggerGithubArgs{...}
+type GetTriggerGithubInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubOutput() GetTriggerGithubOutput
+	ToGetTriggerGithubOutputWithContext(context.Context) GetTriggerGithubOutput
+}
+
+type GetTriggerGithubArgs struct {
+	Name         pulumi.StringInput                    `pulumi:"name"`
+	Owner        pulumi.StringInput                    `pulumi:"owner"`
+	PullRequests GetTriggerGithubPullRequestArrayInput `pulumi:"pullRequests"`
+	Pushes       GetTriggerGithubPushArrayInput        `pulumi:"pushes"`
+}
+
+func (GetTriggerGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithub)(nil)).Elem()
+}
+
+func (i GetTriggerGithubArgs) ToGetTriggerGithubOutput() GetTriggerGithubOutput {
+	return i.ToGetTriggerGithubOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubArgs) ToGetTriggerGithubOutputWithContext(ctx context.Context) GetTriggerGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubOutput)
+}
+
+// GetTriggerGithubArrayInput is an input type that accepts GetTriggerGithubArray and GetTriggerGithubArrayOutput values.
+// You can construct a concrete instance of `GetTriggerGithubArrayInput` via:
+//
+//	GetTriggerGithubArray{ GetTriggerGithubArgs{...} }
+type GetTriggerGithubArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubArrayOutput() GetTriggerGithubArrayOutput
+	ToGetTriggerGithubArrayOutputWithContext(context.Context) GetTriggerGithubArrayOutput
+}
+
+type GetTriggerGithubArray []GetTriggerGithubInput
+
+func (GetTriggerGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithub)(nil)).Elem()
+}
+
+func (i GetTriggerGithubArray) ToGetTriggerGithubArrayOutput() GetTriggerGithubArrayOutput {
+	return i.ToGetTriggerGithubArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubArray) ToGetTriggerGithubArrayOutputWithContext(ctx context.Context) GetTriggerGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubArrayOutput)
+}
+
+type GetTriggerGithubOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithub)(nil)).Elem()
+}
+
+func (o GetTriggerGithubOutput) ToGetTriggerGithubOutput() GetTriggerGithubOutput {
+	return o
+}
+
+func (o GetTriggerGithubOutput) ToGetTriggerGithubOutputWithContext(ctx context.Context) GetTriggerGithubOutput {
+	return o
+}
+
+func (o GetTriggerGithubOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithub) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGithubOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithub) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGithubOutput) PullRequests() GetTriggerGithubPullRequestArrayOutput {
+	return o.ApplyT(func(v GetTriggerGithub) []GetTriggerGithubPullRequest { return v.PullRequests }).(GetTriggerGithubPullRequestArrayOutput)
+}
+
+func (o GetTriggerGithubOutput) Pushes() GetTriggerGithubPushArrayOutput {
+	return o.ApplyT(func(v GetTriggerGithub) []GetTriggerGithubPush { return v.Pushes }).(GetTriggerGithubPushArrayOutput)
+}
+
+type GetTriggerGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithub)(nil)).Elem()
+}
+
+func (o GetTriggerGithubArrayOutput) ToGetTriggerGithubArrayOutput() GetTriggerGithubArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubArrayOutput) ToGetTriggerGithubArrayOutputWithContext(ctx context.Context) GetTriggerGithubArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerGithub {
+		return vs[0].([]GetTriggerGithub)[vs[1].(int)]
+	}).(GetTriggerGithubOutput)
+}
+
+type GetTriggerGithubPullRequest struct {
+	Branch         string `pulumi:"branch"`
+	CommentControl string `pulumi:"commentControl"`
+	InvertRegex    bool   `pulumi:"invertRegex"`
+}
+
+// GetTriggerGithubPullRequestInput is an input type that accepts GetTriggerGithubPullRequestArgs and GetTriggerGithubPullRequestOutput values.
+// You can construct a concrete instance of `GetTriggerGithubPullRequestInput` via:
+//
+//	GetTriggerGithubPullRequestArgs{...}
+type GetTriggerGithubPullRequestInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubPullRequestOutput() GetTriggerGithubPullRequestOutput
+	ToGetTriggerGithubPullRequestOutputWithContext(context.Context) GetTriggerGithubPullRequestOutput
+}
+
+type GetTriggerGithubPullRequestArgs struct {
+	Branch         pulumi.StringInput `pulumi:"branch"`
+	CommentControl pulumi.StringInput `pulumi:"commentControl"`
+	InvertRegex    pulumi.BoolInput   `pulumi:"invertRegex"`
+}
+
+func (GetTriggerGithubPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithubPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerGithubPullRequestArgs) ToGetTriggerGithubPullRequestOutput() GetTriggerGithubPullRequestOutput {
+	return i.ToGetTriggerGithubPullRequestOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubPullRequestArgs) ToGetTriggerGithubPullRequestOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPullRequestOutput)
+}
+
+// GetTriggerGithubPullRequestArrayInput is an input type that accepts GetTriggerGithubPullRequestArray and GetTriggerGithubPullRequestArrayOutput values.
+// You can construct a concrete instance of `GetTriggerGithubPullRequestArrayInput` via:
+//
+//	GetTriggerGithubPullRequestArray{ GetTriggerGithubPullRequestArgs{...} }
+type GetTriggerGithubPullRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubPullRequestArrayOutput() GetTriggerGithubPullRequestArrayOutput
+	ToGetTriggerGithubPullRequestArrayOutputWithContext(context.Context) GetTriggerGithubPullRequestArrayOutput
+}
+
+type GetTriggerGithubPullRequestArray []GetTriggerGithubPullRequestInput
+
+func (GetTriggerGithubPullRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithubPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerGithubPullRequestArray) ToGetTriggerGithubPullRequestArrayOutput() GetTriggerGithubPullRequestArrayOutput {
+	return i.ToGetTriggerGithubPullRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubPullRequestArray) ToGetTriggerGithubPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPullRequestArrayOutput)
+}
+
+type GetTriggerGithubPullRequestOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithubPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerGithubPullRequestOutput) ToGetTriggerGithubPullRequestOutput() GetTriggerGithubPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerGithubPullRequestOutput) ToGetTriggerGithubPullRequestOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGithubPullRequestOutput) CommentControl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithubPullRequest) string { return v.CommentControl }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGithubPullRequestOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerGithubPullRequest) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+type GetTriggerGithubPullRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubPullRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithubPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerGithubPullRequestArrayOutput) ToGetTriggerGithubPullRequestArrayOutput() GetTriggerGithubPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubPullRequestArrayOutput) ToGetTriggerGithubPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubPullRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerGithubPullRequest {
+		return vs[0].([]GetTriggerGithubPullRequest)[vs[1].(int)]
+	}).(GetTriggerGithubPullRequestOutput)
+}
+
+type GetTriggerGithubPush struct {
+	Branch      string `pulumi:"branch"`
+	InvertRegex bool   `pulumi:"invertRegex"`
+	Tag         string `pulumi:"tag"`
+}
+
+// GetTriggerGithubPushInput is an input type that accepts GetTriggerGithubPushArgs and GetTriggerGithubPushOutput values.
+// You can construct a concrete instance of `GetTriggerGithubPushInput` via:
+//
+//	GetTriggerGithubPushArgs{...}
+type GetTriggerGithubPushInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubPushOutput() GetTriggerGithubPushOutput
+	ToGetTriggerGithubPushOutputWithContext(context.Context) GetTriggerGithubPushOutput
+}
+
+type GetTriggerGithubPushArgs struct {
+	Branch      pulumi.StringInput `pulumi:"branch"`
+	InvertRegex pulumi.BoolInput   `pulumi:"invertRegex"`
+	Tag         pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetTriggerGithubPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithubPush)(nil)).Elem()
+}
+
+func (i GetTriggerGithubPushArgs) ToGetTriggerGithubPushOutput() GetTriggerGithubPushOutput {
+	return i.ToGetTriggerGithubPushOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubPushArgs) ToGetTriggerGithubPushOutputWithContext(ctx context.Context) GetTriggerGithubPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPushOutput)
+}
+
+// GetTriggerGithubPushArrayInput is an input type that accepts GetTriggerGithubPushArray and GetTriggerGithubPushArrayOutput values.
+// You can construct a concrete instance of `GetTriggerGithubPushArrayInput` via:
+//
+//	GetTriggerGithubPushArray{ GetTriggerGithubPushArgs{...} }
+type GetTriggerGithubPushArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerGithubPushArrayOutput() GetTriggerGithubPushArrayOutput
+	ToGetTriggerGithubPushArrayOutputWithContext(context.Context) GetTriggerGithubPushArrayOutput
+}
+
+type GetTriggerGithubPushArray []GetTriggerGithubPushInput
+
+func (GetTriggerGithubPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithubPush)(nil)).Elem()
+}
+
+func (i GetTriggerGithubPushArray) ToGetTriggerGithubPushArrayOutput() GetTriggerGithubPushArrayOutput {
+	return i.ToGetTriggerGithubPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerGithubPushArray) ToGetTriggerGithubPushArrayOutputWithContext(ctx context.Context) GetTriggerGithubPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPushArrayOutput)
+}
+
+type GetTriggerGithubPushOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerGithubPush)(nil)).Elem()
+}
+
+func (o GetTriggerGithubPushOutput) ToGetTriggerGithubPushOutput() GetTriggerGithubPushOutput {
+	return o
+}
+
+func (o GetTriggerGithubPushOutput) ToGetTriggerGithubPushOutputWithContext(ctx context.Context) GetTriggerGithubPushOutput {
+	return o
+}
+
+func (o GetTriggerGithubPushOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithubPush) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGithubPushOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerGithubPush) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerGithubPushOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithubPush) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetTriggerGithubPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerGithubPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerGithubPush)(nil)).Elem()
+}
+
+func (o GetTriggerGithubPushArrayOutput) ToGetTriggerGithubPushArrayOutput() GetTriggerGithubPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubPushArrayOutput) ToGetTriggerGithubPushArrayOutputWithContext(ctx context.Context) GetTriggerGithubPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerGithubPushArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerGithubPush {
+		return vs[0].([]GetTriggerGithubPush)[vs[1].(int)]
+	}).(GetTriggerGithubPushOutput)
+}
+
+type GetTriggerPubsubConfig struct {
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	State               string `pulumi:"state"`
+	Subscription        string `pulumi:"subscription"`
+	Topic               string `pulumi:"topic"`
+}
+
+// GetTriggerPubsubConfigInput is an input type that accepts GetTriggerPubsubConfigArgs and GetTriggerPubsubConfigOutput values.
+// You can construct a concrete instance of `GetTriggerPubsubConfigInput` via:
+//
+//	GetTriggerPubsubConfigArgs{...}
+type GetTriggerPubsubConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerPubsubConfigOutput() GetTriggerPubsubConfigOutput
+	ToGetTriggerPubsubConfigOutputWithContext(context.Context) GetTriggerPubsubConfigOutput
+}
+
+type GetTriggerPubsubConfigArgs struct {
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	State               pulumi.StringInput `pulumi:"state"`
+	Subscription        pulumi.StringInput `pulumi:"subscription"`
+	Topic               pulumi.StringInput `pulumi:"topic"`
+}
+
+func (GetTriggerPubsubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerPubsubConfig)(nil)).Elem()
+}
+
+func (i GetTriggerPubsubConfigArgs) ToGetTriggerPubsubConfigOutput() GetTriggerPubsubConfigOutput {
+	return i.ToGetTriggerPubsubConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerPubsubConfigArgs) ToGetTriggerPubsubConfigOutputWithContext(ctx context.Context) GetTriggerPubsubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerPubsubConfigOutput)
+}
+
+// GetTriggerPubsubConfigArrayInput is an input type that accepts GetTriggerPubsubConfigArray and GetTriggerPubsubConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerPubsubConfigArrayInput` via:
+//
+//	GetTriggerPubsubConfigArray{ GetTriggerPubsubConfigArgs{...} }
+type GetTriggerPubsubConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerPubsubConfigArrayOutput() GetTriggerPubsubConfigArrayOutput
+	ToGetTriggerPubsubConfigArrayOutputWithContext(context.Context) GetTriggerPubsubConfigArrayOutput
+}
+
+type GetTriggerPubsubConfigArray []GetTriggerPubsubConfigInput
+
+func (GetTriggerPubsubConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerPubsubConfig)(nil)).Elem()
+}
+
+func (i GetTriggerPubsubConfigArray) ToGetTriggerPubsubConfigArrayOutput() GetTriggerPubsubConfigArrayOutput {
+	return i.ToGetTriggerPubsubConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerPubsubConfigArray) ToGetTriggerPubsubConfigArrayOutputWithContext(ctx context.Context) GetTriggerPubsubConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerPubsubConfigArrayOutput)
+}
+
+type GetTriggerPubsubConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerPubsubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerPubsubConfig)(nil)).Elem()
+}
+
+func (o GetTriggerPubsubConfigOutput) ToGetTriggerPubsubConfigOutput() GetTriggerPubsubConfigOutput {
+	return o
+}
+
+func (o GetTriggerPubsubConfigOutput) ToGetTriggerPubsubConfigOutputWithContext(ctx context.Context) GetTriggerPubsubConfigOutput {
+	return o
+}
+
+func (o GetTriggerPubsubConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerPubsubConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerPubsubConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerPubsubConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerPubsubConfigOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerPubsubConfig) string { return v.Subscription }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerPubsubConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type GetTriggerPubsubConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerPubsubConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerPubsubConfig)(nil)).Elem()
+}
+
+func (o GetTriggerPubsubConfigArrayOutput) ToGetTriggerPubsubConfigArrayOutput() GetTriggerPubsubConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerPubsubConfigArrayOutput) ToGetTriggerPubsubConfigArrayOutputWithContext(ctx context.Context) GetTriggerPubsubConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerPubsubConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerPubsubConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerPubsubConfig {
+		return vs[0].([]GetTriggerPubsubConfig)[vs[1].(int)]
+	}).(GetTriggerPubsubConfigOutput)
+}
+
+type GetTriggerSourceToBuild struct {
+	Ref      string `pulumi:"ref"`
+	RepoType string `pulumi:"repoType"`
+	Uri      string `pulumi:"uri"`
+}
+
+// GetTriggerSourceToBuildInput is an input type that accepts GetTriggerSourceToBuildArgs and GetTriggerSourceToBuildOutput values.
+// You can construct a concrete instance of `GetTriggerSourceToBuildInput` via:
+//
+//	GetTriggerSourceToBuildArgs{...}
+type GetTriggerSourceToBuildInput interface {
+	pulumi.Input
+
+	ToGetTriggerSourceToBuildOutput() GetTriggerSourceToBuildOutput
+	ToGetTriggerSourceToBuildOutputWithContext(context.Context) GetTriggerSourceToBuildOutput
+}
+
+type GetTriggerSourceToBuildArgs struct {
+	Ref      pulumi.StringInput `pulumi:"ref"`
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	Uri      pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetTriggerSourceToBuildArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerSourceToBuild)(nil)).Elem()
+}
+
+func (i GetTriggerSourceToBuildArgs) ToGetTriggerSourceToBuildOutput() GetTriggerSourceToBuildOutput {
+	return i.ToGetTriggerSourceToBuildOutputWithContext(context.Background())
+}
+
+func (i GetTriggerSourceToBuildArgs) ToGetTriggerSourceToBuildOutputWithContext(ctx context.Context) GetTriggerSourceToBuildOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerSourceToBuildOutput)
+}
+
+// GetTriggerSourceToBuildArrayInput is an input type that accepts GetTriggerSourceToBuildArray and GetTriggerSourceToBuildArrayOutput values.
+// You can construct a concrete instance of `GetTriggerSourceToBuildArrayInput` via:
+//
+//	GetTriggerSourceToBuildArray{ GetTriggerSourceToBuildArgs{...} }
+type GetTriggerSourceToBuildArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerSourceToBuildArrayOutput() GetTriggerSourceToBuildArrayOutput
+	ToGetTriggerSourceToBuildArrayOutputWithContext(context.Context) GetTriggerSourceToBuildArrayOutput
+}
+
+type GetTriggerSourceToBuildArray []GetTriggerSourceToBuildInput
+
+func (GetTriggerSourceToBuildArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerSourceToBuild)(nil)).Elem()
+}
+
+func (i GetTriggerSourceToBuildArray) ToGetTriggerSourceToBuildArrayOutput() GetTriggerSourceToBuildArrayOutput {
+	return i.ToGetTriggerSourceToBuildArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerSourceToBuildArray) ToGetTriggerSourceToBuildArrayOutputWithContext(ctx context.Context) GetTriggerSourceToBuildArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerSourceToBuildArrayOutput)
+}
+
+type GetTriggerSourceToBuildOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerSourceToBuildOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerSourceToBuild)(nil)).Elem()
+}
+
+func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutput() GetTriggerSourceToBuildOutput {
+	return o
+}
+
+func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutputWithContext(ctx context.Context) GetTriggerSourceToBuildOutput {
+	return o
+}
+
+func (o GetTriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerSourceToBuildOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetTriggerSourceToBuildArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerSourceToBuildArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerSourceToBuild)(nil)).Elem()
+}
+
+func (o GetTriggerSourceToBuildArrayOutput) ToGetTriggerSourceToBuildArrayOutput() GetTriggerSourceToBuildArrayOutput {
+	return o
+}
+
+func (o GetTriggerSourceToBuildArrayOutput) ToGetTriggerSourceToBuildArrayOutputWithContext(ctx context.Context) GetTriggerSourceToBuildArrayOutput {
+	return o
+}
+
+func (o GetTriggerSourceToBuildArrayOutput) Index(i pulumi.IntInput) GetTriggerSourceToBuildOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerSourceToBuild {
+		return vs[0].([]GetTriggerSourceToBuild)[vs[1].(int)]
+	}).(GetTriggerSourceToBuildOutput)
+}
+
+type GetTriggerTriggerTemplate struct {
+	BranchName  string `pulumi:"branchName"`
+	CommitSha   string `pulumi:"commitSha"`
+	Dir         string `pulumi:"dir"`
+	InvertRegex bool   `pulumi:"invertRegex"`
+	ProjectId   string `pulumi:"projectId"`
+	RepoName    string `pulumi:"repoName"`
+	TagName     string `pulumi:"tagName"`
+}
+
+// GetTriggerTriggerTemplateInput is an input type that accepts GetTriggerTriggerTemplateArgs and GetTriggerTriggerTemplateOutput values.
+// You can construct a concrete instance of `GetTriggerTriggerTemplateInput` via:
+//
+//	GetTriggerTriggerTemplateArgs{...}
+type GetTriggerTriggerTemplateInput interface {
+	pulumi.Input
+
+	ToGetTriggerTriggerTemplateOutput() GetTriggerTriggerTemplateOutput
+	ToGetTriggerTriggerTemplateOutputWithContext(context.Context) GetTriggerTriggerTemplateOutput
+}
+
+type GetTriggerTriggerTemplateArgs struct {
+	BranchName  pulumi.StringInput `pulumi:"branchName"`
+	CommitSha   pulumi.StringInput `pulumi:"commitSha"`
+	Dir         pulumi.StringInput `pulumi:"dir"`
+	InvertRegex pulumi.BoolInput   `pulumi:"invertRegex"`
+	ProjectId   pulumi.StringInput `pulumi:"projectId"`
+	RepoName    pulumi.StringInput `pulumi:"repoName"`
+	TagName     pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (GetTriggerTriggerTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerTriggerTemplate)(nil)).Elem()
+}
+
+func (i GetTriggerTriggerTemplateArgs) ToGetTriggerTriggerTemplateOutput() GetTriggerTriggerTemplateOutput {
+	return i.ToGetTriggerTriggerTemplateOutputWithContext(context.Background())
+}
+
+func (i GetTriggerTriggerTemplateArgs) ToGetTriggerTriggerTemplateOutputWithContext(ctx context.Context) GetTriggerTriggerTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerTriggerTemplateOutput)
+}
+
+// GetTriggerTriggerTemplateArrayInput is an input type that accepts GetTriggerTriggerTemplateArray and GetTriggerTriggerTemplateArrayOutput values.
+// You can construct a concrete instance of `GetTriggerTriggerTemplateArrayInput` via:
+//
+//	GetTriggerTriggerTemplateArray{ GetTriggerTriggerTemplateArgs{...} }
+type GetTriggerTriggerTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerTriggerTemplateArrayOutput() GetTriggerTriggerTemplateArrayOutput
+	ToGetTriggerTriggerTemplateArrayOutputWithContext(context.Context) GetTriggerTriggerTemplateArrayOutput
+}
+
+type GetTriggerTriggerTemplateArray []GetTriggerTriggerTemplateInput
+
+func (GetTriggerTriggerTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerTriggerTemplate)(nil)).Elem()
+}
+
+func (i GetTriggerTriggerTemplateArray) ToGetTriggerTriggerTemplateArrayOutput() GetTriggerTriggerTemplateArrayOutput {
+	return i.ToGetTriggerTriggerTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerTriggerTemplateArray) ToGetTriggerTriggerTemplateArrayOutputWithContext(ctx context.Context) GetTriggerTriggerTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerTriggerTemplateArrayOutput)
+}
+
+type GetTriggerTriggerTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerTriggerTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerTriggerTemplate)(nil)).Elem()
+}
+
+func (o GetTriggerTriggerTemplateOutput) ToGetTriggerTriggerTemplateOutput() GetTriggerTriggerTemplateOutput {
+	return o
+}
+
+func (o GetTriggerTriggerTemplateOutput) ToGetTriggerTriggerTemplateOutputWithContext(ctx context.Context) GetTriggerTriggerTemplateOutput {
+	return o
+}
+
+func (o GetTriggerTriggerTemplateOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerTriggerTemplateOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerTriggerTemplate) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetTriggerTriggerTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerTriggerTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerTriggerTemplate)(nil)).Elem()
+}
+
+func (o GetTriggerTriggerTemplateArrayOutput) ToGetTriggerTriggerTemplateArrayOutput() GetTriggerTriggerTemplateArrayOutput {
+	return o
+}
+
+func (o GetTriggerTriggerTemplateArrayOutput) ToGetTriggerTriggerTemplateArrayOutputWithContext(ctx context.Context) GetTriggerTriggerTemplateArrayOutput {
+	return o
+}
+
+func (o GetTriggerTriggerTemplateArrayOutput) Index(i pulumi.IntInput) GetTriggerTriggerTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerTriggerTemplate {
+		return vs[0].([]GetTriggerTriggerTemplate)[vs[1].(int)]
+	}).(GetTriggerTriggerTemplateOutput)
+}
+
+type GetTriggerWebhookConfig struct {
+	Secret string `pulumi:"secret"`
+	State  string `pulumi:"state"`
+}
+
+// GetTriggerWebhookConfigInput is an input type that accepts GetTriggerWebhookConfigArgs and GetTriggerWebhookConfigOutput values.
+// You can construct a concrete instance of `GetTriggerWebhookConfigInput` via:
+//
+//	GetTriggerWebhookConfigArgs{...}
+type GetTriggerWebhookConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerWebhookConfigOutput() GetTriggerWebhookConfigOutput
+	ToGetTriggerWebhookConfigOutputWithContext(context.Context) GetTriggerWebhookConfigOutput
+}
+
+type GetTriggerWebhookConfigArgs struct {
+	Secret pulumi.StringInput `pulumi:"secret"`
+	State  pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetTriggerWebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerWebhookConfig)(nil)).Elem()
+}
+
+func (i GetTriggerWebhookConfigArgs) ToGetTriggerWebhookConfigOutput() GetTriggerWebhookConfigOutput {
+	return i.ToGetTriggerWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerWebhookConfigArgs) ToGetTriggerWebhookConfigOutputWithContext(ctx context.Context) GetTriggerWebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerWebhookConfigOutput)
+}
+
+// GetTriggerWebhookConfigArrayInput is an input type that accepts GetTriggerWebhookConfigArray and GetTriggerWebhookConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerWebhookConfigArrayInput` via:
+//
+//	GetTriggerWebhookConfigArray{ GetTriggerWebhookConfigArgs{...} }
+type GetTriggerWebhookConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerWebhookConfigArrayOutput() GetTriggerWebhookConfigArrayOutput
+	ToGetTriggerWebhookConfigArrayOutputWithContext(context.Context) GetTriggerWebhookConfigArrayOutput
+}
+
+type GetTriggerWebhookConfigArray []GetTriggerWebhookConfigInput
+
+func (GetTriggerWebhookConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerWebhookConfig)(nil)).Elem()
+}
+
+func (i GetTriggerWebhookConfigArray) ToGetTriggerWebhookConfigArrayOutput() GetTriggerWebhookConfigArrayOutput {
+	return i.ToGetTriggerWebhookConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerWebhookConfigArray) ToGetTriggerWebhookConfigArrayOutputWithContext(ctx context.Context) GetTriggerWebhookConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerWebhookConfigArrayOutput)
+}
+
+type GetTriggerWebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerWebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerWebhookConfig)(nil)).Elem()
+}
+
+func (o GetTriggerWebhookConfigOutput) ToGetTriggerWebhookConfigOutput() GetTriggerWebhookConfigOutput {
+	return o
+}
+
+func (o GetTriggerWebhookConfigOutput) ToGetTriggerWebhookConfigOutputWithContext(ctx context.Context) GetTriggerWebhookConfigOutput {
+	return o
+}
+
+func (o GetTriggerWebhookConfigOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerWebhookConfig) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerWebhookConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerWebhookConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetTriggerWebhookConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerWebhookConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerWebhookConfig)(nil)).Elem()
+}
+
+func (o GetTriggerWebhookConfigArrayOutput) ToGetTriggerWebhookConfigArrayOutput() GetTriggerWebhookConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerWebhookConfigArrayOutput) ToGetTriggerWebhookConfigArrayOutputWithContext(ctx context.Context) GetTriggerWebhookConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerWebhookConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerWebhookConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerWebhookConfig {
+		return vs[0].([]GetTriggerWebhookConfig)[vs[1].(int)]
+	}).(GetTriggerWebhookConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigPtrInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
@@ -5102,6 +7707,52 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolNetworkConfigPtrInput)(nil)).Elem(), WorkerPoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigPtrInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerApprovalConfigInput)(nil)).Elem(), GetTriggerApprovalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerApprovalConfigArrayInput)(nil)).Elem(), GetTriggerApprovalConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildInput)(nil)).Elem(), GetTriggerBuildArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArrayInput)(nil)).Elem(), GetTriggerBuildArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactInput)(nil)).Elem(), GetTriggerBuildArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactArrayInput)(nil)).Elem(), GetTriggerBuildArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectInput)(nil)).Elem(), GetTriggerBuildArtifactObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectArrayInput)(nil)).Elem(), GetTriggerBuildArtifactObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectTimingInput)(nil)).Elem(), GetTriggerBuildArtifactObjectTimingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectTimingArrayInput)(nil)).Elem(), GetTriggerBuildArtifactObjectTimingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretInput)(nil)).Elem(), GetTriggerBuildAvailableSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretArrayInput)(nil)).Elem(), GetTriggerBuildAvailableSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretSecretManagerInput)(nil)).Elem(), GetTriggerBuildAvailableSecretSecretManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretSecretManagerArrayInput)(nil)).Elem(), GetTriggerBuildAvailableSecretSecretManagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildOptionInput)(nil)).Elem(), GetTriggerBuildOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildOptionArrayInput)(nil)).Elem(), GetTriggerBuildOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildOptionVolumeInput)(nil)).Elem(), GetTriggerBuildOptionVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildOptionVolumeArrayInput)(nil)).Elem(), GetTriggerBuildOptionVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSecretInput)(nil)).Elem(), GetTriggerBuildSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSecretArrayInput)(nil)).Elem(), GetTriggerBuildSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceInput)(nil)).Elem(), GetTriggerBuildSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceArrayInput)(nil)).Elem(), GetTriggerBuildSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceRepoSourceInput)(nil)).Elem(), GetTriggerBuildSourceRepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceRepoSourceArrayInput)(nil)).Elem(), GetTriggerBuildSourceRepoSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceStorageSourceInput)(nil)).Elem(), GetTriggerBuildSourceStorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildSourceStorageSourceArrayInput)(nil)).Elem(), GetTriggerBuildSourceStorageSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepInput)(nil)).Elem(), GetTriggerBuildStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepArrayInput)(nil)).Elem(), GetTriggerBuildStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepVolumeInput)(nil)).Elem(), GetTriggerBuildStepVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildStepVolumeArrayInput)(nil)).Elem(), GetTriggerBuildStepVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGitFileSourceInput)(nil)).Elem(), GetTriggerGitFileSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGitFileSourceArrayInput)(nil)).Elem(), GetTriggerGitFileSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubInput)(nil)).Elem(), GetTriggerGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubArrayInput)(nil)).Elem(), GetTriggerGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubPullRequestInput)(nil)).Elem(), GetTriggerGithubPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubPullRequestArrayInput)(nil)).Elem(), GetTriggerGithubPullRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubPushInput)(nil)).Elem(), GetTriggerGithubPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubPushArrayInput)(nil)).Elem(), GetTriggerGithubPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerPubsubConfigInput)(nil)).Elem(), GetTriggerPubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerPubsubConfigArrayInput)(nil)).Elem(), GetTriggerPubsubConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerSourceToBuildInput)(nil)).Elem(), GetTriggerSourceToBuildArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerSourceToBuildArrayInput)(nil)).Elem(), GetTriggerSourceToBuildArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerTriggerTemplateInput)(nil)).Elem(), GetTriggerTriggerTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerTriggerTemplateArrayInput)(nil)).Elem(), GetTriggerTriggerTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigInput)(nil)).Elem(), GetTriggerWebhookConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigArrayInput)(nil)).Elem(), GetTriggerWebhookConfigArray{})
 	pulumi.RegisterOutputType(TriggerApprovalConfigOutput{})
 	pulumi.RegisterOutputType(TriggerApprovalConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
@@ -5152,4 +7803,50 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigOutput{})
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetTriggerApprovalConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerApprovalConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectTimingOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectTimingArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretSecretManagerOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretSecretManagerArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildOptionOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildOptionVolumeOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildOptionVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSecretOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceRepoSourceOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceRepoSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceStorageSourceOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildSourceStorageSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildStepOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildStepArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildStepVolumeOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildStepVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerGitFileSourceOutput{})
+	pulumi.RegisterOutputType(GetTriggerGitFileSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubPullRequestOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubPullRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubPushOutput{})
+	pulumi.RegisterOutputType(GetTriggerGithubPushArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerPubsubConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerPubsubConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerSourceToBuildOutput{})
+	pulumi.RegisterOutputType(GetTriggerSourceToBuildArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerTriggerTemplateOutput{})
+	pulumi.RegisterOutputType(GetTriggerTriggerTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerWebhookConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerWebhookConfigArrayOutput{})
 }

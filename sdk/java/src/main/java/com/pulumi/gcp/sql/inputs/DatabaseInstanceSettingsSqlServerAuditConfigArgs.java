@@ -19,15 +19,15 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfigArgs extends com.
      * The name of the destination bucket (e.g., gs://mybucket).
      * 
      */
-    @Import(name="bucket", required=true)
-    private Output<String> bucket;
+    @Import(name="bucket")
+    private @Nullable Output<String> bucket;
 
     /**
      * @return The name of the destination bucket (e.g., gs://mybucket).
      * 
      */
-    public Output<String> bucket() {
-        return this.bucket;
+    public Optional<Output<String>> bucket() {
+        return Optional.ofNullable(this.bucket);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfigArgs extends com.
          * @return builder
          * 
          */
-        public Builder bucket(Output<String> bucket) {
+        public Builder bucket(@Nullable Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
@@ -150,7 +150,6 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfigArgs extends com.
         }
 
         public DatabaseInstanceSettingsSqlServerAuditConfigArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
             return $;
         }
     }

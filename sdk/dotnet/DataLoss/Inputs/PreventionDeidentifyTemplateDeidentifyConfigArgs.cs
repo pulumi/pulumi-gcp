@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies free-text based transformations to be applied to the dataset.
+        /// Treat the dataset as free-form text and apply the same free text transformation everywhere
         /// Structure is documented below.
         /// </summary>
-        [Input("infoTypeTransformations", required: true)]
-        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs> InfoTypeTransformations { get; set; } = null!;
+        [Input("infoTypeTransformations")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs>? InfoTypeTransformations { get; set; }
+
+        /// <summary>
+        /// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("recordTransformations")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs>? RecordTransformations { get; set; }
 
         public PreventionDeidentifyTemplateDeidentifyConfigArgs()
         {

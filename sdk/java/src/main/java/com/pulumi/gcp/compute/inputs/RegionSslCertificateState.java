@@ -83,6 +83,21 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Expire time of the certificate in RFC3339 text format.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return Expire time of the certificate in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -199,6 +214,7 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
         this.certificateId = $.certificateId;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.expireTime = $.expireTime;
         this.name = $.name;
         this.namePrefix = $.namePrefix;
         this.privateKey = $.privateKey;
@@ -313,6 +329,27 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param expireTime Expire time of the certificate in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime Expire time of the certificate in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         /**

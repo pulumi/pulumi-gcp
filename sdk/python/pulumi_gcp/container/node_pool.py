@@ -67,7 +67,7 @@ class NodePoolArgs:
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
-        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: ) Specifies a custom placement policy for the
+        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
@@ -281,7 +281,7 @@ class NodePoolArgs:
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]:
         """
-        ) Specifies a custom placement policy for the
+        Specifies a custom placement policy for the
         nodes.
         """
         return pulumi.get(self, "placement_policy")
@@ -393,7 +393,7 @@ class _NodePoolState:
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
-        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: ) Specifies a custom placement policy for the
+        :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
@@ -647,7 +647,7 @@ class _NodePoolState:
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> Optional[pulumi.Input['NodePoolPlacementPolicyArgs']]:
         """
-        ) Specifies a custom placement policy for the
+        Specifies a custom placement policy for the
         nodes.
         """
         return pulumi.get(self, "placement_policy")
@@ -799,7 +799,7 @@ class NodePool(pulumi.CustomResource):
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
-        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: ) Specifies a custom placement policy for the
+        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
@@ -992,7 +992,7 @@ class NodePool(pulumi.CustomResource):
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
-        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: ) Specifies a custom placement policy for the
+        :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: Specifies a custom placement policy for the
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
@@ -1172,7 +1172,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> pulumi.Output[Optional['outputs.NodePoolPlacementPolicy']]:
         """
-        ) Specifies a custom placement policy for the
+        Specifies a custom placement policy for the
         nodes.
         """
         return pulumi.get(self, "placement_policy")

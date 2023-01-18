@@ -36,6 +36,8 @@ import com.pulumi.gcp.compute.inputs.GetImageArgs;
 import com.pulumi.gcp.compute.inputs.GetImagePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
@@ -89,6 +91,7 @@ import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleResult;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckResult;
 import com.pulumi.gcp.compute.outputs.GetImageResult;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
@@ -2732,6 +2735,270 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceGroupResult> getInstanceGroupPlain(GetInstanceGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroup:getInstanceGroup", TypeShape.of(GetInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceGroupManagerResult> getInstanceGroupManager() {
+        return getInstanceGroupManager(GetInstanceGroupManagerArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain() {
+        return getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceGroupManagerResult> getInstanceGroupManager(GetInstanceGroupManagerArgs args) {
+        return getInstanceGroupManager(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs args) {
+        return getInstanceGroupManagerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceGroupManagerResult> getInstanceGroupManager(GetInstanceGroupManagerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", TypeShape.of(GetInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a Compute Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var igm1 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .name(&#34;my-igm&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *         final var igm2 = ComputeFunctions.getInstanceGroupManager(GetInstanceGroupManagerArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", TypeShape.of(GetInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the serial port output from a Compute Instance. For more information see

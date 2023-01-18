@@ -117,6 +117,8 @@ type Endpoint struct {
 	// The minimum alert severity level that is reported by the endpoint.
 	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 	Severity pulumi.StringOutput `pulumi:"severity"`
+	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+	ThreatExceptions pulumi.StringArrayOutput `pulumi:"threatExceptions"`
 	// Last update timestamp in RFC 3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -179,6 +181,8 @@ type endpointState struct {
 	// The minimum alert severity level that is reported by the endpoint.
 	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 	Severity *string `pulumi:"severity"`
+	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+	ThreatExceptions []string `pulumi:"threatExceptions"`
 	// Last update timestamp in RFC 3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -204,6 +208,8 @@ type EndpointState struct {
 	// The minimum alert severity level that is reported by the endpoint.
 	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 	Severity pulumi.StringPtrInput
+	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+	ThreatExceptions pulumi.StringArrayInput
 	// Last update timestamp in RFC 3339 text format.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -227,6 +233,8 @@ type endpointArgs struct {
 	// The minimum alert severity level that is reported by the endpoint.
 	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 	Severity string `pulumi:"severity"`
+	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+	ThreatExceptions []string `pulumi:"threatExceptions"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
@@ -245,6 +253,8 @@ type EndpointArgs struct {
 	// The minimum alert severity level that is reported by the endpoint.
 	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 	Severity pulumi.StringInput
+	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+	ThreatExceptions pulumi.StringArrayInput
 }
 
 func (EndpointArgs) ElementType() reflect.Type {
@@ -379,6 +389,11 @@ func (o EndpointOutput) Project() pulumi.StringOutput {
 // Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
 func (o EndpointOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
+func (o EndpointOutput) ThreatExceptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ThreatExceptions }).(pulumi.StringArrayOutput)
 }
 
 // Last update timestamp in RFC 3339 text format.

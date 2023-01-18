@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public Input<Inputs.InstanceClusterAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
 
         /// <summary>
-        /// The ID of the Cloud Bigtable cluster.
+        /// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -32,8 +32,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
 
         /// <summary>
         /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
-        /// for a `DEVELOPMENT` instance.
+        /// Required, with a minimum of `1` for each cluster in an instance.
         /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }

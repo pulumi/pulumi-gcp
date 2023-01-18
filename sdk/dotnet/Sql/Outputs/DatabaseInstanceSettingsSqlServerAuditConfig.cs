@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// <summary>
         /// The name of the destination bucket (e.g., gs://mybucket).
         /// </summary>
-        public readonly string Bucket;
+        public readonly string? Bucket;
         /// <summary>
         /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Sql.Outputs
 
         [OutputConstructor]
         private DatabaseInstanceSettingsSqlServerAuditConfig(
-            string bucket,
+            string? bucket,
 
             string? retentionInterval,
 

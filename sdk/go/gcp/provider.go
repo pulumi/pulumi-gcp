@@ -58,6 +58,7 @@ type Provider struct {
 	ComposerCustomEndpoint             pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
+	ContainerAttachedCustomEndpoint    pulumi.StringPtrOutput `pulumi:"containerAttachedCustomEndpoint"`
 	ContainerAwsCustomEndpoint         pulumi.StringPtrOutput `pulumi:"containerAwsCustomEndpoint"`
 	ContainerAzureCustomEndpoint       pulumi.StringPtrOutput `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"containerCustomEndpoint"`
@@ -81,6 +82,7 @@ type Provider struct {
 	EventarcCustomEndpoint             pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
+	FirebaseDatabaseCustomEndpoint     pulumi.StringPtrOutput `pulumi:"firebaseDatabaseCustomEndpoint"`
 	FirebaseHostingCustomEndpoint      pulumi.StringPtrOutput `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaseStorageCustomEndpoint      pulumi.StringPtrOutput `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint        pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
@@ -211,6 +213,7 @@ type providerArgs struct {
 	ComposerCustomEndpoint             *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint              *string           `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint    *string           `pulumi:"containerAnalysisCustomEndpoint"`
+	ContainerAttachedCustomEndpoint    *string           `pulumi:"containerAttachedCustomEndpoint"`
 	ContainerAwsCustomEndpoint         *string           `pulumi:"containerAwsCustomEndpoint"`
 	ContainerAzureCustomEndpoint       *string           `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint            *string           `pulumi:"containerCustomEndpoint"`
@@ -235,6 +238,7 @@ type providerArgs struct {
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             *string           `pulumi:"firebaseCustomEndpoint"`
+	FirebaseDatabaseCustomEndpoint     *string           `pulumi:"firebaseDatabaseCustomEndpoint"`
 	FirebaseHostingCustomEndpoint      *string           `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaseStorageCustomEndpoint      *string           `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint        *string           `pulumi:"firebaserulesCustomEndpoint"`
@@ -345,6 +349,7 @@ type ProviderArgs struct {
 	ComposerCustomEndpoint             pulumi.StringPtrInput
 	ComputeCustomEndpoint              pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint    pulumi.StringPtrInput
+	ContainerAttachedCustomEndpoint    pulumi.StringPtrInput
 	ContainerAwsCustomEndpoint         pulumi.StringPtrInput
 	ContainerAzureCustomEndpoint       pulumi.StringPtrInput
 	ContainerCustomEndpoint            pulumi.StringPtrInput
@@ -369,6 +374,7 @@ type ProviderArgs struct {
 	EventarcCustomEndpoint             pulumi.StringPtrInput
 	FilestoreCustomEndpoint            pulumi.StringPtrInput
 	FirebaseCustomEndpoint             pulumi.StringPtrInput
+	FirebaseDatabaseCustomEndpoint     pulumi.StringPtrInput
 	FirebaseHostingCustomEndpoint      pulumi.StringPtrInput
 	FirebaseStorageCustomEndpoint      pulumi.StringPtrInput
 	FirebaserulesCustomEndpoint        pulumi.StringPtrInput
@@ -636,6 +642,10 @@ func (o ProviderOutput) ContainerAnalysisCustomEndpoint() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContainerAnalysisCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ContainerAttachedCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContainerAttachedCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ContainerAwsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContainerAwsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -726,6 +736,10 @@ func (o ProviderOutput) FilestoreCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) FirebaseCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) FirebaseDatabaseCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseDatabaseCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) FirebaseHostingCustomEndpoint() pulumi.StringPtrOutput {
