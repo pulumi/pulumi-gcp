@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///             Uri = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
     ///             OauthToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOauthTokenArgs
     ///             {
-    ///                 ServiceAccountEmail = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///                 ServiceAccountEmail = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///             },
     ///         },
     ///     });
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///             Uri = "https://example.com/ping",
     ///             OidcToken = new Gcp.CloudScheduler.Inputs.JobHttpTargetOidcTokenArgs
     ///             {
-    ///                 ServiceAccountEmail = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///                 ServiceAccountEmail = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///             },
     ///         },
     ///     });

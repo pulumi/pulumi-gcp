@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///             { "stage", "prod" },
     ///             { "region", "us-central1" },
     ///         },
-    ///         Network = Output.Tuple(project.Apply(getProjectResult =&gt; getProjectResult), exampleNetwork.Name).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, exampleNetwork.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var name = values.Item2;

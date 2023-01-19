@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
         ///     };
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
         ///     };
         /// });
         /// ```

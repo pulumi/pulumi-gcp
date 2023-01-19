@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     ///     var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new()
     ///     {
-    ///         BillingAccount = @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult).Apply(@default =&gt; @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult.BillingAccount)),
+    ///         BillingAccount = @default.Apply(@default =&gt; @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult.BillingAccount)),
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",

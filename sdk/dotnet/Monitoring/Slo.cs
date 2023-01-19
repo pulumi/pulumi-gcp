@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     ///     var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new()
     ///     {
-    ///         Service = @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult).Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
+    ///         Service = @default.Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
     ///         SloId = "ae-slo",
     ///         DisplayName = "Test SLO for App Engine",
     ///         Goal = 0.9,

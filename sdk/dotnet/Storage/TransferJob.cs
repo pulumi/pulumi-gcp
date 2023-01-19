@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Bucket = s3_backup_bucketBucket.Name,
     ///         Role = "roles/storage.admin",
-    ///         Member = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Topic = topic.Id,
     ///         Role = "roles/pubsub.publisher",
-    ///         Member = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
     ///     });
     /// 
     ///     var s3_bucket_nightly_backup = new Gcp.Storage.TransferJob("s3-bucket-nightly-backup", new()

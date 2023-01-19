@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     // Allow SA service account use the default GCE account
     ///     var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new()
     ///     {
-    ///         ServiceAccountId = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
+    ///         ServiceAccountId = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
     ///         Role = "roles/iam.serviceAccountUser",
     ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });

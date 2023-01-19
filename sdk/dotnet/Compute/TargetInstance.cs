@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Compute
     ///     var customNetwork = new Gcp.Compute.TargetInstance("customNetwork", new()
     ///     {
     ///         Instance = target_vmInstance.Id,
-    ///         Network = target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult).Apply(target_vmNetwork =&gt; target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult.SelfLink)),
+    ///         Network = target_vmNetwork.Apply(target_vmNetwork =&gt; target_vmNetwork.Apply(getNetworkResult =&gt; getNetworkResult.SelfLink)),
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

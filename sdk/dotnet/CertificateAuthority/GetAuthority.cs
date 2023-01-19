@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["csr"] = @default.Apply(getAuthorityResult =&gt; getAuthorityResult).Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///         ["csr"] = @default.Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["csr"] = @default.Apply(getAuthorityResult =&gt; getAuthorityResult).Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///         ["csr"] = @default.Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
         ///     };
         /// });
         /// ```
