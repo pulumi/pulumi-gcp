@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Compute
         ///                 },
         ///             },
         ///         },
-        ///         SourceRanges = legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult).Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
         ///     });
         /// 
         /// });
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Compute
         ///                 },
         ///             },
         ///         },
-        ///         SourceRanges = legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult).Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
         ///     });
         /// 
         /// });

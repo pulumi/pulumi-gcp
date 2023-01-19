@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = Output.Tuple(project.Apply(getProjectResult =&gt; getProjectResult), defaultNetwork.Name).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, defaultNetwork.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var name = values.Item2;
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Alloydb
     ///     {
     ///         ClusterId = "alloydb-cluster-full",
     ///         Location = "us-central1",
-    ///         Network = Output.Tuple(project.Apply(getProjectResult =&gt; getProjectResult), @default.Name).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, @default.Name).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var name = values.Item2;

@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Redis
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
-    ///         AuthorizedNetwork = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_4_0",
     ///         DisplayName = "Test Instance",
     ///         ReservedIpRange = "192.168.0.0/29",
@@ -128,12 +128,12 @@ namespace Pulumi.Gcp.Redis
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 16,
-    ///         Network = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///     });
     /// 
     ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
     ///     {
-    ///         Network = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Network = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Redis
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
-    ///         AuthorizedNetwork = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_4_0",
     ///         DisplayName = "Test Instance",
@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.Redis
     ///         MemorySizeGb = 5,
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
-    ///         AuthorizedNetwork = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_6_X",
     ///         DisplayName = "Terraform Test Instance",
     ///         ReservedIpRange = "192.168.0.0/28",
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Redis
     ///         MemorySizeGb = 1,
     ///         LocationId = "us-central1-a",
     ///         AlternativeLocationId = "us-central1-f",
-    ///         AuthorizedNetwork = redis_network.Apply(getNetworkResult =&gt; getNetworkResult).Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_6_X",
     ///         DisplayName = "Terraform Test Instance",
     ///         ReservedIpRange = "192.168.0.0/29",

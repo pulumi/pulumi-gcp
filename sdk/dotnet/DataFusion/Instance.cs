@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.DataFusion
     ///         EnableStackdriverMonitoring = true,
     ///         PrivateInstance = true,
     ///         Version = "6.6.0",
-    ///         DataprocServiceAccount = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///         DataprocServiceAccount = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///         Labels = 
     ///         {
     ///             { "example_key", "example_value" },

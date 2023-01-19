@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
     ///         {
-    ///             Email = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             Email = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///             Scopes = new[]
     ///             {
     ///                 "cloud-platform",

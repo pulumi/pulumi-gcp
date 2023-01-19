@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
-    ///         Network = Output.Tuple(project.Apply(getProjectResult =&gt; getProjectResult), vertexNetwork.Apply(getNetworkResult =&gt; getNetworkResult)).Apply(values =&gt;
+    ///         Network = Output.Tuple(project, vertexNetwork).Apply(values =&gt;
     ///         {
     ///             var project = values.Item1;
     ///             var vertexNetwork = values.Item2;

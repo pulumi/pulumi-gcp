@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new()
     ///     {
     ///         Bucket = defaultBucket.Name,
-    ///         Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult), basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult), basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["database_url"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["storage_bucket"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["messaging_sender_id"] ?? "", basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult)["measurement_id"] ?? "").Apply(values =&gt;
+    ///         Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] ?? "", basicWebAppConfig["storage_bucket"] ?? "", basicWebAppConfig["messaging_sender_id"] ?? "", basicWebAppConfig["measurement_id"] ?? "").Apply(values =&gt;
     ///         {
     ///             var appId = values.Item1;
     ///             var basicWebAppConfig = values.Item2;

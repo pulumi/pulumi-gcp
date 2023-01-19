@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.AppEngine
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
         ///     };
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.AppEngine
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
         ///     };
         /// });
         /// ```

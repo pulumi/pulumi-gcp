@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     ///     var basic = new Gcp.Logging.OrganizationBucketConfig("basic", new()
     ///     {
-    ///         Organization = @default.Apply(getOrganizationResult =&gt; getOrganizationResult).Apply(@default =&gt; @default.Apply(getOrganizationResult =&gt; getOrganizationResult.Organization)),
+    ///         Organization = @default.Apply(@default =&gt; @default.Apply(getOrganizationResult =&gt; getOrganizationResult.Organization)),
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",

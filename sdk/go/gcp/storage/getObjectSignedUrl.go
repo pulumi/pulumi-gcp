@@ -52,7 +52,7 @@ import (
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -60,7 +60,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}

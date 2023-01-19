@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Compute
         ///     {
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
         ///         {
-        ///             Source = persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult).Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
+        ///             Source = persistent_boot_disk.Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
         ///             AutoDelete = false,
         ///         },
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Compute
         ///     {
         ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
         ///         {
-        ///             Source = persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult).Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
+        ///             Source = persistent_boot_disk.Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
         ///             AutoDelete = false,
         ///         },
         ///     });

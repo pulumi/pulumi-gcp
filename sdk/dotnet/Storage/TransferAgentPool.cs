@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.editor",
-    ///         Member = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
     ///     });
     /// 
     ///     var example = new Gcp.Storage.TransferAgentPool("example", new()

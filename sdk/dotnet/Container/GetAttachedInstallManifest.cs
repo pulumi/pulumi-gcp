@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["installManifest"] = manifest.Apply(getAttachedInstallManifestResult =&gt; getAttachedInstallManifestResult),
+        ///         ["installManifest"] = manifest,
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Container
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["installManifest"] = manifest.Apply(getAttachedInstallManifestResult =&gt; getAttachedInstallManifestResult),
+        ///         ["installManifest"] = manifest,
         ///     };
         /// });
         /// ```
