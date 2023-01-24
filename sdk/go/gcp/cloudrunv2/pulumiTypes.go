@@ -329,6 +329,332 @@ func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
 	}).(JobConditionOutput)
 }
 
+type JobIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// JobIamBindingConditionInput is an input type that accepts JobIamBindingConditionArgs and JobIamBindingConditionOutput values.
+// You can construct a concrete instance of `JobIamBindingConditionInput` via:
+//
+//	JobIamBindingConditionArgs{...}
+type JobIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToJobIamBindingConditionOutput() JobIamBindingConditionOutput
+	ToJobIamBindingConditionOutputWithContext(context.Context) JobIamBindingConditionOutput
+}
+
+type JobIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (JobIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamBindingCondition)(nil)).Elem()
+}
+
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutput() JobIamBindingConditionOutput {
+	return i.ToJobIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput)
+}
+
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return i.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput).ToJobIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// JobIamBindingConditionPtrInput is an input type that accepts JobIamBindingConditionArgs, JobIamBindingConditionPtr and JobIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `JobIamBindingConditionPtrInput` via:
+//
+//	        JobIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput
+	ToJobIamBindingConditionPtrOutputWithContext(context.Context) JobIamBindingConditionPtrOutput
+}
+
+type jobIamBindingConditionPtrType JobIamBindingConditionArgs
+
+func JobIamBindingConditionPtr(v *JobIamBindingConditionArgs) JobIamBindingConditionPtrInput {
+	return (*jobIamBindingConditionPtrType)(v)
+}
+
+func (*jobIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamBindingCondition)(nil)).Elem()
+}
+
+func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return i.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionPtrOutput)
+}
+
+type JobIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (JobIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamBindingCondition)(nil)).Elem()
+}
+
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionOutput() JobIamBindingConditionOutput {
+	return o
+}
+
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
+	return o
+}
+
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return o.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamBindingCondition) *JobIamBindingCondition {
+		return &v
+	}).(JobIamBindingConditionPtrOutput)
+}
+
+func (o JobIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o JobIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type JobIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamBindingCondition)(nil)).Elem()
+}
+
+func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o JobIamBindingConditionPtrOutput) Elem() JobIamBindingConditionOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) JobIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret JobIamBindingCondition
+		return ret
+	}).(JobIamBindingConditionOutput)
+}
+
+func (o JobIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// JobIamMemberConditionInput is an input type that accepts JobIamMemberConditionArgs and JobIamMemberConditionOutput values.
+// You can construct a concrete instance of `JobIamMemberConditionInput` via:
+//
+//	JobIamMemberConditionArgs{...}
+type JobIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToJobIamMemberConditionOutput() JobIamMemberConditionOutput
+	ToJobIamMemberConditionOutputWithContext(context.Context) JobIamMemberConditionOutput
+}
+
+type JobIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (JobIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamMemberCondition)(nil)).Elem()
+}
+
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutput() JobIamMemberConditionOutput {
+	return i.ToJobIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutputWithContext(ctx context.Context) JobIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput)
+}
+
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput).ToJobIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// JobIamMemberConditionPtrInput is an input type that accepts JobIamMemberConditionArgs, JobIamMemberConditionPtr and JobIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `JobIamMemberConditionPtrInput` via:
+//
+//	        JobIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput
+	ToJobIamMemberConditionPtrOutputWithContext(context.Context) JobIamMemberConditionPtrOutput
+}
+
+type jobIamMemberConditionPtrType JobIamMemberConditionArgs
+
+func JobIamMemberConditionPtr(v *JobIamMemberConditionArgs) JobIamMemberConditionPtrInput {
+	return (*jobIamMemberConditionPtrType)(v)
+}
+
+func (*jobIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMemberCondition)(nil)).Elem()
+}
+
+func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionPtrOutput)
+}
+
+type JobIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (JobIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamMemberCondition)(nil)).Elem()
+}
+
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionOutput() JobIamMemberConditionOutput {
+	return o
+}
+
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionOutputWithContext(ctx context.Context) JobIamMemberConditionOutput {
+	return o
+}
+
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return o.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamMemberCondition) *JobIamMemberCondition {
+		return &v
+	}).(JobIamMemberConditionPtrOutput)
+}
+
+func (o JobIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o JobIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type JobIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMemberCondition)(nil)).Elem()
+}
+
+func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o JobIamMemberConditionPtrOutput) Elem() JobIamMemberConditionOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) JobIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret JobIamMemberCondition
+		return ret
+	}).(JobIamMemberConditionOutput)
+}
+
+func (o JobIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobLatestCreatedExecution struct {
 	// Completion timestamp of the execution.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -4413,7 +4739,335 @@ func (o ServiceConditionArrayOutput) Index(i pulumi.IntInput) ServiceConditionOu
 	}).(ServiceConditionOutput)
 }
 
+type ServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ServiceIamBindingConditionInput is an input type that accepts ServiceIamBindingConditionArgs and ServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `ServiceIamBindingConditionInput` via:
+//
+//	ServiceIamBindingConditionArgs{...}
+type ServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput
+	ToServiceIamBindingConditionOutputWithContext(context.Context) ServiceIamBindingConditionOutput
+}
+
+type ServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput {
+	return i.ToServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput).ToServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ServiceIamBindingConditionPtrInput is an input type that accepts ServiceIamBindingConditionArgs, ServiceIamBindingConditionPtr and ServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ServiceIamBindingConditionPtrInput` via:
+//
+//	        ServiceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput
+	ToServiceIamBindingConditionPtrOutputWithContext(context.Context) ServiceIamBindingConditionPtrOutput
+}
+
+type serviceIamBindingConditionPtrType ServiceIamBindingConditionArgs
+
+func ServiceIamBindingConditionPtr(v *ServiceIamBindingConditionArgs) ServiceIamBindingConditionPtrInput {
+	return (*serviceIamBindingConditionPtrType)(v)
+}
+
+func (*serviceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
+}
+
+type ServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return o.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
+		return &v
+	}).(ServiceIamBindingConditionPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) ServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamBindingCondition
+		return ret
+	}).(ServiceIamBindingConditionOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ServiceIamMemberConditionInput is an input type that accepts ServiceIamMemberConditionArgs and ServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `ServiceIamMemberConditionInput` via:
+//
+//	ServiceIamMemberConditionArgs{...}
+type ServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput
+	ToServiceIamMemberConditionOutputWithContext(context.Context) ServiceIamMemberConditionOutput
+}
+
+type ServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput {
+	return i.ToServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithContext(ctx context.Context) ServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput).ToServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ServiceIamMemberConditionPtrInput is an input type that accepts ServiceIamMemberConditionArgs, ServiceIamMemberConditionPtr and ServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ServiceIamMemberConditionPtrInput` via:
+//
+//	        ServiceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput
+	ToServiceIamMemberConditionPtrOutputWithContext(context.Context) ServiceIamMemberConditionPtrOutput
+}
+
+type serviceIamMemberConditionPtrType ServiceIamMemberConditionArgs
+
+func ServiceIamMemberConditionPtr(v *ServiceIamMemberConditionArgs) ServiceIamMemberConditionPtrInput {
+	return (*serviceIamMemberConditionPtrType)(v)
+}
+
+func (*serviceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
+}
+
+type ServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionOutputWithContext(ctx context.Context) ServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return o.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
+		return &v
+	}).(ServiceIamMemberConditionPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) ServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIamMemberCondition
+		return ret
+	}).(ServiceIamMemberConditionOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceTemplate struct {
+	// KRM-style annotations for the resource.
+	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this task.
 	// Structure is documented below.
 	Containers []ServiceTemplateContainer `pulumi:"containers"`
@@ -4456,6 +5110,8 @@ type ServiceTemplateInput interface {
 }
 
 type ServiceTemplateArgs struct {
+	// KRM-style annotations for the resource.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this task.
 	// Structure is documented below.
 	Containers ServiceTemplateContainerArrayInput `pulumi:"containers"`
@@ -4563,6 +5219,11 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 	}).(ServiceTemplatePtrOutput)
 }
 
+// KRM-style annotations for the resource.
+func (o ServiceTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // Holds the single container that defines the unit of execution for this task.
 // Structure is documented below.
 func (o ServiceTemplateOutput) Containers() ServiceTemplateContainerArrayOutput {
@@ -4646,6 +5307,16 @@ func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
 		var ret ServiceTemplate
 		return ret
 	}).(ServiceTemplateOutput)
+}
+
+// KRM-style annotations for the resource.
+func (o ServiceTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceTemplate) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
 }
 
 // Holds the single container that defines the unit of execution for this task.
@@ -8363,6 +9034,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobBinaryAuthorizationPtrInput)(nil)).Elem(), JobBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionInput)(nil)).Elem(), JobConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionArrayInput)(nil)).Elem(), JobConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamBindingConditionInput)(nil)).Elem(), JobIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamBindingConditionPtrInput)(nil)).Elem(), JobIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberConditionInput)(nil)).Elem(), JobIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberConditionPtrInput)(nil)).Elem(), JobIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLatestCreatedExecutionInput)(nil)).Elem(), JobLatestCreatedExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLatestCreatedExecutionArrayInput)(nil)).Elem(), JobLatestCreatedExecutionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateInput)(nil)).Elem(), JobTemplateArgs{})
@@ -8415,6 +9090,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBinaryAuthorizationPtrInput)(nil)).Elem(), ServiceBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConditionInput)(nil)).Elem(), ServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConditionArrayInput)(nil)).Elem(), ServiceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplatePtrInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerInput)(nil)).Elem(), ServiceTemplateContainerArgs{})
@@ -8469,6 +9148,10 @@ func init() {
 	pulumi.RegisterOutputType(JobBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})
 	pulumi.RegisterOutputType(JobConditionArrayOutput{})
+	pulumi.RegisterOutputType(JobIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(JobIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(JobIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(JobIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(JobLatestCreatedExecutionOutput{})
 	pulumi.RegisterOutputType(JobLatestCreatedExecutionArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateOutput{})
@@ -8521,6 +9204,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConditionOutput{})
 	pulumi.RegisterOutputType(ServiceConditionArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})
 	pulumi.RegisterOutputType(ServiceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerOutput{})

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly bool? AutomaticRestart;
         public readonly string? InstanceTerminationAction;
+        public readonly Outputs.InstanceFromTemplateSchedulingMaxRunDuration? MaxRunDuration;
         public readonly int? MinNodeCpus;
         public readonly ImmutableArray<Outputs.InstanceFromTemplateSchedulingNodeAffinity> NodeAffinities;
         public readonly string? OnHostMaintenance;
@@ -26,6 +27,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             bool? automaticRestart,
 
             string? instanceTerminationAction,
+
+            Outputs.InstanceFromTemplateSchedulingMaxRunDuration? maxRunDuration,
 
             int? minNodeCpus,
 
@@ -39,6 +42,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            MaxRunDuration = maxRunDuration;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

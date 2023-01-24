@@ -52,6 +52,7 @@ from .get_lbip_ranges import *
 from .get_netblock_ip_ranges import *
 from .get_network import *
 from .get_network_endpoint_group import *
+from .get_network_peering import *
 from .get_node_types import *
 from .get_region_instance_group import *
 from .get_region_network_endpoint_group import *
@@ -59,6 +60,7 @@ from .get_region_ssl_certificate import *
 from .get_regions import *
 from .get_resource_policy import *
 from .get_router import *
+from .get_router_nat import *
 from .get_router_status import *
 from .get_snapshot import *
 from .get_ssl_policy import *

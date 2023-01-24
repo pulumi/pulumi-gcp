@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
     public sealed class ServiceTemplateArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// KRM-style annotations for the resource.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         [Input("containers")]
         private InputList<Inputs.ServiceTemplateContainerArgs>? _containers;
 

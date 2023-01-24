@@ -45,7 +45,8 @@ type LookupBackendServiceResult struct {
 	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
 	CustomResponseHeaders        []string                          `pulumi:"customResponseHeaders"`
 	// Textual description for the Backend Service.
-	Description string `pulumi:"description"`
+	Description        string `pulumi:"description"`
+	EdgeSecurityPolicy string `pulumi:"edgeSecurityPolicy"`
 	// Whether or not Cloud CDN is enabled on the Backend Service.
 	EnableCdn bool `pulumi:"enableCdn"`
 	// The fingerprint of the Backend Service.
@@ -162,6 +163,10 @@ func (o LookupBackendServiceResultOutput) CustomResponseHeaders() pulumi.StringA
 // Textual description for the Backend Service.
 func (o LookupBackendServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) EdgeSecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.EdgeSecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not Cloud CDN is enabled on the Backend Service.

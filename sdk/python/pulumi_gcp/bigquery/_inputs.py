@@ -3309,6 +3309,7 @@ class TableExternalDataConfigurationArgs:
                  hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
+                 reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] autodetect: Let BigQuery try to autodetect the schema
@@ -3345,6 +3346,7 @@ class TableExternalDataConfigurationArgs:
                The default value is false.
         :param pulumi.Input[int] max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
+        :param pulumi.Input[str] reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
                for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -3376,6 +3378,8 @@ class TableExternalDataConfigurationArgs:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         if max_bad_records is not None:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
+        if reference_file_schema_uri is not None:
+            pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
 
@@ -3533,6 +3537,18 @@ class TableExternalDataConfigurationArgs:
     @max_bad_records.setter
     def max_bad_records(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_bad_records", value)
+
+    @property
+    @pulumi.getter(name="referenceFileSchemaUri")
+    def reference_file_schema_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        """
+        return pulumi.get(self, "reference_file_schema_uri")
+
+    @reference_file_schema_uri.setter
+    def reference_file_schema_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_file_schema_uri", value)
 
     @property
     @pulumi.getter

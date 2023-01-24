@@ -194,6 +194,21 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
+     * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+     * 
+     */
+    @Import(name="referenceFileSchemaUri")
+    private @Nullable Output<String> referenceFileSchemaUri;
+
+    /**
+     * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+     * 
+     */
+    public Optional<Output<String>> referenceFileSchemaUri() {
+        return Optional.ofNullable(this.referenceFileSchemaUri);
+    }
+
+    /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
      * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -280,6 +295,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         this.hivePartitioningOptions = $.hivePartitioningOptions;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
         this.maxBadRecords = $.maxBadRecords;
+        this.referenceFileSchemaUri = $.referenceFileSchemaUri;
         this.schema = $.schema;
         this.sourceFormat = $.sourceFormat;
         this.sourceUris = $.sourceUris;
@@ -526,6 +542,27 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder maxBadRecords(Integer maxBadRecords) {
             return maxBadRecords(Output.of(maxBadRecords));
+        }
+
+        /**
+         * @param referenceFileSchemaUri When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder referenceFileSchemaUri(@Nullable Output<String> referenceFileSchemaUri) {
+            $.referenceFileSchemaUri = referenceFileSchemaUri;
+            return this;
+        }
+
+        /**
+         * @param referenceFileSchemaUri When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder referenceFileSchemaUri(String referenceFileSchemaUri) {
+            return referenceFileSchemaUri(Output.of(referenceFileSchemaUri));
         }
 
         /**

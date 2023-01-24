@@ -130,10 +130,15 @@ namespace Pulumi.Gcp.Billing
     ///             {
     ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
     ///             },
-    ///             CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
+    ///             CreditTypesTreatment = "INCLUDE_SPECIFIED_CREDITS",
     ///             Services = new[]
     ///             {
     ///                 "services/24E6-581D-38E5",
+    ///             },
+    ///             CreditTypes = new[]
+    ///             {
+    ///                 "PROMOTION",
+    ///                 "FREE_TIER",
     ///             },
     ///         },
     ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs

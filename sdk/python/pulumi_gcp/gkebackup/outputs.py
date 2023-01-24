@@ -17,6 +17,8 @@ __all__ = [
     'BackupPlanBackupConfigSelectedApplicationsNamespacedName',
     'BackupPlanBackupConfigSelectedNamespaces',
     'BackupPlanBackupSchedule',
+    'BackupPlanIamBindingCondition',
+    'BackupPlanIamMemberCondition',
     'BackupPlanRetentionPolicy',
 ]
 
@@ -307,6 +309,60 @@ class BackupPlanBackupSchedule(dict):
         This flag denotes whether automatic Backup creation is paused for this BackupPlan.
         """
         return pulumi.get(self, "paused")
+
+
+@pulumi.output_type
+class BackupPlanIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class BackupPlanIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -45,6 +45,7 @@ public final class GetBackendServiceResult {
      * 
      */
     private String description;
+    private String edgeSecurityPolicy;
     /**
      * @return Whether or not Cloud CDN is enabled on the Backend Service.
      * 
@@ -150,6 +151,9 @@ public final class GetBackendServiceResult {
      */
     public String description() {
         return this.description;
+    }
+    public String edgeSecurityPolicy() {
+        return this.edgeSecurityPolicy;
     }
     /**
      * @return Whether or not Cloud CDN is enabled on the Backend Service.
@@ -269,6 +273,7 @@ public final class GetBackendServiceResult {
         private List<String> customRequestHeaders;
         private List<String> customResponseHeaders;
         private String description;
+        private String edgeSecurityPolicy;
         private Boolean enableCdn;
         private String fingerprint;
         private Integer generatedId;
@@ -302,6 +307,7 @@ public final class GetBackendServiceResult {
     	      this.customRequestHeaders = defaults.customRequestHeaders;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
     	      this.description = defaults.description;
+    	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
     	      this.enableCdn = defaults.enableCdn;
     	      this.fingerprint = defaults.fingerprint;
     	      this.generatedId = defaults.generatedId;
@@ -394,6 +400,11 @@ public final class GetBackendServiceResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
+            this.edgeSecurityPolicy = Objects.requireNonNull(edgeSecurityPolicy);
             return this;
         }
         @CustomType.Setter
@@ -519,6 +530,7 @@ public final class GetBackendServiceResult {
             o.customRequestHeaders = customRequestHeaders;
             o.customResponseHeaders = customResponseHeaders;
             o.description = description;
+            o.edgeSecurityPolicy = edgeSecurityPolicy;
             o.enableCdn = enableCdn;
             o.fingerprint = fingerprint;
             o.generatedId = generatedId;

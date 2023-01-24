@@ -955,6 +955,332 @@ func (o BackupPlanBackupSchedulePtrOutput) Paused() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type BackupPlanIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// BackupPlanIamBindingConditionInput is an input type that accepts BackupPlanIamBindingConditionArgs and BackupPlanIamBindingConditionOutput values.
+// You can construct a concrete instance of `BackupPlanIamBindingConditionInput` via:
+//
+//	BackupPlanIamBindingConditionArgs{...}
+type BackupPlanIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToBackupPlanIamBindingConditionOutput() BackupPlanIamBindingConditionOutput
+	ToBackupPlanIamBindingConditionOutputWithContext(context.Context) BackupPlanIamBindingConditionOutput
+}
+
+type BackupPlanIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (BackupPlanIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanIamBindingCondition)(nil)).Elem()
+}
+
+func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionOutput() BackupPlanIamBindingConditionOutput {
+	return i.ToBackupPlanIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionOutput)
+}
+
+func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
+	return i.ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionOutput).ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// BackupPlanIamBindingConditionPtrInput is an input type that accepts BackupPlanIamBindingConditionArgs, BackupPlanIamBindingConditionPtr and BackupPlanIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `BackupPlanIamBindingConditionPtrInput` via:
+//
+//	        BackupPlanIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput
+	ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Context) BackupPlanIamBindingConditionPtrOutput
+}
+
+type backupPlanIamBindingConditionPtrType BackupPlanIamBindingConditionArgs
+
+func BackupPlanIamBindingConditionPtr(v *BackupPlanIamBindingConditionArgs) BackupPlanIamBindingConditionPtrInput {
+	return (*backupPlanIamBindingConditionPtrType)(v)
+}
+
+func (*backupPlanIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanIamBindingCondition)(nil)).Elem()
+}
+
+func (i *backupPlanIamBindingConditionPtrType) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
+	return i.ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanIamBindingConditionPtrType) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionPtrOutput)
+}
+
+type BackupPlanIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanIamBindingCondition)(nil)).Elem()
+}
+
+func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionOutput() BackupPlanIamBindingConditionOutput {
+	return o
+}
+
+func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionOutput {
+	return o
+}
+
+func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
+	return o.ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamBindingCondition) *BackupPlanIamBindingCondition {
+		return &v
+	}).(BackupPlanIamBindingConditionPtrOutput)
+}
+
+func (o BackupPlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o BackupPlanIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type BackupPlanIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanIamBindingCondition)(nil)).Elem()
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) Elem() BackupPlanIamBindingConditionOutput {
+	return o.ApplyT(func(v *BackupPlanIamBindingCondition) BackupPlanIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanIamBindingCondition
+		return ret
+	}).(BackupPlanIamBindingConditionOutput)
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackupPlanIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// BackupPlanIamMemberConditionInput is an input type that accepts BackupPlanIamMemberConditionArgs and BackupPlanIamMemberConditionOutput values.
+// You can construct a concrete instance of `BackupPlanIamMemberConditionInput` via:
+//
+//	BackupPlanIamMemberConditionArgs{...}
+type BackupPlanIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToBackupPlanIamMemberConditionOutput() BackupPlanIamMemberConditionOutput
+	ToBackupPlanIamMemberConditionOutputWithContext(context.Context) BackupPlanIamMemberConditionOutput
+}
+
+type BackupPlanIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (BackupPlanIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanIamMemberCondition)(nil)).Elem()
+}
+
+func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionOutput() BackupPlanIamMemberConditionOutput {
+	return i.ToBackupPlanIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionOutput)
+}
+
+func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
+	return i.ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionOutput).ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// BackupPlanIamMemberConditionPtrInput is an input type that accepts BackupPlanIamMemberConditionArgs, BackupPlanIamMemberConditionPtr and BackupPlanIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `BackupPlanIamMemberConditionPtrInput` via:
+//
+//	        BackupPlanIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput
+	ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Context) BackupPlanIamMemberConditionPtrOutput
+}
+
+type backupPlanIamMemberConditionPtrType BackupPlanIamMemberConditionArgs
+
+func BackupPlanIamMemberConditionPtr(v *BackupPlanIamMemberConditionArgs) BackupPlanIamMemberConditionPtrInput {
+	return (*backupPlanIamMemberConditionPtrType)(v)
+}
+
+func (*backupPlanIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanIamMemberCondition)(nil)).Elem()
+}
+
+func (i *backupPlanIamMemberConditionPtrType) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
+	return i.ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanIamMemberConditionPtrType) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionPtrOutput)
+}
+
+type BackupPlanIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanIamMemberCondition)(nil)).Elem()
+}
+
+func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionOutput() BackupPlanIamMemberConditionOutput {
+	return o
+}
+
+func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionOutput {
+	return o
+}
+
+func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
+	return o.ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamMemberCondition) *BackupPlanIamMemberCondition {
+		return &v
+	}).(BackupPlanIamMemberConditionPtrOutput)
+}
+
+func (o BackupPlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o BackupPlanIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type BackupPlanIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanIamMemberCondition)(nil)).Elem()
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) Elem() BackupPlanIamMemberConditionOutput {
+	return o.ApplyT(func(v *BackupPlanIamMemberCondition) BackupPlanIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanIamMemberCondition
+		return ret
+	}).(BackupPlanIamMemberConditionOutput)
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type BackupPlanRetentionPolicy struct {
 	// Minimum age for a Backup created via this BackupPlan (in days).
 	// Must be an integer value between 0-90 (inclusive).
@@ -1207,6 +1533,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespacesPtrInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleInput)(nil)).Elem(), BackupPlanBackupScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupSchedulePtrInput)(nil)).Elem(), BackupPlanBackupScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamBindingConditionInput)(nil)).Elem(), BackupPlanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamBindingConditionPtrInput)(nil)).Elem(), BackupPlanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamMemberConditionInput)(nil)).Elem(), BackupPlanIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamMemberConditionPtrInput)(nil)).Elem(), BackupPlanIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanRetentionPolicyInput)(nil)).Elem(), BackupPlanRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanRetentionPolicyPtrInput)(nil)).Elem(), BackupPlanRetentionPolicyArgs{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigOutput{})
@@ -1221,6 +1551,10 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespacesPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupScheduleOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupSchedulePtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(BackupPlanIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(BackupPlanIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BackupPlanRetentionPolicyPtrOutput{})
 }

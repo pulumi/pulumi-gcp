@@ -25,6 +25,25 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     public static final ServiceState Empty = new ServiceState();
 
     /**
+     * KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
+
+    /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      * 
@@ -400,6 +419,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private ServiceState() {}
 
     private ServiceState(ServiceState $) {
+        this.annotations = $.annotations;
         this.binaryAuthorization = $.binaryAuthorization;
         this.client = $.client;
         this.clientVersion = $.clientVersion;
@@ -441,6 +461,31 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ServiceState defaults) {
             $ = new ServiceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations KRM-style annotations for the resource.
+         * (Optional)
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations KRM-style annotations for the resource.
+         * (Optional)
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**

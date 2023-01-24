@@ -357,8 +357,12 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter=gcp.billing.BudgetBudgetFilterArgs(
                 projects=[f"projects/{project.number}"],
-                credit_types_treatment="EXCLUDE_ALL_CREDITS",
+                credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
                 services=["services/24E6-581D-38E5"],
+                credit_types=[
+                    "PROMOTION",
+                    "FREE_TIER",
+                ],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
@@ -570,8 +574,12 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter=gcp.billing.BudgetBudgetFilterArgs(
                 projects=[f"projects/{project.number}"],
-                credit_types_treatment="EXCLUDE_ALL_CREDITS",
+                credit_types_treatment="INCLUDE_SPECIFIED_CREDITS",
                 services=["services/24E6-581D-38E5"],
+                credit_types=[
+                    "PROMOTION",
+                    "FREE_TIER",
+                ],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(

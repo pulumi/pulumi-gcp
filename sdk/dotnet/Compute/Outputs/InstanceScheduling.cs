@@ -20,9 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutomaticRestart;
         /// <summary>
-        /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        /// Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string? InstanceTerminationAction;
+        public readonly Outputs.InstanceSchedulingMaxRunDuration? MaxRunDuration;
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         /// </summary>
@@ -61,6 +62,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? instanceTerminationAction,
 
+            Outputs.InstanceSchedulingMaxRunDuration? maxRunDuration,
+
             int? minNodeCpus,
 
             ImmutableArray<Outputs.InstanceSchedulingNodeAffinity> nodeAffinities,
@@ -73,6 +76,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            MaxRunDuration = maxRunDuration;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

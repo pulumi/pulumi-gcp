@@ -19,6 +19,8 @@ __all__ = [
     'EnvironmentConfigNodeConfigArgs',
     'EnvironmentConfigNodeConfigIpAllocationPolicyArgs',
     'EnvironmentConfigPrivateEnvironmentConfigArgs',
+    'EnvironmentConfigRecoveryConfigArgs',
+    'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs',
     'EnvironmentConfigSoftwareConfigArgs',
     'EnvironmentConfigWebServerConfigArgs',
     'EnvironmentConfigWebServerNetworkAccessControlArgs',
@@ -44,6 +46,7 @@ class EnvironmentConfigArgs:
                  node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
+                 recovery_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']] = None,
                  web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
                  web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None,
@@ -70,6 +73,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "node_count", node_count)
         if private_environment_config is not None:
             pulumi.set(__self__, "private_environment_config", private_environment_config)
+        if recovery_config is not None:
+            pulumi.set(__self__, "recovery_config", recovery_config)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
@@ -177,6 +182,15 @@ class EnvironmentConfigArgs:
     @private_environment_config.setter
     def private_environment_config(self, value: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']]):
         pulumi.set(self, "private_environment_config", value)
+
+    @property
+    @pulumi.getter(name="recoveryConfig")
+    def recovery_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']]:
+        return pulumi.get(self, "recovery_config")
+
+    @recovery_config.setter
+    def recovery_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']]):
+        pulumi.set(self, "recovery_config", value)
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -630,6 +644,75 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
     @web_server_ipv4_cidr_block.setter
     def web_server_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_server_ipv4_cidr_block", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigRecoveryConfigArgs:
+    def __init__(__self__, *,
+                 scheduled_snapshots_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']] = None):
+        if scheduled_snapshots_config is not None:
+            pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
+
+    @property
+    @pulumi.getter(name="scheduledSnapshotsConfig")
+    def scheduled_snapshots_config(self) -> Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']]:
+        return pulumi.get(self, "scheduled_snapshots_config")
+
+    @scheduled_snapshots_config.setter
+    def scheduled_snapshots_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']]):
+        pulumi.set(self, "scheduled_snapshots_config", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 snapshot_creation_schedule: Optional[pulumi.Input[str]] = None,
+                 snapshot_location: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if snapshot_creation_schedule is not None:
+            pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
+        if snapshot_location is not None:
+            pulumi.set(__self__, "snapshot_location", snapshot_location)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="snapshotCreationSchedule")
+    def snapshot_creation_schedule(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snapshot_creation_schedule")
+
+    @snapshot_creation_schedule.setter
+    def snapshot_creation_schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_creation_schedule", value)
+
+    @property
+    @pulumi.getter(name="snapshotLocation")
+    def snapshot_location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snapshot_location")
+
+    @snapshot_location.setter
+    def snapshot_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_location", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type

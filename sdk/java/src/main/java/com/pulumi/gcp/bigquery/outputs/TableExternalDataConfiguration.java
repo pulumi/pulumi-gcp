@@ -82,6 +82,11 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable Integer maxBadRecords;
     /**
+     * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+     * 
+     */
+    private @Nullable String referenceFileSchemaUri;
+    /**
      * @return A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
      * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -195,6 +200,13 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.maxBadRecords);
     }
     /**
+     * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+     * 
+     */
+    public Optional<String> referenceFileSchemaUri() {
+        return Optional.ofNullable(this.referenceFileSchemaUri);
+    }
+    /**
      * @return A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
      * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -249,6 +261,7 @@ public final class TableExternalDataConfiguration {
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
         private @Nullable Boolean ignoreUnknownValues;
         private @Nullable Integer maxBadRecords;
+        private @Nullable String referenceFileSchemaUri;
         private @Nullable String schema;
         private String sourceFormat;
         private List<String> sourceUris;
@@ -264,6 +277,7 @@ public final class TableExternalDataConfiguration {
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
     	      this.maxBadRecords = defaults.maxBadRecords;
+    	      this.referenceFileSchemaUri = defaults.referenceFileSchemaUri;
     	      this.schema = defaults.schema;
     	      this.sourceFormat = defaults.sourceFormat;
     	      this.sourceUris = defaults.sourceUris;
@@ -315,6 +329,11 @@ public final class TableExternalDataConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder referenceFileSchemaUri(@Nullable String referenceFileSchemaUri) {
+            this.referenceFileSchemaUri = referenceFileSchemaUri;
+            return this;
+        }
+        @CustomType.Setter
         public Builder schema(@Nullable String schema) {
             this.schema = schema;
             return this;
@@ -343,6 +362,7 @@ public final class TableExternalDataConfiguration {
             o.hivePartitioningOptions = hivePartitioningOptions;
             o.ignoreUnknownValues = ignoreUnknownValues;
             o.maxBadRecords = maxBadRecords;
+            o.referenceFileSchemaUri = referenceFileSchemaUri;
             o.schema = schema;
             o.sourceFormat = sourceFormat;
             o.sourceUris = sourceUris;

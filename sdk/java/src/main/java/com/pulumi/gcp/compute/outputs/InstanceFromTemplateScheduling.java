@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingNodeAffinity;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 public final class InstanceFromTemplateScheduling {
     private @Nullable Boolean automaticRestart;
     private @Nullable String instanceTerminationAction;
+    private @Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration;
     private @Nullable Integer minNodeCpus;
     private @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities;
     private @Nullable String onHostMaintenance;
@@ -29,6 +31,9 @@ public final class InstanceFromTemplateScheduling {
     }
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+    public Optional<InstanceFromTemplateSchedulingMaxRunDuration> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
     }
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
@@ -57,6 +62,7 @@ public final class InstanceFromTemplateScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
+        private @Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -67,6 +73,7 @@ public final class InstanceFromTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -82,6 +89,11 @@ public final class InstanceFromTemplateScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxRunDuration(@Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration) {
+            this.maxRunDuration = maxRunDuration;
             return this;
         }
         @CustomType.Setter
@@ -116,6 +128,7 @@ public final class InstanceFromTemplateScheduling {
             final var o = new InstanceFromTemplateScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.maxRunDuration = maxRunDuration;
             o.minNodeCpus = minNodeCpus;
             o.nodeAffinities = nodeAffinities;
             o.onHostMaintenance = onHostMaintenance;

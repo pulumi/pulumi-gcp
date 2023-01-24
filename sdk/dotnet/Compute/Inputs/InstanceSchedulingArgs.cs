@@ -21,10 +21,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? AutomaticRestart { get; set; }
 
         /// <summary>
-        /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        /// Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
+
+        [Input("maxRunDuration")]
+        public Input<Inputs.InstanceSchedulingMaxRunDurationArgs>? MaxRunDuration { get; set; }
 
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.

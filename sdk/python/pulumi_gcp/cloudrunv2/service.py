@@ -17,6 +17,7 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  template: pulumi.Input['ServiceTemplateArgs'],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,9 @@ class ServiceArgs:
         The set of arguments for constructing a Service resource.
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
+               (Optional)
+               Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -52,6 +56,8 @@ class ServiceArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "template", template)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
@@ -87,6 +93,20 @@ class ServiceArgs:
     @template.setter
     def template(self, value: pulumi.Input['ServiceTemplateArgs']):
         pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        KRM-style annotations for the resource.
+        (Optional)
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="binaryAuthorization")
@@ -231,6 +251,7 @@ class ServiceArgs:
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -256,6 +277,9 @@ class _ServiceState:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
+               (Optional)
+               Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -294,6 +318,8 @@ class _ServiceState:
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] uri: Displays the target URI.
         """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
         if client is not None:
@@ -340,6 +366,20 @@ class _ServiceState:
             pulumi.set(__self__, "uid", uid)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        KRM-style annotations for the resource.
+        (Optional)
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="binaryAuthorization")
@@ -637,6 +677,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -868,6 +909,9 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
+               (Optional)
+               Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -1126,6 +1170,7 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -1147,6 +1192,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
+            __props__.__dict__["annotations"] = annotations
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
@@ -1182,6 +1228,7 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
@@ -1212,6 +1259,9 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
+               (Optional)
+               Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
@@ -1254,6 +1304,7 @@ class Service(pulumi.CustomResource):
 
         __props__ = _ServiceState.__new__(_ServiceState)
 
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["client"] = client
         __props__.__dict__["client_version"] = client_version
@@ -1278,6 +1329,16 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["uri"] = uri
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        KRM-style annotations for the resource.
+        (Optional)
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="binaryAuthorization")

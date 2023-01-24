@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        /// Structure defined below.
+        /// </summary>
+        [Input("dataprocMetricConfig")]
+        public Input<Inputs.ClusterClusterConfigDataprocMetricConfigArgs>? DataprocMetricConfig { get; set; }
+
+        /// <summary>
         /// The Customer managed encryption keys settings for the cluster.
         /// Structure defined below.
         /// </summary>

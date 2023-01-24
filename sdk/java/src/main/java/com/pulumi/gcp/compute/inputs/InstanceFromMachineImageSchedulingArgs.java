@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -31,6 +32,13 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    @Import(name="maxRunDuration")
+    private @Nullable Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs> maxRunDuration;
+
+    public Optional<Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs>> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
     }
 
     @Import(name="minNodeCpus")
@@ -73,6 +81,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     private InstanceFromMachineImageSchedulingArgs(InstanceFromMachineImageSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
@@ -114,6 +123,15 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder maxRunDuration(@Nullable Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs> maxRunDuration) {
+            $.maxRunDuration = maxRunDuration;
+            return this;
+        }
+
+        public Builder maxRunDuration(InstanceFromMachineImageSchedulingMaxRunDurationArgs maxRunDuration) {
+            return maxRunDuration(Output.of(maxRunDuration));
         }
 
         public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {

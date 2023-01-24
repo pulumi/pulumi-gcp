@@ -156,9 +156,13 @@ import (
 //					Projects: pulumi.StringArray{
 //						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 //					},
-//					CreditTypesTreatment: pulumi.String("EXCLUDE_ALL_CREDITS"),
+//					CreditTypesTreatment: pulumi.String("INCLUDE_SPECIFIED_CREDITS"),
 //					Services: pulumi.StringArray{
 //						pulumi.String("services/24E6-581D-38E5"),
+//					},
+//					CreditTypes: pulumi.StringArray{
+//						pulumi.String("PROMOTION"),
+//						pulumi.String("FREE_TIER"),
 //					},
 //				},
 //				Amount: &billing.BudgetAmountArgs{

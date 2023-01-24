@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Optional version name for this InfoType.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(string? name)
+        private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType(
+            string? name,
+
+            string? version)
         {
             Name = name;
+            Version = version;
         }
     }
 }

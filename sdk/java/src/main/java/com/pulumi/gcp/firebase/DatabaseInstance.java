@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ### Firebase Database Instance
+ * ### Firebase Database Instance Basic
  * ```java
  * package generated_program;
  * 
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new DatabaseInstance(&#34;basic&#34;, DatabaseInstanceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-west1&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .instanceId(&#34;active-db&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Firebase Database Instance Disabled
+ * ### Firebase Database Instance Full
  * ```java
  * package generated_program;
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var full = new DatabaseInstance(&#34;full&#34;, DatabaseInstanceArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-west1&#34;)
+ *             .region(&#34;europe-west1&#34;)
  *             .instanceId(&#34;disabled-db&#34;)
  *             .type(&#34;USER_DATABASE&#34;)
  *             .desiredState(&#34;DISABLED&#34;)
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Firebase Database Instance Default
+ * ### Firebase Database Instance Default Database
  * ```java
  * package generated_program;
  * 
@@ -138,11 +138,12 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDatabaseInstance = new DatabaseInstance(&#34;defaultDatabaseInstance&#34;, DatabaseInstanceArgs.builder()        
  *             .project(defaultFirebase / projectProject.project())
- *             .region(&#34;us-west1&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .instanceId(&#34;rtdb-project-default-rtdb&#34;)
  *             .type(&#34;DEFAULT_DATABASE&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
+ *                 .dependsOn(firebaseDatabase)
  *                 .build());
  * 
  *     }
@@ -256,6 +257,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      * 
      */
     @Export(name="region", type=String.class, parameters={})
@@ -263,6 +265,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      * 
      */
     public Output<String> region() {

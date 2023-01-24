@@ -10,10 +10,40 @@ export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
+export { JobIamBindingArgs, JobIamBindingState } from "./jobIamBinding";
+export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
+export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
+utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
+
+export { JobIamMemberArgs, JobIamMemberState } from "./jobIamMember";
+export type JobIamMember = import("./jobIamMember").JobIamMember;
+export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
+utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
+
+export { JobIamPolicyArgs, JobIamPolicyState } from "./jobIamPolicy";
+export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
+export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
+utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
+
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
+export { ServiceIamBindingArgs, ServiceIamBindingState } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+
+export { ServiceIamMemberArgs, ServiceIamMemberState } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
+
+export { ServiceIamPolicyArgs, ServiceIamPolicyState } from "./serviceIamPolicy";
+export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
+export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 
 const _module = {
@@ -22,12 +52,30 @@ const _module = {
         switch (type) {
             case "gcp:cloudrunv2/job:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/jobIamBinding:JobIamBinding":
+                return new JobIamBinding(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/jobIamMember:JobIamMember":
+                return new JobIamMember(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy":
+                return new JobIamPolicy(name, <any>undefined, { urn })
             case "gcp:cloudrunv2/service:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/serviceIamBinding:ServiceIamBinding":
+                return new ServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/serviceIamMember:ServiceIamMember":
+                return new ServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy":
+                return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/job", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/jobIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/jobIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/jobIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/service", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/serviceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/serviceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudrunv2/serviceIamPolicy", _module)

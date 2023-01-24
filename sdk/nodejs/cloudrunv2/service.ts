@@ -269,6 +269,12 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
+     * KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
@@ -388,6 +394,7 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
@@ -416,6 +423,7 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
@@ -449,6 +457,12 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
+    /**
+     * KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
@@ -561,6 +575,12 @@ export interface ServiceState {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
+    /**
+     * KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.

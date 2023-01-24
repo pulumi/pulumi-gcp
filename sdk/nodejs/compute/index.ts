@@ -239,6 +239,11 @@ export const getNetworkEndpointGroup: typeof import("./getNetworkEndpointGroup")
 export const getNetworkEndpointGroupOutput: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkEndpointGroup","getNetworkEndpointGroupOutput"], () => require("./getNetworkEndpointGroup"));
 
+export { GetNetworkPeeringArgs, GetNetworkPeeringResult, GetNetworkPeeringOutputArgs } from "./getNetworkPeering";
+export const getNetworkPeering: typeof import("./getNetworkPeering").getNetworkPeering = null as any;
+export const getNetworkPeeringOutput: typeof import("./getNetworkPeering").getNetworkPeeringOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPeering","getNetworkPeeringOutput"], () => require("./getNetworkPeering"));
+
 export { GetNodeTypesArgs, GetNodeTypesResult, GetNodeTypesOutputArgs } from "./getNodeTypes";
 export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null as any;
 export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
@@ -273,6 +278,11 @@ export { GetRouterArgs, GetRouterResult, GetRouterOutputArgs } from "./getRouter
 export const getRouter: typeof import("./getRouter").getRouter = null as any;
 export const getRouterOutput: typeof import("./getRouter").getRouterOutput = null as any;
 utilities.lazyLoad(exports, ["getRouter","getRouterOutput"], () => require("./getRouter"));
+
+export { GetRouterNatArgs, GetRouterNatResult, GetRouterNatOutputArgs } from "./getRouterNat";
+export const getRouterNat: typeof import("./getRouterNat").getRouterNat = null as any;
+export const getRouterNatOutput: typeof import("./getRouterNat").getRouterNatOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterNat","getRouterNatOutput"], () => require("./getRouterNat"));
 
 export { GetRouterStatusArgs, GetRouterStatusResult, GetRouterStatusOutputArgs } from "./getRouterStatus";
 export const getRouterStatus: typeof import("./getRouterStatus").getRouterStatus = null as any;

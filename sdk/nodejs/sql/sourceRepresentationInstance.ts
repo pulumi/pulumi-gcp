@@ -71,10 +71,26 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     */
+    public readonly caCertificate!: pulumi.Output<string | undefined>;
+    /**
+     * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    public readonly clientCertificate!: pulumi.Output<string | undefined>;
+    /**
+     * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    public readonly clientKey!: pulumi.Output<string | undefined>;
+    /**
      * The MySQL version running on your source database server.
      * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
+    /**
+     * A file in the bucket that contains the data from the external server.
+     */
+    public readonly dumpFilePath!: pulumi.Output<string | undefined>;
     /**
      * The externally accessible IPv4 address for the source database server.
      */
@@ -83,6 +99,10 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      * The name of the source representation instance. Use any valid Cloud SQL instance name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The password for the replication user account.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
@@ -98,6 +118,10 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The replication user account on the external server.
+     */
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SourceRepresentationInstance resource with the given unique name, arguments, and options.
@@ -112,12 +136,18 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceRepresentationInstanceState | undefined;
+            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
+            resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
+            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            resourceInputs["dumpFilePath"] = state ? state.dumpFilePath : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SourceRepresentationInstanceArgs | undefined;
             if ((!args || args.databaseVersion === undefined) && !opts.urn) {
@@ -126,12 +156,18 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
+            resourceInputs["caCertificate"] = args ? args.caCertificate : undefined;
+            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
+            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
+            resourceInputs["dumpFilePath"] = args ? args.dumpFilePath : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SourceRepresentationInstance.__pulumiType, name, resourceInputs, opts);
@@ -143,10 +179,26 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
  */
 export interface SourceRepresentationInstanceState {
     /**
+     * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    clientCertificate?: pulumi.Input<string>;
+    /**
+     * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
      * The MySQL version running on your source database server.
      * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     databaseVersion?: pulumi.Input<string>;
+    /**
+     * A file in the bucket that contains the data from the external server.
+     */
+    dumpFilePath?: pulumi.Input<string>;
     /**
      * The externally accessible IPv4 address for the source database server.
      */
@@ -156,6 +208,10 @@ export interface SourceRepresentationInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The password for the replication user account.
+     */
+    password?: pulumi.Input<string>;
+    /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
      */
@@ -170,6 +226,10 @@ export interface SourceRepresentationInstanceState {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The replication user account on the external server.
+     */
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -177,10 +237,26 @@ export interface SourceRepresentationInstanceState {
  */
 export interface SourceRepresentationInstanceArgs {
     /**
+     * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     */
+    caCertificate?: pulumi.Input<string>;
+    /**
+     * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    clientCertificate?: pulumi.Input<string>;
+    /**
+     * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
      * The MySQL version running on your source database server.
      * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     databaseVersion: pulumi.Input<string>;
+    /**
+     * A file in the bucket that contains the data from the external server.
+     */
+    dumpFilePath?: pulumi.Input<string>;
     /**
      * The externally accessible IPv4 address for the source database server.
      */
@@ -190,6 +266,10 @@ export interface SourceRepresentationInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The password for the replication user account.
+     */
+    password?: pulumi.Input<string>;
+    /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
      */
@@ -204,4 +284,8 @@ export interface SourceRepresentationInstanceArgs {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The replication user account on the external server.
+     */
+    username?: pulumi.Input<string>;
 }

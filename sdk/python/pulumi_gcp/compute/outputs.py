@@ -98,6 +98,7 @@ __all__ = [
     'InstanceFromMachineImageReservationAffinity',
     'InstanceFromMachineImageReservationAffinitySpecificReservation',
     'InstanceFromMachineImageScheduling',
+    'InstanceFromMachineImageSchedulingMaxRunDuration',
     'InstanceFromMachineImageSchedulingNodeAffinity',
     'InstanceFromMachineImageScratchDisk',
     'InstanceFromMachineImageServiceAccount',
@@ -116,6 +117,7 @@ __all__ = [
     'InstanceFromTemplateReservationAffinity',
     'InstanceFromTemplateReservationAffinitySpecificReservation',
     'InstanceFromTemplateScheduling',
+    'InstanceFromTemplateSchedulingMaxRunDuration',
     'InstanceFromTemplateSchedulingNodeAffinity',
     'InstanceFromTemplateScratchDisk',
     'InstanceFromTemplateServiceAccount',
@@ -146,6 +148,7 @@ __all__ = [
     'InstanceReservationAffinity',
     'InstanceReservationAffinitySpecificReservation',
     'InstanceScheduling',
+    'InstanceSchedulingMaxRunDuration',
     'InstanceSchedulingNodeAffinity',
     'InstanceScratchDisk',
     'InstanceServiceAccount',
@@ -165,6 +168,7 @@ __all__ = [
     'InstanceTemplateReservationAffinity',
     'InstanceTemplateReservationAffinitySpecificReservation',
     'InstanceTemplateScheduling',
+    'InstanceTemplateSchedulingMaxRunDuration',
     'InstanceTemplateSchedulingNodeAffinity',
     'InstanceTemplateServiceAccount',
     'InstanceTemplateShieldedInstanceConfig',
@@ -530,6 +534,7 @@ __all__ = [
     'GetInstanceReservationAffinityResult',
     'GetInstanceReservationAffinitySpecificReservationResult',
     'GetInstanceSchedulingResult',
+    'GetInstanceSchedulingMaxRunDurationResult',
     'GetInstanceSchedulingNodeAffinityResult',
     'GetInstanceScratchDiskResult',
     'GetInstanceServiceAccountResult',
@@ -549,6 +554,7 @@ __all__ = [
     'GetInstanceTemplateReservationAffinityResult',
     'GetInstanceTemplateReservationAffinitySpecificReservationResult',
     'GetInstanceTemplateSchedulingResult',
+    'GetInstanceTemplateSchedulingMaxRunDurationResult',
     'GetInstanceTemplateSchedulingNodeAffinityResult',
     'GetInstanceTemplateServiceAccountResult',
     'GetInstanceTemplateShieldedInstanceConfigResult',
@@ -572,6 +578,10 @@ __all__ = [
     'GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult',
     'GetRouterBgpResult',
     'GetRouterBgpAdvertisedIpRangeResult',
+    'GetRouterNatLogConfigResult',
+    'GetRouterNatRuleResult',
+    'GetRouterNatRuleActionResult',
+    'GetRouterNatSubnetworkResult',
     'GetRouterStatusBestRouteResult',
     'GetRouterStatusBestRoutesForRouterResult',
     'GetSnapshotSnapshotEncryptionKeyResult',
@@ -7156,6 +7166,8 @@ class InstanceFromMachineImageScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minNodeCpus":
             suggest = "min_node_cpus"
         elif key == "nodeAffinities":
@@ -7179,6 +7191,7 @@ class InstanceFromMachineImageScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 max_run_duration: Optional['outputs.InstanceFromMachineImageSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromMachineImageSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
@@ -7188,6 +7201,8 @@ class InstanceFromMachineImageScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -7208,6 +7223,11 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional['outputs.InstanceFromMachineImageSchedulingMaxRunDuration']:
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -7233,6 +7253,26 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -8033,6 +8073,8 @@ class InstanceFromTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minNodeCpus":
             suggest = "min_node_cpus"
         elif key == "nodeAffinities":
@@ -8056,6 +8098,7 @@ class InstanceFromTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 max_run_duration: Optional['outputs.InstanceFromTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromTemplateSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
@@ -8065,6 +8108,8 @@ class InstanceFromTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -8085,6 +8130,11 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional['outputs.InstanceFromTemplateSchedulingMaxRunDuration']:
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -8110,6 +8160,26 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceFromTemplateSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -9632,6 +9702,8 @@ class InstanceScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minNodeCpus":
             suggest = "min_node_cpus"
         elif key == "nodeAffinities":
@@ -9655,6 +9727,7 @@ class InstanceScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 max_run_duration: Optional['outputs.InstanceSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
@@ -9664,7 +9737,7 @@ class InstanceScheduling(dict):
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
-        :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['InstanceSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -9686,6 +9759,8 @@ class InstanceScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -9711,9 +9786,14 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         """
-        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional['outputs.InstanceSchedulingMaxRunDuration']:
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -9765,6 +9845,46 @@ class InstanceScheduling(dict):
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -11042,6 +11162,8 @@ class InstanceTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minNodeCpus":
             suggest = "min_node_cpus"
         elif key == "nodeAffinities":
@@ -11065,6 +11187,7 @@ class InstanceTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 max_run_duration: Optional['outputs.InstanceTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceTemplateSchedulingNodeAffinity']] = None,
                  on_host_maintenance: Optional[str] = None,
@@ -11075,6 +11198,7 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11094,6 +11218,8 @@ class InstanceTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -11122,6 +11248,14 @@ class InstanceTemplateScheduling(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional['outputs.InstanceTemplateSchedulingMaxRunDuration']:
+        """
+        Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        """
+        return pulumi.get(self, "max_run_duration")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -11169,6 +11303,46 @@ class InstanceTemplateScheduling(dict):
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceTemplateSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -34773,6 +34947,7 @@ class GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 max_run_durations: Sequence['outputs.GetInstanceSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceSchedulingNodeAffinityResult'],
                  on_host_maintenance: str,
@@ -34790,6 +34965,7 @@ class GetInstanceSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
@@ -34812,6 +34988,11 @@ class GetInstanceSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDurations")
+    def max_run_durations(self) -> Sequence['outputs.GetInstanceSchedulingMaxRunDurationResult']:
+        return pulumi.get(self, "max_run_durations")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -34848,6 +35029,25 @@ class GetInstanceSchedulingResult(dict):
         Describe the type of preemptible VM.
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetInstanceSchedulingMaxRunDurationResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -35672,6 +35872,7 @@ class GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 max_run_durations: Sequence['outputs.GetInstanceTemplateSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceTemplateSchedulingNodeAffinityResult'],
                  on_host_maintenance: str,
@@ -35696,6 +35897,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
@@ -35719,6 +35921,11 @@ class GetInstanceTemplateSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maxRunDurations")
+    def max_run_durations(self) -> Sequence['outputs.GetInstanceTemplateSchedulingMaxRunDurationResult']:
+        return pulumi.get(self, "max_run_durations")
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -35763,6 +35970,25 @@ class GetInstanceTemplateSchedulingResult(dict):
         Describe the type of preemptible VM.
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetInstanceTemplateSchedulingMaxRunDurationResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -36371,6 +36597,111 @@ class GetRouterBgpAdvertisedIpRangeResult(dict):
     @pulumi.getter
     def range(self) -> str:
         return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetRouterNatLogConfigResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 filter: str):
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class GetRouterNatRuleResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.GetRouterNatRuleActionResult'],
+                 description: str,
+                 match: str,
+                 rule_number: int):
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "rule_number", rule_number)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.GetRouterNatRuleActionResult']:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def match(self) -> str:
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> int:
+        return pulumi.get(self, "rule_number")
+
+
+@pulumi.output_type
+class GetRouterNatRuleActionResult(dict):
+    def __init__(__self__, *,
+                 source_nat_active_ips: Sequence[str],
+                 source_nat_drain_ips: Sequence[str]):
+        pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+
+    @property
+    @pulumi.getter(name="sourceNatActiveIps")
+    def source_nat_active_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "source_nat_active_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainIps")
+    def source_nat_drain_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "source_nat_drain_ips")
+
+
+@pulumi.output_type
+class GetRouterNatSubnetworkResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 secondary_ip_range_names: Sequence[str],
+                 source_ip_ranges_to_nats: Sequence[str]):
+        """
+        :param str name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secondary_ip_range_names", secondary_ip_range_names)
+        pulumi.set(__self__, "source_ip_ranges_to_nats", source_ip_ranges_to_nats)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="secondaryIpRangeNames")
+    def secondary_ip_range_names(self) -> Sequence[str]:
+        return pulumi.get(self, "secondary_ip_range_names")
+
+    @property
+    @pulumi.getter(name="sourceIpRangesToNats")
+    def source_ip_ranges_to_nats(self) -> Sequence[str]:
+        return pulumi.get(self, "source_ip_ranges_to_nats")
 
 
 @pulumi.output_type

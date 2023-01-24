@@ -13,6 +13,8 @@ from . import outputs
 __all__ = [
     'JobBinaryAuthorization',
     'JobCondition',
+    'JobIamBindingCondition',
+    'JobIamMemberCondition',
     'JobLatestCreatedExecution',
     'JobTemplate',
     'JobTemplateTemplate',
@@ -39,6 +41,8 @@ __all__ = [
     'JobTerminalCondition',
     'ServiceBinaryAuthorization',
     'ServiceCondition',
+    'ServiceIamBindingCondition',
+    'ServiceIamMemberCondition',
     'ServiceTemplate',
     'ServiceTemplateContainer',
     'ServiceTemplateContainerEnv',
@@ -240,6 +244,60 @@ class JobCondition(dict):
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class JobIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class JobIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -1874,6 +1932,60 @@ class ServiceCondition(dict):
 
 
 @pulumi.output_type
+class ServiceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ServiceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class ServiceTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1901,6 +2013,7 @@ class ServiceTemplate(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 annotations: Optional[Mapping[str, str]] = None,
                  containers: Optional[Sequence['outputs.ServiceTemplateContainer']] = None,
                  encryption_key: Optional[str] = None,
                  execution_environment: Optional[str] = None,
@@ -1913,6 +2026,7 @@ class ServiceTemplate(dict):
                  volumes: Optional[Sequence['outputs.ServiceTemplateVolume']] = None,
                  vpc_access: Optional['outputs.ServiceTemplateVpcAccess'] = None):
         """
+        :param Mapping[str, str] annotations: KRM-style annotations for the resource.
         :param Sequence['ServiceTemplateContainerArgs'] containers: Holds the single container that defines the unit of execution for this task.
                Structure is documented below.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -1931,6 +2045,8 @@ class ServiceTemplate(dict):
         :param 'ServiceTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
         """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
@@ -1953,6 +2069,14 @@ class ServiceTemplate(dict):
             pulumi.set(__self__, "volumes", volumes)
         if vpc_access is not None:
             pulumi.set(__self__, "vpc_access", vpc_access)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, str]]:
+        """
+        KRM-style annotations for the resource.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter

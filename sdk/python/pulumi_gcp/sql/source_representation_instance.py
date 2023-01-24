@@ -16,33 +16,57 @@ class SourceRepresentationInstanceArgs:
     def __init__(__self__, *,
                  database_version: pulumi.Input[str],
                  host: pulumi.Input[str],
+                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 client_certificate: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 dump_file_path: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SourceRepresentationInstance resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
+        :param pulumi.Input[str] password: The password for the replication user account.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created instance should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] username: The replication user account on the external server.
         """
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "host", host)
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if dump_file_path is not None:
+            pulumi.set(__self__, "dump_file_path", dump_file_path)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -70,6 +94,54 @@ class SourceRepresentationInstanceArgs:
         pulumi.set(self, "host", value)
 
     @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @ca_certificate.setter
+    def ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate", value)
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @client_certificate.setter
+    def client_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_certificate", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="dumpFilePath")
+    def dump_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A file in the bucket that contains the data from the external server.
+        """
+        return pulumi.get(self, "dump_file_path")
+
+    @dump_file_path.setter
+    def dump_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dump_file_path", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -80,6 +152,18 @@ class SourceRepresentationInstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the replication user account.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter
@@ -120,41 +204,113 @@ class SourceRepresentationInstanceArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The replication user account on the external server.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
 
 @pulumi.input_type
 class _SourceRepresentationInstanceState:
     def __init__(__self__, *,
+                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 client_certificate: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 dump_file_path: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SourceRepresentationInstance resources.
+        :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
+        :param pulumi.Input[str] password: The password for the replication user account.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created instance should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] username: The replication user account on the external server.
         """
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if dump_file_path is not None:
+            pulumi.set(__self__, "dump_file_path", dump_file_path)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @ca_certificate.setter
+    def ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate", value)
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @client_certificate.setter
+    def client_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_certificate", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -168,6 +324,18 @@ class _SourceRepresentationInstanceState:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter(name="dumpFilePath")
+    def dump_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A file in the bucket that contains the data from the external server.
+        """
+        return pulumi.get(self, "dump_file_path")
+
+    @dump_file_path.setter
+    def dump_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dump_file_path", value)
 
     @property
     @pulumi.getter
@@ -195,6 +363,18 @@ class _SourceRepresentationInstanceState:
 
     @property
     @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the replication user account.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         The externally accessible port for the source database server.
@@ -232,18 +412,36 @@ class _SourceRepresentationInstanceState:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The replication user account on the external server.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
 
 class SourceRepresentationInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 client_certificate: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 dump_file_path: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         A source representation instance is a Cloud SQL instance that represents
@@ -284,16 +482,22 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
+        :param pulumi.Input[str] password: The password for the replication user account.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created instance should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] username: The replication user account on the external server.
         """
         ...
     @overload
@@ -353,12 +557,18 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 client_certificate: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 dump_file_path: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,16 +578,22 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SourceRepresentationInstanceArgs.__new__(SourceRepresentationInstanceArgs)
 
+            __props__.__dict__["ca_certificate"] = ca_certificate
+            __props__.__dict__["client_certificate"] = client_certificate
+            __props__.__dict__["client_key"] = client_key
             if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__.__dict__["database_version"] = database_version
+            __props__.__dict__["dump_file_path"] = dump_file_path
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
             __props__.__dict__["name"] = name
+            __props__.__dict__["password"] = password
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["username"] = username
         super(SourceRepresentationInstance, __self__).__init__(
             'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
             resource_name,
@@ -388,12 +604,18 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ca_certificate: Optional[pulumi.Input[str]] = None,
+            client_certificate: Optional[pulumi.Input[str]] = None,
+            client_key: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
+            dump_file_path: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            region: Optional[pulumi.Input[str]] = None) -> 'SourceRepresentationInstance':
+            region: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'SourceRepresentationInstance':
         """
         Get an existing SourceRepresentationInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -401,28 +623,64 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
+        :param pulumi.Input[str] password: The password for the replication user account.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created instance should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] username: The replication user account on the external server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SourceRepresentationInstanceState.__new__(_SourceRepresentationInstanceState)
 
+        __props__.__dict__["ca_certificate"] = ca_certificate
+        __props__.__dict__["client_certificate"] = client_certificate
+        __props__.__dict__["client_key"] = client_key
         __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["dump_file_path"] = dump_file_path
         __props__.__dict__["host"] = host
         __props__.__dict__["name"] = name
+        __props__.__dict__["password"] = password
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["username"] = username
         return SourceRepresentationInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> pulumi.Output[Optional[str]]:
+        """
+        The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> pulumi.Output[Optional[str]]:
+        """
+        The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        """
+        return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -432,6 +690,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="dumpFilePath")
+    def dump_file_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        A file in the bucket that contains the data from the external server.
+        """
+        return pulumi.get(self, "dump_file_path")
 
     @property
     @pulumi.getter
@@ -448,6 +714,14 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         The name of the source representation instance. Use any valid Cloud SQL instance name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password for the replication user account.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -475,4 +749,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The replication user account on the external server.
+        """
+        return pulumi.get(self, "username")
 

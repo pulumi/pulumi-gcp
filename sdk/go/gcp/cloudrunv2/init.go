@@ -23,8 +23,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:cloudrunv2/job:Job":
 		r = &Job{}
+	case "gcp:cloudrunv2/jobIamBinding:JobIamBinding":
+		r = &JobIamBinding{}
+	case "gcp:cloudrunv2/jobIamMember:JobIamMember":
+		r = &JobIamMember{}
+	case "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy":
+		r = &JobIamPolicy{}
 	case "gcp:cloudrunv2/service:Service":
 		r = &Service{}
+	case "gcp:cloudrunv2/serviceIamBinding:ServiceIamBinding":
+		r = &ServiceIamBinding{}
+	case "gcp:cloudrunv2/serviceIamMember:ServiceIamMember":
+		r = &ServiceIamMember{}
+	case "gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy":
+		r = &ServiceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -45,7 +57,37 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"cloudrunv2/jobIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/jobIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/jobIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"cloudrunv2/service",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/serviceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/serviceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudrunv2/serviceIamPolicy",
 		&module{version},
 	)
 }

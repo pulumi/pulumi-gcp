@@ -227,6 +227,8 @@ type BackendService struct {
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend service.
+	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this
@@ -373,6 +375,8 @@ type backendServiceState struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend service.
+	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this
@@ -491,6 +495,8 @@ type BackendServiceState struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The resource URL for the edge security policy associated with this backend service.
+	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// Fingerprint of this resource. A hash of the contents stored in this
@@ -611,6 +617,8 @@ type backendServiceArgs struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend service.
+	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
@@ -721,6 +729,8 @@ type BackendServiceArgs struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The resource URL for the edge security policy associated with this backend service.
+	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
@@ -949,6 +959,11 @@ func (o BackendServiceOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 // An optional description of this resource.
 func (o BackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The resource URL for the edge security policy associated with this backend service.
+func (o BackendServiceOutput) EdgeSecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.EdgeSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
 // If true, enable Cloud CDN for this BackendService.

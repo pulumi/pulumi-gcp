@@ -11,6 +11,7 @@ import com.pulumi.gcp.composer.inputs.EnvironmentConfigMaintenanceWindowArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigMasterAuthorizedNetworksConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigPrivateEnvironmentConfigArgs;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigRecoveryConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWebServerConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWebServerNetworkAccessControlArgs;
@@ -103,6 +104,13 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.privateEnvironmentConfig);
     }
 
+    @Import(name="recoveryConfig")
+    private @Nullable Output<EnvironmentConfigRecoveryConfigArgs> recoveryConfig;
+
+    public Optional<Output<EnvironmentConfigRecoveryConfigArgs>> recoveryConfig() {
+        return Optional.ofNullable(this.recoveryConfig);
+    }
+
     @Import(name="softwareConfig")
     private @Nullable Output<EnvironmentConfigSoftwareConfigArgs> softwareConfig;
 
@@ -145,6 +153,7 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         this.nodeConfig = $.nodeConfig;
         this.nodeCount = $.nodeCount;
         this.privateEnvironmentConfig = $.privateEnvironmentConfig;
+        this.recoveryConfig = $.recoveryConfig;
         this.softwareConfig = $.softwareConfig;
         this.webServerConfig = $.webServerConfig;
         this.webServerNetworkAccessControl = $.webServerNetworkAccessControl;
@@ -266,6 +275,15 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
 
         public Builder privateEnvironmentConfig(EnvironmentConfigPrivateEnvironmentConfigArgs privateEnvironmentConfig) {
             return privateEnvironmentConfig(Output.of(privateEnvironmentConfig));
+        }
+
+        public Builder recoveryConfig(@Nullable Output<EnvironmentConfigRecoveryConfigArgs> recoveryConfig) {
+            $.recoveryConfig = recoveryConfig;
+            return this;
+        }
+
+        public Builder recoveryConfig(EnvironmentConfigRecoveryConfigArgs recoveryConfig) {
+            return recoveryConfig(Output.of(recoveryConfig));
         }
 
         public Builder softwareConfig(@Nullable Output<EnvironmentConfigSoftwareConfigArgs> softwareConfig) {

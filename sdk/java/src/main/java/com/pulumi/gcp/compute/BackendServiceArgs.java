@@ -217,6 +217,21 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The resource URL for the edge security policy associated with this backend service.
+     * 
+     */
+    @Import(name="edgeSecurityPolicy")
+    private @Nullable Output<String> edgeSecurityPolicy;
+
+    /**
+     * @return The resource URL for the edge security policy associated with this backend service.
+     * 
+     */
+    public Optional<Output<String>> edgeSecurityPolicy() {
+        return Optional.ofNullable(this.edgeSecurityPolicy);
+    }
+
+    /**
      * If true, enable Cloud CDN for this BackendService.
      * 
      */
@@ -526,6 +541,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.customRequestHeaders = $.customRequestHeaders;
         this.customResponseHeaders = $.customResponseHeaders;
         this.description = $.description;
+        this.edgeSecurityPolicy = $.edgeSecurityPolicy;
         this.enableCdn = $.enableCdn;
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
@@ -842,6 +858,27 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param edgeSecurityPolicy The resource URL for the edge security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edgeSecurityPolicy(@Nullable Output<String> edgeSecurityPolicy) {
+            $.edgeSecurityPolicy = edgeSecurityPolicy;
+            return this;
+        }
+
+        /**
+         * @param edgeSecurityPolicy The resource URL for the edge security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
+            return edgeSecurityPolicy(Output.of(edgeSecurityPolicy));
         }
 
         /**

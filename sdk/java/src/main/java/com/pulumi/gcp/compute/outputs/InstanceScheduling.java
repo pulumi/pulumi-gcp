@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceSchedulingNodeAffinity;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -23,10 +24,11 @@ public final class InstanceScheduling {
      */
     private @Nullable Boolean automaticRestart;
     /**
-     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * @return Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
     private @Nullable String instanceTerminationAction;
+    private @Nullable InstanceSchedulingMaxRunDuration maxRunDuration;
     /**
      * @return The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
      * 
@@ -75,11 +77,14 @@ public final class InstanceScheduling {
         return Optional.ofNullable(this.automaticRestart);
     }
     /**
-     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * @return Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+    public Optional<InstanceSchedulingMaxRunDuration> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
     }
     /**
      * @return The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -139,6 +144,7 @@ public final class InstanceScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
+        private @Nullable InstanceSchedulingMaxRunDuration maxRunDuration;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities;
         private @Nullable String onHostMaintenance;
@@ -149,6 +155,7 @@ public final class InstanceScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
     	      this.onHostMaintenance = defaults.onHostMaintenance;
@@ -164,6 +171,11 @@ public final class InstanceScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxRunDuration(@Nullable InstanceSchedulingMaxRunDuration maxRunDuration) {
+            this.maxRunDuration = maxRunDuration;
             return this;
         }
         @CustomType.Setter
@@ -198,6 +210,7 @@ public final class InstanceScheduling {
             final var o = new InstanceScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.maxRunDuration = maxRunDuration;
             o.minNodeCpus = minNodeCpus;
             o.nodeAffinities = nodeAffinities;
             o.onHostMaintenance = onHostMaintenance;

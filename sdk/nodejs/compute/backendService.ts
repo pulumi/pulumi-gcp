@@ -210,6 +210,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The resource URL for the edge security policy associated with this backend service.
+     */
+    public readonly edgeSecurityPolicy!: pulumi.Output<string | undefined>;
+    /**
      * If true, enable Cloud CDN for this BackendService.
      */
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
@@ -343,6 +347,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
             resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["generatedId"] = state ? state.generatedId : undefined;
@@ -373,6 +378,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
             resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
             resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
@@ -466,6 +472,10 @@ export interface BackendServiceState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The resource URL for the edge security policy associated with this backend service.
+     */
+    edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendService.
      */
@@ -641,6 +651,10 @@ export interface BackendServiceArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The resource URL for the edge security policy associated with this backend service.
+     */
+    edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendService.
      */

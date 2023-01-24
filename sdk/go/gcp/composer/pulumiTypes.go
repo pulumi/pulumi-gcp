@@ -22,6 +22,7 @@ type EnvironmentConfig struct {
 	NodeConfig                     *EnvironmentConfigNodeConfig                     `pulumi:"nodeConfig"`
 	NodeCount                      *int                                             `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig       *EnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfig"`
+	RecoveryConfig                 *EnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfig"`
 	SoftwareConfig                 *EnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfig"`
 	WebServerConfig                *EnvironmentConfigWebServerConfig                `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl  *EnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControl"`
@@ -51,6 +52,7 @@ type EnvironmentConfigArgs struct {
 	NodeConfig                     EnvironmentConfigNodeConfigPtrInput                     `pulumi:"nodeConfig"`
 	NodeCount                      pulumi.IntPtrInput                                      `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig       EnvironmentConfigPrivateEnvironmentConfigPtrInput       `pulumi:"privateEnvironmentConfig"`
+	RecoveryConfig                 EnvironmentConfigRecoveryConfigPtrInput                 `pulumi:"recoveryConfig"`
 	SoftwareConfig                 EnvironmentConfigSoftwareConfigPtrInput                 `pulumi:"softwareConfig"`
 	WebServerConfig                EnvironmentConfigWebServerConfigPtrInput                `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl  EnvironmentConfigWebServerNetworkAccessControlPtrInput  `pulumi:"webServerNetworkAccessControl"`
@@ -180,6 +182,10 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPri
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		return v.PrivateEnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) RecoveryConfig() EnvironmentConfigRecoveryConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigRecoveryConfig { return v.RecoveryConfig }).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
@@ -321,6 +327,15 @@ func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() EnvironmentConfig
 		}
 		return v.PrivateEnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) RecoveryConfig() EnvironmentConfigRecoveryConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigRecoveryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryConfig
+	}).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
@@ -1736,6 +1751,321 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlo
 			return nil
 		}
 		return v.WebServerIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfig struct {
+	ScheduledSnapshotsConfig *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfig"`
+}
+
+// EnvironmentConfigRecoveryConfigInput is an input type that accepts EnvironmentConfigRecoveryConfigArgs and EnvironmentConfigRecoveryConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigRecoveryConfigInput` via:
+//
+//	EnvironmentConfigRecoveryConfigArgs{...}
+type EnvironmentConfigRecoveryConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigRecoveryConfigOutput() EnvironmentConfigRecoveryConfigOutput
+	ToEnvironmentConfigRecoveryConfigOutputWithContext(context.Context) EnvironmentConfigRecoveryConfigOutput
+}
+
+type EnvironmentConfigRecoveryConfigArgs struct {
+	ScheduledSnapshotsConfig EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput `pulumi:"scheduledSnapshotsConfig"`
+}
+
+func (EnvironmentConfigRecoveryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigOutput() EnvironmentConfigRecoveryConfigOutput {
+	return i.ToEnvironmentConfigRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigOutput)
+}
+
+func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput {
+	return i.ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigRecoveryConfigArgs) ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigOutput).ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigRecoveryConfigPtrInput is an input type that accepts EnvironmentConfigRecoveryConfigArgs, EnvironmentConfigRecoveryConfigPtr and EnvironmentConfigRecoveryConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigRecoveryConfigPtrInput` via:
+//
+//	        EnvironmentConfigRecoveryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigRecoveryConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput
+	ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(context.Context) EnvironmentConfigRecoveryConfigPtrOutput
+}
+
+type environmentConfigRecoveryConfigPtrType EnvironmentConfigRecoveryConfigArgs
+
+func EnvironmentConfigRecoveryConfigPtr(v *EnvironmentConfigRecoveryConfigArgs) EnvironmentConfigRecoveryConfigPtrInput {
+	return (*environmentConfigRecoveryConfigPtrType)(v)
+}
+
+func (*environmentConfigRecoveryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigRecoveryConfigPtrType) ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput {
+	return i.ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigRecoveryConfigPtrType) ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigRecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfigOutput() EnvironmentConfigRecoveryConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfigOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput {
+	return o.ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfig {
+		return &v
+	}).(EnvironmentConfigRecoveryConfigPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfig() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		return v.ScheduledSnapshotsConfig
+	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigRecoveryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigRecoveryConfigPtrOutput) ToEnvironmentConfigRecoveryConfigPtrOutput() EnvironmentConfigRecoveryConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigPtrOutput) ToEnvironmentConfigRecoveryConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigPtrOutput) Elem() EnvironmentConfigRecoveryConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfig) EnvironmentConfigRecoveryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigRecoveryConfig
+		return ret
+	}).(EnvironmentConfigRecoveryConfigOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigPtrOutput) ScheduledSnapshotsConfig() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledSnapshotsConfig
+	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig struct {
+	Enabled                  bool    `pulumi:"enabled"`
+	SnapshotCreationSchedule *string `pulumi:"snapshotCreationSchedule"`
+	SnapshotLocation         *string `pulumi:"snapshotLocation"`
+	TimeZone                 *string `pulumi:"timeZone"`
+}
+
+// EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput is an input type that accepts EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs and EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput` via:
+//
+//	EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{...}
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput
+	ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput
+}
+
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs struct {
+	Enabled                  pulumi.BoolInput      `pulumi:"enabled"`
+	SnapshotCreationSchedule pulumi.StringPtrInput `pulumi:"snapshotCreationSchedule"`
+	SnapshotLocation         pulumi.StringPtrInput `pulumi:"snapshotLocation"`
+	TimeZone                 pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
+}
+
+func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput).ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput is an input type that accepts EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs, EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtr and EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput` via:
+//
+//	        EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput
+	ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput
+}
+
+type environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs
+
+func EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtr(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput {
+	return (*environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType)(v)
+}
+
+func (*environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return i.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigRecoveryConfigScheduledSnapshotsConfigPtrType) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o.ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		return &v
+	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
+		return v.SnapshotCreationSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string { return v.SnapshotLocation }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) ToEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Elem() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig
+		return ret
+	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotCreationSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3208,6 +3538,7 @@ type GetEnvironmentConfig struct {
 	NodeConfigs                     []GetEnvironmentConfigNodeConfig                     `pulumi:"nodeConfigs"`
 	NodeCount                       int                                                  `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs       []GetEnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfigs"`
+	RecoveryConfigs                 []GetEnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfigs"`
 	SoftwareConfigs                 []GetEnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfigs"`
 	WebServerConfigs                []GetEnvironmentConfigWebServerConfig                `pulumi:"webServerConfigs"`
 	WebServerNetworkAccessControls  []GetEnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControls"`
@@ -3237,6 +3568,7 @@ type GetEnvironmentConfigArgs struct {
 	NodeConfigs                     GetEnvironmentConfigNodeConfigArrayInput                     `pulumi:"nodeConfigs"`
 	NodeCount                       pulumi.IntInput                                              `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs       GetEnvironmentConfigPrivateEnvironmentConfigArrayInput       `pulumi:"privateEnvironmentConfigs"`
+	RecoveryConfigs                 GetEnvironmentConfigRecoveryConfigArrayInput                 `pulumi:"recoveryConfigs"`
 	SoftwareConfigs                 GetEnvironmentConfigSoftwareConfigArrayInput                 `pulumi:"softwareConfigs"`
 	WebServerConfigs                GetEnvironmentConfigWebServerConfigArrayInput                `pulumi:"webServerConfigs"`
 	WebServerNetworkAccessControls  GetEnvironmentConfigWebServerNetworkAccessControlArrayInput  `pulumi:"webServerNetworkAccessControls"`
@@ -3340,6 +3672,10 @@ func (o GetEnvironmentConfigOutput) PrivateEnvironmentConfigs() GetEnvironmentCo
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigPrivateEnvironmentConfig {
 		return v.PrivateEnvironmentConfigs
 	}).(GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) RecoveryConfigs() GetEnvironmentConfigRecoveryConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigRecoveryConfig { return v.RecoveryConfigs }).(GetEnvironmentConfigRecoveryConfigArrayOutput)
 }
 
 func (o GetEnvironmentConfigOutput) SoftwareConfigs() GetEnvironmentConfigSoftwareConfigArrayOutput {
@@ -4282,6 +4618,216 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigPrivateEnvironmentConfig {
 		return vs[0].([]GetEnvironmentConfigPrivateEnvironmentConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigPrivateEnvironmentConfigOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfig struct {
+	ScheduledSnapshotsConfigs []GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfigs"`
+}
+
+// GetEnvironmentConfigRecoveryConfigInput is an input type that accepts GetEnvironmentConfigRecoveryConfigArgs and GetEnvironmentConfigRecoveryConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigInput` via:
+//
+//	GetEnvironmentConfigRecoveryConfigArgs{...}
+type GetEnvironmentConfigRecoveryConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigRecoveryConfigOutput() GetEnvironmentConfigRecoveryConfigOutput
+	ToGetEnvironmentConfigRecoveryConfigOutputWithContext(context.Context) GetEnvironmentConfigRecoveryConfigOutput
+}
+
+type GetEnvironmentConfigRecoveryConfigArgs struct {
+	ScheduledSnapshotsConfigs GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput `pulumi:"scheduledSnapshotsConfigs"`
+}
+
+func (GetEnvironmentConfigRecoveryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigRecoveryConfigArgs) ToGetEnvironmentConfigRecoveryConfigOutput() GetEnvironmentConfigRecoveryConfigOutput {
+	return i.ToGetEnvironmentConfigRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigRecoveryConfigArgs) ToGetEnvironmentConfigRecoveryConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigOutput)
+}
+
+// GetEnvironmentConfigRecoveryConfigArrayInput is an input type that accepts GetEnvironmentConfigRecoveryConfigArray and GetEnvironmentConfigRecoveryConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigArrayInput` via:
+//
+//	GetEnvironmentConfigRecoveryConfigArray{ GetEnvironmentConfigRecoveryConfigArgs{...} }
+type GetEnvironmentConfigRecoveryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigRecoveryConfigArrayOutput() GetEnvironmentConfigRecoveryConfigArrayOutput
+	ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigRecoveryConfigArrayOutput
+}
+
+type GetEnvironmentConfigRecoveryConfigArray []GetEnvironmentConfigRecoveryConfigInput
+
+func (GetEnvironmentConfigRecoveryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigRecoveryConfigArray) ToGetEnvironmentConfigRecoveryConfigArrayOutput() GetEnvironmentConfigRecoveryConfigArrayOutput {
+	return i.ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigRecoveryConfigArray) ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigArrayOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigRecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigRecoveryConfigOutput) ToGetEnvironmentConfigRecoveryConfigOutput() GetEnvironmentConfigRecoveryConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigOutput) ToGetEnvironmentConfigRecoveryConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfigs() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfig) []GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		return v.ScheduledSnapshotsConfigs
+	}).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigRecoveryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigRecoveryConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigRecoveryConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigArrayOutput() GetEnvironmentConfigRecoveryConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigRecoveryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigRecoveryConfig {
+		return vs[0].([]GetEnvironmentConfigRecoveryConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigRecoveryConfigOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig struct {
+	Enabled                  bool   `pulumi:"enabled"`
+	SnapshotCreationSchedule string `pulumi:"snapshotCreationSchedule"`
+	SnapshotLocation         string `pulumi:"snapshotLocation"`
+	TimeZone                 string `pulumi:"timeZone"`
+}
+
+// GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput is an input type that accepts GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs and GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput` via:
+//
+//	GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{...}
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput
+	ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput
+}
+
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs struct {
+	Enabled                  pulumi.BoolInput   `pulumi:"enabled"`
+	SnapshotCreationSchedule pulumi.StringInput `pulumi:"snapshotCreationSchedule"`
+	SnapshotLocation         pulumi.StringInput `pulumi:"snapshotLocation"`
+	TimeZone                 pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return i.ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
+}
+
+// GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput is an input type that accepts GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray and GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput` via:
+//
+//	GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray{ GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{...} }
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput
+	ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput
+}
+
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray []GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput
+
+func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
+	return i.ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string {
+		return v.SnapshotCreationSchedule
+	}).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string { return v.SnapshotLocation }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) ToGetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+		return vs[0].([]GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
 }
 
 type GetEnvironmentConfigSoftwareConfig struct {
@@ -5385,6 +5931,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput)(nil)).Elem(), EnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPrivateEnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigPrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPrivateEnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigPrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigPtrInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigPtrInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWebServerConfigInput)(nil)).Elem(), EnvironmentConfigWebServerConfigArgs{})
@@ -5421,6 +5971,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigIpAllocationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfigInput)(nil)).Elem(), GetEnvironmentConfigPrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigPrivateEnvironmentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWebServerConfigInput)(nil)).Elem(), GetEnvironmentConfigWebServerConfigArgs{})
@@ -5459,6 +6013,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerConfigOutput{})
@@ -5495,6 +6053,10 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigPrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerConfigOutput{})

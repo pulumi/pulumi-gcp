@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string InstanceTerminationAction;
+        public readonly ImmutableArray<Outputs.GetInstanceTemplateSchedulingMaxRunDurationResult> MaxRunDurations;
         public readonly int MinNodeCpus;
         /// <summary>
         /// Specifies node affinities or anti-affinities
@@ -54,6 +55,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string instanceTerminationAction,
 
+            ImmutableArray<Outputs.GetInstanceTemplateSchedulingMaxRunDurationResult> maxRunDurations,
+
             int minNodeCpus,
 
             ImmutableArray<Outputs.GetInstanceTemplateSchedulingNodeAffinityResult> nodeAffinities,
@@ -66,6 +69,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            MaxRunDurations = maxRunDurations;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;

@@ -20,6 +20,8 @@ __all__ = [
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
     'EnvironmentConfigPrivateEnvironmentConfig',
+    'EnvironmentConfigRecoveryConfig',
+    'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig',
     'EnvironmentConfigSoftwareConfig',
     'EnvironmentConfigWebServerConfig',
     'EnvironmentConfigWebServerNetworkAccessControl',
@@ -38,6 +40,8 @@ __all__ = [
     'GetEnvironmentConfigNodeConfigResult',
     'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
     'GetEnvironmentConfigPrivateEnvironmentConfigResult',
+    'GetEnvironmentConfigRecoveryConfigResult',
+    'GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult',
     'GetEnvironmentConfigSoftwareConfigResult',
     'GetEnvironmentConfigWebServerConfigResult',
     'GetEnvironmentConfigWebServerNetworkAccessControlResult',
@@ -77,6 +81,8 @@ class EnvironmentConfig(dict):
             suggest = "node_count"
         elif key == "privateEnvironmentConfig":
             suggest = "private_environment_config"
+        elif key == "recoveryConfig":
+            suggest = "recovery_config"
         elif key == "softwareConfig":
             suggest = "software_config"
         elif key == "webServerConfig":
@@ -109,6 +115,7 @@ class EnvironmentConfig(dict):
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
                  node_count: Optional[int] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
+                 recovery_config: Optional['outputs.EnvironmentConfigRecoveryConfig'] = None,
                  software_config: Optional['outputs.EnvironmentConfigSoftwareConfig'] = None,
                  web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None,
@@ -135,6 +142,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "node_count", node_count)
         if private_environment_config is not None:
             pulumi.set(__self__, "private_environment_config", private_environment_config)
+        if recovery_config is not None:
+            pulumi.set(__self__, "recovery_config", recovery_config)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
@@ -198,6 +207,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="privateEnvironmentConfig")
     def private_environment_config(self) -> Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig']:
         return pulumi.get(self, "private_environment_config")
+
+    @property
+    @pulumi.getter(name="recoveryConfig")
+    def recovery_config(self) -> Optional['outputs.EnvironmentConfigRecoveryConfig']:
+        return pulumi.get(self, "recovery_config")
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -682,6 +696,93 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
 
 
 @pulumi.output_type
+class EnvironmentConfigRecoveryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scheduledSnapshotsConfig":
+            suggest = "scheduled_snapshots_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigRecoveryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigRecoveryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigRecoveryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scheduled_snapshots_config: Optional['outputs.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig'] = None):
+        if scheduled_snapshots_config is not None:
+            pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
+
+    @property
+    @pulumi.getter(name="scheduledSnapshotsConfig")
+    def scheduled_snapshots_config(self) -> Optional['outputs.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig']:
+        return pulumi.get(self, "scheduled_snapshots_config")
+
+
+@pulumi.output_type
+class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "snapshotCreationSchedule":
+            suggest = "snapshot_creation_schedule"
+        elif key == "snapshotLocation":
+            suggest = "snapshot_location"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 snapshot_creation_schedule: Optional[str] = None,
+                 snapshot_location: Optional[str] = None,
+                 time_zone: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if snapshot_creation_schedule is not None:
+            pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
+        if snapshot_location is not None:
+            pulumi.set(__self__, "snapshot_location", snapshot_location)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="snapshotCreationSchedule")
+    def snapshot_creation_schedule(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_creation_schedule")
+
+    @property
+    @pulumi.getter(name="snapshotLocation")
+    def snapshot_location(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_location")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
 class EnvironmentConfigSoftwareConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1123,6 +1224,7 @@ class GetEnvironmentConfigResult(dict):
                  node_configs: Sequence['outputs.GetEnvironmentConfigNodeConfigResult'],
                  node_count: int,
                  private_environment_configs: Sequence['outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult'],
+                 recovery_configs: Sequence['outputs.GetEnvironmentConfigRecoveryConfigResult'],
                  software_configs: Sequence['outputs.GetEnvironmentConfigSoftwareConfigResult'],
                  web_server_configs: Sequence['outputs.GetEnvironmentConfigWebServerConfigResult'],
                  web_server_network_access_controls: Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult'],
@@ -1138,6 +1240,7 @@ class GetEnvironmentConfigResult(dict):
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_configs", private_environment_configs)
+        pulumi.set(__self__, "recovery_configs", recovery_configs)
         pulumi.set(__self__, "software_configs", software_configs)
         pulumi.set(__self__, "web_server_configs", web_server_configs)
         pulumi.set(__self__, "web_server_network_access_controls", web_server_network_access_controls)
@@ -1197,6 +1300,11 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="privateEnvironmentConfigs")
     def private_environment_configs(self) -> Sequence['outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult']:
         return pulumi.get(self, "private_environment_configs")
+
+    @property
+    @pulumi.getter(name="recoveryConfigs")
+    def recovery_configs(self) -> Sequence['outputs.GetEnvironmentConfigRecoveryConfigResult']:
+        return pulumi.get(self, "recovery_configs")
 
     @property
     @pulumi.getter(name="softwareConfigs")
@@ -1481,6 +1589,51 @@ class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
     @pulumi.getter(name="webServerIpv4CidrBlock")
     def web_server_ipv4_cidr_block(self) -> str:
         return pulumi.get(self, "web_server_ipv4_cidr_block")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigRecoveryConfigResult(dict):
+    def __init__(__self__, *,
+                 scheduled_snapshots_configs: Sequence['outputs.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult']):
+        pulumi.set(__self__, "scheduled_snapshots_configs", scheduled_snapshots_configs)
+
+    @property
+    @pulumi.getter(name="scheduledSnapshotsConfigs")
+    def scheduled_snapshots_configs(self) -> Sequence['outputs.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult']:
+        return pulumi.get(self, "scheduled_snapshots_configs")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 snapshot_creation_schedule: str,
+                 snapshot_location: str,
+                 time_zone: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
+        pulumi.set(__self__, "snapshot_location", snapshot_location)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="snapshotCreationSchedule")
+    def snapshot_creation_schedule(self) -> str:
+        return pulumi.get(self, "snapshot_creation_schedule")
+
+    @property
+    @pulumi.getter(name="snapshotLocation")
+    def snapshot_location(self) -> str:
+        return pulumi.get(self, "snapshot_location")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type

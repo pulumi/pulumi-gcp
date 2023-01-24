@@ -68,6 +68,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly int? MaxBadRecords;
         /// <summary>
+        /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        /// </summary>
+        public readonly string? ReferenceFileSchemaUri;
+        /// <summary>
         /// A JSON schema for the external table. Schema is required
         /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
         /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -115,6 +119,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             int? maxBadRecords,
 
+            string? referenceFileSchemaUri,
+
             string? schema,
 
             string sourceFormat,
@@ -130,6 +136,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
+            ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;
             SourceFormat = sourceFormat;
             SourceUris = sourceUris;

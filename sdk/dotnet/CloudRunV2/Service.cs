@@ -386,6 +386,14 @@ namespace Pulumi.Gcp.CloudRunV2
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// KRM-style annotations for the resource.
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.
         /// </summary>
@@ -583,6 +591,20 @@ namespace Pulumi.Gcp.CloudRunV2
 
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// KRM-style annotations for the resource.
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.
@@ -683,6 +705,20 @@ namespace Pulumi.Gcp.CloudRunV2
 
     public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// KRM-style annotations for the resource.
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.

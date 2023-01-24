@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigAutoscalingConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigDataprocMetricConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigEncryptionConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigEndpointConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfig;
@@ -33,6 +34,12 @@ public final class ClusterClusterConfig {
      */
     private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
     private @Nullable String bucket;
+    /**
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * Structure defined below.
+     * 
+     */
+    private @Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig;
     /**
      * @return The Customer managed encryption keys settings for the cluster.
      * Structure defined below.
@@ -134,6 +141,14 @@ public final class ClusterClusterConfig {
     }
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
+    }
+    /**
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * Structure defined below.
+     * 
+     */
+    public Optional<ClusterClusterConfigDataprocMetricConfig> dataprocMetricConfig() {
+        return Optional.ofNullable(this.dataprocMetricConfig);
     }
     /**
      * @return The Customer managed encryption keys settings for the cluster.
@@ -260,6 +275,7 @@ public final class ClusterClusterConfig {
     public static final class Builder {
         private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
         private @Nullable String bucket;
+        private @Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig;
         private @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
         private @Nullable ClusterClusterConfigEndpointConfig endpointConfig;
         private @Nullable ClusterClusterConfigGceClusterConfig gceClusterConfig;
@@ -278,6 +294,7 @@ public final class ClusterClusterConfig {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfig = defaults.autoscalingConfig;
     	      this.bucket = defaults.bucket;
+    	      this.dataprocMetricConfig = defaults.dataprocMetricConfig;
     	      this.encryptionConfig = defaults.encryptionConfig;
     	      this.endpointConfig = defaults.endpointConfig;
     	      this.gceClusterConfig = defaults.gceClusterConfig;
@@ -301,6 +318,11 @@ public final class ClusterClusterConfig {
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
             this.bucket = bucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataprocMetricConfig(@Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig) {
+            this.dataprocMetricConfig = dataprocMetricConfig;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +397,7 @@ public final class ClusterClusterConfig {
             final var o = new ClusterClusterConfig();
             o.autoscalingConfig = autoscalingConfig;
             o.bucket = bucket;
+            o.dataprocMetricConfig = dataprocMetricConfig;
             o.encryptionConfig = encryptionConfig;
             o.endpointConfig = endpointConfig;
             o.gceClusterConfig = gceClusterConfig;

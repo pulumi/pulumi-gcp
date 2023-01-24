@@ -76,6 +76,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance")
 public class SourceRepresentationInstance extends com.pulumi.resources.CustomResource {
     /**
+     * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Export(name="caCertificate", type=String.class, parameters={})
+    private Output</* @Nullable */ String> caCertificate;
+
+    /**
+     * @return The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Output<Optional<String>> caCertificate() {
+        return Codegen.optional(this.caCertificate);
+    }
+    /**
+     * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Export(name="clientCertificate", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientCertificate;
+
+    /**
+     * @return The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Output<Optional<String>> clientCertificate() {
+        return Codegen.optional(this.clientCertificate);
+    }
+    /**
+     * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Export(name="clientKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientKey;
+
+    /**
+     * @return The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Output<Optional<String>> clientKey() {
+        return Codegen.optional(this.clientKey);
+    }
+    /**
      * The MySQL version running on your source database server.
      * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      * 
@@ -90,6 +132,20 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      */
     public Output<String> databaseVersion() {
         return this.databaseVersion;
+    }
+    /**
+     * A file in the bucket that contains the data from the external server.
+     * 
+     */
+    @Export(name="dumpFilePath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dumpFilePath;
+
+    /**
+     * @return A file in the bucket that contains the data from the external server.
+     * 
+     */
+    public Output<Optional<String>> dumpFilePath() {
+        return Codegen.optional(this.dumpFilePath);
     }
     /**
      * The externally accessible IPv4 address for the source database server.
@@ -118,6 +174,20 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The password for the replication user account.
+     * 
+     */
+    @Export(name="password", type=String.class, parameters={})
+    private Output</* @Nullable */ String> password;
+
+    /**
+     * @return The password for the replication user account.
+     * 
+     */
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     /**
      * The externally accessible port for the source database server.
@@ -166,6 +236,20 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The replication user account on the external server.
+     * 
+     */
+    @Export(name="username", type=String.class, parameters={})
+    private Output</* @Nullable */ String> username;
+
+    /**
+     * @return The replication user account on the external server.
+     * 
+     */
+    public Output<Optional<String>> username() {
+        return Codegen.optional(this.username);
     }
 
     /**

@@ -12,7 +12,7 @@ import (
 )
 
 // ## Example Usage
-// ### Firebase Database Instance
+// ### Firebase Database Instance Basic
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firebase.NewDatabaseInstance(ctx, "basic", &firebase.DatabaseInstanceArgs{
 //				Project:    pulumi.String("my-project-name"),
-//				Region:     pulumi.String("us-west1"),
+//				Region:     pulumi.String("us-central1"),
 //				InstanceId: pulumi.String("active-db"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -39,7 +39,7 @@ import (
 //	}
 //
 // ```
-// ### Firebase Database Instance Disabled
+// ### Firebase Database Instance Full
 //
 // ```go
 // package main
@@ -55,7 +55,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firebase.NewDatabaseInstance(ctx, "full", &firebase.DatabaseInstanceArgs{
 //				Project:      pulumi.String("my-project-name"),
-//				Region:       pulumi.String("us-west1"),
+//				Region:       pulumi.String("europe-west1"),
 //				InstanceId:   pulumi.String("disabled-db"),
 //				Type:         pulumi.String("USER_DATABASE"),
 //				DesiredState: pulumi.String("DISABLED"),
@@ -68,7 +68,7 @@ import (
 //	}
 //
 // ```
-// ### Firebase Database Instance Default
+// ### Firebase Database Instance Default Database
 //
 // ```go
 // package main
@@ -100,7 +100,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewService(ctx, "firebaseDatabase", &projects.ServiceArgs{
+//			firebaseDatabase, err := projects.NewService(ctx, "firebaseDatabase", &projects.ServiceArgs{
 //				Project: defaultFirebase / projectProject.Project,
 //				Service: pulumi.String("firebasedatabase.googleapis.com"),
 //			}, pulumi.Provider(google_beta))
@@ -109,10 +109,12 @@ import (
 //			}
 //			_, err = firebase.NewDatabaseInstance(ctx, "defaultDatabaseInstance", &firebase.DatabaseInstanceArgs{
 //				Project:    defaultFirebase / projectProject.Project,
-//				Region:     pulumi.String("us-west1"),
+//				Region:     pulumi.String("us-central1"),
 //				InstanceId: pulumi.String("rtdb-project-default-rtdb"),
 //				Type:       pulumi.String("DEFAULT_DATABASE"),
-//			}, pulumi.Provider(google_beta))
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				firebaseDatabase,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -169,6 +171,7 @@ type DatabaseInstance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A reference to the region where the Firebase Realtime database resides.
+	// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State pulumi.StringOutput `pulumi:"state"`
@@ -233,6 +236,7 @@ type databaseInstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the region where the Firebase Realtime database resides.
+	// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 	Region *string `pulumi:"region"`
 	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State *string `pulumi:"state"`
@@ -263,6 +267,7 @@ type DatabaseInstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the region where the Firebase Realtime database resides.
+	// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 	Region pulumi.StringPtrInput
 	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State pulumi.StringPtrInput
@@ -289,6 +294,7 @@ type databaseInstanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the region where the Firebase Realtime database resides.
+	// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 	Region string `pulumi:"region"`
 	// The database type.
 	// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -310,6 +316,7 @@ type DatabaseInstanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the region where the Firebase Realtime database resides.
+	// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 	Region pulumi.StringInput
 	// The database type.
 	// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -439,6 +446,7 @@ func (o DatabaseInstanceOutput) Project() pulumi.StringOutput {
 }
 
 // A reference to the region where the Firebase Realtime database resides.
+// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
 func (o DatabaseInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

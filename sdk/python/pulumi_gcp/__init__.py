@@ -1465,10 +1465,58 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudrunv2/jobIamBinding",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/jobIamBinding:JobIamBinding": "JobIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/jobIamMember",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/jobIamMember:JobIamMember": "JobIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/jobIamPolicy",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy": "JobIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudrunv2/service",
   "fqn": "pulumi_gcp.cloudrunv2",
   "classes": {
    "gcp:cloudrunv2/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/serviceIamBinding",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/serviceIamBinding:ServiceIamBinding": "ServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/serviceIamMember",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/serviceIamMember:ServiceIamMember": "ServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/serviceIamPolicy",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },
  {
@@ -3549,6 +3597,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkebackup",
   "classes": {
    "gcp:gkebackup/backupPlan:BackupPlan": "BackupPlan"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/backupPlanIamBinding",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding": "BackupPlanIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/backupPlanIamMember",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember": "BackupPlanIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/backupPlanIamPolicy",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": "BackupPlanIamPolicy"
   }
  },
  {

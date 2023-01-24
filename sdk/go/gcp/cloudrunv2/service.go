@@ -400,6 +400,10 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
+	// KRM-style annotations for the resource.
+	// (Optional)
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
@@ -494,6 +498,10 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
+	// KRM-style annotations for the resource.
+	// (Optional)
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
@@ -557,6 +565,10 @@ type serviceState struct {
 }
 
 type ServiceState struct {
+	// KRM-style annotations for the resource.
+	// (Optional)
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
@@ -624,6 +636,10 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
+	// KRM-style annotations for the resource.
+	// (Optional)
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
@@ -660,6 +676,10 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// KRM-style annotations for the resource.
+	// (Optional)
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
@@ -779,6 +799,13 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
+}
+
+// KRM-style annotations for the resource.
+// (Optional)
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+func (o ServiceOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Settings for the Binary Authorization feature.

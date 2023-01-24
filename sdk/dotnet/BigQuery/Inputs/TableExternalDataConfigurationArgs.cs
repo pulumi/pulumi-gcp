@@ -85,6 +85,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<int>? MaxBadRecords { get; set; }
 
         /// <summary>
+        /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        /// </summary>
+        [Input("referenceFileSchemaUri")]
+        public Input<string>? ReferenceFileSchemaUri { get; set; }
+
+        /// <summary>
         /// A JSON schema for the external table. Schema is required
         /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
         /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.

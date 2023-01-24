@@ -23,6 +23,21 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     public static final ServiceTemplateArgs Empty = new ServiceTemplateArgs();
 
     /**
+     * KRM-style annotations for the resource.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return KRM-style annotations for the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
+
+    /**
      * Holds the single container that defines the unit of execution for this task.
      * Structure is documented below.
      * 
@@ -202,6 +217,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     private ServiceTemplateArgs() {}
 
     private ServiceTemplateArgs(ServiceTemplateArgs $) {
+        this.annotations = $.annotations;
         this.containers = $.containers;
         this.encryptionKey = $.encryptionKey;
         this.executionEnvironment = $.executionEnvironment;
@@ -231,6 +247,27 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(ServiceTemplateArgs defaults) {
             $ = new ServiceTemplateArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations KRM-style annotations for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations KRM-style annotations for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**

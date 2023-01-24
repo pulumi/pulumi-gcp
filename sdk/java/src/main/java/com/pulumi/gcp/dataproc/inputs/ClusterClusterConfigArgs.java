@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAutoscalingConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigDataprocMetricConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigEndpointConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
@@ -54,6 +55,23 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
 
     public Optional<Output<String>> bucket() {
         return Optional.ofNullable(this.bucket);
+    }
+
+    /**
+     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * Structure defined below.
+     * 
+     */
+    @Import(name="dataprocMetricConfig")
+    private @Nullable Output<ClusterClusterConfigDataprocMetricConfigArgs> dataprocMetricConfig;
+
+    /**
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * Structure defined below.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigDataprocMetricConfigArgs>> dataprocMetricConfig() {
+        return Optional.ofNullable(this.dataprocMetricConfig);
     }
 
     /**
@@ -300,6 +318,7 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     private ClusterClusterConfigArgs(ClusterClusterConfigArgs $) {
         this.autoscalingConfig = $.autoscalingConfig;
         this.bucket = $.bucket;
+        this.dataprocMetricConfig = $.dataprocMetricConfig;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointConfig = $.endpointConfig;
         this.gceClusterConfig = $.gceClusterConfig;
@@ -367,6 +386,29 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param dataprocMetricConfig The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataprocMetricConfig(@Nullable Output<ClusterClusterConfigDataprocMetricConfigArgs> dataprocMetricConfig) {
+            $.dataprocMetricConfig = dataprocMetricConfig;
+            return this;
+        }
+
+        /**
+         * @param dataprocMetricConfig The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataprocMetricConfig(ClusterClusterConfigDataprocMetricConfigArgs dataprocMetricConfig) {
+            return dataprocMetricConfig(Output.of(dataprocMetricConfig));
         }
 
         /**
