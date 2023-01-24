@@ -24,6 +24,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
+               Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -61,6 +62,7 @@ class DatabaseInstanceArgs:
     def region(self) -> pulumi.Input[str]:
         """
         A reference to the region where the Firebase Realtime database resides.
+        Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         """
         return pulumi.get(self, "region")
 
@@ -136,6 +138,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
+               Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         :param pulumi.Input[str] state: The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
         :param pulumi.Input[str] type: The database type.
                Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -232,6 +235,7 @@ class _DatabaseInstanceState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the region where the Firebase Realtime database resides.
+        Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         """
         return pulumi.get(self, "region")
 
@@ -282,7 +286,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Firebase Database Instance
+        ### Firebase Database Instance Basic
 
         ```python
         import pulumi
@@ -290,11 +294,11 @@ class DatabaseInstance(pulumi.CustomResource):
 
         basic = gcp.firebase.DatabaseInstance("basic",
             project="my-project-name",
-            region="us-west1",
+            region="us-central1",
             instance_id="active-db",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Firebase Database Instance Disabled
+        ### Firebase Database Instance Full
 
         ```python
         import pulumi
@@ -302,13 +306,13 @@ class DatabaseInstance(pulumi.CustomResource):
 
         full = gcp.firebase.DatabaseInstance("full",
             project="my-project-name",
-            region="us-west1",
+            region="europe-west1",
             instance_id="disabled-db",
             type="USER_DATABASE",
             desired_state="DISABLED",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Firebase Database Instance Default
+        ### Firebase Database Instance Default Database
 
         ```python
         import pulumi
@@ -329,10 +333,11 @@ class DatabaseInstance(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_database_instance = gcp.firebase.DatabaseInstance("defaultDatabaseInstance",
             project=default_firebase / project_project["project"],
-            region="us-west1",
+            region="us-central1",
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[firebase_database]))
         ```
 
         ## Import
@@ -363,6 +368,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
+               Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         :param pulumi.Input[str] type: The database type.
                Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
                Creating user Databases is only available for projects on the Blaze plan.
@@ -378,7 +384,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Firebase Database Instance
+        ### Firebase Database Instance Basic
 
         ```python
         import pulumi
@@ -386,11 +392,11 @@ class DatabaseInstance(pulumi.CustomResource):
 
         basic = gcp.firebase.DatabaseInstance("basic",
             project="my-project-name",
-            region="us-west1",
+            region="us-central1",
             instance_id="active-db",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Firebase Database Instance Disabled
+        ### Firebase Database Instance Full
 
         ```python
         import pulumi
@@ -398,13 +404,13 @@ class DatabaseInstance(pulumi.CustomResource):
 
         full = gcp.firebase.DatabaseInstance("full",
             project="my-project-name",
-            region="us-west1",
+            region="europe-west1",
             instance_id="disabled-db",
             type="USER_DATABASE",
             desired_state="DISABLED",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Firebase Database Instance Default
+        ### Firebase Database Instance Default Database
 
         ```python
         import pulumi
@@ -425,10 +431,11 @@ class DatabaseInstance(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_database_instance = gcp.firebase.DatabaseInstance("defaultDatabaseInstance",
             project=default_firebase / project_project["project"],
-            region="us-west1",
+            region="us-central1",
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[firebase_database]))
         ```
 
         ## Import
@@ -529,6 +536,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
+               Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         :param pulumi.Input[str] state: The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
         :param pulumi.Input[str] type: The database type.
                Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -602,6 +610,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         A reference to the region where the Firebase Realtime database resides.
+        Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         """
         return pulumi.get(self, "region")
 

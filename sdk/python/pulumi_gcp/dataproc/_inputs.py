@@ -18,6 +18,8 @@ __all__ = [
     'AutoscalingPolicyWorkerConfigArgs',
     'ClusterClusterConfigArgs',
     'ClusterClusterConfigAutoscalingConfigArgs',
+    'ClusterClusterConfigDataprocMetricConfigArgs',
+    'ClusterClusterConfigDataprocMetricConfigMetricArgs',
     'ClusterClusterConfigEncryptionConfigArgs',
     'ClusterClusterConfigEndpointConfigArgs',
     'ClusterClusterConfigGceClusterConfigArgs',
@@ -552,6 +554,7 @@ class ClusterClusterConfigArgs:
     def __init__(__self__, *,
                  autoscaling_config: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']] = None,
                  gce_cluster_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArgs']] = None,
@@ -569,6 +572,8 @@ class ClusterClusterConfigArgs:
         :param pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs'] autoscaling_config: The autoscaling policy config associated with the cluster.
                Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
                only be removed by setting `policy_uri = ""`, rather than removing the whole block.
+               Structure defined below.
+        :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
                Structure defined below.
@@ -610,6 +615,8 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if dataproc_metric_config is not None:
+            pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_config is not None:
@@ -660,6 +667,19 @@ class ClusterClusterConfigArgs:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="dataprocMetricConfig")
+    def dataproc_metric_config(self) -> Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']]:
+        """
+        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        Structure defined below.
+        """
+        return pulumi.get(self, "dataproc_metric_config")
+
+    @dataproc_metric_config.setter
+    def dataproc_metric_config(self, value: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']]):
+        pulumi.set(self, "dataproc_metric_config", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -860,6 +880,66 @@ class ClusterClusterConfigAutoscalingConfigArgs:
     @policy_uri.setter
     def policy_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "policy_uri", value)
+
+
+@pulumi.input_type
+class ClusterClusterConfigDataprocMetricConfigArgs:
+    def __init__(__self__, *,
+                 metrics: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]] metrics: Metrics sources to enable.
+        """
+        pulumi.set(__self__, "metrics", metrics)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]:
+        """
+        Metrics sources to enable.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]):
+        pulumi.set(self, "metrics", value)
+
+
+@pulumi.input_type
+class ClusterClusterConfigDataprocMetricConfigMetricArgs:
+    def __init__(__self__, *,
+                 metric_source: pulumi.Input[str],
+                 metric_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] metric_source: A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] metric_overrides: One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+        """
+        pulumi.set(__self__, "metric_source", metric_source)
+        if metric_overrides is not None:
+            pulumi.set(__self__, "metric_overrides", metric_overrides)
+
+    @property
+    @pulumi.getter(name="metricSource")
+    def metric_source(self) -> pulumi.Input[str]:
+        """
+        A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+        """
+        return pulumi.get(self, "metric_source")
+
+    @metric_source.setter
+    def metric_source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_source", value)
+
+    @property
+    @pulumi.getter(name="metricOverrides")
+    def metric_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+        """
+        return pulumi.get(self, "metric_overrides")
+
+    @metric_overrides.setter
+    def metric_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "metric_overrides", value)
 
 
 @pulumi.input_type

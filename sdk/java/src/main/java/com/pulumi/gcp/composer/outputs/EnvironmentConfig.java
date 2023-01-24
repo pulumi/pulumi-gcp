@@ -10,6 +10,7 @@ import com.pulumi.gcp.composer.outputs.EnvironmentConfigMaintenanceWindow;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigNodeConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigPrivateEnvironmentConfig;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigRecoveryConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigSoftwareConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWebServerConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWebServerNetworkAccessControl;
@@ -33,6 +34,7 @@ public final class EnvironmentConfig {
     private @Nullable EnvironmentConfigNodeConfig nodeConfig;
     private @Nullable Integer nodeCount;
     private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
+    private @Nullable EnvironmentConfigRecoveryConfig recoveryConfig;
     private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
     private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
     private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
@@ -72,6 +74,9 @@ public final class EnvironmentConfig {
     public Optional<EnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfig() {
         return Optional.ofNullable(this.privateEnvironmentConfig);
     }
+    public Optional<EnvironmentConfigRecoveryConfig> recoveryConfig() {
+        return Optional.ofNullable(this.recoveryConfig);
+    }
     public Optional<EnvironmentConfigSoftwareConfig> softwareConfig() {
         return Optional.ofNullable(this.softwareConfig);
     }
@@ -105,6 +110,7 @@ public final class EnvironmentConfig {
         private @Nullable EnvironmentConfigNodeConfig nodeConfig;
         private @Nullable Integer nodeCount;
         private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
+        private @Nullable EnvironmentConfigRecoveryConfig recoveryConfig;
         private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
         private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
         private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
@@ -123,6 +129,7 @@ public final class EnvironmentConfig {
     	      this.nodeConfig = defaults.nodeConfig;
     	      this.nodeCount = defaults.nodeCount;
     	      this.privateEnvironmentConfig = defaults.privateEnvironmentConfig;
+    	      this.recoveryConfig = defaults.recoveryConfig;
     	      this.softwareConfig = defaults.softwareConfig;
     	      this.webServerConfig = defaults.webServerConfig;
     	      this.webServerNetworkAccessControl = defaults.webServerNetworkAccessControl;
@@ -185,6 +192,11 @@ public final class EnvironmentConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder recoveryConfig(@Nullable EnvironmentConfigRecoveryConfig recoveryConfig) {
+            this.recoveryConfig = recoveryConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder softwareConfig(@Nullable EnvironmentConfigSoftwareConfig softwareConfig) {
             this.softwareConfig = softwareConfig;
             return this;
@@ -217,6 +229,7 @@ public final class EnvironmentConfig {
             o.nodeConfig = nodeConfig;
             o.nodeCount = nodeCount;
             o.privateEnvironmentConfig = privateEnvironmentConfig;
+            o.recoveryConfig = recoveryConfig;
             o.softwareConfig = softwareConfig;
             o.webServerConfig = webServerConfig;
             o.webServerNetworkAccessControl = webServerNetworkAccessControl;

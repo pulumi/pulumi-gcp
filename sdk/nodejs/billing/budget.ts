@@ -84,8 +84,12 @@ import * as utilities from "../utilities";
  *     displayName: "Example Billing Budget",
  *     budgetFilter: {
  *         projects: [project.then(project => `projects/${project.number}`)],
- *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
+ *         creditTypesTreatment: "INCLUDE_SPECIFIED_CREDITS",
  *         services: ["services/24E6-581D-38E5"],
+ *         creditTypes: [
+ *             "PROMOTION",
+ *             "FREE_TIER",
+ *         ],
  *     },
  *     amount: {
  *         specifiedAmount: {

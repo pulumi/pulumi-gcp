@@ -1254,6 +1254,9 @@ type ClusterClusterConfig struct {
 	// Structure defined below.
 	AutoscalingConfig *ClusterClusterConfigAutoscalingConfig `pulumi:"autoscalingConfig"`
 	Bucket            *string                                `pulumi:"bucket"`
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+	// Structure defined below.
+	DataprocMetricConfig *ClusterClusterConfigDataprocMetricConfig `pulumi:"dataprocMetricConfig"`
 	// The Customer managed encryption keys settings for the cluster.
 	// Structure defined below.
 	EncryptionConfig *ClusterClusterConfigEncryptionConfig `pulumi:"encryptionConfig"`
@@ -1322,6 +1325,9 @@ type ClusterClusterConfigArgs struct {
 	// Structure defined below.
 	AutoscalingConfig ClusterClusterConfigAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	Bucket            pulumi.StringPtrInput                         `pulumi:"bucket"`
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+	// Structure defined below.
+	DataprocMetricConfig ClusterClusterConfigDataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
 	// The Customer managed encryption keys settings for the cluster.
 	// Structure defined below.
 	EncryptionConfig ClusterClusterConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
@@ -1461,6 +1467,12 @@ func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+// Structure defined below.
+func (o ClusterClusterConfigOutput) DataprocMetricConfig() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigDataprocMetricConfig { return v.DataprocMetricConfig }).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
+}
+
 // The Customer managed encryption keys settings for the cluster.
 // Structure defined below.
 func (o ClusterClusterConfigOutput) EncryptionConfig() ClusterClusterConfigEncryptionConfigPtrOutput {
@@ -1596,6 +1608,17 @@ func (o ClusterClusterConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 		}
 		return v.Bucket
 	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+// Structure defined below.
+func (o ClusterClusterConfigPtrOutput) DataprocMetricConfig() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigDataprocMetricConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocMetricConfig
+	}).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
 }
 
 // The Customer managed encryption keys settings for the cluster.
@@ -1885,6 +1908,251 @@ func (o ClusterClusterConfigAutoscalingConfigPtrOutput) PolicyUri() pulumi.Strin
 		}
 		return &v.PolicyUri
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfig struct {
+	// Metrics sources to enable.
+	Metrics []ClusterClusterConfigDataprocMetricConfigMetric `pulumi:"metrics"`
+}
+
+// ClusterClusterConfigDataprocMetricConfigInput is an input type that accepts ClusterClusterConfigDataprocMetricConfigArgs and ClusterClusterConfigDataprocMetricConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigDataprocMetricConfigInput` via:
+//
+//	ClusterClusterConfigDataprocMetricConfigArgs{...}
+type ClusterClusterConfigDataprocMetricConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigDataprocMetricConfigOutput() ClusterClusterConfigDataprocMetricConfigOutput
+	ToClusterClusterConfigDataprocMetricConfigOutputWithContext(context.Context) ClusterClusterConfigDataprocMetricConfigOutput
+}
+
+type ClusterClusterConfigDataprocMetricConfigArgs struct {
+	// Metrics sources to enable.
+	Metrics ClusterClusterConfigDataprocMetricConfigMetricArrayInput `pulumi:"metrics"`
+}
+
+func (ClusterClusterConfigDataprocMetricConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigDataprocMetricConfigOutput() ClusterClusterConfigDataprocMetricConfigOutput {
+	return i.ToClusterClusterConfigDataprocMetricConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigDataprocMetricConfigOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigOutput)
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return i.ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigArgs) ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigOutput).ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigDataprocMetricConfigPtrInput is an input type that accepts ClusterClusterConfigDataprocMetricConfigArgs, ClusterClusterConfigDataprocMetricConfigPtr and ClusterClusterConfigDataprocMetricConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigDataprocMetricConfigPtrInput` via:
+//
+//	        ClusterClusterConfigDataprocMetricConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigDataprocMetricConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput
+	ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput
+}
+
+type clusterClusterConfigDataprocMetricConfigPtrType ClusterClusterConfigDataprocMetricConfigArgs
+
+func ClusterClusterConfigDataprocMetricConfigPtr(v *ClusterClusterConfigDataprocMetricConfigArgs) ClusterClusterConfigDataprocMetricConfigPtrInput {
+	return (*clusterClusterConfigDataprocMetricConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigDataprocMetricConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigDataprocMetricConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigDataprocMetricConfigPtrType) ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return i.ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigDataprocMetricConfigPtrType) ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigDataprocMetricConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigOutput) ToClusterClusterConfigDataprocMetricConfigOutput() ClusterClusterConfigDataprocMetricConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigOutput) ToClusterClusterConfigDataprocMetricConfigOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigOutput) ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o.ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigOutput) ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigDataprocMetricConfig) *ClusterClusterConfigDataprocMetricConfig {
+		return &v
+	}).(ClusterClusterConfigDataprocMetricConfigPtrOutput)
+}
+
+// Metrics sources to enable.
+func (o ClusterClusterConfigDataprocMetricConfigOutput) Metrics() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigDataprocMetricConfig) []ClusterClusterConfigDataprocMetricConfigMetric {
+		return v.Metrics
+	}).(ClusterClusterConfigDataprocMetricConfigMetricArrayOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigDataprocMetricConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigDataprocMetricConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) ToClusterClusterConfigDataprocMetricConfigPtrOutput() ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) ToClusterClusterConfigDataprocMetricConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) Elem() ClusterClusterConfigDataprocMetricConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigDataprocMetricConfig) ClusterClusterConfigDataprocMetricConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigDataprocMetricConfig
+		return ret
+	}).(ClusterClusterConfigDataprocMetricConfigOutput)
+}
+
+// Metrics sources to enable.
+func (o ClusterClusterConfigDataprocMetricConfigPtrOutput) Metrics() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigDataprocMetricConfig) []ClusterClusterConfigDataprocMetricConfigMetric {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(ClusterClusterConfigDataprocMetricConfigMetricArrayOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfigMetric struct {
+	// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+	MetricOverrides []string `pulumi:"metricOverrides"`
+	// A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+	MetricSource string `pulumi:"metricSource"`
+}
+
+// ClusterClusterConfigDataprocMetricConfigMetricInput is an input type that accepts ClusterClusterConfigDataprocMetricConfigMetricArgs and ClusterClusterConfigDataprocMetricConfigMetricOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigDataprocMetricConfigMetricInput` via:
+//
+//	ClusterClusterConfigDataprocMetricConfigMetricArgs{...}
+type ClusterClusterConfigDataprocMetricConfigMetricInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigDataprocMetricConfigMetricOutput() ClusterClusterConfigDataprocMetricConfigMetricOutput
+	ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(context.Context) ClusterClusterConfigDataprocMetricConfigMetricOutput
+}
+
+type ClusterClusterConfigDataprocMetricConfigMetricArgs struct {
+	// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+	MetricOverrides pulumi.StringArrayInput `pulumi:"metricOverrides"`
+	// A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+	MetricSource pulumi.StringInput `pulumi:"metricSource"`
+}
+
+func (ClusterClusterConfigDataprocMetricConfigMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigMetric)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigMetricArgs) ToClusterClusterConfigDataprocMetricConfigMetricOutput() ClusterClusterConfigDataprocMetricConfigMetricOutput {
+	return i.ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigMetricArgs) ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigMetricOutput)
+}
+
+// ClusterClusterConfigDataprocMetricConfigMetricArrayInput is an input type that accepts ClusterClusterConfigDataprocMetricConfigMetricArray and ClusterClusterConfigDataprocMetricConfigMetricArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigDataprocMetricConfigMetricArrayInput` via:
+//
+//	ClusterClusterConfigDataprocMetricConfigMetricArray{ ClusterClusterConfigDataprocMetricConfigMetricArgs{...} }
+type ClusterClusterConfigDataprocMetricConfigMetricArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigDataprocMetricConfigMetricArrayOutput() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput
+	ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(context.Context) ClusterClusterConfigDataprocMetricConfigMetricArrayOutput
+}
+
+type ClusterClusterConfigDataprocMetricConfigMetricArray []ClusterClusterConfigDataprocMetricConfigMetricInput
+
+func (ClusterClusterConfigDataprocMetricConfigMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigDataprocMetricConfigMetric)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigMetricArray) ToClusterClusterConfigDataprocMetricConfigMetricArrayOutput() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return i.ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigDataprocMetricConfigMetricArray) ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigDataprocMetricConfigMetricArrayOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfigMetricOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigDataprocMetricConfigMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigMetric)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) ToClusterClusterConfigDataprocMetricConfigMetricOutput() ClusterClusterConfigDataprocMetricConfigMetricOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) ToClusterClusterConfigDataprocMetricConfigMetricOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricOutput {
+	return o
+}
+
+// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) MetricOverrides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigDataprocMetricConfigMetric) []string { return v.MetricOverrides }).(pulumi.StringArrayOutput)
+}
+
+// A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+func (o ClusterClusterConfigDataprocMetricConfigMetricOutput) MetricSource() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterClusterConfigDataprocMetricConfigMetric) string { return v.MetricSource }).(pulumi.StringOutput)
+}
+
+type ClusterClusterConfigDataprocMetricConfigMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigDataprocMetricConfigMetric)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ToClusterClusterConfigDataprocMetricConfigMetricArrayOutput() ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) ToClusterClusterConfigDataprocMetricConfigMetricArrayOutputWithContext(ctx context.Context) ClusterClusterConfigDataprocMetricConfigMetricArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigDataprocMetricConfigMetricArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigDataprocMetricConfigMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigDataprocMetricConfigMetric {
+		return vs[0].([]ClusterClusterConfigDataprocMetricConfigMetric)[vs[1].(int)]
+	}).(ClusterClusterConfigDataprocMetricConfigMetricOutput)
 }
 
 type ClusterClusterConfigEncryptionConfig struct {
@@ -24212,6 +24480,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPtrInput)(nil)).Elem(), ClusterClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAutoscalingConfigInput)(nil)).Elem(), ClusterClusterConfigAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAutoscalingConfigPtrInput)(nil)).Elem(), ClusterClusterConfigAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigPtrInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigMetricInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigMetricArrayInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigEncryptionConfigInput)(nil)).Elem(), ClusterClusterConfigEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigEncryptionConfigPtrInput)(nil)).Elem(), ClusterClusterConfigEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigEndpointConfigInput)(nil)).Elem(), ClusterClusterConfigEndpointConfigArgs{})
@@ -24472,6 +24744,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigMetricOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigMetricArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigOutput{})

@@ -22,6 +22,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;
         public readonly string? Bucket;
         /// <summary>
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        /// Structure defined below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigDataprocMetricConfig? DataprocMetricConfig;
+        /// <summary>
         /// The Customer managed encryption keys settings for the cluster.
         /// Structure defined below.
         /// </summary>
@@ -102,6 +107,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? bucket,
 
+            Outputs.ClusterClusterConfigDataprocMetricConfig? dataprocMetricConfig,
+
             Outputs.ClusterClusterConfigEncryptionConfig? encryptionConfig,
 
             Outputs.ClusterClusterConfigEndpointConfig? endpointConfig,
@@ -130,6 +137,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         {
             AutoscalingConfig = autoscalingConfig;
             Bucket = bucket;
+            DataprocMetricConfig = dataprocMetricConfig;
             EncryptionConfig = encryptionConfig;
             EndpointConfig = endpointConfig;
             GceClusterConfig = gceClusterConfig;

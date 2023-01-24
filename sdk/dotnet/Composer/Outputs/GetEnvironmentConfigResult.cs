@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> NodeConfigs;
         public readonly int NodeCount;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> PrivateEnvironmentConfigs;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigRecoveryConfigResult> RecoveryConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> SoftwareConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> WebServerConfigs;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> WebServerNetworkAccessControls;
@@ -53,6 +54,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> privateEnvironmentConfigs,
 
+            ImmutableArray<Outputs.GetEnvironmentConfigRecoveryConfigResult> recoveryConfigs,
+
             ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> softwareConfigs,
 
             ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> webServerConfigs,
@@ -72,6 +75,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
             PrivateEnvironmentConfigs = privateEnvironmentConfigs;
+            RecoveryConfigs = recoveryConfigs;
             SoftwareConfigs = softwareConfigs;
             WebServerConfigs = webServerConfigs;
             WebServerNetworkAccessControls = webServerNetworkAccessControls;

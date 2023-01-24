@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.Compute
         /// Textual description for the Backend Service.
         /// </summary>
         public readonly string Description;
+        public readonly string EdgeSecurityPolicy;
         /// <summary>
         /// Whether or not Cloud CDN is enabled on the Backend Service.
         /// </summary>
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            string edgeSecurityPolicy,
+
             bool enableCdn,
 
             string fingerprint,
@@ -216,6 +219,7 @@ namespace Pulumi.Gcp.Compute
             CustomRequestHeaders = customRequestHeaders;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;
+            EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             Fingerprint = fingerprint;
             GeneratedId = generatedId;

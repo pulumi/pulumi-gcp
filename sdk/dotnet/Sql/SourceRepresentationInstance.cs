@@ -57,11 +57,35 @@ namespace Pulumi.Gcp.Sql
     public partial class SourceRepresentationInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Output("caCertificate")]
+        public Output<string?> CaCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Output("clientCertificate")]
+        public Output<string?> ClientCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Output("clientKey")]
+        public Output<string?> ClientKey { get; private set; } = null!;
+
+        /// <summary>
         /// The MySQL version running on your source database server.
         /// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// A file in the bucket that contains the data from the external server.
+        /// </summary>
+        [Output("dumpFilePath")]
+        public Output<string?> DumpFilePath { get; private set; } = null!;
 
         /// <summary>
         /// The externally accessible IPv4 address for the source database server.
@@ -74,6 +98,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The password for the replication user account.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// The externally accessible port for the source database server.
@@ -95,6 +125,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The replication user account on the external server.
+        /// </summary>
+        [Output("username")]
+        public Output<string?> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,11 +179,35 @@ namespace Pulumi.Gcp.Sql
     public sealed class SourceRepresentationInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("caCertificate")]
+        public Input<string>? CaCertificate { get; set; }
+
+        /// <summary>
+        /// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("clientCertificate")]
+        public Input<string>? ClientCertificate { get; set; }
+
+        /// <summary>
+        /// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
         /// The MySQL version running on your source database server.
         /// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Input("databaseVersion", required: true)]
         public Input<string> DatabaseVersion { get; set; } = null!;
+
+        /// <summary>
+        /// A file in the bucket that contains the data from the external server.
+        /// </summary>
+        [Input("dumpFilePath")]
+        public Input<string>? DumpFilePath { get; set; }
 
         /// <summary>
         /// The externally accessible IPv4 address for the source database server.
@@ -162,6 +222,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The password for the replication user account.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
         /// The externally accessible port for the source database server.
         /// Defaults to 3306.
         /// </summary>
@@ -182,6 +248,12 @@ namespace Pulumi.Gcp.Sql
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The replication user account on the external server.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
         public SourceRepresentationInstanceArgs()
         {
         }
@@ -191,11 +263,35 @@ namespace Pulumi.Gcp.Sql
     public sealed class SourceRepresentationInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("caCertificate")]
+        public Input<string>? CaCertificate { get; set; }
+
+        /// <summary>
+        /// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("clientCertificate")]
+        public Input<string>? ClientCertificate { get; set; }
+
+        /// <summary>
+        /// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
         /// The MySQL version running on your source database server.
         /// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// A file in the bucket that contains the data from the external server.
+        /// </summary>
+        [Input("dumpFilePath")]
+        public Input<string>? DumpFilePath { get; set; }
 
         /// <summary>
         /// The externally accessible IPv4 address for the source database server.
@@ -210,6 +306,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The password for the replication user account.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
         /// The externally accessible port for the source database server.
         /// Defaults to 3306.
         /// </summary>
@@ -229,6 +331,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The replication user account on the external server.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public SourceRepresentationInstanceState()
         {

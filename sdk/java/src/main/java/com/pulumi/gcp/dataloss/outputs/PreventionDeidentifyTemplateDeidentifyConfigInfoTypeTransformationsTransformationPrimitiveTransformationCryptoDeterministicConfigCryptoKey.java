@@ -14,19 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
     /**
-     * @return Kms wrapped key
+     * @return KMS wrapped key.
+     * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+     * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+     * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
      * Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped kmsWrapped;
     /**
-     * @return Transient crypto key
+     * @return Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
      * Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient transient_;
     /**
-     * @return Unwrapped crypto key
+     * @return Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
      * Structure is documented below.
      * 
      */
@@ -34,7 +37,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey() {}
     /**
-     * @return Kms wrapped key
+     * @return KMS wrapped key.
+     * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+     * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+     * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
      * Structure is documented below.
      * 
      */
@@ -42,7 +48,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.kmsWrapped);
     }
     /**
-     * @return Transient crypto key
+     * @return Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
      * Structure is documented below.
      * 
      */
@@ -50,7 +56,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.transient_);
     }
     /**
-     * @return Unwrapped crypto key
+     * @return Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
      * Structure is documented below.
      * 
      */

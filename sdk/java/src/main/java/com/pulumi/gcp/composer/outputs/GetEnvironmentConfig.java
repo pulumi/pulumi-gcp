@@ -10,6 +10,7 @@ import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigMaintenanceWindow;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigNodeConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigPrivateEnvironmentConfig;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigRecoveryConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigSoftwareConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWebServerConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWebServerNetworkAccessControl;
@@ -32,6 +33,7 @@ public final class GetEnvironmentConfig {
     private List<GetEnvironmentConfigNodeConfig> nodeConfigs;
     private Integer nodeCount;
     private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
+    private List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
     private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
     private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
     private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
@@ -71,6 +73,9 @@ public final class GetEnvironmentConfig {
     public List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs() {
         return this.privateEnvironmentConfigs;
     }
+    public List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs() {
+        return this.recoveryConfigs;
+    }
     public List<GetEnvironmentConfigSoftwareConfig> softwareConfigs() {
         return this.softwareConfigs;
     }
@@ -104,6 +109,7 @@ public final class GetEnvironmentConfig {
         private List<GetEnvironmentConfigNodeConfig> nodeConfigs;
         private Integer nodeCount;
         private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
+        private List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
         private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
         private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
         private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
@@ -122,6 +128,7 @@ public final class GetEnvironmentConfig {
     	      this.nodeConfigs = defaults.nodeConfigs;
     	      this.nodeCount = defaults.nodeCount;
     	      this.privateEnvironmentConfigs = defaults.privateEnvironmentConfigs;
+    	      this.recoveryConfigs = defaults.recoveryConfigs;
     	      this.softwareConfigs = defaults.softwareConfigs;
     	      this.webServerConfigs = defaults.webServerConfigs;
     	      this.webServerNetworkAccessControls = defaults.webServerNetworkAccessControls;
@@ -202,6 +209,14 @@ public final class GetEnvironmentConfig {
             return privateEnvironmentConfigs(List.of(privateEnvironmentConfigs));
         }
         @CustomType.Setter
+        public Builder recoveryConfigs(List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs) {
+            this.recoveryConfigs = Objects.requireNonNull(recoveryConfigs);
+            return this;
+        }
+        public Builder recoveryConfigs(GetEnvironmentConfigRecoveryConfig... recoveryConfigs) {
+            return recoveryConfigs(List.of(recoveryConfigs));
+        }
+        @CustomType.Setter
         public Builder softwareConfigs(List<GetEnvironmentConfigSoftwareConfig> softwareConfigs) {
             this.softwareConfigs = Objects.requireNonNull(softwareConfigs);
             return this;
@@ -246,6 +261,7 @@ public final class GetEnvironmentConfig {
             o.nodeConfigs = nodeConfigs;
             o.nodeCount = nodeCount;
             o.privateEnvironmentConfigs = privateEnvironmentConfigs;
+            o.recoveryConfigs = recoveryConfigs;
             o.softwareConfigs = softwareConfigs;
             o.webServerConfigs = webServerConfigs;
             o.webServerNetworkAccessControls = webServerNetworkAccessControls;

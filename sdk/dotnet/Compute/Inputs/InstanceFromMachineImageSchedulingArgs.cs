@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        [Input("maxRunDuration")]
+        public Input<Inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs>? MaxRunDuration { get; set; }
+
         [Input("minNodeCpus")]
         public Input<int>? MinNodeCpus { get; set; }
 

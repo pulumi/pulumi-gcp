@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplate {
     /**
+     * @return KRM-style annotations for the resource.
+     * 
+     */
+    private @Nullable Map<String,String> annotations;
+    /**
      * @return Holds the single container that defines the unit of execution for this task.
      * Structure is documented below.
      * 
@@ -81,6 +86,13 @@ public final class ServiceTemplate {
     private @Nullable ServiceTemplateVpcAccess vpcAccess;
 
     private ServiceTemplate() {}
+    /**
+     * @return KRM-style annotations for the resource.
+     * 
+     */
+    public Map<String,String> annotations() {
+        return this.annotations == null ? Map.of() : this.annotations;
+    }
     /**
      * @return Holds the single container that defines the unit of execution for this task.
      * Structure is documented below.
@@ -174,6 +186,7 @@ public final class ServiceTemplate {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,String> annotations;
         private @Nullable List<ServiceTemplateContainer> containers;
         private @Nullable String encryptionKey;
         private @Nullable String executionEnvironment;
@@ -188,6 +201,7 @@ public final class ServiceTemplate {
         public Builder() {}
         public Builder(ServiceTemplate defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.annotations = defaults.annotations;
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
@@ -201,6 +215,11 @@ public final class ServiceTemplate {
     	      this.vpcAccess = defaults.vpcAccess;
         }
 
+        @CustomType.Setter
+        public Builder annotations(@Nullable Map<String,String> annotations) {
+            this.annotations = annotations;
+            return this;
+        }
         @CustomType.Setter
         public Builder containers(@Nullable List<ServiceTemplateContainer> containers) {
             this.containers = containers;
@@ -264,6 +283,7 @@ public final class ServiceTemplate {
         }
         public ServiceTemplate build() {
             final var o = new ServiceTemplate();
+            o.annotations = annotations;
             o.containers = containers;
             o.encryptionKey = encryptionKey;
             o.executionEnvironment = executionEnvironment;

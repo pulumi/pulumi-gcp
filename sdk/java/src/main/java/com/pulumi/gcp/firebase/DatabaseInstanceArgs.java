@@ -66,6 +66,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      * 
      */
     @Import(name="region", required=true)
@@ -73,6 +74,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      * 
      */
     public Output<String> region() {
@@ -201,6 +203,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param region A reference to the region where the Firebase Realtime database resides.
+         * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
          * 
          * @return builder
          * 
@@ -212,6 +215,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param region A reference to the region where the Firebase Realtime database resides.
+         * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
          * 
          * @return builder
          * 

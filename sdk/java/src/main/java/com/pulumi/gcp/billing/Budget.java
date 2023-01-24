@@ -174,8 +174,11 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Example Billing Budget&#34;)
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
  *                 .projects(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *                 .creditTypesTreatment(&#34;EXCLUDE_ALL_CREDITS&#34;)
+ *                 .creditTypesTreatment(&#34;INCLUDE_SPECIFIED_CREDITS&#34;)
  *                 .services(&#34;services/24E6-581D-38E5&#34;)
+ *                 .creditTypes(                
+ *                     &#34;PROMOTION&#34;,
+ *                     &#34;FREE_TIER&#34;)
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()

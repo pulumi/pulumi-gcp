@@ -22,7 +22,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -56,6 +56,9 @@ class GetBackendServiceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if edge_security_policy and not isinstance(edge_security_policy, str):
+            raise TypeError("Expected argument 'edge_security_policy' to be a str")
+        pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
@@ -177,6 +180,11 @@ class GetBackendServiceResult:
         Textual description for the Backend Service.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> str:
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -321,6 +329,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             custom_request_headers=self.custom_request_headers,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
+            edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
             fingerprint=self.fingerprint,
             generated_id=self.generated_id,
@@ -372,6 +381,7 @@ def get_backend_service(name: Optional[str] = None,
         custom_request_headers=__ret__.custom_request_headers,
         custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
+        edge_security_policy=__ret__.edge_security_policy,
         enable_cdn=__ret__.enable_cdn,
         fingerprint=__ret__.fingerprint,
         generated_id=__ret__.generated_id,

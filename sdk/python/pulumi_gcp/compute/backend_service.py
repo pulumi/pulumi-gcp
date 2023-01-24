@@ -26,6 +26,7 @@ class BackendServiceArgs:
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
@@ -73,6 +74,7 @@ class BackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
@@ -145,6 +147,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if edge_security_policy is not None:
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if health_checks is not None:
@@ -315,6 +319,18 @@ class BackendServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource URL for the edge security policy associated with this backend service.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @edge_security_policy.setter
+    def edge_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edge_security_policy", value)
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -547,6 +563,7 @@ class _BackendServiceState:
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  generated_id: Optional[pulumi.Input[int]] = None,
@@ -598,6 +615,7 @@ class _BackendServiceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
@@ -676,6 +694,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if edge_security_policy is not None:
+            pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
         if fingerprint is not None:
@@ -864,6 +884,18 @@ class _BackendServiceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource URL for the edge security policy associated with this backend service.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @edge_security_policy.setter
+    def edge_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edge_security_policy", value)
 
     @property
     @pulumi.getter(name="enableCdn")
@@ -1134,6 +1166,7 @@ class BackendService(pulumi.CustomResource):
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
@@ -1285,6 +1318,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
@@ -1471,6 +1505,7 @@ class BackendService(pulumi.CustomResource):
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
@@ -1505,6 +1540,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["custom_request_headers"] = custom_request_headers
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
+            __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
@@ -1545,6 +1581,7 @@ class BackendService(pulumi.CustomResource):
             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            edge_security_policy: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             generated_id: Optional[pulumi.Input[int]] = None,
@@ -1601,6 +1638,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
@@ -1672,6 +1710,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["custom_request_headers"] = custom_request_headers
         __props__.__dict__["custom_response_headers"] = custom_response_headers
         __props__.__dict__["description"] = description
+        __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["generated_id"] = generated_id
@@ -1799,6 +1838,14 @@ class BackendService(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource URL for the edge security policy associated with this backend service.
+        """
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")

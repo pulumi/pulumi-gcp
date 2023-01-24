@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Firebase Database Instance
+ * ### Firebase Database Instance Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -14,13 +14,13 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.firebase.DatabaseInstance("basic", {
  *     project: "my-project-name",
- *     region: "us-west1",
+ *     region: "us-central1",
  *     instanceId: "active-db",
  * }, {
  *     provider: google_beta,
  * });
  * ```
- * ### Firebase Database Instance Disabled
+ * ### Firebase Database Instance Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * const full = new gcp.firebase.DatabaseInstance("full", {
  *     project: "my-project-name",
- *     region: "us-west1",
+ *     region: "europe-west1",
  *     instanceId: "disabled-db",
  *     type: "USER_DATABASE",
  *     desiredState: "DISABLED",
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
- * ### Firebase Database Instance Default
+ * ### Firebase Database Instance Default Database
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,11 +62,12 @@ import * as utilities from "../utilities";
  * });
  * const defaultDatabaseInstance = new gcp.firebase.DatabaseInstance("defaultDatabaseInstance", {
  *     project: defaultFirebase / projectProject.project,
- *     region: "us-west1",
+ *     region: "us-central1",
  *     instanceId: "rtdb-project-default-rtdb",
  *     type: "DEFAULT_DATABASE",
  * }, {
  *     provider: google_beta,
+ *     dependsOn: [firebaseDatabase],
  * });
  * ```
  *
@@ -146,6 +147,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -237,6 +239,7 @@ export interface DatabaseInstanceState {
     project?: pulumi.Input<string>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      */
     region?: pulumi.Input<string>;
     /**
@@ -274,6 +277,7 @@ export interface DatabaseInstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
+     * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      */
     region: pulumi.Input<string>;
     /**

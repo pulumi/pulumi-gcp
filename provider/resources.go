@@ -2116,8 +2116,44 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// CloudRun V2 Resources
-			"google_cloud_run_v2_job":     {Tok: gcpResource(gcpCloudRunV2, "Job")},
+			"google_cloud_run_v2_job": {Tok: gcpResource(gcpCloudRunV2, "Job")},
+			"google_cloud_run_v2_job_iam_binding": {
+				Tok: gcpResource(gcpCloudRunV2, "JobIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_job_iam.html.markdown",
+				},
+			},
+			"google_cloud_run_v2_job_iam_member": {
+				Tok: gcpResource(gcpCloudRunV2, "JobIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_job_iam.html.markdown",
+				},
+			},
+			"google_cloud_run_v2_job_iam_policy": {
+				Tok: gcpResource(gcpCloudRunV2, "JobIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_job_iam.html.markdown",
+				},
+			},
 			"google_cloud_run_v2_service": {Tok: gcpResource(gcpCloudRunV2, "Service")},
+			"google_cloud_run_v2_service_iam_binding": {
+				Tok: gcpResource(gcpCloudRunV2, "ServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_service_iam.html.markdown",
+				},
+			},
+			"google_cloud_run_v2_service_iam_member": {
+				Tok: gcpResource(gcpCloudRunV2, "ServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_service_iam.html.markdown",
+				},
+			},
+			"google_cloud_run_v2_service_iam_policy": {
+				Tok: gcpResource(gcpCloudRunV2, "ServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_run_v2_service_iam.html.markdown",
+				},
+			},
 
 			// Machine Learning
 			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
@@ -2712,6 +2748,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// GKE Backup
 			"google_gke_backup_backup_plan": {Tok: gcpResource(gcpGkeBackup, "BackupPlan")},
+			"google_gke_backup_backup_plan_iam_binding": {
+				Tok: gcpResource(gcpGkeBackup, "BackupPlanIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_backup_plan_iam.html.markdown",
+				},
+			},
+			"google_gke_backup_backup_plan_iam_member": {
+				Tok: gcpResource(gcpGkeBackup, "BackupPlanIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_backup_plan_iam.html.markdown",
+				},
+			},
+			"google_gke_backup_backup_plan_iam_policy": {
+				Tok: gcpResource(gcpGkeBackup, "BackupPlanIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_backup_plan_iam.html.markdown",
+				},
+			},
 
 			// gke hub
 			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
@@ -2913,12 +2967,14 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_compute_network_endpoint_group.html.markdown",
 				},
 			},
+			"google_compute_network_peering": {Tok: gcpDataSource(gcpCompute, "getNetworkPeering")},
 			"google_compute_region_network_endpoint_group": {
 				Tok: gcpDataSource(gcpCompute, "getRegionNetworkEndpointGroup"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_compute_region_network_endpoint_group.html.markdown",
 				},
 			},
+			"google_compute_router_nat":    {Tok: gcpDataSource(gcpCompute, "getRouterNat")},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
 			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
 			"google_compute_snapshot":      {Tok: gcpDataSource(gcpCompute, "getSnapshot")},

@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Firebase Database Instance
+    /// ### Firebase Database Instance Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var basic = new Gcp.Firebase.DatabaseInstance("basic", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         Region = "us-west1",
+    ///         Region = "us-central1",
     ///         InstanceId = "active-db",
     ///     }, new CustomResourceOptions
     ///     {
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// ### Firebase Database Instance Disabled
+    /// ### Firebase Database Instance Full
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var full = new Gcp.Firebase.DatabaseInstance("full", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         Region = "us-west1",
+    ///         Region = "europe-west1",
     ///         InstanceId = "disabled-db",
     ///         Type = "USER_DATABASE",
     ///         DesiredState = "DISABLED",
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// ### Firebase Database Instance Default
+    /// ### Firebase Database Instance Default Database
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -97,12 +97,16 @@ namespace Pulumi.Gcp.Firebase
     ///     var defaultDatabaseInstance = new Gcp.Firebase.DatabaseInstance("defaultDatabaseInstance", new()
     ///     {
     ///         Project = defaultFirebase / projectProject.Project,
-    ///         Region = "us-west1",
+    ///         Region = "us-central1",
     ///         InstanceId = "rtdb-project-default-rtdb",
     ///         Type = "DEFAULT_DATABASE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             firebaseDatabase,
+    ///         },
     ///     });
     /// 
     /// });
@@ -169,6 +173,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// A reference to the region where the Firebase Realtime database resides.
+        /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -258,6 +263,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// A reference to the region where the Firebase Realtime database resides.
+        /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -319,6 +325,7 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// A reference to the region where the Firebase Realtime database resides.
+        /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

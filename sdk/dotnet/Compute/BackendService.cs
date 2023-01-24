@@ -253,6 +253,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The resource URL for the edge security policy associated with this backend service.
+        /// </summary>
+        [Output("edgeSecurityPolicy")]
+        public Output<string?> EdgeSecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If true, enable Cloud CDN for this BackendService.
         /// </summary>
         [Output("enableCdn")]
@@ -542,6 +548,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The resource URL for the edge security policy associated with this backend service.
+        /// </summary>
+        [Input("edgeSecurityPolicy")]
+        public Input<string>? EdgeSecurityPolicy { get; set; }
+
+        /// <summary>
         /// If true, enable Cloud CDN for this BackendService.
         /// </summary>
         [Input("enableCdn")]
@@ -778,6 +790,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The resource URL for the edge security policy associated with this backend service.
+        /// </summary>
+        [Input("edgeSecurityPolicy")]
+        public Input<string>? EdgeSecurityPolicy { get; set; }
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendService.

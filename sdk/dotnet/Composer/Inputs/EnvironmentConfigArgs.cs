@@ -45,6 +45,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("privateEnvironmentConfig")]
         public Input<Inputs.EnvironmentConfigPrivateEnvironmentConfigArgs>? PrivateEnvironmentConfig { get; set; }
 
+        [Input("recoveryConfig")]
+        public Input<Inputs.EnvironmentConfigRecoveryConfigArgs>? RecoveryConfig { get; set; }
+
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigArgs>? SoftwareConfig { get; set; }
 

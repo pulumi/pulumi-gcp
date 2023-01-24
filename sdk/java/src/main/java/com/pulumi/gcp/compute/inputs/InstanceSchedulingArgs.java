@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -39,18 +40,25 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
     @Import(name="instanceTerminationAction")
     private @Nullable Output<String> instanceTerminationAction;
 
     /**
-     * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+     * @return Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    @Import(name="maxRunDuration")
+    private @Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration;
+
+    public Optional<Output<InstanceSchedulingMaxRunDurationArgs>> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
     }
 
     /**
@@ -155,6 +163,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     private InstanceSchedulingArgs(InstanceSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
@@ -206,7 +215,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceTerminationAction Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         * @param instanceTerminationAction Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          * 
          * @return builder
          * 
@@ -217,13 +226,22 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceTerminationAction Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         * @param instanceTerminationAction Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          * 
          * @return builder
          * 
          */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder maxRunDuration(@Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration) {
+            $.maxRunDuration = maxRunDuration;
+            return this;
+        }
+
+        public Builder maxRunDuration(InstanceSchedulingMaxRunDurationArgs maxRunDuration) {
+            return maxRunDuration(Output.of(maxRunDuration));
         }
 
         /**

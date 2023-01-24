@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly Outputs.EnvironmentConfigNodeConfig? NodeConfig;
         public readonly int? NodeCount;
         public readonly Outputs.EnvironmentConfigPrivateEnvironmentConfig? PrivateEnvironmentConfig;
+        public readonly Outputs.EnvironmentConfigRecoveryConfig? RecoveryConfig;
         public readonly Outputs.EnvironmentConfigSoftwareConfig? SoftwareConfig;
         public readonly Outputs.EnvironmentConfigWebServerConfig? WebServerConfig;
         public readonly Outputs.EnvironmentConfigWebServerNetworkAccessControl? WebServerNetworkAccessControl;
@@ -53,6 +54,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             Outputs.EnvironmentConfigPrivateEnvironmentConfig? privateEnvironmentConfig,
 
+            Outputs.EnvironmentConfigRecoveryConfig? recoveryConfig,
+
             Outputs.EnvironmentConfigSoftwareConfig? softwareConfig,
 
             Outputs.EnvironmentConfigWebServerConfig? webServerConfig,
@@ -72,6 +75,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;
+            RecoveryConfig = recoveryConfig;
             SoftwareConfig = softwareConfig;
             WebServerConfig = webServerConfig;
             WebServerNetworkAccessControl = webServerNetworkAccessControl;

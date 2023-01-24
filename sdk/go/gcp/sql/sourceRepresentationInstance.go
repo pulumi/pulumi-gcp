@@ -71,13 +71,23 @@ import (
 type SourceRepresentationInstance struct {
 	pulumi.CustomResourceState
 
+	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+	CaCertificate pulumi.StringPtrOutput `pulumi:"caCertificate"`
+	// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientCertificate pulumi.StringPtrOutput `pulumi:"clientCertificate"`
+	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
 	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
+	// A file in the bucket that contains the data from the external server.
+	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The password for the replication user account.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The externally accessible port for the source database server.
 	// Defaults to 3306.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
@@ -87,6 +97,8 @@ type SourceRepresentationInstance struct {
 	// The Region in which the created instance should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The replication user account on the external server.
+	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewSourceRepresentationInstance registers a new resource with the given unique name, arguments, and options.
@@ -124,13 +136,23 @@ func GetSourceRepresentationInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SourceRepresentationInstance resources.
 type sourceRepresentationInstanceState struct {
+	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+	CaCertificate *string `pulumi:"caCertificate"`
+	// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientKey *string `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
 	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// A file in the bucket that contains the data from the external server.
+	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
 	Host *string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
+	// The password for the replication user account.
+	Password *string `pulumi:"password"`
 	// The externally accessible port for the source database server.
 	// Defaults to 3306.
 	Port *int `pulumi:"port"`
@@ -140,16 +162,28 @@ type sourceRepresentationInstanceState struct {
 	// The Region in which the created instance should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The replication user account on the external server.
+	Username *string `pulumi:"username"`
 }
 
 type SourceRepresentationInstanceState struct {
+	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+	CaCertificate pulumi.StringPtrInput
+	// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientCertificate pulumi.StringPtrInput
+	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientKey pulumi.StringPtrInput
 	// The MySQL version running on your source database server.
 	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringPtrInput
+	// A file in the bucket that contains the data from the external server.
+	DumpFilePath pulumi.StringPtrInput
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringPtrInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
+	// The password for the replication user account.
+	Password pulumi.StringPtrInput
 	// The externally accessible port for the source database server.
 	// Defaults to 3306.
 	Port pulumi.IntPtrInput
@@ -159,6 +193,8 @@ type SourceRepresentationInstanceState struct {
 	// The Region in which the created instance should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The replication user account on the external server.
+	Username pulumi.StringPtrInput
 }
 
 func (SourceRepresentationInstanceState) ElementType() reflect.Type {
@@ -166,13 +202,23 @@ func (SourceRepresentationInstanceState) ElementType() reflect.Type {
 }
 
 type sourceRepresentationInstanceArgs struct {
+	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+	CaCertificate *string `pulumi:"caCertificate"`
+	// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientKey *string `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
 	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion string `pulumi:"databaseVersion"`
+	// A file in the bucket that contains the data from the external server.
+	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
 	Host string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
+	// The password for the replication user account.
+	Password *string `pulumi:"password"`
 	// The externally accessible port for the source database server.
 	// Defaults to 3306.
 	Port *int `pulumi:"port"`
@@ -182,17 +228,29 @@ type sourceRepresentationInstanceArgs struct {
 	// The Region in which the created instance should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The replication user account on the external server.
+	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a SourceRepresentationInstance resource.
 type SourceRepresentationInstanceArgs struct {
+	// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+	CaCertificate pulumi.StringPtrInput
+	// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientCertificate pulumi.StringPtrInput
+	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+	ClientKey pulumi.StringPtrInput
 	// The MySQL version running on your source database server.
 	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringInput
+	// A file in the bucket that contains the data from the external server.
+	DumpFilePath pulumi.StringPtrInput
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
+	// The password for the replication user account.
+	Password pulumi.StringPtrInput
 	// The externally accessible port for the source database server.
 	// Defaults to 3306.
 	Port pulumi.IntPtrInput
@@ -202,6 +260,8 @@ type SourceRepresentationInstanceArgs struct {
 	// The Region in which the created instance should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The replication user account on the external server.
+	Username pulumi.StringPtrInput
 }
 
 func (SourceRepresentationInstanceArgs) ElementType() reflect.Type {
@@ -291,10 +351,30 @@ func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput
 	return o
 }
 
+// The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+func (o SourceRepresentationInstanceOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.CaCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+func (o SourceRepresentationInstanceOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+func (o SourceRepresentationInstanceOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
 // The MySQL version running on your source database server.
 // Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 func (o SourceRepresentationInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// A file in the bucket that contains the data from the external server.
+func (o SourceRepresentationInstanceOutput) DumpFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
 
 // The externally accessible IPv4 address for the source database server.
@@ -305,6 +385,11 @@ func (o SourceRepresentationInstanceOutput) Host() pulumi.StringOutput {
 // The name of the source representation instance. Use any valid Cloud SQL instance name.
 func (o SourceRepresentationInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password for the replication user account.
+func (o SourceRepresentationInstanceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The externally accessible port for the source database server.
@@ -323,6 +408,11 @@ func (o SourceRepresentationInstanceOutput) Project() pulumi.StringOutput {
 // If it is not provided, the provider region is used.
 func (o SourceRepresentationInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The replication user account on the external server.
+func (o SourceRepresentationInstanceOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type SourceRepresentationInstanceArrayOutput struct{ *pulumi.OutputState }

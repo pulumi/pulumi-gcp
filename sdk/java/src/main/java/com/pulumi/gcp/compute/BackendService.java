@@ -684,6 +684,20 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The resource URL for the edge security policy associated with this backend service.
+     * 
+     */
+    @Export(name="edgeSecurityPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> edgeSecurityPolicy;
+
+    /**
+     * @return The resource URL for the edge security policy associated with this backend service.
+     * 
+     */
+    public Output<Optional<String>> edgeSecurityPolicy() {
+        return Codegen.optional(this.edgeSecurityPolicy);
+    }
+    /**
      * If true, enable Cloud CDN for this BackendService.
      * 
      */

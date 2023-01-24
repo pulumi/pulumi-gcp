@@ -16,6 +16,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Optional version name for this InfoType.
+     * 
+     */
+    private @Nullable String version;
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType() {}
     /**
@@ -24,6 +29,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Optional version name for this InfoType.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -47,9 +61,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+            this.version = version;
+            return this;
+        }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType();
             o.name = name;
+            o.version = version;
             return o;
         }
     }

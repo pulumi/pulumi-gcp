@@ -407,6 +407,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudrunv2/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
+     * KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * 
+     */
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> annotations;
+
+    /**
+     * @return KRM-style annotations for the resource.
+     * (Optional)
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * 
+     */
+    public Output<Optional<Map<String,String>>> annotations() {
+        return Codegen.optional(this.annotations);
+    }
+    /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      * 

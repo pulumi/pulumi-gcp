@@ -49,6 +49,8 @@ import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
@@ -63,6 +65,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterArgs;
+import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
+import com.pulumi.gcp.compute.inputs.GetRouterNatPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusPlainArgs;
@@ -99,6 +103,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
+import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
@@ -106,6 +111,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
+import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
@@ -4923,6 +4929,258 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", TypeShape.of(GetNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information of a specified compute network peering. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.NetworkPeering;
+     * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .network(default_.selfLink())
+     *             .peerNetwork(other.selfLink())
+     *             .build());
+     * 
+     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .network(other.selfLink())
+     *             .peerNetwork(default_.selfLink())
+     *             .build());
+     * 
+     *         final var peering1Ds = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(peering1.name())
+     *             .network(peering1.network())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args) {
+        return getNetworkPeering(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information of a specified compute network peering. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.NetworkPeering;
+     * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .network(default_.selfLink())
+     *             .peerNetwork(other.selfLink())
+     *             .build());
+     * 
+     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .network(other.selfLink())
+     *             .peerNetwork(default_.selfLink())
+     *             .build());
+     * 
+     *         final var peering1Ds = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(peering1.name())
+     *             .network(peering1.network())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args) {
+        return getNetworkPeeringPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information of a specified compute network peering. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.NetworkPeering;
+     * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .network(default_.selfLink())
+     *             .peerNetwork(other.selfLink())
+     *             .build());
+     * 
+     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .network(other.selfLink())
+     *             .peerNetwork(default_.selfLink())
+     *             .build());
+     * 
+     *         final var peering1Ds = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(peering1.name())
+     *             .network(peering1.network())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkPeering:getNetworkPeering", TypeShape.of(GetNetworkPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information of a specified compute network peering. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.NetworkPeering;
+     * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var other = new Network(&#34;other&#34;, NetworkArgs.builder()        
+     *             .autoCreateSubnetworks(&#34;false&#34;)
+     *             .build());
+     * 
+     *         var peering1 = new NetworkPeering(&#34;peering1&#34;, NetworkPeeringArgs.builder()        
+     *             .network(default_.selfLink())
+     *             .peerNetwork(other.selfLink())
+     *             .build());
+     * 
+     *         var peering2 = new NetworkPeering(&#34;peering2&#34;, NetworkPeeringArgs.builder()        
+     *             .network(other.selfLink())
+     *             .peerNetwork(default_.selfLink())
+     *             .build());
+     * 
+     *         final var peering1Ds = ComputeFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(peering1.name())
+     *             .network(peering1.network())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkPeering:getNetworkPeering", TypeShape.of(GetNetworkPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides available node types for Compute Engine sole-tenant nodes in a zone
      * for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
      * 
@@ -6187,6 +6445,174 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRouterResult> getRouterPlain(GetRouterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRouter:getRouter", TypeShape.of(GetRouterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
+     *             .name(&#34;my-nat&#34;)
+     *             .router(&#34;my-router&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRouterNatResult> getRouterNat(GetRouterNatArgs args) {
+        return getRouterNat(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
+     *             .name(&#34;my-nat&#34;)
+     *             .router(&#34;my-router&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRouterNatResult> getRouterNatPlain(GetRouterNatPlainArgs args) {
+        return getRouterNatPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
+     *             .name(&#34;my-nat&#34;)
+     *             .router(&#34;my-router&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRouterNatResult> getRouterNat(GetRouterNatArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRouterNat:getRouterNat", TypeShape.of(GetRouterNatResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRouterNatArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ComputeFunctions.getRouterNat(GetRouterNatArgs.builder()
+     *             .name(&#34;my-nat&#34;)
+     *             .router(&#34;my-router&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRouterNatResult> getRouterNatPlain(GetRouterNatPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRouterNat:getRouterNat", TypeShape.of(GetRouterNatResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a Cloud Router&#39;s status within GCE from its name and region. This data source exposes the

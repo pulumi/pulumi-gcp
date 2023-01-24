@@ -3795,6 +3795,10 @@ export namespace bigquery {
          */
         maxBadRecords?: number;
         /**
+         * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+         */
+        referenceFileSchemaUri?: string;
+        /**
          * A JSON schema for the external table. Schema is required
          * for CSV and JSON formats if autodetect is not on. Schema is disallowed
          * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -4279,6 +4283,7 @@ export namespace billing {
          * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
          * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
          * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
          */
         creditTypes: string[];
         /**
@@ -4324,6 +4329,7 @@ export namespace billing {
          * the parent account, usage from the parent account will be included.
          * If the field is omitted, the report will include usage from the parent
          * account and all subaccounts, if they exist.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
          */
         subaccounts: string[];
     }
@@ -9370,6 +9376,18 @@ export namespace cloudrunv2 {
         type: string;
     }
 
+    export interface JobIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface JobIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface JobLatestCreatedExecution {
         /**
          * Completion timestamp of the execution.
@@ -9834,7 +9852,23 @@ export namespace cloudrunv2 {
         type: string;
     }
 
+    export interface ServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface ServiceTemplate {
+        /**
+         * KRM-style annotations for the resource.
+         */
+        annotations?: {[key: string]: string};
         /**
          * Holds the single container that defines the unit of execution for this task.
          * Structure is documented below.
@@ -10581,6 +10615,7 @@ export namespace composer {
         nodeConfig: outputs.composer.EnvironmentConfigNodeConfig;
         nodeCount: number;
         privateEnvironmentConfig: outputs.composer.EnvironmentConfigPrivateEnvironmentConfig;
+        recoveryConfig?: outputs.composer.EnvironmentConfigRecoveryConfig;
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
         webServerConfig: outputs.composer.EnvironmentConfigWebServerConfig;
         webServerNetworkAccessControl: outputs.composer.EnvironmentConfigWebServerNetworkAccessControl;
@@ -10641,6 +10676,17 @@ export namespace composer {
         enablePrivatelyUsedPublicIps: boolean;
         masterIpv4CidrBlock: string;
         webServerIpv4CidrBlock: string;
+    }
+
+    export interface EnvironmentConfigRecoveryConfig {
+        scheduledSnapshotsConfig?: outputs.composer.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig;
+    }
+
+    export interface EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+        enabled: boolean;
+        snapshotCreationSchedule?: string;
+        snapshotLocation?: string;
+        timeZone?: string;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
@@ -10711,6 +10757,7 @@ export namespace composer {
         nodeConfigs: outputs.composer.GetEnvironmentConfigNodeConfig[];
         nodeCount: number;
         privateEnvironmentConfigs: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig[];
+        recoveryConfigs: outputs.composer.GetEnvironmentConfigRecoveryConfig[];
         softwareConfigs: outputs.composer.GetEnvironmentConfigSoftwareConfig[];
         webServerConfigs: outputs.composer.GetEnvironmentConfigWebServerConfig[];
         webServerNetworkAccessControls: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl[];
@@ -10771,6 +10818,17 @@ export namespace composer {
         enablePrivatelyUsedPublicIps: boolean;
         masterIpv4CidrBlock: string;
         webServerIpv4CidrBlock: string;
+    }
+
+    export interface GetEnvironmentConfigRecoveryConfig {
+        scheduledSnapshotsConfigs: outputs.composer.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig[];
+    }
+
+    export interface GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+        enabled: boolean;
+        snapshotCreationSchedule: string;
+        snapshotLocation: string;
+        timeZone: string;
     }
 
     export interface GetEnvironmentConfigSoftwareConfig {
@@ -12723,6 +12781,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        maxRunDurations: outputs.compute.GetInstanceSchedulingMaxRunDuration[];
         minNodeCpus: number;
         nodeAffinities: outputs.compute.GetInstanceSchedulingNodeAffinity[];
         /**
@@ -12739,6 +12798,11 @@ export namespace compute {
          * Describe the type of preemptible VM.
          */
         provisioningModel: string;
+    }
+
+    export interface GetInstanceSchedulingMaxRunDuration {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetInstanceSchedulingNodeAffinity {
@@ -13037,6 +13101,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        maxRunDurations: outputs.compute.GetInstanceTemplateSchedulingMaxRunDuration[];
         minNodeCpus: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -13061,6 +13126,11 @@ export namespace compute {
          * Describe the type of preemptible VM.
          */
         provisioningModel: string;
+    }
+
+    export interface GetInstanceTemplateSchedulingMaxRunDuration {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetInstanceTemplateSchedulingNodeAffinity {
@@ -13231,6 +13301,33 @@ export namespace compute {
     export interface GetRouterBgpAdvertisedIpRange {
         description: string;
         range: string;
+    }
+
+    export interface GetRouterNatLogConfig {
+        enable: boolean;
+        filter: string;
+    }
+
+    export interface GetRouterNatRule {
+        actions: outputs.compute.GetRouterNatRuleAction[];
+        description: string;
+        match: string;
+        ruleNumber: number;
+    }
+
+    export interface GetRouterNatRuleAction {
+        sourceNatActiveIps: string[];
+        sourceNatDrainIps: string[];
+    }
+
+    export interface GetRouterNatSubnetwork {
+        /**
+         * Name of the NAT service. The name must be 1-63 characters long and
+         * comply with RFC1035.
+         */
+        name: string;
+        secondaryIpRangeNames: string[];
+        sourceIpRangesToNats: string[];
     }
 
     export interface GetRouterStatusBestRoute {
@@ -14002,11 +14099,17 @@ export namespace compute {
     export interface InstanceFromMachineImageScheduling {
         automaticRestart: boolean;
         instanceTerminationAction: string;
+        maxRunDuration: outputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration;
         minNodeCpus: number;
         nodeAffinities: outputs.compute.InstanceFromMachineImageSchedulingNodeAffinity[];
         onHostMaintenance: string;
         preemptible: boolean;
         provisioningModel: string;
+    }
+
+    export interface InstanceFromMachineImageSchedulingMaxRunDuration {
+        nanos: number;
+        seconds: number;
     }
 
     export interface InstanceFromMachineImageSchedulingNodeAffinity {
@@ -14126,11 +14229,17 @@ export namespace compute {
     export interface InstanceFromTemplateScheduling {
         automaticRestart: boolean;
         instanceTerminationAction: string;
+        maxRunDuration: outputs.compute.InstanceFromTemplateSchedulingMaxRunDuration;
         minNodeCpus: number;
         nodeAffinities: outputs.compute.InstanceFromTemplateSchedulingNodeAffinity[];
         onHostMaintenance: string;
         preemptible: boolean;
         provisioningModel: string;
+    }
+
+    export interface InstanceFromTemplateSchedulingMaxRunDuration {
+        nanos: number;
+        seconds: number;
     }
 
     export interface InstanceFromTemplateSchedulingNodeAffinity {
@@ -14551,9 +14660,10 @@ export namespace compute {
          */
         automaticRestart?: boolean;
         /**
-         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        maxRunDuration?: outputs.compute.InstanceSchedulingMaxRunDuration;
         /**
          * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
          */
@@ -14585,6 +14695,22 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel: string;
+    }
+
+    export interface InstanceSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
     }
 
     export interface InstanceSchedulingNodeAffinity {
@@ -14959,6 +15085,10 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        /**
+         * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         */
+        maxRunDuration?: outputs.compute.InstanceTemplateSchedulingMaxRunDuration;
         minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -14986,6 +15116,22 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel: string;
+    }
+
+    export interface InstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
     }
 
     export interface InstanceTemplateSchedulingNodeAffinity {
@@ -24970,15 +25116,15 @@ export namespace dataloss {
         /**
          * A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
          * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
          * plaintext would be used as is for encryption.
-         * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+         * Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
          * Structure is documented below.
          */
         context?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext;
         /**
-         * The key used by the encryption function.
+         * The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
          * Structure is documented below.
          */
         cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey;
@@ -25005,17 +25151,20 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
         /**
-         * Kms wrapped key
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
          * Structure is documented below.
          */
         kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped;
         /**
-         * Transient crypto key
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
          * Structure is documented below.
          */
         transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient;
         /**
-         * Unwrapped crypto key
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
          * Structure is documented below.
          */
         unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped;
@@ -25053,6 +25202,10 @@ export namespace dataloss {
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          */
         name?: string;
+        /**
+         * Optional version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
@@ -25107,17 +25260,20 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey {
         /**
-         * Kms wrapped key
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
          * Structure is documented below.
          */
         kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped;
         /**
-         * Transient crypto key
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
          * Structure is documented below.
          */
         transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient;
         /**
-         * Unwrapped crypto key
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
          * Structure is documented below.
          */
         unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped;
@@ -25155,6 +25311,10 @@ export namespace dataloss {
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          */
         name?: string;
+        /**
+         * Optional version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
@@ -25410,10 +25570,51 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation {
         /**
+         * Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
+         * This can be used on data of type: number, long, string, timestamp.
+         * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * Structure is documented below.
+         */
+        bucketingConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig;
+        /**
          * Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
          * Structure is documented below.
          */
         characterMaskConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig;
+        /**
+         * Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
+         * Structure is documented below.
+         */
+        cryptoDeterministicConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig;
+        /**
+         * Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+         * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+         * Currently, only string and integer values can be hashed.
+         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * Structure is documented below.
+         */
+        cryptoHashConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig;
+        /**
+         * Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
+         * Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+         * Structure is documented below.
+         */
+        cryptoReplaceFfxFpeConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig;
+        /**
+         * Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * Structure is documented below.
+         */
+        dateShiftConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig;
+        /**
+         * Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+         * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lowerBound = 10 and upperBound = 20, all values that are within this bucket will be replaced with "10-20".
+         * This can be used on data of type: double, long.
+         * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * Structure is documented below.
+         */
+        fixedSizeBucketingConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig;
         /**
          * Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
          */
@@ -25423,6 +25624,262 @@ export namespace dataloss {
          * Structure is documented below.
          */
         replaceConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig;
+        /**
+         * Replace with a value randomly drawn (with replacement) from a dictionary.
+         * Structure is documented below.
+         */
+        replaceDictionaryConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig;
+        /**
+         * For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+         * Structure is documented below.
+         */
+        timePartConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig {
+        /**
+         * Set of buckets. Ranges must be non-overlapping.
+         * Bucket is represented as a range, along with replacement values.
+         * Structure is documented below.
+         */
+        buckets?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket {
+        /**
+         * Upper bound of the range, exclusive; type must match min.
+         * The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
+         * Structure is documented below.
+         */
+        max?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax;
+        /**
+         * Lower bound of the range, inclusive. Type should be the same as max if used.
+         * The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
+         * Structure is documented below.
+         */
+        min?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin;
+        /**
+         * Replacement value for this bucket.
+         * The `replacementValue` block must only contain one argument.
+         * Structure is documented below.
+         */
+        replacementValue: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
@@ -25456,6 +25913,512 @@ export namespace dataloss {
          * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
          */
         commonCharactersToIgnore?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig {
+        /**
+         * A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+         * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
+         * plaintext would be used as is for encryption.
+         * Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+         * Structure is documented below.
+         */
+        context?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext;
+        /**
+         * The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
+         * Structure is documented below.
+         */
+        cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey;
+        /**
+         * The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+         * For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+         * This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+         * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+         * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+         * *   reverse a surrogate that does not correspond to an actual identifier
+         * *   be unable to parse the surrogate and result in an error
+         * Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+         * Structure is documented below.
+         */
+        surrogateInfoType?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
+        /**
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+         * Structure is documented below.
+         */
+        kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped;
+        /**
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
+         * Structure is documented below.
+         */
+        transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient;
+        /**
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
+         * Structure is documented below.
+         */
+        unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: string;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient {
+        /**
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         */
+        name: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: string;
+        /**
+         * Optional version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig {
+        /**
+         * The key used by the encryption function.
+         * Structure is documented below.
+         */
+        cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKey {
+        /**
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+         * Structure is documented below.
+         */
+        kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped;
+        /**
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
+         * Structure is documented below.
+         */
+        transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient;
+        /**
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
+         * Structure is documented below.
+         */
+        unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: string;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransient {
+        /**
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         */
+        name: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
+        /**
+         * Common alphabets.
+         * Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+         */
+        commonAlphabet?: string;
+        /**
+         * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+         * If the context is set but:
+         * 1.  there is no record present when transforming a given value or
+         * 2.  the field is not present when transforming a given value,
+         * a default tweak will be used.
+         * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+         * The tweak is constructed as a sequence of bytes in big endian byte order such that:
+         * *   a 64 bit integer is encoded followed by a single byte of value 1
+         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * Structure is documented below.
+         */
+        context?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext;
+        /**
+         * The key used by the encryption algorithm.
+         * Structure is documented below.
+         */
+        cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey;
+        /**
+         * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``
+         */
+        customAlphabet?: string;
+        /**
+         * The native way to select the alphabet. Must be in the range \[2, 95\].
+         */
+        radix?: number;
+        /**
+         * The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
+         * For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+         * This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
+         * In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
+         * Structure is documented below.
+         */
+        surrogateInfoType?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey {
+        /**
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+         * Structure is documented below.
+         */
+        kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped;
+        /**
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
+         * Structure is documented below.
+         */
+        transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient;
+        /**
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
+         * Structure is documented below.
+         */
+        unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: string;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient {
+        /**
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         */
+        name: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         */
+        name?: string;
+        /**
+         * Optional version name for this InfoType.
+         */
+        version?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig {
+        /**
+         * Points to the field that contains the context, for example, an entity id.
+         * If set, must also set cryptoKey. If set, shift will be consistent for the given context.
+         * Structure is documented below.
+         */
+        context?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext;
+        /**
+         * Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+         * Structure is documented below.
+         */
+        cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey;
+        /**
+         * For example, -5 means shift date to at most 5 days back in the past.
+         */
+        lowerBoundDays: number;
+        /**
+         * Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+         * For example, 3 means shift date to at most 3 days into the future.
+         */
+        upperBoundDays: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext {
+        /**
+         * Name describing the field.
+         */
+        name?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey {
+        /**
+         * KMS wrapped key.
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
+         * For more information, see [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+         * Structure is documented below.
+         */
+        kmsWrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped;
+        /**
+         * Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes.
+         * Structure is documented below.
+         */
+        transient?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient;
+        /**
+         * Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
+         * Structure is documented below.
+         */
+        unwrapped?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped {
+        /**
+         * The resource name of the KMS CryptoKey to use for unwrapping.
+         */
+        cryptoKeyName: string;
+        /**
+         * The wrapped data crypto key.
+         * A base64-encoded string.
+         */
+        wrappedKey: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransient {
+        /**
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         */
+        name: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped {
+        /**
+         * A 128/192/256 bit key.
+         * A base64-encoded string.
+         */
+        key: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig {
+        /**
+         * Size of each bucket (except for minimum and maximum buckets).
+         * So if lowerBound = 10, upperBound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+         * Precision up to 2 decimals works.
+         */
+        bucketSize: number;
+        /**
+         * Lower bound value of buckets.
+         * All values less than lowerBound are grouped together into a single bucket; for example if lowerBound = 10, then all values less than 10 are replaced with the value "-10".
+         * The `lowerBound` block must only contain one argument. See the `fixedSizeBucketingConfig` block description for more information about choosing a data type.
+         * Structure is documented below.
+         */
+        lowerBound: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound;
+        /**
+         * Upper bound value of buckets.
+         * All values greater than upperBound are grouped together into a single bucket; for example if upperBound = 89, then all values greater than 89 are replaced with the value "89+".
+         * The `upperBound` block must only contain one argument. See the `fixedSizeBucketingConfig` block description for more information about choosing a data type.
+         * Structure is documented below.
+         */
+        upperBound: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound {
+        /**
+         * A boolean value.
+         */
+        booleanValue?: boolean;
+        /**
+         * Represents a whole or partial calendar date.
+         * Structure is documented below.
+         */
+        dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue;
+        /**
+         * Represents a day of the week.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeekValue?: string;
+        /**
+         * A float value.
+         */
+        floatValue?: number;
+        /**
+         * An integer value (int64 format)
+         */
+        integerValue?: string;
+        /**
+         * A string value.
+         */
+        stringValue?: string;
+        /**
+         * Represents a time of day.
+         * Structure is documented below.
+         */
+        timeValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue;
+        /**
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        timestampValue?: string;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig {
@@ -25540,6 +26503,29 @@ export namespace dataloss {
          * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          */
         seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig {
+        /**
+         * A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+         * Structure is documented below.
+         */
+        wordList?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig {
+        /**
+         * The part of the time to keep.
+         * Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+         */
+        partToExtract?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
@@ -26820,6 +27806,11 @@ export namespace dataproc {
         autoscalingConfig?: outputs.dataproc.ClusterClusterConfigAutoscalingConfig;
         bucket: string;
         /**
+         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * Structure defined below.
+         */
+        dataprocMetricConfig?: outputs.dataproc.ClusterClusterConfigDataprocMetricConfig;
+        /**
          * The Customer managed encryption keys settings for the cluster.
          * Structure defined below.
          */
@@ -26900,6 +27891,24 @@ export namespace dataproc {
          * The autoscaling policy used by the cluster.
          */
         policyUri: string;
+    }
+
+    export interface ClusterClusterConfigDataprocMetricConfig {
+        /**
+         * Metrics sources to enable.
+         */
+        metrics: outputs.dataproc.ClusterClusterConfigDataprocMetricConfigMetric[];
+    }
+
+    export interface ClusterClusterConfigDataprocMetricConfigMetric {
+        /**
+         * One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+         */
+        metricOverrides?: string[];
+        /**
+         * A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
+         */
+        metricSource: string;
     }
 
     export interface ClusterClusterConfigEncryptionConfig {
@@ -31495,6 +32504,18 @@ export namespace gkebackup {
          * This flag denotes whether automatic Backup creation is paused for this BackupPlan.
          */
         paused: boolean;
+    }
+
+    export interface BackupPlanIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface BackupPlanIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface BackupPlanRetentionPolicy {

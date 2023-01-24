@@ -40,12 +40,22 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         [Input("pemCertificate")]
         public Input<string>? PemCertificate { get; set; }
 
+        [Input("pemPrivateKey")]
+        private Input<string>? _pemPrivateKey;
+
         /// <summary>
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("pemPrivateKey")]
-        public Input<string>? PemPrivateKey { get; set; }
+        public Input<string>? PemPrivateKey
+        {
+            get => _pemPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _pemPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("privateKeyPem")]
         private Input<string>? _privateKeyPem;

@@ -20,11 +20,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
      * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-     * 1.  there is no record present when transforming a given value or
-     * 2.  the field is not present when transforming a given value,
-     *     plaintext would be used as is for encryption.
-     *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
-     *     Structure is documented below.
+     * 1. there is no record present when transforming a given value or
+     * 2. the field is not present when transforming a given value,
+     *    plaintext would be used as is for encryption.
+     *    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+     *    Structure is documented below.
      * 
      */
     @Import(name="context")
@@ -33,11 +33,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * @return A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
      * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-     * 1.  there is no record present when transforming a given value or
-     * 2.  the field is not present when transforming a given value,
-     *     plaintext would be used as is for encryption.
-     *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
-     *     Structure is documented below.
+     * 1. there is no record present when transforming a given value or
+     * 2. the field is not present when transforming a given value,
+     *    plaintext would be used as is for encryption.
+     *    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+     *    Structure is documented below.
      * 
      */
     public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs>> context() {
@@ -45,7 +45,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
-     * The key used by the encryption function.
+     * The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
      * Structure is documented below.
      * 
      */
@@ -53,7 +53,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs> cryptoKey;
 
     /**
-     * @return The key used by the encryption function.
+     * @return The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
      * Structure is documented below.
      * 
      */
@@ -121,11 +121,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         /**
          * @param context A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
          * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
-         *     plaintext would be used as is for encryption.
-         *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
-         *     Structure is documented below.
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
+         *    plaintext would be used as is for encryption.
+         *    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+         *    Structure is documented below.
          * 
          * @return builder
          * 
@@ -138,11 +138,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         /**
          * @param context A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
          * If the context is not set, plaintext would be used as is for encryption. If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
-         *     plaintext would be used as is for encryption.
-         *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
-         *     Structure is documented below.
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
+         *    plaintext would be used as is for encryption.
+         *    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+         *    Structure is documented below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param cryptoKey The key used by the encryption function.
+         * @param cryptoKey The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
          * Structure is documented below.
          * 
          * @return builder
@@ -164,7 +164,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param cryptoKey The key used by the encryption function.
+         * @param cryptoKey The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
          * Structure is documented below.
          * 
          * @return builder

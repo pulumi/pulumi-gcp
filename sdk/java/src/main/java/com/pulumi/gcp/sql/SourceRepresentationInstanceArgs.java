@@ -17,6 +17,51 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
     public static final SourceRepresentationInstanceArgs Empty = new SourceRepresentationInstanceArgs();
 
     /**
+     * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Import(name="caCertificate")
+    private @Nullable Output<String> caCertificate;
+
+    /**
+     * @return The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Optional<Output<String>> caCertificate() {
+        return Optional.ofNullable(this.caCertificate);
+    }
+
+    /**
+     * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Import(name="clientCertificate")
+    private @Nullable Output<String> clientCertificate;
+
+    /**
+     * @return The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Optional<Output<String>> clientCertificate() {
+        return Optional.ofNullable(this.clientCertificate);
+    }
+
+    /**
+     * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    @Import(name="clientKey")
+    private @Nullable Output<String> clientKey;
+
+    /**
+     * @return The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+     * 
+     */
+    public Optional<Output<String>> clientKey() {
+        return Optional.ofNullable(this.clientKey);
+    }
+
+    /**
      * The MySQL version running on your source database server.
      * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      * 
@@ -31,6 +76,21 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
      */
     public Output<String> databaseVersion() {
         return this.databaseVersion;
+    }
+
+    /**
+     * A file in the bucket that contains the data from the external server.
+     * 
+     */
+    @Import(name="dumpFilePath")
+    private @Nullable Output<String> dumpFilePath;
+
+    /**
+     * @return A file in the bucket that contains the data from the external server.
+     * 
+     */
+    public Optional<Output<String>> dumpFilePath() {
+        return Optional.ofNullable(this.dumpFilePath);
     }
 
     /**
@@ -61,6 +121,21 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The password for the replication user account.
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return The password for the replication user account.
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -114,15 +189,36 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The replication user account on the external server.
+     * 
+     */
+    @Import(name="username")
+    private @Nullable Output<String> username;
+
+    /**
+     * @return The replication user account on the external server.
+     * 
+     */
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
+    }
+
     private SourceRepresentationInstanceArgs() {}
 
     private SourceRepresentationInstanceArgs(SourceRepresentationInstanceArgs $) {
+        this.caCertificate = $.caCertificate;
+        this.clientCertificate = $.clientCertificate;
+        this.clientKey = $.clientKey;
         this.databaseVersion = $.databaseVersion;
+        this.dumpFilePath = $.dumpFilePath;
         this.host = $.host;
         this.name = $.name;
+        this.password = $.password;
         this.port = $.port;
         this.project = $.project;
         this.region = $.region;
+        this.username = $.username;
     }
 
     public static Builder builder() {
@@ -141,6 +237,69 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
         public Builder(SourceRepresentationInstanceArgs defaults) {
             $ = new SourceRepresentationInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param caCertificate The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertificate(@Nullable Output<String> caCertificate) {
+            $.caCertificate = caCertificate;
+            return this;
+        }
+
+        /**
+         * @param caCertificate The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertificate(String caCertificate) {
+            return caCertificate(Output.of(caCertificate));
+        }
+
+        /**
+         * @param clientCertificate The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificate(@Nullable Output<String> clientCertificate) {
+            $.clientCertificate = clientCertificate;
+            return this;
+        }
+
+        /**
+         * @param clientCertificate The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificate(String clientCertificate) {
+            return clientCertificate(Output.of(clientCertificate));
+        }
+
+        /**
+         * @param clientKey The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKey(@Nullable Output<String> clientKey) {
+            $.clientKey = clientKey;
+            return this;
+        }
+
+        /**
+         * @param clientKey The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKey(String clientKey) {
+            return clientKey(Output.of(clientKey));
         }
 
         /**
@@ -164,6 +323,27 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
          */
         public Builder databaseVersion(String databaseVersion) {
             return databaseVersion(Output.of(databaseVersion));
+        }
+
+        /**
+         * @param dumpFilePath A file in the bucket that contains the data from the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dumpFilePath(@Nullable Output<String> dumpFilePath) {
+            $.dumpFilePath = dumpFilePath;
+            return this;
+        }
+
+        /**
+         * @param dumpFilePath A file in the bucket that contains the data from the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dumpFilePath(String dumpFilePath) {
+            return dumpFilePath(Output.of(dumpFilePath));
         }
 
         /**
@@ -206,6 +386,27 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param password The password for the replication user account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password The password for the replication user account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
         }
 
         /**
@@ -275,6 +476,27 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param username The replication user account on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder username(@Nullable Output<String> username) {
+            $.username = username;
+            return this;
+        }
+
+        /**
+         * @param username The replication user account on the external server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder username(String username) {
+            return username(Output.of(username));
         }
 
         public SourceRepresentationInstanceArgs build() {

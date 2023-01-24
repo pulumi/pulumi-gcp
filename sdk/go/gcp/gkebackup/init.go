@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:gkebackup/backupPlan:BackupPlan":
 		r = &BackupPlan{}
+	case "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding":
+		r = &BackupPlanIamBinding{}
+	case "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember":
+		r = &BackupPlanIamMember{}
+	case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
+		r = &BackupPlanIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkebackup/backupPlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/backupPlanIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/backupPlanIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/backupPlanIamPolicy",
 		&module{version},
 	)
 }

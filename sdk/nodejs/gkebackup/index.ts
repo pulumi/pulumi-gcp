@@ -10,6 +10,21 @@ export type BackupPlan = import("./backupPlan").BackupPlan;
 export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
 utilities.lazyLoad(exports, ["BackupPlan"], () => require("./backupPlan"));
 
+export { BackupPlanIamBindingArgs, BackupPlanIamBindingState } from "./backupPlanIamBinding";
+export type BackupPlanIamBinding = import("./backupPlanIamBinding").BackupPlanIamBinding;
+export const BackupPlanIamBinding: typeof import("./backupPlanIamBinding").BackupPlanIamBinding = null as any;
+utilities.lazyLoad(exports, ["BackupPlanIamBinding"], () => require("./backupPlanIamBinding"));
+
+export { BackupPlanIamMemberArgs, BackupPlanIamMemberState } from "./backupPlanIamMember";
+export type BackupPlanIamMember = import("./backupPlanIamMember").BackupPlanIamMember;
+export const BackupPlanIamMember: typeof import("./backupPlanIamMember").BackupPlanIamMember = null as any;
+utilities.lazyLoad(exports, ["BackupPlanIamMember"], () => require("./backupPlanIamMember"));
+
+export { BackupPlanIamPolicyArgs, BackupPlanIamPolicyState } from "./backupPlanIamPolicy";
+export type BackupPlanIamPolicy = import("./backupPlanIamPolicy").BackupPlanIamPolicy;
+export const BackupPlanIamPolicy: typeof import("./backupPlanIamPolicy").BackupPlanIamPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPlanIamPolicy"], () => require("./backupPlanIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +32,18 @@ const _module = {
         switch (type) {
             case "gcp:gkebackup/backupPlan:BackupPlan":
                 return new BackupPlan(name, <any>undefined, { urn })
+            case "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding":
+                return new BackupPlanIamBinding(name, <any>undefined, { urn })
+            case "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember":
+                return new BackupPlanIamMember(name, <any>undefined, { urn })
+            case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
+                return new BackupPlanIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlan", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamPolicy", _module)

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class ServiceTemplate
     {
         /// <summary>
+        /// KRM-style annotations for the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Annotations;
+        /// <summary>
         /// Holds the single container that defines the unit of execution for this task.
         /// Structure is documented below.
         /// </summary>
@@ -66,6 +70,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private ServiceTemplate(
+            ImmutableDictionary<string, string>? annotations,
+
             ImmutableArray<Outputs.ServiceTemplateContainer> containers,
 
             string? encryptionKey,
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.ServiceTemplateVpcAccess? vpcAccess)
         {
+            Annotations = annotations;
             Containers = containers;
             EncryptionKey = encryptionKey;
             ExecutionEnvironment = executionEnvironment;

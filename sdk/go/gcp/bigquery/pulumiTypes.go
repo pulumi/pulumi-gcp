@@ -8941,6 +8941,8 @@ type TableExternalDataConfiguration struct {
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
+	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri *string `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -9012,6 +9014,8 @@ type TableExternalDataConfigurationArgs struct {
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
+	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri pulumi.StringPtrInput `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -9181,6 +9185,11 @@ func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
+// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+func (o TableExternalDataConfigurationOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ReferenceFileSchemaUri }).(pulumi.StringPtrOutput)
+}
+
 // A JSON schema for the external table. Schema is required
 // for CSV and JSON formats if autodetect is not on. Schema is disallowed
 // for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
@@ -9341,6 +9350,16 @@ func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOu
 		}
 		return v.MaxBadRecords
 	}).(pulumi.IntPtrOutput)
+}
+
+// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+func (o TableExternalDataConfigurationPtrOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceFileSchemaUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // A JSON schema for the external table. Schema is required

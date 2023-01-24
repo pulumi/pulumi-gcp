@@ -58,6 +58,7 @@ export interface GetBackendServiceResult {
      * Textual description for the Backend Service.
      */
     readonly description: string;
+    readonly edgeSecurityPolicy: string;
     /**
      * Whether or not Cloud CDN is enabled on the Backend Service.
      */

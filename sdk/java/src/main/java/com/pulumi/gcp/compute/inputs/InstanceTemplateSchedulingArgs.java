@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -51,6 +52,21 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    /**
+     * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * 
+     */
+    @Import(name="maxRunDuration")
+    private @Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration;
+
+    /**
+     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceTemplateSchedulingMaxRunDurationArgs>> maxRunDuration() {
+        return Optional.ofNullable(this.maxRunDuration);
     }
 
     @Import(name="minNodeCpus")
@@ -145,6 +161,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
     private InstanceTemplateSchedulingArgs(InstanceTemplateSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
         this.onHostMaintenance = $.onHostMaintenance;
@@ -214,6 +231,27 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
          */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        /**
+         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRunDuration(@Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration) {
+            $.maxRunDuration = maxRunDuration;
+            return this;
+        }
+
+        /**
+         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRunDuration(InstanceTemplateSchedulingMaxRunDurationArgs maxRunDuration) {
+            return maxRunDuration(Output.of(maxRunDuration));
         }
 
         public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {
