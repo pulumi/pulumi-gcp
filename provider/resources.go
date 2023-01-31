@@ -49,6 +49,7 @@ const (
 	gcpCertificateManager   = "CertificateManager"   // CertificateManager resources
 	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
 	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
+	gcpCloudBuildV2         = "CloudBuildV2"         // CloudBuild (2nd Gen) resources
 	gcpCloudDeploy          = "CloudDeploy"          // CloudDeploy resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
 	gcpCloudFunctionsV2     = "CloudFunctionsV2"     // CloudFunction (2nd Gen) resources
@@ -124,6 +125,7 @@ const (
 	gcpVertex               = "Vertex"               // Vertex
 	gcpVpcAccess            = "VpcAccess"            // VPC Access
 	gcpWorkflows            = "Workflows"            // Workflows
+	gcpWorkstations         = "Workstations"         // Workstations
 )
 
 var namespaceMap = map[string]string{
@@ -626,6 +628,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_cloudbuild_worker_pool": {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
+
+			// Cloud Build V2
+			"google_cloudbuildv2_connection": {Tok: gcpResource(gcpCloudBuildV2, "Connection")},
+			"google_cloudbuildv2_repository": {Tok: gcpResource(gcpCloudBuildV2, "Repository")},
 
 			// Cloud Deploy
 			"google_clouddeploy_delivery_pipeline": {Tok: gcpResource(gcpCloudDeploy, "DeliveryPipeline")},
@@ -2574,6 +2580,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_deny_policy":                     {Tok: gcpResource(gcpIAM, "DenyPolicy")},
 			"google_iam_workforce_pool":                  {Tok: gcpResource(gcpIAM, "WorkforcePool")},
 			"google_iam_workforce_pool_provider":         {Tok: gcpResource(gcpIAM, "WorkforcePoolProvider")},
+			"google_iam_access_boundary_policy":          {Tok: gcpResource(gcpIAM, "AccessBoundaryPolicy")},
 
 			// apigee
 			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},
@@ -2721,6 +2728,9 @@ func Provider() tfbridge.ProviderInfo {
 			// workflows
 			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},
 
+			// Workstations
+			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
+
 			//eventarc
 			"google_eventarc_channel": {
 				Tok: gcpResource(gcpEventarc, "Channel"),
@@ -2791,9 +2801,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// tags
-			"google_tags_tag_key":     {Tok: gcpResource(gcpTags, "TagKey")},
-			"google_tags_tag_value":   {Tok: gcpResource(gcpTags, "TagValue")},
-			"google_tags_tag_binding": {Tok: gcpResource(gcpTags, "TagBinding")},
+			"google_tags_location_tag_binding": {Tok: gcpResource(gcpTags, "LocationTagBinding")},
+			"google_tags_tag_key":              {Tok: gcpResource(gcpTags, "TagKey")},
+			"google_tags_tag_value":            {Tok: gcpResource(gcpTags, "TagValue")},
+			"google_tags_tag_binding":          {Tok: gcpResource(gcpTags, "TagBinding")},
 			"google_tags_tag_key_iam_binding": {
 				Tok: gcpResource(gcpTags, "TagKeyIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -3413,7 +3424,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iap_client": {Tok: gcpDataSource(gcpIAP, "getClient")},
 
 			// Secret Manager
-			"google_secret_manager_secret": {Tok: gcpDataSource(gcpSecretManager, "getSecret")},
+			"google_secret_manager_secret":                {Tok: gcpDataSource(gcpSecretManager, "getSecret")},
+			"google_secret_manager_secret_version_access": {Tok: gcpDataSource(gcpSecretManager, "getSecretVersionAccess")},
 
 			// Tags
 			"google_tags_tag_key":   {Tok: gcpDataSource(gcpTags, "getTagKey")},
