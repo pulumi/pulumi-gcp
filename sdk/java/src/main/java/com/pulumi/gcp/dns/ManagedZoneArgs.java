@@ -42,14 +42,14 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+     * A textual description field. Defaults to &#39;Managed by Terraform&#39;.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+     * @return A textual description field. Defaults to &#39;Managed by Terraform&#39;.
      * 
      */
     public Optional<Output<String>> description() {
@@ -212,18 +212,18 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-     * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `private_visibility_config`.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * &#39;private_visibility_config&#39;.
      * 
      */
     @Import(name="reverseLookup")
     private @Nullable Output<Boolean> reverseLookup;
 
     /**
-     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-     * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `private_visibility_config`.
+     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * &#39;private_visibility_config&#39;.
      * 
      */
     public Optional<Output<Boolean>> reverseLookup() {
@@ -231,16 +231,16 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-     * Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
      * 
      */
     @Import(name="serviceDirectoryConfig")
     private @Nullable Output<ManagedZoneServiceDirectoryConfigArgs> serviceDirectoryConfig;
 
     /**
-     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-     * Structure is documented below.
+     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
      * 
      */
     public Optional<Output<ManagedZoneServiceDirectoryConfigArgs>> serviceDirectoryConfig() {
@@ -329,7 +329,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+         * @param description A textual description field. Defaults to &#39;Managed by Terraform&#39;.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
+         * @param description A textual description field. Defaults to &#39;Managed by Terraform&#39;.
          * 
          * @return builder
          * 
@@ -559,9 +559,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-         * lookup queries using automatically configured records for VPC resources. This only applies
-         * to networks listed under `private_visibility_config`.
+         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+         * automatically configured records for VPC resources. This only applies to networks listed under
+         * &#39;private_visibility_config&#39;.
          * 
          * @return builder
          * 
@@ -572,9 +572,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-         * lookup queries using automatically configured records for VPC resources. This only applies
-         * to networks listed under `private_visibility_config`.
+         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+         * automatically configured records for VPC resources. This only applies to networks listed under
+         * &#39;private_visibility_config&#39;.
          * 
          * @return builder
          * 
@@ -584,8 +584,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-         * Structure is documented below.
+         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+         * information related to the namespace associated with the zone.
          * 
          * @return builder
          * 
@@ -596,8 +596,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-         * Structure is documented below.
+         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+         * information related to the namespace associated with the zone.
          * 
          * @return builder
          * 

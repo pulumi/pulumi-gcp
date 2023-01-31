@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyAdaptiveProtectionConfig {
     /**
+     * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig autoDeployConfig;
+    /**
      * @return Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      * 
      */
     private @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig;
 
     private SecurityPolicyAdaptiveProtectionConfig() {}
+    /**
+     * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * 
+     */
+    public Optional<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig> autoDeployConfig() {
+        return Optional.ofNullable(this.autoDeployConfig);
+    }
     /**
      * @return Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      * 
@@ -35,13 +48,20 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig autoDeployConfig;
         private @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig;
         public Builder() {}
         public Builder(SecurityPolicyAdaptiveProtectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoDeployConfig = defaults.autoDeployConfig;
     	      this.layer7DdosDefenseConfig = defaults.layer7DdosDefenseConfig;
         }
 
+        @CustomType.Setter
+        public Builder autoDeployConfig(@Nullable SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig autoDeployConfig) {
+            this.autoDeployConfig = autoDeployConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder layer7DdosDefenseConfig(@Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig) {
             this.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
@@ -49,6 +69,7 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
         }
         public SecurityPolicyAdaptiveProtectionConfig build() {
             final var o = new SecurityPolicyAdaptiveProtectionConfig();
+            o.autoDeployConfig = autoDeployConfig;
             o.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
             return o;
         }

@@ -104,14 +104,14 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels to apply to this address.  A list of key-&gt;value pairs.
+     * Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this address.  A list of key-&gt;value pairs.
+     * @return Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -475,7 +475,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
          * 
          * @return builder
          * 

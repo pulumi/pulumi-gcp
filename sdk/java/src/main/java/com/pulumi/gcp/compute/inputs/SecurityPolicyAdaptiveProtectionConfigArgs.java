@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecurityPolicyAdaptiveProtectionConfigArgs Empty = new SecurityPolicyAdaptiveProtectionConfigArgs();
+
+    /**
+     * ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * 
+     */
+    @Import(name="autoDeployConfig")
+    private @Nullable Output<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs> autoDeployConfig;
+
+    /**
+     * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs>> autoDeployConfig() {
+        return Optional.ofNullable(this.autoDeployConfig);
+    }
 
     /**
      * Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -33,6 +49,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
     private SecurityPolicyAdaptiveProtectionConfigArgs() {}
 
     private SecurityPolicyAdaptiveProtectionConfigArgs(SecurityPolicyAdaptiveProtectionConfigArgs $) {
+        this.autoDeployConfig = $.autoDeployConfig;
         this.layer7DdosDefenseConfig = $.layer7DdosDefenseConfig;
     }
 
@@ -52,6 +69,27 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
 
         public Builder(SecurityPolicyAdaptiveProtectionConfigArgs defaults) {
             $ = new SecurityPolicyAdaptiveProtectionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoDeployConfig ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDeployConfig(@Nullable Output<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs> autoDeployConfig) {
+            $.autoDeployConfig = autoDeployConfig;
+            return this;
+        }
+
+        /**
+         * @param autoDeployConfig ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDeployConfig(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs autoDeployConfig) {
+            return autoDeployConfig(Output.of(autoDeployConfig));
         }
 
         /**

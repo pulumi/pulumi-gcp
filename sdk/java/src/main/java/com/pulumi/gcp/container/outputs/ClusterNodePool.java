@@ -45,20 +45,7 @@ public final class ClusterNodePool {
      */
     private @Nullable String name;
     private @Nullable String namePrefix;
-    /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-     * 
-     */
     private @Nullable ClusterNodePoolNetworkConfig networkConfig;
-    /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
-     * 
-     */
     private @Nullable ClusterNodePoolNodeConfig nodeConfig;
     private @Nullable Integer nodeCount;
     /**
@@ -120,22 +107,9 @@ public final class ClusterNodePool {
     public Optional<String> namePrefix() {
         return Optional.ofNullable(this.namePrefix);
     }
-    /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-     * 
-     */
     public Optional<ClusterNodePoolNetworkConfig> networkConfig() {
         return Optional.ofNullable(this.networkConfig);
     }
-    /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
-     * 
-     */
     public Optional<ClusterNodePoolNodeConfig> nodeConfig() {
         return Optional.ofNullable(this.nodeConfig);
     }

@@ -34,7 +34,7 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * A 256-bit [customer-supplied encryption key]
-     * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
      * 
@@ -44,7 +44,7 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return A 256-bit [customer-supplied encryption key]
-     * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
      * 
@@ -169,7 +169,7 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
-         * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
          * 
@@ -183,7 +183,7 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
-         * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
          * 

@@ -103,18 +103,16 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+     * contains objects, Terraform will fail that run.
      * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
     /**
-     * @return When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * @return When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+     * contains objects, Terraform will fail that run.
      * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
@@ -476,9 +474,8 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
+         * @param forceDestroy When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+         * contains objects, Terraform will fail that run.
          * 
          * @return builder
          * 
@@ -489,9 +486,8 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
+         * @param forceDestroy When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+         * contains objects, Terraform will fail that run.
          * 
          * @return builder
          * 

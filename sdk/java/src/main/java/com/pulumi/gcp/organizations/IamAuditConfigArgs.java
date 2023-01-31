@@ -31,14 +31,18 @@ public final class IamAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return The numeric ID of the organization in which you want to manage the audit logging config.
+     * @return The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     public Output<String> orgId() {
@@ -118,7 +122,9 @@ public final class IamAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId The numeric ID of the organization in which you want to manage the audit logging config.
+         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+         * will not be inferred from the provider.
          * 
          * @return builder
          * 
@@ -129,7 +135,9 @@ public final class IamAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId The numeric ID of the organization in which you want to manage the audit logging config.
+         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+         * will not be inferred from the provider.
          * 
          * @return builder
          * 

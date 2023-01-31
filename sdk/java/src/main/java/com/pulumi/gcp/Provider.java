@@ -238,6 +238,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudTasksCustomEndpoint() {
         return Codegen.optional(this.cloudTasksCustomEndpoint);
     }
+    @Export(name="cloudbuildv2CustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> cloudbuildv2CustomEndpoint;
+
+    public Output<Optional<String>> cloudbuildv2CustomEndpoint() {
+        return Codegen.optional(this.cloudbuildv2CustomEndpoint);
+    }
     @Export(name="clouddeployCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> clouddeployCustomEndpoint;
 
@@ -465,12 +471,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> gkehubFeatureCustomEndpoint() {
         return Codegen.optional(this.gkehubFeatureCustomEndpoint);
-    }
-    @Export(name="googlePartnerName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> googlePartnerName;
-
-    public Output<Optional<String>> googlePartnerName() {
-        return Codegen.optional(this.googlePartnerName);
     }
     @Export(name="healthcareCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> healthcareCustomEndpoint;
@@ -754,6 +754,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> tagsCustomEndpoint() {
         return Codegen.optional(this.tagsCustomEndpoint);
     }
+    @Export(name="tagsLocationCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> tagsLocationCustomEndpoint;
+
+    public Output<Optional<String>> tagsLocationCustomEndpoint() {
+        return Codegen.optional(this.tagsLocationCustomEndpoint);
+    }
     @Export(name="tpuCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> tpuCustomEndpoint;
 
@@ -777,6 +783,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> workflowsCustomEndpoint() {
         return Codegen.optional(this.workflowsCustomEndpoint);
+    }
+    @Export(name="workstationsCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> workstationsCustomEndpoint;
+
+    public Output<Optional<String>> workstationsCustomEndpoint() {
+        return Codegen.optional(this.workstationsCustomEndpoint);
     }
     @Export(name="zone", type=String.class, parameters={})
     private Output</* @Nullable */ String> zone;

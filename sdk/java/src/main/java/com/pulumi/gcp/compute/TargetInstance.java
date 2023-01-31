@@ -271,14 +271,16 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.natPolicy);
     }
     /**
-     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      * 
      */
     @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
-     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      * 
      */
     public Output<Optional<String>> network() {

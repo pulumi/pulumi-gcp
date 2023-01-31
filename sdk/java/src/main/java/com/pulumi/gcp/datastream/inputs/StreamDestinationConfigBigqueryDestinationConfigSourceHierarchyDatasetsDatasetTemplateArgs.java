@@ -33,6 +33,27 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
     }
 
     /**
+     * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+     * table. The BigQuery Service Account associated with your project requires access to this
+     * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+     * table. The BigQuery Service Account associated with your project requires access to this
+     * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
      * The geographic location where the dataset should reside.
      * See https://cloud.google.com/bigquery/docs/locations for supported locations.
      * 
@@ -53,6 +74,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
     private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs $) {
         this.datasetIdPrefix = $.datasetIdPrefix;
+        this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
     }
 
@@ -95,6 +117,33 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
          */
         public Builder datasetIdPrefix(String datasetIdPrefix) {
             return datasetIdPrefix(Output.of(datasetIdPrefix));
+        }
+
+        /**
+         * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+         * table. The BigQuery Service Account associated with your project requires access to this
+         * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+         * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+         * table. The BigQuery Service Account associated with your project requires access to this
+         * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+         * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**

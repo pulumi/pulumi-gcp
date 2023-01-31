@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentConfigSoftwareConfig {
     private @Nullable Map<String,String> airflowConfigOverrides;
+    private @Nullable EnvironmentConfigSoftwareConfigCloudDataLineageIntegration cloudDataLineageIntegration;
     private @Nullable Map<String,String> envVariables;
     private @Nullable String imageVersion;
     private @Nullable Map<String,String> pypiPackages;
@@ -23,6 +25,9 @@ public final class EnvironmentConfigSoftwareConfig {
     private EnvironmentConfigSoftwareConfig() {}
     public Map<String,String> airflowConfigOverrides() {
         return this.airflowConfigOverrides == null ? Map.of() : this.airflowConfigOverrides;
+    }
+    public Optional<EnvironmentConfigSoftwareConfigCloudDataLineageIntegration> cloudDataLineageIntegration() {
+        return Optional.ofNullable(this.cloudDataLineageIntegration);
     }
     public Map<String,String> envVariables() {
         return this.envVariables == null ? Map.of() : this.envVariables;
@@ -50,6 +55,7 @@ public final class EnvironmentConfigSoftwareConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> airflowConfigOverrides;
+        private @Nullable EnvironmentConfigSoftwareConfigCloudDataLineageIntegration cloudDataLineageIntegration;
         private @Nullable Map<String,String> envVariables;
         private @Nullable String imageVersion;
         private @Nullable Map<String,String> pypiPackages;
@@ -59,6 +65,7 @@ public final class EnvironmentConfigSoftwareConfig {
         public Builder(EnvironmentConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.airflowConfigOverrides = defaults.airflowConfigOverrides;
+    	      this.cloudDataLineageIntegration = defaults.cloudDataLineageIntegration;
     	      this.envVariables = defaults.envVariables;
     	      this.imageVersion = defaults.imageVersion;
     	      this.pypiPackages = defaults.pypiPackages;
@@ -69,6 +76,11 @@ public final class EnvironmentConfigSoftwareConfig {
         @CustomType.Setter
         public Builder airflowConfigOverrides(@Nullable Map<String,String> airflowConfigOverrides) {
             this.airflowConfigOverrides = airflowConfigOverrides;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudDataLineageIntegration(@Nullable EnvironmentConfigSoftwareConfigCloudDataLineageIntegration cloudDataLineageIntegration) {
+            this.cloudDataLineageIntegration = cloudDataLineageIntegration;
             return this;
         }
         @CustomType.Setter
@@ -99,6 +111,7 @@ public final class EnvironmentConfigSoftwareConfig {
         public EnvironmentConfigSoftwareConfig build() {
             final var o = new EnvironmentConfigSoftwareConfig();
             o.airflowConfigOverrides = airflowConfigOverrides;
+            o.cloudDataLineageIntegration = cloudDataLineageIntegration;
             o.envVariables = envVariables;
             o.imageVersion = imageVersion;
             o.pypiPackages = pypiPackages;

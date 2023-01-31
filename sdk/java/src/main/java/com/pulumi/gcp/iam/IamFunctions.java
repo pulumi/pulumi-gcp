@@ -336,8 +336,6 @@ public final class IamFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iam/getTestablePermissions:getTestablePermissions", TypeShape.of(GetTestablePermissionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a IAM workload identity pool from Google Cloud by its id.
-     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -373,8 +371,6 @@ public final class IamFunctions {
         return getWorkloadIdentityPool(args, InvokeOptions.Empty);
     }
     /**
-     * Get a IAM workload identity pool from Google Cloud by its id.
-     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -410,8 +406,6 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a IAM workload identity pool from Google Cloud by its id.
-     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -447,8 +441,6 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a IAM workload identity pool from Google Cloud by its id.
-     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -484,8 +476,6 @@ public final class IamFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a IAM workload identity provider from Google Cloud by its id.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -522,8 +512,6 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolProvider(args, InvokeOptions.Empty);
     }
     /**
-     * Get a IAM workload identity provider from Google Cloud by its id.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -560,8 +548,6 @@ public final class IamFunctions {
         return getWorkloadIdentityPoolProviderPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a IAM workload identity provider from Google Cloud by its id.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -598,8 +584,6 @@ public final class IamFunctions {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", TypeShape.of(GetWorkloadIdentityPoolProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a IAM workload identity provider from Google Cloud by its id.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

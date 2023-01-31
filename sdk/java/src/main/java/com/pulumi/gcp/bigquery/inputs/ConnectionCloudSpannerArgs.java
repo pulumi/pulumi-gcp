@@ -46,11 +46,27 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.useParallelism);
     }
 
+    /**
+     * If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * 
+     */
+    @Import(name="useServerlessAnalytics")
+    private @Nullable Output<Boolean> useServerlessAnalytics;
+
+    /**
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * 
+     */
+    public Optional<Output<Boolean>> useServerlessAnalytics() {
+        return Optional.ofNullable(this.useServerlessAnalytics);
+    }
+
     private ConnectionCloudSpannerArgs() {}
 
     private ConnectionCloudSpannerArgs(ConnectionCloudSpannerArgs $) {
         this.database = $.database;
         this.useParallelism = $.useParallelism;
+        this.useServerlessAnalytics = $.useServerlessAnalytics;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
          */
         public Builder useParallelism(Boolean useParallelism) {
             return useParallelism(Output.of(useParallelism));
+        }
+
+        /**
+         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useServerlessAnalytics(@Nullable Output<Boolean> useServerlessAnalytics) {
+            $.useServerlessAnalytics = useServerlessAnalytics;
+            return this;
+        }
+
+        /**
+         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useServerlessAnalytics(Boolean useServerlessAnalytics) {
+            return useServerlessAnalytics(Output.of(useServerlessAnalytics));
         }
 
         public ConnectionCloudSpannerArgs build() {

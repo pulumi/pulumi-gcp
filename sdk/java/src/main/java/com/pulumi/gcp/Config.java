@@ -125,6 +125,9 @@ public final class Config {
     public Optional<String> cloudTasksCustomEndpoint() {
         return Codegen.stringProp("cloudTasksCustomEndpoint").config(config).get();
     }
+    public Optional<String> cloudbuildv2CustomEndpoint() {
+        return Codegen.stringProp("cloudbuildv2CustomEndpoint").config(config).get();
+    }
     public Optional<String> clouddeployCustomEndpoint() {
         return Codegen.stringProp("clouddeployCustomEndpoint").config(config).get();
     }
@@ -194,9 +197,6 @@ public final class Config {
     public Optional<String> dialogflowCxCustomEndpoint() {
         return Codegen.stringProp("dialogflowCxCustomEndpoint").config(config).get();
     }
-    public Optional<Boolean> disableGooglePartnerName() {
-        return Codegen.booleanProp("disableGooglePartnerName").config(config).get();
-    }
     public Optional<String> dnsCustomEndpoint() {
         return Codegen.stringProp("dnsCustomEndpoint").config(config).get();
     }
@@ -241,9 +241,6 @@ public final class Config {
     }
     public Optional<String> gkehubFeatureCustomEndpoint() {
         return Codegen.stringProp("gkehubFeatureCustomEndpoint").config(config).get();
-    }
-    public Optional<String> googlePartnerName() {
-        return Codegen.stringProp("googlePartnerName").config(config).get();
     }
     public Optional<String> healthcareCustomEndpoint() {
         return Codegen.stringProp("healthcareCustomEndpoint").config(config).get();
@@ -392,6 +389,9 @@ public final class Config {
     public Optional<String> tagsCustomEndpoint() {
         return Codegen.stringProp("tagsCustomEndpoint").config(config).get();
     }
+    public Optional<String> tagsLocationCustomEndpoint() {
+        return Codegen.stringProp("tagsLocationCustomEndpoint").config(config).get();
+    }
     public Optional<String> tpuCustomEndpoint() {
         return Codegen.stringProp("tpuCustomEndpoint").config(config).get();
     }
@@ -406,6 +406,9 @@ public final class Config {
     }
     public Optional<String> workflowsCustomEndpoint() {
         return Codegen.stringProp("workflowsCustomEndpoint").config(config).get();
+    }
+    public Optional<String> workstationsCustomEndpoint() {
+        return Codegen.stringProp("workstationsCustomEndpoint").config(config).get();
     }
     public Optional<String> zone() {
         return Codegen.stringProp("zone").config(config).env("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").get();

@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -22,6 +23,13 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
 
     public Optional<Output<Map<String,String>>> airflowConfigOverrides() {
         return Optional.ofNullable(this.airflowConfigOverrides);
+    }
+
+    @Import(name="cloudDataLineageIntegration")
+    private @Nullable Output<EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs> cloudDataLineageIntegration;
+
+    public Optional<Output<EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs>> cloudDataLineageIntegration() {
+        return Optional.ofNullable(this.cloudDataLineageIntegration);
     }
 
     @Import(name="envVariables")
@@ -63,6 +71,7 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
 
     private EnvironmentConfigSoftwareConfigArgs(EnvironmentConfigSoftwareConfigArgs $) {
         this.airflowConfigOverrides = $.airflowConfigOverrides;
+        this.cloudDataLineageIntegration = $.cloudDataLineageIntegration;
         this.envVariables = $.envVariables;
         this.imageVersion = $.imageVersion;
         this.pypiPackages = $.pypiPackages;
@@ -95,6 +104,15 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
 
         public Builder airflowConfigOverrides(Map<String,String> airflowConfigOverrides) {
             return airflowConfigOverrides(Output.of(airflowConfigOverrides));
+        }
+
+        public Builder cloudDataLineageIntegration(@Nullable Output<EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs> cloudDataLineageIntegration) {
+            $.cloudDataLineageIntegration = cloudDataLineageIntegration;
+            return this;
+        }
+
+        public Builder cloudDataLineageIntegration(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs cloudDataLineageIntegration) {
+            return cloudDataLineageIntegration(Output.of(cloudDataLineageIntegration));
         }
 
         public Builder envVariables(@Nullable Output<Map<String,String>> envVariables) {

@@ -87,24 +87,20 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Configuration fields that define the channel and its behavior. The
-     * permissible and required labels are specified in the
-     * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-     * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+     * NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+     * therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+     * sensitive_labels block, but cannot be configured in both places.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Configuration fields that define the channel and its behavior. The
-     * permissible and required labels are specified in the
-     * NotificationChannelDescriptor corresponding to the type field.
-     * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-     * determine if there are upstream changes to these fields. They can also be configured via
-     * the sensitive_labels block, but cannot be configured in both places.
+     * @return Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+     * NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+     * therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+     * sensitive_labels block, but cannot be configured in both places.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -310,12 +306,10 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Configuration fields that define the channel and its behavior. The
-         * permissible and required labels are specified in the
-         * NotificationChannelDescriptor corresponding to the type field.
-         * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-         * determine if there are upstream changes to these fields. They can also be configured via
-         * the sensitive_labels block, but cannot be configured in both places.
+         * @param labels Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+         * NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+         * therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+         * sensitive_labels block, but cannot be configured in both places.
          * 
          * @return builder
          * 
@@ -326,12 +320,10 @@ public final class NotificationChannelArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Configuration fields that define the channel and its behavior. The
-         * permissible and required labels are specified in the
-         * NotificationChannelDescriptor corresponding to the type field.
-         * Labels with sensitive data are obfuscated by the API and therefore the provider cannot
-         * determine if there are upstream changes to these fields. They can also be configured via
-         * the sensitive_labels block, but cannot be configured in both places.
+         * @param labels Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+         * NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+         * therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+         * sensitive_labels block, but cannot be configured in both places.
          * 
          * @return builder
          * 

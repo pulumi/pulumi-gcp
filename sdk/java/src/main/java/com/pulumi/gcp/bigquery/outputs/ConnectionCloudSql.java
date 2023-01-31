@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSqlCredential;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionCloudSql {
@@ -26,6 +28,11 @@ public final class ConnectionCloudSql {
      * 
      */
     private String instanceId;
+    /**
+     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * 
+     */
+    private @Nullable String serviceAccountId;
     /**
      * @return Type of the Cloud SQL database.
      * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
@@ -57,6 +64,13 @@ public final class ConnectionCloudSql {
         return this.instanceId;
     }
     /**
+     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * 
+     */
+    public Optional<String> serviceAccountId() {
+        return Optional.ofNullable(this.serviceAccountId);
+    }
+    /**
      * @return Type of the Cloud SQL database.
      * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
      * 
@@ -77,6 +91,7 @@ public final class ConnectionCloudSql {
         private ConnectionCloudSqlCredential credential;
         private String database;
         private String instanceId;
+        private @Nullable String serviceAccountId;
         private String type;
         public Builder() {}
         public Builder(ConnectionCloudSql defaults) {
@@ -84,6 +99,7 @@ public final class ConnectionCloudSql {
     	      this.credential = defaults.credential;
     	      this.database = defaults.database;
     	      this.instanceId = defaults.instanceId;
+    	      this.serviceAccountId = defaults.serviceAccountId;
     	      this.type = defaults.type;
         }
 
@@ -103,6 +119,11 @@ public final class ConnectionCloudSql {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccountId(@Nullable String serviceAccountId) {
+            this.serviceAccountId = serviceAccountId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -112,6 +133,7 @@ public final class ConnectionCloudSql {
             o.credential = credential;
             o.database = database;
             o.instanceId = instanceId;
+            o.serviceAccountId = serviceAccountId;
             o.type = type;
             return o;
         }

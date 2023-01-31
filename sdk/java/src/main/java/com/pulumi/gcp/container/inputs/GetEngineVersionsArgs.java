@@ -53,27 +53,9 @@ public final class GetEngineVersionsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * If provided, the provider will only return versions
-     * that match the string prefix. For example, `1.11.` will match all `1.11` series
-     * releases. Since this is just a string match, it&#39;s recommended that you append a
-     * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
-     * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
-     * for full details on how version strings are formatted.
-     * 
-     */
     @Import(name="versionPrefix")
     private @Nullable Output<String> versionPrefix;
 
-    /**
-     * @return If provided, the provider will only return versions
-     * that match the string prefix. For example, `1.11.` will match all `1.11` series
-     * releases. Since this is just a string match, it&#39;s recommended that you append a
-     * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
-     * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
-     * for full details on how version strings are formatted.
-     * 
-     */
     public Optional<Output<String>> versionPrefix() {
         return Optional.ofNullable(this.versionPrefix);
     }
@@ -154,33 +136,11 @@ public final class GetEngineVersionsArgs extends com.pulumi.resources.InvokeArgs
             return project(Output.of(project));
         }
 
-        /**
-         * @param versionPrefix If provided, the provider will only return versions
-         * that match the string prefix. For example, `1.11.` will match all `1.11` series
-         * releases. Since this is just a string match, it&#39;s recommended that you append a
-         * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
-         * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
-         * for full details on how version strings are formatted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder versionPrefix(@Nullable Output<String> versionPrefix) {
             $.versionPrefix = versionPrefix;
             return this;
         }
 
-        /**
-         * @param versionPrefix If provided, the provider will only return versions
-         * that match the string prefix. For example, `1.11.` will match all `1.11` series
-         * releases. Since this is just a string match, it&#39;s recommended that you append a
-         * `.` after minor versions to ensure that prefixes such as `1.1` don&#39;t match
-         * versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
-         * for full details on how version strings are formatted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder versionPrefix(String versionPrefix) {
             return versionPrefix(Output.of(versionPrefix));
         }

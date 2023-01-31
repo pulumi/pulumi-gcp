@@ -7,11 +7,30 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TriggerSourceToBuildArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TriggerSourceToBuildArgs Empty = new TriggerSourceToBuildArgs();
+
+    /**
+     * The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    @Import(name="githubEnterpriseConfig")
+    private @Nullable Output<String> githubEnterpriseConfig;
+
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    public Optional<Output<String>> githubEnterpriseConfig() {
+        return Optional.ofNullable(this.githubEnterpriseConfig);
+    }
 
     /**
      * The branch or tag to use. Must start with &#34;refs/&#34; (required).
@@ -65,6 +84,7 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
     private TriggerSourceToBuildArgs() {}
 
     private TriggerSourceToBuildArgs(TriggerSourceToBuildArgs $) {
+        this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.ref = $.ref;
         this.repoType = $.repoType;
         this.uri = $.uri;
@@ -86,6 +106,29 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
 
         public Builder(TriggerSourceToBuildArgs defaults) {
             $ = new TriggerSourceToBuildArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param githubEnterpriseConfig The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(@Nullable Output<String> githubEnterpriseConfig) {
+            $.githubEnterpriseConfig = githubEnterpriseConfig;
+            return this;
+        }
+
+        /**
+         * @param githubEnterpriseConfig The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
+            return githubEnterpriseConfig(Output.of(githubEnterpriseConfig));
         }
 
         /**

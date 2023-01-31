@@ -22,31 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Persistent disks are durable storage devices that function similarly to
- * the physical disks in a desktop or a server. Compute Engine manages the
- * hardware behind these devices to ensure data redundancy and optimize
- * performance for you. Persistent disks are available as either standard
- * hard disk drives (HDD) or solid-state drives (SSD).
- * 
- * Persistent disks are located independently from your virtual machine
- * instances, so you can detach or move persistent disks to keep your data
- * even after you delete your instances. Persistent disk performance scales
- * automatically with size, so you can resize your existing persistent disks
- * or add more persistent disks to an instance to meet your performance and
- * storage space requirements.
- * 
- * Add a persistent disk to your instance when you need reliable and
- * affordable storage with consistent performance characteristics.
- * 
- * To get more information about Disk, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
- * * How-to Guides
- *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- * 
- * &gt; **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
- * state as plain-text.
- * 
  * ## Example Usage
  * ### Disk Basic
  * ```java
@@ -366,11 +341,9 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.provisionedIops;
     }
     /**
-     * Resource policies applied to this disk for automatic snapshot creations.
-     * ~&gt;**NOTE** This value does not support updating the
-     * resource policy, as resource policies can not be updated more than
-     * one at a time. Use
-     * `gcp.compute.DiskResourcePolicyAttachment`
+     * Resource policies applied to this disk for automatic snapshot creations. ~&gt;**NOTE** This value does not support updating
+     * the resource policy, as resource policies can not be updated more than one at a time. Use
+     * [&#39;google_compute_disk_resource_policy_attachment&#39;](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
      * to allow for updating the resource policy attached to the disk.
      * 
      */
@@ -378,11 +351,9 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output<List<String>> resourcePolicies;
 
     /**
-     * @return Resource policies applied to this disk for automatic snapshot creations.
-     * ~&gt;**NOTE** This value does not support updating the
-     * resource policy, as resource policies can not be updated more than
-     * one at a time. Use
-     * `gcp.compute.DiskResourcePolicyAttachment`
+     * @return Resource policies applied to this disk for automatic snapshot creations. ~&gt;**NOTE** This value does not support updating
+     * the resource policy, as resource policies can not be updated more than one at a time. Use
+     * [&#39;google_compute_disk_resource_policy_attachment&#39;](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
      * to allow for updating the resource policy attached to the disk.
      * 
      */
@@ -404,34 +375,22 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
+     * Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
+     * &#39;image&#39; or &#39;snapshot&#39; parameter, or specify it alone to create an empty persistent disk. If you specify this field along
+     * with &#39;image&#39; or &#39;snapshot&#39;, the value must not be less than the size of the image or the size of the snapshot.
+     * ~&gt;**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
+     * downsizing is requested. You can add &#39;lifecycle.prevent_destroy&#39; in the config to prevent destroying and recreating.
      * 
      */
     @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
-     * @return Size of the persistent disk, specified in GB. You can specify this
-     * field when creating a persistent disk using the `image` or
-     * `snapshot` parameter, or specify it alone to create an empty
-     * persistent disk.
-     * If you specify this field along with `image` or `snapshot`,
-     * the value must not be less than the size of the image
-     * or the size of the snapshot.
-     * ~&gt;**NOTE** If you change the size, the provider updates the disk size
-     * if upsizing is detected but recreates the disk if downsizing is requested.
-     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
-     * and recreating.
+     * @return Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
+     * &#39;image&#39; or &#39;snapshot&#39; parameter, or specify it alone to create an empty persistent disk. If you specify this field along
+     * with &#39;image&#39; or &#39;snapshot&#39;, the value must not be less than the size of the image or the size of the snapshot.
+     * ~&gt;**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
+     * downsizing is requested. You can add &#39;lifecycle.prevent_destroy&#39; in the config to prevent destroying and recreating.
      * 
      */
     public Output<Integer> size() {

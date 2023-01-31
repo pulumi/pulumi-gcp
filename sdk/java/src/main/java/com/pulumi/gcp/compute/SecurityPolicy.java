@@ -20,12 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
- * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
- * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
- * 
- * Security Policy is used by google_compute_backend_service.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -194,6 +188,22 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * Security policies can be imported using any of the following formats
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+ * ```
+ * 
  */
 @ResourceType(type="gcp:compute/securityPolicy:SecurityPolicy")
 public class SecurityPolicy extends com.pulumi.resources.CustomResource {
@@ -318,14 +328,14 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * The URI of the created resourc
+     * The URI of the created resource.
      * 
      */
     @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
-     * @return The URI of the created resourc
+     * @return The URI of the created resource.
      * 
      */
     public Output<String> selfLink() {

@@ -12,11 +12,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionBackendServiceCircuitBreakers {
-    /**
-     * @return The timeout for new network connections to hosts.
-     * Structure is documented below.
-     * 
-     */
     private @Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout;
     /**
      * @return The maximum number of connections to the backend cluster.
@@ -52,11 +47,6 @@ public final class RegionBackendServiceCircuitBreakers {
     private @Nullable Integer maxRetries;
 
     private RegionBackendServiceCircuitBreakers() {}
-    /**
-     * @return The timeout for new network connections to hosts.
-     * Structure is documented below.
-     * 
-     */
     public Optional<RegionBackendServiceCircuitBreakersConnectTimeout> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }

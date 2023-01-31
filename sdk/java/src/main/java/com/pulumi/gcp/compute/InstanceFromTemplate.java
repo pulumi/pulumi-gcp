@@ -518,14 +518,16 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.scheduling;
     }
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     @Export(name="scratchDisks", type=List.class, parameters={InstanceFromTemplateScratchDisk.class})
     private Output<List<InstanceFromTemplateScratchDisk>> scratchDisks;
 
     /**
-     * @return The scratch disks attached to the instance.
+     * @return * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     public Output<List<InstanceFromTemplateScratchDisk>> scratchDisks() {

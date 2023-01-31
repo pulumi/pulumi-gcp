@@ -40,10 +40,16 @@ public final class JobTemplateTemplateContainer {
      */
     private String image;
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return (Optional, Deprecated)
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
     private @Nullable JobTemplateTemplateContainerLivenessProbe livenessProbe;
     /**
      * @return Name of the container specified as a DNS_LABEL.
@@ -64,10 +70,16 @@ public final class JobTemplateTemplateContainer {
      */
     private @Nullable JobTemplateTemplateContainerResources resources;
     /**
-     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return (Optional, Deprecated)
+     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
     private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
@@ -112,10 +124,16 @@ public final class JobTemplateTemplateContainer {
         return this.image;
     }
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return (Optional, Deprecated)
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
     public Optional<JobTemplateTemplateContainerLivenessProbe> livenessProbe() {
         return Optional.ofNullable(this.livenessProbe);
     }
@@ -144,10 +162,16 @@ public final class JobTemplateTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
-     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return (Optional, Deprecated)
+     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
     public Optional<JobTemplateTemplateContainerStartupProbe> startupProbe() {
         return Optional.ofNullable(this.startupProbe);
     }

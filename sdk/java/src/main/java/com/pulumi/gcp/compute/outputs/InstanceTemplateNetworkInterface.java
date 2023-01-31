@@ -16,15 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceTemplateNetworkInterface {
-    /**
-     * @return Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
-     * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     private @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -41,11 +32,6 @@ public final class InstanceTemplateNetworkInterface {
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
     private @Nullable String ipv6AccessType;
-    /**
-     * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     private @Nullable String name;
     /**
      * @return The name or self_link of the network to attach this interface to.
@@ -90,15 +76,6 @@ public final class InstanceTemplateNetworkInterface {
     private @Nullable String subnetworkProject;
 
     private InstanceTemplateNetworkInterface() {}
-    /**
-     * @return Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
-     * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     public List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs == null ? List.of() : this.accessConfigs;
     }
@@ -123,11 +100,6 @@ public final class InstanceTemplateNetworkInterface {
     public Optional<String> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
     }
-    /**
-     * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

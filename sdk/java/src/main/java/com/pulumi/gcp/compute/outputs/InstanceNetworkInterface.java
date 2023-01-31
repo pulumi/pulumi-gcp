@@ -16,15 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceNetworkInterface {
-    /**
-     * @return Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet. If omitted, ssh will not
-     * work unless this provider can send traffic to the instance&#39;s network (e.g. via
-     * tunnel or because it is running on another cloud instance on that network).
-     * This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     private @Nullable List<InstanceNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -101,15 +92,6 @@ public final class InstanceNetworkInterface {
     private @Nullable String subnetworkProject;
 
     private InstanceNetworkInterface() {}
-    /**
-     * @return Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet. If omitted, ssh will not
-     * work unless this provider can send traffic to the instance&#39;s network (e.g. via
-     * tunnel or because it is running on another cloud instance on that network).
-     * This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     public List<InstanceNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs == null ? List.of() : this.accessConfigs;
     }

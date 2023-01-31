@@ -12,16 +12,11 @@ import com.pulumi.gcp.sql.SourceRepresentationInstanceArgs;
 import com.pulumi.gcp.sql.inputs.SourceRepresentationInstanceState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A source representation instance is a Cloud SQL instance that represents
- * the source database server to the Cloud SQL replica. It is visible in the
- * Cloud Console and appears the same as a regular Cloud SQL instance, but it
- * contains no data, requires no configuration or maintenance, and does not
- * affect billing. You cannot update the source representation instance.
- * 
  * ## Example Usage
  * ### Sql Source Representation Instance Basic
  * ```java
@@ -47,9 +42,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
  *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
  *             .host(&#34;10.20.30.40&#34;)
+ *             .password(&#34;password-for-the-user&#34;)
  *             .port(3306)
  *             .region(&#34;us-central1&#34;)
+ *             .username(&#34;some-user&#34;)
  *             .build());
  * 
  *     }
@@ -177,6 +175,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
     }
     /**
      * The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="password", type=String.class, parameters={})
@@ -184,6 +183,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
 
     /**
      * @return The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<Optional<String>> password() {
@@ -284,6 +284,9 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

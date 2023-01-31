@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceCircuitBreakers;
 import com.pulumi.gcp.compute.outputs.BackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.BackendServiceIap;
+import com.pulumi.gcp.compute.outputs.BackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
@@ -26,22 +27,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Backend Service defines a group of virtual machines that will serve
- * traffic for load balancing. This resource is a global backend service,
- * appropriate for external load balancing or self-managed internal load balancing.
- * For managed internal load balancing, use a regional backend service instead.
- * 
- * Currently self-managed internal load balancing is only available in beta.
- * 
- * To get more information about BackendService, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
- * 
- * &gt; **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
- * state as plain-text.
- * 
  * ## Example Usage
  * ### Backend Service Basic
  * 
@@ -804,6 +789,32 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> loadBalancingScheme() {
         return Codegen.optional(this.loadBalancingScheme);
+    }
+    /**
+     * A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="localityLbPolicies", type=List.class, parameters={BackendServiceLocalityLbPolicy.class})
+    private Output</* @Nullable */ List<BackendServiceLocalityLbPolicy>> localityLbPolicies;
+
+    /**
+     * @return A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<BackendServiceLocalityLbPolicy>>> localityLbPolicies() {
+        return Codegen.optional(this.localityLbPolicies);
     }
     /**
      * The load balancing algorithm used within the scope of the locality.

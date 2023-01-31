@@ -16,6 +16,23 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     public static final TriggerGitFileSourceArgs Empty = new TriggerGitFileSourceArgs();
 
     /**
+     * The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    @Import(name="githubEnterpriseConfig")
+    private @Nullable Output<String> githubEnterpriseConfig;
+
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    public Optional<Output<String>> githubEnterpriseConfig() {
+        return Optional.ofNullable(this.githubEnterpriseConfig);
+    }
+
+    /**
      * The path of the file, with the repo root as the root of the path.
      * 
      */
@@ -88,6 +105,7 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     private TriggerGitFileSourceArgs() {}
 
     private TriggerGitFileSourceArgs(TriggerGitFileSourceArgs $) {
+        this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.path = $.path;
         this.repoType = $.repoType;
         this.revision = $.revision;
@@ -110,6 +128,29 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
         public Builder(TriggerGitFileSourceArgs defaults) {
             $ = new TriggerGitFileSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param githubEnterpriseConfig The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(@Nullable Output<String> githubEnterpriseConfig) {
+            $.githubEnterpriseConfig = githubEnterpriseConfig;
+            return this;
+        }
+
+        /**
+         * @param githubEnterpriseConfig The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
+            return githubEnterpriseConfig(Output.of(githubEnterpriseConfig));
         }
 
         /**

@@ -218,87 +218,15 @@ public final class ServiceAccountFunctions {
     public static CompletableFuture<GetAccountAccessTokenResult> getAccountAccessTokenPlain(GetAccountAccessTokenPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", TypeShape.of(GetAccountAccessTokenResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
-     * 
-     * For more information see
-     * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
-     * 
-     * ## Example Usage
-     * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
-     * 
-     * ### Service Account Impersonation.
-     *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
-     * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args) {
         return getAccountIdToken(args, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
-     * 
-     * For more information see
-     * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
-     * 
-     * ## Example Usage
-     * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
-     * 
-     * ### Service Account Impersonation.
-     *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
-     * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     */
     public static CompletableFuture<GetAccountIdTokenResult> getAccountIdTokenPlain(GetAccountIdTokenPlainArgs args) {
         return getAccountIdTokenPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
-     * 
-     * For more information see
-     * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
-     * 
-     * ## Example Usage
-     * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
-     * 
-     * ### Service Account Impersonation.
-     *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
-     * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
-     * 
-     * For more information see
-     * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
-     * 
-     * ## Example Usage
-     * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
-     * 
-     * ### Service Account Impersonation.
-     *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
-     * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
-     * 
-     */
     public static CompletableFuture<GetAccountIdTokenResult> getAccountIdTokenPlain(GetAccountIdTokenPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
     }

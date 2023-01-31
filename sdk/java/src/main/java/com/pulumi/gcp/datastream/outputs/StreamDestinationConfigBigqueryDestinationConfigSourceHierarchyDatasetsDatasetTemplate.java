@@ -18,6 +18,14 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      */
     private @Nullable String datasetIdPrefix;
     /**
+     * @return Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+     * table. The BigQuery Service Account associated with your project requires access to this
+     * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+     * 
+     */
+    private @Nullable String kmsKeyName;
+    /**
      * @return The geographic location where the dataset should reside.
      * See https://cloud.google.com/bigquery/docs/locations for supported locations.
      * 
@@ -32,6 +40,16 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      */
     public Optional<String> datasetIdPrefix() {
         return Optional.ofNullable(this.datasetIdPrefix);
+    }
+    /**
+     * @return Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+     * table. The BigQuery Service Account associated with your project requires access to this
+     * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+     * 
+     */
+    public Optional<String> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
     }
     /**
      * @return The geographic location where the dataset should reside.
@@ -52,17 +70,24 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String datasetIdPrefix;
+        private @Nullable String kmsKeyName;
         private String location;
         public Builder() {}
         public Builder(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetIdPrefix = defaults.datasetIdPrefix;
+    	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.location = defaults.location;
         }
 
         @CustomType.Setter
         public Builder datasetIdPrefix(@Nullable String datasetIdPrefix) {
             this.datasetIdPrefix = datasetIdPrefix;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyName(@Nullable String kmsKeyName) {
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
@@ -73,6 +98,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate build() {
             final var o = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate();
             o.datasetIdPrefix = datasetIdPrefix;
+            o.kmsKeyName = kmsKeyName;
             o.location = location;
             return o;
         }

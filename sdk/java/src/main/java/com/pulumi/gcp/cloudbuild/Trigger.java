@@ -15,6 +15,7 @@ import com.pulumi.gcp.cloudbuild.outputs.TriggerBuild;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGithub;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerPubsubConfig;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerRepositoryEventConfig;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerSourceToBuild;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerTriggerTemplate;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerWebhookConfig;
@@ -469,6 +470,115 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudbuild Trigger Manual Github Enterprise
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var manual_ghe_trigger = new Trigger(&#34;manual-ghe-trigger&#34;, TriggerArgs.builder()        
+ *             .gitFileSource(TriggerGitFileSourceArgs.builder()
+ *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
+ *                 .path(&#34;cloudbuild.yaml&#34;)
+ *                 .repoType(&#34;GITHUB&#34;)
+ *                 .revision(&#34;refs/heads/main&#34;)
+ *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
+ *                 .build())
+ *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
+ *                 .githubEnterpriseConfig(&#34;projects/myProject/locations/global/githubEnterpriseConfigs/configID&#34;)
+ *                 .ref(&#34;refs/heads/main&#34;)
+ *                 .repoType(&#34;GITHUB&#34;)
+ *                 .uri(&#34;https://hashicorp/terraform-provider-google-beta&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudbuild Trigger Repo
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuildv2.Connection;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
+ * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.cloudbuildv2.Repository;
+ * import com.pulumi.gcp.cloudbuildv2.RepositoryArgs;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerRepositoryEventConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerRepositoryEventConfigPushArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .appInstallationId(123123)
+ *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
+ *                     .oauthTokenSecretVersion(&#34;projects/my-project/secrets/github-pat-secret/versions/latest&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
+ *             .parentConnection(my_connection.id())
+ *             .remoteUri(&#34;https://github.com/myuser/my-repo.git&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var repo_trigger = new Trigger(&#34;repo-trigger&#34;, TriggerArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryEventConfig(TriggerRepositoryEventConfigArgs.builder()
+ *                 .repository(my_repository.id())
+ *                 .push(TriggerRepositoryEventConfigPushArgs.builder()
+ *                     .branch(&#34;feature-.*&#34;)
+ *                     .build())
+ *                 .build())
+ *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -778,6 +888,20 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TriggerPubsubConfig>> pubsubConfig() {
         return Codegen.optional(this.pubsubConfig);
+    }
+    /**
+     * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * 
+     */
+    @Export(name="repositoryEventConfig", type=TriggerRepositoryEventConfig.class, parameters={})
+    private Output</* @Nullable */ TriggerRepositoryEventConfig> repositoryEventConfig;
+
+    /**
+     * @return The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * 
+     */
+    public Output<Optional<TriggerRepositoryEventConfig>> repositoryEventConfig() {
+        return Codegen.optional(this.repositoryEventConfig);
     }
     /**
      * The service account used for all user-controlled operations including

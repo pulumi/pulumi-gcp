@@ -335,6 +335,23 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     * 
+     */
+    @Import(name="tcpTimeWaitTimeoutSec")
+    private @Nullable Output<Integer> tcpTimeWaitTimeoutSec;
+
+    /**
+     * @return Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     * 
+     */
+    public Optional<Output<Integer>> tcpTimeWaitTimeoutSec() {
+        return Optional.ofNullable(this.tcpTimeWaitTimeoutSec);
+    }
+
+    /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      * 
@@ -386,6 +403,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.sourceSubnetworkIpRangesToNat = $.sourceSubnetworkIpRangesToNat;
         this.subnetworks = $.subnetworks;
         this.tcpEstablishedIdleTimeoutSec = $.tcpEstablishedIdleTimeoutSec;
+        this.tcpTimeWaitTimeoutSec = $.tcpTimeWaitTimeoutSec;
         this.tcpTransitoryIdleTimeoutSec = $.tcpTransitoryIdleTimeoutSec;
         this.udpIdleTimeoutSec = $.udpIdleTimeoutSec;
     }
@@ -866,6 +884,29 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tcpEstablishedIdleTimeoutSec(Integer tcpEstablishedIdleTimeoutSec) {
             return tcpEstablishedIdleTimeoutSec(Output.of(tcpEstablishedIdleTimeoutSec));
+        }
+
+        /**
+         * @param tcpTimeWaitTimeoutSec Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+         * Defaults to 120s if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpTimeWaitTimeoutSec(@Nullable Output<Integer> tcpTimeWaitTimeoutSec) {
+            $.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
+            return this;
+        }
+
+        /**
+         * @param tcpTimeWaitTimeoutSec Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+         * Defaults to 120s if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpTimeWaitTimeoutSec(Integer tcpTimeWaitTimeoutSec) {
+            return tcpTimeWaitTimeoutSec(Output.of(tcpTimeWaitTimeoutSec));
         }
 
         /**

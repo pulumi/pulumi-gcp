@@ -68,7 +68,7 @@ public final class GetFunctionResult {
      */
     private Map<String,Object> labels;
     /**
-     * @return The limit on the maximum number of function instances that may coexist at a given time.
+     * @return The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
      * 
      */
     private Integer maxInstances;
@@ -207,7 +207,7 @@ public final class GetFunctionResult {
         return this.labels;
     }
     /**
-     * @return The limit on the maximum number of function instances that may coexist at a given time.
+     * @return The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
      * 
      */
     public Integer maxInstances() {

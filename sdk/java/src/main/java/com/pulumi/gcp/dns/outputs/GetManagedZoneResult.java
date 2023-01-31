@@ -18,10 +18,6 @@ public final class GetManagedZoneResult {
      * 
      */
     private String description;
-    /**
-     * @return The fully qualified DNS name of this zone, e.g. `example.io.`.
-     * 
-     */
     private String dnsName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -53,10 +49,6 @@ public final class GetManagedZoneResult {
     public String description() {
         return this.description;
     }
-    /**
-     * @return The fully qualified DNS name of this zone, e.g. `example.io.`.
-     * 
-     */
     public String dnsName() {
         return this.dnsName;
     }

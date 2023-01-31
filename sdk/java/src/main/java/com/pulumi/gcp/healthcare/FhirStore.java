@@ -85,6 +85,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.healthcare.Dataset;
  * import com.pulumi.gcp.healthcare.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
@@ -95,6 +99,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationArgs;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs;
  * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -108,6 +113,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var bigqueryEditor = new IAMMember(&#34;bigqueryEditor&#34;, IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .role(&#34;roles/bigquery.dataEditor&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-healthcare.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var bigqueryJobUser = new IAMMember(&#34;bigqueryJobUser&#34;, IAMMemberArgs.builder()        
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .role(&#34;roles/bigquery.jobUser&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-healthcare.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
  *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .build());
@@ -134,14 +153,18 @@ import javax.annotation.Nullable;
  *                     .datasetUri(Output.tuple(bqDataset.project(), bqDataset.datasetId()).applyValue(values -&gt; {
  *                         var project = values.t1;
  *                         var datasetId = values.t2;
- *                         return String.format(&#34;bq://%s.%s&#34;, project,datasetId);
+ *                         return String.format(&#34;bq://%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId);
  *                     }))
  *                     .schemaConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs.builder()
  *                         .recursiveStructureDepth(3)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     bigqueryEditor,
+ *                     bigqueryJobUser)
+ *                 .build());
  * 
  *         var topic = new Topic(&#34;topic&#34;);
  * 

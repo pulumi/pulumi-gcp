@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuild;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGithub;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerPubsubConfig;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerRepositoryEventConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerSourceToBuild;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerTriggerTemplate;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerWebhookConfig;
@@ -43,6 +44,7 @@ public final class GetTriggerResult {
     private String name;
     private @Nullable String project;
     private List<GetTriggerPubsubConfig> pubsubConfigs;
+    private List<GetTriggerRepositoryEventConfig> repositoryEventConfigs;
     private String serviceAccount;
     private List<GetTriggerSourceToBuild> sourceToBuilds;
     private Map<String,String> substitutions;
@@ -107,6 +109,9 @@ public final class GetTriggerResult {
     public List<GetTriggerPubsubConfig> pubsubConfigs() {
         return this.pubsubConfigs;
     }
+    public List<GetTriggerRepositoryEventConfig> repositoryEventConfigs() {
+        return this.repositoryEventConfigs;
+    }
     public String serviceAccount() {
         return this.serviceAccount;
     }
@@ -155,6 +160,7 @@ public final class GetTriggerResult {
         private String name;
         private @Nullable String project;
         private List<GetTriggerPubsubConfig> pubsubConfigs;
+        private List<GetTriggerRepositoryEventConfig> repositoryEventConfigs;
         private String serviceAccount;
         private List<GetTriggerSourceToBuild> sourceToBuilds;
         private Map<String,String> substitutions;
@@ -182,6 +188,7 @@ public final class GetTriggerResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.pubsubConfigs = defaults.pubsubConfigs;
+    	      this.repositoryEventConfigs = defaults.repositoryEventConfigs;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.sourceToBuilds = defaults.sourceToBuilds;
     	      this.substitutions = defaults.substitutions;
@@ -298,6 +305,14 @@ public final class GetTriggerResult {
             return pubsubConfigs(List.of(pubsubConfigs));
         }
         @CustomType.Setter
+        public Builder repositoryEventConfigs(List<GetTriggerRepositoryEventConfig> repositoryEventConfigs) {
+            this.repositoryEventConfigs = Objects.requireNonNull(repositoryEventConfigs);
+            return this;
+        }
+        public Builder repositoryEventConfigs(GetTriggerRepositoryEventConfig... repositoryEventConfigs) {
+            return repositoryEventConfigs(List.of(repositoryEventConfigs));
+        }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
@@ -363,6 +378,7 @@ public final class GetTriggerResult {
             o.name = name;
             o.project = project;
             o.pubsubConfigs = pubsubConfigs;
+            o.repositoryEventConfigs = repositoryEventConfigs;
             o.serviceAccount = serviceAccount;
             o.sourceToBuilds = sourceToBuilds;
             o.substitutions = substitutions;

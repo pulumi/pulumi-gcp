@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceArgs {
@@ -62,6 +64,21 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * 
+     */
+    @Import(name="serviceAccountId")
+    private @Nullable Output<String> serviceAccountId;
+
+    /**
+     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * 
+     */
+    public Optional<Output<String>> serviceAccountId() {
+        return Optional.ofNullable(this.serviceAccountId);
+    }
+
+    /**
      * Type of the Cloud SQL database.
      * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
      * 
@@ -84,6 +101,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         this.credential = $.credential;
         this.database = $.database;
         this.instanceId = $.instanceId;
+        this.serviceAccountId = $.serviceAccountId;
         this.type = $.type;
     }
 
@@ -168,6 +186,27 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param serviceAccountId When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountId(@Nullable Output<String> serviceAccountId) {
+            $.serviceAccountId = serviceAccountId;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountId When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountId(String serviceAccountId) {
+            return serviceAccountId(Output.of(serviceAccountId));
         }
 
         /**

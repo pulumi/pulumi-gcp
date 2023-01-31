@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *             .providerId(&#34;example-prvdr&#34;)
  *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
- *                 .issuerUri(&#34;https://accounts.google.com&#34;)
+ *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
  *                 .build())
  *             .build());
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  *             .providerId(&#34;example-prvdr&#34;)
  *             .attributeMapping(Map.of(&#34;google.subject&#34;, &#34;assertion.sub&#34;))
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
- *                 .issuerUri(&#34;https://accounts.google.com&#34;)
+ *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
  *                 .build())
  *             .displayName(&#34;Display name&#34;)

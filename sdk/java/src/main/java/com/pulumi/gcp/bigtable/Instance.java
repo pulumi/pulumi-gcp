@@ -19,22 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## +---
- * 
- * subcategory: &#34;Cloud Bigtable&#34;
- * page_title: &#34;Google: gcp.bigtable.Instance&#34;
- * description: |-
- *   Creates a Google Bigtable instance.
- * ---
- * 
- * # gcp.bigtable.Instance
- * 
- * Creates a Google Bigtable instance. For more information see:
- * 
- * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
- * 
  * ## Example Usage
  * ### Simple Instance
  * ```java
@@ -158,16 +142,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.clusters;
     }
     /**
-     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * terraform destroy or terraform apply that would delete the instance will fail.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * terraform destroy or terraform apply that would delete the instance will fail.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {

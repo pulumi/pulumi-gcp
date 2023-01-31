@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCircuitBreakersArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceConsistentHashArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceLocalityLbPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
@@ -314,6 +315,33 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="localityLbPolicies")
+    private @Nullable Output<List<BackendServiceLocalityLbPolicyArgs>> localityLbPolicies;
+
+    /**
+     * @return A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendServiceLocalityLbPolicyArgs>>> localityLbPolicies() {
+        return Optional.ofNullable(this.localityLbPolicies);
+    }
+
+    /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
      * 
@@ -546,6 +574,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
         this.loadBalancingScheme = $.loadBalancingScheme;
+        this.localityLbPolicies = $.localityLbPolicies;
         this.localityLbPolicy = $.localityLbPolicy;
         this.logConfig = $.logConfig;
         this.name = $.name;
@@ -985,6 +1014,55 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder loadBalancingScheme(String loadBalancingScheme) {
             return loadBalancingScheme(Output.of(loadBalancingScheme));
+        }
+
+        /**
+         * @param localityLbPolicies A list of locality load balancing policies to be used in order of
+         * preference. Either the policy or the customPolicy field should be set.
+         * Overrides any value set in the localityLbPolicy field.
+         * localityLbPolicies is only supported when the BackendService is referenced
+         * by a URL Map that is referenced by a target gRPC proxy that has the
+         * validateForProxyless field set to true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localityLbPolicies(@Nullable Output<List<BackendServiceLocalityLbPolicyArgs>> localityLbPolicies) {
+            $.localityLbPolicies = localityLbPolicies;
+            return this;
+        }
+
+        /**
+         * @param localityLbPolicies A list of locality load balancing policies to be used in order of
+         * preference. Either the policy or the customPolicy field should be set.
+         * Overrides any value set in the localityLbPolicy field.
+         * localityLbPolicies is only supported when the BackendService is referenced
+         * by a URL Map that is referenced by a target gRPC proxy that has the
+         * validateForProxyless field set to true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localityLbPolicies(List<BackendServiceLocalityLbPolicyArgs> localityLbPolicies) {
+            return localityLbPolicies(Output.of(localityLbPolicies));
+        }
+
+        /**
+         * @param localityLbPolicies A list of locality load balancing policies to be used in order of
+         * preference. Either the policy or the customPolicy field should be set.
+         * Overrides any value set in the localityLbPolicy field.
+         * localityLbPolicies is only supported when the BackendService is referenced
+         * by a URL Map that is referenced by a target gRPC proxy that has the
+         * validateForProxyless field set to true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localityLbPolicies(BackendServiceLocalityLbPolicyArgs... localityLbPolicies) {
+            return localityLbPolicies(List.of(localityLbPolicies));
         }
 
         /**

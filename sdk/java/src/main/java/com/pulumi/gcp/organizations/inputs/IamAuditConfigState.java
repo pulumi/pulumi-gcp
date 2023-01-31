@@ -33,14 +33,14 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization&#39;s IAM policy.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return The etag of iam policy
+     * @return (Computed) The etag of the organization&#39;s IAM policy.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -48,14 +48,18 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return The numeric ID of the organization in which you want to manage the audit logging config.
+     * @return The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -136,7 +140,7 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param etag The etag of iam policy
+         * @param etag (Computed) The etag of the organization&#39;s IAM policy.
          * 
          * @return builder
          * 
@@ -147,7 +151,7 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param etag The etag of iam policy
+         * @param etag (Computed) The etag of the organization&#39;s IAM policy.
          * 
          * @return builder
          * 
@@ -157,7 +161,9 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId The numeric ID of the organization in which you want to manage the audit logging config.
+         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+         * will not be inferred from the provider.
          * 
          * @return builder
          * 
@@ -168,7 +174,9 @@ public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId The numeric ID of the organization in which you want to manage the audit logging config.
+         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+         * will not be inferred from the provider.
          * 
          * @return builder
          * 

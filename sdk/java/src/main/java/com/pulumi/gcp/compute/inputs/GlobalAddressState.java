@@ -122,14 +122,14 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Labels to apply to this address.  A list of key-&gt;value pairs.
+     * Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this address.  A list of key-&gt;value pairs.
+     * @return Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -223,18 +223,16 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      * 
      */
     @Import(name="purpose")
     private @Nullable Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * @return The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -433,7 +431,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
          * 
          * @return builder
          * 
@@ -444,7 +442,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
          * 
          * @return builder
          * 
@@ -564,9 +562,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param purpose The purpose of the resource. Possible values include:
-         * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+         * @param purpose The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+         * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
          * 
          * @return builder
          * 
@@ -577,9 +574,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param purpose The purpose of the resource. Possible values include:
-         * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+         * @param purpose The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+         * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
          * 
          * @return builder
          * 

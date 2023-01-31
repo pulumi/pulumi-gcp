@@ -5,6 +5,8 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigReservationAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -76,6 +78,36 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Node Group Affinity for sole-tenant clusters.
+     * 
+     */
+    @Import(name="nodeGroupAffinity")
+    private @Nullable Output<ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs> nodeGroupAffinity;
+
+    /**
+     * @return Node Group Affinity for sole-tenant clusters.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs>> nodeGroupAffinity() {
+        return Optional.ofNullable(this.nodeGroupAffinity);
+    }
+
+    /**
+     * Reservation Affinity for consuming zonal reservation.
+     * 
+     */
+    @Import(name="reservationAffinity")
+    private @Nullable Output<ClusterClusterConfigGceClusterConfigReservationAffinityArgs> reservationAffinity;
+
+    /**
+     * @return Reservation Affinity for consuming zonal reservation.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigGceClusterConfigReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
     }
 
     /**
@@ -200,6 +232,8 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         this.internalIpOnly = $.internalIpOnly;
         this.metadata = $.metadata;
         this.network = $.network;
+        this.nodeGroupAffinity = $.nodeGroupAffinity;
+        this.reservationAffinity = $.reservationAffinity;
         this.serviceAccount = $.serviceAccount;
         this.serviceAccountScopes = $.serviceAccountScopes;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -301,6 +335,48 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param nodeGroupAffinity Node Group Affinity for sole-tenant clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupAffinity(@Nullable Output<ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs> nodeGroupAffinity) {
+            $.nodeGroupAffinity = nodeGroupAffinity;
+            return this;
+        }
+
+        /**
+         * @param nodeGroupAffinity Node Group Affinity for sole-tenant clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupAffinity(ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs nodeGroupAffinity) {
+            return nodeGroupAffinity(Output.of(nodeGroupAffinity));
+        }
+
+        /**
+         * @param reservationAffinity Reservation Affinity for consuming zonal reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(@Nullable Output<ClusterClusterConfigGceClusterConfigReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        /**
+         * @param reservationAffinity Reservation Affinity for consuming zonal reservation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(ClusterClusterConfigGceClusterConfigReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
         }
 
         /**

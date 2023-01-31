@@ -378,14 +378,14 @@ public class Function extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxInstances", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> maxInstances;
+    private Output<Integer> maxInstances;
 
     /**
      * @return The limit on the maximum number of function instances that may coexist at a given time.
      * 
      */
-    public Output<Optional<Integer>> maxInstances() {
-        return Codegen.optional(this.maxInstances);
+    public Output<Integer> maxInstances() {
+        return this.maxInstances;
     }
     /**
      * The limit on the minimum number of function instances that may coexist at a given time.

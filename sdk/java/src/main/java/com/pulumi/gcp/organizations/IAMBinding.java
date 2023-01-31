@@ -17,69 +17,62 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows creation and management of a single binding within IAM policy for
- * an existing Google Cloud Platform Organization.
- * 
- * &gt; **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
- *    what your policy should be.
- * 
- * &gt; **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the `output to ensure
- *     your existing members are preserved.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.IAMBinding;
- * import com.pulumi.gcp.organizations.IAMBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var binding = new IAMBinding(&#34;binding&#34;, IAMBindingArgs.builder()        
- *             .members(&#34;user:alice@gmail.com&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .role(&#34;roles/browser&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+ * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
  * 
- * These bindings can be imported using the `org_id` and role, e.g.
+ * This member resource can be imported using the `org_id`, role, and member e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org &#34;your-org-id roles/viewer&#34;
+ *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_organization &#34;your-orgid roles/viewer user:foo@example.com&#34;
+ * ```
+ * 
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+ * 
+ * This binding resource can be imported using the `org_id` and role, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_organization &#34;your-org-id roles/viewer&#34;
+ * ```
+ * 
+ *  IAM policy imports use the identifier of the resource in question.
+ * 
+ * This policy resource can be imported using the `org_id`.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_organization your-org-id
+ * ```
+ * 
+ *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_organization &#34;your-organization-id foo.googleapis.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you&#39;re importing a IAM binding with a condition block, make sure
+ * 
+ * ```sh
+ *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding to include the title of condition, e.g. `google_organization_iam_binding.my_organization &#34;your-org-id roles/{{role_id}} condition-title&#34;`
+ * ```
  * 
  */
 @ResourceType(type="gcp:organizations/iAMBinding:IAMBinding")
 public class IAMBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     @Export(name="condition", type=IAMBindingCondition.class, parameters={})
     private Output</* @Nullable */ IAMBindingCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     * 
+     */
     public Output<Optional<IAMBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
@@ -97,29 +90,25 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-     * 
-     */
     @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
-    /**
-     * @return A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-     * 
-     */
     public Output<List<String>> members() {
         return this.members;
     }
     /**
-     * The numeric ID of the organization in which you want to create a custom role.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return The numeric ID of the organization in which you want to create a custom role.
+     * @return The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      * 
      */
     public Output<String> orgId() {
@@ -128,7 +117,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * The role that should be applied. Only one
      * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
@@ -137,7 +126,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return The role that should be applied. Only one
      * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
     public Output<String> role() {

@@ -6,9 +6,17 @@ package com.pulumi.gcp.cloudbuild.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TriggerSourceToBuild {
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    private @Nullable String githubEnterpriseConfig;
     /**
      * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
      * 
@@ -28,6 +36,14 @@ public final class TriggerSourceToBuild {
     private String uri;
 
     private TriggerSourceToBuild() {}
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    public Optional<String> githubEnterpriseConfig() {
+        return Optional.ofNullable(this.githubEnterpriseConfig);
+    }
     /**
      * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
      * 
@@ -61,17 +77,24 @@ public final class TriggerSourceToBuild {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String githubEnterpriseConfig;
         private String ref;
         private String repoType;
         private String uri;
         public Builder() {}
         public Builder(TriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder githubEnterpriseConfig(@Nullable String githubEnterpriseConfig) {
+            this.githubEnterpriseConfig = githubEnterpriseConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder ref(String ref) {
             this.ref = Objects.requireNonNull(ref);
@@ -89,6 +112,7 @@ public final class TriggerSourceToBuild {
         }
         public TriggerSourceToBuild build() {
             final var o = new TriggerSourceToBuild();
+            o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;
             o.uri = uri;

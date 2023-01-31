@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.NodeGroupAutoscalingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.NodeGroupMaintenanceWindowArgs;
+import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -147,6 +148,23 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Share settings for the node group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="shareSettings")
+    private @Nullable Output<NodeGroupShareSettingsArgs> shareSettings;
+
+    /**
+     * @return Share settings for the node group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NodeGroupShareSettingsArgs>> shareSettings() {
+        return Optional.ofNullable(this.shareSettings);
+    }
+
+    /**
      * The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
      * 
      */
@@ -187,6 +205,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nodeTemplate = $.nodeTemplate;
         this.project = $.project;
+        this.shareSettings = $.shareSettings;
         this.size = $.size;
         this.zone = $.zone;
     }
@@ -383,6 +402,29 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param shareSettings Share settings for the node group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareSettings(@Nullable Output<NodeGroupShareSettingsArgs> shareSettings) {
+            $.shareSettings = shareSettings;
+            return this;
+        }
+
+        /**
+         * @param shareSettings Share settings for the node group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareSettings(NodeGroupShareSettingsArgs shareSettings) {
+            return shareSettings(Output.of(shareSettings));
         }
 
         /**

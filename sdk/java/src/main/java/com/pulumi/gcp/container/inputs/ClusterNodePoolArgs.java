@@ -115,42 +115,16 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.namePrefix);
     }
 
-    /**
-     * Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-     * 
-     */
     @Import(name="networkConfig")
     private @Nullable Output<ClusterNodePoolNetworkConfigArgs> networkConfig;
 
-    /**
-     * @return Configuration for
-     * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-     * 
-     */
     public Optional<Output<ClusterNodePoolNetworkConfigArgs>> networkConfig() {
         return Optional.ofNullable(this.networkConfig);
     }
 
-    /**
-     * Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="nodeConfig")
     private @Nullable Output<ClusterNodePoolNodeConfigArgs> nodeConfig;
 
-    /**
-     * @return Parameters used in creating the default node pool.
-     * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
-     * manages the default node pool, which isn&#39;t recommended to be used.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<ClusterNodePoolNodeConfigArgs>> nodeConfig() {
         return Optional.ofNullable(this.nodeConfig);
     }
@@ -378,54 +352,20 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return namePrefix(Output.of(namePrefix));
         }
 
-        /**
-         * @param networkConfig Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkConfig(@Nullable Output<ClusterNodePoolNetworkConfigArgs> networkConfig) {
             $.networkConfig = networkConfig;
             return this;
         }
 
-        /**
-         * @param networkConfig Configuration for
-         * [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkConfig(ClusterNodePoolNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
         }
 
-        /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeConfig(@Nullable Output<ClusterNodePoolNodeConfigArgs> nodeConfig) {
             $.nodeConfig = nodeConfig;
             return this;
         }
 
-        /**
-         * @param nodeConfig Parameters used in creating the default node pool.
-         * Generally, this field should not be used at the same time as a
-         * `gcp.container.NodePool` or a `node_pool` block; this configuration
-         * manages the default node pool, which isn&#39;t recommended to be used.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeConfig(ClusterNodePoolNodeConfigArgs nodeConfig) {
             return nodeConfig(Output.of(nodeConfig));
         }

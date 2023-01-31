@@ -125,6 +125,7 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
     /**
      * The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="password")
@@ -132,6 +133,7 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
     /**
      * @return The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> password() {
@@ -390,6 +392,7 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
         /**
          * @param password The password for the replication user account.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -401,6 +404,7 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
         /**
          * @param password The password for the replication user account.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

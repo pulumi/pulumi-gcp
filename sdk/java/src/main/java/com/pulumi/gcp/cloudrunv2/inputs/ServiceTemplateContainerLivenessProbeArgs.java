@@ -33,7 +33,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     }
 
     /**
-     * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+     * HTTPGet specifies the http request to perform.
      * Structure is documented below.
      * 
      */
@@ -41,7 +41,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     private @Nullable Output<ServiceTemplateContainerLivenessProbeHttpGetArgs> httpGet;
 
     /**
-     * @return HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return HTTPGet specifies the http request to perform.
      * Structure is documented below.
      * 
      */
@@ -80,18 +80,28 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     }
 
     /**
-     * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+     * (Optional, Deprecated)
+     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
     @Import(name="tcpSocket")
     private @Nullable Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs> tcpSocket;
 
     /**
-     * @return TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return (Optional, Deprecated)
+     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
     public Optional<Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs>> tcpSocket() {
         return Optional.ofNullable(this.tcpSocket);
     }
@@ -162,7 +172,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param httpGet HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * @param httpGet HTTPGet specifies the http request to perform.
          * Structure is documented below.
          * 
          * @return builder
@@ -174,7 +184,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param httpGet HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * @param httpGet HTTPGet specifies the http request to perform.
          * Structure is documented below.
          * 
          * @return builder
@@ -227,24 +237,34 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param tcpSocket TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * @param tcpSocket (Optional, Deprecated)
+         * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+         * 
          */
+        @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
         public Builder tcpSocket(@Nullable Output<ServiceTemplateContainerLivenessProbeTcpSocketArgs> tcpSocket) {
             $.tcpSocket = tcpSocket;
             return this;
         }
 
         /**
-         * @param tcpSocket TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * @param tcpSocket (Optional, Deprecated)
+         * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+         * 
          */
+        @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
         public Builder tcpSocket(ServiceTemplateContainerLivenessProbeTcpSocketArgs tcpSocket) {
             return tcpSocket(Output.of(tcpSocket));
         }

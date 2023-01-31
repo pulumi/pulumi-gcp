@@ -28,10 +28,6 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable String instanceTerminationAction;
-    /**
-     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * 
-     */
     private @Nullable InstanceTemplateSchedulingMaxRunDuration maxRunDuration;
     private @Nullable Integer minNodeCpus;
     /**
@@ -82,10 +78,6 @@ public final class InstanceTemplateScheduling {
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
-    /**
-     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * 
-     */
     public Optional<InstanceTemplateSchedulingMaxRunDuration> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }

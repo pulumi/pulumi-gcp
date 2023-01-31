@@ -22,6 +22,11 @@ public final class ConnectionCloudSpanner {
      * 
      */
     private @Nullable Boolean useParallelism;
+    /**
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * 
+     */
+    private @Nullable Boolean useServerlessAnalytics;
 
     private ConnectionCloudSpanner() {}
     /**
@@ -38,6 +43,13 @@ public final class ConnectionCloudSpanner {
     public Optional<Boolean> useParallelism() {
         return Optional.ofNullable(this.useParallelism);
     }
+    /**
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * 
+     */
+    public Optional<Boolean> useServerlessAnalytics() {
+        return Optional.ofNullable(this.useServerlessAnalytics);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class ConnectionCloudSpanner {
     public static final class Builder {
         private String database;
         private @Nullable Boolean useParallelism;
+        private @Nullable Boolean useServerlessAnalytics;
         public Builder() {}
         public Builder(ConnectionCloudSpanner defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.useParallelism = defaults.useParallelism;
+    	      this.useServerlessAnalytics = defaults.useServerlessAnalytics;
         }
 
         @CustomType.Setter
@@ -67,10 +81,16 @@ public final class ConnectionCloudSpanner {
             this.useParallelism = useParallelism;
             return this;
         }
+        @CustomType.Setter
+        public Builder useServerlessAnalytics(@Nullable Boolean useServerlessAnalytics) {
+            this.useServerlessAnalytics = useServerlessAnalytics;
+            return this;
+        }
         public ConnectionCloudSpanner build() {
             final var o = new ConnectionCloudSpanner();
             o.database = database;
             o.useParallelism = useParallelism;
+            o.useServerlessAnalytics = useServerlessAnalytics;
             return o;
         }
     }

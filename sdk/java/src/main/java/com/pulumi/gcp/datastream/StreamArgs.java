@@ -53,6 +53,23 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * 
+     */
+    @Import(name="customerManagedEncryptionKey")
+    private @Nullable Output<String> customerManagedEncryptionKey;
+
+    /**
+     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * 
+     */
+    public Optional<Output<String>> customerManagedEncryptionKey() {
+        return Optional.ofNullable(this.customerManagedEncryptionKey);
+    }
+
+    /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
      * 
      */
@@ -183,6 +200,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     private StreamArgs(StreamArgs $) {
         this.backfillAll = $.backfillAll;
         this.backfillNone = $.backfillNone;
+        this.customerManagedEncryptionKey = $.customerManagedEncryptionKey;
         this.desiredState = $.desiredState;
         this.destinationConfig = $.destinationConfig;
         this.displayName = $.displayName;
@@ -253,6 +271,29 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backfillNone(StreamBackfillNoneArgs backfillNone) {
             return backfillNone(Output.of(backfillNone));
+        }
+
+        /**
+         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+         * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedEncryptionKey(@Nullable Output<String> customerManagedEncryptionKey) {
+            $.customerManagedEncryptionKey = customerManagedEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param customerManagedEncryptionKey A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+         * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerManagedEncryptionKey(String customerManagedEncryptionKey) {
+            return customerManagedEncryptionKey(Output.of(customerManagedEncryptionKey));
         }
 
         /**

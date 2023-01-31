@@ -32,6 +32,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * * PREEMPTIBILITY_UNSPECIFIED
      * * NON_PREEMPTIBLE
      * * PREEMPTIBLE
+     * * SPOT
      * 
      */
     private @Nullable String preemptibility;
@@ -61,6 +62,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * * PREEMPTIBILITY_UNSPECIFIED
      * * NON_PREEMPTIBLE
      * * PREEMPTIBLE
+     * * SPOT
      * 
      */
     public Optional<String> preemptibility() {

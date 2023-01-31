@@ -60,19 +60,9 @@ public final class InstanceIamMemberState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.member);
     }
 
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -185,25 +175,11 @@ public final class InstanceIamMemberState extends com.pulumi.resources.ResourceA
             return member(Output.of(member));
         }
 
-        /**
-         * @param project The project in which the instance belongs. If it
-         * is not provided, a default will be supplied.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The project in which the instance belongs. If it
-         * is not provided, a default will be supplied.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
