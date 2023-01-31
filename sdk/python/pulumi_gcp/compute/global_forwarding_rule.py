@@ -30,12 +30,10 @@ class GlobalForwardingRuleArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GlobalForwardingRule resource.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
-               The forwarded traffic must be of a type appropriate to the target object.
-               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-               are valid.
-               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+               the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+               resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+               balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: The IP address that this forwarding rule serves. When a client sends
@@ -58,19 +56,14 @@ class GlobalForwardingRuleArgs:
                Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
-               The value of INTERNAL_SELF_MANAGED means that this will be used for
-               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-               will be used for External Global Load Balancing (HTTP(S) LB,
-               External TCP/UDP LB, SSL Proxy)
-               Note: This field must be set "" if the global address is
-               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-               that this will be used for Global external HTTP(S) load balancers.
-               Note: This field must be set "" if the global address is
-               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -93,11 +86,9 @@ class GlobalForwardingRuleArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] network: This field is not used for external load balancing.
-               For INTERNAL_SELF_MANAGED load balancing, this field
-               identifies the network that the load balanced IP should belong to
-               for this global forwarding rule. If this field is not specified,
-               the default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+               field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+               specified, the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.
@@ -145,12 +136,10 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
         """
-        The URL of the target resource to receive the matched traffic.
-        The forwarded traffic must be of a type appropriate to the target object.
-        For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        are valid.
-        For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         return pulumi.get(self, "target")
 
@@ -228,7 +217,7 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 
@@ -240,18 +229,13 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
-        This signifies what the GlobalForwardingRule will be used for.
-        The value of INTERNAL_SELF_MANAGED means that this will be used for
-        Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        will be used for External Global Load Balancing (HTTP(S) LB,
-        External TCP/UDP LB, SSL Proxy)
-        Note: This field must be set "" if the global address is
-        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        that this will be used for Global external HTTP(S) load balancers.
-        Note: This field must be set "" if the global address is
-        configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -307,11 +291,9 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        This field is not used for external load balancing.
-        For INTERNAL_SELF_MANAGED load balancing, this field
-        identifies the network that the load balanced IP should belong to
-        for this global forwarding rule. If this field is not specified,
-        the default network will be used.
+        This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        specified, the default network will be used.
         """
         return pulumi.get(self, "network")
 
@@ -404,19 +386,14 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
-               The value of INTERNAL_SELF_MANAGED means that this will be used for
-               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-               will be used for External Global Load Balancing (HTTP(S) LB,
-               External TCP/UDP LB, SSL Proxy)
-               Note: This field must be set "" if the global address is
-               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-               that this will be used for Global external HTTP(S) load balancers.
-               Note: This field must be set "" if the global address is
-               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -439,11 +416,9 @@ class _GlobalForwardingRuleState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] network: This field is not used for external load balancing.
-               For INTERNAL_SELF_MANAGED load balancing, this field
-               identifies the network that the load balanced IP should belong to
-               for this global forwarding rule. If this field is not specified,
-               the default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+               field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+               specified, the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.
@@ -466,12 +441,10 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
                CLOSED
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
-               The forwarded traffic must be of a type appropriate to the target object.
-               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-               are valid.
-               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+               the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+               resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+               balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -588,7 +561,7 @@ class _GlobalForwardingRuleState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 
@@ -600,18 +573,13 @@ class _GlobalForwardingRuleState:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
-        This signifies what the GlobalForwardingRule will be used for.
-        The value of INTERNAL_SELF_MANAGED means that this will be used for
-        Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        will be used for External Global Load Balancing (HTTP(S) LB,
-        External TCP/UDP LB, SSL Proxy)
-        Note: This field must be set "" if the global address is
-        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        that this will be used for Global external HTTP(S) load balancers.
-        Note: This field must be set "" if the global address is
-        configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -667,11 +635,9 @@ class _GlobalForwardingRuleState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        This field is not used for external load balancing.
-        For INTERNAL_SELF_MANAGED load balancing, this field
-        identifies the network that the load balanced IP should belong to
-        for this global forwarding rule. If this field is not specified,
-        the default network will be used.
+        This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        specified, the default network will be used.
         """
         return pulumi.get(self, "network")
 
@@ -760,12 +726,10 @@ class _GlobalForwardingRuleState:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the target resource to receive the matched traffic.
-        The forwarded traffic must be of a type appropriate to the target object.
-        For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        are valid.
-        For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         return pulumi.get(self, "target")
 
@@ -799,7 +763,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         balancing.
 
         For more information, see
-        <https://cloud.google.com/compute/docs/load-balancing/http/>
+        https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
         ### Global Forwarding Rule External Managed
@@ -836,7 +800,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
-        ### Private Service Connect Google Apis
         ### Private Service Connect Google Apis
 
         ```python
@@ -910,19 +873,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
                Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
-               The value of INTERNAL_SELF_MANAGED means that this will be used for
-               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-               will be used for External Global Load Balancing (HTTP(S) LB,
-               External TCP/UDP LB, SSL Proxy)
-               Note: This field must be set "" if the global address is
-               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-               that this will be used for Global external HTTP(S) load balancers.
-               Note: This field must be set "" if the global address is
-               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -945,11 +903,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] network: This field is not used for external load balancing.
-               For INTERNAL_SELF_MANAGED load balancing, this field
-               identifies the network that the load balanced IP should belong to
-               for this global forwarding rule. If this field is not specified,
-               the default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+               field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+               specified, the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.
@@ -968,12 +924,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
                * TargetVpnGateway: 500, 4500
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
-               The forwarded traffic must be of a type appropriate to the target object.
-               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-               are valid.
-               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+               the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+               resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+               balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         ...
     @overload
@@ -988,7 +942,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         balancing.
 
         For more information, see
-        <https://cloud.google.com/compute/docs/load-balancing/http/>
+        https://cloud.google.com/compute/docs/load-balancing/http/
 
         ## Example Usage
         ### Global Forwarding Rule External Managed
@@ -1025,7 +979,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_range="80",
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
-        ### Private Service Connect Google Apis
         ### Private Service Connect Google Apis
 
         ```python
@@ -1185,19 +1138,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
-               The value of INTERNAL_SELF_MANAGED means that this will be used for
-               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-               will be used for External Global Load Balancing (HTTP(S) LB,
-               External TCP/UDP LB, SSL Proxy)
-               Note: This field must be set "" if the global address is
-               External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-               that this will be used for Global external HTTP(S) load balancers.
-               Note: This field must be set "" if the global address is
-               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1220,11 +1168,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] network: This field is not used for external load balancing.
-               For INTERNAL_SELF_MANAGED load balancing, this field
-               identifies the network that the load balanced IP should belong to
-               for this global forwarding rule. If this field is not specified,
-               the default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+               field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+               specified, the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.
@@ -1247,12 +1193,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
                CLOSED
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
-               The forwarded traffic must be of a type appropriate to the target object.
-               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-               are valid.
-               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+               the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+               resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+               balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1338,7 +1282,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 
@@ -1346,18 +1290,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
-        This signifies what the GlobalForwardingRule will be used for.
-        The value of INTERNAL_SELF_MANAGED means that this will be used for
-        Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        will be used for External Global Load Balancing (HTTP(S) LB,
-        External TCP/UDP LB, SSL Proxy)
-        Note: This field must be set "" if the global address is
-        External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        that this will be used for Global external HTTP(S) load balancers.
-        Note: This field must be set "" if the global address is
-        configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1401,11 +1340,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        This field is not used for external load balancing.
-        For INTERNAL_SELF_MANAGED load balancing, this field
-        identifies the network that the load balanced IP should belong to
-        for this global forwarding rule. If this field is not specified,
-        the default network will be used.
+        This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        specified, the default network will be used.
         """
         return pulumi.get(self, "network")
 
@@ -1470,12 +1407,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
         """
-        The URL of the target resource to receive the matched traffic.
-        The forwarded traffic must be of a type appropriate to the target object.
-        For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        are valid.
-        For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         """
         return pulumi.get(self, "target")
 

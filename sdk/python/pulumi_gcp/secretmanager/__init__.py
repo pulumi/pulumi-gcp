@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .get_secret import *
 from .get_secret_version import *
+from .get_secret_version_access import *
 from .secret import *
 from .secret_iam_binding import *
 from .secret_iam_member import *

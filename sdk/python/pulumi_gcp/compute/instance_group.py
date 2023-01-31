@@ -339,47 +339,6 @@ class InstanceGroup(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a group of dissimilar Compute Engine virtual machine instances.
-        For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
-        and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-
-        ## Example Usage
-        ### Empty Instance Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.compute.InstanceGroup("test",
-            description="Test instance group",
-            zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
-        ```
-        ### Example Usage - With instances and named ports
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        webservers = gcp.compute.InstanceGroup("webservers",
-            description="Test instance group",
-            instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
-            ],
-            named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
-            ],
-            zone="us-central1-a")
-        ```
-
         ## Import
 
         Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
@@ -423,47 +382,6 @@ class InstanceGroup(pulumi.CustomResource):
                  args: Optional[InstanceGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a group of dissimilar Compute Engine virtual machine instances.
-        For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
-        and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-
-        ## Example Usage
-        ### Empty Instance Group
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        test = gcp.compute.InstanceGroup("test",
-            description="Test instance group",
-            zone="us-central1-a",
-            network=google_compute_network["default"]["id"])
-        ```
-        ### Example Usage - With instances and named ports
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        webservers = gcp.compute.InstanceGroup("webservers",
-            description="Test instance group",
-            instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
-            ],
-            named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
-            ],
-            zone="us-central1-a")
-        ```
-
         ## Import
 
         Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.

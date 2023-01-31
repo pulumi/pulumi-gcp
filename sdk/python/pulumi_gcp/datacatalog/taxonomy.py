@@ -248,14 +248,6 @@ class Taxonomy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A collection of policy tags that classify data along a common axis.
-
-        To get more information about Taxonomy, see:
-
-        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
-
         ## Example Usage
         ### Data Catalog Taxonomy Basic
 
@@ -302,14 +294,6 @@ class Taxonomy(pulumi.CustomResource):
                  args: TaxonomyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A collection of policy tags that classify data along a common axis.
-
-        To get more information about Taxonomy, see:
-
-        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
-
         ## Example Usage
         ### Data Catalog Taxonomy Basic
 

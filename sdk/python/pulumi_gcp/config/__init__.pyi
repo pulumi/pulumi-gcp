@@ -84,6 +84,8 @@ cloudSchedulerCustomEndpoint: Optional[str]
 
 cloudTasksCustomEndpoint: Optional[str]
 
+cloudbuildv2CustomEndpoint: Optional[str]
+
 clouddeployCustomEndpoint: Optional[str]
 
 cloudfunctions2CustomEndpoint: Optional[str]
@@ -130,8 +132,6 @@ dialogflowCustomEndpoint: Optional[str]
 
 dialogflowCxCustomEndpoint: Optional[str]
 
-disableGooglePartnerName: Optional[bool]
-
 dnsCustomEndpoint: Optional[str]
 
 documentAiCustomEndpoint: Optional[str]
@@ -161,8 +161,6 @@ gkeBackupCustomEndpoint: Optional[str]
 gkeHubCustomEndpoint: Optional[str]
 
 gkehubFeatureCustomEndpoint: Optional[str]
-
-googlePartnerName: Optional[str]
 
 healthcareCustomEndpoint: Optional[str]
 
@@ -262,6 +260,8 @@ storageTransferCustomEndpoint: Optional[str]
 
 tagsCustomEndpoint: Optional[str]
 
+tagsLocationCustomEndpoint: Optional[str]
+
 tpuCustomEndpoint: Optional[str]
 
 userProjectOverride: Optional[bool]
@@ -271,6 +271,8 @@ vertexAiCustomEndpoint: Optional[str]
 vpcAccessCustomEndpoint: Optional[str]
 
 workflowsCustomEndpoint: Optional[str]
+
+workstationsCustomEndpoint: Optional[str]
 
 zone: Optional[str]
 

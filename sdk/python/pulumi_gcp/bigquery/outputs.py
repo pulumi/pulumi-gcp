@@ -214,6 +214,8 @@ class ConnectionAzure(dict):
             suggest = "customer_tenant_id"
         elif key == "clientId":
             suggest = "client_id"
+        elif key == "federatedApplicationClientId":
+            suggest = "federated_application_client_id"
         elif key == "objectId":
             suggest = "object_id"
         elif key == "redirectUri":
@@ -234,12 +236,16 @@ class ConnectionAzure(dict):
                  customer_tenant_id: str,
                  application: Optional[str] = None,
                  client_id: Optional[str] = None,
+                 federated_application_client_id: Optional[str] = None,
+                 identity: Optional[str] = None,
                  object_id: Optional[str] = None,
                  redirect_uri: Optional[str] = None):
         """
         :param str customer_tenant_id: The id of customer's directory that host the data.
         :param str application: The name of the Azure Active Directory Application.
         :param str client_id: The client id of the Azure Active Directory Application.
+        :param str federated_application_client_id: The Azure Application (client) ID where the federated credentials will be hosted.
+        :param str identity: A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
         :param str object_id: The object id of the Azure Active Directory Application.
         :param str redirect_uri: The URL user will be redirected to after granting consent during connection setup.
         """
@@ -248,6 +254,10 @@ class ConnectionAzure(dict):
             pulumi.set(__self__, "application", application)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if federated_application_client_id is not None:
+            pulumi.set(__self__, "federated_application_client_id", federated_application_client_id)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
         if redirect_uri is not None:
@@ -276,6 +286,22 @@ class ConnectionAzure(dict):
         The client id of the Azure Active Directory Application.
         """
         return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="federatedApplicationClientId")
+    def federated_application_client_id(self) -> Optional[str]:
+        """
+        The Azure Application (client) ID where the federated credentials will be hosted.
+        """
+        return pulumi.get(self, "federated_application_client_id")
+
+    @property
+    @pulumi.getter
+    def identity(self) -> Optional[str]:
+        """
+        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+        """
+        return pulumi.get(self, "identity")
 
     @property
     @pulumi.getter(name="objectId")
@@ -337,6 +363,8 @@ class ConnectionCloudSpanner(dict):
         suggest = None
         if key == "useParallelism":
             suggest = "use_parallelism"
+        elif key == "useServerlessAnalytics":
+            suggest = "use_serverless_analytics"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionCloudSpanner. Access the value via the '{suggest}' property getter instead.")
@@ -351,14 +379,18 @@ class ConnectionCloudSpanner(dict):
 
     def __init__(__self__, *,
                  database: str,
-                 use_parallelism: Optional[bool] = None):
+                 use_parallelism: Optional[bool] = None,
+                 use_serverless_analytics: Optional[bool] = None):
         """
         :param str database: Cloud Spanner database in the form `project/instance/database'
         :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner
+        :param bool use_serverless_analytics: If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
         """
         pulumi.set(__self__, "database", database)
         if use_parallelism is not None:
             pulumi.set(__self__, "use_parallelism", use_parallelism)
+        if use_serverless_analytics is not None:
+            pulumi.set(__self__, "use_serverless_analytics", use_serverless_analytics)
 
     @property
     @pulumi.getter
@@ -376,6 +408,14 @@ class ConnectionCloudSpanner(dict):
         """
         return pulumi.get(self, "use_parallelism")
 
+    @property
+    @pulumi.getter(name="useServerlessAnalytics")
+    def use_serverless_analytics(self) -> Optional[bool]:
+        """
+        If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        """
+        return pulumi.get(self, "use_serverless_analytics")
+
 
 @pulumi.output_type
 class ConnectionCloudSql(dict):
@@ -384,6 +424,8 @@ class ConnectionCloudSql(dict):
         suggest = None
         if key == "instanceId":
             suggest = "instance_id"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionCloudSql. Access the value via the '{suggest}' property getter instead.")
@@ -400,7 +442,8 @@ class ConnectionCloudSql(dict):
                  credential: 'outputs.ConnectionCloudSqlCredential',
                  database: str,
                  instance_id: str,
-                 type: str):
+                 type: str,
+                 service_account_id: Optional[str] = None):
         """
         :param 'ConnectionCloudSqlCredentialArgs' credential: Cloud SQL properties.
                Structure is documented below.
@@ -408,11 +451,14 @@ class ConnectionCloudSql(dict):
         :param str instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param str type: Type of the Cloud SQL database.
                Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+        :param str service_account_id: When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         """
         pulumi.set(__self__, "credential", credential)
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "type", type)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
 
     @property
     @pulumi.getter
@@ -447,6 +493,14 @@ class ConnectionCloudSql(dict):
         Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        """
+        When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+        """
+        return pulumi.get(self, "service_account_id")
 
 
 @pulumi.output_type
@@ -2036,8 +2090,8 @@ class JobLoad(dict):
                GeoJSON: set to GEOJSON.
         :param int max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
                an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-        :param str null_marker: Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-               property to a custom value, BigQuery throws an error if an
+        :param str null_marker: Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+               when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
         :param Sequence[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -2244,8 +2298,8 @@ class JobLoad(dict):
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> Optional[str]:
         """
-        Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-        property to a custom value, BigQuery throws an error if an
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+        when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
         """
@@ -3769,13 +3823,6 @@ class TableExternalDataConfigurationCsvOptions(dict):
                  field_delimiter: Optional[str] = None,
                  skip_leading_rows: Optional[int] = None):
         """
-        :param str quote: The value that is used to quote data sections in a
-               CSV file. If your data does not contain quoted sections, set the
-               property value to an empty string. If your data contains quoted newline
-               characters, you must also set the `allow_quoted_newlines` property to true.
-               The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-               limitations with default values, this value is required to be
-               explicitly set.
         :param bool allow_jagged_rows: Indicates if BigQuery should accept rows
                that are missing trailing optional columns.
         :param bool allow_quoted_newlines: Indicates if BigQuery should allow
@@ -3802,15 +3849,6 @@ class TableExternalDataConfigurationCsvOptions(dict):
     @property
     @pulumi.getter
     def quote(self) -> str:
-        """
-        The value that is used to quote data sections in a
-        CSV file. If your data does not contain quoted sections, set the
-        property value to an empty string. If your data contains quoted newline
-        characters, you must also set the `allow_quoted_newlines` property to true.
-        The API-side default is `"`, specified in the provider escaped as `\\"`. Due to
-        limitations with default values, this value is required to be
-        explicitly set.
-        """
         return pulumi.get(self, "quote")
 
     @property

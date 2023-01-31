@@ -37,6 +37,7 @@ class SourceRepresentationInstanceArgs:
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -158,6 +159,7 @@ class SourceRepresentationInstanceArgs:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for the replication user account.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 
@@ -243,6 +245,7 @@ class _SourceRepresentationInstanceState:
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -366,6 +369,7 @@ class _SourceRepresentationInstanceState:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for the replication user account.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 
@@ -444,12 +448,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A source representation instance is a Cloud SQL instance that represents
-        the source database server to the Cloud SQL replica. It is visible in the
-        Cloud Console and appears the same as a regular Cloud SQL instance, but it
-        contains no data, requires no configuration or maintenance, and does not
-        affect billing. You cannot update the source representation instance.
-
         ## Example Usage
         ### Sql Source Representation Instance Basic
 
@@ -459,9 +457,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
             database_version="MYSQL_8_0",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
             host="10.20.30.40",
+            password="password-for-the-user",
             port=3306,
-            region="us-central1")
+            region="us-central1",
+            username="some-user")
         ```
 
         ## Import
@@ -491,6 +492,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -506,12 +508,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  args: SourceRepresentationInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A source representation instance is a Cloud SQL instance that represents
-        the source database server to the Cloud SQL replica. It is visible in the
-        Cloud Console and appears the same as a regular Cloud SQL instance, but it
-        contains no data, requires no configuration or maintenance, and does not
-        affect billing. You cannot update the source representation instance.
-
         ## Example Usage
         ### Sql Source Representation Instance Basic
 
@@ -521,9 +517,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         instance = gcp.sql.SourceRepresentationInstance("instance",
             database_version="MYSQL_8_0",
+            dump_file_path="gs://replica-bucket/source-database.sql.gz",
             host="10.20.30.40",
+            password="password-for-the-user",
             port=3306,
-            region="us-central1")
+            region="us-central1",
+            username="some-user")
         ```
 
         ## Import
@@ -589,11 +588,13 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
             __props__.__dict__["name"] = name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SourceRepresentationInstance, __self__).__init__(
             'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
             resource_name,
@@ -632,6 +633,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[int] port: The externally accessible port for the source database server.
                Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -720,6 +722,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def password(self) -> pulumi.Output[Optional[str]]:
         """
         The password for the replication user account.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
 

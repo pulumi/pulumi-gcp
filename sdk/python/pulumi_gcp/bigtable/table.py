@@ -30,9 +30,8 @@ class TableArgs:
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+               Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         if column_families is not None:
@@ -111,9 +110,8 @@ class TableArgs:
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
+        A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+        Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         return pulumi.get(self, "split_keys")
 
@@ -139,9 +137,8 @@ class _TableState:
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+               Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
@@ -221,9 +218,8 @@ class _TableState:
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
+        A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+        Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         return pulumi.get(self, "split_keys")
 
@@ -245,10 +241,6 @@ class Table(pulumi.CustomResource):
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates a Google Cloud Bigtable table inside an instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
         ## Example Usage
 
         ```python
@@ -304,9 +296,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+               Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         ...
     @overload
@@ -315,10 +306,6 @@ class Table(pulumi.CustomResource):
                  args: TableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a Google Cloud Bigtable table inside an instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
         ## Example Usage
 
         ```python
@@ -433,9 +420,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-               to delete/recreate the entire `bigtable.Table` resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] split_keys: A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+               Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,9 +480,8 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="splitKeys")
     def split_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
-        to delete/recreate the entire `bigtable.Table` resource.
+        A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+        Terraform to delete/recreate the entire google_bigtable_table resource.
         """
         return pulumi.get(self, "split_keys")
 

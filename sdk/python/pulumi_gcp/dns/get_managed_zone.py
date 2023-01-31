@@ -58,9 +58,6 @@ class GetManagedZoneResult:
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The fully qualified DNS name of this zone, e.g. `example.io.`.
-        """
         return pulumi.get(self, "dns_name")
 
     @property

@@ -201,11 +201,6 @@ class SecretVersion(pulumi.CustomResource):
                  secret_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A secret version resource.
-
-        > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Secret Version Basic
 
@@ -248,11 +243,6 @@ class SecretVersion(pulumi.CustomResource):
                  args: SecretVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A secret version resource.
-
-        > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Secret Version Basic
 

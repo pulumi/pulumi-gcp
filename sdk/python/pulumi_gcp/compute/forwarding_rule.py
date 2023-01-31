@@ -74,7 +74,7 @@ class ForwardingRuleArgs:
                mirrored even if a PacketMirroring rule applies to them. This
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
                from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
                `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
@@ -306,7 +306,7 @@ class ForwardingRuleArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 
@@ -588,7 +588,7 @@ class _ForwardingRuleState:
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
                from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
                `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
@@ -861,7 +861,7 @@ class _ForwardingRuleState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 
@@ -1231,7 +1231,7 @@ class ForwardingRule(pulumi.CustomResource):
                mirrored even if a PacketMirroring rule applies to them. This
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
                from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
                `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
@@ -1506,7 +1506,7 @@ class ForwardingRule(pulumi.CustomResource):
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this rule.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
                from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
                `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
@@ -1722,7 +1722,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels to apply to this forwarding rule.  A list of key->value pairs.
+        Labels to apply to this rule.
         """
         return pulumi.get(self, "labels")
 

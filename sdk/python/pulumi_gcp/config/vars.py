@@ -165,6 +165,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudTasksCustomEndpoint')
 
     @property
+    def cloudbuildv2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudbuildv2CustomEndpoint')
+
+    @property
     def clouddeploy_custom_endpoint(self) -> Optional[str]:
         return __config__.get('clouddeployCustomEndpoint')
 
@@ -257,10 +261,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dialogflowCxCustomEndpoint')
 
     @property
-    def disable_google_partner_name(self) -> Optional[bool]:
-        return __config__.get_bool('disableGooglePartnerName')
-
-    @property
     def dns_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dnsCustomEndpoint')
 
@@ -319,10 +319,6 @@ class _ExportableConfig(types.ModuleType):
     @property
     def gkehub_feature_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkehubFeatureCustomEndpoint')
-
-    @property
-    def google_partner_name(self) -> Optional[str]:
-        return __config__.get('googlePartnerName')
 
     @property
     def healthcare_custom_endpoint(self) -> Optional[str]:
@@ -521,6 +517,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('tagsCustomEndpoint')
 
     @property
+    def tags_location_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('tagsLocationCustomEndpoint')
+
+    @property
     def tpu_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tpuCustomEndpoint')
 
@@ -539,6 +539,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def workflows_custom_endpoint(self) -> Optional[str]:
         return __config__.get('workflowsCustomEndpoint')
+
+    @property
+    def workstations_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('workstationsCustomEndpoint')
 
     @property
     def zone(self) -> Optional[str]:

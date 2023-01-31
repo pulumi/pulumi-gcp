@@ -185,55 +185,6 @@ class DicomStoreIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
-
-        * `healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
-        * `healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
-        * `healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
-
-        > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -277,55 +228,6 @@ class DicomStoreIamBinding(pulumi.CustomResource):
                  args: DicomStoreIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
-
-        * `healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
-        * `healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
-        * `healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
-
-        > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
-
-        > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
-        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            policy_data=admin.policy_data)
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            members=["user:jane@example.com"],
-            role="roles/editor")
-        ```
-
-        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        dicom_store = gcp.healthcare.DicomStoreIamMember("dicomStore",
-            dicom_store_id="your-dicom-store-id",
-            member="user:jane@example.com",
-            role="roles/editor")
-        ```
-
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

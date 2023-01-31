@@ -274,20 +274,6 @@ class AttachedDisk(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Persistent disks can be attached to a compute instance using the `attached_disk`
-        section within the compute instance configuration.
-        However there may be situations where managing the attached disks via the compute
-        instance config isn't preferable or possible, such as attaching dynamic
-        numbers of disks using the `count` variable.
-
-        To get more information about attaching disks, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
-        * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-
-        **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
-
         ## Example Usage
 
         ```python
@@ -349,20 +335,6 @@ class AttachedDisk(pulumi.CustomResource):
                  args: AttachedDiskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Persistent disks can be attached to a compute instance using the `attached_disk`
-        section within the compute instance configuration.
-        However there may be situations where managing the attached disks via the compute
-        instance config isn't preferable or possible, such as attaching dynamic
-        numbers of disks using the `count` variable.
-
-        To get more information about attaching disks, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
-        * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-
-        **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
-
         ## Example Usage
 
         ```python

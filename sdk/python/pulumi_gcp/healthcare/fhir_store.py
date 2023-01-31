@@ -604,6 +604,15 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        bigquery_editor = gcp.projects.IAMMember("bigqueryEditor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com")
+        bigquery_job_user = gcp.projects.IAMMember("bigqueryJobUser",
+            project=project.project_id,
+            role="roles/bigquery.jobUser",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com")
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         bq_dataset = gcp.bigquery.Dataset("bqDataset",
             dataset_id="bq_example_dataset",
@@ -629,7 +638,11 @@ class FhirStore(pulumi.CustomResource):
                         recursive_structure_depth=3,
                     ),
                 ),
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    bigquery_editor,
+                    bigquery_job_user,
+                ]))
         topic = gcp.pubsub.Topic("topic")
         ```
         ### Healthcare Fhir Store Notification Config
@@ -765,6 +778,15 @@ class FhirStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        project = gcp.organizations.get_project()
+        bigquery_editor = gcp.projects.IAMMember("bigqueryEditor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com")
+        bigquery_job_user = gcp.projects.IAMMember("bigqueryJobUser",
+            project=project.project_id,
+            role="roles/bigquery.jobUser",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com")
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         bq_dataset = gcp.bigquery.Dataset("bqDataset",
             dataset_id="bq_example_dataset",
@@ -790,7 +812,11 @@ class FhirStore(pulumi.CustomResource):
                         recursive_structure_depth=3,
                     ),
                 ),
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    bigquery_editor,
+                    bigquery_job_user,
+                ]))
         topic = gcp.pubsub.Topic("topic")
         ```
         ### Healthcare Fhir Store Notification Config

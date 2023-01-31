@@ -52,6 +52,7 @@ class ProviderArgs:
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -75,7 +76,6 @@ class ProviderArgs:
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -91,7 +91,6 @@ class ProviderArgs:
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -141,11 +140,13 @@ class ProviderArgs:
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -224,6 +225,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
+        if cloudbuildv2_custom_endpoint is not None:
+            pulumi.set(__self__, "cloudbuildv2_custom_endpoint", cloudbuildv2_custom_endpoint)
         if clouddeploy_custom_endpoint is not None:
             pulumi.set(__self__, "clouddeploy_custom_endpoint", clouddeploy_custom_endpoint)
         if cloudfunctions2_custom_endpoint is not None:
@@ -270,8 +273,6 @@ class ProviderArgs:
             pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
         if dialogflow_cx_custom_endpoint is not None:
             pulumi.set(__self__, "dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
-        if disable_google_partner_name is not None:
-            pulumi.set(__self__, "disable_google_partner_name", disable_google_partner_name)
         if dns_custom_endpoint is not None:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
         if document_ai_custom_endpoint is not None:
@@ -302,8 +303,6 @@ class ProviderArgs:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkehub_feature_custom_endpoint is not None:
             pulumi.set(__self__, "gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
-        if google_partner_name is not None:
-            pulumi.set(__self__, "google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
         if iam2_custom_endpoint is not None:
@@ -406,6 +405,8 @@ class ProviderArgs:
             pulumi.set(__self__, "storage_transfer_custom_endpoint", storage_transfer_custom_endpoint)
         if tags_custom_endpoint is not None:
             pulumi.set(__self__, "tags_custom_endpoint", tags_custom_endpoint)
+        if tags_location_custom_endpoint is not None:
+            pulumi.set(__self__, "tags_location_custom_endpoint", tags_location_custom_endpoint)
         if tpu_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if user_project_override is not None:
@@ -416,6 +417,8 @@ class ProviderArgs:
             pulumi.set(__self__, "vpc_access_custom_endpoint", vpc_access_custom_endpoint)
         if workflows_custom_endpoint is not None:
             pulumi.set(__self__, "workflows_custom_endpoint", workflows_custom_endpoint)
+        if workstations_custom_endpoint is not None:
+            pulumi.set(__self__, "workstations_custom_endpoint", workstations_custom_endpoint)
         if zone is None:
             zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
         if zone is not None:
@@ -755,6 +758,15 @@ class ProviderArgs:
         pulumi.set(self, "cloud_tasks_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="cloudbuildv2CustomEndpoint")
+    def cloudbuildv2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloudbuildv2_custom_endpoint")
+
+    @cloudbuildv2_custom_endpoint.setter
+    def cloudbuildv2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloudbuildv2_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="clouddeployCustomEndpoint")
     def clouddeploy_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "clouddeploy_custom_endpoint")
@@ -962,15 +974,6 @@ class ProviderArgs:
         pulumi.set(self, "dialogflow_cx_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="disableGooglePartnerName")
-    def disable_google_partner_name(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "disable_google_partner_name")
-
-    @disable_google_partner_name.setter
-    def disable_google_partner_name(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "disable_google_partner_name", value)
-
-    @property
     @pulumi.getter(name="dnsCustomEndpoint")
     def dns_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dns_custom_endpoint")
@@ -1104,15 +1107,6 @@ class ProviderArgs:
     @gkehub_feature_custom_endpoint.setter
     def gkehub_feature_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gkehub_feature_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="googlePartnerName")
-    def google_partner_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "google_partner_name")
-
-    @google_partner_name.setter
-    def google_partner_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_partner_name", value)
 
     @property
     @pulumi.getter(name="healthcareCustomEndpoint")
@@ -1556,6 +1550,15 @@ class ProviderArgs:
         pulumi.set(self, "tags_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="tagsLocationCustomEndpoint")
+    def tags_location_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tags_location_custom_endpoint")
+
+    @tags_location_custom_endpoint.setter
+    def tags_location_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tags_location_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="tpuCustomEndpoint")
     def tpu_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "tpu_custom_endpoint")
@@ -1599,6 +1602,15 @@ class ProviderArgs:
     @workflows_custom_endpoint.setter
     def workflows_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workflows_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="workstationsCustomEndpoint")
+    def workstations_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workstations_custom_endpoint")
+
+    @workstations_custom_endpoint.setter
+    def workstations_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workstations_custom_endpoint", value)
 
     @property
     @pulumi.getter
@@ -1652,6 +1664,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1675,7 +1688,6 @@ class Provider(pulumi.ProviderResource):
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1691,7 +1703,6 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1741,11 +1752,13 @@ class Provider(pulumi.ProviderResource):
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1821,6 +1834,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1844,7 +1858,6 @@ class Provider(pulumi.ProviderResource):
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1860,7 +1873,6 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1910,11 +1922,13 @@ class Provider(pulumi.ProviderResource):
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1962,6 +1976,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_run_v2_custom_endpoint"] = cloud_run_v2_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
+            __props__.__dict__["cloudbuildv2_custom_endpoint"] = cloudbuildv2_custom_endpoint
             __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
             __props__.__dict__["cloudfunctions2_custom_endpoint"] = cloudfunctions2_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
@@ -1985,7 +2000,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
-            __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
@@ -2001,7 +2015,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
             __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
-            __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
             __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
@@ -2055,11 +2068,13 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["storage_custom_endpoint"] = storage_custom_endpoint
             __props__.__dict__["storage_transfer_custom_endpoint"] = storage_transfer_custom_endpoint
             __props__.__dict__["tags_custom_endpoint"] = tags_custom_endpoint
+            __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
             __props__.__dict__["workflows_custom_endpoint"] = workflows_custom_endpoint
+            __props__.__dict__["workstations_custom_endpoint"] = workstations_custom_endpoint
             if zone is None:
                 zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
             __props__.__dict__["zone"] = zone
@@ -2250,6 +2265,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "cloud_tasks_custom_endpoint")
 
     @property
+    @pulumi.getter(name="cloudbuildv2CustomEndpoint")
+    def cloudbuildv2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloudbuildv2_custom_endpoint")
+
+    @property
     @pulumi.getter(name="clouddeployCustomEndpoint")
     def clouddeploy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "clouddeploy_custom_endpoint")
@@ -2438,11 +2458,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gkehubFeatureCustomEndpoint")
     def gkehub_feature_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "gkehub_feature_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="googlePartnerName")
-    def google_partner_name(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "google_partner_name")
 
     @property
     @pulumi.getter(name="healthcareCustomEndpoint")
@@ -2680,6 +2695,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "tags_custom_endpoint")
 
     @property
+    @pulumi.getter(name="tagsLocationCustomEndpoint")
+    def tags_location_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "tags_location_custom_endpoint")
+
+    @property
     @pulumi.getter(name="tpuCustomEndpoint")
     def tpu_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tpu_custom_endpoint")
@@ -2698,6 +2718,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="workflowsCustomEndpoint")
     def workflows_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "workflows_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="workstationsCustomEndpoint")
+    def workstations_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "workstations_custom_endpoint")
 
     @property
     @pulumi.getter

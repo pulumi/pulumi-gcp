@@ -416,7 +416,7 @@ class InstancePersistenceConfig(dict):
                - ONE_HOUR:	Snapshot every 1 hour.
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
-               - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+               - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
                Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         :param str rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
                and to which future snapshots will be aligned. If not provided,
@@ -464,7 +464,7 @@ class InstancePersistenceConfig(dict):
         - ONE_HOUR:	Snapshot every 1 hour.
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
-        - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
         Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")

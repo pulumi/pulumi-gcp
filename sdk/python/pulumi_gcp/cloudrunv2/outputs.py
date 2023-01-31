@@ -620,7 +620,9 @@ class JobTemplateTemplateContainer(dict):
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['JobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param 'JobTemplateTemplateContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'JobTemplateTemplateContainerLivenessProbeArgs' liveness_probe: (Optional, Deprecated)
+               Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+               This field is not supported in Cloud Run Job currently.
                Structure is documented below.
         :param str name: Name of the container specified as a DNS_LABEL.
         :param Sequence['JobTemplateTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
@@ -628,7 +630,9 @@ class JobTemplateTemplateContainer(dict):
                Structure is documented below.
         :param 'JobTemplateTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param 'JobTemplateTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'JobTemplateTemplateContainerStartupProbeArgs' startup_probe: (Optional, Deprecated)
+               Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+               This field is not supported in Cloud Run Job currently.
                Structure is documented below.
         :param Sequence['JobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
@@ -693,7 +697,9 @@ class JobTemplateTemplateContainer(dict):
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional['outputs.JobTemplateTemplateContainerLivenessProbe']:
         """
+        (Optional, Deprecated)
         Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        This field is not supported in Cloud Run Job currently.
         Structure is documented below.
         """
         return pulumi.get(self, "liveness_probe")
@@ -729,7 +735,9 @@ class JobTemplateTemplateContainer(dict):
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbe']:
         """
+        (Optional, Deprecated)
         Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        This field is not supported in Cloud Run Job currently.
         Structure is documented below.
         """
         return pulumi.get(self, "startup_probe")
@@ -2515,11 +2523,12 @@ class ServiceTemplateContainerLivenessProbe(dict):
                  timeout_seconds: Optional[int] = None):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'ServiceTemplateContainerLivenessProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'ServiceTemplateContainerLivenessProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform.
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        :param 'ServiceTemplateContainerLivenessProbeTcpSocketArgs' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'ServiceTemplateContainerLivenessProbeTcpSocketArgs' tcp_socket: (Optional, Deprecated)
+               TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
@@ -2548,7 +2557,7 @@ class ServiceTemplateContainerLivenessProbe(dict):
     @pulumi.getter(name="httpGet")
     def http_get(self) -> Optional['outputs.ServiceTemplateContainerLivenessProbeHttpGet']:
         """
-        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        HTTPGet specifies the http request to perform.
         Structure is documented below.
         """
         return pulumi.get(self, "http_get")
@@ -2573,7 +2582,8 @@ class ServiceTemplateContainerLivenessProbe(dict):
     @pulumi.getter(name="tcpSocket")
     def tcp_socket(self) -> Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket']:
         """
-        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        (Optional, Deprecated)
+        TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_socket")

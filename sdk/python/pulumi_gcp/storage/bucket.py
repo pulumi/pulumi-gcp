@@ -43,9 +43,8 @@ class BucketArgs:
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+               contains objects, Terraform will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -174,9 +173,8 @@ class BucketArgs:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        contains objects, Terraform will fail that run.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -361,9 +359,8 @@ class _BucketState:
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+               contains objects, Terraform will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -488,9 +485,8 @@ class _BucketState:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        contains objects, Terraform will fail that run.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -808,9 +804,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+               contains objects, Terraform will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1037,9 +1032,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[bool] force_destroy: When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+               contains objects, Terraform will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1128,9 +1122,8 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        contains objects, Terraform will fail that run.
         """
         return pulumi.get(self, "force_destroy")
 

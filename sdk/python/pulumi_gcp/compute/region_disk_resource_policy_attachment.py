@@ -173,11 +173,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Adds existing resource policies to a disk. You can only add one policy
-        which will be applied to this disk for scheduling snapshot creation.
-
-        > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
-
         ## Example Usage
         ### Region Disk Resource Policy Attachment Basic
 
@@ -255,11 +250,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                  args: RegionDiskResourcePolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds existing resource policies to a disk. You can only add one policy
-        which will be applied to this disk for scheduling snapshot creation.
-
-        > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
-
         ## Example Usage
         ### Region Disk Resource Policy Attachment Basic
 

@@ -34,8 +34,8 @@ class DatabaseArgs:
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
@@ -109,8 +109,8 @@ class DatabaseArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -195,8 +195,8 @@ class _DatabaseState:
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -263,8 +263,8 @@ class _DatabaseState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -367,16 +367,6 @@ class Database(pulumi.CustomResource):
                  version_retention_period: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Cloud Spanner Database which is hosted on a Spanner instance.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
-
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
-
         ## Example Usage
         ### Spanner Database Basic
 
@@ -427,8 +417,8 @@ class Database(pulumi.CustomResource):
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -449,16 +439,6 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Cloud Spanner Database which is hosted on a Spanner instance.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
-
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
-
         ## Example Usage
         ### Spanner Database Basic
 
@@ -576,8 +556,8 @@ class Database(pulumi.CustomResource):
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
@@ -632,8 +612,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` that would delete the instance will fail.
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 

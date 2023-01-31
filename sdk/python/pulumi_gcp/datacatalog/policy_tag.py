@@ -226,14 +226,6 @@ class PolicyTag(pulumi.CustomResource):
                  taxonomy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Denotes one policy tag in a taxonomy.
-
-        To get more information about PolicyTag, see:
-
-        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies.policyTags)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
-
         ## Example Usage
         ### Data Catalog Taxonomies Policy Tag Basic
 
@@ -314,14 +306,6 @@ class PolicyTag(pulumi.CustomResource):
                  args: PolicyTagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Denotes one policy tag in a taxonomy.
-
-        To get more information about PolicyTag, see:
-
-        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies.policyTags)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
-
         ## Example Usage
         ### Data Catalog Taxonomies Policy Tag Basic
 

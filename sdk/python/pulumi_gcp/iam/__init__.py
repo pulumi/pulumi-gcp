@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .access_boundary_policy import *
 from .deny_policy import *
 from .get_rule import *
 from .get_testable_permissions import *

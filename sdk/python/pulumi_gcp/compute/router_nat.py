@@ -33,6 +33,7 @@ class RouterNatArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -83,6 +84,8 @@ class RouterNatArgs:
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
                Defaults to 1200s if not set.
+        :param pulumi.Input[int] tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+               Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -118,6 +121,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+        if tcp_time_wait_timeout_sec is not None:
+            pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
@@ -357,6 +362,19 @@ class RouterNatArgs:
         pulumi.set(self, "tcp_established_idle_timeout_sec", value)
 
     @property
+    @pulumi.getter(name="tcpTimeWaitTimeoutSec")
+    def tcp_time_wait_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        Defaults to 120s if not set.
+        """
+        return pulumi.get(self, "tcp_time_wait_timeout_sec")
+
+    @tcp_time_wait_timeout_sec.setter
+    def tcp_time_wait_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_time_wait_timeout_sec", value)
+
+    @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
     def tcp_transitory_idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -402,6 +420,7 @@ class _RouterNatState:
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -452,6 +471,8 @@ class _RouterNatState:
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
                Defaults to 1200s if not set.
+        :param pulumi.Input[int] tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+               Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -490,6 +511,8 @@ class _RouterNatState:
             pulumi.set(__self__, "subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+        if tcp_time_wait_timeout_sec is not None:
+            pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         if tcp_transitory_idle_timeout_sec is not None:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
@@ -729,6 +752,19 @@ class _RouterNatState:
         pulumi.set(self, "tcp_established_idle_timeout_sec", value)
 
     @property
+    @pulumi.getter(name="tcpTimeWaitTimeoutSec")
+    def tcp_time_wait_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        Defaults to 120s if not set.
+        """
+        return pulumi.get(self, "tcp_time_wait_timeout_sec")
+
+    @tcp_time_wait_timeout_sec.setter
+    def tcp_time_wait_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tcp_time_wait_timeout_sec", value)
+
+    @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
     def tcp_transitory_idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
@@ -776,6 +812,7 @@ class RouterNat(pulumi.CustomResource):
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -953,6 +990,8 @@ class RouterNat(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
                Defaults to 1200s if not set.
+        :param pulumi.Input[int] tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+               Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -1121,6 +1160,7 @@ class RouterNat(pulumi.CustomResource):
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1155,6 +1195,7 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["source_subnetwork_ip_ranges_to_nat"] = source_subnetwork_ip_ranges_to_nat
             __props__.__dict__["subnetworks"] = subnetworks
             __props__.__dict__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
+            __props__.__dict__["tcp_time_wait_timeout_sec"] = tcp_time_wait_timeout_sec
             __props__.__dict__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
             __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         super(RouterNat, __self__).__init__(
@@ -1184,6 +1225,7 @@ class RouterNat(pulumi.CustomResource):
             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+            tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
             tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None) -> 'RouterNat':
         """
@@ -1239,6 +1281,8 @@ class RouterNat(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
                Defaults to 1200s if not set.
+        :param pulumi.Input[int] tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+               Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -1264,6 +1308,7 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["source_subnetwork_ip_ranges_to_nat"] = source_subnetwork_ip_ranges_to_nat
         __props__.__dict__["subnetworks"] = subnetworks
         __props__.__dict__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
+        __props__.__dict__["tcp_time_wait_timeout_sec"] = tcp_time_wait_timeout_sec
         __props__.__dict__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
         __props__.__dict__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
@@ -1432,6 +1477,15 @@ class RouterNat(pulumi.CustomResource):
         Defaults to 1200s if not set.
         """
         return pulumi.get(self, "tcp_established_idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="tcpTimeWaitTimeoutSec")
+    def tcp_time_wait_timeout_sec(self) -> pulumi.Output[Optional[int]]:
+        """
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        Defaults to 120s if not set.
+        """
+        return pulumi.get(self, "tcp_time_wait_timeout_sec")
 
     @property
     @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")

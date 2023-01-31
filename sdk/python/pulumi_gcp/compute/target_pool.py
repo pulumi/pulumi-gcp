@@ -32,11 +32,9 @@ class TargetPoolArgs:
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+               not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+               dependency on the instances from the target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -121,11 +119,9 @@ class TargetPoolArgs:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
+        List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+        not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+        dependency on the instances from the target pool.
         """
         return pulumi.get(self, "instances")
 
@@ -209,11 +205,9 @@ class _TargetPoolState:
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+               not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+               dependency on the instances from the target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -301,11 +295,9 @@ class _TargetPoolState:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
+        List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+        not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+        dependency on the instances from the target pool.
         """
         return pulumi.get(self, "instances")
 
@@ -430,11 +422,9 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+               not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+               dependency on the instances from the target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -555,11 +545,9 @@ class TargetPool(pulumi.CustomResource):
                backup pool (which must also be set).
         :param pulumi.Input[str] health_checks: List of zero or one health check name or self_link. Only
                legacy `compute.HttpHealthCheck` is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as
-               URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use the
-               interpolation to create a dependency on the instances from the
-               target pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+               not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+               dependency on the instances from the target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -626,11 +614,9 @@ class TargetPool(pulumi.CustomResource):
     @pulumi.getter
     def instances(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of instances in the pool. They can be given as
-        URLs, or in the form of "zone/name". Note that the instances need not exist
-        at the time of target pool creation, so there is no need to use the
-        interpolation to create a dependency on the instances from the
-        target pool.
+        List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
+        not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
+        dependency on the instances from the target pool.
         """
         return pulumi.get(self, "instances")
 

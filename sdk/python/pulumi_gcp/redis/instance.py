@@ -1195,7 +1195,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             reserved_ip_range="192.168.0.0/29",
             labels={
                 "my_key": "my_val",
@@ -1253,7 +1253,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
@@ -1433,7 +1433,7 @@ class Instance(pulumi.CustomResource):
             alternative_location_id="us-central1-f",
             authorized_network=redis_network.id,
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             reserved_ip_range="192.168.0.0/29",
             labels={
                 "my_key": "my_val",
@@ -1491,7 +1491,7 @@ class Instance(pulumi.CustomResource):
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
-            display_name="Test Instance",
+            display_name="Terraform Test Instance",
             opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr

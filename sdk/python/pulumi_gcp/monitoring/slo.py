@@ -561,7 +561,7 @@ class Slo(pulumi.CustomResource):
         appeng_slo = gcp.monitoring.Slo("appengSlo",
             service=default.service_id,
             slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
+            display_name="Terraform Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
             basic_sli=gcp.monitoring.SloBasicSliArgs(
@@ -586,7 +586,7 @@ class Slo(pulumi.CustomResource):
         request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
+            display_name="Terraform Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
             request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
@@ -684,7 +684,7 @@ class Slo(pulumi.CustomResource):
         appeng_slo = gcp.monitoring.Slo("appengSlo",
             service=default.service_id,
             slo_id="ae-slo",
-            display_name="Test SLO for App Engine",
+            display_name="Terraform Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
             basic_sli=gcp.monitoring.SloBasicSliArgs(
@@ -709,7 +709,7 @@ class Slo(pulumi.CustomResource):
         request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
             service=customsrv.service_id,
             slo_id="consumed-api-slo",
-            display_name="Test SLO with request based SLI (good total ratio)",
+            display_name="Terraform Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
             request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(

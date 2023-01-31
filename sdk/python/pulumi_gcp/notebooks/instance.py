@@ -1320,6 +1320,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             metadata={
                 "proxy-mode": "service_account",
+                "terraform": "true",
             })
         ```
         ### Notebook Instance Basic Gpu
@@ -1368,6 +1369,9 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
+            },
+            metadata={
+                "terraform": "true",
             })
         ```
 
@@ -1510,6 +1514,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             metadata={
                 "proxy-mode": "service_account",
+                "terraform": "true",
             })
         ```
         ### Notebook Instance Basic Gpu
@@ -1558,6 +1563,9 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
+            },
+            metadata={
+                "terraform": "true",
             })
         ```
 

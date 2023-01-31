@@ -220,7 +220,7 @@ class GetFunctionResult:
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> int:
         """
-        The limit on the maximum number of function instances that may coexist at a given time.
+        The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
         """
         return pulumi.get(self, "max_instances")
 

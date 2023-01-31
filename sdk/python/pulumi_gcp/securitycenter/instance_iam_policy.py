@@ -179,7 +179,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
         ### Data Fusion Instance Basic
@@ -332,7 +332,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
         ### Data Fusion Instance Basic

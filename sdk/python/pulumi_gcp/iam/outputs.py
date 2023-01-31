@@ -11,6 +11,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccessBoundaryPolicyRule',
+    'AccessBoundaryPolicyRuleAccessBoundaryRule',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition',
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
@@ -22,6 +25,182 @@ __all__ = [
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
 ]
+
+@pulumi.output_type
+class AccessBoundaryPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessBoundaryRule":
+            suggest = "access_boundary_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessBoundaryPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessBoundaryPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessBoundaryPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_boundary_rule: Optional['outputs.AccessBoundaryPolicyRuleAccessBoundaryRule'] = None,
+                 description: Optional[str] = None):
+        """
+        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleArgs' access_boundary_rule: An access boundary rule in an IAM policy.
+               Structure is documented below.
+        :param str description: The description of the rule.
+        """
+        if access_boundary_rule is not None:
+            pulumi.set(__self__, "access_boundary_rule", access_boundary_rule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="accessBoundaryRule")
+    def access_boundary_rule(self) -> Optional['outputs.AccessBoundaryPolicyRuleAccessBoundaryRule']:
+        """
+        An access boundary rule in an IAM policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_boundary_rule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AccessBoundaryPolicyRuleAccessBoundaryRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityCondition":
+            suggest = "availability_condition"
+        elif key == "availablePermissions":
+            suggest = "available_permissions"
+        elif key == "availableResource":
+            suggest = "available_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessBoundaryPolicyRuleAccessBoundaryRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessBoundaryPolicyRuleAccessBoundaryRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessBoundaryPolicyRuleAccessBoundaryRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_condition: Optional['outputs.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition'] = None,
+                 available_permissions: Optional[Sequence[str]] = None,
+                 available_resource: Optional[str] = None):
+        """
+        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs' availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
+               Structure is documented below.
+        :param Sequence[str] available_permissions: A list of permissions that may be allowed for use on the specified resource.
+        :param str available_resource: The full resource name of a Google Cloud resource entity.
+        """
+        if availability_condition is not None:
+            pulumi.set(__self__, "availability_condition", availability_condition)
+        if available_permissions is not None:
+            pulumi.set(__self__, "available_permissions", available_permissions)
+        if available_resource is not None:
+            pulumi.set(__self__, "available_resource", available_resource)
+
+    @property
+    @pulumi.getter(name="availabilityCondition")
+    def availability_condition(self) -> Optional['outputs.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition']:
+        """
+        The availability condition further constrains the access allowed by the access boundary rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability_condition")
+
+    @property
+    @pulumi.getter(name="availablePermissions")
+    def available_permissions(self) -> Optional[Sequence[str]]:
+        """
+        A list of permissions that may be allowed for use on the specified resource.
+        """
+        return pulumi.get(self, "available_permissions")
+
+    @property
+    @pulumi.getter(name="availableResource")
+    def available_resource(self) -> Optional[str]:
+        """
+        The full resource name of a Google Cloud resource entity.
+        """
+        return pulumi.get(self, "available_resource")
+
+
+@pulumi.output_type
+class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting,
+               e.g. a file name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting,
+        e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
 
 @pulumi.output_type
 class DenyPolicyRule(dict):
