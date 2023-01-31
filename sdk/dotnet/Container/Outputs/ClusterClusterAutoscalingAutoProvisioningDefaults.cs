@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement? Management;
         /// <summary>
+        /// )
         /// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
         /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
         /// as "Intel Haswell" or "Intel Sandy Bridge".

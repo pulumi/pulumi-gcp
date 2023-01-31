@@ -13,10 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class BackendServiceCircuitBreakers
     {
-        /// <summary>
-        /// The timeout for new network connections to hosts.
-        /// Structure is documented below.
-        /// </summary>
         public readonly Outputs.BackendServiceCircuitBreakersConnectTimeout? ConnectTimeout;
         /// <summary>
         /// The maximum number of connections to the backend cluster.

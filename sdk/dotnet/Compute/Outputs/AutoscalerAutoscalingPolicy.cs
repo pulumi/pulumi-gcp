@@ -62,11 +62,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Possible values are `OFF`, `ONLY_UP`, and `ON`.
         /// </summary>
         public readonly string? Mode;
-        /// <summary>
-        /// Defines scale down controls to reduce the risk of response latency
-        /// and outages due to abrupt scale-in events
-        /// Structure is documented below.
-        /// </summary>
         public readonly Outputs.AutoscalerAutoscalingPolicyScaleDownControl? ScaleDownControl;
         /// <summary>
         /// Defines scale in controls to reduce the risk of response latency

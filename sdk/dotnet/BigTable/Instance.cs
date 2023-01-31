@@ -10,22 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
-    /// ## +---
-    /// 
-    /// subcategory: "Cloud Bigtable"
-    /// page_title: "Google: gcp.bigtable.Instance"
-    /// description: |-
-    ///   Creates a Google Bigtable instance.
-    /// ---
-    /// 
-    /// # gcp.bigtable.Instance
-    /// 
-    /// Creates a Google Bigtable instance. For more information see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/bigtable/docs)
-    /// 
     /// ## Example Usage
     /// ### Simple Instance
     /// 
@@ -125,8 +109,8 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -227,8 +211,8 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -297,8 +281,8 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
-        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

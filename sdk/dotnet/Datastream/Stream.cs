@@ -131,6 +131,13 @@ namespace Pulumi.Gcp.Datastream
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
+    ///     var keyUser = new Gcp.Kms.CryptoKeyIAMMember("keyUser", new()
+    ///     {
+    ///         CryptoKeyId = "kms-name",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
+    ///     });
+    /// 
     ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destinationConnectionProfile", new()
     ///     {
     ///         DisplayName = "Connection profile",
@@ -266,6 +273,151 @@ namespace Pulumi.Gcp.Datastream
     ///                 },
     ///             },
     ///         },
+    ///         CustomerManagedEncryptionKey = "kms-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             keyUser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Stream Bigquery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Host = "%",
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("sourceConnectionProfile", new()
+    ///     {
+    ///         DisplayName = "Source connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         MysqlProfile = new Gcp.Datastream.Inputs.ConnectionProfileMysqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///         },
+    ///     });
+    /// 
+    ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var bigqueryKeyUser = new Gcp.Kms.CryptoKeyIAMMember("bigqueryKeyUser", new()
+    ///     {
+    ///         CryptoKeyId = "bigquery-kms-name",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
+    ///     });
+    /// 
+    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destinationConnectionProfile", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         StreamId = "my-stream",
+    ///         Location = "us-central1",
+    ///         DisplayName = "my stream",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = sourceConnectionProfile.Id,
+    ///             MysqlSourceConfig = null,
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destinationConnectionProfile.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                         KmsKeyName = "bigquery-kms-name",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             bigqueryKeyUser,
+    ///         },
     ///     });
     /// 
     /// });
@@ -302,6 +454,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("backfillNone")]
         public Output<Outputs.StreamBackfillNone?> BackfillNone { get; private set; } = null!;
+
+        /// <summary>
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// </summary>
+        [Output("customerManagedEncryptionKey")]
+        public Output<string?> CustomerManagedEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
@@ -426,6 +585,13 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.StreamBackfillNoneArgs>? BackfillNone { get; set; }
 
         /// <summary>
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// </summary>
+        [Input("customerManagedEncryptionKey")]
+        public Input<string>? CustomerManagedEncryptionKey { get; set; }
+
+        /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
         /// </summary>
         [Input("desiredState")]
@@ -502,6 +668,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("backfillNone")]
         public Input<Inputs.StreamBackfillNoneGetArgs>? BackfillNone { get; set; }
+
+        /// <summary>
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// </summary>
+        [Input("customerManagedEncryptionKey")]
+        public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
         /// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.

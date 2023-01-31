@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("useParallelism")]
         public Input<bool>? UseParallelism { get; set; }
 
+        /// <summary>
+        /// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        /// </summary>
+        [Input("useServerlessAnalytics")]
+        public Input<bool>? UseServerlessAnalytics { get; set; }
+
         public ConnectionCloudSpannerGetArgs()
         {
         }

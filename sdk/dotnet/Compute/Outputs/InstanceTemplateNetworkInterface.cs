@@ -13,14 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceTemplateNetworkInterface
     {
-        /// <summary>
-        /// Access configurations, i.e. IPs via which this
-        /// instance can be accessed via the Internet. Omit to ensure that the instance
-        /// is not accessible from the Internet (this means that ssh provisioners will
-        /// not work unless you can send traffic to the instance's
-        /// network (e.g. via tunnel or because it is running on another cloud instance
-        /// on that network). This block can be repeated multiple times. Structure documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
         /// An
@@ -35,10 +27,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig> Ipv6AccessConfigs;
         public readonly string? Ipv6AccessType;
-        /// <summary>
-        /// The name of the instance template. If you leave
-        /// this blank, the provider will auto-generate a unique name.
-        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// The name or self_link of the network to attach this interface to.

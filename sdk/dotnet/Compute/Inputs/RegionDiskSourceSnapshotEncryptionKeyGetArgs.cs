@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionDiskSourceSnapshotEncryptionKeyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the encryption key that is stored in Google Cloud KMS.
-        /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 

@@ -10,19 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
-    /// 
-    /// To get more information about NodeGroup, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
-    /// * How-to Guides
-    ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-    /// 
-    /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
-    /// number of nodes in a node group and changes to node group size either
-    /// through provider config or through external changes will cause
-    /// the provider to delete and recreate the node group.
-    /// 
     /// ## Example Usage
     /// ### Node Group Basic
     /// 
@@ -41,8 +28,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
-    ///         Zone = "us-central1-a",
-    ///         Description = "example google_compute_node_group for the Google Provider",
+    ///         Zone = "us-central1-f",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
     ///         Size = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///     });
@@ -66,8 +53,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
-    ///         Zone = "us-central1-a",
-    ///         Description = "example google_compute_node_group for Google Provider",
+    ///         Zone = "us-central1-f",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
     ///         MaintenancePolicy = "RESTART_IN_PLACE",
     ///         MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
     ///         {
@@ -80,6 +67,49 @@ namespace Pulumi.Gcp.Compute
     ///             Mode = "ONLY_SCALE_OUT",
     ///             MinNodes = 1,
     ///             MaxNodes = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Node Group Share Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var guestProject = new Gcp.Organizations.Project("guestProject", new()
+    ///     {
+    ///         ProjectId = "project-id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///     });
+    /// 
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-f",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Size = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///         ShareSettings = new Gcp.Compute.Inputs.NodeGroupShareSettingsArgs
+    ///         {
+    ///             ShareType = "SPECIFIC_PROJECTS",
+    ///             ProjectMaps = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.NodeGroupShareSettingsProjectMapArgs
+    ///                 {
+    ///                     Id = guestProject.ProjectId,
+    ///                     ProjectId = guestProject.ProjectId,
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -172,6 +202,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Share settings for the node group.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.NodeGroupShareSettings> ShareSettings { get; private set; } = null!;
 
         /// <summary>
         /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
@@ -284,6 +321,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Share settings for the node group.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.NodeGroupShareSettingsArgs>? ShareSettings { get; set; }
+
+        /// <summary>
         /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         /// </summary>
         [Input("size")]
@@ -366,6 +410,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Share settings for the node group.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.NodeGroupShareSettingsGetArgs>? ShareSettings { get; set; }
 
         /// <summary>
         /// The total number of nodes in the node group. One of `initial_size` or `size` must be specified.

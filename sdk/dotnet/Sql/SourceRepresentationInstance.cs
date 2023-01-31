@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql
 {
     /// <summary>
-    /// A source representation instance is a Cloud SQL instance that represents
-    /// the source database server to the Cloud SQL replica. It is visible in the
-    /// Cloud Console and appears the same as a regular Cloud SQL instance, but it
-    /// contains no data, requires no configuration or maintenance, and does not
-    /// affect billing. You cannot update the source representation instance.
-    /// 
     /// ## Example Usage
     /// ### Sql Source Representation Instance Basic
     /// 
@@ -29,9 +23,12 @@ namespace Pulumi.Gcp.Sql
     ///     var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new()
     ///     {
     ///         DatabaseVersion = "MYSQL_8_0",
+    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
     ///         Host = "10.20.30.40",
+    ///         Password = "password-for-the-user",
     ///         Port = 3306,
     ///         Region = "us-central1",
+    ///         Username = "some-user",
     ///     });
     /// 
     /// });
@@ -101,6 +98,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The password for the replication user account.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -155,6 +153,10 @@ namespace Pulumi.Gcp.Sql
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -221,11 +223,22 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the replication user account.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The externally accessible port for the source database server.
@@ -305,11 +318,22 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the replication user account.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The externally accessible port for the source database server.

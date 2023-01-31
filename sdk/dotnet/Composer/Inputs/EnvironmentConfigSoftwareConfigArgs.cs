@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Composer.Inputs
             set => _airflowConfigOverrides = value;
         }
 
+        [Input("cloudDataLineageIntegration")]
+        public Input<Inputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs>? CloudDataLineageIntegration { get; set; }
+
         [Input("envVariables")]
         private InputMap<string>? _envVariables;
         public InputMap<string> EnvVariables

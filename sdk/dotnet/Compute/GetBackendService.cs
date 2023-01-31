@@ -116,6 +116,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string LoadBalancingScheme;
+        public readonly ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyResult> LocalityLbPolicies;
         public readonly string LocalityLbPolicy;
         public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigResult> LogConfigs;
         public readonly string Name;
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.Compute
 
             string loadBalancingScheme,
 
+            ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyResult> localityLbPolicies,
+
             string localityLbPolicy,
 
             ImmutableArray<Outputs.GetBackendServiceLogConfigResult> logConfigs,
@@ -227,6 +230,7 @@ namespace Pulumi.Gcp.Compute
             Iaps = iaps;
             Id = id;
             LoadBalancingScheme = loadBalancingScheme;
+            LocalityLbPolicies = localityLbPolicies;
             LocalityLbPolicy = localityLbPolicy;
             LogConfigs = logConfigs;
             Name = name;

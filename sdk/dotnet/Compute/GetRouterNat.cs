@@ -170,6 +170,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string SourceSubnetworkIpRangesToNat;
         public readonly ImmutableArray<Outputs.GetRouterNatSubnetworkResult> Subnetworks;
         public readonly int TcpEstablishedIdleTimeoutSec;
+        public readonly int TcpTimeWaitTimeoutSec;
         public readonly int TcpTransitoryIdleTimeoutSec;
         public readonly int UdpIdleTimeoutSec;
 
@@ -211,6 +212,8 @@ namespace Pulumi.Gcp.Compute
 
             int tcpEstablishedIdleTimeoutSec,
 
+            int tcpTimeWaitTimeoutSec,
+
             int tcpTransitoryIdleTimeoutSec,
 
             int udpIdleTimeoutSec)
@@ -233,6 +236,7 @@ namespace Pulumi.Gcp.Compute
             SourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
             Subnetworks = subnetworks;
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
+            TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             TcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
             UdpIdleTimeoutSec = udpIdleTimeoutSec;
         }

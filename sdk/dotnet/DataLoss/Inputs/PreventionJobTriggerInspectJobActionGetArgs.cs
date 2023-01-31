@@ -20,7 +20,19 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobActionPubSubGetArgs>? PubSub { get; set; }
 
         /// <summary>
-        /// Schedule for triggered jobs
+        /// Publish findings of a DlpJob to Data Catalog.
+        /// </summary>
+        [Input("publishFindingsToCloudDataCatalog")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogGetArgs>? PublishFindingsToCloudDataCatalog { get; set; }
+
+        /// <summary>
+        /// Publish the result summary of a DlpJob to the Cloud Security Command Center.
+        /// </summary>
+        [Input("publishSummaryToCscc")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccGetArgs>? PublishSummaryToCscc { get; set; }
+
+        /// <summary>
+        /// If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
         /// Structure is documented below.
         /// </summary>
         [Input("saveFindings")]

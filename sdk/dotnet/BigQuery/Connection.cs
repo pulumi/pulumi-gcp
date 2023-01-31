@@ -188,6 +188,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         Azure = new Gcp.BigQuery.Inputs.ConnectionAzureArgs
     ///         {
     ///             CustomerTenantId = "customer-tenant-id",
+    ///             FederatedApplicationClientId = "b43eeeee-eeee-eeee-eeee-a480155501ce",
     ///         },
     ///         ConnectionId = "my-connection",
     ///         Description = "a riveting description",
@@ -269,7 +270,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.ConnectionCloudSpanner?> CloudSpanner { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// Connection properties specific to the Cloud SQL.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudSql")]
@@ -400,7 +401,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.ConnectionCloudSpannerArgs>? CloudSpanner { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// Connection properties specific to the Cloud SQL.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudSql")]
@@ -480,7 +481,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.ConnectionCloudSpannerGetArgs>? CloudSpanner { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// Connection properties specific to the Cloud SQL.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudSql")]

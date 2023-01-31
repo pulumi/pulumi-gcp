@@ -10,24 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
-    /// Allows creation and management of a Google Cloud Platform project.
-    /// 
-    /// Projects created with this resource must be associated with an Organization.
-    /// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-    /// 
-    /// The user or service account that is running this provider when creating a `gcp.organizations.Project`
-    /// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-    /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-    /// doc for more information.
-    /// 
-    /// &gt; This resource reads the specified billing account on every provider apply and plan operation so you must have permissions on the specified billing account.
-    /// 
-    /// To get more information about projects, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-    /// * How-to Guides
-    ///     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -82,20 +64,17 @@ namespace Pulumi.Gcp.Organizations
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default `true`.
-        /// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-        /// will still need to have 1 network slot available to create the project successfully, even if
-        /// you set `auto_create_network` to `false`, since the network will exist momentarily.
+        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+        /// if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Output("autoCreateNetwork")]
         public Output<bool?> AutoCreateNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// The alphanumeric ID of the billing account this project
-        /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        /// for more details.
+        /// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+        /// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+        /// See Google Cloud Billing API Access Control for more details.
         /// </summary>
         [Output("billingAccount")]
         public Output<string?> BillingAccount { get; private set; } = null!;
@@ -146,8 +125,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
         /// </summary>
         [Output("skipDelete")]
         public Output<bool> SkipDelete { get; private set; } = null!;
@@ -199,20 +177,17 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default `true`.
-        /// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-        /// will still need to have 1 network slot available to create the project successfully, even if
-        /// you set `auto_create_network` to `false`, since the network will exist momentarily.
+        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+        /// if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
 
         /// <summary>
-        /// The alphanumeric ID of the billing account this project
-        /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        /// for more details.
+        /// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+        /// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+        /// See Google Cloud Billing API Access Control for more details.
         /// </summary>
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
@@ -263,8 +238,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }
@@ -278,20 +252,17 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically.  Default `true`.
-        /// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-        /// will still need to have 1 network slot available to create the project successfully, even if
-        /// you set `auto_create_network` to `false`, since the network will exist momentarily.
+        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+        /// if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
 
         /// <summary>
-        /// The alphanumeric ID of the billing account this project
-        /// belongs to. The user or service account performing this operation with the provider
-        /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-        /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-        /// for more details.
+        /// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+        /// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+        /// See Google Cloud Billing API Access Control for more details.
         /// </summary>
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }
@@ -348,8 +319,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// If true, the resource can be deleted
-        /// without deleting the Project via the Google API.
+        /// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
         /// </summary>
         [Input("skipDelete")]
         public Input<bool>? SkipDelete { get; set; }

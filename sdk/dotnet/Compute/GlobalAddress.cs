@@ -33,36 +33,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Global Address Private Services Connect
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var network = new Gcp.Compute.Network("network", new()
-    ///     {
-    ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Compute.GlobalAddress("default", new()
-    ///     {
-    ///         AddressType = "INTERNAL",
-    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
-    ///         Network = network.Id,
-    ///         Address = "100.100.100.105",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -127,7 +97,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -170,9 +140,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. Possible values include:
-        /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -264,7 +233,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -310,9 +279,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. Possible values include:
-        /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -372,7 +340,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this address.  A list of key-&gt;value pairs.
+        /// Labels to apply to this address. A list of key-&gt;value pairs.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -418,9 +386,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. Possible values include:
-        /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

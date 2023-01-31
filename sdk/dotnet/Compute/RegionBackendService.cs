@@ -76,10 +76,8 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// Connection Tracking configuration for this BackendService.
-        /// This is available only for Layer 4 Internal Load Balancing and
-        /// Network Load Balancing.
-        /// Structure is documented below.
+        /// Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+        /// and Network Load Balancing.
         /// </summary>
         [Output("connectionTrackingPolicy")]
         public Output<Outputs.RegionBackendServiceConnectionTrackingPolicy?> ConnectionTrackingPolicy { get; private set; } = null!;
@@ -355,10 +353,8 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// Connection Tracking configuration for this BackendService.
-        /// This is available only for Layer 4 Internal Load Balancing and
-        /// Network Load Balancing.
-        /// Structure is documented below.
+        /// Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+        /// and Network Load Balancing.
         /// </summary>
         [Input("connectionTrackingPolicy")]
         public Input<Inputs.RegionBackendServiceConnectionTrackingPolicyArgs>? ConnectionTrackingPolicy { get; set; }
@@ -577,10 +573,8 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// Connection Tracking configuration for this BackendService.
-        /// This is available only for Layer 4 Internal Load Balancing and
-        /// Network Load Balancing.
-        /// Structure is documented below.
+        /// Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+        /// and Network Load Balancing.
         /// </summary>
         [Input("connectionTrackingPolicy")]
         public Input<Inputs.RegionBackendServiceConnectionTrackingPolicyGetArgs>? ConnectionTrackingPolicy { get; set; }

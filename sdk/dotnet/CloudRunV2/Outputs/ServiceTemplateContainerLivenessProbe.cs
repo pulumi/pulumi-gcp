@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? FailureThreshold;
         /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// HTTPGet specifies the http request to perform.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerLivenessProbeHttpGet? HttpGet;
@@ -31,7 +31,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? PeriodSeconds;
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// (Optional, Deprecated)
+        /// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerLivenessProbeTcpSocket? TcpSocket;

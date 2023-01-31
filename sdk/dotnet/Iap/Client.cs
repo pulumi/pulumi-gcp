@@ -10,58 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iap
 {
     /// <summary>
-    /// Contains the data that describes an Identity Aware Proxy owned client.
-    /// 
-    /// &gt; **Note:** Only internal org clients can be created via declarative tools. External clients must be
-    /// manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
-    /// in this tool.
-    /// 
-    /// To get more information about Client, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
-    /// * How-to Guides
-    ///     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
-    /// 
-    /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
-    /// state as plain-text.
-    /// 
     /// ## Example Usage
-    /// ### Iap Client
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         ProjectId = "tf-test",
-    ///         OrgId = "123456789",
-    ///     });
-    /// 
-    ///     var projectService = new Gcp.Projects.Service("projectService", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "iap.googleapis.com",
-    ///     });
-    /// 
-    ///     var projectBrand = new Gcp.Iap.Brand("projectBrand", new()
-    ///     {
-    ///         SupportEmail = "support@example.com",
-    ///         ApplicationTitle = "Cloud IAP protected Application",
-    ///         Project = projectService.Project,
-    ///     });
-    /// 
-    ///     var projectClient = new Gcp.Iap.Client("projectClient", new()
-    ///     {
-    ///         DisplayName = "Test Client",
-    ///         Brand = projectBrand.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

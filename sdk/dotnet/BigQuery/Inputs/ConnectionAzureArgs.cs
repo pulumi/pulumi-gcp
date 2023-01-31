@@ -31,6 +31,18 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> CustomerTenantId { get; set; } = null!;
 
         /// <summary>
+        /// The Azure Application (client) ID where the federated credentials will be hosted.
+        /// </summary>
+        [Input("federatedApplicationClientId")]
+        public Input<string>? FederatedApplicationClientId { get; set; }
+
+        /// <summary>
+        /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+        /// </summary>
+        [Input("identity")]
+        public Input<string>? Identity { get; set; }
+
+        /// <summary>
         /// The object id of the Azure Active Directory Application.
         /// </summary>
         [Input("objectId")]

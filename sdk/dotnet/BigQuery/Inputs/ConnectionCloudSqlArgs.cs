@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+        /// </summary>
+        [Input("serviceAccountId")]
+        public Input<string>? ServiceAccountId { get; set; }
+
+        /// <summary>
         /// Type of the Cloud SQL database.
         /// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
         /// </summary>

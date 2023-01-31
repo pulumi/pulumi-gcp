@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
-    /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
-    /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
-    /// 
-    /// Security Policy is used by google_compute_backend_service.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -171,6 +165,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Security policies can be imported using any of the following formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : global::Pulumi.CustomResource
@@ -228,7 +238,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.SecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the created resourc
+        /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -424,7 +434,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The URI of the created resourc
+        /// The URI of the created resource.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

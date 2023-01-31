@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
+        /// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+        /// </summary>
+        public readonly string? ServiceAccountId;
+        /// <summary>
         /// Type of the Cloud SQL database.
         /// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
         /// </summary>
@@ -40,11 +44,14 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string instanceId,
 
+            string? serviceAccountId,
+
             string type)
         {
             Credential = credential;
             Database = database;
             InstanceId = instanceId;
+            ServiceAccountId = serviceAccountId;
             Type = type;
         }
     }

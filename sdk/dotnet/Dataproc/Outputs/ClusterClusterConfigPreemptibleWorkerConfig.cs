@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// * PREEMPTIBILITY_UNSPECIFIED
         /// * NON_PREEMPTIBLE
         /// * PREEMPTIBLE
+        /// * SPOT
         /// </summary>
         public readonly string? Preemptibility;
 

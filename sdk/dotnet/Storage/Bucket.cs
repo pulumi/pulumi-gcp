@@ -179,9 +179,8 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketEncryption?> Encryption { get; private set; } = null!;
 
         /// <summary>
-        /// When deleting a bucket, this
-        /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, the provider will fail that run.
+        /// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        /// contains objects, Terraform will fail that run.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -360,9 +359,8 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketEncryptionArgs>? Encryption { get; set; }
 
         /// <summary>
-        /// When deleting a bucket, this
-        /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, the provider will fail that run.
+        /// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        /// contains objects, Terraform will fail that run.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -503,9 +501,8 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketEncryptionGetArgs>? Encryption { get; set; }
 
         /// <summary>
-        /// When deleting a bucket, this
-        /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, the provider will fail that run.
+        /// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+        /// contains objects, Terraform will fail that run.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// balancing.
     /// 
     /// For more information, see
-    /// &lt;https://cloud.google.com/compute/docs/load-balancing/http/&gt;
+    /// https://cloud.google.com/compute/docs/load-balancing/http/
     /// 
     /// ## Example Usage
     /// ### Global Forwarding Rule External Managed
@@ -87,7 +87,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Private Service Connect Google Apis
     /// ### Private Service Connect Google Apis
     /// 
     /// ```csharp
@@ -213,24 +212,19 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// Labels to apply to this rule.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// Note: This field must be set "" if the global address is
-        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        /// that this will be used for Global external HTTP(S) load balancers.
-        /// Note: This field must be set "" if the global address is
-        /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -268,11 +262,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field is not used for external load balancing.
-        /// For INTERNAL_SELF_MANAGED load balancing, this field
-        /// identifies the network that the load balanced IP should belong to
-        /// for this global forwarding rule. If this field is not specified,
-        /// the default network will be used.
+        /// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        /// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        /// specified, the default network will be used.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -325,12 +317,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
-        /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        /// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        /// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        /// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -427,7 +417,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// Labels to apply to this rule.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -436,18 +426,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// Note: This field must be set "" if the global address is
-        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        /// that this will be used for Global external HTTP(S) load balancers.
-        /// Note: This field must be set "" if the global address is
-        /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -491,11 +476,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This field is not used for external load balancing.
-        /// For INTERNAL_SELF_MANAGED load balancing, this field
-        /// identifies the network that the load balanced IP should belong to
-        /// for this global forwarding rule. If this field is not specified,
-        /// the default network will be used.
+        /// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        /// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        /// specified, the default network will be used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -529,12 +512,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
-        /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        /// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        /// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        /// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -599,7 +580,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+        /// Labels to apply to this rule.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -608,18 +589,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// Note: This field must be set "" if the global address is
-        /// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-        /// that this will be used for Global external HTTP(S) load balancers.
-        /// Note: This field must be set "" if the global address is
-        /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -663,11 +639,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This field is not used for external load balancing.
-        /// For INTERNAL_SELF_MANAGED load balancing, this field
-        /// identifies the network that the load balanced IP should belong to
-        /// for this global forwarding rule. If this field is not specified,
-        /// the default network will be used.
+        /// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
+        /// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
+        /// specified, the default network will be used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -720,12 +694,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
-        /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-        /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
+        /// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
+        /// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
+        /// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

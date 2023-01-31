@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         Service = @default.Apply(@default =&gt; @default.Apply(getAppEngineServiceResult =&gt; getAppEngineServiceResult.ServiceId)),
     ///         SloId = "ae-slo",
-    ///         DisplayName = "Test SLO for App Engine",
+    ///         DisplayName = "Terraform Test SLO for App Engine",
     ///         Goal = 0.9,
     ///         CalendarPeriod = "DAY",
     ///         BasicSli = new Gcp.Monitoring.Inputs.SloBasicSliArgs
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         Service = customsrv.ServiceId,
     ///         SloId = "consumed-api-slo",
-    ///         DisplayName = "Test SLO with request based SLI (good total ratio)",
+    ///         DisplayName = "Terraform Test SLO with request based SLI (good total ratio)",
     ///         Goal = 0.9,
     ///         RollingPeriodDays = 30,
     ///         RequestBasedSli = new Gcp.Monitoring.Inputs.SloRequestBasedSliArgs

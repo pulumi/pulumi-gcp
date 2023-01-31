@@ -279,6 +279,89 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// ### Cloudbuild Trigger Manual Github Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var manual_ghe_trigger = new Gcp.CloudBuild.Trigger("manual-ghe-trigger", new()
+    ///     {
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             GithubEnterpriseConfig = "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+    ///             Path = "cloudbuild.yaml",
+    ///             RepoType = "GITHUB",
+    ///             Revision = "refs/heads/main",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             GithubEnterpriseConfig = "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///             Uri = "https://hashicorp/terraform-provider-google-beta",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Repo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             AppInstallationId = 123123,
+    ///             AuthorizerCredential = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
+    ///     {
+    ///         ParentConnection = my_connection.Id,
+    ///         RemoteUri = "https://github.com/myuser/my-repo.git",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var repo_trigger = new Gcp.CloudBuild.Trigger("repo-trigger", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryEventConfig = new Gcp.CloudBuild.Inputs.TriggerRepositoryEventConfigArgs
+    ///         {
+    ///             Repository = my_repository.Id,
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerRepositoryEventConfigPushArgs
+    ///             {
+    ///                 Branch = "feature-.*",
+    ///             },
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -429,6 +512,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("pubsubConfig")]
         public Output<Outputs.TriggerPubsubConfig?> PubsubConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// </summary>
+        [Output("repositoryEventConfig")]
+        public Output<Outputs.TriggerRepositoryEventConfig?> RepositoryEventConfig { get; private set; } = null!;
 
         /// <summary>
         /// The service account used for all user-controlled operations including
@@ -669,6 +758,12 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<Inputs.TriggerPubsubConfigArgs>? PubsubConfig { get; set; }
 
         /// <summary>
+        /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// </summary>
+        [Input("repositoryEventConfig")]
+        public Input<Inputs.TriggerRepositoryEventConfigArgs>? RepositoryEventConfig { get; set; }
+
+        /// <summary>
         /// The service account used for all user-controlled operations including
         /// triggers.patch, triggers.run, builds.create, and builds.cancel.
         /// If no service account is set, then the standard Cloud Build service account
@@ -879,6 +974,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("pubsubConfig")]
         public Input<Inputs.TriggerPubsubConfigGetArgs>? PubsubConfig { get; set; }
+
+        /// <summary>
+        /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// </summary>
+        [Input("repositoryEventConfig")]
+        public Input<Inputs.TriggerRepositoryEventConfigGetArgs>? RepositoryEventConfig { get; set; }
 
         /// <summary>
         /// The service account used for all user-controlled operations including

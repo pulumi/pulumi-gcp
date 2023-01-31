@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerSourceToBuildArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The full resource name of the github enterprise config.
+        /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        /// </summary>
+        [Input("githubEnterpriseConfig")]
+        public Input<string>? GithubEnterpriseConfig { get; set; }
+
+        /// <summary>
         /// The branch or tag to use. Must start with "refs/" (required).
         /// </summary>
         [Input("ref", required: true)]

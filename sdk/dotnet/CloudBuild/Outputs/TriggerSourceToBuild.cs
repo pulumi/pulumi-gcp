@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerSourceToBuild
     {
         /// <summary>
+        /// The full resource name of the github enterprise config.
+        /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        /// </summary>
+        public readonly string? GithubEnterpriseConfig;
+        /// <summary>
         /// The branch or tag to use. Must start with "refs/" (required).
         /// </summary>
         public readonly string Ref;
@@ -30,12 +35,15 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private TriggerSourceToBuild(
+            string? githubEnterpriseConfig,
+
             string @ref,
 
             string repoType,
 
             string uri)
         {
+            GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;
             Uri = uri;

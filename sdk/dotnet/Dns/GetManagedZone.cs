@@ -135,9 +135,6 @@ namespace Pulumi.Gcp.Dns
         /// A textual description field.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The fully qualified DNS name of this zone, e.g. `example.io.`.
-        /// </summary>
         public readonly string DnsName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

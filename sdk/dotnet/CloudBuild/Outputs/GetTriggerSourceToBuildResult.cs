@@ -13,18 +13,22 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerSourceToBuildResult
     {
+        public readonly string GithubEnterpriseConfig;
         public readonly string Ref;
         public readonly string RepoType;
         public readonly string Uri;
 
         [OutputConstructor]
         private GetTriggerSourceToBuildResult(
+            string githubEnterpriseConfig,
+
             string @ref,
 
             string repoType,
 
             string uri)
         {
+            GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;
             Uri = uri;

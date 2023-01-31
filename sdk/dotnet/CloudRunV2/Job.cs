@@ -221,54 +221,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Probes
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
-    ///     {
-    ///         LaunchStage = "BETA",
-    ///         Location = "us-central1",
-    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
-    ///         {
-    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
-    ///             {
-    ///                 Containers = new[]
-    ///                 {
-    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
-    ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///                         LivenessProbe = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerLivenessProbeArgs
-    ///                         {
-    ///                             HttpGet = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerLivenessProbeHttpGetArgs
-    ///                             {
-    ///                                 Path = "/",
-    ///                             },
-    ///                         },
-    ///                         StartupProbe = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerStartupProbeArgs
-    ///                         {
-    ///                             FailureThreshold = 1,
-    ///                             InitialDelaySeconds = 0,
-    ///                             PeriodSeconds = 3,
-    ///                             TcpSocket = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerStartupProbeTcpSocketArgs
-    ///                             {
-    ///                                 Port = 8080,
-    ///                             },
-    ///                             TimeoutSeconds = 1,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Cloudrunv2 Job Secret
     /// 
     /// ```csharp

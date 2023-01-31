@@ -83,9 +83,6 @@ namespace Pulumi.Gcp.Composer
     [OutputType]
     public sealed class GetEnvironmentResult
     {
-        /// <summary>
-        /// Configuration parameters for the environment.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
