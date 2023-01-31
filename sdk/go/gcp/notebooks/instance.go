@@ -77,6 +77,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				Metadata: pulumi.StringMap{
 //					"proxy-mode": pulumi.String("service_account"),
+//					"terraform":  pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -170,6 +171,9 @@ import (
 //				Subnet:           *pulumi.String(mySubnetwork.Id),
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {

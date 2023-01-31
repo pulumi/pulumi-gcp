@@ -46,7 +46,7 @@ type Job struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+	// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
@@ -56,7 +56,9 @@ type Job struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
-	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
 	SkipWaitOnJobTermination pulumi.BoolPtrOutput `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
@@ -132,7 +134,7 @@ type jobState struct {
 	Name *string `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+	// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -142,7 +144,9 @@ type jobState struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
@@ -184,7 +188,7 @@ type JobState struct {
 	Name pulumi.StringPtrInput
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrInput
-	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+	// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapInput
@@ -194,7 +198,9 @@ type JobState struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
-	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
@@ -238,7 +244,7 @@ type jobArgs struct {
 	Name *string `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+	// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -248,7 +254,9 @@ type jobArgs struct {
 	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -285,7 +293,7 @@ type JobArgs struct {
 	Name pulumi.StringPtrInput
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrInput
-	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+	// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapInput
@@ -295,7 +303,9 @@ type JobArgs struct {
 	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
-	// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+	// different, e.g. by embedding a release ID or by using a random_id.
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
@@ -449,7 +459,7 @@ func (o JobOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
+// One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
 func (o JobOutput) OnDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.OnDelete }).(pulumi.StringPtrOutput)
 }
@@ -474,7 +484,9 @@ func (o JobOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
+// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
+// different, e.g. by embedding a release ID or by using a random_id.
 func (o JobOutput) SkipWaitOnJobTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.SkipWaitOnJobTermination }).(pulumi.BoolPtrOutput)
 }

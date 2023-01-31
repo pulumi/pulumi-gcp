@@ -321,11 +321,12 @@ type Subnetwork struct {
 	// is ready to be promoted to ACTIVE or is currently draining.
 	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// An array of configurations for secondary IP ranges for VM instances
-	// contained in this subnetwork. The primary IP of such VM must belong
-	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges.
-	// Structure is documented below.
+	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+	// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+	// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+	// syntax: 'example=[]' For more details about this behavior, see [this
+	// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayOutput `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -435,11 +436,12 @@ type subnetworkState struct {
 	// is ready to be promoted to ACTIVE or is currently draining.
 	// Possible values are `ACTIVE` and `BACKUP`.
 	Role *string `pulumi:"role"`
-	// An array of configurations for secondary IP ranges for VM instances
-	// contained in this subnetwork. The primary IP of such VM must belong
-	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges.
-	// Structure is documented below.
+	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+	// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+	// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+	// syntax: 'example=[]' For more details about this behavior, see [this
+	// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -515,11 +517,12 @@ type SubnetworkState struct {
 	// is ready to be promoted to ACTIVE or is currently draining.
 	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrInput
-	// An array of configurations for secondary IP ranges for VM instances
-	// contained in this subnetwork. The primary IP of such VM must belong
-	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges.
-	// Structure is documented below.
+	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+	// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+	// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+	// syntax: 'example=[]' For more details about this behavior, see [this
+	// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -586,11 +589,12 @@ type subnetworkArgs struct {
 	// is ready to be promoted to ACTIVE or is currently draining.
 	// Possible values are `ACTIVE` and `BACKUP`.
 	Role *string `pulumi:"role"`
-	// An array of configurations for secondary IP ranges for VM instances
-	// contained in this subnetwork. The primary IP of such VM must belong
-	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges.
-	// Structure is documented below.
+	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+	// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+	// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+	// syntax: 'example=[]' For more details about this behavior, see [this
+	// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 	SecondaryIpRanges []SubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
@@ -652,11 +656,12 @@ type SubnetworkArgs struct {
 	// is ready to be promoted to ACTIVE or is currently draining.
 	// Possible values are `ACTIVE` and `BACKUP`.
 	Role pulumi.StringPtrInput
-	// An array of configurations for secondary IP ranges for VM instances
-	// contained in this subnetwork. The primary IP of such VM must belong
-	// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-	// to either primary or secondary ranges.
-	// Structure is documented below.
+	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+	// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+	// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+	// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+	// syntax: 'example=[]' For more details about this behavior, see [this
+	// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 	SecondaryIpRanges SubnetworkSecondaryIpRangeArrayInput
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
@@ -867,11 +872,12 @@ func (o SubnetworkOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// An array of configurations for secondary IP ranges for VM instances
-// contained in this subnetwork. The primary IP of such VM must belong
-// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-// to either primary or secondary ranges.
-// Structure is documented below.
+// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+// syntax: 'example=[]' For more details about this behavior, see [this
+// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
 func (o SubnetworkOutput) SecondaryIpRanges() SubnetworkSecondaryIpRangeArrayOutput {
 	return o.ApplyT(func(v *Subnetwork) SubnetworkSecondaryIpRangeArrayOutput { return v.SecondaryIpRanges }).(SubnetworkSecondaryIpRangeArrayOutput)
 }

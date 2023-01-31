@@ -8589,10 +8589,10 @@ type ClusterAddonsConfig struct {
 	// controller addon, which makes it easy to set up HTTP load balancers for services in a
 	// cluster. It is enabled by default; set `disabled = true` to disable.
 	HttpLoadBalancing *ClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancing"`
-	// .
+	// ).
 	// Structure is documented below.
 	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
-	// .
+	// ).
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 	KalmConfig *ClusterAddonsConfigKalmConfig `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
@@ -8645,10 +8645,10 @@ type ClusterAddonsConfigArgs struct {
 	// controller addon, which makes it easy to set up HTTP load balancers for services in a
 	// cluster. It is enabled by default; set `disabled = true` to disable.
 	HttpLoadBalancing ClusterAddonsConfigHttpLoadBalancingPtrInput `pulumi:"httpLoadBalancing"`
-	// .
+	// ).
 	// Structure is documented below.
 	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
-	// .
+	// ).
 	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 	KalmConfig ClusterAddonsConfigKalmConfigPtrInput `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
@@ -8796,13 +8796,13 @@ func (o ClusterAddonsConfigOutput) HttpLoadBalancing() ClusterAddonsConfigHttpLo
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
-// .
+// ).
 // Structure is documented below.
 func (o ClusterAddonsConfigOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
-// .
+// ).
 // Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig { return v.KalmConfig }).(ClusterAddonsConfigKalmConfigPtrOutput)
@@ -8935,7 +8935,7 @@ func (o ClusterAddonsConfigPtrOutput) HttpLoadBalancing() ClusterAddonsConfigHtt
 	}).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
-// .
+// ).
 // Structure is documented below.
 func (o ClusterAddonsConfigPtrOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig {
@@ -8946,7 +8946,7 @@ func (o ClusterAddonsConfigPtrOutput) IstioConfig() ClusterAddonsConfigIstioConf
 	}).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
-// .
+// ).
 // Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigPtrOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig {
@@ -11149,6 +11149,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management *ClusterClusterAutoscalingAutoProvisioningDefaultsManagement `pulumi:"management"`
+	// )
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 	// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 	// as "Intel Haswell" or "Intel Sandy Bridge".
@@ -11185,6 +11186,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrInput `pulumi:"management"`
+	// )
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 	// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 	// as "Intel Haswell" or "Intel Sandy Bridge".
@@ -11303,6 +11305,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) Management() Cl
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput)
 }
 
+// )
 // Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 // specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 // as "Intel Haswell" or "Intel Sandy Bridge".
@@ -11408,6 +11411,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Management()
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput)
 }
 
+// )
 // Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 // specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 // as "Intel Haswell" or "Intel Sandy Bridge".
@@ -16031,7 +16035,7 @@ func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type ClusterNodeConfig struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -16047,9 +16051,7 @@ type ClusterNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
-	// List of the type and count of accelerator cards attached to the instance.
-	// Structure documented below.
+	GcfsConfig        *ClusterNodeConfigGcfsConfig        `pulumi:"gcfsConfig"`
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -16078,13 +16080,8 @@ type ClusterNodeConfig struct {
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-	MachineType *string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
-	Metadata map[string]string `pulumi:"metadata"`
+	MachineType *string           `pulumi:"machineType"`
+	Metadata    map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -16105,8 +16102,10 @@ type ClusterNodeConfig struct {
 	ReservationAffinity *ClusterNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
-	ResourceLabels map[string]string               `pulumi:"resourceLabels"`
-	SandboxConfig  *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -16118,15 +16117,7 @@ type ClusterNodeConfig struct {
 	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
-	Tags []string `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	Tags   []string                 `pulumi:"tags"`
 	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -16145,7 +16136,7 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -16161,9 +16152,7 @@ type ClusterNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
-	// List of the type and count of accelerator cards attached to the instance.
-	// Structure documented below.
+	GcfsConfig        ClusterNodeConfigGcfsConfigPtrInput         `pulumi:"gcfsConfig"`
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -16193,12 +16182,7 @@ type ClusterNodeConfigArgs struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	Metadata    pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -16219,8 +16203,10 @@ type ClusterNodeConfigArgs struct {
 	ReservationAffinity ClusterNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
-	ResourceLabels pulumi.StringMapInput                  `pulumi:"resourceLabels"`
-	SandboxConfig  ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -16232,15 +16218,7 @@ type ClusterNodeConfigArgs struct {
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	Tags   pulumi.StringArrayInput          `pulumi:"tags"`
 	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -16324,7 +16302,7 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 	}).(ClusterNodeConfigPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -16356,8 +16334,6 @@ func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutp
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
 
-// List of the type and count of accelerator cards attached to the instance.
-// Structure documented below.
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
@@ -16414,11 +16390,6 @@ func (o ClusterNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
 func (o ClusterNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -16462,6 +16433,8 @@ func (o ClusterNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
@@ -16490,14 +16463,6 @@ func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
 func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
@@ -16532,7 +16497,7 @@ func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	}).(ClusterNodeConfigOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -16589,8 +16554,6 @@ func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrO
 	}).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
 
-// List of the type and count of accelerator cards attached to the instance.
-// Structure documented below.
 func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator {
 		if v == nil {
@@ -16692,11 +16655,6 @@ func (o ClusterNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
 func (o ClusterNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) map[string]string {
 		if v == nil {
@@ -16775,6 +16733,8 @@ func (o ClusterNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSandboxConfig {
 		if v == nil {
@@ -16828,14 +16788,6 @@ func (o ClusterNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigTaint {
 		if v == nil {
@@ -18495,7 +18447,7 @@ func (o ClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodeC
 type ClusterNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode string `pulumi:"mode"`
@@ -18515,7 +18467,7 @@ type ClusterNodeConfigWorkloadMetadataConfigInput interface {
 type ClusterNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -18600,7 +18552,7 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
@@ -18633,7 +18585,7 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodeConf
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
@@ -18661,18 +18613,11 @@ type ClusterNodePool struct {
 	MaxPodsPerNode *int                       `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	Name       *string `pulumi:"name"`
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+	Name          *string                       `pulumi:"name"`
+	NamePrefix    *string                       `pulumi:"namePrefix"`
 	NetworkConfig *ClusterNodePoolNetworkConfig `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used.
-	// Structure is documented below.
-	NodeConfig *ClusterNodePoolNodeConfig `pulumi:"nodeConfig"`
-	NodeCount  *int                       `pulumi:"nodeCount"`
+	NodeConfig    *ClusterNodePoolNodeConfig    `pulumi:"nodeConfig"`
+	NodeCount     *int                          `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -18711,18 +18656,11 @@ type ClusterNodePoolArgs struct {
 	MaxPodsPerNode pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
-	// Configuration for
-	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
+	Name          pulumi.StringPtrInput                `pulumi:"name"`
+	NamePrefix    pulumi.StringPtrInput                `pulumi:"namePrefix"`
 	NetworkConfig ClusterNodePoolNetworkConfigPtrInput `pulumi:"networkConfig"`
-	// Parameters used in creating the default node pool.
-	// Generally, this field should not be used at the same time as a
-	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used.
-	// Structure is documented below.
-	NodeConfig ClusterNodePoolNodeConfigPtrInput `pulumi:"nodeConfig"`
-	NodeCount  pulumi.IntPtrInput                `pulumi:"nodeCount"`
+	NodeConfig    ClusterNodePoolNodeConfigPtrInput    `pulumi:"nodeConfig"`
+	NodeCount     pulumi.IntPtrInput                   `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -18826,17 +18764,10 @@ func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for
-// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
 func (o ClusterNodePoolOutput) NetworkConfig() ClusterNodePoolNetworkConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNetworkConfig { return v.NetworkConfig }).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
-// Parameters used in creating the default node pool.
-// Generally, this field should not be used at the same time as a
-// `container.NodePool` or a `nodePool` block; this configuration
-// manages the default node pool, which isn't recommended to be used.
-// Structure is documented below.
 func (o ClusterNodePoolOutput) NodeConfig() ClusterNodePoolNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNodeConfig { return v.NodeConfig }).(ClusterNodePoolNodeConfigPtrOutput)
 }
@@ -19944,17 +19875,14 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodePoolNetworkConfig struct {
-	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Enables the private cluster feature,
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-	PodRange *string `pulumi:"podRange"`
+	EnablePrivateNodes *bool   `pulumi:"enablePrivateNodes"`
+	PodIpv4CidrBlock   *string `pulumi:"podIpv4CidrBlock"`
+	PodRange           *string `pulumi:"podRange"`
 }
 
 // ClusterNodePoolNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigArgs and ClusterNodePoolNetworkConfigOutput values.
@@ -19969,17 +19897,14 @@ type ClusterNodePoolNetworkConfigInput interface {
 }
 
 type ClusterNodePoolNetworkConfigArgs struct {
-	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Enables the private cluster feature,
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
+	EnablePrivateNodes pulumi.BoolPtrInput   `pulumi:"enablePrivateNodes"`
+	PodIpv4CidrBlock   pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
+	PodRange           pulumi.StringPtrInput `pulumi:"podRange"`
 }
 
 func (ClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -20059,7 +19984,6 @@ func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigPtrOut
 	}).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
-// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
@@ -20072,12 +19996,10 @@ func (o ClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrO
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
@@ -20106,7 +20028,6 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) Elem() ClusterNodePoolNetworkConf
 	}).(ClusterNodePoolNetworkConfigOutput)
 }
 
-// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
 		if v == nil {
@@ -20129,7 +20050,6 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
 		if v == nil {
@@ -20139,7 +20059,6 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
 		if v == nil {
@@ -20150,7 +20069,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 }
 
 type ClusterNodePoolNodeConfig struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -20166,9 +20085,7 @@ type ClusterNodePoolNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
-	// List of the type and count of accelerator cards attached to the instance.
-	// Structure documented below.
+	GcfsConfig        *ClusterNodePoolNodeConfigGcfsConfig        `pulumi:"gcfsConfig"`
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -20197,13 +20114,8 @@ type ClusterNodePoolNodeConfig struct {
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-	MachineType *string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
-	Metadata map[string]string `pulumi:"metadata"`
+	MachineType *string           `pulumi:"machineType"`
+	Metadata    map[string]string `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -20224,8 +20136,10 @@ type ClusterNodePoolNodeConfig struct {
 	ReservationAffinity *ClusterNodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
-	ResourceLabels map[string]string                       `pulumi:"resourceLabels"`
-	SandboxConfig  *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -20237,15 +20151,7 @@ type ClusterNodePoolNodeConfig struct {
 	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
-	Tags []string `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	Tags   []string                         `pulumi:"tags"`
 	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -20264,7 +20170,7 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -20280,9 +20186,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
-	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
-	// List of the type and count of accelerator cards attached to the instance.
-	// Structure documented below.
+	GcfsConfig        ClusterNodePoolNodeConfigGcfsConfigPtrInput         `pulumi:"gcfsConfig"`
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// Google Virtual NIC (gVNIC) is a virtual network interface.
 	// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -20312,12 +20216,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to instances in
-	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-	// `true` by the API; if `metadata` is set but that default value is not
-	// included, the provider will attempt to unset the value. To avoid this, set the
-	// value in your config.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	Metadata    pulumi.StringMapInput `pulumi:"metadata"`
 	// Minimum CPU platform to be used by this instance.
 	// The instance may be scheduled on the specified or newer CPU platform. Applicable
 	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -20338,8 +20237,10 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ReservationAffinity ClusterNodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
 	// for how these labels are applied to clusters, node pools and nodes.
-	ResourceLabels pulumi.StringMapInput                          `pulumi:"resourceLabels"`
-	SandboxConfig  ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
+	// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -20351,15 +20252,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-	// to apply to nodes. GKE's API can only set this field on cluster creation.
-	// However, GKE will add taints to your nodes if you enable certain features such
-	// as GPUs. If this field is set, any diffs on this field will cause the provider to
-	// recreate the underlying resource. Taint values can be updated safely in
-	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-	// recommended. Structure is documented below.
+	Tags   pulumi.StringArrayInput                  `pulumi:"tags"`
 	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -20443,7 +20336,7 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -20477,8 +20370,6 @@ func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigG
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
-// List of the type and count of accelerator cards attached to the instance.
-// Structure documented below.
 func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
@@ -20537,11 +20428,6 @@ func (o ClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
 func (o ClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -20587,6 +20473,8 @@ func (o ClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
@@ -20617,14 +20505,6 @@ func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
@@ -20661,7 +20541,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutp
 	}).(ClusterNodePoolNodeConfigOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {
@@ -20718,8 +20598,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConf
 	}).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
 
-// List of the type and count of accelerator cards attached to the instance.
-// Structure documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		if v == nil {
@@ -20821,11 +20699,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metadata key/value pairs assigned to instances in
-// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-// `true` by the API; if `metadata` is set but that default value is not
-// included, the provider will attempt to unset the value. To avoid this, set the
-// value in your config.
 func (o ClusterNodePoolNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]string {
 		if v == nil {
@@ -20904,6 +20777,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
+// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig {
 		if v == nil {
@@ -20957,14 +20832,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
-// to apply to nodes. GKE's API can only set this field on cluster creation.
-// However, GKE will add taints to your nodes if you enable certain features such
-// as GPUs. If this field is set, any diffs on this field will cause the provider to
-// recreate the underlying resource. Taint values can be updated safely in
-// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
-// this field to manage taints. If you do, `lifecycle.ignore_changes` is
-// recommended. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint {
 		if v == nil {
@@ -22624,7 +22491,7 @@ func (o ClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) Clus
 type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode string `pulumi:"mode"`
@@ -22644,7 +22511,7 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigInput interface {
 type ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
 	// How to expose the node metadata to the workload running on the node.
 	// Accepted values are:
-	// * UNSPECIFIED: Not Set
+	// * MODE_UNSPECIFIED: Not Set
 	// * GCE_METADATA: Expose all Compute Engine metadata to pods.
 	// * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -22729,7 +22596,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) Mode() pulumi.StringOutput {
@@ -22762,7 +22629,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() Cluster
 
 // How to expose the node metadata to the workload running on the node.
 // Accepted values are:
-// * UNSPECIFIED: Not Set
+// * MODE_UNSPECIFIED: Not Set
 // * GCE_METADATA: Expose all Compute Engine metadata to pods.
 // * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
@@ -24050,10 +23917,7 @@ type ClusterPrivateClusterConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	EnablePrivateNodes       *bool                                                `pulumi:"enablePrivateNodes"`
 	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -24094,10 +23958,7 @@ type ClusterPrivateClusterConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	EnablePrivateNodes       pulumi.BoolPtrInput                                         `pulumi:"enablePrivateNodes"`
 	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -24210,9 +24071,6 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		return v.MasterGlobalAccessConfig
@@ -24300,9 +24158,6 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		if v == nil {

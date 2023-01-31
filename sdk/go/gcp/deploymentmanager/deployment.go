@@ -11,20 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A collection of resources that are deployed and managed together using
-// a configuration file
-//
-// > **Warning:** This resource is intended only to manage a Deployment resource,
-// and attempts to manage the Deployment's resources in the provider as well
-// will likely result in errors or unexpected behavior as the two tools
-// fight over ownership. We strongly discourage doing so unless you are an
-// experienced user of both tools.
-//
-// In addition, due to limitations of the API, the provider will treat
-// deployments in preview as recreate-only for any update operation other
-// than actually deploying an in-preview deployment (i.e. `preview=true` to
-// `preview=false`).
-//
 // ## Example Usage
 // ### Deployment Manager Deployment Basic
 //
@@ -125,14 +111,10 @@ type Deployment struct {
 	Manifest pulumi.StringOutput `pulumi:"manifest"`
 	// Unique name for the deployment
 	Name pulumi.StringOutput `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview pulumi.BoolPtrOutput `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -206,14 +188,10 @@ type deploymentState struct {
 	Manifest *string `pulumi:"manifest"`
 	// Unique name for the deployment
 	Name *string `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview *bool `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -256,14 +234,10 @@ type DeploymentState struct {
 	Manifest pulumi.StringPtrInput
 	// Unique name for the deployment
 	Name pulumi.StringPtrInput
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -305,14 +279,10 @@ type deploymentArgs struct {
 	Labels []DeploymentLabel `pulumi:"labels"`
 	// Unique name for the deployment
 	Name *string `pulumi:"name"`
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview *bool `pulumi:"preview"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -349,14 +319,10 @@ type DeploymentArgs struct {
 	Labels DeploymentLabelArrayInput
 	// Unique name for the deployment
 	Name pulumi.StringPtrInput
-	// If set to true, a deployment is created with "shell" resources
-	// that are not actually instantiated. This allows you to preview a
-	// deployment. It can be updated to false to actually deploy
-	// with real resources.
-	// ~>**NOTE:** Deployment Manager does not allow update
-	// of a deployment in preview (unless updating to preview=false). Thus,
-	// the provider will force-recreate deployments if either preview is updated
-	// to true or if other fields are updated while preview is true.
+	// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -504,14 +470,10 @@ func (o DeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// If set to true, a deployment is created with "shell" resources
-// that are not actually instantiated. This allows you to preview a
-// deployment. It can be updated to false to actually deploy
-// with real resources.
-// ~>**NOTE:** Deployment Manager does not allow update
-// of a deployment in preview (unless updating to preview=false). Thus,
-// the provider will force-recreate deployments if either preview is updated
-// to true or if other fields are updated while preview is true.
+// If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+// deployments if either preview is updated to true or if other fields are updated while preview is true.
 func (o DeploymentOutput) Preview() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.BoolPtrOutput { return v.Preview }).(pulumi.BoolPtrOutput)
 }

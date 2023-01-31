@@ -1274,8 +1274,12 @@ type JobTemplateTemplateContainer struct {
 	Envs []JobTemplateTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
+	// (Optional, Deprecated)
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
 	LivenessProbe *JobTemplateTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
@@ -1286,8 +1290,12 @@ type JobTemplateTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *JobTemplateTemplateContainerResources `pulumi:"resources"`
+	// (Optional, Deprecated)
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
 	StartupProbe *JobTemplateTemplateContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
@@ -1317,8 +1325,12 @@ type JobTemplateTemplateContainerArgs struct {
 	Envs JobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
+	// (Optional, Deprecated)
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
 	LivenessProbe JobTemplateTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1329,8 +1341,12 @@ type JobTemplateTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources JobTemplateTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// (Optional, Deprecated)
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
 	StartupProbe JobTemplateTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
@@ -1411,8 +1427,12 @@ func (o JobTemplateTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// This field is not supported in Cloud Run Job currently.
 // Structure is documented below.
+//
+// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
 func (o JobTemplateTemplateContainerOutput) LivenessProbe() JobTemplateTemplateContainerLivenessProbePtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerLivenessProbe {
 		return v.LivenessProbe
@@ -1437,8 +1457,12 @@ func (o JobTemplateTemplateContainerOutput) Resources() JobTemplateTemplateConta
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerResources { return v.Resources }).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// This field is not supported in Cloud Run Job currently.
 // Structure is documented below.
+//
+// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
 func (o JobTemplateTemplateContainerOutput) StartupProbe() JobTemplateTemplateContainerStartupProbePtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerStartupProbe { return v.StartupProbe }).(JobTemplateTemplateContainerStartupProbePtrOutput)
 }
@@ -6063,15 +6087,18 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Version() p
 type ServiceTemplateContainerLivenessProbe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet *ServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	// (Optional, Deprecated)
+	// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
 	TcpSocket *ServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -6091,15 +6118,18 @@ type ServiceTemplateContainerLivenessProbeInput interface {
 type ServiceTemplateContainerLivenessProbeArgs struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet ServiceTemplateContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	// (Optional, Deprecated)
+	// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 	// Structure is documented below.
+	//
+	// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
 	TcpSocket ServiceTemplateContainerLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -6187,7 +6217,7 @@ func (o ServiceTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.I
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+// HTTPGet specifies the http request to perform.
 // Structure is documented below.
 func (o ServiceTemplateContainerLivenessProbeOutput) HttpGet() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeHttpGet {
@@ -6205,8 +6235,11 @@ func (o ServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntP
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+// (Optional, Deprecated)
+// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 // Structure is documented below.
+//
+// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
 func (o ServiceTemplateContainerLivenessProbeOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
 		return v.TcpSocket
@@ -6252,7 +6285,7 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) FailureThreshold() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+// HTTPGet specifies the http request to perform.
 // Structure is documented below.
 func (o ServiceTemplateContainerLivenessProbePtrOutput) HttpGet() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeHttpGet {
@@ -6283,8 +6316,11 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+// (Optional, Deprecated)
+// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 // Structure is documented below.
+//
+// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
 func (o ServiceTemplateContainerLivenessProbePtrOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
 		if v == nil {

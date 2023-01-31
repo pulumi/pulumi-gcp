@@ -2070,12 +2070,13 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) TimeZo
 }
 
 type EnvironmentConfigSoftwareConfig struct {
-	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
-	EnvVariables           map[string]string `pulumi:"envVariables"`
-	ImageVersion           *string           `pulumi:"imageVersion"`
-	PypiPackages           map[string]string `pulumi:"pypiPackages"`
-	PythonVersion          *string           `pulumi:"pythonVersion"`
-	SchedulerCount         *int              `pulumi:"schedulerCount"`
+	AirflowConfigOverrides      map[string]string                                           `pulumi:"airflowConfigOverrides"`
+	CloudDataLineageIntegration *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration `pulumi:"cloudDataLineageIntegration"`
+	EnvVariables                map[string]string                                           `pulumi:"envVariables"`
+	ImageVersion                *string                                                     `pulumi:"imageVersion"`
+	PypiPackages                map[string]string                                           `pulumi:"pypiPackages"`
+	PythonVersion               *string                                                     `pulumi:"pythonVersion"`
+	SchedulerCount              *int                                                        `pulumi:"schedulerCount"`
 }
 
 // EnvironmentConfigSoftwareConfigInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs and EnvironmentConfigSoftwareConfigOutput values.
@@ -2090,12 +2091,13 @@ type EnvironmentConfigSoftwareConfigInput interface {
 }
 
 type EnvironmentConfigSoftwareConfigArgs struct {
-	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
-	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
-	ImageVersion           pulumi.StringPtrInput `pulumi:"imageVersion"`
-	PypiPackages           pulumi.StringMapInput `pulumi:"pypiPackages"`
-	PythonVersion          pulumi.StringPtrInput `pulumi:"pythonVersion"`
-	SchedulerCount         pulumi.IntPtrInput    `pulumi:"schedulerCount"`
+	AirflowConfigOverrides      pulumi.StringMapInput                                              `pulumi:"airflowConfigOverrides"`
+	CloudDataLineageIntegration EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput `pulumi:"cloudDataLineageIntegration"`
+	EnvVariables                pulumi.StringMapInput                                              `pulumi:"envVariables"`
+	ImageVersion                pulumi.StringPtrInput                                              `pulumi:"imageVersion"`
+	PypiPackages                pulumi.StringMapInput                                              `pulumi:"pypiPackages"`
+	PythonVersion               pulumi.StringPtrInput                                              `pulumi:"pythonVersion"`
+	SchedulerCount              pulumi.IntPtrInput                                                 `pulumi:"schedulerCount"`
 }
 
 func (EnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2179,6 +2181,12 @@ func (o EnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.S
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+func (o EnvironmentConfigSoftwareConfigOutput) CloudDataLineageIntegration() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		return v.CloudDataLineageIntegration
+	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
+}
+
 func (o EnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
@@ -2232,6 +2240,15 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) AirflowConfigOverrides() pulum
 	}).(pulumi.StringMapOutput)
 }
 
+func (o EnvironmentConfigSoftwareConfigPtrOutput) CloudDataLineageIntegration() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		if v == nil {
+			return nil
+		}
+		return v.CloudDataLineageIntegration
+	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
+}
+
 func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
 		if v == nil {
@@ -2275,6 +2292,139 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtr
 		}
 		return v.SchedulerCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegration struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput is an input type that accepts EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs and EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput values.
+// You can construct a concrete instance of `EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput` via:
+//
+//	EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{...}
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput
+	ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput
+}
+
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
+}
+
+func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput).ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput is an input type that accepts EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs, EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtr and EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput` via:
+//
+//	        EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput
+	ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput
+}
+
+type environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs
+
+func EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtr(v *EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput {
+	return (*environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType)(v)
+}
+
+func (*environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i *environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return i.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigSoftwareConfigCloudDataLineageIntegrationPtrType) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
+}
+
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o.ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		return &v
+	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) ToEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Elem() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigSoftwareConfigCloudDataLineageIntegration
+		return ret
+	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
+}
+
+func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type EnvironmentConfigWebServerConfig struct {
@@ -4831,12 +4981,13 @@ func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) I
 }
 
 type GetEnvironmentConfigSoftwareConfig struct {
-	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
-	EnvVariables           map[string]string `pulumi:"envVariables"`
-	ImageVersion           string            `pulumi:"imageVersion"`
-	PypiPackages           map[string]string `pulumi:"pypiPackages"`
-	PythonVersion          string            `pulumi:"pythonVersion"`
-	SchedulerCount         int               `pulumi:"schedulerCount"`
+	AirflowConfigOverrides       map[string]string                                               `pulumi:"airflowConfigOverrides"`
+	CloudDataLineageIntegrations []GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration `pulumi:"cloudDataLineageIntegrations"`
+	EnvVariables                 map[string]string                                               `pulumi:"envVariables"`
+	ImageVersion                 string                                                          `pulumi:"imageVersion"`
+	PypiPackages                 map[string]string                                               `pulumi:"pypiPackages"`
+	PythonVersion                string                                                          `pulumi:"pythonVersion"`
+	SchedulerCount               int                                                             `pulumi:"schedulerCount"`
 }
 
 // GetEnvironmentConfigSoftwareConfigInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArgs and GetEnvironmentConfigSoftwareConfigOutput values.
@@ -4851,12 +5002,13 @@ type GetEnvironmentConfigSoftwareConfigInput interface {
 }
 
 type GetEnvironmentConfigSoftwareConfigArgs struct {
-	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
-	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
-	ImageVersion           pulumi.StringInput    `pulumi:"imageVersion"`
-	PypiPackages           pulumi.StringMapInput `pulumi:"pypiPackages"`
-	PythonVersion          pulumi.StringInput    `pulumi:"pythonVersion"`
-	SchedulerCount         pulumi.IntInput       `pulumi:"schedulerCount"`
+	AirflowConfigOverrides       pulumi.StringMapInput                                                   `pulumi:"airflowConfigOverrides"`
+	CloudDataLineageIntegrations GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput `pulumi:"cloudDataLineageIntegrations"`
+	EnvVariables                 pulumi.StringMapInput                                                   `pulumi:"envVariables"`
+	ImageVersion                 pulumi.StringInput                                                      `pulumi:"imageVersion"`
+	PypiPackages                 pulumi.StringMapInput                                                   `pulumi:"pypiPackages"`
+	PythonVersion                pulumi.StringInput                                                      `pulumi:"pythonVersion"`
+	SchedulerCount               pulumi.IntInput                                                         `pulumi:"schedulerCount"`
 }
 
 func (GetEnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -4914,6 +5066,12 @@ func (o GetEnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulum
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+func (o GetEnvironmentConfigSoftwareConfigOutput) CloudDataLineageIntegrations() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) []GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		return v.CloudDataLineageIntegrations
+	}).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput)
+}
+
 func (o GetEnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
@@ -4952,6 +5110,100 @@ func (o GetEnvironmentConfigSoftwareConfigArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigSoftwareConfig {
 		return vs[0].([]GetEnvironmentConfigSoftwareConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigSoftwareConfigOutput)
+}
+
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput is an input type that accepts GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs and GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput` via:
+//
+//	GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{...}
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput
+	ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput
+}
+
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return i.ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
+}
+
+// GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput is an input type that accepts GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray and GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput` via:
+//
+//	GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray{ GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{...} }
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput
+	ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput
+}
+
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray []GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput
+
+func (GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
+	return i.ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput)
+}
+
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) ToGetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+		return vs[0].([]GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration)[vs[1].(int)]
+	}).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
 }
 
 type GetEnvironmentConfigWebServerConfig struct {
@@ -5937,6 +6189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigPtrInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput)(nil)).Elem(), EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWebServerConfigInput)(nil)).Elem(), EnvironmentConfigWebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWebServerConfigPtrInput)(nil)).Elem(), EnvironmentConfigWebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControlInput)(nil)).Elem(), EnvironmentConfigWebServerNetworkAccessControlArgs{})
@@ -5977,6 +6231,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput)(nil)).Elem(), GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWebServerConfigInput)(nil)).Elem(), GetEnvironmentConfigWebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWebServerConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigWebServerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControlInput)(nil)).Elem(), GetEnvironmentConfigWebServerNetworkAccessControlArgs{})
@@ -6019,6 +6275,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlOutput{})
@@ -6059,6 +6317,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerNetworkAccessControlOutput{})

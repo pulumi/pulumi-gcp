@@ -74,21 +74,22 @@ type LookupTriggerResult struct {
 	GitFileSources  []GetTriggerGitFileSource  `pulumi:"gitFileSources"`
 	Githubs         []GetTriggerGithub         `pulumi:"githubs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                      `pulumi:"id"`
-	IgnoredFiles     []string                    `pulumi:"ignoredFiles"`
-	IncludeBuildLogs string                      `pulumi:"includeBuildLogs"`
-	IncludedFiles    []string                    `pulumi:"includedFiles"`
-	Location         string                      `pulumi:"location"`
-	Name             string                      `pulumi:"name"`
-	Project          *string                     `pulumi:"project"`
-	PubsubConfigs    []GetTriggerPubsubConfig    `pulumi:"pubsubConfigs"`
-	ServiceAccount   string                      `pulumi:"serviceAccount"`
-	SourceToBuilds   []GetTriggerSourceToBuild   `pulumi:"sourceToBuilds"`
-	Substitutions    map[string]string           `pulumi:"substitutions"`
-	Tags             []string                    `pulumi:"tags"`
-	TriggerId        string                      `pulumi:"triggerId"`
-	TriggerTemplates []GetTriggerTriggerTemplate `pulumi:"triggerTemplates"`
-	WebhookConfigs   []GetTriggerWebhookConfig   `pulumi:"webhookConfigs"`
+	Id                     string                            `pulumi:"id"`
+	IgnoredFiles           []string                          `pulumi:"ignoredFiles"`
+	IncludeBuildLogs       string                            `pulumi:"includeBuildLogs"`
+	IncludedFiles          []string                          `pulumi:"includedFiles"`
+	Location               string                            `pulumi:"location"`
+	Name                   string                            `pulumi:"name"`
+	Project                *string                           `pulumi:"project"`
+	PubsubConfigs          []GetTriggerPubsubConfig          `pulumi:"pubsubConfigs"`
+	RepositoryEventConfigs []GetTriggerRepositoryEventConfig `pulumi:"repositoryEventConfigs"`
+	ServiceAccount         string                            `pulumi:"serviceAccount"`
+	SourceToBuilds         []GetTriggerSourceToBuild         `pulumi:"sourceToBuilds"`
+	Substitutions          map[string]string                 `pulumi:"substitutions"`
+	Tags                   []string                          `pulumi:"tags"`
+	TriggerId              string                            `pulumi:"triggerId"`
+	TriggerTemplates       []GetTriggerTriggerTemplate       `pulumi:"triggerTemplates"`
+	WebhookConfigs         []GetTriggerWebhookConfig         `pulumi:"webhookConfigs"`
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
@@ -200,6 +201,10 @@ func (o LookupTriggerResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupTriggerResultOutput) PubsubConfigs() GetTriggerPubsubConfigArrayOutput {
 	return o.ApplyT(func(v LookupTriggerResult) []GetTriggerPubsubConfig { return v.PubsubConfigs }).(GetTriggerPubsubConfigArrayOutput)
+}
+
+func (o LookupTriggerResultOutput) RepositoryEventConfigs() GetTriggerRepositoryEventConfigArrayOutput {
+	return o.ApplyT(func(v LookupTriggerResult) []GetTriggerRepositoryEventConfig { return v.RepositoryEventConfigs }).(GetTriggerRepositoryEventConfigArrayOutput)
 }
 
 func (o LookupTriggerResultOutput) ServiceAccount() pulumi.StringOutput {

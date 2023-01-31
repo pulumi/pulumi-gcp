@@ -10,12 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
-// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
-// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
-//
-// Security Policy is used by google_compute_backend_service.
-//
 // ## Example Usage
 //
 // ```go
@@ -175,6 +169,28 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// # Security policies can be imported using any of the following formats
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+//
+// ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -198,7 +214,7 @@ type SecurityPolicy struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -260,7 +276,7 @@ type securityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -294,7 +310,7 @@ type SecurityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayInput
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -505,7 +521,7 @@ func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleArrayOutput { return v.Rules }).(SecurityPolicyRuleArrayOutput)
 }
 
-// The URI of the created resourc
+// The URI of the created resource.
 func (o SecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }

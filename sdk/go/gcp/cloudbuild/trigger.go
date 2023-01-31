@@ -338,6 +338,95 @@ import (
 //	}
 //
 // ```
+// ### Cloudbuild Trigger Manual Github Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "manual-ghe-trigger", &cloudbuild.TriggerArgs{
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					GithubEnterpriseConfig: pulumi.String("projects/myProject/locations/global/githubEnterpriseConfigs/configID"),
+//					Path:                   pulumi.String("cloudbuild.yaml"),
+//					RepoType:               pulumi.String("GITHUB"),
+//					Revision:               pulumi.String("refs/heads/main"),
+//					Uri:                    pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					GithubEnterpriseConfig: pulumi.String("projects/myProject/locations/global/githubEnterpriseConfigs/configID"),
+//					Ref:                    pulumi.String("refs/heads/main"),
+//					RepoType:               pulumi.String("GITHUB"),
+//					Uri:                    pulumi.String("https://hashicorp/terraform-provider-google-beta"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Repo
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//				Location: pulumi.String("us-central1"),
+//				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
+//					AppInstallationId: pulumi.Int(123123),
+//					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
+//						OauthTokenSecretVersion: pulumi.String("projects/my-project/secrets/github-pat-secret/versions/latest"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
+//				ParentConnection: my_connection.ID(),
+//				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "repo-trigger", &cloudbuild.TriggerArgs{
+//				Location: pulumi.String("us-central1"),
+//				RepositoryEventConfig: &cloudbuild.TriggerRepositoryEventConfigArgs{
+//					Repository: my_repository.ID(),
+//					Push: &cloudbuild.TriggerRepositoryEventConfigPushArgs{
+//						Branch: pulumi.String("feature-.*"),
+//					},
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -432,6 +521,8 @@ type Trigger struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrOutput `pulumi:"pubsubConfig"`
+	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	RepositoryEventConfig TriggerRepositoryEventConfigPtrOutput `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
 	// If no service account is set, then the standard Cloud Build service account
@@ -557,6 +648,8 @@ type triggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
+	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	RepositoryEventConfig *TriggerRepositoryEventConfig `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
 	// If no service account is set, then the standard Cloud Build service account
@@ -654,6 +747,8 @@ type TriggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
+	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	RepositoryEventConfig TriggerRepositoryEventConfigPtrInput
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
 	// If no service account is set, then the standard Cloud Build service account
@@ -753,6 +848,8 @@ type triggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
+	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	RepositoryEventConfig *TriggerRepositoryEventConfig `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
 	// If no service account is set, then the standard Cloud Build service account
@@ -847,6 +944,8 @@ type TriggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
+	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	RepositoryEventConfig TriggerRepositoryEventConfigPtrInput
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
 	// If no service account is set, then the standard Cloud Build service account
@@ -1074,6 +1173,11 @@ func (o TriggerOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o TriggerOutput) PubsubConfig() TriggerPubsubConfigPtrOutput {
 	return o.ApplyT(func(v *Trigger) TriggerPubsubConfigPtrOutput { return v.PubsubConfig }).(TriggerPubsubConfigPtrOutput)
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+func (o TriggerOutput) RepositoryEventConfig() TriggerRepositoryEventConfigPtrOutput {
+	return o.ApplyT(func(v *Trigger) TriggerRepositoryEventConfigPtrOutput { return v.RepositoryEventConfig }).(TriggerRepositoryEventConfigPtrOutput)
 }
 
 // The service account used for all user-controlled operations including

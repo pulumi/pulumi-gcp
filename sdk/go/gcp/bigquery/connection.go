@@ -228,7 +228,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
 //				Azure: &bigquery.ConnectionAzureArgs{
-//					CustomerTenantId: pulumi.String("customer-tenant-id"),
+//					CustomerTenantId:             pulumi.String("customer-tenant-id"),
+//					FederatedApplicationClientId: pulumi.String("b43eeeee-eeee-eeee-eeee-a480155501ce"),
 //				},
 //				ConnectionId: pulumi.String("my-connection"),
 //				Description:  pulumi.String("a riveting description"),
@@ -311,7 +312,7 @@ type Connection struct {
 	// Connection properties specific to Cloud Spanner
 	// Structure is documented below.
 	CloudSpanner ConnectionCloudSpannerPtrOutput `pulumi:"cloudSpanner"`
-	// A nested object resource
+	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrOutput `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -379,7 +380,7 @@ type connectionState struct {
 	// Connection properties specific to Cloud Spanner
 	// Structure is documented below.
 	CloudSpanner *ConnectionCloudSpanner `pulumi:"cloudSpanner"`
-	// A nested object resource
+	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -419,7 +420,7 @@ type ConnectionState struct {
 	// Connection properties specific to Cloud Spanner
 	// Structure is documented below.
 	CloudSpanner ConnectionCloudSpannerPtrInput
-	// A nested object resource
+	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
@@ -463,7 +464,7 @@ type connectionArgs struct {
 	// Connection properties specific to Cloud Spanner
 	// Structure is documented below.
 	CloudSpanner *ConnectionCloudSpanner `pulumi:"cloudSpanner"`
-	// A nested object resource
+	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql *ConnectionCloudSql `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
@@ -499,7 +500,7 @@ type ConnectionArgs struct {
 	// Connection properties specific to Cloud Spanner
 	// Structure is documented below.
 	CloudSpanner ConnectionCloudSpannerPtrInput
-	// A nested object resource
+	// Connection properties specific to the Cloud SQL.
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlPtrInput
 	// Optional connection id that should be assigned to the created connection.
@@ -632,7 +633,7 @@ func (o ConnectionOutput) CloudSpanner() ConnectionCloudSpannerPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionCloudSpannerPtrOutput { return v.CloudSpanner }).(ConnectionCloudSpannerPtrOutput)
 }
 
-// A nested object resource
+// Connection properties specific to the Cloud SQL.
 // Structure is documented below.
 func (o ConnectionOutput) CloudSql() ConnectionCloudSqlPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionCloudSqlPtrOutput { return v.CloudSql }).(ConnectionCloudSqlPtrOutput)

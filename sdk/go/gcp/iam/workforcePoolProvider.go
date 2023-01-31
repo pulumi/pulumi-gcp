@@ -139,7 +139,7 @@ import (
 //					"google.subject": pulumi.String("assertion.sub"),
 //				},
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
-//					IssuerUri: pulumi.String("https://accounts.google.com"),
+//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
 //				},
 //			})
@@ -181,7 +181,7 @@ import (
 //					"google.subject": pulumi.String("assertion.sub"),
 //				},
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
-//					IssuerUri: pulumi.String("https://accounts.google.com"),
+//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
 //				},
 //				DisplayName:        pulumi.String("Display name"),

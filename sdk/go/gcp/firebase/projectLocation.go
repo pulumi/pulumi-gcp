@@ -11,62 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
-// This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
-// locationId. This location must be one of the available GCP resource locations.
-// After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
-// The default GCP resource location for the specified FirebaseProject might already be set because either the
-// GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
-// specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
-// return a 409 error.
-//
-// To get more information about ProjectLocation, see:
-//
-// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
-// * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
-//
 // ## Example Usage
-// ### Firebase Project Location Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
-//				OrgId:     pulumi.String("123456789"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
-//				Project: defaultProject.ProjectId,
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProjectLocation(ctx, "basic", &firebase.ProjectLocationArgs{
-//				Project:    defaultFirebase / projectProject.Project,
-//				LocationId: pulumi.String("us-central"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

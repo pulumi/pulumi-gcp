@@ -177,9 +177,9 @@ type DicomStore struct {
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-	// Structure is documented below.
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
 	StreamConfigs DicomStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
 }
 
@@ -235,9 +235,9 @@ type dicomStoreState struct {
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
-	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-	// Structure is documented below.
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
 	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
 }
 
@@ -262,9 +262,9 @@ type DicomStoreState struct {
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
-	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-	// Structure is documented below.
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
 	StreamConfigs DicomStoreStreamConfigArrayInput
 }
 
@@ -291,9 +291,9 @@ type dicomStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
-	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-	// Structure is documented below.
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
 	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
 }
 
@@ -317,9 +317,9 @@ type DicomStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
-	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-	// Structure is documented below.
+	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+	// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+	// tables in a BigQuery dataset.
 	StreamConfigs DicomStoreStreamConfigArrayInput
 }
 
@@ -445,9 +445,9 @@ func (o DicomStoreOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-// Structure is documented below.
+// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+// you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+// tables in a BigQuery dataset.
 func (o DicomStoreOutput) StreamConfigs() DicomStoreStreamConfigArrayOutput {
 	return o.ApplyT(func(v *DicomStore) DicomStoreStreamConfigArrayOutput { return v.StreamConfigs }).(DicomStoreStreamConfigArrayOutput)
 }

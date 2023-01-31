@@ -119,6 +119,9 @@ func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudTasksCustomEndpoint")
 }
+func GetCloudbuildv2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudbuildv2CustomEndpoint")
+}
 func GetClouddeployCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:clouddeployCustomEndpoint")
 }
@@ -188,9 +191,6 @@ func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
 func GetDialogflowCxCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dialogflowCxCustomEndpoint")
 }
-func GetDisableGooglePartnerName(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "gcp:disableGooglePartnerName")
-}
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
@@ -235,9 +235,6 @@ func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetGkehubFeatureCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkehubFeatureCustomEndpoint")
-}
-func GetGooglePartnerName(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:googlePartnerName")
 }
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
@@ -394,6 +391,9 @@ func GetStorageTransferCustomEndpoint(ctx *pulumi.Context) string {
 func GetTagsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tagsCustomEndpoint")
 }
+func GetTagsLocationCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:tagsLocationCustomEndpoint")
+}
 func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuCustomEndpoint")
 }
@@ -408,6 +408,9 @@ func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetWorkflowsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:workflowsCustomEndpoint")
+}
+func GetWorkstationsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:workstationsCustomEndpoint")
 }
 func GetZone(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:zone")

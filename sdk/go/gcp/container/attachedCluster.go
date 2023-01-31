@@ -70,6 +70,56 @@ import (
 //	}
 //
 // ```
+// ### Container Attached Cluster Ignore Errors
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			versions, err := container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
+//				Location: "us-west1",
+//				Project:  project.ProjectId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
+//				Location:     pulumi.String("us-west1"),
+//				Project:      *pulumi.String(project.ProjectId),
+//				Description:  pulumi.String("Test cluster"),
+//				Distribution: pulumi.String("aks"),
+//				OidcConfig: &container.AttachedClusterOidcConfigArgs{
+//					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
+//				},
+//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
+//				Fleet: &container.AttachedClusterFleetArgs{
+//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//				},
+//				DeletionPolicy: pulumi.String("DELETE_IGNORE_ERRORS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -111,6 +161,8 @@ type AttachedCluster struct {
 	ClusterRegion pulumi.StringOutput `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Policy to determine what flags to send on delete.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -226,6 +278,8 @@ type attachedClusterState struct {
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Policy to determine what flags to send on delete.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
@@ -298,6 +352,8 @@ type AttachedClusterState struct {
 	ClusterRegion pulumi.StringPtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
+	// Policy to determine what flags to send on delete.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
@@ -368,6 +424,8 @@ type attachedClusterArgs struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
+	// Policy to determine what flags to send on delete.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
@@ -417,6 +475,8 @@ type AttachedClusterArgs struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
+	// Policy to determine what flags to send on delete.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
@@ -567,6 +627,11 @@ func (o AttachedClusterOutput) ClusterRegion() pulumi.StringOutput {
 // Output only. The time at which this cluster was created.
 func (o AttachedClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Policy to determine what flags to send on delete.
+func (o AttachedClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedCluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // A human readable description of this attached cluster. Cannot be longer

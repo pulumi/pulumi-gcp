@@ -152,15 +152,11 @@ type JobIAMMember struct {
 
 	Condition JobIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag   pulumi.StringOutput `pulumi:"etag"`
-	JobId  pulumi.StringOutput `pulumi:"jobId"`
-	Member pulumi.StringOutput `pulumi:"member"`
-	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	Etag    pulumi.StringOutput `pulumi:"etag"`
+	JobId   pulumi.StringOutput `pulumi:"jobId"`
+	Member  pulumi.StringOutput `pulumi:"member"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region  pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -207,15 +203,11 @@ func GetJobIAMMember(ctx *pulumi.Context,
 type jobIAMMemberState struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag   *string `pulumi:"etag"`
-	JobId  *string `pulumi:"jobId"`
-	Member *string `pulumi:"member"`
-	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	Etag    *string `pulumi:"etag"`
+	JobId   *string `pulumi:"jobId"`
+	Member  *string `pulumi:"member"`
 	Project *string `pulumi:"project"`
-	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Region *string `pulumi:"region"`
+	Region  *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -225,15 +217,11 @@ type jobIAMMemberState struct {
 type JobIAMMemberState struct {
 	Condition JobIAMMemberConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag   pulumi.StringPtrInput
-	JobId  pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
-	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
+	Etag    pulumi.StringPtrInput
+	JobId   pulumi.StringPtrInput
+	Member  pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Region pulumi.StringPtrInput
+	Region  pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -248,12 +236,8 @@ type jobIAMMemberArgs struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
 	JobId     string                 `pulumi:"jobId"`
 	Member    string                 `pulumi:"member"`
-	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Project *string `pulumi:"project"`
-	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Region *string `pulumi:"region"`
+	Project   *string                `pulumi:"project"`
+	Region    *string                `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -265,12 +249,8 @@ type JobIAMMemberArgs struct {
 	Condition JobIAMMemberConditionPtrInput
 	JobId     pulumi.StringInput
 	Member    pulumi.StringInput
-	// The project in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Project pulumi.StringPtrInput
-	// The region in which the job belongs. If it
-	// is not provided, the provider will use a default.
-	Region pulumi.StringPtrInput
+	Project   pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -381,14 +361,10 @@ func (o JobIAMMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
-// The project in which the job belongs. If it
-// is not provided, the provider will use a default.
 func (o JobIAMMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The region in which the job belongs. If it
-// is not provided, the provider will use a default.
 func (o JobIAMMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

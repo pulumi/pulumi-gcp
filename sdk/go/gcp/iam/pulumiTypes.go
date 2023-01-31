@@ -10,6 +10,504 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccessBoundaryPolicyRule struct {
+	// An access boundary rule in an IAM policy.
+	// Structure is documented below.
+	AccessBoundaryRule *AccessBoundaryPolicyRuleAccessBoundaryRule `pulumi:"accessBoundaryRule"`
+	// The description of the rule.
+	Description *string `pulumi:"description"`
+}
+
+// AccessBoundaryPolicyRuleInput is an input type that accepts AccessBoundaryPolicyRuleArgs and AccessBoundaryPolicyRuleOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleInput` via:
+//
+//	AccessBoundaryPolicyRuleArgs{...}
+type AccessBoundaryPolicyRuleInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleOutput() AccessBoundaryPolicyRuleOutput
+	ToAccessBoundaryPolicyRuleOutputWithContext(context.Context) AccessBoundaryPolicyRuleOutput
+}
+
+type AccessBoundaryPolicyRuleArgs struct {
+	// An access boundary rule in an IAM policy.
+	// Structure is documented below.
+	AccessBoundaryRule AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput `pulumi:"accessBoundaryRule"`
+	// The description of the rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (AccessBoundaryPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRule)(nil)).Elem()
+}
+
+func (i AccessBoundaryPolicyRuleArgs) ToAccessBoundaryPolicyRuleOutput() AccessBoundaryPolicyRuleOutput {
+	return i.ToAccessBoundaryPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleArgs) ToAccessBoundaryPolicyRuleOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleOutput)
+}
+
+// AccessBoundaryPolicyRuleArrayInput is an input type that accepts AccessBoundaryPolicyRuleArray and AccessBoundaryPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleArrayInput` via:
+//
+//	AccessBoundaryPolicyRuleArray{ AccessBoundaryPolicyRuleArgs{...} }
+type AccessBoundaryPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleArrayOutput() AccessBoundaryPolicyRuleArrayOutput
+	ToAccessBoundaryPolicyRuleArrayOutputWithContext(context.Context) AccessBoundaryPolicyRuleArrayOutput
+}
+
+type AccessBoundaryPolicyRuleArray []AccessBoundaryPolicyRuleInput
+
+func (AccessBoundaryPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBoundaryPolicyRule)(nil)).Elem()
+}
+
+func (i AccessBoundaryPolicyRuleArray) ToAccessBoundaryPolicyRuleArrayOutput() AccessBoundaryPolicyRuleArrayOutput {
+	return i.ToAccessBoundaryPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleArray) ToAccessBoundaryPolicyRuleArrayOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleArrayOutput)
+}
+
+type AccessBoundaryPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRule)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleOutput) ToAccessBoundaryPolicyRuleOutput() AccessBoundaryPolicyRuleOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleOutput) ToAccessBoundaryPolicyRuleOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleOutput {
+	return o
+}
+
+// An access boundary rule in an IAM policy.
+// Structure is documented below.
+func (o AccessBoundaryPolicyRuleOutput) AccessBoundaryRule() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRule) *AccessBoundaryPolicyRuleAccessBoundaryRule {
+		return v.AccessBoundaryRule
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput)
+}
+
+// The description of the rule.
+func (o AccessBoundaryPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type AccessBoundaryPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessBoundaryPolicyRule)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleArrayOutput) ToAccessBoundaryPolicyRuleArrayOutput() AccessBoundaryPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleArrayOutput) ToAccessBoundaryPolicyRuleArrayOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleArrayOutput) Index(i pulumi.IntInput) AccessBoundaryPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessBoundaryPolicyRule {
+		return vs[0].([]AccessBoundaryPolicyRule)[vs[1].(int)]
+	}).(AccessBoundaryPolicyRuleOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRule struct {
+	// The availability condition further constrains the access allowed by the access boundary rule.
+	// Structure is documented below.
+	AvailabilityCondition *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition `pulumi:"availabilityCondition"`
+	// A list of permissions that may be allowed for use on the specified resource.
+	AvailablePermissions []string `pulumi:"availablePermissions"`
+	// The full resource name of a Google Cloud resource entity.
+	AvailableResource *string `pulumi:"availableResource"`
+}
+
+// AccessBoundaryPolicyRuleAccessBoundaryRuleInput is an input type that accepts AccessBoundaryPolicyRuleAccessBoundaryRuleArgs and AccessBoundaryPolicyRuleAccessBoundaryRuleOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleAccessBoundaryRuleInput` via:
+//
+//	AccessBoundaryPolicyRuleAccessBoundaryRuleArgs{...}
+type AccessBoundaryPolicyRuleAccessBoundaryRuleInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleOutput
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutputWithContext(context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleOutput
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleArgs struct {
+	// The availability condition further constrains the access allowed by the access boundary rule.
+	// Structure is documented below.
+	AvailabilityCondition AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput `pulumi:"availabilityCondition"`
+	// A list of permissions that may be allowed for use on the specified resource.
+	AvailablePermissions pulumi.StringArrayInput `pulumi:"availablePermissions"`
+	// The full resource name of a Google Cloud resource entity.
+	AvailableResource pulumi.StringPtrInput `pulumi:"availableResource"`
+}
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRule)(nil)).Elem()
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRuleOutput)
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRuleOutput).ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(ctx)
+}
+
+// AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput is an input type that accepts AccessBoundaryPolicyRuleAccessBoundaryRuleArgs, AccessBoundaryPolicyRuleAccessBoundaryRulePtr and AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput` via:
+//
+//	        AccessBoundaryPolicyRuleAccessBoundaryRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput
+	ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(context.Context) AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput
+}
+
+type accessBoundaryPolicyRuleAccessBoundaryRulePtrType AccessBoundaryPolicyRuleAccessBoundaryRuleArgs
+
+func AccessBoundaryPolicyRuleAccessBoundaryRulePtr(v *AccessBoundaryPolicyRuleAccessBoundaryRuleArgs) AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput {
+	return (*accessBoundaryPolicyRuleAccessBoundaryRulePtrType)(v)
+}
+
+func (*accessBoundaryPolicyRuleAccessBoundaryRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessBoundaryPolicyRuleAccessBoundaryRule)(nil)).Elem()
+}
+
+func (i *accessBoundaryPolicyRuleAccessBoundaryRulePtrType) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(context.Background())
+}
+
+func (i *accessBoundaryPolicyRuleAccessBoundaryRulePtrType) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRule)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return o.ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(context.Background())
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessBoundaryPolicyRuleAccessBoundaryRule) *AccessBoundaryPolicyRuleAccessBoundaryRule {
+		return &v
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput)
+}
+
+// The availability condition further constrains the access allowed by the access boundary rule.
+// Structure is documented below.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) AvailabilityCondition() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRule) *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition {
+		return v.AvailabilityCondition
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput)
+}
+
+// A list of permissions that may be allowed for use on the specified resource.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) AvailablePermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRule) []string { return v.AvailablePermissions }).(pulumi.StringArrayOutput)
+}
+
+// The full resource name of a Google Cloud resource entity.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleOutput) AvailableResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRule) *string { return v.AvailableResource }).(pulumi.StringPtrOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessBoundaryPolicyRuleAccessBoundaryRule)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRulePtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) Elem() AccessBoundaryPolicyRuleAccessBoundaryRuleOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRule) AccessBoundaryPolicyRuleAccessBoundaryRule {
+		if v != nil {
+			return *v
+		}
+		var ret AccessBoundaryPolicyRuleAccessBoundaryRule
+		return ret
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRuleOutput)
+}
+
+// The availability condition further constrains the access allowed by the access boundary rule.
+// Structure is documented below.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) AvailabilityCondition() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRule) *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityCondition
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput)
+}
+
+// A list of permissions that may be allowed for use on the specified resource.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) AvailablePermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailablePermissions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The full resource name of a Google Cloud resource entity.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput) AvailableResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableResource
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting,
+	// e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionInput is an input type that accepts AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs and AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionInput` via:
+//
+//	AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs{...}
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutputWithContext(context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting,
+	// e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition)(nil)).Elem()
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput)
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput).ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(ctx)
+}
+
+// AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput is an input type that accepts AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs, AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtr and AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput values.
+// You can construct a concrete instance of `AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput` via:
+//
+//	        AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput interface {
+	pulumi.Input
+
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput
+	ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput
+}
+
+type accessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrType AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs
+
+func AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtr(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput {
+	return (*accessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrType)(v)
+}
+
+func (*accessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition)(nil)).Elem()
+}
+
+func (i *accessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrType) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return i.ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrType) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o.ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition {
+		return &v
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting,
+// e.g. a file name and a position in the file.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition)(nil)).Elem()
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) ToAccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutputWithContext(ctx context.Context) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput {
+	return o
+}
+
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Elem() AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition
+		return ret
+	}).(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting,
+// e.g. a file name and a position in the file.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type DenyPolicyRule struct {
 	// A deny rule in an IAM deny policy.
 	// Structure is documented below.
@@ -1602,6 +2100,12 @@ func (o GetWorkloadIdentityPoolProviderOidcArrayOutput) Index(i pulumi.IntInput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleInput)(nil)).Elem(), AccessBoundaryPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleArrayInput)(nil)).Elem(), AccessBoundaryPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRuleInput)(nil)).Elem(), AccessBoundaryPolicyRuleAccessBoundaryRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRulePtrInput)(nil)).Elem(), AccessBoundaryPolicyRuleAccessBoundaryRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionInput)(nil)).Elem(), AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrInput)(nil)).Elem(), AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleInput)(nil)).Elem(), DenyPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleArrayInput)(nil)).Elem(), DenyPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
@@ -1622,6 +2126,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArray{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleOutput{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleAccessBoundaryRuleOutput{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleAccessBoundaryRulePtrOutput{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput{})
+	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleOutput{})

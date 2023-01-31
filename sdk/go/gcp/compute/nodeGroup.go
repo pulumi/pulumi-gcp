@@ -11,19 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
-//
-// To get more information about NodeGroup, see:
-//
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
-// * How-to Guides
-//   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-//
-// > **Warning:** Due to limitations of the API, this provider cannot update the
-// number of nodes in a node group and changes to node group size either
-// through provider config or through external changes will cause
-// the provider to delete and recreate the node group.
-//
 // ## Example Usage
 // ### Node Group Basic
 //
@@ -47,8 +34,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
-//				Zone:         pulumi.String("us-central1-a"),
-//				Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
+//				Zone:         pulumi.String("us-central1-f"),
+//				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				Size:         pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //			})
@@ -82,8 +69,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
-//				Zone:              pulumi.String("us-central1-a"),
-//				Description:       pulumi.String("example google_compute_node_group for Google Provider"),
+//				Zone:              pulumi.String("us-central1-f"),
+//				Description:       pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				MaintenancePolicy: pulumi.String("RESTART_IN_PLACE"),
 //				MaintenanceWindow: &compute.NodeGroupMaintenanceWindowArgs{
 //					StartTime: pulumi.String("08:00"),
@@ -94,6 +81,58 @@ import (
 //					Mode:     pulumi.String("ONLY_SCALE_OUT"),
 //					MinNodes: pulumi.Int(1),
 //					MaxNodes: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Node Group Share Settings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			guestProject, err := organizations.NewProject(ctx, "guestProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("project-id"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Zone:         pulumi.String("us-central1-f"),
+//				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
+//				Size:         pulumi.Int(1),
+//				NodeTemplate: soletenant_tmpl.ID(),
+//				ShareSettings: &compute.NodeGroupShareSettingsArgs{
+//					ShareType: pulumi.String("SPECIFIC_PROJECTS"),
+//					ProjectMaps: compute.NodeGroupShareSettingsProjectMapArray{
+//						&compute.NodeGroupShareSettingsProjectMapArgs{
+//							Id:        guestProject.ProjectId,
+//							ProjectId: guestProject.ProjectId,
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -159,6 +198,9 @@ type NodeGroup struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Share settings for the node group.
+	// Structure is documented below.
+	ShareSettings NodeGroupShareSettingsOutput `pulumi:"shareSettings"`
 	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Zone where this node group is located
@@ -221,6 +263,9 @@ type nodeGroupState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Share settings for the node group.
+	// Structure is documented below.
+	ShareSettings *NodeGroupShareSettings `pulumi:"shareSettings"`
 	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size *int `pulumi:"size"`
 	// Zone where this node group is located
@@ -252,6 +297,9 @@ type NodeGroupState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Share settings for the node group.
+	// Structure is documented below.
+	ShareSettings NodeGroupShareSettingsPtrInput
 	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size pulumi.IntPtrInput
 	// Zone where this node group is located
@@ -283,6 +331,9 @@ type nodeGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Share settings for the node group.
+	// Structure is documented below.
+	ShareSettings *NodeGroupShareSettings `pulumi:"shareSettings"`
 	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size *int `pulumi:"size"`
 	// Zone where this node group is located
@@ -311,6 +362,9 @@ type NodeGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Share settings for the node group.
+	// Structure is documented below.
+	ShareSettings NodeGroupShareSettingsPtrInput
 	// The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
 	Size pulumi.IntPtrInput
 	// Zone where this node group is located
@@ -456,6 +510,12 @@ func (o NodeGroupOutput) Project() pulumi.StringOutput {
 // The URI of the created resource.
 func (o NodeGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share settings for the node group.
+// Structure is documented below.
+func (o NodeGroupOutput) ShareSettings() NodeGroupShareSettingsOutput {
+	return o.ApplyT(func(v *NodeGroup) NodeGroupShareSettingsOutput { return v.ShareSettings }).(NodeGroupShareSettingsOutput)
 }
 
 // The total number of nodes in the node group. One of `initialSize` or `size` must be specified.

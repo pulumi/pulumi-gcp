@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:tags/locationTagBinding:LocationTagBinding":
+		r = &LocationTagBinding{}
 	case "gcp:tags/tagBinding:TagBinding":
 		r = &TagBinding{}
 	case "gcp:tags/tagKey:TagKey":
@@ -52,6 +54,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/locationTagBinding",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"tags/tagBinding",

@@ -234,55 +234,6 @@ import (
 //	}
 //
 // ```
-// ### Cloudrunv2 Job Probes
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				LaunchStage: pulumi.String("BETA"),
-//				Location:    pulumi.String("us-central1"),
-//				Template: &cloudrunv2.JobTemplateArgs{
-//					Template: &cloudrunv2.JobTemplateTemplateArgs{
-//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
-//							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
-//								LivenessProbe: &cloudrunv2.JobTemplateTemplateContainerLivenessProbeArgs{
-//									HttpGet: &cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGetArgs{
-//										Path: pulumi.String("/"),
-//									},
-//								},
-//								StartupProbe: &cloudrunv2.JobTemplateTemplateContainerStartupProbeArgs{
-//									FailureThreshold:    pulumi.Int(1),
-//									InitialDelaySeconds: pulumi.Int(0),
-//									PeriodSeconds:       pulumi.Int(3),
-//									TcpSocket: &cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocketArgs{
-//										Port: pulumi.Int(8080),
-//									},
-//									TimeoutSeconds: pulumi.Int(1),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Cloudrunv2 Job Secret
 //
 // ```go

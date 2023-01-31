@@ -145,7 +145,8 @@ type InstanceFromTemplate struct {
 	ResourcePolicies pulumi.StringOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingOutput `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayOutput `pulumi:"scratchDisks"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -262,7 +263,8 @@ type instanceFromTemplateState struct {
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks []InstanceFromTemplateScratchDisk `pulumi:"scratchDisks"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -348,7 +350,8 @@ type InstanceFromTemplateState struct {
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -428,7 +431,8 @@ type instanceFromTemplateArgs struct {
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance.
 	Scheduling *InstanceFromTemplateScheduling `pulumi:"scheduling"`
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks []InstanceFromTemplateScratchDisk `pulumi:"scratchDisks"`
 	// The service account to attach to the instance.
 	ServiceAccount *InstanceFromTemplateServiceAccount `pulumi:"serviceAccount"`
@@ -501,7 +505,8 @@ type InstanceFromTemplateArgs struct {
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy being used by the instance.
 	Scheduling InstanceFromTemplateSchedulingPtrInput
-	// The scratch disks attached to the instance.
+	// * `network_interface.alias_ip_range`
+	// * `network_interface.access_config`
 	ScratchDisks InstanceFromTemplateScratchDiskArrayInput
 	// The service account to attach to the instance.
 	ServiceAccount InstanceFromTemplateServiceAccountPtrInput
@@ -768,7 +773,8 @@ func (o InstanceFromTemplateOutput) Scheduling() InstanceFromTemplateSchedulingO
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateSchedulingOutput { return v.Scheduling }).(InstanceFromTemplateSchedulingOutput)
 }
 
-// The scratch disks attached to the instance.
+// * `network_interface.alias_ip_range`
+// * `network_interface.access_config`
 func (o InstanceFromTemplateOutput) ScratchDisks() InstanceFromTemplateScratchDiskArrayOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateScratchDiskArrayOutput { return v.ScratchDisks }).(InstanceFromTemplateScratchDiskArrayOutput)
 }
