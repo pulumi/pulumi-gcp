@@ -140,38 +140,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudrunv2 Job Probes
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.cloudrunv2.Job("default", {
- *     launchStage: "BETA",
- *     location: "us-central1",
- *     template: {
- *         template: {
- *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
- *                 livenessProbe: {
- *                     httpGet: {
- *                         path: "/",
- *                     },
- *                 },
- *                 startupProbe: {
- *                     failureThreshold: 1,
- *                     initialDelaySeconds: 0,
- *                     periodSeconds: 3,
- *                     tcpSocket: {
- *                         port: 8080,
- *                     },
- *                     timeoutSeconds: 1,
- *                 },
- *             }],
- *         },
- *     },
- * });
- * ```
  * ### Cloudrunv2 Job Secret
  *
  * ```typescript

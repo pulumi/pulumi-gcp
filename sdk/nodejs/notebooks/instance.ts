@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     machineType: "e2-medium",
  *     metadata: {
  *         "proxy-mode": "service_account",
+ *         terraform: "true",
  *     },
  * });
  * ```
@@ -104,6 +105,9 @@ import * as utilities from "../utilities";
  *     subnet: mySubnetwork.then(mySubnetwork => mySubnetwork.id),
  *     labels: {
  *         k: "val",
+ *     },
+ *     metadata: {
+ *         terraform: "true",
  *     },
  * });
  * ```

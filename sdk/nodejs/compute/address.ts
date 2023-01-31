@@ -182,7 +182,7 @@ export class Address extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -335,7 +335,7 @@ export interface AddressState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -428,7 +428,7 @@ export interface AddressArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

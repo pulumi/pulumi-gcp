@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Creates a table resource in a dataset for Google BigQuery. For more information see
- * [the official documentation](https://cloud.google.com/bigquery/docs/) and
- * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
- *
- * > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
- * (and run `pulumi update` to write the field to state) in order to destroy an instance.
- * It is recommended to not set this field (or set it to true) until you're ready to destroy.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -130,8 +122,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * terraform destroy or terraform apply that would delete the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -331,8 +323,8 @@ export interface TableState {
      */
     datasetId?: pulumi.Input<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * terraform destroy or terraform apply that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -452,8 +444,8 @@ export interface TableArgs {
      */
     datasetId: pulumi.Input<string>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `=destroy` or `=update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * terraform destroy or terraform apply that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

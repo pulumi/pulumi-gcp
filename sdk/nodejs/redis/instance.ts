@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     alternativeLocationId: "us-central1-f",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_4_0",
- *     displayName: "Test Instance",
+ *     displayName: "Terraform Test Instance",
  *     reservedIpRange: "192.168.0.0/29",
  *     labels: {
  *         my_key: "my_val",
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_4_0",
- *     displayName: "Test Instance",
+ *     displayName: "Terraform Test Instance",
  * }, {
  *     dependsOn: [privateServiceConnection],
  * });

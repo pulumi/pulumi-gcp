@@ -7,22 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A Backend Service defines a group of virtual machines that will serve
- * traffic for load balancing. This resource is a global backend service,
- * appropriate for external load balancing or self-managed internal load balancing.
- * For managed internal load balancing, use a regional backend service instead.
- *
- * Currently self-managed internal load balancing is only available in beta.
- *
- * To get more information about BackendService, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
- *
- * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
- * state as plain-text.
- *
  * ## Example Usage
  * ### Backend Service Cache Include Http Headers
  *
@@ -250,6 +234,16 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
+     * A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    public readonly localityLbPolicies!: pulumi.Output<outputs.compute.BackendServiceLocalityLbPolicy[] | undefined>;
+    /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
      */
@@ -354,6 +348,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
             resourceInputs["iap"] = state ? state.iap : undefined;
             resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
+            resourceInputs["localityLbPolicies"] = state ? state.localityLbPolicies : undefined;
             resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -383,6 +378,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
             resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["localityLbPolicies"] = args ? args.localityLbPolicies : undefined;
             resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -512,6 +508,16 @@ export interface BackendServiceState {
      * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
+    /**
+     * A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    localityLbPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceLocalityLbPolicy>[]>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
@@ -682,6 +688,16 @@ export interface BackendServiceArgs {
      * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
+    /**
+     * A list of locality load balancing policies to be used in order of
+     * preference. Either the policy or the customPolicy field should be set.
+     * Overrides any value set in the localityLbPolicy field.
+     * localityLbPolicies is only supported when the BackendService is referenced
+     * by a URL Map that is referenced by a target gRPC proxy that has the
+     * validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    localityLbPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceLocalityLbPolicy>[]>;
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:

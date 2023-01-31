@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Denotes one policy tag in a taxonomy.
- *
- * To get more information about PolicyTag, see:
- *
- * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies.policyTags)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
- *
  * ## Example Usage
  * ### Data Catalog Taxonomies Policy Tag Basic
  *

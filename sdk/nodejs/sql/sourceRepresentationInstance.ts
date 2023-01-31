@@ -5,12 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A source representation instance is a Cloud SQL instance that represents
- * the source database server to the Cloud SQL replica. It is visible in the
- * Cloud Console and appears the same as a regular Cloud SQL instance, but it
- * contains no data, requires no configuration or maintenance, and does not
- * affect billing. You cannot update the source representation instance.
- *
  * ## Example Usage
  * ### Sql Source Representation Instance Basic
  *
@@ -20,9 +14,12 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
  *     databaseVersion: "MYSQL_8_0",
+ *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
  *     host: "10.20.30.40",
+ *     password: "password-for-the-user",
  *     port: 3306,
  *     region: "us-central1",
+ *     username: "some-user",
  * });
  * ```
  *
@@ -101,6 +98,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -163,13 +161,15 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             resourceInputs["dumpFilePath"] = args ? args.dumpFilePath : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SourceRepresentationInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -209,6 +209,7 @@ export interface SourceRepresentationInstanceState {
     name?: pulumi.Input<string>;
     /**
      * The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     password?: pulumi.Input<string>;
     /**
@@ -267,6 +268,7 @@ export interface SourceRepresentationInstanceArgs {
     name?: pulumi.Input<string>;
     /**
      * The password for the replication user account.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     password?: pulumi.Input<string>;
     /**

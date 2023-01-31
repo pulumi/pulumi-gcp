@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccessBoundaryPolicyArgs, AccessBoundaryPolicyState } from "./accessBoundaryPolicy";
+export type AccessBoundaryPolicy = import("./accessBoundaryPolicy").AccessBoundaryPolicy;
+export const AccessBoundaryPolicy: typeof import("./accessBoundaryPolicy").AccessBoundaryPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessBoundaryPolicy"], () => require("./accessBoundaryPolicy"));
+
 export { DenyPolicyArgs, DenyPolicyState } from "./denyPolicy";
 export type DenyPolicy = import("./denyPolicy").DenyPolicy;
 export const DenyPolicy: typeof import("./denyPolicy").DenyPolicy = null as any;
@@ -55,6 +60,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy":
+                return new AccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/denyPolicy:DenyPolicy":
                 return new DenyPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
@@ -70,6 +77,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "iam/accessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)

@@ -123,10 +123,6 @@ export class TableIamBinding extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -200,10 +196,6 @@ export interface TableIamBindingState {
      */
     instance?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -227,10 +219,6 @@ export interface TableIamBindingArgs {
      */
     instance: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the table belongs. If it
-     * is not provided, this provider will use the provider default.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

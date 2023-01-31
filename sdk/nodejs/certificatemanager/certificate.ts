@@ -8,32 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Certificate Manager Certificate Basic
+ * ### Certificate Manager Self Managed Certificate
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
- *     description: "The default dnss",
- *     domain: "subdomain.hashicorptest.com",
- * });
- * const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
- *     description: "The default dnss",
- *     domain: "subdomain2.hashicorptest.com",
- * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
  *     description: "The default cert",
  *     scope: "EDGE_CACHE",
- *     managed: {
- *         domains: [
- *             instance.domain,
- *             instance2.domain,
- *         ],
- *         dnsAuthorizations: [
- *             instance.id,
- *             instance2.id,
- *         ],
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
  *     },
  * });
  * ```

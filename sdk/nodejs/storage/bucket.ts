@@ -154,9 +154,8 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
     /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+     * contains objects, Terraform will fail that run.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -312,9 +311,8 @@ export interface BucketState {
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
     /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+     * contains objects, Terraform will fail that run.
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -405,9 +403,8 @@ export interface BucketArgs {
      */
     encryption?: pulumi.Input<inputs.storage.BucketEncryption>;
     /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+     * contains objects, Terraform will fail that run.
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**

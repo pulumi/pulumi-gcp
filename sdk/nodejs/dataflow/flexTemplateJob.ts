@@ -49,8 +49,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
+     * page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
@@ -60,10 +59,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      * A unique name for the resource, required by Dataflow.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
@@ -151,8 +146,7 @@ export interface FlexTemplateJobState {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
+     * page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
@@ -162,10 +156,6 @@ export interface FlexTemplateJobState {
      * A unique name for the resource, required by Dataflow.
      */
     name?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
@@ -206,8 +196,7 @@ export interface FlexTemplateJobArgs {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
+     * page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
@@ -217,10 +206,6 @@ export interface FlexTemplateJobArgs {
      * A unique name for the resource, required by Dataflow.
      */
     name?: pulumi.Input<string>;
-    /**
-     * One of "drain" or "cancel". Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     */
     onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as

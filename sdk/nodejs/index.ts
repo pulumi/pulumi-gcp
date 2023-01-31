@@ -33,6 +33,7 @@ import * as certificateauthority from "./certificateauthority";
 import * as certificatemanager from "./certificatemanager";
 import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
+import * as cloudbuildv2 from "./cloudbuildv2";
 import * as clouddeploy from "./clouddeploy";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudfunctionsv2 from "./cloudfunctionsv2";
@@ -110,6 +111,7 @@ import * as types from "./types";
 import * as vertex from "./vertex";
 import * as vpcaccess from "./vpcaccess";
 import * as workflows from "./workflows";
+import * as workstations from "./workstations";
 
 export {
     accessapproval,
@@ -132,6 +134,7 @@ export {
     certificatemanager,
     cloudasset,
     cloudbuild,
+    cloudbuildv2,
     clouddeploy,
     cloudfunctions,
     cloudfunctionsv2,
@@ -209,6 +212,7 @@ export {
     vertex,
     vpcaccess,
     workflows,
+    workstations,
 };
 pulumi.runtime.registerResourcePackage("gcp", {
     version: utilities.getVersion(),
