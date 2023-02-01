@@ -79,6 +79,8 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -86,6 +88,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bigqueryEditor, err := projects.NewIAMMember(ctx, "bigqueryEditor", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-healthcare.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bigqueryJobUser, err := projects.NewIAMMember(ctx, "bigqueryJobUser", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.jobUser"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-healthcare.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 //				Location: pulumi.String("us-central1"),
 //			})
@@ -129,7 +151,10 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bigqueryEditor,
+//				bigqueryJobUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}

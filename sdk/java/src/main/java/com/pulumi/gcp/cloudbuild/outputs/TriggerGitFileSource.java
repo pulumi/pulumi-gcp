@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerGitFileSource {
     /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    private @Nullable String githubEnterpriseConfig;
+    /**
      * @return The path of the file, with the repo root as the root of the path.
      * 
      */
@@ -38,6 +44,14 @@ public final class TriggerGitFileSource {
     private @Nullable String uri;
 
     private TriggerGitFileSource() {}
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
+    public Optional<String> githubEnterpriseConfig() {
+        return Optional.ofNullable(this.githubEnterpriseConfig);
+    }
     /**
      * @return The path of the file, with the repo root as the root of the path.
      * 
@@ -81,6 +95,7 @@ public final class TriggerGitFileSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String githubEnterpriseConfig;
         private String path;
         private String repoType;
         private @Nullable String revision;
@@ -88,12 +103,18 @@ public final class TriggerGitFileSource {
         public Builder() {}
         public Builder(TriggerGitFileSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.path = defaults.path;
     	      this.repoType = defaults.repoType;
     	      this.revision = defaults.revision;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder githubEnterpriseConfig(@Nullable String githubEnterpriseConfig) {
+            this.githubEnterpriseConfig = githubEnterpriseConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
@@ -116,6 +137,7 @@ public final class TriggerGitFileSource {
         }
         public TriggerGitFileSource build() {
             final var o = new TriggerGitFileSource();
+            o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.path = path;
             o.repoType = repoType;
             o.revision = revision;

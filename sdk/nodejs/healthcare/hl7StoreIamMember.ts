@@ -7,60 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
- *
- * * `gcp.healthcare.Hl7StoreIamPolicy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
- * * `gcp.healthcare.Hl7StoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the HL7v2 store are preserved.
- * * `gcp.healthcare.Hl7StoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the HL7v2 store are preserved.
- *
- * > **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
- *
- * > **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
- *
- * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store", {
- *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7V2Store", {
- *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- *
- * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7V2Store", {
- *     hl7V2StoreId: "your-hl7-v2-store-id",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
- *
  * ## Import
  *
  * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

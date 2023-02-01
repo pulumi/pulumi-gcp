@@ -8,23 +8,6 @@ import * as utilities from "../utilities";
  * The BigqueryReservation Assignment resource
  *
  * ## Example Usage
- * ### Basic
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.bigquery.Reservation("basic", {
- *     project: "my-project-name",
- *     location: "us-central1",
- *     slotCapacity: 0,
- *     ignoreIdleSlots: false,
- * });
- * const primary = new gcp.bigquery.ReservationAssignment("primary", {
- *     assignee: "projects/my-project-name",
- *     jobType: "PIPELINE",
- *     reservation: basic.id,
- * });
- * ```
  *
  * ## Import
  *

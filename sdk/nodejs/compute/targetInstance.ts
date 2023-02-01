@@ -161,7 +161,8 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly natPolicy!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
@@ -259,7 +260,8 @@ export interface TargetInstanceState {
      */
     natPolicy?: pulumi.Input<string>;
     /**
-     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      */
     network?: pulumi.Input<string>;
     /**
@@ -312,7 +314,8 @@ export interface TargetInstanceArgs {
      */
     natPolicy?: pulumi.Input<string>;
     /**
-     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      */
     network?: pulumi.Input<string>;
     /**

@@ -59,6 +59,7 @@ type LookupBackendServiceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                              `pulumi:"id"`
 	LoadBalancingScheme string                              `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicies  []GetBackendServiceLocalityLbPolicy `pulumi:"localityLbPolicies"`
 	LocalityLbPolicy    string                              `pulumi:"localityLbPolicy"`
 	LogConfigs          []GetBackendServiceLogConfig        `pulumi:"logConfigs"`
 	Name                string                              `pulumi:"name"`
@@ -200,6 +201,10 @@ func (o LookupBackendServiceResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupBackendServiceResultOutput) LoadBalancingScheme() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) LocalityLbPolicies() GetBackendServiceLocalityLbPolicyArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceLocalityLbPolicy { return v.LocalityLbPolicies }).(GetBackendServiceLocalityLbPolicyArrayOutput)
 }
 
 func (o LookupBackendServiceResultOutput) LocalityLbPolicy() pulumi.StringOutput {

@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyAdaptiveProtectionConfig
     {
         /// <summary>
+        /// ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig? AutoDeployConfig;
+        /// <summary>
         /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig? Layer7DdosDefenseConfig;
 
         [OutputConstructor]
-        private SecurityPolicyAdaptiveProtectionConfig(Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig? layer7DdosDefenseConfig)
+        private SecurityPolicyAdaptiveProtectionConfig(
+            Outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig? autoDeployConfig,
+
+            Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig? layer7DdosDefenseConfig)
         {
+            AutoDeployConfig = autoDeployConfig;
             Layer7DdosDefenseConfig = layer7DdosDefenseConfig;
         }
     }

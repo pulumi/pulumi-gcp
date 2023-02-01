@@ -10,59 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
-    /// Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
-    /// This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
-    /// locationId. This location must be one of the available GCP resource locations.
-    /// After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
-    /// The default GCP resource location for the specified FirebaseProject might already be set because either the
-    /// GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
-    /// specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
-    /// return a 409 error.
-    /// 
-    /// To get more information about ProjectLocation, see:
-    /// 
-    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/)
-    /// 
     /// ## Example Usage
-    /// ### Firebase Project Location Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
-    ///     {
-    ///         ProjectId = "tf-test",
-    ///         OrgId = "123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
-    ///     {
-    ///         ProjectID = defaultProject.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var basic = new Gcp.Firebase.ProjectLocation("basic", new()
-    ///     {
-    ///         Project = defaultFirebase / projectProject.Project,
-    ///         LocationId = "us-central",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

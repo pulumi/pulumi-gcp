@@ -18,20 +18,18 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * Create the &#39;default&#39; network automatically.  Default `true`.
-     * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-     * will still need to have 1 network slot available to create the project successfully, even if
-     * you set `auto_create_network` to `false`, since the network will exist momentarily.
+     * Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
+     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+     * if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     @Import(name="autoCreateNetwork")
     private @Nullable Output<Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically.  Default `true`.
-     * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-     * will still need to have 1 network slot available to create the project successfully, even if
-     * you set `auto_create_network` to `false`, since the network will exist momentarily.
+     * @return Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
+     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+     * if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     public Optional<Output<Boolean>> autoCreateNetwork() {
@@ -39,22 +37,18 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
+     * The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+     * See Google Cloud Billing API Access Control for more details.
      * 
      */
     @Import(name="billingAccount")
     private @Nullable Output<String> billingAccount;
 
     /**
-     * @return The alphanumeric ID of the billing account this project
-     * belongs to. The user or service account performing this operation with the provider
-     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-     * for more details.
+     * @return The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+     * See Google Cloud Billing API Access Control for more details.
      * 
      */
     public Optional<Output<String>> billingAccount() {
@@ -170,16 +164,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * If true, the Terraform resource can be deleted without deleting the Project via the Google API.
      * 
      */
     @Import(name="skipDelete")
     private @Nullable Output<Boolean> skipDelete;
 
     /**
-     * @return If true, the resource can be deleted
-     * without deleting the Project via the Google API.
+     * @return If true, the Terraform resource can be deleted without deleting the Project via the Google API.
      * 
      */
     public Optional<Output<Boolean>> skipDelete() {
@@ -219,10 +211,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default `true`.
-         * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-         * will still need to have 1 network slot available to create the project successfully, even if
-         * you set `auto_create_network` to `false`, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
+         * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+         * if you set auto_create_network to false, since the network will exist momentarily.
          * 
          * @return builder
          * 
@@ -233,10 +224,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default `true`.
-         * If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-         * will still need to have 1 network slot available to create the project successfully, even if
-         * you set `auto_create_network` to `false`, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
+         * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+         * if you set auto_create_network to false, since the network will exist momentarily.
          * 
          * @return builder
          * 
@@ -246,11 +236,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingAccount The alphanumeric ID of the billing account this project
-         * belongs to. The user or service account performing this operation with the provider
-         * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-         * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-         * for more details.
+         * @param billingAccount The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+         * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+         * See Google Cloud Billing API Access Control for more details.
          * 
          * @return builder
          * 
@@ -261,11 +249,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingAccount The alphanumeric ID of the billing account this project
-         * belongs to. The user or service account performing this operation with the provider
-         * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-         * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-         * for more details.
+         * @param billingAccount The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+         * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+         * See Google Cloud Billing API Access Control for more details.
          * 
          * @return builder
          * 
@@ -419,8 +405,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipDelete If true, the resource can be deleted
-         * without deleting the Project via the Google API.
+         * @param skipDelete If true, the Terraform resource can be deleted without deleting the Project via the Google API.
          * 
          * @return builder
          * 
@@ -431,8 +416,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipDelete If true, the resource can be deleted
-         * without deleting the Project via the Google API.
+         * @param skipDelete If true, the Terraform resource can be deleted without deleting the Project via the Google API.
          * 
          * @return builder
          * 

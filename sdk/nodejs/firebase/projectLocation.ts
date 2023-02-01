@@ -5,44 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
- * This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
- * locationId. This location must be one of the available GCP resource locations.
- * After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
- * The default GCP resource location for the specified FirebaseProject might already be set because either the
- * GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
- * specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
- * return a 409 error.
- *
- * To get more information about ProjectLocation, see:
- *
- * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/)
- *
  * ## Example Usage
- * ### Firebase Project Location Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "tf-test",
- *     orgId: "123456789",
- * }, {
- *     provider: google_beta,
- * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
- * const basic = new gcp.firebase.ProjectLocation("basic", {
- *     project: defaultFirebase / projectProject.project,
- *     locationId: "us-central",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

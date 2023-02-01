@@ -254,7 +254,7 @@ type Address struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this address.  A list of key->value pairs.
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -348,7 +348,7 @@ type addressState struct {
 	Description *string `pulumi:"description"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this address.  A list of key->value pairs.
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -414,7 +414,7 @@ type AddressState struct {
 	Description pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this address.  A list of key->value pairs.
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -480,7 +480,7 @@ type addressArgs struct {
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Labels to apply to this address.  A list of key->value pairs.
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -539,7 +539,7 @@ type AddressArgs struct {
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Labels to apply to this address.  A list of key->value pairs.
+	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -702,7 +702,7 @@ func (o AddressOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// Labels to apply to this address.  A list of key->value pairs.
+// Labels to apply to this address. A list of key->value pairs.
 func (o AddressOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

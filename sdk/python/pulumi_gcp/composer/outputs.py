@@ -23,6 +23,7 @@ __all__ = [
     'EnvironmentConfigRecoveryConfig',
     'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig',
     'EnvironmentConfigSoftwareConfig',
+    'EnvironmentConfigSoftwareConfigCloudDataLineageIntegration',
     'EnvironmentConfigWebServerConfig',
     'EnvironmentConfigWebServerNetworkAccessControl',
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
@@ -43,6 +44,7 @@ __all__ = [
     'GetEnvironmentConfigRecoveryConfigResult',
     'GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult',
     'GetEnvironmentConfigSoftwareConfigResult',
+    'GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult',
     'GetEnvironmentConfigWebServerConfigResult',
     'GetEnvironmentConfigWebServerNetworkAccessControlResult',
     'GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult',
@@ -789,6 +791,8 @@ class EnvironmentConfigSoftwareConfig(dict):
         suggest = None
         if key == "airflowConfigOverrides":
             suggest = "airflow_config_overrides"
+        elif key == "cloudDataLineageIntegration":
+            suggest = "cloud_data_lineage_integration"
         elif key == "envVariables":
             suggest = "env_variables"
         elif key == "imageVersion":
@@ -813,6 +817,7 @@ class EnvironmentConfigSoftwareConfig(dict):
 
     def __init__(__self__, *,
                  airflow_config_overrides: Optional[Mapping[str, str]] = None,
+                 cloud_data_lineage_integration: Optional['outputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration'] = None,
                  env_variables: Optional[Mapping[str, str]] = None,
                  image_version: Optional[str] = None,
                  pypi_packages: Optional[Mapping[str, str]] = None,
@@ -820,6 +825,8 @@ class EnvironmentConfigSoftwareConfig(dict):
                  scheduler_count: Optional[int] = None):
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
+        if cloud_data_lineage_integration is not None:
+            pulumi.set(__self__, "cloud_data_lineage_integration", cloud_data_lineage_integration)
         if env_variables is not None:
             pulumi.set(__self__, "env_variables", env_variables)
         if image_version is not None:
@@ -835,6 +842,11 @@ class EnvironmentConfigSoftwareConfig(dict):
     @pulumi.getter(name="airflowConfigOverrides")
     def airflow_config_overrides(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "airflow_config_overrides")
+
+    @property
+    @pulumi.getter(name="cloudDataLineageIntegration")
+    def cloud_data_lineage_integration(self) -> Optional['outputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration']:
+        return pulumi.get(self, "cloud_data_lineage_integration")
 
     @property
     @pulumi.getter(name="envVariables")
@@ -860,6 +872,18 @@ class EnvironmentConfigSoftwareConfig(dict):
     @pulumi.getter(name="schedulerCount")
     def scheduler_count(self) -> Optional[int]:
         return pulumi.get(self, "scheduler_count")
+
+
+@pulumi.output_type
+class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -1640,12 +1664,14 @@ class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult(dict):
 class GetEnvironmentConfigSoftwareConfigResult(dict):
     def __init__(__self__, *,
                  airflow_config_overrides: Mapping[str, str],
+                 cloud_data_lineage_integrations: Sequence['outputs.GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult'],
                  env_variables: Mapping[str, str],
                  image_version: str,
                  pypi_packages: Mapping[str, str],
                  python_version: str,
                  scheduler_count: int):
         pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
+        pulumi.set(__self__, "cloud_data_lineage_integrations", cloud_data_lineage_integrations)
         pulumi.set(__self__, "env_variables", env_variables)
         pulumi.set(__self__, "image_version", image_version)
         pulumi.set(__self__, "pypi_packages", pypi_packages)
@@ -1656,6 +1682,11 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
     @pulumi.getter(name="airflowConfigOverrides")
     def airflow_config_overrides(self) -> Mapping[str, str]:
         return pulumi.get(self, "airflow_config_overrides")
+
+    @property
+    @pulumi.getter(name="cloudDataLineageIntegrations")
+    def cloud_data_lineage_integrations(self) -> Sequence['outputs.GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult']:
+        return pulumi.get(self, "cloud_data_lineage_integrations")
 
     @property
     @pulumi.getter(name="envVariables")
@@ -1681,6 +1712,18 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
     @pulumi.getter(name="schedulerCount")
     def scheduler_count(self) -> int:
         return pulumi.get(self, "scheduler_count")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

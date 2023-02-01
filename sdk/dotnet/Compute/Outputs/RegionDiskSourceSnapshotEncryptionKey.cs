@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionDiskSourceSnapshotEncryptionKey
     {
-        /// <summary>
-        /// The name of the encryption key that is stored in Google Cloud KMS.
-        /// </summary>
         public readonly string? KmsKeyName;
         /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in

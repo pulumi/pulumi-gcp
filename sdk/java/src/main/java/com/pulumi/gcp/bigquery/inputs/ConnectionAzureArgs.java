@@ -61,6 +61,36 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The Azure Application (client) ID where the federated credentials will be hosted.
+     * 
+     */
+    @Import(name="federatedApplicationClientId")
+    private @Nullable Output<String> federatedApplicationClientId;
+
+    /**
+     * @return The Azure Application (client) ID where the federated credentials will be hosted.
+     * 
+     */
+    public Optional<Output<String>> federatedApplicationClientId() {
+        return Optional.ofNullable(this.federatedApplicationClientId);
+    }
+
+    /**
+     * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+     * 
+     */
+    @Import(name="identity")
+    private @Nullable Output<String> identity;
+
+    /**
+     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+     * 
+     */
+    public Optional<Output<String>> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+
+    /**
      * The object id of the Azure Active Directory Application.
      * 
      */
@@ -96,6 +126,8 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         this.application = $.application;
         this.clientId = $.clientId;
         this.customerTenantId = $.customerTenantId;
+        this.federatedApplicationClientId = $.federatedApplicationClientId;
+        this.identity = $.identity;
         this.objectId = $.objectId;
         this.redirectUri = $.redirectUri;
     }
@@ -179,6 +211,48 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder customerTenantId(String customerTenantId) {
             return customerTenantId(Output.of(customerTenantId));
+        }
+
+        /**
+         * @param federatedApplicationClientId The Azure Application (client) ID where the federated credentials will be hosted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedApplicationClientId(@Nullable Output<String> federatedApplicationClientId) {
+            $.federatedApplicationClientId = federatedApplicationClientId;
+            return this;
+        }
+
+        /**
+         * @param federatedApplicationClientId The Azure Application (client) ID where the federated credentials will be hosted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedApplicationClientId(String federatedApplicationClientId) {
+            return federatedApplicationClientId(Output.of(federatedApplicationClientId));
+        }
+
+        /**
+         * @param identity A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(@Nullable Output<String> identity) {
+            $.identity = identity;
+            return this;
+        }
+
+        /**
+         * @param identity A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(String identity) {
+            return identity(Output.of(identity));
         }
 
         /**

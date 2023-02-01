@@ -250,59 +250,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Cloudrunv2 Job Probes
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.cloudrunv2.Job;
- * import com.pulumi.gcp.cloudrunv2.JobArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .launchStage(&#34;BETA&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .template(JobTemplateArgs.builder()
- *                 .template(JobTemplateTemplateArgs.builder()
- *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
- *                         .livenessProbe(JobTemplateTemplateContainerLivenessProbeArgs.builder()
- *                             .httpGet(JobTemplateTemplateContainerLivenessProbeHttpGetArgs.builder()
- *                                 .path(&#34;/&#34;)
- *                                 .build())
- *                             .build())
- *                         .startupProbe(JobTemplateTemplateContainerStartupProbeArgs.builder()
- *                             .failureThreshold(1)
- *                             .initialDelaySeconds(0)
- *                             .periodSeconds(3)
- *                             .tcpSocket(JobTemplateTemplateContainerStartupProbeTcpSocketArgs.builder()
- *                                 .port(8080)
- *                                 .build())
- *                             .timeoutSeconds(1)
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Cloudrunv2 Job Secret
  * ```java
  * package generated_program;

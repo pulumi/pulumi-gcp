@@ -64,6 +64,21 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Policy to determine what flags to send on delete.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Policy to determine what flags to send on delete.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
      * 
@@ -248,6 +263,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
     private AttachedClusterArgs(AttachedClusterArgs $) {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.distribution = $.distribution;
         this.fleet = $.fleet;
@@ -330,6 +346,27 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder authorization(AttachedClusterAuthorizationArgs authorization) {
             return authorization(Output.of(authorization));
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

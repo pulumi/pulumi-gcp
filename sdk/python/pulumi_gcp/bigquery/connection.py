@@ -36,7 +36,7 @@ class ConnectionArgs:
                Structure is documented below.
         :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: A nested object resource
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -128,7 +128,7 @@ class ConnectionArgs:
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
         """
-        A nested object resource
+        Connection properties specific to the Cloud SQL.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
@@ -230,7 +230,7 @@ class _ConnectionState:
                Structure is documented below.
         :param pulumi.Input['ConnectionCloudSpannerArgs'] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: A nested object resource
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -329,7 +329,7 @@ class _ConnectionState:
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
         """
-        A nested object resource
+        Connection properties specific to the Cloud SQL.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")
@@ -559,6 +559,7 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             azure=gcp.bigquery.ConnectionAzureArgs(
                 customer_tenant_id="customer-tenant-id",
+                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ),
             connection_id="my-connection",
             description="a riveting description",
@@ -607,7 +608,7 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: A nested object resource
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -740,6 +741,7 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             azure=gcp.bigquery.ConnectionAzureArgs(
                 customer_tenant_id="customer-tenant-id",
+                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
             ),
             connection_id="my-connection",
             description="a riveting description",
@@ -861,7 +863,7 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: A nested object resource
+        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -937,7 +939,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="cloudSql")
     def cloud_sql(self) -> pulumi.Output[Optional['outputs.ConnectionCloudSql']]:
         """
-        A nested object resource
+        Connection properties specific to the Cloud SQL.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql")

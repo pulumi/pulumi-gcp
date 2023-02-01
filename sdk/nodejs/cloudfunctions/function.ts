@@ -187,7 +187,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * The limit on the maximum number of function instances that may coexist at a given time.
      */
-    public readonly maxInstances!: pulumi.Output<number | undefined>;
+    public readonly maxInstances!: pulumi.Output<number>;
     /**
      * The limit on the minimum number of function instances that may coexist at a given time.
      */

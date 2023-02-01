@@ -120,10 +120,6 @@ export class InstanceIamMember extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -188,10 +184,6 @@ export interface InstanceIamMemberState {
      */
     instance?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -211,10 +203,6 @@ export interface InstanceIamMemberArgs {
      */
     instance: pulumi.Input<string>;
     member: pulumi.Input<string>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

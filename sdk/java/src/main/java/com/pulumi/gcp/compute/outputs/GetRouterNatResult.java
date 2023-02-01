@@ -39,6 +39,7 @@ public final class GetRouterNatResult {
     private String sourceSubnetworkIpRangesToNat;
     private List<GetRouterNatSubnetwork> subnetworks;
     private Integer tcpEstablishedIdleTimeoutSec;
+    private Integer tcpTimeWaitTimeoutSec;
     private Integer tcpTransitoryIdleTimeoutSec;
     private Integer udpIdleTimeoutSec;
 
@@ -101,6 +102,9 @@ public final class GetRouterNatResult {
     public Integer tcpEstablishedIdleTimeoutSec() {
         return this.tcpEstablishedIdleTimeoutSec;
     }
+    public Integer tcpTimeWaitTimeoutSec() {
+        return this.tcpTimeWaitTimeoutSec;
+    }
     public Integer tcpTransitoryIdleTimeoutSec() {
         return this.tcpTransitoryIdleTimeoutSec;
     }
@@ -135,6 +139,7 @@ public final class GetRouterNatResult {
         private String sourceSubnetworkIpRangesToNat;
         private List<GetRouterNatSubnetwork> subnetworks;
         private Integer tcpEstablishedIdleTimeoutSec;
+        private Integer tcpTimeWaitTimeoutSec;
         private Integer tcpTransitoryIdleTimeoutSec;
         private Integer udpIdleTimeoutSec;
         public Builder() {}
@@ -158,6 +163,7 @@ public final class GetRouterNatResult {
     	      this.sourceSubnetworkIpRangesToNat = defaults.sourceSubnetworkIpRangesToNat;
     	      this.subnetworks = defaults.subnetworks;
     	      this.tcpEstablishedIdleTimeoutSec = defaults.tcpEstablishedIdleTimeoutSec;
+    	      this.tcpTimeWaitTimeoutSec = defaults.tcpTimeWaitTimeoutSec;
     	      this.tcpTransitoryIdleTimeoutSec = defaults.tcpTransitoryIdleTimeoutSec;
     	      this.udpIdleTimeoutSec = defaults.udpIdleTimeoutSec;
         }
@@ -268,6 +274,11 @@ public final class GetRouterNatResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tcpTimeWaitTimeoutSec(Integer tcpTimeWaitTimeoutSec) {
+            this.tcpTimeWaitTimeoutSec = Objects.requireNonNull(tcpTimeWaitTimeoutSec);
+            return this;
+        }
+        @CustomType.Setter
         public Builder tcpTransitoryIdleTimeoutSec(Integer tcpTransitoryIdleTimeoutSec) {
             this.tcpTransitoryIdleTimeoutSec = Objects.requireNonNull(tcpTransitoryIdleTimeoutSec);
             return this;
@@ -297,6 +308,7 @@ public final class GetRouterNatResult {
             o.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
             o.subnetworks = subnetworks;
             o.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
+            o.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             o.tcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
             o.udpIdleTimeoutSec = udpIdleTimeoutSec;
             return o;

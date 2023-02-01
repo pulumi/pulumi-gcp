@@ -32,19 +32,9 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
         return Optional.ofNullable(this.code);
     }
 
-    /**
-     * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-     * 
-     */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
-    /**
-     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-     * 
-     */
     public Optional<Output<Integer>> ttl() {
         return Optional.ofNullable(this.ttl);
     }
@@ -97,25 +87,11 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
             return code(Output.of(code));
         }
 
-        /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ttl(@Nullable Output<Integer> ttl) {
             $.ttl = ttl;
             return this;
         }
 
-        /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ttl(Integer ttl) {
             return ttl(Output.of(ttl));
         }

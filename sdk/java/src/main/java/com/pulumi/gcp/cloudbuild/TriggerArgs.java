@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerRepositoryEventConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerWebhookConfigArgs;
@@ -314,6 +315,21 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * 
+     */
+    @Import(name="repositoryEventConfig")
+    private @Nullable Output<TriggerRepositoryEventConfigArgs> repositoryEventConfig;
+
+    /**
+     * @return The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * 
+     */
+    public Optional<Output<TriggerRepositoryEventConfigArgs>> repositoryEventConfig() {
+        return Optional.ofNullable(this.repositoryEventConfig);
+    }
+
+    /**
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
      * If no service account is set, then the standard Cloud Build service account
@@ -455,6 +471,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pubsubConfig = $.pubsubConfig;
+        this.repositoryEventConfig = $.repositoryEventConfig;
         this.serviceAccount = $.serviceAccount;
         this.sourceToBuild = $.sourceToBuild;
         this.substitutions = $.substitutions;
@@ -890,6 +907,27 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pubsubConfig(TriggerPubsubConfigArgs pubsubConfig) {
             return pubsubConfig(Output.of(pubsubConfig));
+        }
+
+        /**
+         * @param repositoryEventConfig The configuration of a trigger that creates a build whenever an event from Repo API is received.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositoryEventConfig(@Nullable Output<TriggerRepositoryEventConfigArgs> repositoryEventConfig) {
+            $.repositoryEventConfig = repositoryEventConfig;
+            return this;
+        }
+
+        /**
+         * @param repositoryEventConfig The configuration of a trigger that creates a build whenever an event from Repo API is received.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositoryEventConfig(TriggerRepositoryEventConfigArgs repositoryEventConfig) {
+            return repositoryEventConfig(Output.of(repositoryEventConfig));
         }
 
         /**

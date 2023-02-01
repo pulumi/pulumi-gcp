@@ -24,6 +24,7 @@ class NodeGroupArgs:
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -40,6 +41,8 @@ class NodeGroupArgs:
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['NodeGroupShareSettingsArgs'] share_settings: Share settings for the node group.
+               Structure is documented below.
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
@@ -58,6 +61,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if zone is not None:
@@ -164,6 +169,19 @@ class NodeGroupArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['NodeGroupShareSettingsArgs']]:
+        """
+        Share settings for the node group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['NodeGroupShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -201,6 +219,7 @@ class _NodeGroupState:
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -219,6 +238,8 @@ class _NodeGroupState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['NodeGroupShareSettingsArgs'] share_settings: Share settings for the node group.
+               Structure is documented below.
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
@@ -242,6 +263,8 @@ class _NodeGroupState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if zone is not None:
@@ -372,6 +395,19 @@ class _NodeGroupState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['NodeGroupShareSettingsArgs']]:
+        """
+        Share settings for the node group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['NodeGroupShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -409,23 +445,11 @@ class NodeGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
-
-        To get more information about NodeGroup, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
-        * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
         ### Node Group Basic
 
@@ -437,8 +461,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -452,8 +476,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
                 start_time="08:00",
@@ -464,6 +488,31 @@ class NodeGroup(pulumi.CustomResource):
                 mode="ONLY_SCALE_OUT",
                 min_nodes=1,
                 max_nodes=10,
+            ))
+        ```
+        ### Node Group Share Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        guest_project = gcp.organizations.Project("guestProject",
+            project_id="project-id",
+            org_id="123456789")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
+                share_type="SPECIFIC_PROJECTS",
+                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
+                    id=guest_project.project_id,
+                    project_id=guest_project.project_id,
+                )],
             ))
         ```
 
@@ -501,6 +550,8 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
+               Structure is documented below.
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
@@ -511,19 +562,6 @@ class NodeGroup(pulumi.CustomResource):
                  args: NodeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
-
-        To get more information about NodeGroup, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
-        * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-
-        > **Warning:** Due to limitations of the API, this provider cannot update the
-        number of nodes in a node group and changes to node group size either
-        through provider config or through external changes will cause
-        the provider to delete and recreate the node group.
-
         ## Example Usage
         ### Node Group Basic
 
@@ -535,8 +573,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for the Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -550,8 +588,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-a",
-            description="example google_compute_node_group for Google Provider",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
                 start_time="08:00",
@@ -562,6 +600,31 @@ class NodeGroup(pulumi.CustomResource):
                 mode="ONLY_SCALE_OUT",
                 min_nodes=1,
                 max_nodes=10,
+            ))
+        ```
+        ### Node Group Share Settings
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        guest_project = gcp.organizations.Project("guestProject",
+            project_id="project-id",
+            org_id="123456789")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-f",
+            description="example google_compute_node_group for Terraform Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            share_settings=gcp.compute.NodeGroupShareSettingsArgs(
+                share_type="SPECIFIC_PROJECTS",
+                project_maps=[gcp.compute.NodeGroupShareSettingsProjectMapArgs(
+                    id=guest_project.project_id,
+                    project_id=guest_project.project_id,
+                )],
             ))
         ```
 
@@ -608,6 +671,7 @@ class NodeGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -629,6 +693,7 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_template'")
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
+            __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["size"] = size
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
@@ -653,6 +718,7 @@ class NodeGroup(pulumi.CustomResource):
             node_template: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
             size: Optional[pulumi.Input[int]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'NodeGroup':
         """
@@ -676,6 +742,8 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
+               Structure is documented below.
         :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
@@ -693,6 +761,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["node_template"] = node_template
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["share_settings"] = share_settings
         __props__.__dict__["size"] = size
         __props__.__dict__["zone"] = zone
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
@@ -780,6 +849,15 @@ class NodeGroup(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.NodeGroupShareSettings']:
+        """
+        Share settings for the node group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "share_settings")
 
     @property
     @pulumi.getter

@@ -78,6 +78,7 @@ export interface GetTriggerResult {
     readonly name: string;
     readonly project?: string;
     readonly pubsubConfigs: outputs.cloudbuild.GetTriggerPubsubConfig[];
+    readonly repositoryEventConfigs: outputs.cloudbuild.GetTriggerRepositoryEventConfig[];
     readonly serviceAccount: string;
     readonly sourceToBuilds: outputs.cloudbuild.GetTriggerSourceToBuild[];
     readonly substitutions: {[key: string]: string};

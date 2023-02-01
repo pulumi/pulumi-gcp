@@ -26,8 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## Example Usage
- * ### Service Account IAM Policy
+ * ## google\_service\_account\_iam\_policy
  * ```java
  * package generated_program;
  * 
@@ -73,7 +72,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Service Account IAM Binding
+ * 
+ * ## google\_service\_account\_iam\_binding
  * ```java
  * package generated_program;
  * 
@@ -111,7 +111,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Service Account IAM Binding With IAM Conditions:
+ * 
+ * With IAM Conditions:
  * ```java
  * package generated_program;
  * 
@@ -155,7 +156,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Service Account IAM Member
+ * 
+ * ## google\_service\_account\_iam\_member
  * ```java
  * package generated_program;
  * 
@@ -203,7 +205,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Service Account IAM Member With IAM Conditions:
+ * 
+ * With IAM Conditions:
  * ```java
  * package generated_program;
  * 

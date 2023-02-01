@@ -139,10 +139,6 @@ namespace Pulumi.Gcp.BigTable
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -210,10 +206,6 @@ namespace Pulumi.Gcp.BigTable
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -249,10 +241,6 @@ namespace Pulumi.Gcp.BigTable
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
-        /// <summary>
-        /// The project in which the table belongs. If it
-        /// is not provided, this provider will use the provider default.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

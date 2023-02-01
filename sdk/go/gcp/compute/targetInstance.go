@@ -185,7 +185,8 @@ type TargetInstance struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
-	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -252,7 +253,8 @@ type targetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
-	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -288,7 +290,8 @@ type TargetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
-	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -326,7 +329,8 @@ type targetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
-	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -359,7 +363,8 @@ type TargetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
-	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+	// the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -494,7 +499,8 @@ func (o TargetInstanceOutput) NatPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.NatPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+// the network that the default network interface belongs to.
 func (o TargetInstanceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }

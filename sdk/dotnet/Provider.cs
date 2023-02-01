@@ -126,6 +126,9 @@ namespace Pulumi.Gcp
         [Output("cloudTasksCustomEndpoint")]
         public Output<string?> CloudTasksCustomEndpoint { get; private set; } = null!;
 
+        [Output("cloudbuildv2CustomEndpoint")]
+        public Output<string?> Cloudbuildv2CustomEndpoint { get; private set; } = null!;
+
         [Output("clouddeployCustomEndpoint")]
         public Output<string?> ClouddeployCustomEndpoint { get; private set; } = null!;
 
@@ -239,9 +242,6 @@ namespace Pulumi.Gcp
 
         [Output("gkehubFeatureCustomEndpoint")]
         public Output<string?> GkehubFeatureCustomEndpoint { get; private set; } = null!;
-
-        [Output("googlePartnerName")]
-        public Output<string?> GooglePartnerName { get; private set; } = null!;
 
         [Output("healthcareCustomEndpoint")]
         public Output<string?> HealthcareCustomEndpoint { get; private set; } = null!;
@@ -384,6 +384,9 @@ namespace Pulumi.Gcp
         [Output("tagsCustomEndpoint")]
         public Output<string?> TagsCustomEndpoint { get; private set; } = null!;
 
+        [Output("tagsLocationCustomEndpoint")]
+        public Output<string?> TagsLocationCustomEndpoint { get; private set; } = null!;
+
         [Output("tpuCustomEndpoint")]
         public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
 
@@ -395,6 +398,9 @@ namespace Pulumi.Gcp
 
         [Output("workflowsCustomEndpoint")]
         public Output<string?> WorkflowsCustomEndpoint { get; private set; } = null!;
+
+        [Output("workstationsCustomEndpoint")]
+        public Output<string?> WorkstationsCustomEndpoint { get; private set; } = null!;
 
         [Output("zone")]
         public Output<string?> Zone { get; private set; } = null!;
@@ -538,6 +544,9 @@ namespace Pulumi.Gcp
         [Input("cloudTasksCustomEndpoint")]
         public Input<string>? CloudTasksCustomEndpoint { get; set; }
 
+        [Input("cloudbuildv2CustomEndpoint")]
+        public Input<string>? Cloudbuildv2CustomEndpoint { get; set; }
+
         [Input("clouddeployCustomEndpoint")]
         public Input<string>? ClouddeployCustomEndpoint { get; set; }
 
@@ -607,9 +616,6 @@ namespace Pulumi.Gcp
         [Input("dialogflowCxCustomEndpoint")]
         public Input<string>? DialogflowCxCustomEndpoint { get; set; }
 
-        [Input("disableGooglePartnerName", json: true)]
-        public Input<bool>? DisableGooglePartnerName { get; set; }
-
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
@@ -654,9 +660,6 @@ namespace Pulumi.Gcp
 
         [Input("gkehubFeatureCustomEndpoint")]
         public Input<string>? GkehubFeatureCustomEndpoint { get; set; }
-
-        [Input("googlePartnerName")]
-        public Input<string>? GooglePartnerName { get; set; }
 
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
@@ -815,6 +818,9 @@ namespace Pulumi.Gcp
         [Input("tagsCustomEndpoint")]
         public Input<string>? TagsCustomEndpoint { get; set; }
 
+        [Input("tagsLocationCustomEndpoint")]
+        public Input<string>? TagsLocationCustomEndpoint { get; set; }
+
         [Input("tpuCustomEndpoint")]
         public Input<string>? TpuCustomEndpoint { get; set; }
 
@@ -829,6 +835,9 @@ namespace Pulumi.Gcp
 
         [Input("workflowsCustomEndpoint")]
         public Input<string>? WorkflowsCustomEndpoint { get; set; }
+
+        [Input("workstationsCustomEndpoint")]
+        public Input<string>? WorkstationsCustomEndpoint { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

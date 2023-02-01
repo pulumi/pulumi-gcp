@@ -359,6 +359,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> TcpEstablishedIdleTimeoutSec { get; private set; } = null!;
 
         /// <summary>
+        /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        /// Defaults to 120s if not set.
+        /// </summary>
+        [Output("tcpTimeWaitTimeoutSec")]
+        public Output<int?> TcpTimeWaitTimeoutSec { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout (in seconds) for TCP transitory connections.
         /// Defaults to 30s if not set.
         /// </summary>
@@ -573,6 +580,13 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpEstablishedIdleTimeoutSec { get; set; }
 
         /// <summary>
+        /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        /// Defaults to 120s if not set.
+        /// </summary>
+        [Input("tcpTimeWaitTimeoutSec")]
+        public Input<int>? TcpTimeWaitTimeoutSec { get; set; }
+
+        /// <summary>
         /// Timeout (in seconds) for TCP transitory connections.
         /// Defaults to 30s if not set.
         /// </summary>
@@ -747,6 +761,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("tcpEstablishedIdleTimeoutSec")]
         public Input<int>? TcpEstablishedIdleTimeoutSec { get; set; }
+
+        /// <summary>
+        /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+        /// Defaults to 120s if not set.
+        /// </summary>
+        [Input("tcpTimeWaitTimeoutSec")]
+        public Input<int>? TcpTimeWaitTimeoutSec { get; set; }
 
         /// <summary>
         /// Timeout (in seconds) for TCP transitory connections.

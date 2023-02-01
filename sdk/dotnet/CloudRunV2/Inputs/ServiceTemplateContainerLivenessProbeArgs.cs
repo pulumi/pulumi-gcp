@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? FailureThreshold { get; set; }
 
         /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// HTTPGet specifies the http request to perform.
         /// Structure is documented below.
         /// </summary>
         [Input("httpGet")]
@@ -38,7 +38,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// (Optional, Deprecated)
+        /// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
         /// Structure is documented below.
         /// </summary>
         [Input("tcpSocket")]

@@ -31,7 +31,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// (Optional, Deprecated)
         /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// This field is not supported in Cloud Run Job currently.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobTemplateTemplateContainerLivenessProbe? LivenessProbe;
@@ -51,7 +53,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateContainerResources? Resources;
         /// <summary>
+        /// (Optional, Deprecated)
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// This field is not supported in Cloud Run Job currently.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobTemplateTemplateContainerStartupProbe? StartupProbe;

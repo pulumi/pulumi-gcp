@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Google Cloud Firebase web application instance
- */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,9 +45,6 @@ export interface GetWebAppResult {
     readonly name: string;
     readonly project: string;
 }
-/**
- * A Google Cloud Firebase web application instance
- */
 export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
     return pulumi.output(args).apply((a: any) => getWebApp(a, opts))
 }

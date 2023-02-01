@@ -37,9 +37,9 @@ class DicomStoreArgs:
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-               streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+               you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+               tables in a BigQuery dataset.
         """
         pulumi.set(__self__, "dataset", dataset)
         if labels is not None:
@@ -113,9 +113,9 @@ class DicomStoreArgs:
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
         """
-        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-        streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-        Structure is documented below.
+        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        tables in a BigQuery dataset.
         """
         return pulumi.get(self, "stream_configs")
 
@@ -150,9 +150,9 @@ class _DicomStoreState:
         :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-               streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+               you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+               tables in a BigQuery dataset.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -241,9 +241,9 @@ class _DicomStoreState:
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]:
         """
-        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-        streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-        Structure is documented below.
+        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        tables in a BigQuery dataset.
         """
         return pulumi.get(self, "stream_configs")
 
@@ -356,9 +356,9 @@ class DicomStore(pulumi.CustomResource):
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-               streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+               you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+               tables in a BigQuery dataset.
         """
         ...
     @overload
@@ -518,9 +518,9 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-               streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+               you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+               tables in a BigQuery dataset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,9 +588,9 @@ class DicomStore(pulumi.CustomResource):
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DicomStoreStreamConfig']]]:
         """
-        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-        streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
-        Structure is documented below.
+        To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
+        you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
+        tables in a BigQuery dataset.
         """
         return pulumi.get(self, "stream_configs")
 

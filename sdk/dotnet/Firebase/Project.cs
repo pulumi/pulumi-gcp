@@ -10,46 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
-    /// A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
-    /// Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
-    /// identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
-    /// Once Firebase has been added to a Google Project it cannot be removed.
-    /// 
-    /// To get more information about Project, see:
-    /// 
-    /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/)
-    /// 
     /// ## Example Usage
-    /// ### Firebase Project Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
-    ///     {
-    ///         ProjectId = "tf-test",
-    ///         OrgId = "123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var defaultFirebase_projectProject = new Gcp.Firebase.Project("defaultFirebase/projectProject", new()
-    ///     {
-    ///         ProjectID = defaultProject.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

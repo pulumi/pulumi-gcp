@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A collection of policy tags that classify data along a common axis.
-//
-// To get more information about Taxonomy, see:
-//
-// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
-//
 // ## Example Usage
 // ### Data Catalog Taxonomy Basic
 //

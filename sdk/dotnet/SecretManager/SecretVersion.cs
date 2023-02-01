@@ -10,11 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SecretManager
 {
     /// <summary>
-    /// A secret version resource.
-    /// 
-    /// &gt; **Warning:** All arguments including `payload.secret_data` will be stored in the raw
-    /// state as plain-text.
-    /// 
     /// ## Example Usage
     /// ### Secret Version Basic
     /// 

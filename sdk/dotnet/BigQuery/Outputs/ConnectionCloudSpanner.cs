@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// If parallelism should be used when reading from Cloud Spanner
         /// </summary>
         public readonly bool? UseParallelism;
+        /// <summary>
+        /// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        /// </summary>
+        public readonly bool? UseServerlessAnalytics;
 
         [OutputConstructor]
         private ConnectionCloudSpanner(
             string database,
 
-            bool? useParallelism)
+            bool? useParallelism,
+
+            bool? useServerlessAnalytics)
         {
             Database = database;
             UseParallelism = useParallelism;
+            UseServerlessAnalytics = useServerlessAnalytics;
         }
     }
 }

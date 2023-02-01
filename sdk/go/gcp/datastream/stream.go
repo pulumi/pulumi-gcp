@@ -30,6 +30,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
@@ -143,6 +144,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "keyUser", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
@@ -249,7 +258,155 @@ import (
 //						},
 //					},
 //				},
+//				CustomerManagedEncryptionKey: pulumi.String("kms-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				keyUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Datastream Stream Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Instance: instance.Name,
+//				Host:     pulumi.String("%"),
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "sourceConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Source connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("source-profile"),
+//				MysqlProfile: &datastream.ConnectionProfileMysqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigqueryKeyUser", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("bigquery-kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destinationConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-profile"),
+//				BigqueryProfile:     nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				StreamId:    pulumi.String("my-stream"),
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("my stream"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
+//					MysqlSourceConfig:       nil,
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location:   pulumi.String("us-central1"),
+//								KmsKeyName: pulumi.String("bigquery-kms-name"),
+//							},
+//						},
+//					},
+//				},
+//				BackfillNone: nil,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bigqueryKeyUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -288,6 +445,9 @@ type Stream struct {
 	BackfillAll StreamBackfillAllPtrOutput `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrOutput `pulumi:"backfillNone"`
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	CustomerManagedEncryptionKey pulumi.StringPtrOutput `pulumi:"customerManagedEncryptionKey"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Destination connection profile configuration.
@@ -362,6 +522,9 @@ type streamState struct {
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
@@ -393,6 +556,9 @@ type StreamState struct {
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	CustomerManagedEncryptionKey pulumi.StringPtrInput
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
@@ -428,6 +594,9 @@ type streamArgs struct {
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
@@ -456,6 +625,9 @@ type StreamArgs struct {
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	CustomerManagedEncryptionKey pulumi.StringPtrInput
 	// Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
@@ -573,6 +745,12 @@ func (o StreamOutput) BackfillAll() StreamBackfillAllPtrOutput {
 // Backfill strategy to disable automatic backfill for the Stream's objects.
 func (o StreamOutput) BackfillNone() StreamBackfillNonePtrOutput {
 	return o.ApplyT(func(v *Stream) StreamBackfillNonePtrOutput { return v.BackfillNone }).(StreamBackfillNonePtrOutput)
+}
+
+// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+func (o StreamOutput) CustomerManagedEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.CustomerManagedEncryptionKey }).(pulumi.StringPtrOutput)
 }
 
 // Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.

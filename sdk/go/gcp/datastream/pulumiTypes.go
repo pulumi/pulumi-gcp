@@ -3310,6 +3310,11 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// If supplied, every created dataset will have its name prefixed by the provided value.
 	// The prefix and name will be separated by an underscore. i.e. _.
 	DatasetIdPrefix *string `pulumi:"datasetIdPrefix"`
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+	// table. The BigQuery Service Account associated with your project requires access to this
+	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location string `pulumi:"location"`
@@ -3330,6 +3335,11 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// If supplied, every created dataset will have its name prefixed by the provided value.
 	// The prefix and name will be separated by an underscore. i.e. _.
 	DatasetIdPrefix pulumi.StringPtrInput `pulumi:"datasetIdPrefix"`
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+	// table. The BigQuery Service Account associated with your project requires access to this
+	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location pulumi.StringInput `pulumi:"location"`
@@ -3420,6 +3430,16 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+// table. The BigQuery Service Account associated with your project requires access to this
+// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The geographic location where the dataset should reside.
 // See https://cloud.google.com/bigquery/docs/locations for supported locations.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) Location() pulumi.StringOutput {
@@ -3460,6 +3480,19 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 			return nil
 		}
 		return v.DatasetIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+// table. The BigQuery Service Account associated with your project requires access to this
+// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
 	}).(pulumi.StringPtrOutput)
 }
 

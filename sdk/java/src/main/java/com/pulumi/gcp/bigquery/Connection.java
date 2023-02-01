@@ -270,6 +270,7 @@ import javax.annotation.Nullable;
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
  *             .azure(ConnectionAzureArgs.builder()
  *                 .customerTenantId(&#34;customer-tenant-id&#34;)
+ *                 .federatedApplicationClientId(&#34;b43eeeee-eeee-eeee-eeee-a480155501ce&#34;)
  *                 .build())
  *             .connectionId(&#34;my-connection&#34;)
  *             .description(&#34;a riveting description&#34;)
@@ -401,7 +402,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudSpanner);
     }
     /**
-     * A nested object resource
+     * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      * 
      */
@@ -409,7 +410,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ConnectionCloudSql> cloudSql;
 
     /**
-     * @return A nested object resource
+     * @return Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      * 
      */

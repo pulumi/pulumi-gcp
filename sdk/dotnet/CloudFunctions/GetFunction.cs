@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         /// <summary>
-        /// The limit on the maximum number of function instances that may coexist at a given time.
+        /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
         /// </summary>
         public readonly int MaxInstances;
         public readonly int MinInstances;

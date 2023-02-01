@@ -136,7 +136,6 @@ export class GroupMembership extends pulumi.CustomResource {
     public readonly group!: pulumi.Output<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
@@ -221,7 +220,6 @@ export interface GroupMembershipState {
     group?: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
@@ -260,7 +258,6 @@ export interface GroupMembershipArgs {
     group: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**

@@ -3100,6 +3100,9 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 }
 
 type TriggerGitFileSource struct {
+	// The full resource name of the github enterprise config.
+	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
 	// The path of the file, with the repo root as the root of the path.
 	Path string `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
@@ -3127,6 +3130,9 @@ type TriggerGitFileSourceInput interface {
 }
 
 type TriggerGitFileSourceArgs struct {
+	// The full resource name of the github enterprise config.
+	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
 	// The path of the file, with the repo root as the root of the path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
@@ -3219,6 +3225,12 @@ func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutputWithContext(c
 	}).(TriggerGitFileSourcePtrOutput)
 }
 
+// The full resource name of the github enterprise config.
+// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+func (o TriggerGitFileSourceOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.GithubEnterpriseConfig }).(pulumi.StringPtrOutput)
+}
+
 // The path of the file, with the repo root as the root of the path.
 func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.Path }).(pulumi.StringOutput)
@@ -3266,6 +3278,17 @@ func (o TriggerGitFileSourcePtrOutput) Elem() TriggerGitFileSourceOutput {
 		var ret TriggerGitFileSource
 		return ret
 	}).(TriggerGitFileSourceOutput)
+}
+
+// The full resource name of the github enterprise config.
+// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+func (o TriggerGitFileSourcePtrOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubEnterpriseConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 // The path of the file, with the repo root as the root of the path.
@@ -4075,7 +4098,547 @@ func (o TriggerPubsubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TriggerRepositoryEventConfig struct {
+	// Contains filter properties for matching Pull Requests.
+	// Structure is documented below.
+	PullRequest *TriggerRepositoryEventConfigPullRequest `pulumi:"pullRequest"`
+	// Contains filter properties for matching git pushes.
+	// Structure is documented below.
+	Push *TriggerRepositoryEventConfigPush `pulumi:"push"`
+	// The resource name of the Repo API resource.
+	Repository *string `pulumi:"repository"`
+}
+
+// TriggerRepositoryEventConfigInput is an input type that accepts TriggerRepositoryEventConfigArgs and TriggerRepositoryEventConfigOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigInput` via:
+//
+//	TriggerRepositoryEventConfigArgs{...}
+type TriggerRepositoryEventConfigInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigOutput() TriggerRepositoryEventConfigOutput
+	ToTriggerRepositoryEventConfigOutputWithContext(context.Context) TriggerRepositoryEventConfigOutput
+}
+
+type TriggerRepositoryEventConfigArgs struct {
+	// Contains filter properties for matching Pull Requests.
+	// Structure is documented below.
+	PullRequest TriggerRepositoryEventConfigPullRequestPtrInput `pulumi:"pullRequest"`
+	// Contains filter properties for matching git pushes.
+	// Structure is documented below.
+	Push TriggerRepositoryEventConfigPushPtrInput `pulumi:"push"`
+	// The resource name of the Repo API resource.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (TriggerRepositoryEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigOutput() TriggerRepositoryEventConfigOutput {
+	return i.ToTriggerRepositoryEventConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigOutput)
+}
+
+func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigOutput).ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerRepositoryEventConfigPtrInput is an input type that accepts TriggerRepositoryEventConfigArgs, TriggerRepositoryEventConfigPtr and TriggerRepositoryEventConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigPtrInput` via:
+//
+//	        TriggerRepositoryEventConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerRepositoryEventConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput
+	ToTriggerRepositoryEventConfigPtrOutputWithContext(context.Context) TriggerRepositoryEventConfigPtrOutput
+}
+
+type triggerRepositoryEventConfigPtrType TriggerRepositoryEventConfigArgs
+
+func TriggerRepositoryEventConfigPtr(v *TriggerRepositoryEventConfigArgs) TriggerRepositoryEventConfigPtrInput {
+	return (*triggerRepositoryEventConfigPtrType)(v)
+}
+
+func (*triggerRepositoryEventConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (i *triggerRepositoryEventConfigPtrType) ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerRepositoryEventConfigPtrType) ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPtrOutput)
+}
+
+type TriggerRepositoryEventConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigOutput) ToTriggerRepositoryEventConfigOutput() TriggerRepositoryEventConfigOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigOutput) ToTriggerRepositoryEventConfigOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigOutput) ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput {
+	return o.ToTriggerRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerRepositoryEventConfigOutput) ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfig) *TriggerRepositoryEventConfig {
+		return &v
+	}).(TriggerRepositoryEventConfigPtrOutput)
+}
+
+// Contains filter properties for matching Pull Requests.
+// Structure is documented below.
+func (o TriggerRepositoryEventConfigOutput) PullRequest() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfig) *TriggerRepositoryEventConfigPullRequest { return v.PullRequest }).(TriggerRepositoryEventConfigPullRequestPtrOutput)
+}
+
+// Contains filter properties for matching git pushes.
+// Structure is documented below.
+func (o TriggerRepositoryEventConfigOutput) Push() TriggerRepositoryEventConfigPushPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfig) *TriggerRepositoryEventConfigPush { return v.Push }).(TriggerRepositoryEventConfigPushPtrOutput)
+}
+
+// The resource name of the Repo API resource.
+func (o TriggerRepositoryEventConfigOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfig) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigPtrOutput) ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPtrOutput) ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPtrOutput) Elem() TriggerRepositoryEventConfigOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfig) TriggerRepositoryEventConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerRepositoryEventConfig
+		return ret
+	}).(TriggerRepositoryEventConfigOutput)
+}
+
+// Contains filter properties for matching Pull Requests.
+// Structure is documented below.
+func (o TriggerRepositoryEventConfigPtrOutput) PullRequest() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfig) *TriggerRepositoryEventConfigPullRequest {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(TriggerRepositoryEventConfigPullRequestPtrOutput)
+}
+
+// Contains filter properties for matching git pushes.
+// Structure is documented below.
+func (o TriggerRepositoryEventConfigPtrOutput) Push() TriggerRepositoryEventConfigPushPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfig) *TriggerRepositoryEventConfigPush {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(TriggerRepositoryEventConfigPushPtrOutput)
+}
+
+// The resource name of the Repo API resource.
+func (o TriggerRepositoryEventConfigPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPullRequest struct {
+	// Regex of branches to match.
+	Branch *string `pulumi:"branch"`
+	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl *string `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex *bool `pulumi:"invertRegex"`
+}
+
+// TriggerRepositoryEventConfigPullRequestInput is an input type that accepts TriggerRepositoryEventConfigPullRequestArgs and TriggerRepositoryEventConfigPullRequestOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigPullRequestInput` via:
+//
+//	TriggerRepositoryEventConfigPullRequestArgs{...}
+type TriggerRepositoryEventConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigPullRequestOutput() TriggerRepositoryEventConfigPullRequestOutput
+	ToTriggerRepositoryEventConfigPullRequestOutputWithContext(context.Context) TriggerRepositoryEventConfigPullRequestOutput
+}
+
+type TriggerRepositoryEventConfigPullRequestArgs struct {
+	// Regex of branches to match.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+}
+
+func (TriggerRepositoryEventConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventConfigPullRequestOutput() TriggerRepositoryEventConfigPullRequestOutput {
+	return i.ToTriggerRepositoryEventConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPullRequestOutput)
+}
+
+func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPullRequestOutput).ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx)
+}
+
+// TriggerRepositoryEventConfigPullRequestPtrInput is an input type that accepts TriggerRepositoryEventConfigPullRequestArgs, TriggerRepositoryEventConfigPullRequestPtr and TriggerRepositoryEventConfigPullRequestPtrOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigPullRequestPtrInput` via:
+//
+//	        TriggerRepositoryEventConfigPullRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerRepositoryEventConfigPullRequestPtrInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput
+	ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput
+}
+
+type triggerRepositoryEventConfigPullRequestPtrType TriggerRepositoryEventConfigPullRequestArgs
+
+func TriggerRepositoryEventConfigPullRequestPtr(v *TriggerRepositoryEventConfigPullRequestArgs) TriggerRepositoryEventConfigPullRequestPtrInput {
+	return (*triggerRepositoryEventConfigPullRequestPtrType)(v)
+}
+
+func (*triggerRepositoryEventConfigPullRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i *triggerRepositoryEventConfigPullRequestPtrType) ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerRepositoryEventConfigPullRequestPtrType) ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPullRequestPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventConfigPullRequestOutput() TriggerRepositoryEventConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o.ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfigPullRequest) *TriggerRepositoryEventConfigPullRequest {
+		return &v
+	}).(TriggerRepositoryEventConfigPullRequestPtrOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerRepositoryEventConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerRepositoryEventConfigPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPullRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigPullRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Elem() TriggerRepositoryEventConfigPullRequestOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) TriggerRepositoryEventConfigPullRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerRepositoryEventConfigPullRequest
+		return ret
+	}).(TriggerRepositoryEventConfigPullRequestOutput)
+}
+
+// Regex of branches to match.
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommentControl
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPush struct {
+	// Regex of branches to match.  Specify only one of branch or tag.
+	Branch *string `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
+	// Regex of tags to match.  Specify only one of branch or tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// TriggerRepositoryEventConfigPushInput is an input type that accepts TriggerRepositoryEventConfigPushArgs and TriggerRepositoryEventConfigPushOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigPushInput` via:
+//
+//	TriggerRepositoryEventConfigPushArgs{...}
+type TriggerRepositoryEventConfigPushInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigPushOutput() TriggerRepositoryEventConfigPushOutput
+	ToTriggerRepositoryEventConfigPushOutputWithContext(context.Context) TriggerRepositoryEventConfigPushOutput
+}
+
+type TriggerRepositoryEventConfigPushArgs struct {
+	// Regex of branches to match.  Specify only one of branch or tag.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+	// Regex of tags to match.  Specify only one of branch or tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (TriggerRepositoryEventConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPushOutput() TriggerRepositoryEventConfigPushOutput {
+	return i.ToTriggerRepositoryEventConfigPushOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPushOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPushOutput)
+}
+
+func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPushOutput).ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx)
+}
+
+// TriggerRepositoryEventConfigPushPtrInput is an input type that accepts TriggerRepositoryEventConfigPushArgs, TriggerRepositoryEventConfigPushPtr and TriggerRepositoryEventConfigPushPtrOutput values.
+// You can construct a concrete instance of `TriggerRepositoryEventConfigPushPtrInput` via:
+//
+//	        TriggerRepositoryEventConfigPushArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerRepositoryEventConfigPushPtrInput interface {
+	pulumi.Input
+
+	ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput
+	ToTriggerRepositoryEventConfigPushPtrOutputWithContext(context.Context) TriggerRepositoryEventConfigPushPtrOutput
+}
+
+type triggerRepositoryEventConfigPushPtrType TriggerRepositoryEventConfigPushArgs
+
+func TriggerRepositoryEventConfigPushPtr(v *TriggerRepositoryEventConfigPushArgs) TriggerRepositoryEventConfigPushPtrInput {
+	return (*triggerRepositoryEventConfigPushPtrType)(v)
+}
+
+func (*triggerRepositoryEventConfigPushPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (i *triggerRepositoryEventConfigPushPtrType) ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput {
+	return i.ToTriggerRepositoryEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerRepositoryEventConfigPushPtrType) ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPushPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPushOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPushOutput() TriggerRepositoryEventConfigPushOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPushOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput {
+	return o.ToTriggerRepositoryEventConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfigPush) *TriggerRepositoryEventConfigPush {
+		return &v
+	}).(TriggerRepositoryEventConfigPushPtrOutput)
+}
+
+// Regex of branches to match.  Specify only one of branch or tag.
+func (o TriggerRepositoryEventConfigPushOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerRepositoryEventConfigPushOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.  Specify only one of branch or tag.
+func (o TriggerRepositoryEventConfigPushOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerRepositoryEventConfigPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type TriggerRepositoryEventConfigPushPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerRepositoryEventConfigPushPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (o TriggerRepositoryEventConfigPushPtrOutput) ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPushPtrOutput) ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerRepositoryEventConfigPushPtrOutput) Elem() TriggerRepositoryEventConfigPushOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) TriggerRepositoryEventConfigPush {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerRepositoryEventConfigPush
+		return ret
+	}).(TriggerRepositoryEventConfigPushOutput)
+}
+
+// Regex of branches to match.  Specify only one of branch or tag.
+func (o TriggerRepositoryEventConfigPushPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerRepositoryEventConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.  Specify only one of branch or tag.
+func (o TriggerRepositoryEventConfigPushPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerRepositoryEventConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerSourceToBuild struct {
+	// The full resource name of the github enterprise config.
+	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref string `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
@@ -4098,6 +4661,9 @@ type TriggerSourceToBuildInput interface {
 }
 
 type TriggerSourceToBuildArgs struct {
+	// The full resource name of the github enterprise config.
+	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref pulumi.StringInput `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
@@ -4185,6 +4751,12 @@ func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildPtrOutputWithContext(c
 	}).(TriggerSourceToBuildPtrOutput)
 }
 
+// The full resource name of the github enterprise config.
+// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+func (o TriggerSourceToBuildOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) *string { return v.GithubEnterpriseConfig }).(pulumi.StringPtrOutput)
+}
+
 // The branch or tag to use. Must start with "refs/" (required).
 func (o TriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.Ref }).(pulumi.StringOutput)
@@ -4224,6 +4796,17 @@ func (o TriggerSourceToBuildPtrOutput) Elem() TriggerSourceToBuildOutput {
 		var ret TriggerSourceToBuild
 		return ret
 	}).(TriggerSourceToBuildOutput)
+}
+
+// The full resource name of the github enterprise config.
+// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+func (o TriggerSourceToBuildPtrOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubEnterpriseConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 // The branch or tag to use. Must start with "refs/" (required).
@@ -6727,10 +7310,11 @@ func (o GetTriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) GetTrigge
 }
 
 type GetTriggerGitFileSource struct {
-	Path     string `pulumi:"path"`
-	RepoType string `pulumi:"repoType"`
-	Revision string `pulumi:"revision"`
-	Uri      string `pulumi:"uri"`
+	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
+	Path                   string `pulumi:"path"`
+	RepoType               string `pulumi:"repoType"`
+	Revision               string `pulumi:"revision"`
+	Uri                    string `pulumi:"uri"`
 }
 
 // GetTriggerGitFileSourceInput is an input type that accepts GetTriggerGitFileSourceArgs and GetTriggerGitFileSourceOutput values.
@@ -6745,10 +7329,11 @@ type GetTriggerGitFileSourceInput interface {
 }
 
 type GetTriggerGitFileSourceArgs struct {
-	Path     pulumi.StringInput `pulumi:"path"`
-	RepoType pulumi.StringInput `pulumi:"repoType"`
-	Revision pulumi.StringInput `pulumi:"revision"`
-	Uri      pulumi.StringInput `pulumi:"uri"`
+	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
+	Path                   pulumi.StringInput `pulumi:"path"`
+	RepoType               pulumi.StringInput `pulumi:"repoType"`
+	Revision               pulumi.StringInput `pulumi:"revision"`
+	Uri                    pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GetTriggerGitFileSourceArgs) ElementType() reflect.Type {
@@ -6800,6 +7385,10 @@ func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutput() GetTrig
 
 func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutputWithContext(ctx context.Context) GetTriggerGitFileSourceOutput {
 	return o
+}
+
+func (o GetTriggerGitFileSourceOutput) GithubEnterpriseConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.GithubEnterpriseConfig }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerGitFileSourceOutput) Path() pulumi.StringOutput {
@@ -7274,10 +7863,331 @@ func (o GetTriggerPubsubConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerPu
 	}).(GetTriggerPubsubConfigOutput)
 }
 
+type GetTriggerRepositoryEventConfig struct {
+	PullRequests []GetTriggerRepositoryEventConfigPullRequest `pulumi:"pullRequests"`
+	Pushes       []GetTriggerRepositoryEventConfigPush        `pulumi:"pushes"`
+	Repository   string                                       `pulumi:"repository"`
+}
+
+// GetTriggerRepositoryEventConfigInput is an input type that accepts GetTriggerRepositoryEventConfigArgs and GetTriggerRepositoryEventConfigOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigInput` via:
+//
+//	GetTriggerRepositoryEventConfigArgs{...}
+type GetTriggerRepositoryEventConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigOutput() GetTriggerRepositoryEventConfigOutput
+	ToGetTriggerRepositoryEventConfigOutputWithContext(context.Context) GetTriggerRepositoryEventConfigOutput
+}
+
+type GetTriggerRepositoryEventConfigArgs struct {
+	PullRequests GetTriggerRepositoryEventConfigPullRequestArrayInput `pulumi:"pullRequests"`
+	Pushes       GetTriggerRepositoryEventConfigPushArrayInput        `pulumi:"pushes"`
+	Repository   pulumi.StringInput                                   `pulumi:"repository"`
+}
+
+func (GetTriggerRepositoryEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigArgs) ToGetTriggerRepositoryEventConfigOutput() GetTriggerRepositoryEventConfigOutput {
+	return i.ToGetTriggerRepositoryEventConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigArgs) ToGetTriggerRepositoryEventConfigOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigOutput)
+}
+
+// GetTriggerRepositoryEventConfigArrayInput is an input type that accepts GetTriggerRepositoryEventConfigArray and GetTriggerRepositoryEventConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigArrayInput` via:
+//
+//	GetTriggerRepositoryEventConfigArray{ GetTriggerRepositoryEventConfigArgs{...} }
+type GetTriggerRepositoryEventConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigArrayOutput() GetTriggerRepositoryEventConfigArrayOutput
+	ToGetTriggerRepositoryEventConfigArrayOutputWithContext(context.Context) GetTriggerRepositoryEventConfigArrayOutput
+}
+
+type GetTriggerRepositoryEventConfigArray []GetTriggerRepositoryEventConfigInput
+
+func (GetTriggerRepositoryEventConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigArray) ToGetTriggerRepositoryEventConfigArrayOutput() GetTriggerRepositoryEventConfigArrayOutput {
+	return i.ToGetTriggerRepositoryEventConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigArray) ToGetTriggerRepositoryEventConfigArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigArrayOutput)
+}
+
+type GetTriggerRepositoryEventConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) ToGetTriggerRepositoryEventConfigOutput() GetTriggerRepositoryEventConfigOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) ToGetTriggerRepositoryEventConfigOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) PullRequests() GetTriggerRepositoryEventConfigPullRequestArrayOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfig) []GetTriggerRepositoryEventConfigPullRequest {
+		return v.PullRequests
+	}).(GetTriggerRepositoryEventConfigPullRequestArrayOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) Pushes() GetTriggerRepositoryEventConfigPushArrayOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfig) []GetTriggerRepositoryEventConfigPush { return v.Pushes }).(GetTriggerRepositoryEventConfigPushArrayOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfig) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type GetTriggerRepositoryEventConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfig)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigArrayOutput) ToGetTriggerRepositoryEventConfigArrayOutput() GetTriggerRepositoryEventConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigArrayOutput) ToGetTriggerRepositoryEventConfigArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerRepositoryEventConfig {
+		return vs[0].([]GetTriggerRepositoryEventConfig)[vs[1].(int)]
+	}).(GetTriggerRepositoryEventConfigOutput)
+}
+
+type GetTriggerRepositoryEventConfigPullRequest struct {
+	Branch         string `pulumi:"branch"`
+	CommentControl string `pulumi:"commentControl"`
+	InvertRegex    bool   `pulumi:"invertRegex"`
+}
+
+// GetTriggerRepositoryEventConfigPullRequestInput is an input type that accepts GetTriggerRepositoryEventConfigPullRequestArgs and GetTriggerRepositoryEventConfigPullRequestOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigPullRequestInput` via:
+//
+//	GetTriggerRepositoryEventConfigPullRequestArgs{...}
+type GetTriggerRepositoryEventConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigPullRequestOutput() GetTriggerRepositoryEventConfigPullRequestOutput
+	ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(context.Context) GetTriggerRepositoryEventConfigPullRequestOutput
+}
+
+type GetTriggerRepositoryEventConfigPullRequestArgs struct {
+	Branch         pulumi.StringInput `pulumi:"branch"`
+	CommentControl pulumi.StringInput `pulumi:"commentControl"`
+	InvertRegex    pulumi.BoolInput   `pulumi:"invertRegex"`
+}
+
+func (GetTriggerRepositoryEventConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigPullRequestArgs) ToGetTriggerRepositoryEventConfigPullRequestOutput() GetTriggerRepositoryEventConfigPullRequestOutput {
+	return i.ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigPullRequestArgs) ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPullRequestOutput)
+}
+
+// GetTriggerRepositoryEventConfigPullRequestArrayInput is an input type that accepts GetTriggerRepositoryEventConfigPullRequestArray and GetTriggerRepositoryEventConfigPullRequestArrayOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigPullRequestArrayInput` via:
+//
+//	GetTriggerRepositoryEventConfigPullRequestArray{ GetTriggerRepositoryEventConfigPullRequestArgs{...} }
+type GetTriggerRepositoryEventConfigPullRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigPullRequestArrayOutput() GetTriggerRepositoryEventConfigPullRequestArrayOutput
+	ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(context.Context) GetTriggerRepositoryEventConfigPullRequestArrayOutput
+}
+
+type GetTriggerRepositoryEventConfigPullRequestArray []GetTriggerRepositoryEventConfigPullRequestInput
+
+func (GetTriggerRepositoryEventConfigPullRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigPullRequestArray) ToGetTriggerRepositoryEventConfigPullRequestArrayOutput() GetTriggerRepositoryEventConfigPullRequestArrayOutput {
+	return i.ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigPullRequestArray) ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPullRequestArrayOutput)
+}
+
+type GetTriggerRepositoryEventConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) ToGetTriggerRepositoryEventConfigPullRequestOutput() GetTriggerRepositoryEventConfigPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) CommentControl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPullRequest) string { return v.CommentControl }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPullRequest) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+type GetTriggerRepositoryEventConfigPullRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigPullRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) ToGetTriggerRepositoryEventConfigPullRequestArrayOutput() GetTriggerRepositoryEventConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigPullRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerRepositoryEventConfigPullRequest {
+		return vs[0].([]GetTriggerRepositoryEventConfigPullRequest)[vs[1].(int)]
+	}).(GetTriggerRepositoryEventConfigPullRequestOutput)
+}
+
+type GetTriggerRepositoryEventConfigPush struct {
+	Branch      string `pulumi:"branch"`
+	InvertRegex bool   `pulumi:"invertRegex"`
+	Tag         string `pulumi:"tag"`
+}
+
+// GetTriggerRepositoryEventConfigPushInput is an input type that accepts GetTriggerRepositoryEventConfigPushArgs and GetTriggerRepositoryEventConfigPushOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigPushInput` via:
+//
+//	GetTriggerRepositoryEventConfigPushArgs{...}
+type GetTriggerRepositoryEventConfigPushInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigPushOutput() GetTriggerRepositoryEventConfigPushOutput
+	ToGetTriggerRepositoryEventConfigPushOutputWithContext(context.Context) GetTriggerRepositoryEventConfigPushOutput
+}
+
+type GetTriggerRepositoryEventConfigPushArgs struct {
+	Branch      pulumi.StringInput `pulumi:"branch"`
+	InvertRegex pulumi.BoolInput   `pulumi:"invertRegex"`
+	Tag         pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetTriggerRepositoryEventConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigPushArgs) ToGetTriggerRepositoryEventConfigPushOutput() GetTriggerRepositoryEventConfigPushOutput {
+	return i.ToGetTriggerRepositoryEventConfigPushOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigPushArgs) ToGetTriggerRepositoryEventConfigPushOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPushOutput)
+}
+
+// GetTriggerRepositoryEventConfigPushArrayInput is an input type that accepts GetTriggerRepositoryEventConfigPushArray and GetTriggerRepositoryEventConfigPushArrayOutput values.
+// You can construct a concrete instance of `GetTriggerRepositoryEventConfigPushArrayInput` via:
+//
+//	GetTriggerRepositoryEventConfigPushArray{ GetTriggerRepositoryEventConfigPushArgs{...} }
+type GetTriggerRepositoryEventConfigPushArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerRepositoryEventConfigPushArrayOutput() GetTriggerRepositoryEventConfigPushArrayOutput
+	ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(context.Context) GetTriggerRepositoryEventConfigPushArrayOutput
+}
+
+type GetTriggerRepositoryEventConfigPushArray []GetTriggerRepositoryEventConfigPushInput
+
+func (GetTriggerRepositoryEventConfigPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerRepositoryEventConfigPushArray) ToGetTriggerRepositoryEventConfigPushArrayOutput() GetTriggerRepositoryEventConfigPushArrayOutput {
+	return i.ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerRepositoryEventConfigPushArray) ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPushArrayOutput)
+}
+
+type GetTriggerRepositoryEventConfigPushOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) ToGetTriggerRepositoryEventConfigPushOutput() GetTriggerRepositoryEventConfigPushOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) ToGetTriggerRepositoryEventConfigPushOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPush) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPush) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerRepositoryEventConfigPush) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetTriggerRepositoryEventConfigPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerRepositoryEventConfigPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerRepositoryEventConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerRepositoryEventConfigPushArrayOutput) ToGetTriggerRepositoryEventConfigPushArrayOutput() GetTriggerRepositoryEventConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushArrayOutput) ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerRepositoryEventConfigPush {
+		return vs[0].([]GetTriggerRepositoryEventConfigPush)[vs[1].(int)]
+	}).(GetTriggerRepositoryEventConfigPushOutput)
+}
+
 type GetTriggerSourceToBuild struct {
-	Ref      string `pulumi:"ref"`
-	RepoType string `pulumi:"repoType"`
-	Uri      string `pulumi:"uri"`
+	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
+	Ref                    string `pulumi:"ref"`
+	RepoType               string `pulumi:"repoType"`
+	Uri                    string `pulumi:"uri"`
 }
 
 // GetTriggerSourceToBuildInput is an input type that accepts GetTriggerSourceToBuildArgs and GetTriggerSourceToBuildOutput values.
@@ -7292,9 +8202,10 @@ type GetTriggerSourceToBuildInput interface {
 }
 
 type GetTriggerSourceToBuildArgs struct {
-	Ref      pulumi.StringInput `pulumi:"ref"`
-	RepoType pulumi.StringInput `pulumi:"repoType"`
-	Uri      pulumi.StringInput `pulumi:"uri"`
+	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
+	Ref                    pulumi.StringInput `pulumi:"ref"`
+	RepoType               pulumi.StringInput `pulumi:"repoType"`
+	Uri                    pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GetTriggerSourceToBuildArgs) ElementType() reflect.Type {
@@ -7346,6 +8257,10 @@ func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutput() GetTrig
 
 func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutputWithContext(ctx context.Context) GetTriggerSourceToBuildOutput {
 	return o
+}
+
+func (o GetTriggerSourceToBuildOutput) GithubEnterpriseConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.GithubEnterpriseConfig }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
@@ -7651,6 +8566,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerGithubPushPtrInput)(nil)).Elem(), TriggerGithubPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerPubsubConfigInput)(nil)).Elem(), TriggerPubsubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerPubsubConfigPtrInput)(nil)).Elem(), TriggerPubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigInput)(nil)).Elem(), TriggerRepositoryEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigPtrInput)(nil)).Elem(), TriggerRepositoryEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigPullRequestInput)(nil)).Elem(), TriggerRepositoryEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigPullRequestPtrInput)(nil)).Elem(), TriggerRepositoryEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigPushInput)(nil)).Elem(), TriggerRepositoryEventConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRepositoryEventConfigPushPtrInput)(nil)).Elem(), TriggerRepositoryEventConfigPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerSourceToBuildInput)(nil)).Elem(), TriggerSourceToBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerSourceToBuildPtrInput)(nil)).Elem(), TriggerSourceToBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTriggerTemplateInput)(nil)).Elem(), TriggerTriggerTemplateArgs{})
@@ -7701,6 +8622,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerGithubPushArrayInput)(nil)).Elem(), GetTriggerGithubPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerPubsubConfigInput)(nil)).Elem(), GetTriggerPubsubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerPubsubConfigArrayInput)(nil)).Elem(), GetTriggerPubsubConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigInput)(nil)).Elem(), GetTriggerRepositoryEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigArrayInput)(nil)).Elem(), GetTriggerRepositoryEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigPullRequestInput)(nil)).Elem(), GetTriggerRepositoryEventConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigPullRequestArrayInput)(nil)).Elem(), GetTriggerRepositoryEventConfigPullRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigPushInput)(nil)).Elem(), GetTriggerRepositoryEventConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerRepositoryEventConfigPushArrayInput)(nil)).Elem(), GetTriggerRepositoryEventConfigPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerSourceToBuildInput)(nil)).Elem(), GetTriggerSourceToBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerSourceToBuildArrayInput)(nil)).Elem(), GetTriggerSourceToBuildArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerTriggerTemplateInput)(nil)).Elem(), GetTriggerTriggerTemplateArgs{})
@@ -7747,6 +8674,12 @@ func init() {
 	pulumi.RegisterOutputType(TriggerGithubPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerPubsubConfigOutput{})
 	pulumi.RegisterOutputType(TriggerPubsubConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigPullRequestPtrOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigPushOutput{})
+	pulumi.RegisterOutputType(TriggerRepositoryEventConfigPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerSourceToBuildOutput{})
 	pulumi.RegisterOutputType(TriggerSourceToBuildPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTriggerTemplateOutput{})
@@ -7797,6 +8730,12 @@ func init() {
 	pulumi.RegisterOutputType(GetTriggerGithubPushArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerPubsubConfigOutput{})
 	pulumi.RegisterOutputType(GetTriggerPubsubConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigPullRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigPushOutput{})
+	pulumi.RegisterOutputType(GetTriggerRepositoryEventConfigPushArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerSourceToBuildOutput{})
 	pulumi.RegisterOutputType(GetTriggerSourceToBuildArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerTriggerTemplateOutput{})

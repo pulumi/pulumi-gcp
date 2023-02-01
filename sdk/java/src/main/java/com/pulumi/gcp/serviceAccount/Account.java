@@ -16,18 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows management of a Google Cloud service account.
- * 
- * * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
- * 
- * &gt; **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
- * 
- * &gt; Creation of service accounts is eventually consistent, and that can lead to
- * errors when you try to apply ACLs to service accounts immediately after
- * creation.
- * 
  * ## Example Usage
  * 
  * This snippet creates a service account in a project.

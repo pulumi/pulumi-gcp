@@ -28,10 +28,6 @@ class ClusterIAMMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "member", member)
@@ -90,10 +86,6 @@ class ClusterIAMMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -103,10 +95,6 @@ class ClusterIAMMemberArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -128,10 +116,6 @@ class _ClusterIAMMemberState:
         Input properties used for looking up and filtering ClusterIAMMember resources.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
         :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
-        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -196,10 +180,6 @@ class _ClusterIAMMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -209,10 +189,6 @@ class _ClusterIAMMemberState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -321,10 +297,6 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
-        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -476,10 +448,6 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
         :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
-        :param pulumi.Input[str] project: The project in which the cluster belongs. If it
-               is not provided, the provider will use a default.
-        :param pulumi.Input[str] region: The region in which the cluster belongs. If it
-               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -526,19 +494,11 @@ class ClusterIAMMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which the cluster belongs. If it
-        is not provided, the provider will use a default.
-        """
         return pulumi.get(self, "region")
 
     @property

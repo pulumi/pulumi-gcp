@@ -81,7 +81,8 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
@@ -460,7 +461,8 @@ class InstanceFromTemplateArgs:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -596,7 +598,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input['InstanceFromTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromTemplateSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
@@ -1041,7 +1044,8 @@ class _InstanceFromTemplateState:
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateScratchDiskArgs']]]]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 
@@ -1249,7 +1253,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateScratchDiskArgs']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateScratchDiskArgs']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateServiceAccountArgs']] service_account: The service account to attach to the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
@@ -1491,7 +1496,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateScratchDiskArgs']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateScratchDiskArgs']]]] scratch_disks: * `network_interface.alias_ip_range`
+               * `network_interface.access_config`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateServiceAccountArgs']] service_account: The service account to attach to the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
@@ -1788,7 +1794,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @pulumi.getter(name="scratchDisks")
     def scratch_disks(self) -> pulumi.Output[Sequence['outputs.InstanceFromTemplateScratchDisk']]:
         """
-        The scratch disks attached to the instance.
+        * `network_interface.alias_ip_range`
+        * `network_interface.access_config`
         """
         return pulumi.get(self, "scratch_disks")
 

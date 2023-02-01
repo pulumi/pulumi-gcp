@@ -94,6 +94,11 @@ import * as utilities from "../utilities";
  *     role: "roles/storage.legacyBucketReader",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
+ * const keyUser = new gcp.kms.CryptoKeyIAMMember("keyUser", {
+ *     cryptoKeyId: "kms-name",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
+ * });
  * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destinationConnectionProfile", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
@@ -179,6 +184,104 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
+ *     customerManagedEncryptionKey: "kms-name",
+ * }, {
+ *     dependsOn: [keyUser],
+ * });
+ * ```
+ * ### Datastream Stream Bigquery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "MYSQL_8_0",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     host: "%",
+ *     password: pwd.result,
+ * });
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("sourceConnectionProfile", {
+ *     displayName: "Source connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     mysqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *     },
+ * });
+ * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
+ * const bigqueryKeyUser = new gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser", {
+ *     cryptoKeyId: "bigquery-kms-name",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
+ * });
+ * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destinationConnectionProfile", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     streamId: "my-stream",
+ *     location: "us-central1",
+ *     displayName: "my stream",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: sourceConnectionProfile.id,
+ *         mysqlSourceConfig: {},
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destinationConnectionProfile.id,
+ *         bigqueryDestinationConfig: {
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                     kmsKeyName: "bigquery-kms-name",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ * }, {
+ *     dependsOn: [bigqueryKeyUser],
  * });
  * ```
  *
@@ -235,6 +338,11 @@ export class Stream extends pulumi.CustomResource {
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
     public readonly backfillNone!: pulumi.Output<outputs.datastream.StreamBackfillNone | undefined>;
+    /**
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     */
+    public readonly customerManagedEncryptionKey!: pulumi.Output<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
      */
@@ -294,6 +402,7 @@ export class Stream extends pulumi.CustomResource {
             const state = argsOrState as StreamState | undefined;
             resourceInputs["backfillAll"] = state ? state.backfillAll : undefined;
             resourceInputs["backfillNone"] = state ? state.backfillNone : undefined;
+            resourceInputs["customerManagedEncryptionKey"] = state ? state.customerManagedEncryptionKey : undefined;
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -323,6 +432,7 @@ export class Stream extends pulumi.CustomResource {
             }
             resourceInputs["backfillAll"] = args ? args.backfillAll : undefined;
             resourceInputs["backfillNone"] = args ? args.backfillNone : undefined;
+            resourceInputs["customerManagedEncryptionKey"] = args ? args.customerManagedEncryptionKey : undefined;
             resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -352,6 +462,11 @@ export interface StreamState {
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
     backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    /**
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     */
+    customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
      */
@@ -410,6 +525,11 @@ export interface StreamArgs {
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
     backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    /**
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     */
+    customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
      */

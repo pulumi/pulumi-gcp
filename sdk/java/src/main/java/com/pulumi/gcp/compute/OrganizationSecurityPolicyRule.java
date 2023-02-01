@@ -19,77 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A rule for the OrganizationSecurityPolicy.
- * 
- * To get more information about OrganizationSecurityPolicyRule, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
- * * How-to Guides
- *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
- * 
  * ## Example Usage
- * ### Organization Security Policy Rule Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
- * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
- * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var policyOrganizationSecurityPolicy = new OrganizationSecurityPolicy(&#34;policyOrganizationSecurityPolicy&#34;, OrganizationSecurityPolicyArgs.builder()        
- *             .displayName(&#34;tf-test&#34;)
- *             .parent(&#34;organizations/123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule(&#34;policyOrganizationSecurityPolicyRule&#34;, OrganizationSecurityPolicyRuleArgs.builder()        
- *             .policyId(policyOrganizationSecurityPolicy.id())
- *             .action(&#34;allow&#34;)
- *             .direction(&#34;INGRESS&#34;)
- *             .enableLogging(true)
- *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
- *                 .config(OrganizationSecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(                    
- *                         &#34;192.168.0.0/16&#34;,
- *                         &#34;10.0.0.0/8&#34;)
- *                     .layer4Configs(                    
- *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol(&#34;tcp&#34;)
- *                             .ports(&#34;22&#34;)
- *                             .build(),
- *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol(&#34;icmp&#34;)
- *                             .build())
- *                     .build())
- *                 .build())
- *             .priority(100)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

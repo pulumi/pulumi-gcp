@@ -23,8 +23,7 @@ import (
 //
 // > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## Example Usage
-// ### Service Account IAM Policy
+// ## google\_service\_account\_iam\_policy
 //
 // ```go
 // package main
@@ -71,7 +70,8 @@ import (
 //	}
 //
 // ```
-// ### Service Account IAM Binding
+//
+// ## google\_service\_account\_iam\_binding
 //
 // ```go
 // package main
@@ -107,7 +107,8 @@ import (
 //	}
 //
 // ```
-// ### Service Account IAM Binding With IAM Conditions:
+//
+// With IAM Conditions:
 //
 // ```go
 // package main
@@ -148,7 +149,8 @@ import (
 //	}
 //
 // ```
-// ### Service Account IAM Member
+//
+// ## google\_service\_account\_iam\_member
 //
 // ```go
 // package main
@@ -199,7 +201,8 @@ import (
 //	}
 //
 // ```
-// ### Service Account IAM Member With IAM Conditions:
+//
+// With IAM Conditions:
 //
 // ```go
 // package main

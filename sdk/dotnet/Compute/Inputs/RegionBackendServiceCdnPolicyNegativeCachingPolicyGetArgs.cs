@@ -19,10 +19,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("code")]
         public Input<int>? Code { get; set; }
 
-        /// <summary>
-        /// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-        /// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-        /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 

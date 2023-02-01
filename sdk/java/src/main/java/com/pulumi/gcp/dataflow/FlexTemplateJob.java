@@ -58,8 +58,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
      * User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
+     * page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
@@ -71,8 +70,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
      * @return User labels to be specified for the job. Keys and values
      * should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-     * page. **Note**: This field is marked as deprecated as the API does not currently
-     * support adding labels.
+     * page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
@@ -95,19 +93,9 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     * 
-     */
     @Export(name="onDelete", type=String.class, parameters={})
     private Output</* @Nullable */ String> onDelete;
 
-    /**
-     * @return One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
-     * deletion during `pulumi destroy`.  See above note.
-     * 
-     */
     public Output<Optional<String>> onDelete() {
         return Codegen.optional(this.onDelete);
     }

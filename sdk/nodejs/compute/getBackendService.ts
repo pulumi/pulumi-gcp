@@ -81,6 +81,7 @@ export interface GetBackendServiceResult {
      */
     readonly id: string;
     readonly loadBalancingScheme: string;
+    readonly localityLbPolicies: outputs.compute.GetBackendServiceLocalityLbPolicy[];
     readonly localityLbPolicy: string;
     readonly logConfigs: outputs.compute.GetBackendServiceLogConfig[];
     readonly name: string;

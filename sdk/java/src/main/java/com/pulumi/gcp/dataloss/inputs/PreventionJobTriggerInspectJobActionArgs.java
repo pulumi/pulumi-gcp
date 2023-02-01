@@ -6,6 +6,8 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,7 +36,37 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     }
 
     /**
-     * Schedule for triggered jobs
+     * Publish findings of a DlpJob to Data Catalog.
+     * 
+     */
+    @Import(name="publishFindingsToCloudDataCatalog")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog;
+
+    /**
+     * @return Publish findings of a DlpJob to Data Catalog.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs>> publishFindingsToCloudDataCatalog() {
+        return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
+    }
+
+    /**
+     * Publish the result summary of a DlpJob to the Cloud Security Command Center.
+     * 
+     */
+    @Import(name="publishSummaryToCscc")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs> publishSummaryToCscc;
+
+    /**
+     * @return Publish the result summary of a DlpJob to the Cloud Security Command Center.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs>> publishSummaryToCscc() {
+        return Optional.ofNullable(this.publishSummaryToCscc);
+    }
+
+    /**
+     * If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
      */
@@ -42,7 +74,7 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     private @Nullable Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings;
 
     /**
-     * @return Schedule for triggered jobs
+     * @return If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
      */
@@ -54,6 +86,8 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
 
     private PreventionJobTriggerInspectJobActionArgs(PreventionJobTriggerInspectJobActionArgs $) {
         this.pubSub = $.pubSub;
+        this.publishFindingsToCloudDataCatalog = $.publishFindingsToCloudDataCatalog;
+        this.publishSummaryToCscc = $.publishSummaryToCscc;
         this.saveFindings = $.saveFindings;
     }
 
@@ -99,7 +133,49 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         }
 
         /**
-         * @param saveFindings Schedule for triggered jobs
+         * @param publishFindingsToCloudDataCatalog Publish findings of a DlpJob to Data Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishFindingsToCloudDataCatalog(@Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog) {
+            $.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            return this;
+        }
+
+        /**
+         * @param publishFindingsToCloudDataCatalog Publish findings of a DlpJob to Data Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishFindingsToCloudDataCatalog(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs publishFindingsToCloudDataCatalog) {
+            return publishFindingsToCloudDataCatalog(Output.of(publishFindingsToCloudDataCatalog));
+        }
+
+        /**
+         * @param publishSummaryToCscc Publish the result summary of a DlpJob to the Cloud Security Command Center.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishSummaryToCscc(@Nullable Output<PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs> publishSummaryToCscc) {
+            $.publishSummaryToCscc = publishSummaryToCscc;
+            return this;
+        }
+
+        /**
+         * @param publishSummaryToCscc Publish the result summary of a DlpJob to the Cloud Security Command Center.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishSummaryToCscc(PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs publishSummaryToCscc) {
+            return publishSummaryToCscc(Output.of(publishSummaryToCscc));
+        }
+
+        /**
+         * @param saveFindings If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
          * Structure is documented below.
          * 
          * @return builder
@@ -111,7 +187,7 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         }
 
         /**
-         * @param saveFindings Schedule for triggered jobs
+         * @param saveFindings If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
          * Structure is documented below.
          * 
          * @return builder

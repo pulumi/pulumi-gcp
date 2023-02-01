@@ -14,59 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
- * Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
- * identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
- * Once Firebase has been added to a Google Project it cannot be removed.
- * 
- * To get more information about Project, see:
- * 
- * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/)
- * 
  * ## Example Usage
- * ### Firebase Project Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.firebase.Project;
- * import com.pulumi.gcp.firebase.ProjectArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;tf-test&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var defaultFirebase_projectProject = new Project(&#34;defaultFirebase/projectProject&#34;, ProjectArgs.builder()        
- *             .project(defaultProject.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 

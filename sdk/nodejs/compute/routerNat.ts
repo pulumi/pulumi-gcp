@@ -268,6 +268,11 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly tcpEstablishedIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
+     * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     */
+    public readonly tcpTimeWaitTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      */
@@ -307,6 +312,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
             resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
+            resourceInputs["tcpTimeWaitTimeoutSec"] = state ? state.tcpTimeWaitTimeoutSec : undefined;
             resourceInputs["tcpTransitoryIdleTimeoutSec"] = state ? state.tcpTransitoryIdleTimeoutSec : undefined;
             resourceInputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
         } else {
@@ -337,6 +343,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
             resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
+            resourceInputs["tcpTimeWaitTimeoutSec"] = args ? args.tcpTimeWaitTimeoutSec : undefined;
             resourceInputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
             resourceInputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
@@ -446,6 +453,11 @@ export interface RouterNatState {
      * Defaults to 1200s if not set.
      */
     tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     */
+    tcpTimeWaitTimeoutSec?: pulumi.Input<number>;
     /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
@@ -558,6 +570,11 @@ export interface RouterNatArgs {
      * Defaults to 1200s if not set.
      */
     tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     */
+    tcpTimeWaitTimeoutSec?: pulumi.Input<number>;
     /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.

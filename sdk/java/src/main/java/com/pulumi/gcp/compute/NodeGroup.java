@@ -12,25 +12,13 @@ import com.pulumi.gcp.compute.NodeGroupArgs;
 import com.pulumi.gcp.compute.inputs.NodeGroupState;
 import com.pulumi.gcp.compute.outputs.NodeGroupAutoscalingPolicy;
 import com.pulumi.gcp.compute.outputs.NodeGroupMaintenanceWindow;
+import com.pulumi.gcp.compute.outputs.NodeGroupShareSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
- * 
- * To get more information about NodeGroup, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
- * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
- * 
- * &gt; **Warning:** Due to limitations of the API, this provider cannot update the
- * number of nodes in a node group and changes to node group size either
- * through provider config or through external changes will cause
- * the provider to delete and recreate the node group.
- * 
  * ## Example Usage
  * ### Node Group Basic
  * ```java
@@ -62,8 +50,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .zone(&#34;us-central1-a&#34;)
- *             .description(&#34;example google_compute_node_group for the Google Provider&#34;)
+ *             .zone(&#34;us-central1-f&#34;)
+ *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
  *             .size(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .build());
@@ -103,8 +91,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .zone(&#34;us-central1-a&#34;)
- *             .description(&#34;example google_compute_node_group for Google Provider&#34;)
+ *             .zone(&#34;us-central1-f&#34;)
+ *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
  *             .maintenancePolicy(&#34;RESTART_IN_PLACE&#34;)
  *             .maintenanceWindow(NodeGroupMaintenanceWindowArgs.builder()
  *                 .startTime(&#34;08:00&#34;)
@@ -115,6 +103,60 @@ import javax.annotation.Nullable;
  *                 .mode(&#34;ONLY_SCALE_OUT&#34;)
  *                 .minNodes(1)
  *                 .maxNodes(10)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Node Group Share Settings
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.NodeGroup;
+ * import com.pulumi.gcp.compute.NodeGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var guestProject = new Project(&#34;guestProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;project-id&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .nodeType(&#34;n1-node-96-624&#34;)
+ *             .build());
+ * 
+ *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
+ *             .zone(&#34;us-central1-f&#34;)
+ *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *             .size(1)
+ *             .nodeTemplate(soletenant_tmpl.id())
+ *             .shareSettings(NodeGroupShareSettingsArgs.builder()
+ *                 .shareType(&#34;SPECIFIC_PROJECTS&#34;)
+ *                 .projectMaps(NodeGroupShareSettingsProjectMapArgs.builder()
+ *                     .id(guestProject.projectId())
+ *                     .projectId(guestProject.projectId())
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -292,6 +334,22 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Share settings for the node group.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="shareSettings", type=NodeGroupShareSettings.class, parameters={})
+    private Output<NodeGroupShareSettings> shareSettings;
+
+    /**
+     * @return Share settings for the node group.
+     * Structure is documented below.
+     * 
+     */
+    public Output<NodeGroupShareSettings> shareSettings() {
+        return this.shareSettings;
     }
     /**
      * The total number of nodes in the node group. One of `initial_size` or `size` must be specified.

@@ -9,11 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerSourceToBuild {
+    private String githubEnterpriseConfig;
     private String ref;
     private String repoType;
     private String uri;
 
     private GetTriggerSourceToBuild() {}
+    public String githubEnterpriseConfig() {
+        return this.githubEnterpriseConfig;
+    }
     public String ref() {
         return this.ref;
     }
@@ -33,17 +37,24 @@ public final class GetTriggerSourceToBuild {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String githubEnterpriseConfig;
         private String ref;
         private String repoType;
         private String uri;
         public Builder() {}
         public Builder(GetTriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
+            this.githubEnterpriseConfig = Objects.requireNonNull(githubEnterpriseConfig);
+            return this;
+        }
         @CustomType.Setter
         public Builder ref(String ref) {
             this.ref = Objects.requireNonNull(ref);
@@ -61,6 +72,7 @@ public final class GetTriggerSourceToBuild {
         }
         public GetTriggerSourceToBuild build() {
             final var o = new GetTriggerSourceToBuild();
+            o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;
             o.uri = uri;

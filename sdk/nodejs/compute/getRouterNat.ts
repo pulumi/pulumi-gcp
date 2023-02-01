@@ -85,6 +85,7 @@ export interface GetRouterNatResult {
     readonly sourceSubnetworkIpRangesToNat: string;
     readonly subnetworks: outputs.compute.GetRouterNatSubnetwork[];
     readonly tcpEstablishedIdleTimeoutSec: number;
+    readonly tcpTimeWaitTimeoutSec: number;
     readonly tcpTransitoryIdleTimeoutSec: number;
     readonly udpIdleTimeoutSec: number;
 }

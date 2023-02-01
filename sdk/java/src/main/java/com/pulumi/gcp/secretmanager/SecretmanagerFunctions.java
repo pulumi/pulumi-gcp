@@ -10,9 +10,12 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretPlainArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionPlainArgs;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretResult;
+import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionAccessResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -312,5 +315,153 @@ public final class SecretmanagerFunctions {
      */
     public static CompletableFuture<GetSecretVersionResult> getSecretVersionPlain(GetSecretVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
+     *             .secret(&#34;my-secret&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretVersionAccessResult> getSecretVersionAccess(GetSecretVersionAccessArgs args) {
+        return getSecretVersionAccess(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
+     *             .secret(&#34;my-secret&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretVersionAccessResult> getSecretVersionAccessPlain(GetSecretVersionAccessPlainArgs args) {
+        return getSecretVersionAccessPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
+     *             .secret(&#34;my-secret&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretVersionAccessResult> getSecretVersionAccess(GetSecretVersionAccessArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", TypeShape.of(GetSecretVersionAccessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = SecretmanagerFunctions.getSecretVersionAccess(GetSecretVersionAccessArgs.builder()
+     *             .secret(&#34;my-secret&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretVersionAccessResult> getSecretVersionAccessPlain(GetSecretVersionAccessPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", TypeShape.of(GetSecretVersionAccessResult.class), args, Utilities.withVersion(options));
     }
 }

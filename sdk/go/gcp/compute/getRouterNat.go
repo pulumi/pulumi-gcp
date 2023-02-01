@@ -86,6 +86,7 @@ type LookupRouterNatResult struct {
 	SourceSubnetworkIpRangesToNat string                   `pulumi:"sourceSubnetworkIpRangesToNat"`
 	Subnetworks                   []GetRouterNatSubnetwork `pulumi:"subnetworks"`
 	TcpEstablishedIdleTimeoutSec  int                      `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	TcpTimeWaitTimeoutSec         int                      `pulumi:"tcpTimeWaitTimeoutSec"`
 	TcpTransitoryIdleTimeoutSec   int                      `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	UdpIdleTimeoutSec             int                      `pulumi:"udpIdleTimeoutSec"`
 }
@@ -207,6 +208,10 @@ func (o LookupRouterNatResultOutput) Subnetworks() GetRouterNatSubnetworkArrayOu
 
 func (o LookupRouterNatResultOutput) TcpEstablishedIdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) int { return v.TcpEstablishedIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o LookupRouterNatResultOutput) TcpTimeWaitTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) int { return v.TcpTimeWaitTimeoutSec }).(pulumi.IntOutput)
 }
 
 func (o LookupRouterNatResultOutput) TcpTransitoryIdleTimeoutSec() pulumi.IntOutput {

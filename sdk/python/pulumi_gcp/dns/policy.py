@@ -29,7 +29,7 @@ class PolicyArgs:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
                virtual IP address will be allocated from each of the sub-networks
@@ -76,7 +76,7 @@ class PolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -167,7 +167,7 @@ class _PolicyState:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
                virtual IP address will be allocated from each of the sub-networks
@@ -214,7 +214,7 @@ class _PolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 
@@ -367,7 +367,7 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
                virtual IP address will be allocated from each of the sub-networks
@@ -511,7 +511,7 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
                virtual IP address will be allocated from each of the sub-networks
@@ -552,7 +552,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A textual description field. Defaults to 'Managed by Pulumi'.
+        A textual description field. Defaults to 'Managed by Terraform'.
         """
         return pulumi.get(self, "description")
 

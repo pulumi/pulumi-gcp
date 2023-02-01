@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The limit on the maximum number of function instances that may coexist at a given time.
         /// </summary>
         [Output("maxInstances")]
-        public Output<int?> MaxInstances { get; private set; } = null!;
+        public Output<int> MaxInstances { get; private set; } = null!;
 
         /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a given time.

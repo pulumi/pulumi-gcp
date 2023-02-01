@@ -695,7 +695,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 "google.subject": "assertion.sub",
             },
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.google.com",
+                issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
             ))
         ```
@@ -717,7 +717,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 "google.subject": "assertion.sub",
             },
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.google.com",
+                issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
             ),
             display_name="Display name",
@@ -887,7 +887,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 "google.subject": "assertion.sub",
             },
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.google.com",
+                issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
             ))
         ```
@@ -909,7 +909,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 "google.subject": "assertion.sub",
             },
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.google.com",
+                issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
             ),
             display_name="Display name",

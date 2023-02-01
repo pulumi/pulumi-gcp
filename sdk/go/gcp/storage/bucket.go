@@ -176,9 +176,8 @@ type Bucket struct {
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+	// contains objects, Terraform will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -255,9 +254,8 @@ type bucketState struct {
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+	// contains objects, Terraform will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -303,9 +301,8 @@ type BucketState struct {
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+	// contains objects, Terraform will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -355,9 +352,8 @@ type bucketArgs struct {
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+	// contains objects, Terraform will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -400,9 +396,8 @@ type BucketArgs struct {
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
-	// When deleting a bucket, this
-	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, the provider will fail that run.
+	// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+	// contains objects, Terraform will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -545,9 +540,8 @@ func (o BucketOutput) Encryption() BucketEncryptionPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketEncryptionPtrOutput { return v.Encryption }).(BucketEncryptionPtrOutput)
 }
 
-// When deleting a bucket, this
-// boolean option will delete all contained objects. If you try to delete a
-// bucket that contains objects, the provider will fail that run.
+// When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
+// contains objects, Terraform will fail that run.
 func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

@@ -474,6 +474,10 @@ type ConnectionAzure struct {
 	ClientId *string `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId string `pulumi:"customerTenantId"`
+	// The Azure Application (client) ID where the federated credentials will be hosted.
+	FederatedApplicationClientId *string `pulumi:"federatedApplicationClientId"`
+	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+	Identity *string `pulumi:"identity"`
 	// The object id of the Azure Active Directory Application.
 	ObjectId *string `pulumi:"objectId"`
 	// The URL user will be redirected to after granting consent during connection setup.
@@ -498,6 +502,10 @@ type ConnectionAzureArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId pulumi.StringInput `pulumi:"customerTenantId"`
+	// The Azure Application (client) ID where the federated credentials will be hosted.
+	FederatedApplicationClientId pulumi.StringPtrInput `pulumi:"federatedApplicationClientId"`
+	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// The object id of the Azure Active Directory Application.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 	// The URL user will be redirected to after granting consent during connection setup.
@@ -596,6 +604,16 @@ func (o ConnectionAzureOutput) CustomerTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAzure) string { return v.CustomerTenantId }).(pulumi.StringOutput)
 }
 
+// The Azure Application (client) ID where the federated credentials will be hosted.
+func (o ConnectionAzureOutput) FederatedApplicationClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.FederatedApplicationClientId }).(pulumi.StringPtrOutput)
+}
+
+// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+func (o ConnectionAzureOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionAzure) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // The object id of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
@@ -657,6 +675,26 @@ func (o ConnectionAzurePtrOutput) CustomerTenantId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.CustomerTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Application (client) ID where the federated credentials will be hosted.
+func (o ConnectionAzurePtrOutput) FederatedApplicationClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FederatedApplicationClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+func (o ConnectionAzurePtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -822,6 +860,8 @@ type ConnectionCloudSpanner struct {
 	Database string `pulumi:"database"`
 	// If parallelism should be used when reading from Cloud Spanner
 	UseParallelism *bool `pulumi:"useParallelism"`
+	// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+	UseServerlessAnalytics *bool `pulumi:"useServerlessAnalytics"`
 }
 
 // ConnectionCloudSpannerInput is an input type that accepts ConnectionCloudSpannerArgs and ConnectionCloudSpannerOutput values.
@@ -840,6 +880,8 @@ type ConnectionCloudSpannerArgs struct {
 	Database pulumi.StringInput `pulumi:"database"`
 	// If parallelism should be used when reading from Cloud Spanner
 	UseParallelism pulumi.BoolPtrInput `pulumi:"useParallelism"`
+	// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+	UseServerlessAnalytics pulumi.BoolPtrInput `pulumi:"useServerlessAnalytics"`
 }
 
 func (ConnectionCloudSpannerArgs) ElementType() reflect.Type {
@@ -929,6 +971,11 @@ func (o ConnectionCloudSpannerOutput) UseParallelism() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudSpanner) *bool { return v.UseParallelism }).(pulumi.BoolPtrOutput)
 }
 
+// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+func (o ConnectionCloudSpannerOutput) UseServerlessAnalytics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionCloudSpanner) *bool { return v.UseServerlessAnalytics }).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionCloudSpannerPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionCloudSpannerPtrOutput) ElementType() reflect.Type {
@@ -973,6 +1020,16 @@ func (o ConnectionCloudSpannerPtrOutput) UseParallelism() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+func (o ConnectionCloudSpannerPtrOutput) UseServerlessAnalytics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSpanner) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseServerlessAnalytics
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionCloudSql struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
@@ -981,6 +1038,8 @@ type ConnectionCloudSql struct {
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId string `pulumi:"instanceId"`
+	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
 	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 	Type string `pulumi:"type"`
@@ -1005,6 +1064,8 @@ type ConnectionCloudSqlArgs struct {
 	Database pulumi.StringInput `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
 	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -1103,6 +1164,11 @@ func (o ConnectionCloudSqlOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+func (o ConnectionCloudSqlOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionCloudSql) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
 // Type of the Cloud SQL database.
 // Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 func (o ConnectionCloudSqlOutput) Type() pulumi.StringOutput {
@@ -1161,6 +1227,16 @@ func (o ConnectionCloudSqlPtrOutput) InstanceId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+func (o ConnectionCloudSqlPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5623,8 +5699,8 @@ type JobLoad struct {
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
-	// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-	// property to a custom value, BigQuery throws an error if an
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker *string `pulumi:"nullMarker"`
@@ -5737,8 +5813,8 @@ type JobLoadArgs struct {
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
-	// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-	// property to a custom value, BigQuery throws an error if an
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
@@ -5951,8 +6027,8 @@ func (o JobLoadOutput) MaxBadRecords() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobLoad) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-// property to a custom value, BigQuery throws an error if an
+// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 // empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 // an empty value.
 func (o JobLoadOutput) NullMarker() pulumi.StringPtrOutput {
@@ -6190,8 +6266,8 @@ func (o JobLoadPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
-// property to a custom value, BigQuery throws an error if an
+// Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
 // empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 // an empty value.
 func (o JobLoadPtrOutput) NullMarker() pulumi.StringPtrOutput {
@@ -9565,14 +9641,7 @@ type TableExternalDataConfigurationCsvOptions struct {
 	Encoding *string `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
-	// The value that is used to quote data sections in a
-	// CSV file. If your data does not contain quoted sections, set the
-	// property value to an empty string. If your data contains quoted newline
-	// characters, you must also set the `allowQuotedNewlines` property to true.
-	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-	// limitations with default values, this value is required to be
-	// explicitly set.
-	Quote string `pulumi:"quote"`
+	Quote          string  `pulumi:"quote"`
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
@@ -9602,14 +9671,7 @@ type TableExternalDataConfigurationCsvOptionsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
-	// The value that is used to quote data sections in a
-	// CSV file. If your data does not contain quoted sections, set the
-	// property value to an empty string. If your data contains quoted newline
-	// characters, you must also set the `allowQuotedNewlines` property to true.
-	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-	// limitations with default values, this value is required to be
-	// explicitly set.
-	Quote pulumi.StringInput `pulumi:"quote"`
+	Quote          pulumi.StringInput    `pulumi:"quote"`
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
@@ -9716,13 +9778,6 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) FieldDelimiter() pulumi.
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
-// The value that is used to quote data sections in a
-// CSV file. If your data does not contain quoted sections, set the
-// property value to an empty string. If your data contains quoted newline
-// characters, you must also set the `allowQuotedNewlines` property to true.
-// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-// limitations with default values, this value is required to be
-// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
@@ -9801,13 +9856,6 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) FieldDelimiter() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value that is used to quote data sections in a
-// CSV file. If your data does not contain quoted sections, set the
-// property value to an empty string. If your data contains quoted newline
-// characters, you must also set the `allowQuotedNewlines` property to true.
-// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
-// limitations with default values, this value is required to be
-// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) *string {
 		if v == nil {

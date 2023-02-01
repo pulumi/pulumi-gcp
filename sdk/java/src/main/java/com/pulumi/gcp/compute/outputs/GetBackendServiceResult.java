@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCircuitBreaker;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceConsistentHash;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceIap;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
@@ -73,6 +74,7 @@ public final class GetBackendServiceResult {
      */
     private String id;
     private String loadBalancingScheme;
+    private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
     private String localityLbPolicy;
     private List<GetBackendServiceLogConfig> logConfigs;
     private String name;
@@ -196,6 +198,9 @@ public final class GetBackendServiceResult {
     public String loadBalancingScheme() {
         return this.loadBalancingScheme;
     }
+    public List<GetBackendServiceLocalityLbPolicy> localityLbPolicies() {
+        return this.localityLbPolicies;
+    }
     public String localityLbPolicy() {
         return this.localityLbPolicy;
     }
@@ -281,6 +286,7 @@ public final class GetBackendServiceResult {
         private List<GetBackendServiceIap> iaps;
         private String id;
         private String loadBalancingScheme;
+        private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
         private String localityLbPolicy;
         private List<GetBackendServiceLogConfig> logConfigs;
         private String name;
@@ -315,6 +321,7 @@ public final class GetBackendServiceResult {
     	      this.iaps = defaults.iaps;
     	      this.id = defaults.id;
     	      this.loadBalancingScheme = defaults.loadBalancingScheme;
+    	      this.localityLbPolicies = defaults.localityLbPolicies;
     	      this.localityLbPolicy = defaults.localityLbPolicy;
     	      this.logConfigs = defaults.logConfigs;
     	      this.name = defaults.name;
@@ -449,6 +456,14 @@ public final class GetBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder localityLbPolicies(List<GetBackendServiceLocalityLbPolicy> localityLbPolicies) {
+            this.localityLbPolicies = Objects.requireNonNull(localityLbPolicies);
+            return this;
+        }
+        public Builder localityLbPolicies(GetBackendServiceLocalityLbPolicy... localityLbPolicies) {
+            return localityLbPolicies(List.of(localityLbPolicies));
+        }
+        @CustomType.Setter
         public Builder localityLbPolicy(String localityLbPolicy) {
             this.localityLbPolicy = Objects.requireNonNull(localityLbPolicy);
             return this;
@@ -538,6 +553,7 @@ public final class GetBackendServiceResult {
             o.iaps = iaps;
             o.id = id;
             o.loadBalancingScheme = loadBalancingScheme;
+            o.localityLbPolicies = localityLbPolicies;
             o.localityLbPolicy = localityLbPolicy;
             o.logConfigs = logConfigs;
             o.name = name;

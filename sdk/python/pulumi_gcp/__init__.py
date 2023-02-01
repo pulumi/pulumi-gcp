@@ -50,6 +50,8 @@ if typing.TYPE_CHECKING:
     cloudasset = __cloudasset
     import pulumi_gcp.cloudbuild as __cloudbuild
     cloudbuild = __cloudbuild
+    import pulumi_gcp.cloudbuildv2 as __cloudbuildv2
+    cloudbuildv2 = __cloudbuildv2
     import pulumi_gcp.clouddeploy as __clouddeploy
     clouddeploy = __clouddeploy
     import pulumi_gcp.cloudfunctions as __cloudfunctions
@@ -202,6 +204,8 @@ if typing.TYPE_CHECKING:
     vpcaccess = __vpcaccess
     import pulumi_gcp.workflows as __workflows
     workflows = __workflows
+    import pulumi_gcp.workstations as __workstations
+    workstations = __workstations
 else:
     accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
@@ -223,6 +227,7 @@ else:
     certificatemanager = _utilities.lazy_import('pulumi_gcp.certificatemanager')
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
+    cloudbuildv2 = _utilities.lazy_import('pulumi_gcp.cloudbuildv2')
     clouddeploy = _utilities.lazy_import('pulumi_gcp.clouddeploy')
     cloudfunctions = _utilities.lazy_import('pulumi_gcp.cloudfunctions')
     cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
@@ -299,6 +304,7 @@ else:
     vertex = _utilities.lazy_import('pulumi_gcp.vertex')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
     workflows = _utilities.lazy_import('pulumi_gcp.workflows')
+    workstations = _utilities.lazy_import('pulumi_gcp.workstations')
 
 _utilities.register(
     resource_modules="""
@@ -1309,6 +1315,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudbuild",
   "classes": {
    "gcp:cloudbuild/workerPool:WorkerPool": "WorkerPool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuildv2/connection",
+  "fqn": "pulumi_gcp.cloudbuildv2",
+  "classes": {
+   "gcp:cloudbuildv2/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuildv2/repository",
+  "fqn": "pulumi_gcp.cloudbuildv2",
+  "classes": {
+   "gcp:cloudbuildv2/repository:Repository": "Repository"
   }
  },
  {
@@ -3833,6 +3855,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/accessBoundaryPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": "AccessBoundaryPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/denyPolicy",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -5497,6 +5527,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "tags/locationTagBinding",
+  "fqn": "pulumi_gcp.tags",
+  "classes": {
+   "gcp:tags/locationTagBinding:LocationTagBinding": "LocationTagBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "tags/tagBinding",
   "fqn": "pulumi_gcp.tags",
   "classes": {
@@ -5701,6 +5739,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.workflows",
   "classes": {
    "gcp:workflows/workflow:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationCluster",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationCluster:WorkstationCluster": "WorkstationCluster"
   }
  }
 ]

@@ -56,6 +56,43 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// ### Container Attached Cluster Ignore Errors
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var versions = Gcp.Container.GetAttachedVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AttachedCluster("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Description = "Test cluster",
+    ///         Distribution = "aks",
+    ///         OidcConfig = new Gcp.Container.Inputs.AttachedClusterOidcConfigArgs
+    ///         {
+    ///             IssuerUrl = "https://oidc.issuer.url",
+    ///         },
+    ///         PlatformVersion = versions.Apply(getAttachedVersionsResult =&gt; getAttachedVersionsResult.ValidVersions[0]),
+    ///         Fleet = new Gcp.Container.Inputs.AttachedClusterFleetArgs
+    ///         {
+    ///             Project = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///         },
+    ///         DeletionPolicy = "DELETE_IGNORE_ERRORS",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -107,6 +144,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy to determine what flags to send on delete.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// A human readable description of this attached cluster. Cannot be longer
@@ -300,6 +343,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AttachedClusterAuthorizationArgs>? Authorization { get; set; }
 
         /// <summary>
+        /// Policy to determine what flags to send on delete.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A human readable description of this attached cluster. Cannot be longer
         /// than 255 UTF-8 encoded bytes.
         /// </summary>
@@ -419,6 +468,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Policy to determine what flags to send on delete.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A human readable description of this attached cluster. Cannot be longer

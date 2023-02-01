@@ -45,9 +45,6 @@ class GetEnvironmentResult:
     @property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetEnvironmentConfigResult']:
-        """
-        Configuration parameters for the environment.
-        """
         return pulumi.get(self, "configs")
 
     @property

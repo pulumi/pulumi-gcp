@@ -807,7 +807,7 @@ type InstancePersistenceConfig struct {
 	// - ONE_HOUR:	Snapshot every 1 hour.
 	// - SIX_HOURS:	Snapshot every 6 hours.
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
-	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
 	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
 	RdbSnapshotPeriod *string `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
@@ -845,7 +845,7 @@ type InstancePersistenceConfigArgs struct {
 	// - ONE_HOUR:	Snapshot every 1 hour.
 	// - SIX_HOURS:	Snapshot every 6 hours.
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
-	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
 	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
 	RdbSnapshotPeriod pulumi.StringPtrInput `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
@@ -954,7 +954,7 @@ func (o InstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringPtrO
 //   - ONE_HOUR:	Snapshot every 1 hour.
 //   - SIX_HOURS:	Snapshot every 6 hours.
 //   - TWELVE_HOURS:	Snapshot every 12 hours.
-//   - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
 //     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
 func (o InstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.RdbSnapshotPeriod }).(pulumi.StringPtrOutput)
@@ -1024,7 +1024,7 @@ func (o InstancePersistenceConfigPtrOutput) RdbNextSnapshotTime() pulumi.StringP
 //   - ONE_HOUR:	Snapshot every 1 hour.
 //   - SIX_HOURS:	Snapshot every 6 hours.
 //   - TWELVE_HOURS:	Snapshot every 12 hours.
-//   - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
 //     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
 func (o InstancePersistenceConfigPtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePersistenceConfig) *string {

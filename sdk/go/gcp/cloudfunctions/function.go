@@ -191,7 +191,7 @@ type Function struct {
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
-	MaxInstances pulumi.IntPtrOutput `pulumi:"maxInstances"`
+	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
 	// The limit on the minimum number of function instances that may coexist at a given time.
 	MinInstances pulumi.IntPtrOutput `pulumi:"minInstances"`
 	// A user-defined name of the function. Function names must be unique globally.
@@ -685,8 +685,8 @@ func (o FunctionOutput) Labels() pulumi.MapOutput {
 }
 
 // The limit on the maximum number of function instances that may coexist at a given time.
-func (o FunctionOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.MaxInstances }).(pulumi.IntPtrOutput)
+func (o FunctionOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MaxInstances }).(pulumi.IntOutput)
 }
 
 // The limit on the minimum number of function instances that may coexist at a given time.

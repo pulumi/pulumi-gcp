@@ -7,19 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
- *
- * To get more information about NodeGroup, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
- * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
- *
- * > **Warning:** Due to limitations of the API, this provider cannot update the
- * number of nodes in a node group and changes to node group size either
- * through provider config or through external changes will cause
- * the provider to delete and recreate the node group.
- *
  * ## Example Usage
  * ### Node Group Basic
  *
@@ -32,8 +19,8 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-a",
- *     description: "example google_compute_node_group for the Google Provider",
+ *     zone: "us-central1-f",
+ *     description: "example google_compute_node_group for Terraform Google Provider",
  *     size: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  * });
@@ -49,8 +36,8 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-a",
- *     description: "example google_compute_node_group for Google Provider",
+ *     zone: "us-central1-f",
+ *     description: "example google_compute_node_group for Terraform Google Provider",
  *     maintenancePolicy: "RESTART_IN_PLACE",
  *     maintenanceWindow: {
  *         startTime: "08:00",
@@ -61,6 +48,34 @@ import * as utilities from "../utilities";
  *         mode: "ONLY_SCALE_OUT",
  *         minNodes: 1,
  *         maxNodes: 10,
+ *     },
+ * });
+ * ```
+ * ### Node Group Share Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const guestProject = new gcp.organizations.Project("guestProject", {
+ *     projectId: "project-id",
+ *     orgId: "123456789",
+ * });
+ * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     region: "us-central1",
+ *     nodeType: "n1-node-96-624",
+ * });
+ * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     zone: "us-central1-f",
+ *     description: "example google_compute_node_group for Terraform Google Provider",
+ *     size: 1,
+ *     nodeTemplate: soletenant_tmpl.id,
+ *     shareSettings: {
+ *         shareType: "SPECIFIC_PROJECTS",
+ *         projectMaps: [{
+ *             id: guestProject.projectId,
+ *             projectId: guestProject.projectId,
+ *         }],
  *     },
  * });
  * ```
@@ -158,6 +173,11 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Share settings for the node group.
+     * Structure is documented below.
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.NodeGroupShareSettings>;
+    /**
      * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
     public readonly size!: pulumi.Output<number>;
@@ -189,6 +209,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -204,6 +225,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -263,6 +285,11 @@ export interface NodeGroupState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Share settings for the node group.
+     * Structure is documented below.
+     */
+    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
+    /**
      * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */
     size?: pulumi.Input<number>;
@@ -312,6 +339,11 @@ export interface NodeGroupArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Share settings for the node group.
+     * Structure is documented below.
+     */
+    shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
     /**
      * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
      */

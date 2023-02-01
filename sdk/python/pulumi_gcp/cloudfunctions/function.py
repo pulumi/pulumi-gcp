@@ -1570,7 +1570,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> pulumi.Output[Optional[int]]:
+    def max_instances(self) -> pulumi.Output[int]:
         """
         The limit on the maximum number of function instances that may coexist at a given time.
         """

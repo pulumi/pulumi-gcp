@@ -42,6 +42,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Container Attached Cluster Ignore Errors
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const versions = project.then(project => gcp.container.getAttachedVersions({
+ *     location: "us-west1",
+ *     project: project.projectId,
+ * }));
+ * const primary = new gcp.container.AttachedCluster("primary", {
+ *     location: "us-west1",
+ *     project: project.then(project => project.projectId),
+ *     description: "Test cluster",
+ *     distribution: "aks",
+ *     oidcConfig: {
+ *         issuerUrl: "https://oidc.issuer.url",
+ *     },
+ *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
+ *     fleet: {
+ *         project: project.then(project => `projects/${project.number}`),
+ *     },
+ *     deletionPolicy: "DELETE_IGNORE_ERRORS",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -111,6 +137,10 @@ export class AttachedCluster extends pulumi.CustomResource {
      * Output only. The time at which this cluster was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Policy to determine what flags to send on delete.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
@@ -216,6 +246,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["authorization"] = state ? state.authorization : undefined;
             resourceInputs["clusterRegion"] = state ? state.clusterRegion : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["distribution"] = state ? state.distribution : undefined;
             resourceInputs["errors"] = state ? state.errors : undefined;
@@ -252,6 +283,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distribution"] = args ? args.distribution : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
@@ -305,6 +337,10 @@ export interface AttachedClusterState {
      * Output only. The time at which this cluster was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Policy to determine what flags to send on delete.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
@@ -412,6 +448,10 @@ export interface AttachedClusterArgs {
      * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
+    /**
+     * Policy to determine what flags to send on delete.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.

@@ -58,9 +58,6 @@ export interface GetManagedZoneResult {
      * A textual description field.
      */
     readonly description: string;
-    /**
-     * The fully qualified DNS name of this zone, e.g. `example.io.`.
-     */
     readonly dnsName: string;
     /**
      * The provider-assigned unique ID for this managed resource.

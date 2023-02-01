@@ -23,6 +23,7 @@ class StreamArgs:
                  stream_id: pulumi.Input[str],
                  backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
                  backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+                 customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -38,6 +39,8 @@ class StreamArgs:
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
                Structure is documented below.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -52,6 +55,8 @@ class StreamArgs:
             pulumi.set(__self__, "backfill_all", backfill_all)
         if backfill_none is not None:
             pulumi.set(__self__, "backfill_none", backfill_none)
+        if customer_managed_encryption_key is not None:
+            pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if labels is not None:
@@ -147,6 +152,19 @@ class StreamArgs:
         pulumi.set(self, "backfill_none", value)
 
     @property
+    @pulumi.getter(name="customerManagedEncryptionKey")
+    def customer_managed_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        """
+        return pulumi.get(self, "customer_managed_encryption_key")
+
+    @customer_managed_encryption_key.setter
+    def customer_managed_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_managed_encryption_key", value)
+
+    @property
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -189,6 +207,7 @@ class _StreamState:
     def __init__(__self__, *,
                  backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
                  backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
+                 customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -204,6 +223,8 @@ class _StreamState:
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
                Structure is documented below.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
@@ -222,6 +243,8 @@ class _StreamState:
             pulumi.set(__self__, "backfill_all", backfill_all)
         if backfill_none is not None:
             pulumi.set(__self__, "backfill_none", backfill_none)
+        if customer_managed_encryption_key is not None:
+            pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if destination_config is not None:
@@ -267,6 +290,19 @@ class _StreamState:
     @backfill_none.setter
     def backfill_none(self, value: Optional[pulumi.Input['StreamBackfillNoneArgs']]):
         pulumi.set(self, "backfill_none", value)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptionKey")
+    def customer_managed_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        """
+        return pulumi.get(self, "customer_managed_encryption_key")
+
+    @customer_managed_encryption_key.setter
+    def customer_managed_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_managed_encryption_key", value)
 
     @property
     @pulumi.getter(name="desiredState")
@@ -399,6 +435,7 @@ class Stream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
                  backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -488,6 +525,10 @@ class Stream(pulumi.CustomResource):
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
         destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
             display_name="Connection profile",
             location="us-central1",
@@ -571,7 +612,96 @@ class Stream(pulumi.CustomResource):
                         )],
                     )],
                 ),
+            ),
+            customer_managed_encryption_key="kms-name",
+            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+        ```
+        ### Datastream Stream Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
             ))
+        bq_sa = gcp.bigquery.get_default_service_account()
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+            crypto_key_id="bigquery-kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                            kms_key_name="bigquery-kms-name",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
         ## Import
@@ -595,6 +725,8 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
         :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
                Structure is documented below.
@@ -693,6 +825,10 @@ class Stream(pulumi.CustomResource):
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
+        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
         destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
             display_name="Connection profile",
             location="us-central1",
@@ -776,7 +912,96 @@ class Stream(pulumi.CustomResource):
                         )],
                     )],
                 ),
+            ),
+            customer_managed_encryption_key="kms-name",
+            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+        ```
+        ### Datastream Stream Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=True)
+        db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
             ))
+        bq_sa = gcp.bigquery.get_default_service_account()
+        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+            crypto_key_id="bigquery-kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:{bq_sa.email}")
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destinationConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                            kms_key_name="bigquery-kms-name",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
         ## Import
@@ -812,6 +1037,7 @@ class Stream(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
                  backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -831,6 +1057,7 @@ class Stream(pulumi.CustomResource):
 
             __props__.__dict__["backfill_all"] = backfill_all
             __props__.__dict__["backfill_none"] = backfill_none
+            __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
             __props__.__dict__["desired_state"] = desired_state
             if destination_config is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_config'")
@@ -863,6 +1090,7 @@ class Stream(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
             backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+            customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
             desired_state: Optional[pulumi.Input[str]] = None,
             destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -883,6 +1111,8 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
         :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
                Structure is documented below.
@@ -903,6 +1133,7 @@ class Stream(pulumi.CustomResource):
 
         __props__.__dict__["backfill_all"] = backfill_all
         __props__.__dict__["backfill_none"] = backfill_none
+        __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["destination_config"] = destination_config
         __props__.__dict__["display_name"] = display_name
@@ -931,6 +1162,15 @@ class Stream(pulumi.CustomResource):
         Backfill strategy to disable automatic backfill for the Stream's objects.
         """
         return pulumi.get(self, "backfill_none")
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptionKey")
+    def customer_managed_encryption_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        """
+        return pulumi.get(self, "customer_managed_encryption_key")
 
     @property
     @pulumi.getter(name="desiredState")

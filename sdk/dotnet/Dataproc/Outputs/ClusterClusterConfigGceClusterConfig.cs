@@ -33,6 +33,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
+        /// Node Group Affinity for sole-tenant clusters.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity? NodeGroupAffinity;
+        /// <summary>
+        /// Reservation Affinity for consuming zonal reservation.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigGceClusterConfigReservationAffinity? ReservationAffinity;
+        /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.
         /// </summary>
@@ -78,6 +86,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? network,
 
+            Outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity? nodeGroupAffinity,
+
+            Outputs.ClusterClusterConfigGceClusterConfigReservationAffinity? reservationAffinity,
+
             string? serviceAccount,
 
             ImmutableArray<string> serviceAccountScopes,
@@ -93,6 +105,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             InternalIpOnly = internalIpOnly;
             Metadata = metadata;
             Network = network;
+            NodeGroupAffinity = nodeGroupAffinity;
+            ReservationAffinity = reservationAffinity;
             ServiceAccount = serviceAccount;
             ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;

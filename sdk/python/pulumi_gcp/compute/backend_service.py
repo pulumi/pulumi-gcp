@@ -31,6 +31,7 @@ class BackendServiceArgs:
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -90,6 +91,13 @@ class BackendServiceArgs:
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+               preference. Either the policy or the customPolicy field should be set.
+               Overrides any value set in the localityLbPolicy field.
+               localityLbPolicies is only supported when the BackendService is referenced
+               by a URL Map that is referenced by a target gRPC proxy that has the
+               validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -157,6 +165,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if locality_lb_policies is not None:
+            pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy is not None:
             pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
@@ -392,6 +402,24 @@ class BackendServiceArgs:
         pulumi.set(self, "load_balancing_scheme", value)
 
     @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]:
+        """
+        A list of locality load balancing policies to be used in order of
+        preference. Either the policy or the customPolicy field should be set.
+        Overrides any value set in the localityLbPolicy field.
+        localityLbPolicies is only supported when the BackendService is referenced
+        by a URL Map that is referenced by a target gRPC proxy that has the
+        validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locality_lb_policies")
+
+    @locality_lb_policies.setter
+    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]):
+        pulumi.set(self, "locality_lb_policies", value)
+
+    @property
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -570,6 +598,7 @@ class _BackendServiceState:
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -634,6 +663,13 @@ class _BackendServiceState:
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+               preference. Either the policy or the customPolicy field should be set.
+               Overrides any value set in the localityLbPolicy field.
+               localityLbPolicies is only supported when the BackendService is referenced
+               by a URL Map that is referenced by a target gRPC proxy that has the
+               validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -708,6 +744,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if locality_lb_policies is not None:
+            pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy is not None:
             pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
@@ -982,6 +1020,24 @@ class _BackendServiceState:
         pulumi.set(self, "load_balancing_scheme", value)
 
     @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]:
+        """
+        A list of locality load balancing policies to be used in order of
+        preference. Either the policy or the customPolicy field should be set.
+        Overrides any value set in the localityLbPolicy field.
+        localityLbPolicies is only supported when the BackendService is referenced
+        by a URL Map that is referenced by a target gRPC proxy that has the
+        validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locality_lb_policies")
+
+    @locality_lb_policies.setter
+    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]):
+        pulumi.set(self, "locality_lb_policies", value)
+
+    @property
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1171,6 +1227,7 @@ class BackendService(pulumi.CustomResource):
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1184,22 +1241,6 @@ class BackendService(pulumi.CustomResource):
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        A Backend Service defines a group of virtual machines that will serve
-        traffic for load balancing. This resource is a global backend service,
-        appropriate for external load balancing or self-managed internal load balancing.
-        For managed internal load balancing, use a regional backend service instead.
-
-        Currently self-managed internal load balancing is only available in beta.
-
-        To get more information about BackendService, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Backend Service Cache Include Http Headers
 
@@ -1334,6 +1375,13 @@ class BackendService(pulumi.CustomResource):
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+               preference. Either the policy or the customPolicy field should be set.
+               Overrides any value set in the localityLbPolicy field.
+               localityLbPolicies is only supported when the BackendService is referenced
+               by a URL Map that is referenced by a target gRPC proxy that has the
+               validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -1378,22 +1426,6 @@ class BackendService(pulumi.CustomResource):
                  args: Optional[BackendServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Backend Service defines a group of virtual machines that will serve
-        traffic for load balancing. This resource is a global backend service,
-        appropriate for external load balancing or self-managed internal load balancing.
-        For managed internal load balancing, use a regional backend service instead.
-
-        Currently self-managed internal load balancing is only available in beta.
-
-        To get more information about BackendService, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-
-        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Backend Service Cache Include Http Headers
 
@@ -1510,6 +1542,7 @@ class BackendService(pulumi.CustomResource):
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1545,6 +1578,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
+            __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
@@ -1588,6 +1622,7 @@ class BackendService(pulumi.CustomResource):
             health_checks: Optional[pulumi.Input[str]] = None,
             iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
+            locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
             locality_lb_policy: Optional[pulumi.Input[str]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1657,6 +1692,13 @@ class BackendService(pulumi.CustomResource):
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+               preference. Either the policy or the customPolicy field should be set.
+               Overrides any value set in the localityLbPolicy field.
+               localityLbPolicies is only supported when the BackendService is referenced
+               by a URL Map that is referenced by a target gRPC proxy that has the
+               validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -1717,6 +1759,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["health_checks"] = health_checks
         __props__.__dict__["iap"] = iap
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
+        __props__.__dict__["locality_lb_policies"] = locality_lb_policies
         __props__.__dict__["locality_lb_policy"] = locality_lb_policy
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
@@ -1906,6 +1949,20 @@ class BackendService(pulumi.CustomResource):
         Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
+
+    @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> pulumi.Output[Optional[Sequence['outputs.BackendServiceLocalityLbPolicy']]]:
+        """
+        A list of locality load balancing policies to be used in order of
+        preference. Either the policy or the customPolicy field should be set.
+        Overrides any value set in the localityLbPolicy field.
+        localityLbPolicies is only supported when the BackendService is referenced
+        by a URL Map that is referenced by a target gRPC proxy that has the
+        validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locality_lb_policies")
 
     @property
     @pulumi.getter(name="localityLbPolicy")

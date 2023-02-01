@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerGitFileSourceResult
     {
+        public readonly string GithubEnterpriseConfig;
         public readonly string Path;
         public readonly string RepoType;
         public readonly string Revision;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private GetTriggerGitFileSourceResult(
+            string githubEnterpriseConfig,
+
             string path,
 
             string repoType,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string uri)
         {
+            GithubEnterpriseConfig = githubEnterpriseConfig;
             Path = path;
             RepoType = repoType;
             Revision = revision;

@@ -1122,15 +1122,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a VM instance resource within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/instances)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-
-        This resource is specifically to create a compute instance from a given
-        `source_machine_image`. To create an instance without a machine image, use the
-        `compute.Instance` resource.
-
         ## Example Usage
 
         ```python
@@ -1193,15 +1184,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  args: InstanceFromMachineImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VM instance resource within GCE. For more information see
-        [the official documentation](https://cloud.google.com/compute/docs/instances)
-        and
-        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-
-        This resource is specifically to create a compute instance from a given
-        `source_machine_image`. To create an instance without a machine image, use the
-        `compute.Instance` resource.
-
         ## Example Usage
 
         ```python

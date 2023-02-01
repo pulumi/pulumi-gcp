@@ -23,24 +23,6 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.compute.GlobalAddress("default", {});
  * ```
- * ### Global Address Private Services Connect
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const _default = new gcp.compute.GlobalAddress("default", {
- *     addressType: "INTERNAL",
- *     purpose: "PRIVATE_SERVICE_CONNECT",
- *     network: network.id,
- *     address: "100.100.100.105",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *
@@ -118,7 +100,7 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -151,9 +133,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -244,7 +225,7 @@ export interface GlobalAddressState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -277,9 +258,8 @@ export interface GlobalAddressState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -316,7 +296,7 @@ export interface GlobalAddressArgs {
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * Labels to apply to this address.  A list of key->value pairs.
+     * Labels to apply to this address. A list of key->value pairs.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -349,9 +329,8 @@ export interface GlobalAddressArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
 }

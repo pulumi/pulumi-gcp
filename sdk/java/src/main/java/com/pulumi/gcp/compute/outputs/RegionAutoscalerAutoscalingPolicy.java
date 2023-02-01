@@ -75,12 +75,6 @@ public final class RegionAutoscalerAutoscalingPolicy {
      * 
      */
     private @Nullable String mode;
-    /**
-     * @return Defines scale down controls to reduce the risk of response latency
-     * and outages due to abrupt scale-in events
-     * Structure is documented below.
-     * 
-     */
     private @Nullable RegionAutoscalerAutoscalingPolicyScaleDownControl scaleDownControl;
     /**
      * @return Defines scale in controls to reduce the risk of response latency
@@ -167,12 +161,6 @@ public final class RegionAutoscalerAutoscalingPolicy {
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
-    /**
-     * @return Defines scale down controls to reduce the risk of response latency
-     * and outages due to abrupt scale-in events
-     * Structure is documented below.
-     * 
-     */
     public Optional<RegionAutoscalerAutoscalingPolicyScaleDownControl> scaleDownControl() {
         return Optional.ofNullable(this.scaleDownControl);
     }

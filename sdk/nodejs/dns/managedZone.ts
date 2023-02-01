@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
- *   * [Managing Zones](https://cloud.google.com/dns/zones/)
+ *     * [Managing Zones](https://cloud.google.com/dns/zones/)
  *
  * ## Example Usage
  * ### Dns Managed Zone Basic
@@ -23,10 +23,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  *
+ * const rnd = new random.RandomId("rnd", {byteLength: 4});
  * const example_zone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
- *     dnsName: "my-domain.com.",
+ *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
  *     labels: {
  *         foo: "bar",
  *     },
@@ -284,7 +286,7 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -343,14 +345,14 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-     * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `privateVisibilityConfig`.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
      */
     public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-     * Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
      */
     public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
@@ -434,7 +436,7 @@ export interface ManagedZoneState {
      */
     creationTime?: pulumi.Input<string>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**
@@ -493,14 +495,14 @@ export interface ManagedZoneState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-     * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `privateVisibilityConfig`.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-     * Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
      */
     serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**
@@ -522,7 +524,7 @@ export interface ManagedZoneArgs {
      */
     cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Pulumi'.
+     * A textual description field. Defaults to 'Managed by Terraform'.
      */
     description?: pulumi.Input<string>;
     /**
@@ -572,14 +574,14 @@ export interface ManagedZoneArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-     * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `privateVisibilityConfig`.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
-     * Structure is documented below.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
      */
     serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**

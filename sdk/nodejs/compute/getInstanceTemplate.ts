@@ -138,10 +138,6 @@ export interface GetInstanceTemplateResult {
      */
     readonly minCpuPlatform: string;
     readonly mostRecent?: boolean;
-    /**
-     * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     */
     readonly name?: string;
     /**
      * Creates a unique name beginning with the specified

@@ -155,28 +155,20 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to true, a deployment is created with &#34;shell&#34; resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~&gt;**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
+     * If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
+     * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+     * deployments if either preview is updated to true or if other fields are updated while preview is true.
      * 
      */
     @Import(name="preview")
     private @Nullable Output<Boolean> preview;
 
     /**
-     * @return If set to true, a deployment is created with &#34;shell&#34; resources
-     * that are not actually instantiated. This allows you to preview a
-     * deployment. It can be updated to false to actually deploy
-     * with real resources.
-     * ~&gt;**NOTE:** Deployment Manager does not allow update
-     * of a deployment in preview (unless updating to preview=false). Thus,
-     * the provider will force-recreate deployments if either preview is updated
-     * to true or if other fields are updated while preview is true.
+     * @return If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
+     * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+     * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+     * deployments if either preview is updated to true or if other fields are updated while preview is true.
      * 
      */
     public Optional<Output<Boolean>> preview() {
@@ -457,14 +449,10 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources
-         * that are not actually instantiated. This allows you to preview a
-         * deployment. It can be updated to false to actually deploy
-         * with real resources.
-         * ~&gt;**NOTE:** Deployment Manager does not allow update
-         * of a deployment in preview (unless updating to preview=false). Thus,
-         * the provider will force-recreate deployments if either preview is updated
-         * to true or if other fields are updated while preview is true.
+         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
+         * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+         * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+         * deployments if either preview is updated to true or if other fields are updated while preview is true.
          * 
          * @return builder
          * 
@@ -475,14 +463,10 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources
-         * that are not actually instantiated. This allows you to preview a
-         * deployment. It can be updated to false to actually deploy
-         * with real resources.
-         * ~&gt;**NOTE:** Deployment Manager does not allow update
-         * of a deployment in preview (unless updating to preview=false). Thus,
-         * the provider will force-recreate deployments if either preview is updated
-         * to true or if other fields are updated while preview is true.
+         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources that are not actually instantiated. This allows you to
+         * preview a deployment. It can be updated to false to actually deploy with real resources. ~&gt;**NOTE:** Deployment Manager
+         * does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+         * deployments if either preview is updated to true or if other fields are updated while preview is true.
          * 
          * @return builder
          * 

@@ -18,16 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Cloud Spanner Database which is hosted on a Spanner instance.
- * 
- * To get more information about Database, see:
- * 
- * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
- * 
- * &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
- * 
  * ## Example Usage
  * ### Spanner Database Basic
  * ```java
@@ -134,16 +124,16 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ddls);
     }
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {

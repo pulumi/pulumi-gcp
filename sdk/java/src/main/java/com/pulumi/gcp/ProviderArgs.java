@@ -278,6 +278,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudTasksCustomEndpoint);
     }
 
+    @Import(name="cloudbuildv2CustomEndpoint")
+    private @Nullable Output<String> cloudbuildv2CustomEndpoint;
+
+    public Optional<Output<String>> cloudbuildv2CustomEndpoint() {
+        return Optional.ofNullable(this.cloudbuildv2CustomEndpoint);
+    }
+
     @Import(name="clouddeployCustomEndpoint")
     private @Nullable Output<String> clouddeployCustomEndpoint;
 
@@ -439,13 +446,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dialogflowCxCustomEndpoint);
     }
 
-    @Import(name="disableGooglePartnerName", json=true)
-    private @Nullable Output<Boolean> disableGooglePartnerName;
-
-    public Optional<Output<Boolean>> disableGooglePartnerName() {
-        return Optional.ofNullable(this.disableGooglePartnerName);
-    }
-
     @Import(name="dnsCustomEndpoint")
     private @Nullable Output<String> dnsCustomEndpoint;
 
@@ -549,13 +549,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> gkehubFeatureCustomEndpoint() {
         return Optional.ofNullable(this.gkehubFeatureCustomEndpoint);
-    }
-
-    @Import(name="googlePartnerName")
-    private @Nullable Output<String> googlePartnerName;
-
-    public Optional<Output<String>> googlePartnerName() {
-        return Optional.ofNullable(this.googlePartnerName);
     }
 
     @Import(name="healthcareCustomEndpoint")
@@ -901,6 +894,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tagsCustomEndpoint);
     }
 
+    @Import(name="tagsLocationCustomEndpoint")
+    private @Nullable Output<String> tagsLocationCustomEndpoint;
+
+    public Optional<Output<String>> tagsLocationCustomEndpoint() {
+        return Optional.ofNullable(this.tagsLocationCustomEndpoint);
+    }
+
     @Import(name="tpuCustomEndpoint")
     private @Nullable Output<String> tpuCustomEndpoint;
 
@@ -934,6 +934,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> workflowsCustomEndpoint() {
         return Optional.ofNullable(this.workflowsCustomEndpoint);
+    }
+
+    @Import(name="workstationsCustomEndpoint")
+    private @Nullable Output<String> workstationsCustomEndpoint;
+
+    public Optional<Output<String>> workstationsCustomEndpoint() {
+        return Optional.ofNullable(this.workstationsCustomEndpoint);
     }
 
     @Import(name="zone")
@@ -983,6 +990,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudRunV2CustomEndpoint = $.cloudRunV2CustomEndpoint;
         this.cloudSchedulerCustomEndpoint = $.cloudSchedulerCustomEndpoint;
         this.cloudTasksCustomEndpoint = $.cloudTasksCustomEndpoint;
+        this.cloudbuildv2CustomEndpoint = $.cloudbuildv2CustomEndpoint;
         this.clouddeployCustomEndpoint = $.clouddeployCustomEndpoint;
         this.cloudfunctions2CustomEndpoint = $.cloudfunctions2CustomEndpoint;
         this.composerCustomEndpoint = $.composerCustomEndpoint;
@@ -1006,7 +1014,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
-        this.disableGooglePartnerName = $.disableGooglePartnerName;
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
@@ -1022,7 +1029,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
         this.gkehubFeatureCustomEndpoint = $.gkehubFeatureCustomEndpoint;
-        this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
@@ -1072,11 +1078,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.storageCustomEndpoint = $.storageCustomEndpoint;
         this.storageTransferCustomEndpoint = $.storageTransferCustomEndpoint;
         this.tagsCustomEndpoint = $.tagsCustomEndpoint;
+        this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.userProjectOverride = $.userProjectOverride;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
         this.vpcAccessCustomEndpoint = $.vpcAccessCustomEndpoint;
         this.workflowsCustomEndpoint = $.workflowsCustomEndpoint;
+        this.workstationsCustomEndpoint = $.workstationsCustomEndpoint;
         this.zone = $.zone;
     }
 
@@ -1431,6 +1439,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return cloudTasksCustomEndpoint(Output.of(cloudTasksCustomEndpoint));
         }
 
+        public Builder cloudbuildv2CustomEndpoint(@Nullable Output<String> cloudbuildv2CustomEndpoint) {
+            $.cloudbuildv2CustomEndpoint = cloudbuildv2CustomEndpoint;
+            return this;
+        }
+
+        public Builder cloudbuildv2CustomEndpoint(String cloudbuildv2CustomEndpoint) {
+            return cloudbuildv2CustomEndpoint(Output.of(cloudbuildv2CustomEndpoint));
+        }
+
         public Builder clouddeployCustomEndpoint(@Nullable Output<String> clouddeployCustomEndpoint) {
             $.clouddeployCustomEndpoint = clouddeployCustomEndpoint;
             return this;
@@ -1638,15 +1655,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dialogflowCxCustomEndpoint(Output.of(dialogflowCxCustomEndpoint));
         }
 
-        public Builder disableGooglePartnerName(@Nullable Output<Boolean> disableGooglePartnerName) {
-            $.disableGooglePartnerName = disableGooglePartnerName;
-            return this;
-        }
-
-        public Builder disableGooglePartnerName(Boolean disableGooglePartnerName) {
-            return disableGooglePartnerName(Output.of(disableGooglePartnerName));
-        }
-
         public Builder dnsCustomEndpoint(@Nullable Output<String> dnsCustomEndpoint) {
             $.dnsCustomEndpoint = dnsCustomEndpoint;
             return this;
@@ -1780,15 +1788,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder gkehubFeatureCustomEndpoint(String gkehubFeatureCustomEndpoint) {
             return gkehubFeatureCustomEndpoint(Output.of(gkehubFeatureCustomEndpoint));
-        }
-
-        public Builder googlePartnerName(@Nullable Output<String> googlePartnerName) {
-            $.googlePartnerName = googlePartnerName;
-            return this;
-        }
-
-        public Builder googlePartnerName(String googlePartnerName) {
-            return googlePartnerName(Output.of(googlePartnerName));
         }
 
         public Builder healthcareCustomEndpoint(@Nullable Output<String> healthcareCustomEndpoint) {
@@ -2240,6 +2239,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return tagsCustomEndpoint(Output.of(tagsCustomEndpoint));
         }
 
+        public Builder tagsLocationCustomEndpoint(@Nullable Output<String> tagsLocationCustomEndpoint) {
+            $.tagsLocationCustomEndpoint = tagsLocationCustomEndpoint;
+            return this;
+        }
+
+        public Builder tagsLocationCustomEndpoint(String tagsLocationCustomEndpoint) {
+            return tagsLocationCustomEndpoint(Output.of(tagsLocationCustomEndpoint));
+        }
+
         public Builder tpuCustomEndpoint(@Nullable Output<String> tpuCustomEndpoint) {
             $.tpuCustomEndpoint = tpuCustomEndpoint;
             return this;
@@ -2283,6 +2291,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder workflowsCustomEndpoint(String workflowsCustomEndpoint) {
             return workflowsCustomEndpoint(Output.of(workflowsCustomEndpoint));
+        }
+
+        public Builder workstationsCustomEndpoint(@Nullable Output<String> workstationsCustomEndpoint) {
+            $.workstationsCustomEndpoint = workstationsCustomEndpoint;
+            return this;
+        }
+
+        public Builder workstationsCustomEndpoint(String workstationsCustomEndpoint) {
+            return workstationsCustomEndpoint(Output.of(workstationsCustomEndpoint));
         }
 
         public Builder zone(@Nullable Output<String> zone) {

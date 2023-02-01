@@ -33,8 +33,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
+        /// page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels
         /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
         /// labels will be ignored to prevent diffs on re-apply.
@@ -48,10 +47,6 @@ namespace Pulumi.Gcp.Dataflow
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// One of "drain" or "cancel". Specifies behavior of
-        /// deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Output("onDelete")]
         public Output<string?> OnDelete { get; private set; } = null!;
 
@@ -149,8 +144,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
+        /// page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels
         /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
         /// labels will be ignored to prevent diffs on re-apply.
@@ -167,10 +161,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// One of "drain" or "cancel". Specifies behavior of
-        /// deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 
@@ -236,8 +226,7 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// User labels to be specified for the job. Keys and values
         /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
-        /// page. **Note**: This field is marked as deprecated as the API does not currently
-        /// support adding labels.
+        /// page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels
         /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
         /// labels will be ignored to prevent diffs on re-apply.
@@ -254,10 +243,6 @@ namespace Pulumi.Gcp.Dataflow
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// One of "drain" or "cancel". Specifies behavior of
-        /// deletion during `pulumi destroy`.  See above note.
-        /// </summary>
         [Input("onDelete")]
         public Input<string>? OnDelete { get; set; }
 

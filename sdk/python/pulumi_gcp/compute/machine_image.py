@@ -289,16 +289,6 @@ class MachineImage(pulumi.CustomResource):
                  source_instance: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Represents a Machine Image resource. Machine images store all the configuration,
-        metadata, permissions, and data from one or more disks required to create a
-        Virtual machine (VM) instance.
-
-        To get more information about MachineImage, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
-
         ## Example Usage
         ### Machine Image Basic
 
@@ -394,16 +384,6 @@ class MachineImage(pulumi.CustomResource):
                  args: MachineImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Represents a Machine Image resource. Machine images store all the configuration,
-        metadata, permissions, and data from one or more disks required to create a
-        Virtual machine (VM) instance.
-
-        To get more information about MachineImage, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
-
         ## Example Usage
         ### Machine Image Basic
 

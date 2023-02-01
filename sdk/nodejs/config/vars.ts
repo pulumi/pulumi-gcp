@@ -305,6 +305,14 @@ Object.defineProperty(exports, "cloudTasksCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cloudbuildv2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudbuildv2CustomEndpoint", {
+    get() {
+        return __config.get("cloudbuildv2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const clouddeployCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "clouddeployCustomEndpoint", {
     get() {
@@ -489,14 +497,6 @@ Object.defineProperty(exports, "dialogflowCxCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const disableGooglePartnerName: boolean | undefined;
-Object.defineProperty(exports, "disableGooglePartnerName", {
-    get() {
-        return __config.getObject<boolean>("disableGooglePartnerName");
-    },
-    enumerable: true,
-});
-
 export declare const dnsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dnsCustomEndpoint", {
     get() {
@@ -613,14 +613,6 @@ export declare const gkehubFeatureCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkehubFeatureCustomEndpoint", {
     get() {
         return __config.get("gkehubFeatureCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const googlePartnerName: string | undefined;
-Object.defineProperty(exports, "googlePartnerName", {
-    get() {
-        return __config.get("googlePartnerName");
     },
     enumerable: true,
 });
@@ -1017,6 +1009,14 @@ Object.defineProperty(exports, "tagsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const tagsLocationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "tagsLocationCustomEndpoint", {
+    get() {
+        return __config.get("tagsLocationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const tpuCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tpuCustomEndpoint", {
     get() {
@@ -1053,6 +1053,14 @@ export declare const workflowsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "workflowsCustomEndpoint", {
     get() {
         return __config.get("workflowsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const workstationsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "workstationsCustomEndpoint", {
+    get() {
+        return __config.get("workstationsCustomEndpoint");
     },
     enumerable: true,
 });

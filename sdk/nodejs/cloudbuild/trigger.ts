@@ -191,6 +191,64 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudbuild Trigger Manual Github Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const manual_ghe_trigger = new gcp.cloudbuild.Trigger("manual-ghe-trigger", {
+ *     gitFileSource: {
+ *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+ *         path: "cloudbuild.yaml",
+ *         repoType: "GITHUB",
+ *         revision: "refs/heads/main",
+ *         uri: "https://hashicorp/terraform-provider-google-beta",
+ *     },
+ *     sourceToBuild: {
+ *         githubEnterpriseConfig: "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+ *         ref: "refs/heads/main",
+ *         repoType: "GITHUB",
+ *         uri: "https://hashicorp/terraform-provider-google-beta",
+ *     },
+ * });
+ * ```
+ * ### Cloudbuild Trigger Repo
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
+ *     location: "us-central1",
+ *     githubConfig: {
+ *         appInstallationId: 123123,
+ *         authorizerCredential: {
+ *             oauthTokenSecretVersion: "projects/my-project/secrets/github-pat-secret/versions/latest",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
+ *     parentConnection: my_connection.id,
+ *     remoteUri: "https://github.com/myuser/my-repo.git",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const repo_trigger = new gcp.cloudbuild.Trigger("repo-trigger", {
+ *     location: "us-central1",
+ *     repositoryEventConfig: {
+ *         repository: my_repository.id,
+ *         push: {
+ *             branch: "feature-.*",
+ *         },
+ *     },
+ *     filename: "cloudbuild.yaml",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -336,6 +394,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly pubsubConfig!: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
     /**
+     * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     */
+    public readonly repositoryEventConfig!: pulumi.Output<outputs.cloudbuild.TriggerRepositoryEventConfig | undefined>;
+    /**
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
      * If no service account is set, then the standard Cloud Build service account
@@ -410,6 +472,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
+            resourceInputs["repositoryEventConfig"] = state ? state.repositoryEventConfig : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["sourceToBuild"] = state ? state.sourceToBuild : undefined;
             resourceInputs["substitutions"] = state ? state.substitutions : undefined;
@@ -434,6 +497,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
+            resourceInputs["repositoryEventConfig"] = args ? args.repositoryEventConfig : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["sourceToBuild"] = args ? args.sourceToBuild : undefined;
             resourceInputs["substitutions"] = args ? args.substitutions : undefined;
@@ -547,6 +611,10 @@ export interface TriggerState {
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
+    /**
+     * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     */
+    repositoryEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerRepositoryEventConfig>;
     /**
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -689,6 +757,10 @@ export interface TriggerArgs {
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
+    /**
+     * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     */
+    repositoryEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerRepositoryEventConfig>;
     /**
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.

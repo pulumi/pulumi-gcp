@@ -750,7 +750,6 @@ type CertificateSelfManaged struct {
 	CertificatePem *string `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemCertificate *string `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -784,7 +783,6 @@ type CertificateSelfManagedArgs struct {
 	CertificatePem pulumi.StringPtrInput `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -886,7 +884,6 @@ func (o CertificateSelfManagedOutput) CertificatePem() pulumi.StringPtrOutput {
 
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o CertificateSelfManagedOutput) PemCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
 }
@@ -947,7 +944,6 @@ func (o CertificateSelfManagedPtrOutput) CertificatePem() pulumi.StringPtrOutput
 
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o CertificateSelfManagedPtrOutput) PemCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {

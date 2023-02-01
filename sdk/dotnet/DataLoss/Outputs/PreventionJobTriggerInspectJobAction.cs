@@ -19,7 +19,15 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPubSub? PubSub;
         /// <summary>
-        /// Schedule for triggered jobs
+        /// Publish findings of a DlpJob to Data Catalog.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? PublishFindingsToCloudDataCatalog;
+        /// <summary>
+        /// Publish the result summary of a DlpJob to the Cloud Security Command Center.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc? PublishSummaryToCscc;
+        /// <summary>
+        /// If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionSaveFindings? SaveFindings;
@@ -28,9 +36,15 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionJobTriggerInspectJobAction(
             Outputs.PreventionJobTriggerInspectJobActionPubSub? pubSub,
 
+            Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? publishFindingsToCloudDataCatalog,
+
+            Outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc? publishSummaryToCscc,
+
             Outputs.PreventionJobTriggerInspectJobActionSaveFindings? saveFindings)
         {
             PubSub = pubSub;
+            PublishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            PublishSummaryToCscc = publishSummaryToCscc;
             SaveFindings = saveFindings;
         }
     }

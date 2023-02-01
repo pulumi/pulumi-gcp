@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerGitFileSource
     {
         /// <summary>
+        /// The full resource name of the github enterprise config.
+        /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        /// </summary>
+        public readonly string? GithubEnterpriseConfig;
+        /// <summary>
         /// The path of the file, with the repo root as the root of the path.
         /// </summary>
         public readonly string Path;
@@ -37,6 +42,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private TriggerGitFileSource(
+            string? githubEnterpriseConfig,
+
             string path,
 
             string repoType,
@@ -45,6 +52,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string? uri)
         {
+            GithubEnterpriseConfig = githubEnterpriseConfig;
             Path = path;
             RepoType = repoType;
             Revision = revision;

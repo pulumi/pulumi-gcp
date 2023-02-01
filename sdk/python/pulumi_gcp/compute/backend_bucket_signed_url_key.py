@@ -176,17 +176,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A key for signing Cloud CDN signed URLs for BackendBuckets.
-
-        To get more information about BackendBucketSignedUrlKey, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
-        * How-to Guides
-            * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
-
-        > **Warning:** All arguments including `key_value` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Backend Bucket Signed Url Key
 
@@ -227,17 +216,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
                  args: BackendBucketSignedUrlKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A key for signing Cloud CDN signed URLs for BackendBuckets.
-
-        To get more information about BackendBucketSignedUrlKey, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
-        * How-to Guides
-            * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
-
-        > **Warning:** All arguments including `key_value` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Backend Bucket Signed Url Key
 

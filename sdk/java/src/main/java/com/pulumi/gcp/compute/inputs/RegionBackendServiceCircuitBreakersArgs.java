@@ -16,19 +16,9 @@ public final class RegionBackendServiceCircuitBreakersArgs extends com.pulumi.re
 
     public static final RegionBackendServiceCircuitBreakersArgs Empty = new RegionBackendServiceCircuitBreakersArgs();
 
-    /**
-     * The timeout for new network connections to hosts.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="connectTimeout")
     private @Nullable Output<RegionBackendServiceCircuitBreakersConnectTimeoutArgs> connectTimeout;
 
-    /**
-     * @return The timeout for new network connections to hosts.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<RegionBackendServiceCircuitBreakersConnectTimeoutArgs>> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
@@ -151,25 +141,11 @@ public final class RegionBackendServiceCircuitBreakersArgs extends com.pulumi.re
             $ = new RegionBackendServiceCircuitBreakersArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param connectTimeout The timeout for new network connections to hosts.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectTimeout(@Nullable Output<RegionBackendServiceCircuitBreakersConnectTimeoutArgs> connectTimeout) {
             $.connectTimeout = connectTimeout;
             return this;
         }
 
-        /**
-         * @param connectTimeout The timeout for new network connections to hosts.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectTimeout(RegionBackendServiceCircuitBreakersConnectTimeoutArgs connectTimeout) {
             return connectTimeout(Output.of(connectTimeout));
         }

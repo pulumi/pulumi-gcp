@@ -635,37 +635,6 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
-        ### Cloudrunv2 Job Probes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        liveness_probe=gcp.cloudrunv2.JobTemplateTemplateContainerLivenessProbeArgs(
-                            http_get=gcp.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGetArgs(
-                                path="/",
-                            ),
-                        ),
-                        startup_probe=gcp.cloudrunv2.JobTemplateTemplateContainerStartupProbeArgs(
-                            failure_threshold=1,
-                            initial_delay_seconds=0,
-                            period_seconds=3,
-                            tcp_socket=gcp.cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocketArgs(
-                                port=8080,
-                            ),
-                            timeout_seconds=1,
-                        ),
-                    )],
-                ),
-            ))
-        ```
         ### Cloudrunv2 Job Secret
 
         ```python
@@ -875,37 +844,6 @@ class Job(pulumi.CustomResource):
                         connector=connector.id,
                         egress="ALL_TRAFFIC",
                     ),
-                ),
-            ))
-        ```
-        ### Cloudrunv2 Job Probes
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
-            location="us-central1",
-            template=gcp.cloudrunv2.JobTemplateArgs(
-                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
-                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                        liveness_probe=gcp.cloudrunv2.JobTemplateTemplateContainerLivenessProbeArgs(
-                            http_get=gcp.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGetArgs(
-                                path="/",
-                            ),
-                        ),
-                        startup_probe=gcp.cloudrunv2.JobTemplateTemplateContainerStartupProbeArgs(
-                            failure_threshold=1,
-                            initial_delay_seconds=0,
-                            period_seconds=3,
-                            tcp_socket=gcp.cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocketArgs(
-                                port=8080,
-                            ),
-                            timeout_seconds=1,
-                        ),
-                    )],
                 ),
             ))
         ```

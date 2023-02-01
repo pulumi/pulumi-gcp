@@ -56,6 +56,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketIAMMember;
  * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
  * import com.pulumi.gcp.datastream.Stream;
  * import com.pulumi.gcp.datastream.StreamArgs;
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
  * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -163,6 +166,12 @@ import javax.annotation.Nullable;
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
+ *         var keyUser = new CryptoKeyIAMMember(&#34;keyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId(&#34;kms-name&#34;)
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
  *         var destinationConnectionProfile = new ConnectionProfile(&#34;destinationConnectionProfile&#34;, ConnectionProfileArgs.builder()        
  *             .displayName(&#34;Connection profile&#34;)
  *             .location(&#34;us-central1&#34;)
@@ -247,7 +256,162 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .customerManagedEncryptionKey(&#34;kms-name&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(keyUser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Datastream Stream Bigquery
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
+ * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+ * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.71.242.81&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.28.29&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.6.157&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.234.134&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.239.218&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(true)
  *             .build());
+ * 
+ *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *             .instance(instance.name())
+ *             .build());
+ * 
+ *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *             .length(16)
+ *             .special(false)
+ *             .build());
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .instance(instance.name())
+ *             .host(&#34;%&#34;)
+ *             .password(pwd.result())
+ *             .build());
+ * 
+ *         var sourceConnectionProfile = new ConnectionProfile(&#34;sourceConnectionProfile&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Source connection profile&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;source-profile&#34;)
+ *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+ * 
+ *         var bigqueryKeyUser = new CryptoKeyIAMMember(&#34;bigqueryKeyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId(&#34;bigquery-kms-name&#34;)
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
+ *             .build());
+ * 
+ *         var destinationConnectionProfile = new ConnectionProfile(&#34;destinationConnectionProfile&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Connection profile&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;destination-profile&#34;)
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
+ *             .streamId(&#34;my-stream&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .displayName(&#34;my stream&#34;)
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(sourceConnectionProfile.id())
+ *                 .mysqlSourceConfig()
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destinationConnectionProfile.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
+ *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
+ *                             .location(&#34;us-central1&#34;)
+ *                             .kmsKeyName(&#34;bigquery-kms-name&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillNone()
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bigqueryKeyUser)
+ *                 .build());
  * 
  *     }
  * }
@@ -301,6 +465,22 @@ public class Stream extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<StreamBackfillNone>> backfillNone() {
         return Codegen.optional(this.backfillNone);
+    }
+    /**
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * 
+     */
+    @Export(name="customerManagedEncryptionKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> customerManagedEncryptionKey;
+
+    /**
+     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * 
+     */
+    public Output<Optional<String>> customerManagedEncryptionKey() {
+        return Codegen.optional(this.customerManagedEncryptionKey);
     }
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.

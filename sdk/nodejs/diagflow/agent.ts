@@ -143,12 +143,11 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
     /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform. Possible values: ["TIER_STANDARD", "TIER_ENTERPRISE",
+     * "TIER_ENTERPRISE_PLUS"]
      */
     public readonly tier!: pulumi.Output<string | undefined>;
     /**
@@ -282,12 +281,11 @@ export interface AgentState {
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform. Possible values: ["TIER_STANDARD", "TIER_ENTERPRISE",
+     * "TIER_ENTERPRISE_PLUS"]
      */
     tier?: pulumi.Input<string>;
     /**
@@ -361,12 +359,11 @@ export interface AgentArgs {
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed.
-     * * TIER_STANDARD: Standard tier.
-     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
-     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform. Possible values: ["TIER_STANDARD", "TIER_ENTERPRISE",
+     * "TIER_ENTERPRISE_PLUS"]
      */
     tier?: pulumi.Input<string>;
     /**

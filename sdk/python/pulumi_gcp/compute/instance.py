@@ -53,22 +53,20 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
-               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -77,16 +75,7 @@ class InstanceArgs:
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
-        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be recreated
-               (thus re-running the script) if it is changed. This replaces the startup-script
-               metadata key on the created instance and thus the two mechanisms are not
-               allowed to be used simultaneously.  Users are free to use either mechanism - the
-               only distinction is that this separate attribute will cause a recreate on
-               modification.  On import, `metadata_startup_script` will not be set - if you
-               choose to specify it you will see a diff immediately after import causing a
-               destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -225,8 +214,8 @@ class InstanceArgs:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
-        If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+        stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
 
@@ -276,8 +265,7 @@ class InstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        Whether deletion protection is enabled on this instance.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -327,8 +315,7 @@ class InstanceArgs:
     @pulumi.getter(name="guestAccelerators")
     def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]:
         """
-        List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        List of the type and count of accelerator cards attached to the instance.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -381,16 +368,7 @@ class InstanceArgs:
     @pulumi.getter(name="metadataStartupScript")
     def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
-        An alternative to using the
-        startup-script metadata key, except this one forces the instance to be recreated
-        (thus re-running the script) if it is changed. This replaces the startup-script
-        metadata key on the created instance and thus the two mechanisms are not
-        allowed to be used simultaneously.  Users are free to use either mechanism - the
-        only distinction is that this separate attribute will cause a recreate on
-        modification.  On import, `metadata_startup_script` will not be set - if you
-        choose to specify it you will see a diff immediately after import causing a
-        destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        Metadata startup scripts made available within the instance.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -600,8 +578,8 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
-               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAttachedDiskArgs']]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
@@ -611,15 +589,13 @@ class _InstanceState:
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance.
-        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -632,16 +608,7 @@ class _InstanceState:
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
-        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be recreated
-               (thus re-running the script) if it is changed. This replaces the startup-script
-               metadata key on the created instance and thus the two mechanisms are not
-               allowed to be used simultaneously.  Users are free to use either mechanism - the
-               only distinction is that this separate attribute will cause a recreate on
-               modification.  On import, `metadata_startup_script` will not be set - if you
-               choose to specify it you will see a diff immediately after import causing a
-               destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -763,8 +730,8 @@ class _InstanceState:
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
-        If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+        stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
 
@@ -851,8 +818,7 @@ class _InstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        Whether deletion protection is enabled on this instance.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -902,8 +868,7 @@ class _InstanceState:
     @pulumi.getter(name="guestAccelerators")
     def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]]:
         """
-        List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        List of the type and count of accelerator cards attached to the instance.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -1004,16 +969,7 @@ class _InstanceState:
     @pulumi.getter(name="metadataStartupScript")
     def metadata_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
-        An alternative to using the
-        startup-script metadata key, except this one forces the instance to be recreated
-        (thus re-running the script) if it is changed. This replaces the startup-script
-        metadata key on the created instance and thus the two mechanisms are not
-        allowed to be used simultaneously.  Users are free to use either mechanism - the
-        only distinction is that this separate attribute will cause a recreate on
-        modification.  On import, `metadata_startup_script` will not be set - if you
-        choose to specify it you will see a diff immediately after import causing a
-        destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        Metadata startup scripts made available within the instance.
         """
         return pulumi.get(self, "metadata_startup_script")
 
@@ -1321,8 +1277,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
-               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
@@ -1330,15 +1286,13 @@ class Instance(pulumi.CustomResource):
                packets with non-matching source or destination IPs.
                This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
-        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -1348,16 +1302,7 @@ class Instance(pulumi.CustomResource):
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
-        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be recreated
-               (thus re-running the script) if it is changed. This replaces the startup-script
-               metadata key on the created instance and thus the two mechanisms are not
-               allowed to be used simultaneously.  Users are free to use either mechanism - the
-               only distinction is that this separate attribute will cause a recreate on
-               modification.  On import, `metadata_startup_script` will not be set - if you
-               choose to specify it you will see a diff immediately after import causing a
-               destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1608,8 +1553,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceAdvancedMachineFeaturesArgs']] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
-               If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAttachedDiskArgs']]]] attached_disks: Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceBootDiskArgs']] boot_disk: The boot disk for the instance.
                Structure is documented below.
@@ -1619,15 +1564,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance.
-        :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
-               **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
                `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -1640,16 +1583,7 @@ class Instance(pulumi.CustomResource):
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
-        :param pulumi.Input[str] metadata_startup_script: An alternative to using the
-               startup-script metadata key, except this one forces the instance to be recreated
-               (thus re-running the script) if it is changed. This replaces the startup-script
-               metadata key on the created instance and thus the two mechanisms are not
-               allowed to be used simultaneously.  Users are free to use either mechanism - the
-               only distinction is that this separate attribute will cause a recreate on
-               modification.  On import, `metadata_startup_script` will not be set - if you
-               choose to specify it you will see a diff immediately after import causing a
-               destroy/recreate operation. If importing an instance and specifying this value
-               is desired, you will need to modify your state file.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -1736,8 +1670,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="allowStoppingForUpdate")
     def allow_stopping_for_update(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, allows this prvider to stop the instance to update its properties.
-        If you try to update a property that requires stopping the instance without setting this field, the update will fail.
+        If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+        stopping the instance without setting this field, the update will fail.
         """
         return pulumi.get(self, "allow_stopping_for_update")
 
@@ -1796,8 +1730,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable deletion protection on this instance. Defaults to false.
-        **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
+        Whether deletion protection is enabled on this instance.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1831,8 +1764,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="guestAccelerators")
     def guest_accelerators(self) -> pulumi.Output[Sequence['outputs.InstanceGuestAccelerator']]:
         """
-        List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        List of the type and count of accelerator cards attached to the instance.
         """
         return pulumi.get(self, "guest_accelerators")
 
@@ -1901,16 +1833,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="metadataStartupScript")
     def metadata_startup_script(self) -> pulumi.Output[Optional[str]]:
         """
-        An alternative to using the
-        startup-script metadata key, except this one forces the instance to be recreated
-        (thus re-running the script) if it is changed. This replaces the startup-script
-        metadata key on the created instance and thus the two mechanisms are not
-        allowed to be used simultaneously.  Users are free to use either mechanism - the
-        only distinction is that this separate attribute will cause a recreate on
-        modification.  On import, `metadata_startup_script` will not be set - if you
-        choose to specify it you will see a diff immediately after import causing a
-        destroy/recreate operation. If importing an instance and specifying this value
-        is desired, you will need to modify your state file.
+        Metadata startup scripts made available within the instance.
         """
         return pulumi.get(self, "metadata_startup_script")
 

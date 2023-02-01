@@ -47,6 +47,9 @@ __all__ = [
     'BackendServiceIamBindingCondition',
     'BackendServiceIamMemberCondition',
     'BackendServiceIap',
+    'BackendServiceLocalityLbPolicy',
+    'BackendServiceLocalityLbPolicyCustomPolicy',
+    'BackendServiceLocalityLbPolicyPolicy',
     'BackendServiceLogConfig',
     'BackendServiceOutlierDetection',
     'BackendServiceOutlierDetectionBaseEjectionTime',
@@ -184,6 +187,8 @@ __all__ = [
     'NetworkFirewallPolicyRuleTargetSecureTag',
     'NodeGroupAutoscalingPolicy',
     'NodeGroupMaintenanceWindow',
+    'NodeGroupShareSettings',
+    'NodeGroupShareSettingsProjectMap',
     'NodeTemplateNodeTypeFlexibility',
     'NodeTemplateServerBinding',
     'OrganizationSecurityPolicyRuleMatch',
@@ -352,6 +357,7 @@ __all__ = [
     'RouterStatusBestRouteResult',
     'RouterStatusBestRoutesForRouterResult',
     'SecurityPolicyAdaptiveProtectionConfig',
+    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
     'SecurityPolicyAdvancedOptionsConfig',
     'SecurityPolicyAdvancedOptionsConfigJsonCustomConfig',
@@ -486,6 +492,9 @@ __all__ = [
     'GetBackendServiceConsistentHashHttpCookyResult',
     'GetBackendServiceConsistentHashHttpCookyTtlResult',
     'GetBackendServiceIapResult',
+    'GetBackendServiceLocalityLbPolicyResult',
+    'GetBackendServiceLocalityLbPolicyCustomPolicyResult',
+    'GetBackendServiceLocalityLbPolicyPolicyResult',
     'GetBackendServiceLogConfigResult',
     'GetBackendServiceOutlierDetectionResult',
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
@@ -662,9 +671,6 @@ class AutoscalarAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
-        :param 'AutoscalarAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
-               Structure is documented below.
         :param 'AutoscalarAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -770,11 +776,6 @@ class AutoscalarAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl']:
-        """
-        Defines scale down controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
         return pulumi.get(self, "scale_down_control")
 
     @property
@@ -919,47 +920,6 @@ class AutoscalarAutoscalingPolicyMetric(dict):
         :param str name: The identifier (type) of the Stackdriver Monitoring metric.
                The metric cannot have negative values.
                The metric must have a value type of INT64 or DOUBLE.
-        :param str filter: A filter string to be used as the filter string for
-               a Stackdriver Monitoring TimeSeries.list API call.
-               This filter is used to select a specific TimeSeries for
-               the purpose of autoscaling and to determine whether the metric
-               is exporting per-instance or per-group data.
-               You can only use the AND operator for joining selectors.
-               You can only use direct equality comparison operator (=) without
-               any functions for each selector.
-               You can specify the metric in both the filter string and in the
-               metric field. However, if specified in both places, the metric must
-               be identical.
-               The monitored resource type determines what kind of values are
-               expected for the metric. If it is a gce_instance, the autoscaler
-               expects the metric to include a separate TimeSeries for each
-               instance in a group. In such a case, you cannot filter on resource
-               labels.
-               If the resource type is any other value, the autoscaler expects
-               this metric to contain values that apply to the entire autoscaled
-               instance group and resource label filtering can be performed to
-               point autoscaler at the correct TimeSeries to scale upon.
-               This is called a per-group metric for the purpose of autoscaling.
-               If not specified, the type defaults to gce_instance.
-               You should provide a filter that is selective enough to pick just
-               one TimeSeries for the autoscaled group or for each of the instances
-               (if you are using gce_instance resource type). If multiple
-               TimeSeries are returned upon the query execution, the autoscaler
-               will sum their respective values to obtain its scaling value.
-        :param float single_instance_assignment: If scaling is based on a per-group metric value that represents the
-               total amount of work to be done or resource usage, set this value to
-               an amount assigned for a single instance of the scaled group.
-               The autoscaler will keep the number of instances proportional to the
-               value of this metric, the metric itself should not change value due
-               to group resizing.
-               For example, a good metric to use with the target is
-               `pubsub.googleapis.com/subscription/num_undelivered_messages`
-               or a custom metric exporting the total number of requests coming to
-               your instances.
-               A bad example would be a metric exporting an average or median
-               latency, since this value can't include a chunk assignable to a
-               single instance, it could be better used with utilization_target
-               instead.
         :param float target: The target value of the metric that autoscaler should
                maintain. This must be a positive value. A utilization
                metric scales number of virtual machines handling requests
@@ -995,56 +955,11 @@ class AutoscalarAutoscalingPolicyMetric(dict):
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
-        """
-        A filter string to be used as the filter string for
-        a Stackdriver Monitoring TimeSeries.list API call.
-        This filter is used to select a specific TimeSeries for
-        the purpose of autoscaling and to determine whether the metric
-        is exporting per-instance or per-group data.
-        You can only use the AND operator for joining selectors.
-        You can only use direct equality comparison operator (=) without
-        any functions for each selector.
-        You can specify the metric in both the filter string and in the
-        metric field. However, if specified in both places, the metric must
-        be identical.
-        The monitored resource type determines what kind of values are
-        expected for the metric. If it is a gce_instance, the autoscaler
-        expects the metric to include a separate TimeSeries for each
-        instance in a group. In such a case, you cannot filter on resource
-        labels.
-        If the resource type is any other value, the autoscaler expects
-        this metric to contain values that apply to the entire autoscaled
-        instance group and resource label filtering can be performed to
-        point autoscaler at the correct TimeSeries to scale upon.
-        This is called a per-group metric for the purpose of autoscaling.
-        If not specified, the type defaults to gce_instance.
-        You should provide a filter that is selective enough to pick just
-        one TimeSeries for the autoscaled group or for each of the instances
-        (if you are using gce_instance resource type). If multiple
-        TimeSeries are returned upon the query execution, the autoscaler
-        will sum their respective values to obtain its scaling value.
-        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter(name="singleInstanceAssignment")
     def single_instance_assignment(self) -> Optional[float]:
-        """
-        If scaling is based on a per-group metric value that represents the
-        total amount of work to be done or resource usage, set this value to
-        an amount assigned for a single instance of the scaled group.
-        The autoscaler will keep the number of instances proportional to the
-        value of this metric, the metric itself should not change value due
-        to group resizing.
-        For example, a good metric to use with the target is
-        `pubsub.googleapis.com/subscription/num_undelivered_messages`
-        or a custom metric exporting the total number of requests coming to
-        your instances.
-        A bad example would be a metric exporting an average or median
-        latency, since this value can't include a chunk assignable to a
-        single instance, it could be better used with utilization_target
-        instead.
-        """
         return pulumi.get(self, "single_instance_assignment")
 
     @property
@@ -1432,9 +1347,6 @@ class AutoscalerAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
-        :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
-               Structure is documented below.
         :param 'AutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -1540,11 +1452,6 @@ class AutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl']:
-        """
-        Defines scale down controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
         return pulumi.get(self, "scale_down_control")
 
     @property
@@ -1689,47 +1596,6 @@ class AutoscalerAutoscalingPolicyMetric(dict):
         :param str name: The identifier (type) of the Stackdriver Monitoring metric.
                The metric cannot have negative values.
                The metric must have a value type of INT64 or DOUBLE.
-        :param str filter: A filter string to be used as the filter string for
-               a Stackdriver Monitoring TimeSeries.list API call.
-               This filter is used to select a specific TimeSeries for
-               the purpose of autoscaling and to determine whether the metric
-               is exporting per-instance or per-group data.
-               You can only use the AND operator for joining selectors.
-               You can only use direct equality comparison operator (=) without
-               any functions for each selector.
-               You can specify the metric in both the filter string and in the
-               metric field. However, if specified in both places, the metric must
-               be identical.
-               The monitored resource type determines what kind of values are
-               expected for the metric. If it is a gce_instance, the autoscaler
-               expects the metric to include a separate TimeSeries for each
-               instance in a group. In such a case, you cannot filter on resource
-               labels.
-               If the resource type is any other value, the autoscaler expects
-               this metric to contain values that apply to the entire autoscaled
-               instance group and resource label filtering can be performed to
-               point autoscaler at the correct TimeSeries to scale upon.
-               This is called a per-group metric for the purpose of autoscaling.
-               If not specified, the type defaults to gce_instance.
-               You should provide a filter that is selective enough to pick just
-               one TimeSeries for the autoscaled group or for each of the instances
-               (if you are using gce_instance resource type). If multiple
-               TimeSeries are returned upon the query execution, the autoscaler
-               will sum their respective values to obtain its scaling value.
-        :param float single_instance_assignment: If scaling is based on a per-group metric value that represents the
-               total amount of work to be done or resource usage, set this value to
-               an amount assigned for a single instance of the scaled group.
-               The autoscaler will keep the number of instances proportional to the
-               value of this metric, the metric itself should not change value due
-               to group resizing.
-               For example, a good metric to use with the target is
-               `pubsub.googleapis.com/subscription/num_undelivered_messages`
-               or a custom metric exporting the total number of requests coming to
-               your instances.
-               A bad example would be a metric exporting an average or median
-               latency, since this value can't include a chunk assignable to a
-               single instance, it could be better used with utilization_target
-               instead.
         :param float target: The target value of the metric that autoscaler should
                maintain. This must be a positive value. A utilization
                metric scales number of virtual machines handling requests
@@ -1765,56 +1631,11 @@ class AutoscalerAutoscalingPolicyMetric(dict):
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
-        """
-        A filter string to be used as the filter string for
-        a Stackdriver Monitoring TimeSeries.list API call.
-        This filter is used to select a specific TimeSeries for
-        the purpose of autoscaling and to determine whether the metric
-        is exporting per-instance or per-group data.
-        You can only use the AND operator for joining selectors.
-        You can only use direct equality comparison operator (=) without
-        any functions for each selector.
-        You can specify the metric in both the filter string and in the
-        metric field. However, if specified in both places, the metric must
-        be identical.
-        The monitored resource type determines what kind of values are
-        expected for the metric. If it is a gce_instance, the autoscaler
-        expects the metric to include a separate TimeSeries for each
-        instance in a group. In such a case, you cannot filter on resource
-        labels.
-        If the resource type is any other value, the autoscaler expects
-        this metric to contain values that apply to the entire autoscaled
-        instance group and resource label filtering can be performed to
-        point autoscaler at the correct TimeSeries to scale upon.
-        This is called a per-group metric for the purpose of autoscaling.
-        If not specified, the type defaults to gce_instance.
-        You should provide a filter that is selective enough to pick just
-        one TimeSeries for the autoscaled group or for each of the instances
-        (if you are using gce_instance resource type). If multiple
-        TimeSeries are returned upon the query execution, the autoscaler
-        will sum their respective values to obtain its scaling value.
-        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter(name="singleInstanceAssignment")
     def single_instance_assignment(self) -> Optional[float]:
-        """
-        If scaling is based on a per-group metric value that represents the
-        total amount of work to be done or resource usage, set this value to
-        an amount assigned for a single instance of the scaled group.
-        The autoscaler will keep the number of instances proportional to the
-        value of this metric, the metric itself should not change value due
-        to group resizing.
-        For example, a good metric to use with the target is
-        `pubsub.googleapis.com/subscription/num_undelivered_messages`
-        or a custom metric exporting the total number of requests coming to
-        your instances.
-        A bad example would be a metric exporting an average or median
-        latency, since this value can't include a chunk assignable to a
-        single instance, it could be better used with utilization_target
-        instead.
-        """
         return pulumi.get(self, "single_instance_assignment")
 
     @property
@@ -3183,8 +3004,6 @@ class BackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
-               Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param int max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -3214,10 +3033,6 @@ class BackendServiceCircuitBreakers(dict):
     @property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.BackendServiceCircuitBreakersConnectTimeout']:
-        """
-        The timeout for new network connections to hosts.
-        Structure is documented below.
-        """
         return pulumi.get(self, "connect_timeout")
 
     @property
@@ -3619,6 +3434,136 @@ class BackendServiceIap(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLbPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customPolicy":
+            suggest = "custom_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLocalityLbPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLocalityLbPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLocalityLbPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_policy: Optional['outputs.BackendServiceLocalityLbPolicyCustomPolicy'] = None,
+                 policy: Optional['outputs.BackendServiceLocalityLbPolicyPolicy'] = None):
+        """
+        :param 'BackendServiceLocalityLbPolicyCustomPolicyArgs' custom_policy: The configuration for a custom policy implemented by the user and
+               deployed with the client.
+               Structure is documented below.
+        :param 'BackendServiceLocalityLbPolicyPolicyArgs' policy: The configuration for a built-in load balancing policy.
+               Structure is documented below.
+        """
+        if custom_policy is not None:
+            pulumi.set(__self__, "custom_policy", custom_policy)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> Optional['outputs.BackendServiceLocalityLbPolicyCustomPolicy']:
+        """
+        The configuration for a custom policy implemented by the user and
+        deployed with the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_policy")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional['outputs.BackendServiceLocalityLbPolicyPolicy']:
+        """
+        The configuration for a built-in load balancing policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLbPolicyCustomPolicy(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 data: Optional[str] = None):
+        """
+        :param str name: Identifies the custom policy.
+               The value should match the type the custom implementation is registered
+               with on the gRPC clients. It should follow protocol buffer
+               message naming conventions and include the full path (e.g.
+               myorg.CustomLbPolicy). The maximum length is 256 characters.
+               Note that specifying the same custom policy more than once for a
+               backend is not a valid configuration and will be rejected.
+        :param str data: An optional, arbitrary JSON object with configuration data, understood
+               by a locally installed custom policy implementation.
+        """
+        pulumi.set(__self__, "name", name)
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Identifies the custom policy.
+        The value should match the type the custom implementation is registered
+        with on the gRPC clients. It should follow protocol buffer
+        message naming conventions and include the full path (e.g.
+        myorg.CustomLbPolicy). The maximum length is 256 characters.
+        Note that specifying the same custom policy more than once for a
+        backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[str]:
+        """
+        An optional, arbitrary JSON object with configuration data, understood
+        by a locally installed custom policy implementation.
+        """
+        return pulumi.get(self, "data")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLbPolicyPolicy(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The name of a locality load balancer policy to be used. The value
+               should be one of the predefined ones as supported by localityLbPolicy,
+               although at the moment only ROUND_ROBIN is supported.
+               This field should only be populated when the customPolicy field is not
+               used.
+               Note that specifying the same policy more than once for a backend is
+               not a valid configuration and will be rejected.
+               The possible values are:
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of a locality load balancer policy to be used. The value
+        should be one of the predefined ones as supported by localityLbPolicy,
+        although at the moment only ROUND_ROBIN is supported.
+        This field should only be populated when the customPolicy field is not
+        used.
+        Note that specifying the same policy more than once for a backend is
+        not a valid configuration and will be rejected.
+        The possible values are:
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -6136,7 +6081,7 @@ class InstanceAttachedDisk(dict):
         :param str device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param str kms_key_self_link: The self_link of the encryption key that is
@@ -6181,7 +6126,7 @@ class InstanceAttachedDisk(dict):
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
         A 256-bit [customer-supplied encryption key]
-        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -6258,7 +6203,7 @@ class InstanceBootDisk(dict):
         :param str device_name: Name with which attached disk will be accessible.
                On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
@@ -6314,7 +6259,7 @@ class InstanceBootDisk(dict):
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
         A 256-bit [customer-supplied encryption key]
-        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>),
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
         may be set.
@@ -9185,12 +9130,6 @@ class InstanceNetworkInterface(dict):
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
-        :param Sequence['InstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
-               instance can be accessed via the Internet. Omit to ensure that the instance
-               is not accessible from the Internet. If omitted, ssh will not
-               work unless this provider can send traffic to the instance's network (e.g. via
-               tunnel or because it is running on another cloud instance on that network).
-               This block can be repeated multiple times. Structure documented below.
         :param Sequence['InstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -9249,14 +9188,6 @@ class InstanceNetworkInterface(dict):
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[Sequence['outputs.InstanceNetworkInterfaceAccessConfig']]:
-        """
-        Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet. If omitted, ssh will not
-        work unless this provider can send traffic to the instance's network (e.g. via
-        tunnel or because it is running on another cloud instance on that network).
-        This block can be repeated multiple times. Structure documented below.
-        """
         return pulumi.get(self, "access_configs")
 
     @property
@@ -9750,7 +9681,7 @@ class InstanceScheduling(dict):
         :param bool preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
-        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
                `preemptible` should be `true` and `auto_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -9839,7 +9770,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
         `preemptible` should be `true` and `auto_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -10681,20 +10612,12 @@ class InstanceTemplateNetworkInterface(dict):
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
-        :param Sequence['InstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
-               instance can be accessed via the Internet. Omit to ensure that the instance
-               is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you can send traffic to the instance's
-               network (e.g. via tunnel or because it is running on another cloud instance
-               on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['InstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
         :param Sequence['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
-        :param str name: The name of the instance template. If you leave
-               this blank, the provider will auto-generate a unique name.
         :param str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
@@ -10737,14 +10660,6 @@ class InstanceTemplateNetworkInterface(dict):
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceAccessConfig']]:
-        """
-        Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you can send traffic to the instance's
-        network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be repeated multiple times. Structure documented below.
-        """
         return pulumi.get(self, "access_configs")
 
     @property
@@ -10775,10 +10690,6 @@ class InstanceTemplateNetworkInterface(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the instance template. If you leave
-        this blank, the provider will auto-generate a unique name.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -11198,7 +11109,6 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11252,9 +11162,6 @@ class InstanceTemplateScheduling(dict):
     @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional['outputs.InstanceTemplateSchedulingMaxRunDuration']:
-        """
-        Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        """
         return pulumi.get(self, "max_run_duration")
 
     @property
@@ -12010,6 +11917,105 @@ class NodeGroupMaintenanceWindow(dict):
 
 
 @pulumi.output_type
+class NodeGroupShareSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shareType":
+            suggest = "share_type"
+        elif key == "projectMaps":
+            suggest = "project_maps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupShareSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupShareSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupShareSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 share_type: str,
+                 project_maps: Optional[Sequence['outputs.NodeGroupShareSettingsProjectMap']] = None):
+        """
+        :param str share_type: Node group sharing type.
+               Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+        :param Sequence['NodeGroupShareSettingsProjectMapArgs'] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "share_type", share_type)
+        if project_maps is not None:
+            pulumi.set(__self__, "project_maps", project_maps)
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        Node group sharing type.
+        Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+        """
+        return pulumi.get(self, "share_type")
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Optional[Sequence['outputs.NodeGroupShareSettingsProjectMap']]:
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "project_maps")
+
+
+@pulumi.output_type
+class NodeGroupShareSettingsProjectMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupShareSettingsProjectMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupShareSettingsProjectMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupShareSettingsProjectMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 project_id: str):
+        """
+        :param str id: The identifier for this object. Format specified above.
+        :param str project_id: The project id/number should be the same as the key of this project config in the project map.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The project id/number should be the same as the key of this project config in the project map.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
 class NodeTemplateNodeTypeFlexibility(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12693,9 +12699,6 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param str mode: Defines operating mode for this policy.
                Default value is `ON`.
                Possible values are `OFF`, `ONLY_UP`, and `ON`.
-        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
-               Structure is documented below.
         :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -12801,11 +12804,6 @@ class RegionAutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl']:
-        """
-        Defines scale down controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
-        Structure is documented below.
-        """
         return pulumi.get(self, "scale_down_control")
 
     @property
@@ -12950,47 +12948,6 @@ class RegionAutoscalerAutoscalingPolicyMetric(dict):
         :param str name: The identifier (type) of the Stackdriver Monitoring metric.
                The metric cannot have negative values.
                The metric must have a value type of INT64 or DOUBLE.
-        :param str filter: A filter string to be used as the filter string for
-               a Stackdriver Monitoring TimeSeries.list API call.
-               This filter is used to select a specific TimeSeries for
-               the purpose of autoscaling and to determine whether the metric
-               is exporting per-instance or per-group data.
-               You can only use the AND operator for joining selectors.
-               You can only use direct equality comparison operator (=) without
-               any functions for each selector.
-               You can specify the metric in both the filter string and in the
-               metric field. However, if specified in both places, the metric must
-               be identical.
-               The monitored resource type determines what kind of values are
-               expected for the metric. If it is a gce_instance, the autoscaler
-               expects the metric to include a separate TimeSeries for each
-               instance in a group. In such a case, you cannot filter on resource
-               labels.
-               If the resource type is any other value, the autoscaler expects
-               this metric to contain values that apply to the entire autoscaled
-               instance group and resource label filtering can be performed to
-               point autoscaler at the correct TimeSeries to scale upon.
-               This is called a per-group metric for the purpose of autoscaling.
-               If not specified, the type defaults to gce_instance.
-               You should provide a filter that is selective enough to pick just
-               one TimeSeries for the autoscaled group or for each of the instances
-               (if you are using gce_instance resource type). If multiple
-               TimeSeries are returned upon the query execution, the autoscaler
-               will sum their respective values to obtain its scaling value.
-        :param float single_instance_assignment: If scaling is based on a per-group metric value that represents the
-               total amount of work to be done or resource usage, set this value to
-               an amount assigned for a single instance of the scaled group.
-               The autoscaler will keep the number of instances proportional to the
-               value of this metric, the metric itself should not change value due
-               to group resizing.
-               For example, a good metric to use with the target is
-               `pubsub.googleapis.com/subscription/num_undelivered_messages`
-               or a custom metric exporting the total number of requests coming to
-               your instances.
-               A bad example would be a metric exporting an average or median
-               latency, since this value can't include a chunk assignable to a
-               single instance, it could be better used with utilization_target
-               instead.
         :param float target: The target value of the metric that autoscaler should
                maintain. This must be a positive value. A utilization
                metric scales number of virtual machines handling requests
@@ -13026,56 +12983,11 @@ class RegionAutoscalerAutoscalingPolicyMetric(dict):
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
-        """
-        A filter string to be used as the filter string for
-        a Stackdriver Monitoring TimeSeries.list API call.
-        This filter is used to select a specific TimeSeries for
-        the purpose of autoscaling and to determine whether the metric
-        is exporting per-instance or per-group data.
-        You can only use the AND operator for joining selectors.
-        You can only use direct equality comparison operator (=) without
-        any functions for each selector.
-        You can specify the metric in both the filter string and in the
-        metric field. However, if specified in both places, the metric must
-        be identical.
-        The monitored resource type determines what kind of values are
-        expected for the metric. If it is a gce_instance, the autoscaler
-        expects the metric to include a separate TimeSeries for each
-        instance in a group. In such a case, you cannot filter on resource
-        labels.
-        If the resource type is any other value, the autoscaler expects
-        this metric to contain values that apply to the entire autoscaled
-        instance group and resource label filtering can be performed to
-        point autoscaler at the correct TimeSeries to scale upon.
-        This is called a per-group metric for the purpose of autoscaling.
-        If not specified, the type defaults to gce_instance.
-        You should provide a filter that is selective enough to pick just
-        one TimeSeries for the autoscaled group or for each of the instances
-        (if you are using gce_instance resource type). If multiple
-        TimeSeries are returned upon the query execution, the autoscaler
-        will sum their respective values to obtain its scaling value.
-        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter(name="singleInstanceAssignment")
     def single_instance_assignment(self) -> Optional[float]:
-        """
-        If scaling is based on a per-group metric value that represents the
-        total amount of work to be done or resource usage, set this value to
-        an amount assigned for a single instance of the scaled group.
-        The autoscaler will keep the number of instances proportional to the
-        value of this metric, the metric itself should not change value due
-        to group resizing.
-        For example, a good metric to use with the target is
-        `pubsub.googleapis.com/subscription/num_undelivered_messages`
-        or a custom metric exporting the total number of requests coming to
-        your instances.
-        A bad example would be a metric exporting an average or median
-        latency, since this value can't include a chunk assignable to a
-        single instance, it could be better used with utilization_target
-        instead.
-        """
         return pulumi.get(self, "single_instance_assignment")
 
     @property
@@ -14009,8 +13921,6 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
         """
         :param int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
                can be specified as values, and you cannot specify a status code more than once.
-        :param int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -14029,10 +13939,6 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
-        """
-        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
-        """
         return pulumi.get(self, "ttl")
 
 
@@ -14073,8 +13979,6 @@ class RegionBackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[int] = None,
                  max_retries: Optional[int] = None):
         """
-        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
-               Structure is documented below.
         :param int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
         :param int max_pending_requests: The maximum number of pending requests to the backend cluster.
@@ -14104,10 +14008,6 @@ class RegionBackendServiceCircuitBreakers(dict):
     @property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.RegionBackendServiceCircuitBreakersConnectTimeout']:
-        """
-        The timeout for new network connections to hosts.
-        Structure is documented below.
-        """
         return pulumi.get(self, "connect_timeout")
 
     @property
@@ -15243,7 +15143,6 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
                  raw_key: Optional[str] = None,
                  sha256: Optional[str] = None):
         """
-        :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
         :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -15259,9 +15158,6 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
     @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[str]:
-        """
-        The name of the encryption key that is stored in Google Cloud KMS.
-        """
         return pulumi.get(self, "kms_key_name")
 
     @property
@@ -24386,7 +24282,9 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "layer7DdosDefenseConfig":
+        if key == "autoDeployConfig":
+            suggest = "auto_deploy_config"
+        elif key == "layer7DdosDefenseConfig":
             suggest = "layer7_ddos_defense_config"
 
         if suggest:
@@ -24401,12 +24299,24 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_deploy_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig'] = None,
                  layer7_ddos_defense_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig'] = None):
         """
+        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
         :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs' layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
+        if auto_deploy_config is not None:
+            pulumi.set(__self__, "auto_deploy_config", auto_deploy_config)
         if layer7_ddos_defense_config is not None:
             pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
+
+    @property
+    @pulumi.getter(name="autoDeployConfig")
+    def auto_deploy_config(self) -> Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig']:
+        """
+        ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        """
+        return pulumi.get(self, "auto_deploy_config")
 
     @property
     @pulumi.getter(name="layer7DdosDefenseConfig")
@@ -24415,6 +24325,84 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
         Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         return pulumi.get(self, "layer7_ddos_defense_config")
+
+
+@pulumi.output_type
+class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceThreshold":
+            suggest = "confidence_threshold"
+        elif key == "expirationSec":
+            suggest = "expiration_sec"
+        elif key == "impactedBaselineThreshold":
+            suggest = "impacted_baseline_threshold"
+        elif key == "loadThreshold":
+            suggest = "load_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[float] = None,
+                 expiration_sec: Optional[int] = None,
+                 impacted_baseline_threshold: Optional[float] = None,
+                 load_threshold: Optional[float] = None):
+        """
+        :param float confidence_threshold: Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+        :param int expiration_sec: Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+        :param float impacted_baseline_threshold: Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+        :param float load_threshold: Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if expiration_sec is not None:
+            pulumi.set(__self__, "expiration_sec", expiration_sec)
+        if impacted_baseline_threshold is not None:
+            pulumi.set(__self__, "impacted_baseline_threshold", impacted_baseline_threshold)
+        if load_threshold is not None:
+            pulumi.set(__self__, "load_threshold", load_threshold)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[float]:
+        """
+        Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @property
+    @pulumi.getter(name="expirationSec")
+    def expiration_sec(self) -> Optional[int]:
+        """
+        Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+        """
+        return pulumi.get(self, "expiration_sec")
+
+    @property
+    @pulumi.getter(name="impactedBaselineThreshold")
+    def impacted_baseline_threshold(self) -> Optional[float]:
+        """
+        Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+        """
+        return pulumi.get(self, "impacted_baseline_threshold")
+
+    @property
+    @pulumi.getter(name="loadThreshold")
+    def load_threshold(self) -> Optional[float]:
+        """
+        Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+        """
+        return pulumi.get(self, "load_threshold")
 
 
 @pulumi.output_type
@@ -33375,6 +33363,68 @@ class GetBackendServiceIapResult(dict):
 
 
 @pulumi.output_type
+class GetBackendServiceLocalityLbPolicyResult(dict):
+    def __init__(__self__, *,
+                 custom_policies: Sequence['outputs.GetBackendServiceLocalityLbPolicyCustomPolicyResult'],
+                 policies: Sequence['outputs.GetBackendServiceLocalityLbPolicyPolicyResult']):
+        pulumi.set(__self__, "custom_policies", custom_policies)
+        pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter(name="customPolicies")
+    def custom_policies(self) -> Sequence['outputs.GetBackendServiceLocalityLbPolicyCustomPolicyResult']:
+        return pulumi.get(self, "custom_policies")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GetBackendServiceLocalityLbPolicyPolicyResult']:
+        return pulumi.get(self, "policies")
+
+
+@pulumi.output_type
+class GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
+    def __init__(__self__, *,
+                 data: str,
+                 name: str):
+        """
+        :param str name: The name of the Backend Service.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Backend Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetBackendServiceLocalityLbPolicyPolicyResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The name of the Backend Service.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Backend Service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetBackendServiceLogConfigResult(dict):
     def __init__(__self__, *,
                  enable: bool,
@@ -35544,12 +35594,6 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  subnetwork: str,
                  subnetwork_project: str):
         """
-        :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
-               instance can be accessed via the Internet. Omit to ensure that the instance
-               is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you are running the prvovider can send traffic to the instance's
-               network (e.g. via tunnel or because it is running on another cloud instance
-               on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -35581,14 +35625,6 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult']:
-        """
-        Access configurations, i.e. IPs via which this
-        instance can be accessed via the Internet. Omit to ensure that the instance
-        is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you are running the prvovider can send traffic to the instance's
-        network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be repeated multiple times. Structure documented below.
-        """
         return pulumi.get(self, "access_configs")
 
     @property

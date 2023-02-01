@@ -95,17 +95,9 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableDependentServices() {
         return Codegen.optional(this.disableDependentServices);
     }
-    /**
-     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     * 
-     */
     @Export(name="disableOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableOnDestroy;
 
-    /**
-     * @return If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
-     * 
-     */
     public Output<Optional<Boolean>> disableOnDestroy() {
         return Codegen.optional(this.disableOnDestroy);
     }

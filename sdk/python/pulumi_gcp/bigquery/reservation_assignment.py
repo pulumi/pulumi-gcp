@@ -231,21 +231,6 @@ class ReservationAssignment(pulumi.CustomResource):
         The BigqueryReservation Assignment resource
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.bigquery.Reservation("basic",
-            project="my-project-name",
-            location="us-central1",
-            slot_capacity=0,
-            ignore_idle_slots=False)
-        primary = gcp.bigquery.ReservationAssignment("primary",
-            assignee="projects/my-project-name",
-            job_type="PIPELINE",
-            reservation=basic.id)
-        ```
 
         ## Import
 
@@ -281,21 +266,6 @@ class ReservationAssignment(pulumi.CustomResource):
         The BigqueryReservation Assignment resource
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.bigquery.Reservation("basic",
-            project="my-project-name",
-            location="us-central1",
-            slot_capacity=0,
-            ignore_idle_slots=False)
-        primary = gcp.bigquery.ReservationAssignment("primary",
-            assignee="projects/my-project-name",
-            job_type="PIPELINE",
-            reservation=basic.id)
-        ```
 
         ## Import
 

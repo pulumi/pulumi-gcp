@@ -260,6 +260,9 @@ type RouterNat struct {
 	// Timeout (in seconds) for TCP established connections.
 	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+	// Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpTransitoryIdleTimeoutSec"`
@@ -368,6 +371,9 @@ type routerNatState struct {
 	// Timeout (in seconds) for TCP established connections.
 	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec *int `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+	// Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec *int `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
@@ -439,6 +445,9 @@ type RouterNatState struct {
 	// Timeout (in seconds) for TCP established connections.
 	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrInput
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+	// Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec pulumi.IntPtrInput
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
@@ -514,6 +523,9 @@ type routerNatArgs struct {
 	// Timeout (in seconds) for TCP established connections.
 	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec *int `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+	// Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec *int `pulumi:"tcpTimeWaitTimeoutSec"`
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
@@ -586,6 +598,9 @@ type RouterNatArgs struct {
 	// Timeout (in seconds) for TCP established connections.
 	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrInput
+	// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+	// Defaults to 120s if not set.
+	TcpTimeWaitTimeoutSec pulumi.IntPtrInput
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
@@ -792,6 +807,12 @@ func (o RouterNatOutput) Subnetworks() RouterNatSubnetworkArrayOutput {
 // Defaults to 1200s if not set.
 func (o RouterNatOutput) TcpEstablishedIdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.TcpEstablishedIdleTimeoutSec }).(pulumi.IntPtrOutput)
+}
+
+// Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+// Defaults to 120s if not set.
+func (o RouterNatOutput) TcpTimeWaitTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.TcpTimeWaitTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
 // Timeout (in seconds) for TCP transitory connections.

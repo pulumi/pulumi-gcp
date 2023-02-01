@@ -7,30 +7,44 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const config = new gcp.organizations.IamAuditConfig("config", {
- *     auditLogConfigs: [{
- *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
- *         logType: "DATA_READ",
- *     }],
- *     orgId: "your-organization-id",
- *     service: "allServices",
- * });
- * ```
- *
  * ## Import
  *
- * IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ *
+ * This member resource can be imported using the `org_id`, role, and member e.g.
  *
  * ```sh
- *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
+ *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig my_organization "your-orgid roles/viewer user:foo@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+ *
+ * This binding resource can be imported using the `org_id` and role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig my_organization "your-org-id roles/viewer"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question.
+ *
+ * This policy resource can be imported using the `org_id`.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig my_organization your-org-id
+ * ```
+ *
+ *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig my_organization "your-organization-id foo.googleapis.com"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+ *
+ * ```sh
+ *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
  * ```
  */
 export class IamAuditConfig extends pulumi.CustomResource {
@@ -66,11 +80,13 @@ export class IamAuditConfig extends pulumi.CustomResource {
      */
     public readonly auditLogConfigs!: pulumi.Output<outputs.organizations.IamAuditConfigAuditLogConfig[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -125,11 +141,13 @@ export interface IamAuditConfigState {
      */
     auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The etag of iam policy
+     * (Computed) The etag of the organization's IAM policy.
      */
     etag?: pulumi.Input<string>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -147,7 +165,9 @@ export interface IamAuditConfigArgs {
      */
     auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
     /**
-     * The numeric ID of the organization in which you want to manage the audit logging config.
+     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
+     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
+     * will not be inferred from the provider.
      */
     orgId: pulumi.Input<string>;
     /**

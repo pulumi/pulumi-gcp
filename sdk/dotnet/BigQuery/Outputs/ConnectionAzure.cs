@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string CustomerTenantId;
         /// <summary>
+        /// The Azure Application (client) ID where the federated credentials will be hosted.
+        /// </summary>
+        public readonly string? FederatedApplicationClientId;
+        /// <summary>
+        /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+        /// </summary>
+        public readonly string? Identity;
+        /// <summary>
         /// The object id of the Azure Active Directory Application.
         /// </summary>
         public readonly string? ObjectId;
@@ -42,6 +50,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string customerTenantId,
 
+            string? federatedApplicationClientId,
+
+            string? identity,
+
             string? objectId,
 
             string? redirectUri)
@@ -49,6 +61,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Application = application;
             ClientId = clientId;
             CustomerTenantId = customerTenantId;
+            FederatedApplicationClientId = federatedApplicationClientId;
+            Identity = identity;
             ObjectId = objectId;
             RedirectUri = redirectUri;
         }

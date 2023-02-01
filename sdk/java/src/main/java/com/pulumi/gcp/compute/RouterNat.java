@@ -562,6 +562,22 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tcpEstablishedIdleTimeoutSec);
     }
     /**
+     * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     * 
+     */
+    @Export(name="tcpTimeWaitTimeoutSec", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> tcpTimeWaitTimeoutSec;
+
+    /**
+     * @return Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
+     * Defaults to 120s if not set.
+     * 
+     */
+    public Output<Optional<Integer>> tcpTimeWaitTimeoutSec() {
+        return Codegen.optional(this.tcpTimeWaitTimeoutSec);
+    }
+    /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      * 

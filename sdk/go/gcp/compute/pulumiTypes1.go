@@ -10,6 +10,1065 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetHealthCheckLogConfig struct {
+	Enable bool `pulumi:"enable"`
+}
+
+// GetHealthCheckLogConfigInput is an input type that accepts GetHealthCheckLogConfigArgs and GetHealthCheckLogConfigOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigInput` via:
+//
+//	GetHealthCheckLogConfigArgs{...}
+type GetHealthCheckLogConfigInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput
+	ToGetHealthCheckLogConfigOutputWithContext(context.Context) GetHealthCheckLogConfigOutput
+}
+
+type GetHealthCheckLogConfigArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetHealthCheckLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return i.ToGetHealthCheckLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigOutput)
+}
+
+// GetHealthCheckLogConfigArrayInput is an input type that accepts GetHealthCheckLogConfigArray and GetHealthCheckLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigArrayInput` via:
+//
+//	GetHealthCheckLogConfigArray{ GetHealthCheckLogConfigArgs{...} }
+type GetHealthCheckLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput
+	ToGetHealthCheckLogConfigArrayOutputWithContext(context.Context) GetHealthCheckLogConfigArrayOutput
+}
+
+type GetHealthCheckLogConfigArray []GetHealthCheckLogConfigInput
+
+func (GetHealthCheckLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return i.ToGetHealthCheckLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigArrayOutput)
+}
+
+type GetHealthCheckLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHealthCheckLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetHealthCheckLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) Index(i pulumi.IntInput) GetHealthCheckLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckLogConfig {
+		return vs[0].([]GetHealthCheckLogConfig)[vs[1].(int)]
+	}).(GetHealthCheckLogConfigOutput)
+}
+
+type GetHealthCheckSslHealthCheck struct {
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	Request           string `pulumi:"request"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckSslHealthCheckInput is an input type that accepts GetHealthCheckSslHealthCheckArgs and GetHealthCheckSslHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckInput` via:
+//
+//	GetHealthCheckSslHealthCheckArgs{...}
+type GetHealthCheckSslHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput
+	ToGetHealthCheckSslHealthCheckOutputWithContext(context.Context) GetHealthCheckSslHealthCheckOutput
+}
+
+type GetHealthCheckSslHealthCheckArgs struct {
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	Request           pulumi.StringInput `pulumi:"request"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckSslHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return i.ToGetHealthCheckSslHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckOutput)
+}
+
+// GetHealthCheckSslHealthCheckArrayInput is an input type that accepts GetHealthCheckSslHealthCheckArray and GetHealthCheckSslHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckArrayInput` via:
+//
+//	GetHealthCheckSslHealthCheckArray{ GetHealthCheckSslHealthCheckArgs{...} }
+type GetHealthCheckSslHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput
+	ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckSslHealthCheckArrayOutput
+}
+
+type GetHealthCheckSslHealthCheckArray []GetHealthCheckSslHealthCheckInput
+
+func (GetHealthCheckSslHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return i.ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckArrayOutput)
+}
+
+type GetHealthCheckSslHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckSslHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckSslHealthCheck {
+		return vs[0].([]GetHealthCheckSslHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckSslHealthCheckOutput)
+}
+
+type GetHealthCheckTcpHealthCheck struct {
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	Request           string `pulumi:"request"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckTcpHealthCheckInput is an input type that accepts GetHealthCheckTcpHealthCheckArgs and GetHealthCheckTcpHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckInput` via:
+//
+//	GetHealthCheckTcpHealthCheckArgs{...}
+type GetHealthCheckTcpHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput
+	ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckOutput
+}
+
+type GetHealthCheckTcpHealthCheckArgs struct {
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	Request           pulumi.StringInput `pulumi:"request"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckTcpHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return i.ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckOutput)
+}
+
+// GetHealthCheckTcpHealthCheckArrayInput is an input type that accepts GetHealthCheckTcpHealthCheckArray and GetHealthCheckTcpHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckArrayInput` via:
+//
+//	GetHealthCheckTcpHealthCheckArray{ GetHealthCheckTcpHealthCheckArgs{...} }
+type GetHealthCheckTcpHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput
+	ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckArrayOutput
+}
+
+type GetHealthCheckTcpHealthCheckArray []GetHealthCheckTcpHealthCheckInput
+
+func (GetHealthCheckTcpHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return i.ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckArrayOutput)
+}
+
+type GetHealthCheckTcpHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckTcpHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckTcpHealthCheck {
+		return vs[0].([]GetHealthCheckTcpHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckTcpHealthCheckOutput)
+}
+
+type GetInstanceAdvancedMachineFeature struct {
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	ThreadsPerCore             int  `pulumi:"threadsPerCore"`
+	VisibleCoreCount           int  `pulumi:"visibleCoreCount"`
+}
+
+// GetInstanceAdvancedMachineFeatureInput is an input type that accepts GetInstanceAdvancedMachineFeatureArgs and GetInstanceAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetInstanceAdvancedMachineFeatureInput` via:
+//
+//	GetInstanceAdvancedMachineFeatureArgs{...}
+type GetInstanceAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput
+	ToGetInstanceAdvancedMachineFeatureOutputWithContext(context.Context) GetInstanceAdvancedMachineFeatureOutput
+}
+
+type GetInstanceAdvancedMachineFeatureArgs struct {
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	ThreadsPerCore             pulumi.IntInput  `pulumi:"threadsPerCore"`
+	VisibleCoreCount           pulumi.IntInput  `pulumi:"visibleCoreCount"`
+}
+
+func (GetInstanceAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceAdvancedMachineFeatureArgs) ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput {
+	return i.ToGetInstanceAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAdvancedMachineFeatureArgs) ToGetInstanceAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAdvancedMachineFeatureOutput)
+}
+
+// GetInstanceAdvancedMachineFeatureArrayInput is an input type that accepts GetInstanceAdvancedMachineFeatureArray and GetInstanceAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAdvancedMachineFeatureArrayInput` via:
+//
+//	GetInstanceAdvancedMachineFeatureArray{ GetInstanceAdvancedMachineFeatureArgs{...} }
+type GetInstanceAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput
+	ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetInstanceAdvancedMachineFeatureArrayOutput
+}
+
+type GetInstanceAdvancedMachineFeatureArray []GetInstanceAdvancedMachineFeatureInput
+
+func (GetInstanceAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetInstanceAdvancedMachineFeatureArray) ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput {
+	return i.ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAdvancedMachineFeatureArray) ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAdvancedMachineFeatureArrayOutput)
+}
+
+type GetInstanceAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFeatureOutput() GetInstanceAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceAdvancedMachineFeatureOutput) VisibleCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) ToGetInstanceAdvancedMachineFeatureArrayOutput() GetInstanceAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) ToGetInstanceAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetInstanceAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetInstanceAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetInstanceAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAdvancedMachineFeature {
+		return vs[0].([]GetInstanceAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetInstanceAdvancedMachineFeatureOutput)
+}
+
+type GetInstanceAttachedDisk struct {
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName              string `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    string `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
+	KmsKeySelfLink          string `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode string `pulumi:"mode"`
+	// The name or selfLink of the disk attached to this instance.
+	Source string `pulumi:"source"`
+}
+
+// GetInstanceAttachedDiskInput is an input type that accepts GetInstanceAttachedDiskArgs and GetInstanceAttachedDiskOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedDiskInput` via:
+//
+//	GetInstanceAttachedDiskArgs{...}
+type GetInstanceAttachedDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput
+	ToGetInstanceAttachedDiskOutputWithContext(context.Context) GetInstanceAttachedDiskOutput
+}
+
+type GetInstanceAttachedDiskArgs struct {
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName              pulumi.StringInput `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
+	KmsKeySelfLink          pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The name or selfLink of the disk attached to this instance.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetInstanceAttachedDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedDiskArgs) ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput {
+	return i.ToGetInstanceAttachedDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedDiskArgs) ToGetInstanceAttachedDiskOutputWithContext(ctx context.Context) GetInstanceAttachedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedDiskOutput)
+}
+
+// GetInstanceAttachedDiskArrayInput is an input type that accepts GetInstanceAttachedDiskArray and GetInstanceAttachedDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAttachedDiskArrayInput` via:
+//
+//	GetInstanceAttachedDiskArray{ GetInstanceAttachedDiskArgs{...} }
+type GetInstanceAttachedDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput
+	ToGetInstanceAttachedDiskArrayOutputWithContext(context.Context) GetInstanceAttachedDiskArrayOutput
+}
+
+type GetInstanceAttachedDiskArray []GetInstanceAttachedDiskInput
+
+func (GetInstanceAttachedDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (i GetInstanceAttachedDiskArray) ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput {
+	return i.ToGetInstanceAttachedDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAttachedDiskArray) ToGetInstanceAttachedDiskArrayOutputWithContext(ctx context.Context) GetInstanceAttachedDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachedDiskArrayOutput)
+}
+
+type GetInstanceAttachedDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedDiskOutput) ToGetInstanceAttachedDiskOutput() GetInstanceAttachedDiskOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskOutput) ToGetInstanceAttachedDiskOutputWithContext(ctx context.Context) GetInstanceAttachedDiskOutput {
+	return o
+}
+
+// Name with which the attached disk is accessible
+// under `/dev/disk/by-id/`
+func (o GetInstanceAttachedDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceAttachedDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+func (o GetInstanceAttachedDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the disk attached to this instance.
+func (o GetInstanceAttachedDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetInstanceAttachedDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAttachedDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAttachedDisk)(nil)).Elem()
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) ToGetInstanceAttachedDiskArrayOutput() GetInstanceAttachedDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) ToGetInstanceAttachedDiskArrayOutputWithContext(ctx context.Context) GetInstanceAttachedDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceAttachedDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachedDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachedDisk {
+		return vs[0].([]GetInstanceAttachedDisk)[vs[1].(int)]
+	}).(GetInstanceAttachedDiskOutput)
+}
+
+type GetInstanceBootDisk struct {
+	// Whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete bool `pulumi:"autoDelete"`
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName              string `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    string `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
+	// Parameters with which a disk was created alongside the instance.
+	// Structure is documented below.
+	InitializeParams []GetInstanceBootDiskInitializeParam `pulumi:"initializeParams"`
+	KmsKeySelfLink   string                               `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode string `pulumi:"mode"`
+	// The name or selfLink of the disk attached to this instance.
+	Source string `pulumi:"source"`
+}
+
+// GetInstanceBootDiskInput is an input type that accepts GetInstanceBootDiskArgs and GetInstanceBootDiskOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInput` via:
+//
+//	GetInstanceBootDiskArgs{...}
+type GetInstanceBootDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput
+	ToGetInstanceBootDiskOutputWithContext(context.Context) GetInstanceBootDiskOutput
+}
+
+type GetInstanceBootDiskArgs struct {
+	// Whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
+	// Name with which the attached disk is accessible
+	// under `/dev/disk/by-id/`
+	DeviceName              pulumi.StringInput `pulumi:"deviceName"`
+	DiskEncryptionKeyRaw    pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
+	// Parameters with which a disk was created alongside the instance.
+	// Structure is documented below.
+	InitializeParams GetInstanceBootDiskInitializeParamArrayInput `pulumi:"initializeParams"`
+	KmsKeySelfLink   pulumi.StringInput                           `pulumi:"kmsKeySelfLink"`
+	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The name or selfLink of the disk attached to this instance.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetInstanceBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskArgs) ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput {
+	return i.ToGetInstanceBootDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskArgs) ToGetInstanceBootDiskOutputWithContext(ctx context.Context) GetInstanceBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskOutput)
+}
+
+// GetInstanceBootDiskArrayInput is an input type that accepts GetInstanceBootDiskArray and GetInstanceBootDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskArrayInput` via:
+//
+//	GetInstanceBootDiskArray{ GetInstanceBootDiskArgs{...} }
+type GetInstanceBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput
+	ToGetInstanceBootDiskArrayOutputWithContext(context.Context) GetInstanceBootDiskArrayOutput
+}
+
+type GetInstanceBootDiskArray []GetInstanceBootDiskInput
+
+func (GetInstanceBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskArray) ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput {
+	return i.ToGetInstanceBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskArray) ToGetInstanceBootDiskArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskArrayOutput)
+}
+
+type GetInstanceBootDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskOutput) ToGetInstanceBootDiskOutput() GetInstanceBootDiskOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskOutput) ToGetInstanceBootDiskOutputWithContext(ctx context.Context) GetInstanceBootDiskOutput {
+	return o
+}
+
+// Whether the disk will be auto-deleted when the instance is deleted.
+func (o GetInstanceBootDiskOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) bool { return v.AutoDelete }).(pulumi.BoolOutput)
+}
+
+// Name with which the attached disk is accessible
+// under `/dev/disk/by-id/`
+func (o GetInstanceBootDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceBootDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
+}
+
+// Parameters with which a disk was created alongside the instance.
+// Structure is documented below.
+func (o GetInstanceBootDiskOutput) InitializeParams() GetInstanceBootDiskInitializeParamArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) []GetInstanceBootDiskInitializeParam { return v.InitializeParams }).(GetInstanceBootDiskInitializeParamArrayOutput)
+}
+
+func (o GetInstanceBootDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
+func (o GetInstanceBootDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the disk attached to this instance.
+func (o GetInstanceBootDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDisk)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskArrayOutput) ToGetInstanceBootDiskArrayOutput() GetInstanceBootDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskArrayOutput) ToGetInstanceBootDiskArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDisk {
+		return vs[0].([]GetInstanceBootDisk)[vs[1].(int)]
+	}).(GetInstanceBootDiskOutput)
+}
+
+type GetInstanceBootDiskInitializeParam struct {
+	// The image from which this disk was initialised.
+	Image string `pulumi:"image"`
+	// A set of key/value label pairs assigned to the disk.
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The size of the image in gigabytes.
+	Size int `pulumi:"size"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceBootDiskInitializeParamInput is an input type that accepts GetInstanceBootDiskInitializeParamArgs and GetInstanceBootDiskInitializeParamOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamInput` via:
+//
+//	GetInstanceBootDiskInitializeParamArgs{...}
+type GetInstanceBootDiskInitializeParamInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput
+	ToGetInstanceBootDiskInitializeParamOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamOutput
+}
+
+type GetInstanceBootDiskInitializeParamArgs struct {
+	// The image from which this disk was initialised.
+	Image pulumi.StringInput `pulumi:"image"`
+	// A set of key/value label pairs assigned to the disk.
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// The size of the image in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceBootDiskInitializeParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamArgs) ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput {
+	return i.ToGetInstanceBootDiskInitializeParamOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamArgs) ToGetInstanceBootDiskInitializeParamOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamOutput)
+}
+
+// GetInstanceBootDiskInitializeParamArrayInput is an input type that accepts GetInstanceBootDiskInitializeParamArray and GetInstanceBootDiskInitializeParamArrayOutput values.
+// You can construct a concrete instance of `GetInstanceBootDiskInitializeParamArrayInput` via:
+//
+//	GetInstanceBootDiskInitializeParamArray{ GetInstanceBootDiskInitializeParamArgs{...} }
+type GetInstanceBootDiskInitializeParamArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput
+	ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(context.Context) GetInstanceBootDiskInitializeParamArrayOutput
+}
+
+type GetInstanceBootDiskInitializeParamArray []GetInstanceBootDiskInitializeParamInput
+
+func (GetInstanceBootDiskInitializeParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (i GetInstanceBootDiskInitializeParamArray) ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput {
+	return i.ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceBootDiskInitializeParamArray) ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceBootDiskInitializeParamArrayOutput)
+}
+
+type GetInstanceBootDiskInitializeParamOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializeParamOutput() GetInstanceBootDiskInitializeParamOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializeParamOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamOutput {
+	return o
+}
+
+// The image from which this disk was initialised.
+func (o GetInstanceBootDiskInitializeParamOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs assigned to the disk.
+func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The size of the image in gigabytes.
+func (o GetInstanceBootDiskInitializeParamOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceBootDiskInitializeParamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceBootDiskInitializeParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceBootDiskInitializeParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceBootDiskInitializeParam)(nil)).Elem()
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) ToGetInstanceBootDiskInitializeParamArrayOutput() GetInstanceBootDiskInitializeParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) ToGetInstanceBootDiskInitializeParamArrayOutputWithContext(ctx context.Context) GetInstanceBootDiskInitializeParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) GetInstanceBootDiskInitializeParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceBootDiskInitializeParam {
+		return vs[0].([]GetInstanceBootDiskInitializeParam)[vs[1].(int)]
+	}).(GetInstanceBootDiskInitializeParamOutput)
+}
+
+type GetInstanceConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// GetInstanceConfidentialInstanceConfigInput is an input type that accepts GetInstanceConfidentialInstanceConfigArgs and GetInstanceConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigInput` via:
+//
+//	GetInstanceConfidentialInstanceConfigArgs{...}
+type GetInstanceConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput
+	ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (GetInstanceConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArgs) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
+// GetInstanceConfidentialInstanceConfigArrayInput is an input type that accepts GetInstanceConfidentialInstanceConfigArray and GetInstanceConfidentialInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceConfidentialInstanceConfigArrayInput` via:
+//
+//	GetInstanceConfidentialInstanceConfigArray{ GetInstanceConfidentialInstanceConfigArgs{...} }
+type GetInstanceConfidentialInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput
+	ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Context) GetInstanceConfidentialInstanceConfigArrayOutput
+}
+
+type GetInstanceConfidentialInstanceConfigArray []GetInstanceConfidentialInstanceConfigInput
+
+func (GetInstanceConfidentialInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return i.ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConfidentialInstanceConfigArray) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConfidentialInstanceConfigArrayOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutput() GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type GetInstanceConfidentialInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConfidentialInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutput() GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) ToGetInstanceConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConfidentialInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceConfidentialInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceConfidentialInstanceConfig {
+		return vs[0].([]GetInstanceConfidentialInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceConfidentialInstanceConfigOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfig struct {
+	Labels   map[string]string `pulumi:"labels"`
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// GetInstanceGroupManagerAllInstancesConfigInput is an input type that accepts GetInstanceGroupManagerAllInstancesConfigArgs and GetInstanceGroupManagerAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAllInstancesConfigInput` via:
+//
+//	GetInstanceGroupManagerAllInstancesConfigArgs{...}
+type GetInstanceGroupManagerAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput
+	ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Context) GetInstanceGroupManagerAllInstancesConfigOutput
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArgs struct {
+	Labels   pulumi.StringMapInput `pulumi:"labels"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (GetInstanceGroupManagerAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArgs) ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput {
+	return i.ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArgs) ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+// GetInstanceGroupManagerAllInstancesConfigArrayInput is an input type that accepts GetInstanceGroupManagerAllInstancesConfigArray and GetInstanceGroupManagerAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerAllInstancesConfigArrayInput` via:
+//
+//	GetInstanceGroupManagerAllInstancesConfigArray{ GetInstanceGroupManagerAllInstancesConfigArgs{...} }
+type GetInstanceGroupManagerAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput
+	ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArray []GetInstanceGroupManagerAllInstancesConfigInput
+
+func (GetInstanceGroupManagerAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArray) ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return i.ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerAllInstancesConfigArray) ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerAllInstancesConfigArrayOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) ToGetInstanceGroupManagerAllInstancesConfigOutput() GetInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) ToGetInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type GetInstanceGroupManagerAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerAllInstancesConfigArrayOutput() GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerAllInstancesConfig {
+		return vs[0].([]GetInstanceGroupManagerAllInstancesConfig)[vs[1].(int)]
+	}).(GetInstanceGroupManagerAllInstancesConfigOutput)
+}
+
 type GetInstanceGroupManagerAutoHealingPolicy struct {
 	HealthCheck     string `pulumi:"healthCheck"`
 	InitialDelaySec int    `pulumi:"initialDelaySec"`
@@ -4009,12 +5068,6 @@ func (o GetInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceTemplateNetworkInterface struct {
-	// Access configurations, i.e. IPs via which this
-	// instance can be accessed via the Internet. Omit to ensure that the instance
-	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running the prvovider can send traffic to the instance's
-	// network (e.g. via tunnel or because it is running on another cloud instance
-	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -4055,12 +5108,6 @@ type GetInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetInstanceTemplateNetworkInterfaceArgs struct {
-	// Access configurations, i.e. IPs via which this
-	// instance can be accessed via the Internet. Omit to ensure that the instance
-	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running the prvovider can send traffic to the instance's
-	// network (e.g. via tunnel or because it is running on another cloud instance
-	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -4140,12 +5187,6 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkI
 	return o
 }
 
-// Access configurations, i.e. IPs via which this
-// instance can be accessed via the Internet. Omit to ensure that the instance
-// is not accessible from the Internet (this means that ssh provisioners will
-// not work unless you are running the prvovider can send traffic to the instance's
-// network (e.g. via tunnel or because it is running on another cloud instance
-// on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAccessConfig {
 		return v.AccessConfigs
@@ -8783,6 +9824,24 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckLogConfigInput)(nil)).Elem(), GetHealthCheckLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckLogConfigArrayInput)(nil)).Elem(), GetHealthCheckLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckSslHealthCheckInput)(nil)).Elem(), GetHealthCheckSslHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckSslHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckSslHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedDiskInput)(nil)).Elem(), GetInstanceAttachedDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachedDiskArrayInput)(nil)).Elem(), GetInstanceAttachedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInput)(nil)).Elem(), GetInstanceBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskArrayInput)(nil)).Elem(), GetInstanceBootDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBootDiskInitializeParamArrayInput)(nil)).Elem(), GetInstanceBootDiskInitializeParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfidentialInstanceConfigInput)(nil)).Elem(), GetInstanceConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConfidentialInstanceConfigArrayInput)(nil)).Elem(), GetInstanceConfidentialInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), GetInstanceGroupManagerAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAllInstancesConfigArrayInput)(nil)).Elem(), GetInstanceGroupManagerAllInstancesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), GetInstanceGroupManagerAutoHealingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerAutoHealingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArgs{})
@@ -8935,6 +9994,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceAttachedDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamOutput{})
+	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceConfidentialInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerAllInstancesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerAutoHealingPolicyOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerAutoHealingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortOutput{})

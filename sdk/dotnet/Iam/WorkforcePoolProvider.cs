@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
     ///         {
-    ///             IssuerUri = "https://accounts.google.com",
+    ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
     ///         },
     ///     });
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
     ///         {
-    ///             IssuerUri = "https://accounts.google.com",
+    ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
     ///         },
     ///         DisplayName = "Display name",

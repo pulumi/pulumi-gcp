@@ -11,24 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a Google Cloud Platform project.
-//
-// Projects created with this resource must be associated with an Organization.
-// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-//
-// The user or service account that is running this provider when creating a `organizations.Project`
-// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-// doc for more information.
-//
-// > This resource reads the specified billing account on every provider apply and plan operation so you must have permissions on the specified billing account.
-//
-// To get more information about projects, see:
-//
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-// * How-to Guides
-//   - [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
-//
 // ## Example Usage
 //
 // ```go
@@ -102,16 +84,13 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Create the 'default' network automatically.  Default `true`.
-	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project successfully, even if
-	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
+	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+	// See Google Cloud Billing API Access Control for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -134,8 +113,7 @@ type Project struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API.
+	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
 }
 
@@ -171,16 +149,13 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Create the 'default' network automatically.  Default `true`.
-	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project successfully, even if
-	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
+	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+	// See Google Cloud Billing API Access Control for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -203,22 +178,18 @@ type projectState struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API.
+	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
 type ProjectState struct {
-	// Create the 'default' network automatically.  Default `true`.
-	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project successfully, even if
-	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
+	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+	// See Google Cloud Billing API Access Control for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -241,8 +212,7 @@ type ProjectState struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API.
+	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -251,16 +221,13 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Create the 'default' network automatically.  Default `true`.
-	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project successfully, even if
-	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
+	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+	// See Google Cloud Billing API Access Control for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -281,23 +248,19 @@ type projectArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId string `pulumi:"projectId"`
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API.
+	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Create the 'default' network automatically.  Default `true`.
-	// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-	// will still need to have 1 network slot available to create the project successfully, even if
-	// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project
-	// belongs to. The user or service account performing this operation with the provider
-	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-	// for more details.
+	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+	// See Google Cloud Billing API Access Control for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -318,8 +281,7 @@ type ProjectArgs struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringInput
-	// If true, the resource can be deleted
-	// without deleting the Project via the Google API.
+	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -410,19 +372,16 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Create the 'default' network automatically.  Default `true`.
-// If set to `false`, the default network will be deleted.  Note that, for quota purposes, you
-// will still need to have 1 network slot available to create the project successfully, even if
-// you set `autoCreateNetwork` to `false`, since the network will exist momentarily.
+// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
+// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
+// if you set auto_create_network to false, since the network will exist momentarily.
 func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AutoCreateNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// The alphanumeric ID of the billing account this project
-// belongs to. The user or service account performing this operation with the provider
-// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
-// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
-// for more details.
+// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
+// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
+// See Google Cloud Billing API Access Control for more details.
 func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }
@@ -466,8 +425,7 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// If true, the resource can be deleted
-// without deleting the Project via the Google API.
+// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
 func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
 }

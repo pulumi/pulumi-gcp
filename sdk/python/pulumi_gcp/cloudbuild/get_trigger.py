@@ -22,7 +22,7 @@ class GetTriggerResult:
     """
     A collection of values returned by getTrigger.
     """
-    def __init__(__self__, approval_configs=None, builds=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
+    def __init__(__self__, approval_configs=None, builds=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
         if approval_configs and not isinstance(approval_configs, list):
             raise TypeError("Expected argument 'approval_configs' to be a list")
         pulumi.set(__self__, "approval_configs", approval_configs)
@@ -74,6 +74,9 @@ class GetTriggerResult:
         if pubsub_configs and not isinstance(pubsub_configs, list):
             raise TypeError("Expected argument 'pubsub_configs' to be a list")
         pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+        if repository_event_configs and not isinstance(repository_event_configs, list):
+            raise TypeError("Expected argument 'repository_event_configs' to be a list")
+        pulumi.set(__self__, "repository_event_configs", repository_event_configs)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
@@ -185,6 +188,11 @@ class GetTriggerResult:
         return pulumi.get(self, "pubsub_configs")
 
     @property
+    @pulumi.getter(name="repositoryEventConfigs")
+    def repository_event_configs(self) -> Sequence['outputs.GetTriggerRepositoryEventConfigResult']:
+        return pulumi.get(self, "repository_event_configs")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         return pulumi.get(self, "service_account")
@@ -243,6 +251,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             name=self.name,
             project=self.project,
             pubsub_configs=self.pubsub_configs,
+            repository_event_configs=self.repository_event_configs,
             service_account=self.service_account,
             source_to_builds=self.source_to_builds,
             substitutions=self.substitutions,
@@ -304,6 +313,7 @@ def get_trigger(location: Optional[str] = None,
         name=__ret__.name,
         project=__ret__.project,
         pubsub_configs=__ret__.pubsub_configs,
+        repository_event_configs=__ret__.repository_event_configs,
         service_account=__ret__.service_account,
         source_to_builds=__ret__.source_to_builds,
         substitutions=__ret__.substitutions,

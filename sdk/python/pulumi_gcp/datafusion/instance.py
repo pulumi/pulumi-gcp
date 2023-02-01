@@ -38,12 +38,12 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
-               * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
                using point and click UI. However, there are certain limitations, such as fewer number
                of concurrent pipelines, no support for streaming pipelines, etc.
-               * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-               * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+               - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -114,12 +114,12 @@ class InstanceArgs:
         """
         Represents the type of Data Fusion instance. Each type is configured with
         the default settings for processing and memory.
-        * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+        - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
         using point and click UI. However, there are certain limitations, such as fewer number
         of concurrent pipelines, no support for streaming pipelines, etc.
-        * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+        - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
         available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-        * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+        - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -404,22 +404,22 @@ class _InstanceState:
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The current state of this Data Fusion instance.
-               * CREATING: Instance is being created
-               * RUNNING: Instance is running and ready for requests
-               * FAILED: Instance creation failed
-               * DELETING: Instance is being deleted
-               * UPGRADING: Instance is being upgraded
-               * RESTARTING: Instance is being restarted
+               - CREATING: Instance is being created
+               - RUNNING: Instance is running and ready for requests
+               - FAILED: Instance creation failed
+               - DELETING: Instance is being deleted
+               - UPGRADING: Instance is being upgraded
+               - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
-               * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
                using point and click UI. However, there are certain limitations, such as fewer number
                of concurrent pipelines, no support for streaming pipelines, etc.
-               * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-               * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+               - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -751,12 +751,12 @@ class _InstanceState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The current state of this Data Fusion instance.
-        * CREATING: Instance is being created
-        * RUNNING: Instance is running and ready for requests
-        * FAILED: Instance creation failed
-        * DELETING: Instance is being deleted
-        * UPGRADING: Instance is being upgraded
-        * RESTARTING: Instance is being restarted
+        - CREATING: Instance is being created
+        - RUNNING: Instance is running and ready for requests
+        - FAILED: Instance creation failed
+        - DELETING: Instance is being deleted
+        - UPGRADING: Instance is being upgraded
+        - RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 
@@ -794,12 +794,12 @@ class _InstanceState:
         """
         Represents the type of Data Fusion instance. Each type is configured with
         the default settings for processing and memory.
-        * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+        - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
         using point and click UI. However, there are certain limitations, such as fewer number
         of concurrent pipelines, no support for streaming pipelines, etc.
-        * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+        - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
         available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-        * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+        - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -878,7 +878,7 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
         ### Data Fusion Instance Basic
@@ -1037,12 +1037,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
-               * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
                using point and click UI. However, there are certain limitations, such as fewer number
                of concurrent pipelines, no support for streaming pipelines, etc.
-               * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-               * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+               - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -1062,7 +1062,7 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
         ### Data Fusion Instance Basic
@@ -1341,22 +1341,22 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The current state of this Data Fusion instance.
-               * CREATING: Instance is being created
-               * RUNNING: Instance is running and ready for requests
-               * FAILED: Instance creation failed
-               * DELETING: Instance is being deleted
-               * UPGRADING: Instance is being upgraded
-               * RESTARTING: Instance is being restarted
+               - CREATING: Instance is being created
+               - RUNNING: Instance is running and ready for requests
+               - FAILED: Instance creation failed
+               - DELETING: Instance is being deleted
+               - UPGRADING: Instance is being upgraded
+               - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
                the default settings for processing and memory.
-               * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
                using point and click UI. However, there are certain limitations, such as fewer number
                of concurrent pipelines, no support for streaming pipelines, etc.
-               * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-               * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+               - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
@@ -1578,12 +1578,12 @@ class Instance(pulumi.CustomResource):
     def state(self) -> pulumi.Output[str]:
         """
         The current state of this Data Fusion instance.
-        * CREATING: Instance is being created
-        * RUNNING: Instance is running and ready for requests
-        * FAILED: Instance creation failed
-        * DELETING: Instance is being deleted
-        * UPGRADING: Instance is being upgraded
-        * RESTARTING: Instance is being restarted
+        - CREATING: Instance is being created
+        - RUNNING: Instance is running and ready for requests
+        - FAILED: Instance creation failed
+        - DELETING: Instance is being deleted
+        - UPGRADING: Instance is being upgraded
+        - RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 
@@ -1609,12 +1609,12 @@ class Instance(pulumi.CustomResource):
         """
         Represents the type of Data Fusion instance. Each type is configured with
         the default settings for processing and memory.
-        * BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+        - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
         using point and click UI. However, there are certain limitations, such as fewer number
         of concurrent pipelines, no support for streaming pipelines, etc.
-        * ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+        - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
         available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-        * DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+        - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.

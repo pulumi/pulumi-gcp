@@ -53,49 +53,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Global Address Private Services Connect
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
- *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var default_ = new GlobalAddress(&#34;default&#34;, GlobalAddressArgs.builder()        
- *             .addressType(&#34;INTERNAL&#34;)
- *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
- *             .network(network.id())
- *             .address(&#34;100.100.100.105&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
@@ -215,14 +172,14 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return this.labelFingerprint;
     }
     /**
-     * Labels to apply to this address.  A list of key-&gt;value pairs.
+     * Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this address.  A list of key-&gt;value pairs.
+     * @return Labels to apply to this address. A list of key-&gt;value pairs.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -311,18 +268,16 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      * 
      */
     @Export(name="purpose", type=String.class, parameters={})
     private Output</* @Nullable */ String> purpose;
 
     /**
-     * @return The purpose of the resource. Possible values include:
-     * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * @return The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
+     * ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
      * 
      */
     public Output<Optional<String>> purpose() {

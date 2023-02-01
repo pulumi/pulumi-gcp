@@ -63,6 +63,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudRunV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudSchedulerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudTasksCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudbuildv2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly clouddeployCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudfunctions2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -101,7 +102,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iam2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -149,10 +149,12 @@ export class Provider extends pulumi.ProviderResource {
     public readonly storageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workflowsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly workstationsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
@@ -203,6 +205,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudRunV2CustomEndpoint"] = args ? args.cloudRunV2CustomEndpoint : undefined;
             resourceInputs["cloudSchedulerCustomEndpoint"] = args ? args.cloudSchedulerCustomEndpoint : undefined;
             resourceInputs["cloudTasksCustomEndpoint"] = args ? args.cloudTasksCustomEndpoint : undefined;
+            resourceInputs["cloudbuildv2CustomEndpoint"] = args ? args.cloudbuildv2CustomEndpoint : undefined;
             resourceInputs["clouddeployCustomEndpoint"] = args ? args.clouddeployCustomEndpoint : undefined;
             resourceInputs["cloudfunctions2CustomEndpoint"] = args ? args.cloudfunctions2CustomEndpoint : undefined;
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
@@ -226,7 +229,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
-            resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
@@ -242,7 +244,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
-            resourceInputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             resourceInputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             resourceInputs["iam2CustomEndpoint"] = args ? args.iam2CustomEndpoint : undefined;
             resourceInputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
@@ -292,11 +293,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             resourceInputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
+            resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             resourceInputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
             resourceInputs["workflowsCustomEndpoint"] = args ? args.workflowsCustomEndpoint : undefined;
+            resourceInputs["workstationsCustomEndpoint"] = args ? args.workstationsCustomEndpoint : undefined;
             resourceInputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -345,6 +348,7 @@ export interface ProviderArgs {
     cloudRunV2CustomEndpoint?: pulumi.Input<string>;
     cloudSchedulerCustomEndpoint?: pulumi.Input<string>;
     cloudTasksCustomEndpoint?: pulumi.Input<string>;
+    cloudbuildv2CustomEndpoint?: pulumi.Input<string>;
     clouddeployCustomEndpoint?: pulumi.Input<string>;
     cloudfunctions2CustomEndpoint?: pulumi.Input<string>;
     composerCustomEndpoint?: pulumi.Input<string>;
@@ -368,7 +372,6 @@ export interface ProviderArgs {
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
-    disableGooglePartnerName?: pulumi.Input<boolean>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
@@ -384,7 +387,6 @@ export interface ProviderArgs {
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
-    googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
     iam2CustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;
@@ -434,10 +436,12 @@ export interface ProviderArgs {
     storageCustomEndpoint?: pulumi.Input<string>;
     storageTransferCustomEndpoint?: pulumi.Input<string>;
     tagsCustomEndpoint?: pulumi.Input<string>;
+    tagsLocationCustomEndpoint?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;
     vpcAccessCustomEndpoint?: pulumi.Input<string>;
     workflowsCustomEndpoint?: pulumi.Input<string>;
+    workstationsCustomEndpoint?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;
 }

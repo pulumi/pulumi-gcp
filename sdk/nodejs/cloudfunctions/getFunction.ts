@@ -96,7 +96,7 @@ export interface GetFunctionResult {
      */
     readonly labels: {[key: string]: any};
     /**
-     * The limit on the maximum number of function instances that may coexist at a given time.
+     * The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
      */
     readonly maxInstances: number;
     readonly minInstances: number;

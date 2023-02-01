@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class EnvironmentConfigSoftwareConfig
     {
         public readonly ImmutableDictionary<string, string>? AirflowConfigOverrides;
+        public readonly Outputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration? CloudDataLineageIntegration;
         public readonly ImmutableDictionary<string, string>? EnvVariables;
         public readonly string? ImageVersion;
         public readonly ImmutableDictionary<string, string>? PypiPackages;
@@ -23,6 +24,8 @@ namespace Pulumi.Gcp.Composer.Outputs
         [OutputConstructor]
         private EnvironmentConfigSoftwareConfig(
             ImmutableDictionary<string, string>? airflowConfigOverrides,
+
+            Outputs.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration? cloudDataLineageIntegration,
 
             ImmutableDictionary<string, string>? envVariables,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             int? schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
+            CloudDataLineageIntegration = cloudDataLineageIntegration;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;

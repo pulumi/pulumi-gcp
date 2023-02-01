@@ -145,7 +145,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     * Labels to apply to this rule.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -417,7 +417,7 @@ export interface ForwardingRuleState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     * Labels to apply to this rule.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -609,7 +609,7 @@ export interface ForwardingRuleArgs {
      */
     isMirroringCollector?: pulumi.Input<boolean>;
     /**
-     * Labels to apply to this forwarding rule.  A list of key->value pairs.
+     * Labels to apply to this rule.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

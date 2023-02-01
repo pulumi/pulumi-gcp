@@ -9,12 +9,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGitFileSource {
+    private String githubEnterpriseConfig;
     private String path;
     private String repoType;
     private String revision;
     private String uri;
 
     private GetTriggerGitFileSource() {}
+    public String githubEnterpriseConfig() {
+        return this.githubEnterpriseConfig;
+    }
     public String path() {
         return this.path;
     }
@@ -37,6 +41,7 @@ public final class GetTriggerGitFileSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String githubEnterpriseConfig;
         private String path;
         private String repoType;
         private String revision;
@@ -44,12 +49,18 @@ public final class GetTriggerGitFileSource {
         public Builder() {}
         public Builder(GetTriggerGitFileSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.path = defaults.path;
     	      this.repoType = defaults.repoType;
     	      this.revision = defaults.revision;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
+            this.githubEnterpriseConfig = Objects.requireNonNull(githubEnterpriseConfig);
+            return this;
+        }
         @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
@@ -72,6 +83,7 @@ public final class GetTriggerGitFileSource {
         }
         public GetTriggerGitFileSource build() {
             final var o = new GetTriggerGitFileSource();
+            o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.path = path;
             o.repoType = repoType;
             o.revision = revision;

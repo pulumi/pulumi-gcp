@@ -7,16 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A Cloud Spanner Database which is hosted on a Spanner instance.
- *
- * To get more information about Database, see:
- *
- * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
- *
- * > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
- *
  * ## Example Usage
  * ### Spanner Database Basic
  *
@@ -102,8 +92,8 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly ddls!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -198,8 +188,8 @@ export interface DatabaseState {
      */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -253,8 +243,8 @@ export interface DatabaseArgs {
      */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` that would delete the instance will fail.
+     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+     * 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

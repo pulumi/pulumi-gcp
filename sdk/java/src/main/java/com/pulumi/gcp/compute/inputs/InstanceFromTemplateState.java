@@ -480,14 +480,16 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     @Import(name="scratchDisks")
     private @Nullable Output<List<InstanceFromTemplateScratchDiskArgs>> scratchDisks;
 
     /**
-     * @return The scratch disks attached to the instance.
+     * @return * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      * 
      */
     public Optional<Output<List<InstanceFromTemplateScratchDiskArgs>>> scratchDisks() {
@@ -1317,7 +1319,8 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1328,7 +1331,8 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 
@@ -1338,7 +1342,8 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scratchDisks The scratch disks attached to the instance.
+         * @param scratchDisks * `network_interface.alias_ip_range`
+         * * `network_interface.access_config`
          * 
          * @return builder
          * 

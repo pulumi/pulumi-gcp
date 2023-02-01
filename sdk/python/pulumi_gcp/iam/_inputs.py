@@ -10,6 +10,9 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AccessBoundaryPolicyRuleArgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleArgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs',
     'DenyPolicyRuleArgs',
     'DenyPolicyRuleDenyRuleArgs',
     'DenyPolicyRuleDenyRuleDenialConditionArgs',
@@ -18,6 +21,180 @@ __all__ = [
     'WorkloadIdentityPoolProviderAwsArgs',
     'WorkloadIdentityPoolProviderOidcArgs',
 ]
+
+@pulumi.input_type
+class AccessBoundaryPolicyRuleArgs:
+    def __init__(__self__, *,
+                 access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs'] access_boundary_rule: An access boundary rule in an IAM policy.
+               Structure is documented below.
+        :param pulumi.Input[str] description: The description of the rule.
+        """
+        if access_boundary_rule is not None:
+            pulumi.set(__self__, "access_boundary_rule", access_boundary_rule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="accessBoundaryRule")
+    def access_boundary_rule(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]:
+        """
+        An access boundary rule in an IAM policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_boundary_rule")
+
+    @access_boundary_rule.setter
+    def access_boundary_rule(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]):
+        pulumi.set(self, "access_boundary_rule", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
+    def __init__(__self__, *,
+                 availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
+                 available_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 available_resource: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs'] availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_permissions: A list of permissions that may be allowed for use on the specified resource.
+        :param pulumi.Input[str] available_resource: The full resource name of a Google Cloud resource entity.
+        """
+        if availability_condition is not None:
+            pulumi.set(__self__, "availability_condition", availability_condition)
+        if available_permissions is not None:
+            pulumi.set(__self__, "available_permissions", available_permissions)
+        if available_resource is not None:
+            pulumi.set(__self__, "available_resource", available_resource)
+
+    @property
+    @pulumi.getter(name="availabilityCondition")
+    def availability_condition(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]:
+        """
+        The availability condition further constrains the access allowed by the access boundary rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability_condition")
+
+    @availability_condition.setter
+    def availability_condition(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]):
+        pulumi.set(self, "availability_condition", value)
+
+    @property
+    @pulumi.getter(name="availablePermissions")
+    def available_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of permissions that may be allowed for use on the specified resource.
+        """
+        return pulumi.get(self, "available_permissions")
+
+    @available_permissions.setter
+    def available_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "available_permissions", value)
+
+    @property
+    @pulumi.getter(name="availableResource")
+    def available_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of a Google Cloud resource entity.
+        """
+        return pulumi.get(self, "available_resource")
+
+    @available_resource.setter
+    def available_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "available_resource", value)
+
+
+@pulumi.input_type
+class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
+               e.g. a file name and a position in the file.
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        String indicating the location of the expression for error reporting,
+        e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
 
 @pulumi.input_type
 class DenyPolicyRuleArgs:

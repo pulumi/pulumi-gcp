@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Firestore
     ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
     ///     {
     ///         Collection = "somenewcollection",
-    ///         DocumentId = "my-doc",
+    ///         DocumentId = "my-doc-%{random_suffix}",
     ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
     ///         Project = "my-project-name",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Firestore
     ///     var mydoc = new Gcp.Firestore.Document("mydoc", new()
     ///     {
     ///         Collection = "somenewcollection",
-    ///         DocumentId = "my-doc",
+    ///         DocumentId = "my-doc-%{random_suffix}",
     ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
     ///         Project = "my-project-name",
     ///     });

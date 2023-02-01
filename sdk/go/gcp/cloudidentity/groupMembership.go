@@ -154,7 +154,6 @@ type GroupMembership struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -212,7 +211,6 @@ type groupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -236,7 +234,6 @@ type GroupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -262,7 +259,6 @@ type groupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -278,7 +274,6 @@ type GroupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -387,7 +382,6 @@ func (o GroupMembershipOutput) Group() pulumi.StringOutput {
 }
 
 // EntityKey of the member.
-// Structure is documented below.
 func (o GroupMembershipOutput) MemberKey() GroupMembershipMemberKeyOutput {
 	return o.ApplyT(func(v *GroupMembership) GroupMembershipMemberKeyOutput { return v.MemberKey }).(GroupMembershipMemberKeyOutput)
 }

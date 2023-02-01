@@ -63,6 +63,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
      * * PREEMPTIBILITY_UNSPECIFIED
      * * NON_PREEMPTIBLE
      * * PREEMPTIBLE
+     * * SPOT
      * 
      */
     @Import(name="preemptibility")
@@ -74,6 +75,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
      * * PREEMPTIBILITY_UNSPECIFIED
      * * NON_PREEMPTIBLE
      * * PREEMPTIBLE
+     * * SPOT
      * 
      */
     public Optional<Output<String>> preemptibility() {
@@ -170,6 +172,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
          * * PREEMPTIBILITY_UNSPECIFIED
          * * NON_PREEMPTIBLE
          * * PREEMPTIBLE
+         * * SPOT
          * 
          * @return builder
          * 
@@ -185,6 +188,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
          * * PREEMPTIBILITY_UNSPECIFIED
          * * NON_PREEMPTIBLE
          * * PREEMPTIBLE
+         * * SPOT
          * 
          * @return builder
          * 

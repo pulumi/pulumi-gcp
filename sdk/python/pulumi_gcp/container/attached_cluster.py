@@ -23,6 +23,7 @@ class AttachedClusterArgs:
                  platform_version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
                  monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
@@ -54,6 +55,7 @@ class AttachedClusterArgs:
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
@@ -73,6 +75,8 @@ class AttachedClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logging_config is not None:
@@ -186,6 +190,18 @@ class AttachedClusterArgs:
         pulumi.set(self, "authorization", value)
 
     @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine what flags to send on delete.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -257,6 +273,7 @@ class _AttachedClusterState:
                  authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
                  cluster_region: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]] = None,
@@ -288,6 +305,7 @@ class _AttachedClusterState:
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -333,6 +351,8 @@ class _AttachedClusterState:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if distribution is not None:
@@ -423,6 +443,18 @@ class _AttachedClusterState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine what flags to send on delete.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -655,6 +687,7 @@ class AttachedCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
@@ -699,6 +732,29 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        ### Container Attached Cluster Ignore Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            deletion_policy="DELETE_IGNORE_ERRORS")
+        ```
 
         ## Import
 
@@ -726,6 +782,7 @@ class AttachedCluster(pulumi.CustomResource):
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -791,6 +848,29 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        ### Container Attached Cluster Ignore Errors
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        versions = gcp.container.get_attached_versions(location="us-west1",
+            project=project.project_id)
+        primary = gcp.container.AttachedCluster("primary",
+            location="us-west1",
+            project=project.project_id,
+            description="Test cluster",
+            distribution="aks",
+            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+                issuer_url="https://oidc.issuer.url",
+            ),
+            platform_version=versions.valid_versions[0],
+            fleet=gcp.container.AttachedClusterFleetArgs(
+                project=f"projects/{project.number}",
+            ),
+            deletion_policy="DELETE_IGNORE_ERRORS")
+        ```
 
         ## Import
 
@@ -825,6 +905,7 @@ class AttachedCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
                  fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
@@ -846,6 +927,7 @@ class AttachedCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["authorization"] = authorization
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if distribution is None and not opts.urn:
                 raise TypeError("Missing required property 'distribution'")
@@ -889,6 +971,7 @@ class AttachedCluster(pulumi.CustomResource):
             authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
             cluster_region: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distribution: Optional[pulumi.Input[str]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]]] = None,
@@ -925,6 +1008,7 @@ class AttachedCluster(pulumi.CustomResource):
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -970,6 +1054,7 @@ class AttachedCluster(pulumi.CustomResource):
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["cluster_region"] = cluster_region
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["distribution"] = distribution
         __props__.__dict__["errors"] = errors
@@ -1028,6 +1113,14 @@ class AttachedCluster(pulumi.CustomResource):
         Output only. The time at which this cluster was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy to determine what flags to send on delete.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter

@@ -119,14 +119,16 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+     * the network that the default network interface belongs to.
      * 
      */
     public Optional<Output<String>> network() {
@@ -346,7 +348,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+         * the network that the default network interface belongs to.
          * 
          * @return builder
          * 
@@ -357,7 +360,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to
+         * the network that the default network interface belongs to.
          * 
          * @return builder
          * 

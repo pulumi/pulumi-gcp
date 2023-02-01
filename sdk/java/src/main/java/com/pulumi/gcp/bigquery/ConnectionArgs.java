@@ -89,7 +89,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A nested object resource
+     * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      * 
      */
@@ -97,7 +97,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ConnectionCloudSqlArgs> cloudSql;
 
     /**
-     * @return A nested object resource
+     * @return Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      * 
      */
@@ -320,7 +320,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudSql A nested object resource
+         * @param cloudSql Connection properties specific to the Cloud SQL.
          * Structure is documented below.
          * 
          * @return builder
@@ -332,7 +332,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudSql A nested object resource
+         * @param cloudSql Connection properties specific to the Cloud SQL.
          * Structure is documented below.
          * 
          * @return builder

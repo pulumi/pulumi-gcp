@@ -23,18 +23,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
- * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- * 
- * &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default &#39;root&#39;@&#39;%&#39; user with no password. This user will be deleted by the provider on
- * instance creation. You should use `gcp.sql.User` to define a custom user with
- * a restricted host and strong password.
- * 
- * &gt; **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
- * (and run `pulumi update` to write the field to state) in order to destroy an instance.
- * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy the instance and its databases.
- * 
  * ## Example Usage
  * ### SQL Second Generation Instance
  * ```java
@@ -184,18 +172,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.availableMaintenanceVersions;
     }
     /**
-     * The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * Configuration for creating a new instance as a clone of another instance.
      * 
      */
     @Export(name="clone", type=DatabaseInstanceClone.class, parameters={})
     private Output</* @Nullable */ DatabaseInstanceClone> clone;
 
     /**
-     * @return The context needed to create this instance as a clone of another instance. When this field is set during
-     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
-     * configuration is detailed below.
+     * @return Configuration for creating a new instance as a clone of another instance.
      * 
      */
     public Output<Optional<DatabaseInstanceClone>> clone_() {
@@ -248,58 +232,36 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.databaseVersion;
     }
     /**
-     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     * Used to block Terraform from deleting a SQL Instance. Defaults to true.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+     * @return Used to block Terraform from deleting a SQL Instance. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
-    /**
-     * The full path to the encryption key used for the CMEK disk encryption.  Setting
-     * up disk encryption currently requires manual steps outside of this provider.
-     * The provided key must be in the same region as the SQL instance.  In order
-     * to use this feature, a special kind of service account must be created and
-     * granted permission on this key.  This step can currently only be done
-     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-     * 
-     */
     @Export(name="encryptionKeyName", type=String.class, parameters={})
     private Output<String> encryptionKeyName;
 
-    /**
-     * @return The full path to the encryption key used for the CMEK disk encryption.  Setting
-     * up disk encryption currently requires manual steps outside of this provider.
-     * The provided key must be in the same region as the SQL instance.  In order
-     * to use this feature, a special kind of service account must be created and
-     * granted permission on this key.  This step can currently only be done
-     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
-     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
-     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
-     * 
-     */
     public Output<String> encryptionKeyName() {
         return this.encryptionKeyName;
     }
     /**
-     * The first IPv4 address of any type assigned.
+     * The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
+     * output when the resource is configured with a count.
      * 
      */
     @Export(name="firstIpAddress", type=String.class, parameters={})
     private Output<String> firstIpAddress;
 
     /**
-     * @return The first IPv4 address of any type assigned.
+     * @return The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
+     * output when the resource is configured with a count.
      * 
      */
     public Output<String> firstIpAddress() {
@@ -358,34 +320,32 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.masterInstanceName;
     }
     /**
-     * The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+     * The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for up to one week.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the instance. If the name is left
-     * blank, the provider will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for
-     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+     * @return The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for up to one week.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The first private (`PRIVATE`) IPv4 address assigned.
+     * IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
+     * access an IP of a specific type without performing filtering in a Terraform config.
      * 
      */
     @Export(name="privateIpAddress", type=String.class, parameters={})
     private Output<String> privateIpAddress;
 
     /**
-     * @return The first private (`PRIVATE`) IPv4 address assigned.
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
+     * access an IP of a specific type without performing filtering in a Terraform config.
      * 
      */
     public Output<String> privateIpAddress() {
@@ -408,14 +368,16 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The first public (`PRIMARY`) IPv4 address assigned.
+     * IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
+     * access an IP of a specific type without performing filtering in a Terraform config.
      * 
      */
     @Export(name="publicIpAddress", type=String.class, parameters={})
     private Output<String> publicIpAddress;
 
     /**
-     * @return The first public (`PRIMARY`) IPv4 address assigned.
+     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
+     * access an IP of a specific type without performing filtering in a Terraform config.
      * 
      */
     public Output<String> publicIpAddress() {
@@ -453,35 +415,21 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     public Output<DatabaseInstanceReplicaConfiguration> replicaConfiguration() {
         return this.replicaConfiguration;
     }
-    /**
-     * The context needed to restore the database to a backup run. This field will
-     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-     * block during resource creation/update will trigger the restore action after the resource is created/updated.
-     * 
-     */
     @Export(name="restoreBackupContext", type=DatabaseInstanceRestoreBackupContext.class, parameters={})
     private Output</* @Nullable */ DatabaseInstanceRestoreBackupContext> restoreBackupContext;
 
-    /**
-     * @return The context needed to restore the database to a backup run. This field will
-     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
-     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
-     * block during resource creation/update will trigger the restore action after the resource is created/updated.
-     * 
-     */
     public Output<Optional<DatabaseInstanceRestoreBackupContext>> restoreBackupContext() {
         return Codegen.optional(this.restoreBackupContext);
     }
     /**
-     * Initial root password. Required for MS SQL Server.
+     * Initial root password. Can be updated. Required for MS SQL Server.
      * 
      */
     @Export(name="rootPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> rootPassword;
 
     /**
-     * @return Initial root password. Required for MS SQL Server.
+     * @return Initial root password. Can be updated. Required for MS SQL Server.
      * 
      */
     public Output<Optional<String>> rootPassword() {

@@ -290,7 +290,7 @@ class Document(pulumi.CustomResource):
 
         mydoc = gcp.firestore.Document("mydoc",
             collection="somenewcollection",
-            document_id="my-doc",
+            document_id="my-doc-%{random_suffix}",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
             project="my-project-name")
         ```
@@ -302,7 +302,7 @@ class Document(pulumi.CustomResource):
 
         mydoc = gcp.firestore.Document("mydoc",
             collection="somenewcollection",
-            document_id="my-doc",
+            document_id="my-doc-%{random_suffix}",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
             project="my-project-name")
         sub_document = gcp.firestore.Document("subDocument",
@@ -365,7 +365,7 @@ class Document(pulumi.CustomResource):
 
         mydoc = gcp.firestore.Document("mydoc",
             collection="somenewcollection",
-            document_id="my-doc",
+            document_id="my-doc-%{random_suffix}",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
             project="my-project-name")
         ```
@@ -377,7 +377,7 @@ class Document(pulumi.CustomResource):
 
         mydoc = gcp.firestore.Document("mydoc",
             collection="somenewcollection",
-            document_id="my-doc",
+            document_id="my-doc-%{random_suffix}",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}",
             project="my-project-name")
         sub_document = gcp.firestore.Document("subDocument",

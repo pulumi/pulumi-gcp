@@ -118,15 +118,7 @@ export class JobIAMBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly jobId!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -190,15 +182,7 @@ export interface JobIAMBindingState {
     etag?: pulumi.Input<string>;
     jobId?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -215,15 +199,7 @@ export interface JobIAMBindingArgs {
     condition?: pulumi.Input<inputs.dataproc.JobIAMBindingCondition>;
     jobId: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     project?: pulumi.Input<string>;
-    /**
-     * The region in which the job belongs. If it
-     * is not provided, the provider will use a default.
-     */
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

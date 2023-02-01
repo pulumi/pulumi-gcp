@@ -18,18 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * VPN tunnel resource.
- * 
- * To get more information about VpnTunnel, see:
- * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
- * * How-to Guides
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
- *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
- * 
- * &gt; **Warning:** All arguments including `shared_secret` will be stored in the raw
- * state as plain-text.
- * 
  * ## Example Usage
  * ### Vpn Tunnel Basic
  * ```java

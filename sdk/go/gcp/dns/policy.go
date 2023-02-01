@@ -108,7 +108,7 @@ type Policy struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
@@ -162,7 +162,7 @@ type policyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description *string `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
@@ -188,7 +188,7 @@ type PolicyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
@@ -218,7 +218,7 @@ type policyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description *string `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
@@ -245,7 +245,7 @@ type PolicyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Pulumi'.
+	// A textual description field. Defaults to 'Managed by Terraform'.
 	Description pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent
 	// by VMs or applications over VPN connections. When enabled, a
@@ -360,7 +360,7 @@ func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerC
 	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigPtrOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
-// A textual description field. Defaults to 'Managed by Pulumi'.
+// A textual description field. Defaults to 'Managed by Terraform'.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

@@ -128,6 +128,7 @@ import * as utilities from "../utilities";
  * const connection = new gcp.bigquery.Connection("connection", {
  *     azure: {
  *         customerTenantId: "customer-tenant-id",
+ *         federatedApplicationClientId: "b43eeeee-eeee-eeee-eeee-a480155501ce",
  *     },
  *     connectionId: "my-connection",
  *     description: "a riveting description",
@@ -217,7 +218,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly cloudSpanner!: pulumi.Output<outputs.bigquery.ConnectionCloudSpanner | undefined>;
     /**
-     * A nested object resource
+     * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
     public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
@@ -328,7 +329,7 @@ export interface ConnectionState {
      */
     cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
     /**
-     * A nested object resource
+     * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
@@ -395,7 +396,7 @@ export interface ConnectionArgs {
      */
     cloudSpanner?: pulumi.Input<inputs.bigquery.ConnectionCloudSpanner>;
     /**
-     * A nested object resource
+     * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
     cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;

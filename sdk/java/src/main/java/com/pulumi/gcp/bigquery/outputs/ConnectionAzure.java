@@ -27,6 +27,16 @@ public final class ConnectionAzure {
      */
     private String customerTenantId;
     /**
+     * @return The Azure Application (client) ID where the federated credentials will be hosted.
+     * 
+     */
+    private @Nullable String federatedApplicationClientId;
+    /**
+     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+     * 
+     */
+    private @Nullable String identity;
+    /**
      * @return The object id of the Azure Active Directory Application.
      * 
      */
@@ -60,6 +70,20 @@ public final class ConnectionAzure {
         return this.customerTenantId;
     }
     /**
+     * @return The Azure Application (client) ID where the federated credentials will be hosted.
+     * 
+     */
+    public Optional<String> federatedApplicationClientId() {
+        return Optional.ofNullable(this.federatedApplicationClientId);
+    }
+    /**
+     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s Azure Active Directory Application.
+     * 
+     */
+    public Optional<String> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+    /**
      * @return The object id of the Azure Active Directory Application.
      * 
      */
@@ -86,6 +110,8 @@ public final class ConnectionAzure {
         private @Nullable String application;
         private @Nullable String clientId;
         private String customerTenantId;
+        private @Nullable String federatedApplicationClientId;
+        private @Nullable String identity;
         private @Nullable String objectId;
         private @Nullable String redirectUri;
         public Builder() {}
@@ -94,6 +120,8 @@ public final class ConnectionAzure {
     	      this.application = defaults.application;
     	      this.clientId = defaults.clientId;
     	      this.customerTenantId = defaults.customerTenantId;
+    	      this.federatedApplicationClientId = defaults.federatedApplicationClientId;
+    	      this.identity = defaults.identity;
     	      this.objectId = defaults.objectId;
     	      this.redirectUri = defaults.redirectUri;
         }
@@ -114,6 +142,16 @@ public final class ConnectionAzure {
             return this;
         }
         @CustomType.Setter
+        public Builder federatedApplicationClientId(@Nullable String federatedApplicationClientId) {
+            this.federatedApplicationClientId = federatedApplicationClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identity(@Nullable String identity) {
+            this.identity = identity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder objectId(@Nullable String objectId) {
             this.objectId = objectId;
             return this;
@@ -128,6 +166,8 @@ public final class ConnectionAzure {
             o.application = application;
             o.clientId = clientId;
             o.customerTenantId = customerTenantId;
+            o.federatedApplicationClientId = federatedApplicationClientId;
+            o.identity = identity;
             o.objectId = objectId;
             o.redirectUri = redirectUri;
             return o;

@@ -31,6 +31,7 @@ class TriggerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+                 repository_event_config: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_to_build: Optional[pulumi.Input['TriggerSourceToBuildArgs']] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -85,6 +86,7 @@ class TriggerArgs:
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
+        :param pulumi.Input['TriggerRepositoryEventConfigArgs'] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
@@ -139,6 +141,8 @@ class TriggerArgs:
             pulumi.set(__self__, "project", project)
         if pubsub_config is not None:
             pulumi.set(__self__, "pubsub_config", pubsub_config)
+        if repository_event_config is not None:
+            pulumi.set(__self__, "repository_event_config", repository_event_config)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if source_to_build is not None:
@@ -364,6 +368,18 @@ class TriggerArgs:
         pulumi.set(self, "pubsub_config", value)
 
     @property
+    @pulumi.getter(name="repositoryEventConfig")
+    def repository_event_config(self) -> Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']]:
+        """
+        The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        """
+        return pulumi.get(self, "repository_event_config")
+
+    @repository_event_config.setter
+    def repository_event_config(self, value: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']]):
+        pulumi.set(self, "repository_event_config", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -472,6 +488,7 @@ class _TriggerState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
+                 repository_event_config: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_to_build: Optional[pulumi.Input['TriggerSourceToBuildArgs']] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -528,6 +545,7 @@ class _TriggerState:
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
+        :param pulumi.Input['TriggerRepositoryEventConfigArgs'] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
@@ -585,6 +603,8 @@ class _TriggerState:
             pulumi.set(__self__, "project", project)
         if pubsub_config is not None:
             pulumi.set(__self__, "pubsub_config", pubsub_config)
+        if repository_event_config is not None:
+            pulumi.set(__self__, "repository_event_config", repository_event_config)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if source_to_build is not None:
@@ -824,6 +844,18 @@ class _TriggerState:
         pulumi.set(self, "pubsub_config", value)
 
     @property
+    @pulumi.getter(name="repositoryEventConfig")
+    def repository_event_config(self) -> Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']]:
+        """
+        The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        """
+        return pulumi.get(self, "repository_event_config")
+
+    @repository_event_config.setter
+    def repository_event_config(self, value: Optional[pulumi.Input['TriggerRepositoryEventConfigArgs']]):
+        pulumi.set(self, "repository_event_config", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -945,6 +977,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1123,6 +1156,57 @@ class Trigger(pulumi.CustomResource):
                 uri="https://hashicorp/terraform-provider-google-beta",
             ))
         ```
+        ### Cloudbuild Trigger Manual Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
+            location="us-central1",
+            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
+                repository=my_repository.id,
+                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
+                    branch="feature-.*",
+                ),
+            ),
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1192,6 +1276,7 @@ class Trigger(pulumi.CustomResource):
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
@@ -1393,6 +1478,57 @@ class Trigger(pulumi.CustomResource):
                 uri="https://hashicorp/terraform-provider-google-beta",
             ))
         ```
+        ### Cloudbuild Trigger Manual Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="GITHUB",
+                revision="refs/heads/main",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+                uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
+            location="us-central1",
+            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
+                repository=my_repository.id,
+                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
+                    branch="feature-.*",
+                ),
+            ),
+            filename="cloudbuild.yaml",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1444,6 +1580,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1474,6 +1611,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_config"] = pubsub_config
+            __props__.__dict__["repository_event_config"] = repository_event_config
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source_to_build"] = source_to_build
             __props__.__dict__["substitutions"] = substitutions
@@ -1508,6 +1646,7 @@ class Trigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
+            repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1569,6 +1708,7 @@ class Trigger(pulumi.CustomResource):
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
@@ -1614,6 +1754,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_config"] = pubsub_config
+        __props__.__dict__["repository_event_config"] = repository_event_config
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["source_to_build"] = source_to_build
         __props__.__dict__["substitutions"] = substitutions
@@ -1781,6 +1922,14 @@ class Trigger(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_config")
+
+    @property
+    @pulumi.getter(name="repositoryEventConfig")
+    def repository_event_config(self) -> pulumi.Output[Optional['outputs.TriggerRepositoryEventConfig']]:
+        """
+        The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        """
+        return pulumi.get(self, "repository_event_config")
 
     @property
     @pulumi.getter(name="serviceAccount")

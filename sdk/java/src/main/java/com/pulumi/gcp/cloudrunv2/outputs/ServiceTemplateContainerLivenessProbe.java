@@ -19,7 +19,7 @@ public final class ServiceTemplateContainerLivenessProbe {
      */
     private @Nullable Integer failureThreshold;
     /**
-     * @return HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return HTTPGet specifies the http request to perform.
      * Structure is documented below.
      * 
      */
@@ -35,10 +35,15 @@ public final class ServiceTemplateContainerLivenessProbe {
      */
     private @Nullable Integer periodSeconds;
     /**
-     * @return TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return (Optional, Deprecated)
+     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
     private @Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket;
     /**
      * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -55,7 +60,7 @@ public final class ServiceTemplateContainerLivenessProbe {
         return Optional.ofNullable(this.failureThreshold);
     }
     /**
-     * @return HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return HTTPGet specifies the http request to perform.
      * Structure is documented below.
      * 
      */
@@ -77,10 +82,15 @@ public final class ServiceTemplateContainerLivenessProbe {
         return Optional.ofNullable(this.periodSeconds);
     }
     /**
-     * @return TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+     * @return (Optional, Deprecated)
+     * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * @deprecated
+     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * 
      */
+    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
     public Optional<ServiceTemplateContainerLivenessProbeTcpSocket> tcpSocket() {
         return Optional.ofNullable(this.tcpSocket);
     }

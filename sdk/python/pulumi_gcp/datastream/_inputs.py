@@ -1103,16 +1103,23 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 dataset_id_prefix: Optional[pulumi.Input[str]] = None):
+                 dataset_id_prefix: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See https://cloud.google.com/bigquery/docs/locations for supported locations.
         :param pulumi.Input[str] dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value.
                The prefix and name will be separated by an underscore. i.e. _.
+        :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+               table. The BigQuery Service Account associated with your project requires access to this
+               encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+               See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
         """
         pulumi.set(__self__, "location", location)
         if dataset_id_prefix is not None:
             pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter
@@ -1139,6 +1146,21 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
     @dataset_id_prefix.setter
     def dataset_id_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataset_id_prefix", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+        table. The BigQuery Service Account associated with your project requires access to this
+        encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+        See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type

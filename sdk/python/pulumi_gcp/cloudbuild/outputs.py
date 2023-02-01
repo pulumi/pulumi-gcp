@@ -31,6 +31,9 @@ __all__ = [
     'TriggerGithubPullRequest',
     'TriggerGithubPush',
     'TriggerPubsubConfig',
+    'TriggerRepositoryEventConfig',
+    'TriggerRepositoryEventConfigPullRequest',
+    'TriggerRepositoryEventConfigPush',
     'TriggerSourceToBuild',
     'TriggerTriggerTemplate',
     'TriggerWebhookConfig',
@@ -56,6 +59,9 @@ __all__ = [
     'GetTriggerGithubPullRequestResult',
     'GetTriggerGithubPushResult',
     'GetTriggerPubsubConfigResult',
+    'GetTriggerRepositoryEventConfigResult',
+    'GetTriggerRepositoryEventConfigPullRequestResult',
+    'GetTriggerRepositoryEventConfigPushResult',
     'GetTriggerSourceToBuildResult',
     'GetTriggerTriggerTemplateResult',
     'GetTriggerWebhookConfigResult',
@@ -1426,6 +1432,8 @@ class TriggerGitFileSource(dict):
         suggest = None
         if key == "repoType":
             suggest = "repo_type"
+        elif key == "githubEnterpriseConfig":
+            suggest = "github_enterprise_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TriggerGitFileSource. Access the value via the '{suggest}' property getter instead.")
@@ -1441,6 +1449,7 @@ class TriggerGitFileSource(dict):
     def __init__(__self__, *,
                  path: str,
                  repo_type: str,
+                 github_enterprise_config: Optional[str] = None,
                  revision: Optional[str] = None,
                  uri: Optional[str] = None):
         """
@@ -1448,6 +1457,8 @@ class TriggerGitFileSource(dict):
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+        :param str github_enterprise_config: The full resource name of the github enterprise config.
+               Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
                filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
                If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -1456,6 +1467,8 @@ class TriggerGitFileSource(dict):
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if uri is not None:
@@ -1478,6 +1491,15 @@ class TriggerGitFileSource(dict):
         Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
         """
         return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[str]:
+        """
+        The full resource name of the github enterprise config.
+        Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        """
+        return pulumi.get(self, "github_enterprise_config")
 
     @property
     @pulumi.getter
@@ -1776,12 +1798,202 @@ class TriggerPubsubConfig(dict):
 
 
 @pulumi.output_type
+class TriggerRepositoryEventConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pullRequest":
+            suggest = "pull_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerRepositoryEventConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerRepositoryEventConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerRepositoryEventConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pull_request: Optional['outputs.TriggerRepositoryEventConfigPullRequest'] = None,
+                 push: Optional['outputs.TriggerRepositoryEventConfigPush'] = None,
+                 repository: Optional[str] = None):
+        """
+        :param 'TriggerRepositoryEventConfigPullRequestArgs' pull_request: Contains filter properties for matching Pull Requests.
+               Structure is documented below.
+        :param 'TriggerRepositoryEventConfigPushArgs' push: Contains filter properties for matching git pushes.
+               Structure is documented below.
+        :param str repository: The resource name of the Repo API resource.
+        """
+        if pull_request is not None:
+            pulumi.set(__self__, "pull_request", pull_request)
+        if push is not None:
+            pulumi.set(__self__, "push", push)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> Optional['outputs.TriggerRepositoryEventConfigPullRequest']:
+        """
+        Contains filter properties for matching Pull Requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @property
+    @pulumi.getter
+    def push(self) -> Optional['outputs.TriggerRepositoryEventConfigPush']:
+        """
+        Contains filter properties for matching git pushes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        """
+        The resource name of the Repo API resource.
+        """
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class TriggerRepositoryEventConfigPullRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commentControl":
+            suggest = "comment_control"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerRepositoryEventConfigPullRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerRepositoryEventConfigPullRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerRepositoryEventConfigPullRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 comment_control: Optional[str] = None,
+                 invert_regex: Optional[bool] = None):
+        """
+        :param str branch: Regex of branches to match.
+        :param str comment_control: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        :param bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if comment_control is not None:
+            pulumi.set(__self__, "comment_control", comment_control)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Regex of branches to match.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> Optional[str]:
+        """
+        Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        return pulumi.get(self, "comment_control")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[bool]:
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        return pulumi.get(self, "invert_regex")
+
+
+@pulumi.output_type
+class TriggerRepositoryEventConfigPush(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerRepositoryEventConfigPush. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerRepositoryEventConfigPush.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerRepositoryEventConfigPush.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 invert_regex: Optional[bool] = None,
+                 tag: Optional[str] = None):
+        """
+        :param str branch: Regex of branches to match.  Specify only one of branch or tag.
+        :param bool invert_regex: When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param str tag: Regex of tags to match.  Specify only one of branch or tag.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Regex of branches to match.  Specify only one of branch or tag.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[bool]:
+        """
+        When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        Regex of tags to match.  Specify only one of branch or tag.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
 class TriggerSourceToBuild(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "repoType":
             suggest = "repo_type"
+        elif key == "githubEnterpriseConfig":
+            suggest = "github_enterprise_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TriggerSourceToBuild. Access the value via the '{suggest}' property getter instead.")
@@ -1797,17 +2009,22 @@ class TriggerSourceToBuild(dict):
     def __init__(__self__, *,
                  ref: str,
                  repo_type: str,
-                 uri: str):
+                 uri: str,
+                 github_enterprise_config: Optional[str] = None):
         """
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
         :param str uri: The URI of the repo (required).
+        :param str github_enterprise_config: The full resource name of the github enterprise config.
+               Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         """
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
         pulumi.set(__self__, "uri", uri)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
 
     @property
     @pulumi.getter
@@ -1834,6 +2051,15 @@ class TriggerSourceToBuild(dict):
         The URI of the repo (required).
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[str]:
+        """
+        The full resource name of the github enterprise config.
+        Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        """
+        return pulumi.get(self, "github_enterprise_config")
 
 
 @pulumi.output_type
@@ -2643,14 +2869,21 @@ class GetTriggerBuildStepVolumeResult(dict):
 @pulumi.output_type
 class GetTriggerGitFileSourceResult(dict):
     def __init__(__self__, *,
+                 github_enterprise_config: str,
                  path: str,
                  repo_type: str,
                  revision: str,
                  uri: str):
+        pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> str:
+        return pulumi.get(self, "github_enterprise_config")
 
     @property
     @pulumi.getter
@@ -2792,14 +3025,99 @@ class GetTriggerPubsubConfigResult(dict):
 
 
 @pulumi.output_type
+class GetTriggerRepositoryEventConfigResult(dict):
+    def __init__(__self__, *,
+                 pull_requests: Sequence['outputs.GetTriggerRepositoryEventConfigPullRequestResult'],
+                 pushes: Sequence['outputs.GetTriggerRepositoryEventConfigPushResult'],
+                 repository: str):
+        pulumi.set(__self__, "pull_requests", pull_requests)
+        pulumi.set(__self__, "pushes", pushes)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="pullRequests")
+    def pull_requests(self) -> Sequence['outputs.GetTriggerRepositoryEventConfigPullRequestResult']:
+        return pulumi.get(self, "pull_requests")
+
+    @property
+    @pulumi.getter
+    def pushes(self) -> Sequence['outputs.GetTriggerRepositoryEventConfigPushResult']:
+        return pulumi.get(self, "pushes")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class GetTriggerRepositoryEventConfigPullRequestResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 comment_control: str,
+                 invert_regex: bool):
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "comment_control", comment_control)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> str:
+        return pulumi.get(self, "comment_control")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+
+@pulumi.output_type
+class GetTriggerRepositoryEventConfigPushResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 invert_regex: bool,
+                 tag: str):
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
 class GetTriggerSourceToBuildResult(dict):
     def __init__(__self__, *,
+                 github_enterprise_config: str,
                  ref: str,
                  repo_type: str,
                  uri: str):
+        pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> str:
+        return pulumi.get(self, "github_enterprise_config")
 
     @property
     @pulumi.getter

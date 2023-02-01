@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerGitFileSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The full resource name of the github enterprise config.
+        /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        /// </summary>
+        [Input("githubEnterpriseConfig")]
+        public Input<string>? GithubEnterpriseConfig { get; set; }
+
+        /// <summary>
         /// The path of the file, with the repo root as the root of the path.
         /// </summary>
         [Input("path", required: true)]

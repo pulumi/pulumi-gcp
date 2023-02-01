@@ -204,7 +204,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly scheduling!: pulumi.Output<outputs.compute.InstanceFromTemplateScheduling>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      */
     public readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateScratchDisk[]>;
     /**
@@ -464,7 +465,8 @@ export interface InstanceFromTemplateState {
      */
     scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      */
     scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
     /**
@@ -607,7 +609,8 @@ export interface InstanceFromTemplateArgs {
      */
     scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.access_config`
      */
     scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
     /**

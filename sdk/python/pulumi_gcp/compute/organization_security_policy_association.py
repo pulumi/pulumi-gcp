@@ -147,58 +147,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        An association for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyAssociation, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-        * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-
         ## Example Usage
-        ### Organization Security Policy Association Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        security_policy_target = gcp.organizations.Folder("securityPolicyTarget",
-            display_name="tf-test-secpol",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
-            display_name="tf-test",
-            parent=security_policy_target.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
-                    ],
-                ),
-            ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation",
-            attachment_id=policy_organization_security_policy.parent,
-            policy_id=policy_organization_security_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 
@@ -221,58 +170,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  args: OrganizationSecurityPolicyAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An association for the OrganizationSecurityPolicy.
-
-        To get more information about OrganizationSecurityPolicyAssociation, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-        * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
-
         ## Example Usage
-        ### Organization Security Policy Association Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        security_policy_target = gcp.organizations.Folder("securityPolicyTarget",
-            display_name="tf-test-secpol",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy = gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy",
-            display_name="tf-test",
-            parent=security_policy_target.name,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule",
-            policy_id=policy_organization_security_policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
-                    ],
-                ),
-            ),
-            priority=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation",
-            attachment_id=policy_organization_security_policy.parent,
-            policy_id=policy_organization_security_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
 
         ## Import
 

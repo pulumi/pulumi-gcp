@@ -10,22 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A Backend Service defines a group of virtual machines that will serve
-    /// traffic for load balancing. This resource is a global backend service,
-    /// appropriate for external load balancing or self-managed internal load balancing.
-    /// For managed internal load balancing, use a regional backend service instead.
-    /// 
-    /// Currently self-managed internal load balancing is only available in beta.
-    /// 
-    /// To get more information about BackendService, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-    /// 
-    /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-    /// state as plain-text.
-    /// 
     /// ## Example Usage
     /// ### Backend Service Cache Include Http Headers
     /// 
@@ -305,6 +289,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of locality load balancing policies to be used in order of
+        /// preference. Either the policy or the customPolicy field should be set.
+        /// Overrides any value set in the localityLbPolicy field.
+        /// localityLbPolicies is only supported when the BackendService is referenced
+        /// by a URL Map that is referenced by a target gRPC proxy that has the
+        /// validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("localityLbPolicies")]
+        public Output<ImmutableArray<Outputs.BackendServiceLocalityLbPolicy>> LocalityLbPolicies { get; private set; } = null!;
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.
@@ -588,6 +584,24 @@ namespace Pulumi.Gcp.Compute
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
+        [Input("localityLbPolicies")]
+        private InputList<Inputs.BackendServiceLocalityLbPolicyArgs>? _localityLbPolicies;
+
+        /// <summary>
+        /// A list of locality load balancing policies to be used in order of
+        /// preference. Either the policy or the customPolicy field should be set.
+        /// Overrides any value set in the localityLbPolicy field.
+        /// localityLbPolicies is only supported when the BackendService is referenced
+        /// by a URL Map that is referenced by a target gRPC proxy that has the
+        /// validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceLocalityLbPolicyArgs> LocalityLbPolicies
+        {
+            get => _localityLbPolicies ?? (_localityLbPolicies = new InputList<Inputs.BackendServiceLocalityLbPolicyArgs>());
+            set => _localityLbPolicies = value;
+        }
+
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.
         /// The possible values are:
@@ -844,6 +858,24 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
+
+        [Input("localityLbPolicies")]
+        private InputList<Inputs.BackendServiceLocalityLbPolicyGetArgs>? _localityLbPolicies;
+
+        /// <summary>
+        /// A list of locality load balancing policies to be used in order of
+        /// preference. Either the policy or the customPolicy field should be set.
+        /// Overrides any value set in the localityLbPolicy field.
+        /// localityLbPolicies is only supported when the BackendService is referenced
+        /// by a URL Map that is referenced by a target gRPC proxy that has the
+        /// validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceLocalityLbPolicyGetArgs> LocalityLbPolicies
+        {
+            get => _localityLbPolicies ?? (_localityLbPolicies = new InputList<Inputs.BackendServiceLocalityLbPolicyGetArgs>());
+            set => _localityLbPolicies = value;
+        }
 
         /// <summary>
         /// The load balancing algorithm used within the scope of the locality.

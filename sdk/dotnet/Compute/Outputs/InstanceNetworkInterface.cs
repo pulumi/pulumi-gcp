@@ -13,14 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceNetworkInterface
     {
-        /// <summary>
-        /// Access configurations, i.e. IPs via which this
-        /// instance can be accessed via the Internet. Omit to ensure that the instance
-        /// is not accessible from the Internet. If omitted, ssh will not
-        /// work unless this provider can send traffic to the instance's network (e.g. via
-        /// tunnel or because it is running on another cloud instance on that network).
-        /// This block can be repeated multiple times. Structure documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
         /// An

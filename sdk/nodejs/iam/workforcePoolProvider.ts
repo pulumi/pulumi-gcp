@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *         "google.subject": "assertion.sub",
  *     },
  *     oidc: {
- *         issuerUri: "https://accounts.google.com",
+ *         issuerUri: "https://accounts.thirdparty.com",
  *         clientId: "client-id",
  *     },
  * });
@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  *         "google.subject": "assertion.sub",
  *     },
  *     oidc: {
- *         issuerUri: "https://accounts.google.com",
+ *         issuerUri: "https://accounts.thirdparty.com",
  *         clientId: "client-id",
  *     },
  *     displayName: "Display name",

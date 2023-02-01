@@ -5,6 +5,8 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindings;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,7 +21,17 @@ public final class PreventionJobTriggerInspectJobAction {
      */
     private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
     /**
-     * @return Schedule for triggered jobs
+     * @return Publish findings of a DlpJob to Data Catalog.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
+    /**
+     * @return Publish the result summary of a DlpJob to the Cloud Security Command Center.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
+    /**
+     * @return If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
      */
@@ -35,7 +47,21 @@ public final class PreventionJobTriggerInspectJobAction {
         return Optional.ofNullable(this.pubSub);
     }
     /**
-     * @return Schedule for triggered jobs
+     * @return Publish findings of a DlpJob to Data Catalog.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog> publishFindingsToCloudDataCatalog() {
+        return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
+    }
+    /**
+     * @return Publish the result summary of a DlpJob to the Cloud Security Command Center.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionPublishSummaryToCscc> publishSummaryToCscc() {
+        return Optional.ofNullable(this.publishSummaryToCscc);
+    }
+    /**
+     * @return If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
      */
@@ -53,17 +79,31 @@ public final class PreventionJobTriggerInspectJobAction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
+        private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
+        private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
         private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubSub = defaults.pubSub;
+    	      this.publishFindingsToCloudDataCatalog = defaults.publishFindingsToCloudDataCatalog;
+    	      this.publishSummaryToCscc = defaults.publishSummaryToCscc;
     	      this.saveFindings = defaults.saveFindings;
         }
 
         @CustomType.Setter
         public Builder pubSub(@Nullable PreventionJobTriggerInspectJobActionPubSub pubSub) {
             this.pubSub = pubSub;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publishFindingsToCloudDataCatalog(@Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog) {
+            this.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publishSummaryToCscc(@Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc) {
+            this.publishSummaryToCscc = publishSummaryToCscc;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +114,8 @@ public final class PreventionJobTriggerInspectJobAction {
         public PreventionJobTriggerInspectJobAction build() {
             final var o = new PreventionJobTriggerInspectJobAction();
             o.pubSub = pubSub;
+            o.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            o.publishSummaryToCscc = publishSummaryToCscc;
             o.saveFindings = saveFindings;
             return o;
         }

@@ -124,20 +124,16 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Connection Tracking configuration for this BackendService.
-     * This is available only for Layer 4 Internal Load Balancing and
-     * Network Load Balancing.
-     * Structure is documented below.
+     * Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+     * and Network Load Balancing.
      * 
      */
     @Import(name="connectionTrackingPolicy")
     private @Nullable Output<RegionBackendServiceConnectionTrackingPolicyArgs> connectionTrackingPolicy;
 
     /**
-     * @return Connection Tracking configuration for this BackendService.
-     * This is available only for Layer 4 Internal Load Balancing and
-     * Network Load Balancing.
-     * Structure is documented below.
+     * @return Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+     * and Network Load Balancing.
      * 
      */
     public Optional<Output<RegionBackendServiceConnectionTrackingPolicyArgs>> connectionTrackingPolicy() {
@@ -704,10 +700,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
-         * This is available only for Layer 4 Internal Load Balancing and
-         * Network Load Balancing.
-         * Structure is documented below.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+         * and Network Load Balancing.
          * 
          * @return builder
          * 
@@ -718,10 +712,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
-         * This is available only for Layer 4 Internal Load Balancing and
-         * Network Load Balancing.
-         * Structure is documented below.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
+         * and Network Load Balancing.
          * 
          * @return builder
          * 

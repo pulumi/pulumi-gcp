@@ -291,6 +291,13 @@ namespace Pulumi.Gcp
             set => _cloudTasksCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _cloudbuildv2CustomEndpoint = new __Value<string?>(() => __config.Get("cloudbuildv2CustomEndpoint"));
+        public static string? Cloudbuildv2CustomEndpoint
+        {
+            get => _cloudbuildv2CustomEndpoint.Get();
+            set => _cloudbuildv2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _clouddeployCustomEndpoint = new __Value<string?>(() => __config.Get("clouddeployCustomEndpoint"));
         public static string? ClouddeployCustomEndpoint
         {
@@ -452,13 +459,6 @@ namespace Pulumi.Gcp
             set => _dialogflowCxCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<bool?> _disableGooglePartnerName = new __Value<bool?>(() => __config.GetBoolean("disableGooglePartnerName"));
-        public static bool? DisableGooglePartnerName
-        {
-            get => _disableGooglePartnerName.Get();
-            set => _disableGooglePartnerName.Set(value);
-        }
-
         private static readonly __Value<string?> _dnsCustomEndpoint = new __Value<string?>(() => __config.Get("dnsCustomEndpoint"));
         public static string? DnsCustomEndpoint
         {
@@ -562,13 +562,6 @@ namespace Pulumi.Gcp
         {
             get => _gkehubFeatureCustomEndpoint.Get();
             set => _gkehubFeatureCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _googlePartnerName = new __Value<string?>(() => __config.Get("googlePartnerName"));
-        public static string? GooglePartnerName
-        {
-            get => _googlePartnerName.Get();
-            set => _googlePartnerName.Set(value);
         }
 
         private static readonly __Value<string?> _healthcareCustomEndpoint = new __Value<string?>(() => __config.Get("healthcareCustomEndpoint"));
@@ -914,6 +907,13 @@ namespace Pulumi.Gcp
             set => _tagsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _tagsLocationCustomEndpoint = new __Value<string?>(() => __config.Get("tagsLocationCustomEndpoint"));
+        public static string? TagsLocationCustomEndpoint
+        {
+            get => _tagsLocationCustomEndpoint.Get();
+            set => _tagsLocationCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _tpuCustomEndpoint = new __Value<string?>(() => __config.Get("tpuCustomEndpoint"));
         public static string? TpuCustomEndpoint
         {
@@ -947,6 +947,13 @@ namespace Pulumi.Gcp
         {
             get => _workflowsCustomEndpoint.Get();
             set => _workflowsCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _workstationsCustomEndpoint = new __Value<string?>(() => __config.Get("workstationsCustomEndpoint"));
+        public static string? WorkstationsCustomEndpoint
+        {
+            get => _workstationsCustomEndpoint.Get();
+            set => _workstationsCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _zone = new __Value<string?>(() => __config.Get("zone") ?? Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"));

@@ -87,6 +87,59 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Container Attached Cluster Ignore Errors
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAttachedVersionsArgs;
+ * import com.pulumi.gcp.container.AttachedCluster;
+ * import com.pulumi.gcp.container.AttachedClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
+ *             .location(&#34;us-west1&#34;)
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .build());
+ * 
+ *         var primary = new AttachedCluster(&#34;primary&#34;, AttachedClusterArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
+ *             .description(&#34;Test cluster&#34;)
+ *             .distribution(&#34;aks&#34;)
+ *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
+ *                 .issuerUrl(&#34;https://oidc.issuer.url&#34;)
+ *                 .build())
+ *             .platformVersion(versions.applyValue(getAttachedVersionsResult -&gt; getAttachedVersionsResult.validVersions()[0]))
+ *             .fleet(AttachedClusterFleetArgs.builder()
+ *                 .project(String.format(&#34;projects/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *                 .build())
+ *             .deletionPolicy(&#34;DELETE_IGNORE_ERRORS&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -178,6 +231,20 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Policy to determine what flags to send on delete.
+     * 
+     */
+    @Export(name="deletionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Policy to determine what flags to send on delete.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * A human readable description of this attached cluster. Cannot be longer

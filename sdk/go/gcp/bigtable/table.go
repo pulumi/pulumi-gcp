@@ -11,10 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a Google Cloud Bigtable table inside an instance. For more information see
-// [the official documentation](https://cloud.google.com/bigtable/) and
-// [API](https://cloud.google.com/bigtable/docs/go/reference).
-//
 // ## Example Usage
 //
 // ```go
@@ -104,9 +100,8 @@ type Table struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-	// to delete/recreate the entire `bigtable.Table` resource.
+	// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+	// Terraform to delete/recreate the entire google_bigtable_table resource.
 	SplitKeys pulumi.StringArrayOutput `pulumi:"splitKeys"`
 }
 
@@ -153,9 +148,8 @@ type tableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-	// to delete/recreate the entire `bigtable.Table` resource.
+	// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+	// Terraform to delete/recreate the entire google_bigtable_table resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
 
@@ -171,9 +165,8 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-	// to delete/recreate the entire `bigtable.Table` resource.
+	// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+	// Terraform to delete/recreate the entire google_bigtable_table resource.
 	SplitKeys pulumi.StringArrayInput
 }
 
@@ -193,9 +186,8 @@ type tableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-	// to delete/recreate the entire `bigtable.Table` resource.
+	// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+	// Terraform to delete/recreate the entire google_bigtable_table resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
 
@@ -212,9 +204,8 @@ type TableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A list of predefined keys to split the table on.
-	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-	// to delete/recreate the entire `bigtable.Table` resource.
+	// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+	// Terraform to delete/recreate the entire google_bigtable_table resource.
 	SplitKeys pulumi.StringArrayInput
 }
 
@@ -331,9 +322,8 @@ func (o TableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A list of predefined keys to split the table on.
-// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
-// to delete/recreate the entire `bigtable.Table` resource.
+// A list of predefined keys to split the table on. !> Warning: Modifying the split_keys of an existing table will cause
+// Terraform to delete/recreate the entire google_bigtable_table resource.
 func (o TableOutput) SplitKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringArrayOutput { return v.SplitKeys }).(pulumi.StringArrayOutput)
 }

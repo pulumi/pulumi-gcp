@@ -138,6 +138,8 @@ __all__ = [
     'PreventionJobTriggerInspectJobArgs',
     'PreventionJobTriggerInspectJobActionArgs',
     'PreventionJobTriggerInspectJobActionPubSubArgs',
+    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs',
+    'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs',
@@ -7030,15 +7032,23 @@ class PreventionJobTriggerInspectJobArgs:
 class PreventionJobTriggerInspectJobActionArgs:
     def __init__(__self__, *,
                  pub_sub: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs']] = None,
+                 publish_findings_to_cloud_data_catalog: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']] = None,
+                 publish_summary_to_cscc: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']] = None,
                  save_findings: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']] = None):
         """
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs'] pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs'] save_findings: Schedule for triggered jobs
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs'] publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs'] save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
                Structure is documented below.
         """
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
+        if publish_findings_to_cloud_data_catalog is not None:
+            pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
+        if publish_summary_to_cscc is not None:
+            pulumi.set(__self__, "publish_summary_to_cscc", publish_summary_to_cscc)
         if save_findings is not None:
             pulumi.set(__self__, "save_findings", save_findings)
 
@@ -7056,10 +7066,34 @@ class PreventionJobTriggerInspectJobActionArgs:
         pulumi.set(self, "pub_sub", value)
 
     @property
+    @pulumi.getter(name="publishFindingsToCloudDataCatalog")
+    def publish_findings_to_cloud_data_catalog(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]:
+        """
+        Publish findings of a DlpJob to Data Catalog.
+        """
+        return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
+
+    @publish_findings_to_cloud_data_catalog.setter
+    def publish_findings_to_cloud_data_catalog(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]):
+        pulumi.set(self, "publish_findings_to_cloud_data_catalog", value)
+
+    @property
+    @pulumi.getter(name="publishSummaryToCscc")
+    def publish_summary_to_cscc(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']]:
+        """
+        Publish the result summary of a DlpJob to the Cloud Security Command Center.
+        """
+        return pulumi.get(self, "publish_summary_to_cscc")
+
+    @publish_summary_to_cscc.setter
+    def publish_summary_to_cscc(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']]):
+        pulumi.set(self, "publish_summary_to_cscc", value)
+
+    @property
     @pulumi.getter(name="saveFindings")
     def save_findings(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']]:
         """
-        Schedule for triggered jobs
+        If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
         Structure is documented below.
         """
         return pulumi.get(self, "save_findings")
@@ -7089,6 +7123,18 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
     @topic.setter
     def topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic", value)
+
+
+@pulumi.input_type
+class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type

@@ -20,27 +20,9 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
 
     public static final InstanceTemplateNetworkInterfaceArgs Empty = new InstanceTemplateNetworkInterfaceArgs();
 
-    /**
-     * Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
-     * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     @Import(name="accessConfigs")
     private @Nullable Output<List<InstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
-    /**
-     * @return Access configurations, i.e. IPs via which this
-     * instance can be accessed via the Internet. Omit to ensure that the instance
-     * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you can send traffic to the instance&#39;s
-     * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
-     * 
-     */
     public Optional<Output<List<InstanceTemplateNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
         return Optional.ofNullable(this.accessConfigs);
     }
@@ -90,19 +72,9 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.ipv6AccessType);
     }
 
-    /**
-     * The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the instance template. If you leave
-     * this blank, the provider will auto-generate a unique name.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -259,48 +231,15 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             $ = new InstanceTemplateNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this
-         * instance can be accessed via the Internet. Omit to ensure that the instance
-         * is not accessible from the Internet (this means that ssh provisioners will
-         * not work unless you can send traffic to the instance&#39;s
-         * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessConfigs(@Nullable Output<List<InstanceTemplateNetworkInterfaceAccessConfigArgs>> accessConfigs) {
             $.accessConfigs = accessConfigs;
             return this;
         }
 
-        /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this
-         * instance can be accessed via the Internet. Omit to ensure that the instance
-         * is not accessible from the Internet (this means that ssh provisioners will
-         * not work unless you can send traffic to the instance&#39;s
-         * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessConfigs(List<InstanceTemplateNetworkInterfaceAccessConfigArgs> accessConfigs) {
             return accessConfigs(Output.of(accessConfigs));
         }
 
-        /**
-         * @param accessConfigs Access configurations, i.e. IPs via which this
-         * instance can be accessed via the Internet. Omit to ensure that the instance
-         * is not accessible from the Internet (this means that ssh provisioners will
-         * not work unless you can send traffic to the instance&#39;s
-         * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessConfigs(InstanceTemplateNetworkInterfaceAccessConfigArgs... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
@@ -388,25 +327,11 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             return ipv6AccessType(Output.of(ipv6AccessType));
         }
 
-        /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the instance template. If you leave
-         * this blank, the provider will auto-generate a unique name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

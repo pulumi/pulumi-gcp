@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetTriggerPubsubConfigResult> PubsubConfigs;
+        public readonly ImmutableArray<Outputs.GetTriggerRepositoryEventConfigResult> RepositoryEventConfigs;
         public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetTriggerSourceToBuildResult> SourceToBuilds;
         public readonly ImmutableDictionary<string, string> Substitutions;
@@ -199,6 +200,8 @@ namespace Pulumi.Gcp.CloudBuild
 
             ImmutableArray<Outputs.GetTriggerPubsubConfigResult> pubsubConfigs,
 
+            ImmutableArray<Outputs.GetTriggerRepositoryEventConfigResult> repositoryEventConfigs,
+
             string serviceAccount,
 
             ImmutableArray<Outputs.GetTriggerSourceToBuildResult> sourceToBuilds,
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.CloudBuild
             Name = name;
             Project = project;
             PubsubConfigs = pubsubConfigs;
+            RepositoryEventConfigs = repositoryEventConfigs;
             ServiceAccount = serviceAccount;
             SourceToBuilds = sourceToBuilds;
             Substitutions = substitutions;
