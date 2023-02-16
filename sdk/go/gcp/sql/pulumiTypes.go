@@ -2593,6 +2593,8 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   *string                                                    `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+	EnablePrivatePathForGoogleCloudServices *bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned
 	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 	// `privateNetwork` must be configured.
@@ -2622,6 +2624,8 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringPtrInput                                              `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+	EnablePrivatePathForGoogleCloudServices pulumi.BoolPtrInput `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned
 	// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 	// `privateNetwork` must be configured.
@@ -2724,6 +2728,13 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() Data
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
+// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+func (o DatabaseInstanceSettingsIpConfigurationOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool {
+		return v.EnablePrivatePathForGoogleCloudServices
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Whether this Cloud SQL instance should be assigned
 // a public IPV4 address. At least `ipv4Enabled` must be enabled or a
 // `privateNetwork` must be configured.
@@ -2786,6 +2797,16 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() D
 		}
 		return v.AuthorizedNetworks
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivatePathForGoogleCloudServices
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether this Cloud SQL instance should be assigned
@@ -5766,11 +5787,12 @@ func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntI
 }
 
 type GetDatabaseInstanceSettingIpConfiguration struct {
-	AllocatedIpRange   string                                                       `pulumi:"allocatedIpRange"`
-	AuthorizedNetworks []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
-	Ipv4Enabled        bool                                                         `pulumi:"ipv4Enabled"`
-	PrivateNetwork     string                                                       `pulumi:"privateNetwork"`
-	RequireSsl         bool                                                         `pulumi:"requireSsl"`
+	AllocatedIpRange                        string                                                       `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks                      []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	EnablePrivatePathForGoogleCloudServices bool                                                         `pulumi:"enablePrivatePathForGoogleCloudServices"`
+	Ipv4Enabled                             bool                                                         `pulumi:"ipv4Enabled"`
+	PrivateNetwork                          string                                                       `pulumi:"privateNetwork"`
+	RequireSsl                              bool                                                         `pulumi:"requireSsl"`
 }
 
 // GetDatabaseInstanceSettingIpConfigurationInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationArgs and GetDatabaseInstanceSettingIpConfigurationOutput values.
@@ -5785,11 +5807,12 @@ type GetDatabaseInstanceSettingIpConfigurationInput interface {
 }
 
 type GetDatabaseInstanceSettingIpConfigurationArgs struct {
-	AllocatedIpRange   pulumi.StringInput                                                   `pulumi:"allocatedIpRange"`
-	AuthorizedNetworks GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
-	Ipv4Enabled        pulumi.BoolInput                                                     `pulumi:"ipv4Enabled"`
-	PrivateNetwork     pulumi.StringInput                                                   `pulumi:"privateNetwork"`
-	RequireSsl         pulumi.BoolInput                                                     `pulumi:"requireSsl"`
+	AllocatedIpRange                        pulumi.StringInput                                                   `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks                      GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput                                                     `pulumi:"enablePrivatePathForGoogleCloudServices"`
+	Ipv4Enabled                             pulumi.BoolInput                                                     `pulumi:"ipv4Enabled"`
+	PrivateNetwork                          pulumi.StringInput                                                   `pulumi:"privateNetwork"`
+	RequireSsl                              pulumi.BoolInput                                                     `pulumi:"requireSsl"`
 }
 
 func (GetDatabaseInstanceSettingIpConfigurationArgs) ElementType() reflect.Type {
@@ -5851,6 +5874,12 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) AuthorizedNetworks() Ge
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
 	}).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) bool {
+		return v.EnablePrivatePathForGoogleCloudServices
+	}).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) Ipv4Enabled() pulumi.BoolOutput {
@@ -8184,11 +8213,12 @@ func (o GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput) Index(i pu
 }
 
 type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
-	AllocatedIpRange   string                                                                `pulumi:"allocatedIpRange"`
-	AuthorizedNetworks []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
-	Ipv4Enabled        bool                                                                  `pulumi:"ipv4Enabled"`
-	PrivateNetwork     string                                                                `pulumi:"privateNetwork"`
-	RequireSsl         bool                                                                  `pulumi:"requireSsl"`
+	AllocatedIpRange                        string                                                                `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks                      []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	EnablePrivatePathForGoogleCloudServices bool                                                                  `pulumi:"enablePrivatePathForGoogleCloudServices"`
+	Ipv4Enabled                             bool                                                                  `pulumi:"ipv4Enabled"`
+	PrivateNetwork                          string                                                                `pulumi:"privateNetwork"`
+	RequireSsl                              bool                                                                  `pulumi:"requireSsl"`
 }
 
 // GetDatabaseInstancesInstanceSettingIpConfigurationInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationArgs and GetDatabaseInstancesInstanceSettingIpConfigurationOutput values.
@@ -8203,11 +8233,12 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationInput interface {
 }
 
 type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
-	AllocatedIpRange   pulumi.StringInput                                                            `pulumi:"allocatedIpRange"`
-	AuthorizedNetworks GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
-	Ipv4Enabled        pulumi.BoolInput                                                              `pulumi:"ipv4Enabled"`
-	PrivateNetwork     pulumi.StringInput                                                            `pulumi:"privateNetwork"`
-	RequireSsl         pulumi.BoolInput                                                              `pulumi:"requireSsl"`
+	AllocatedIpRange                        pulumi.StringInput                                                            `pulumi:"allocatedIpRange"`
+	AuthorizedNetworks                      GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput                                                              `pulumi:"enablePrivatePathForGoogleCloudServices"`
+	Ipv4Enabled                             pulumi.BoolInput                                                              `pulumi:"ipv4Enabled"`
+	PrivateNetwork                          pulumi.StringInput                                                            `pulumi:"privateNetwork"`
+	RequireSsl                              pulumi.BoolInput                                                              `pulumi:"requireSsl"`
 }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationArgs) ElementType() reflect.Type {
@@ -8269,6 +8300,12 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) AuthorizedNetw
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
 	}).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) bool {
+		return v.EnablePrivatePathForGoogleCloudServices
+	}).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) Ipv4Enabled() pulumi.BoolOutput {

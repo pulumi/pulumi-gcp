@@ -41,6 +41,21 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
+     * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
+    @Import(name="enablePrivatePathForGoogleCloudServices")
+    private @Nullable Output<Boolean> enablePrivatePathForGoogleCloudServices;
+
+    /**
+     * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
+    public Optional<Output<Boolean>> enablePrivatePathForGoogleCloudServices() {
+        return Optional.ofNullable(this.enablePrivatePathForGoogleCloudServices);
+    }
+
+    /**
      * Whether this Cloud SQL instance should be assigned
      * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
      * `private_network` must be configured.
@@ -102,6 +117,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     private DatabaseInstanceSettingsIpConfigurationArgs(DatabaseInstanceSettingsIpConfigurationArgs $) {
         this.allocatedIpRange = $.allocatedIpRange;
         this.authorizedNetworks = $.authorizedNetworks;
+        this.enablePrivatePathForGoogleCloudServices = $.enablePrivatePathForGoogleCloudServices;
         this.ipv4Enabled = $.ipv4Enabled;
         this.privateNetwork = $.privateNetwork;
         this.requireSsl = $.requireSsl;
@@ -157,6 +173,27 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
         public Builder authorizedNetworks(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+
+        /**
+         * @param enablePrivatePathForGoogleCloudServices Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivatePathForGoogleCloudServices(@Nullable Output<Boolean> enablePrivatePathForGoogleCloudServices) {
+            $.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
+            return this;
+        }
+
+        /**
+         * @param enablePrivatePathForGoogleCloudServices Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivatePathForGoogleCloudServices(Boolean enablePrivatePathForGoogleCloudServices) {
+            return enablePrivatePathForGoogleCloudServices(Output.of(enablePrivatePathForGoogleCloudServices));
         }
 
         /**

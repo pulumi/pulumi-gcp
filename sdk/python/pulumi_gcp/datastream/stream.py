@@ -616,6 +616,170 @@ class Stream(pulumi.CustomResource):
             customer_managed_encryption_key="kms-name",
             opts=pulumi.ResourceOptions(depends_on=[key_user]))
         ```
+        ### Datastream Stream Postgresql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Postgresql Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname="hostname",
+                port=3306,
+                username="user",
+                password="pass",
+                database="postgres",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="Postgres to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
+                    max_concurrent_backfill_tasks=12,
+                    publication="publication",
+                    replication_slot="replication_slot",
+                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
+                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
+                        schema="schema",
+                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
+                            table="table",
+                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Oracle Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
+                hostname="hostname",
+                port=1521,
+                username="user",
+                password="pass",
+                database_service="ORCL",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        stream5 = gcp.datastream.Stream("stream5",
+            display_name="Oracle to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
+                    max_concurrent_cdc_tasks=8,
+                    max_concurrent_backfill_tasks=12,
+                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
+                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
+                        schema="schema",
+                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
+                            table="table",
+                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
         ### Datastream Stream Bigquery
 
         ```python
@@ -915,6 +1079,170 @@ class Stream(pulumi.CustomResource):
             ),
             customer_managed_encryption_key="kms-name",
             opts=pulumi.ResourceOptions(depends_on=[key_user]))
+        ```
+        ### Datastream Stream Postgresql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Postgresql Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
+                hostname="hostname",
+                port=3306,
+                username="user",
+                password="pass",
+                database="postgres",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        default = gcp.datastream.Stream("default",
+            display_name="Postgres to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
+                    max_concurrent_backfill_tasks=12,
+                    publication="publication",
+                    replication_slot="replication_slot",
+                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
+                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
+                            schema="schema",
+                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
+                                table="table",
+                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
+                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
+                        schema="schema",
+                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
+                            table="table",
+                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
+        ```
+        ### Datastream Stream Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="Oracle Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
+                hostname="hostname",
+                port=1521,
+                username="user",
+                password="pass",
+                database_service="ORCL",
+            ))
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        stream5 = gcp.datastream.Stream("stream5",
+            display_name="Oracle to BigQuery",
+            location="us-central1",
+            stream_id="my-stream",
+            desired_state="RUNNING",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source.id,
+                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
+                    max_concurrent_cdc_tasks=8,
+                    max_concurrent_backfill_tasks=12,
+                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
+                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
+                            schema="schema",
+                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
+                                table="table",
+                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                    column="column",
+                                )],
+                            )],
+                        )],
+                    ),
+                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
+                ),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
+                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
+                            location="us-central1",
+                        ),
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs(
+                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
+                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
+                        schema="schema",
+                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
+                            table="table",
+                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
+                                column="column",
+                            )],
+                        )],
+                    )],
+                ),
+            ))
         ```
         ### Datastream Stream Bigquery
 

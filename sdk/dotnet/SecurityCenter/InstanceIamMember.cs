@@ -30,10 +30,6 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new()
     ///     {
-    ///         Options = 
-    ///         {
-    ///             { "prober_test_run", "true" },
-    ///         },
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///     });
@@ -85,10 +81,6 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                 var prefixLength = values.Item2;
     ///                 return $"{address}/{prefixLength}";
     ///             }),
-    ///         },
-    ///         Options = 
-    ///         {
-    ///             { "prober_test_run", "true" },
     ///         },
     ///     });
     /// 
@@ -155,10 +147,6 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterpriseInstance", new()
     ///     {
     ///         EnableRbac = true,
-    ///         Options = 
-    ///         {
-    ///             { "prober_test_run", "true" },
-    ///         },
     ///         Region = "us-central1",
     ///         Type = "ENTERPRISE",
     ///     });

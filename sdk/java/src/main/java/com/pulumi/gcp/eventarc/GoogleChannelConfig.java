@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KmsFunctions;
  * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
  * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfig;
  * import com.pulumi.gcp.eventarc.GoogleChannelConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var key1Binding = new CryptoKeyIAMBinding(&#34;key1Binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var key1Member = new CryptoKeyIAMMember(&#34;key1Member&#34;, CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(data.google_kms_crypto_key().key1().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-eventarc.iam.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-eventarc.iam.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
  *         var primary = new GoogleChannelConfig(&#34;primary&#34;, GoogleChannelConfigArgs.builder()        
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .project(testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .cryptoKeyName(data.google_kms_crypto_key().key1().id())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(key1Binding)
+ *                 .dependsOn(key1Member)
  *                 .build());
  * 
  *     }

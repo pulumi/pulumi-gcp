@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar",
  *     },
+ *     description: "test description",
  *     featurestore: featurestore.id,
  *     monitoringConfig: {
  *         snapshotAnalysis: {
@@ -95,6 +96,7 @@ import * as utilities from "../utilities";
  *             value: 0.3,
  *         },
  *     },
+ *     offlineStorageTtlDays: 30,
  * }, {
  *     provider: google_beta,
  * });
@@ -141,6 +143,10 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Description of the EntityType.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -162,6 +168,12 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     */
+    public readonly offlineStorageTtlDays!: pulumi.Output<number | undefined>;
     /**
      * The region of the EntityType.
      */
@@ -185,11 +197,13 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreEntityTypeState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["featurestore"] = state ? state.featurestore : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["offlineStorageTtlDays"] = state ? state.offlineStorageTtlDays : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -197,10 +211,12 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
             if ((!args || args.featurestore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'featurestore'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["featurestore"] = args ? args.featurestore : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["offlineStorageTtlDays"] = args ? args.offlineStorageTtlDays : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -219,6 +235,10 @@ export interface AiFeatureStoreEntityTypeState {
      * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Optional. Description of the EntityType.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -242,6 +262,12 @@ export interface AiFeatureStoreEntityTypeState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     */
+    offlineStorageTtlDays?: pulumi.Input<number>;
+    /**
      * The region of the EntityType.
      */
     region?: pulumi.Input<string>;
@@ -255,6 +281,10 @@ export interface AiFeatureStoreEntityTypeState {
  * The set of arguments for constructing a AiFeatureStoreEntityType resource.
  */
 export interface AiFeatureStoreEntityTypeArgs {
+    /**
+     * Optional. Description of the EntityType.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      */
@@ -273,4 +303,10 @@ export interface AiFeatureStoreEntityTypeArgs {
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     */
+    offlineStorageTtlDays?: pulumi.Input<number>;
 }

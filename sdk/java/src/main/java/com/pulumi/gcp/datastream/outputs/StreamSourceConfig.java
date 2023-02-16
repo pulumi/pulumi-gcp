@@ -5,8 +5,12 @@ package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StreamSourceConfig {
@@ -15,7 +19,19 @@ public final class StreamSourceConfig {
      * Structure is documented below.
      * 
      */
-    private StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
+    private @Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
+    /**
+     * @return MySQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig;
+    /**
+     * @return PostgreSQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
     /**
      * @return Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
      * 
@@ -28,8 +44,24 @@ public final class StreamSourceConfig {
      * Structure is documented below.
      * 
      */
-    public StreamSourceConfigMysqlSourceConfig mysqlSourceConfig() {
-        return this.mysqlSourceConfig;
+    public Optional<StreamSourceConfigMysqlSourceConfig> mysqlSourceConfig() {
+        return Optional.ofNullable(this.mysqlSourceConfig);
+    }
+    /**
+     * @return MySQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigOracleSourceConfig> oracleSourceConfig() {
+        return Optional.ofNullable(this.oracleSourceConfig);
+    }
+    /**
+     * @return PostgreSQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigPostgresqlSourceConfig> postgresqlSourceConfig() {
+        return Optional.ofNullable(this.postgresqlSourceConfig);
     }
     /**
      * @return Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -48,18 +80,32 @@ public final class StreamSourceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
+        private @Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
+        private @Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig;
+        private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
         private String sourceConnectionProfile;
         public Builder() {}
         public Builder(StreamSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mysqlSourceConfig = defaults.mysqlSourceConfig;
+    	      this.oracleSourceConfig = defaults.oracleSourceConfig;
+    	      this.postgresqlSourceConfig = defaults.postgresqlSourceConfig;
     	      this.sourceConnectionProfile = defaults.sourceConnectionProfile;
         }
 
         @CustomType.Setter
-        public Builder mysqlSourceConfig(StreamSourceConfigMysqlSourceConfig mysqlSourceConfig) {
-            this.mysqlSourceConfig = Objects.requireNonNull(mysqlSourceConfig);
+        public Builder mysqlSourceConfig(@Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig) {
+            this.mysqlSourceConfig = mysqlSourceConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oracleSourceConfig(@Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig) {
+            this.oracleSourceConfig = oracleSourceConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder postgresqlSourceConfig(@Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig) {
+            this.postgresqlSourceConfig = postgresqlSourceConfig;
             return this;
         }
         @CustomType.Setter
@@ -70,6 +116,8 @@ public final class StreamSourceConfig {
         public StreamSourceConfig build() {
             final var o = new StreamSourceConfig();
             o.mysqlSourceConfig = mysqlSourceConfig;
+            o.oracleSourceConfig = oracleSourceConfig;
+            o.postgresqlSourceConfig = postgresqlSourceConfig;
             o.sourceConnectionProfile = sourceConnectionProfile;
             return o;
         }

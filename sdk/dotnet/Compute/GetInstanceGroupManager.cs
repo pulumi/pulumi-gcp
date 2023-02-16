@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string InstanceGroup;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyResult> InstanceLifecyclePolicies;
         public readonly string ListManagedInstancesResults;
         public readonly string? Name;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerNamedPortResult> NamedPorts;
@@ -194,6 +195,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string instanceGroup,
+
+            ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyResult> instanceLifecyclePolicies,
 
             string listManagedInstancesResults,
 
@@ -236,6 +239,7 @@ namespace Pulumi.Gcp.Compute
             Fingerprint = fingerprint;
             Id = id;
             InstanceGroup = instanceGroup;
+            InstanceLifecyclePolicies = instanceLifecyclePolicies;
             ListManagedInstancesResults = listManagedInstancesResults;
             Name = name;
             NamedPorts = namedPorts;

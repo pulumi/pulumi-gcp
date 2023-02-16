@@ -99,9 +99,9 @@ export class AppleApp extends pulumi.CustomResource {
      */
     public readonly bundleId!: pulumi.Output<string | undefined>;
     /**
-     * (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-     * Default to 'DELETE'.
+     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+     * 'DELETE'.
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -181,9 +181,9 @@ export interface AppleAppState {
      */
     bundleId?: pulumi.Input<string>;
     /**
-     * (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-     * Default to 'DELETE'.
+     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+     * 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -219,9 +219,9 @@ export interface AppleAppArgs {
      */
     bundleId?: pulumi.Input<string>;
     /**
-     * (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-     * 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-     * Default to 'DELETE'.
+     * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+     * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+     * 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

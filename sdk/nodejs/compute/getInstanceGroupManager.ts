@@ -74,6 +74,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly id: string;
     readonly instanceGroup: string;
+    readonly instanceLifecyclePolicies: outputs.compute.GetInstanceGroupManagerInstanceLifecyclePolicy[];
     readonly listManagedInstancesResults: string;
     readonly name?: string;
     readonly namedPorts: outputs.compute.GetInstanceGroupManagerNamedPort[];

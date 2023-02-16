@@ -35,9 +35,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
-//				Options: pulumi.StringMap{
-//					"prober_test_run": pulumi.String("true"),
-//				},
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //			})
@@ -104,9 +101,6 @@ import (
 //						prefixLength := _args[1].(*int)
 //						return fmt.Sprintf("%v/%v", address, prefixLength), nil
 //					}).(pulumi.StringOutput),
-//				},
-//				Options: pulumi.StringMap{
-//					"prober_test_run": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -194,11 +188,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datafusion.NewInstance(ctx, "enterpriseInstance", &datafusion.InstanceArgs{
 //				EnableRbac: pulumi.Bool(true),
-//				Options: pulumi.StringMap{
-//					"prober_test_run": pulumi.String("true"),
-//				},
-//				Region: pulumi.String("us-central1"),
-//				Type:   pulumi.String("ENTERPRISE"),
+//				Region:     pulumi.String("us-central1"),
+//				Type:       pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err

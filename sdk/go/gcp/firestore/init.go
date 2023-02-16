@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:firestore/database:Database":
+		r = &Database{}
 	case "gcp:firestore/document:Document":
 		r = &Document{}
 	case "gcp:firestore/index:Index":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firestore/database",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firestore/document",

@@ -23,9 +23,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
- *     options: {
- *         prober_test_run: "true",
- *     },
  *     region: "us-central1",
  *     type: "BASIC",
  * });
@@ -61,9 +58,6 @@ import * as utilities from "../utilities";
  *         network: "default",
  *         ipAllocation: pulumi.all([privateIpAlloc.address, privateIpAlloc.prefixLength]).apply(([address, prefixLength]) => `${address}/${prefixLength}`),
  *     },
- *     options: {
- *         prober_test_run: "true",
- *     },
  * });
  * ```
  * ### Data Fusion Instance Cmek
@@ -98,9 +92,6 @@ import * as utilities from "../utilities";
  *
  * const enterpriseInstance = new gcp.datafusion.Instance("enterpriseInstance", {
  *     enableRbac: true,
- *     options: {
- *         prober_test_run: "true",
- *     },
  *     region: "us-central1",
  *     type: "ENTERPRISE",
  * });

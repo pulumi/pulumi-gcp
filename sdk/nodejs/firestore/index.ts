@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
 export { DocumentArgs, DocumentState } from "./document";
 export type Document = import("./document").Document;
 export const Document: typeof import("./document").Document = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:firestore/database:Database":
+                return new Database(name, <any>undefined, { urn })
             case "gcp:firestore/document:Document":
                 return new Document(name, <any>undefined, { urn })
             case "gcp:firestore/index:Index":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "firestore/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/document", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/index", _module)

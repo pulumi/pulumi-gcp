@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayState;
 import com.pulumi.gcp.compute.outputs.ExternalVpnGatewayInterface;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -204,6 +205,20 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ExternalVpnGatewayInterface>>> interfaces() {
         return Codegen.optional(this.interfaces);
+    }
+    /**
+     * Labels for the external VPN gateway resource.
+     * 
+     */
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for the external VPN gateway resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * Name of the resource. Provided by the client when the resource is

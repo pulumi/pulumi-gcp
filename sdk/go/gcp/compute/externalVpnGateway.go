@@ -186,6 +186,8 @@ type ExternalVpnGateway struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayOutput `pulumi:"interfaces"`
+	// Labels for the external VPN gateway resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -238,6 +240,8 @@ type externalVpnGatewayState struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
+	// Labels for the external VPN gateway resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -262,6 +266,8 @@ type ExternalVpnGatewayState struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
+	// Labels for the external VPN gateway resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -290,6 +296,8 @@ type externalVpnGatewayArgs struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
+	// Labels for the external VPN gateway resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -313,6 +321,8 @@ type ExternalVpnGatewayArgs struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
+	// Labels for the external VPN gateway resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -425,6 +435,11 @@ func (o ExternalVpnGatewayOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ExternalVpnGatewayOutput) Interfaces() ExternalVpnGatewayInterfaceArrayOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) ExternalVpnGatewayInterfaceArrayOutput { return v.Interfaces }).(ExternalVpnGatewayInterfaceArrayOutput)
+}
+
+// Labels for the external VPN gateway resource.
+func (o ExternalVpnGatewayOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

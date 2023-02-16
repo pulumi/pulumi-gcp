@@ -1757,6 +1757,77 @@ export namespace apigateway {
 }
 
 export namespace apigee {
+    export interface AddonsConfigAddonsConfig {
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        advancedApiOpsConfig?: outputs.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfig;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        apiSecurityConfig?: outputs.apigee.AddonsConfigAddonsConfigApiSecurityConfig;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        connectorsPlatformConfig?: outputs.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfig;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        integrationConfig?: outputs.apigee.AddonsConfigAddonsConfigIntegrationConfig;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        monetizationConfig?: outputs.apigee.AddonsConfigAddonsConfigMonetizationConfig;
+    }
+
+    export interface AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: boolean;
+    }
+
+    export interface AddonsConfigAddonsConfigApiSecurityConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        expiresAt: string;
+    }
+
+    export interface AddonsConfigAddonsConfigConnectorsPlatformConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        expiresAt: string;
+    }
+
+    export interface AddonsConfigAddonsConfigIntegrationConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: boolean;
+    }
+
+    export interface AddonsConfigAddonsConfigMonetizationConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: boolean;
+    }
+
     export interface EnvironmentIamBindingCondition {
         description?: string;
         expression: string;
@@ -7556,6 +7627,18 @@ export namespace cloudbuildv2 {
         service: string;
     }
 
+    export interface ConnectionIAMBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ConnectionIAMMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface ConnectionInstallationState {
         actionUri: string;
         message: string;
@@ -12685,6 +12768,10 @@ export namespace compute {
         initialDelaySec: number;
     }
 
+    export interface GetInstanceGroupManagerInstanceLifecyclePolicy {
+        forceUpdateOnRepair: string;
+    }
+
     export interface GetInstanceGroupManagerNamedPort {
         /**
          * The name of the instance group. Either `name` or `selfLink` must be provided.
@@ -14381,6 +14468,13 @@ export namespace compute {
          * it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
          */
         initialDelaySec: number;
+    }
+
+    export interface InstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+         */
+        forceUpdateOnRepair?: string;
     }
 
     export interface InstanceGroupManagerNamedPort {
@@ -16790,6 +16884,14 @@ export namespace compute {
          * it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
          */
         initialDelaySec: number;
+    }
+
+    export interface RegionInstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+         * - - -
+         */
+        forceUpdateOnRepair?: string;
     }
 
     export interface RegionInstanceGroupManagerNamedPort {
@@ -30259,6 +30361,16 @@ export namespace datastream {
          * Structure is documented below.
          */
         mysqlExcludedObjects?: outputs.datastream.StreamBackfillAllMysqlExcludedObjects;
+        /**
+         * PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        oracleExcludedObjects?: outputs.datastream.StreamBackfillAllOracleExcludedObjects;
+        /**
+         * PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        postgresqlExcludedObjects?: outputs.datastream.StreamBackfillAllPostgresqlExcludedObjects;
     }
 
     export interface StreamBackfillAllMysqlExcludedObjects {
@@ -30323,6 +30435,146 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: boolean;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: outputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchema[];
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: outputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable[];
+        /**
+         * Schema name.
+         */
+        schema: string;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: outputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: string;
+        /**
+         * Column encoding.
+         */
+        encoding: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: outputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema[];
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: outputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable[];
+        /**
+         * Database name.
+         */
+        schema: string;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: outputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
     }
 
     export interface StreamBackfillNone {
@@ -30446,7 +30698,17 @@ export namespace datastream {
          * MySQL data source configuration.
          * Structure is documented below.
          */
-        mysqlSourceConfig: outputs.datastream.StreamSourceConfigMysqlSourceConfig;
+        mysqlSourceConfig?: outputs.datastream.StreamSourceConfigMysqlSourceConfig;
+        /**
+         * MySQL data source configuration.
+         * Structure is documented below.
+         */
+        oracleSourceConfig?: outputs.datastream.StreamSourceConfigOracleSourceConfig;
+        /**
+         * PostgreSQL data source configuration.
+         * Structure is documented below.
+         */
+        postgresqlSourceConfig?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfig;
         /**
          * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
          */
@@ -30597,6 +30859,351 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: boolean;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfig {
+        /**
+         * Configuration to drop large object values.
+         */
+        dropLargeObjects?: outputs.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjects;
+        /**
+         * Oracle objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: outputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjects;
+        /**
+         * Oracle objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: outputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjects;
+        /**
+         * Maximum number of concurrent backfill tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentBackfillTasks: number;
+        /**
+         * Maximum number of concurrent CDC tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentCdcTasks: number;
+        /**
+         * Configuration to drop large object values.
+         */
+        streamLargeObjects?: outputs.datastream.StreamSourceConfigOracleSourceConfigStreamLargeObjects;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigDropLargeObjects {
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: outputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema[];
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: outputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable[];
+        /**
+         * Schema name.
+         */
+        schema: string;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: outputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: string;
+        /**
+         * Column encoding.
+         */
+        encoding: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: outputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema[];
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: outputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable[];
+        /**
+         * Schema name.
+         */
+        schema: string;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: outputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: string;
+        /**
+         * Column encoding.
+         */
+        encoding: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfig {
+        /**
+         * PostgreSQL objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjects;
+        /**
+         * PostgreSQL objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjects;
+        /**
+         * Maximum number of concurrent backfill tasks. The number should be non
+         * negative. If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentBackfillTasks: number;
+        /**
+         * The name of the publication that includes the set of all tables
+         * that are defined in the stream's include_objects.
+         */
+        publication: string;
+        /**
+         * The name of the logical replication slot that's configured with
+         * the pgoutput plugin.
+         */
+        replicationSlot: string;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema[];
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable[];
+        /**
+         * Database name.
+         */
+        schema: string;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema[];
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable[];
+        /**
+         * Database name.
+         */
+        schema: string;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: outputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn[];
+        /**
+         * Table name.
+         */
+        table: string;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: string;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: string;
+        /**
+         * Column length.
+         */
+        length: number;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: boolean;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: number;
+        /**
+         * Column precision.
+         */
+        precision: number;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: boolean;
+        /**
+         * Column scale.
+         */
+        scale: number;
     }
 
 }
@@ -40595,6 +41202,10 @@ export namespace sql {
         allocatedIpRange?: string;
         authorizedNetworks?: outputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork[];
         /**
+         * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         */
+        enablePrivatePathForGoogleCloudServices?: boolean;
+        /**
          * Whether this Cloud SQL instance should be assigned
          * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
          * `privateNetwork` must be configured.
@@ -40844,6 +41455,7 @@ export namespace sql {
     export interface GetDatabaseInstanceSettingIpConfiguration {
         allocatedIpRange: string;
         authorizedNetworks: outputs.sql.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork[];
+        enablePrivatePathForGoogleCloudServices: boolean;
         ipv4Enabled: boolean;
         privateNetwork: string;
         requireSsl: boolean;
@@ -41034,6 +41646,7 @@ export namespace sql {
     export interface GetDatabaseInstancesInstanceSettingIpConfiguration {
         allocatedIpRange: string;
         authorizedNetworks: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork[];
+        enablePrivatePathForGoogleCloudServices: boolean;
         ipv4Enabled: boolean;
         privateNetwork: string;
         requireSsl: boolean;

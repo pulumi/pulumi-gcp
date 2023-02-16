@@ -17,25 +17,35 @@ __all__ = ['AiFeatureStoreEntityTypeArgs', 'AiFeatureStoreEntityType']
 class AiFeatureStoreEntityTypeArgs:
     def __init__(__self__, *,
                  featurestore: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 offline_storage_ttl_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AiFeatureStoreEntityType resource.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+        :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         pulumi.set(__self__, "featurestore", featurestore)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if monitoring_config is not None:
             pulumi.set(__self__, "monitoring_config", monitoring_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if offline_storage_ttl_days is not None:
+            pulumi.set(__self__, "offline_storage_ttl_days", offline_storage_ttl_days)
 
     @property
     @pulumi.getter
@@ -48,6 +58,18 @@ class AiFeatureStoreEntityTypeArgs:
     @featurestore.setter
     def featurestore(self, value: pulumi.Input[str]):
         pulumi.set(self, "featurestore", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the EntityType.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -87,21 +109,38 @@ class AiFeatureStoreEntityTypeArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="offlineStorageTtlDays")
+    def offline_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        """
+        return pulumi.get(self, "offline_storage_ttl_days")
+
+    @offline_storage_ttl_days.setter
+    def offline_storage_ttl_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "offline_storage_ttl_days", value)
+
 
 @pulumi.input_type
 class _AiFeatureStoreEntityTypeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
@@ -109,11 +148,16 @@ class _AiFeatureStoreEntityTypeState:
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if featurestore is not None:
@@ -124,6 +168,8 @@ class _AiFeatureStoreEntityTypeState:
             pulumi.set(__self__, "monitoring_config", monitoring_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if offline_storage_ttl_days is not None:
+            pulumi.set(__self__, "offline_storage_ttl_days", offline_storage_ttl_days)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if update_time is not None:
@@ -140,6 +186,18 @@ class _AiFeatureStoreEntityTypeState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the EntityType.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -204,6 +262,20 @@ class _AiFeatureStoreEntityTypeState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="offlineStorageTtlDays")
+    def offline_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        """
+        return pulumi.get(self, "offline_storage_ttl_days")
+
+    @offline_storage_ttl_days.setter
+    def offline_storage_ttl_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "offline_storage_ttl_days", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -233,10 +305,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
@@ -269,6 +343,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
+            description="test description",
             featurestore=featurestore.id,
             monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
                 snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
@@ -323,6 +398,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     value=0.3,
                 ),
             ),
+            offline_storage_ttl_days=30,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -336,12 +412,16 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         ...
     @overload
@@ -380,6 +460,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
+            description="test description",
             featurestore=featurestore.id,
             monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
                 snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
@@ -434,6 +515,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                     value=0.3,
                 ),
             ),
+            offline_storage_ttl_days=30,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -460,10 +542,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -473,12 +557,14 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiFeatureStoreEntityTypeArgs.__new__(AiFeatureStoreEntityTypeArgs)
 
+            __props__.__dict__["description"] = description
             if featurestore is None and not opts.urn:
                 raise TypeError("Missing required property 'featurestore'")
             __props__.__dict__["featurestore"] = featurestore
             __props__.__dict__["labels"] = labels
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
+            __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["region"] = None
@@ -494,11 +580,13 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStoreEntityType':
         """
@@ -509,6 +597,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
@@ -516,6 +605,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
@@ -524,11 +616,13 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         __props__ = _AiFeatureStoreEntityTypeState.__new__(_AiFeatureStoreEntityTypeState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["featurestore"] = featurestore
         __props__.__dict__["labels"] = labels
         __props__.__dict__["monitoring_config"] = monitoring_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days
         __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         return AiFeatureStoreEntityType(resource_name, opts=opts, __props__=__props__)
@@ -540,6 +634,14 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Description of the EntityType.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -582,6 +684,16 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="offlineStorageTtlDays")
+    def offline_storage_ttl_days(self) -> pulumi.Output[Optional[int]]:
+        """
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        """
+        return pulumi.get(self, "offline_storage_ttl_days")
 
     @property
     @pulumi.getter

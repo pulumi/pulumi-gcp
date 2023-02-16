@@ -21,6 +21,7 @@ class InstanceGroupManagerArgs:
                  all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
@@ -53,6 +54,7 @@ class InstanceGroupManagerArgs:
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -94,6 +96,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_lifecycle_policy is not None:
+            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
             pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
@@ -192,6 +196,18 @@ class InstanceGroupManagerArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @instance_lifecycle_policy.setter
+    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+        pulumi.set(self, "instance_lifecycle_policy", value)
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")
@@ -378,6 +394,7 @@ class _InstanceGroupManagerState:
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
@@ -413,6 +430,7 @@ class _InstanceGroupManagerState:
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -463,6 +481,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
+        if instance_lifecycle_policy is not None:
+            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
             pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
@@ -579,6 +599,18 @@ class _InstanceGroupManagerState:
     @instance_group.setter
     def instance_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @instance_lifecycle_policy.setter
+    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+        pulumi.set(self, "instance_lifecycle_policy", value)
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")
@@ -812,6 +844,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -937,6 +970,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -1092,6 +1126,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -1121,6 +1156,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
@@ -1158,6 +1194,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
+            instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -1198,6 +1235,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -1246,6 +1284,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
         __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
         __props__.__dict__["name"] = name
         __props__.__dict__["named_ports"] = named_ports
@@ -1322,6 +1361,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerInstanceLifecyclePolicy']:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")

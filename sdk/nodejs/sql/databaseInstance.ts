@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *         ipConfiguration: {
  *             ipv4Enabled: false,
  *             privateNetwork: privateNetwork.id,
+ *             enablePrivatePathForGoogleCloudServices: true,
  *         },
  *     },
  * }, {

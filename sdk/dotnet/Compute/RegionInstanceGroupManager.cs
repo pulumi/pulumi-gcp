@@ -198,6 +198,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceGroup { get; private set; } = null!;
 
         /// <summary>
+        /// The instance lifecycle policy for this managed instance group.
+        /// </summary>
+        [Output("instanceLifecyclePolicy")]
+        public Output<Outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy> InstanceLifecyclePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Pagination behavior of the `listManagedInstances` API
         /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
         /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -413,6 +419,12 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// The instance lifecycle policy for this managed instance group.
+        /// </summary>
+        [Input("instanceLifecyclePolicy")]
+        public Input<Inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyArgs>? InstanceLifecyclePolicy { get; set; }
+
+        /// <summary>
         /// Pagination behavior of the `listManagedInstances` API
         /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
         /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -624,6 +636,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The instance lifecycle policy for this managed instance group.
+        /// </summary>
+        [Input("instanceLifecyclePolicy")]
+        public Input<Inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyGetArgs>? InstanceLifecyclePolicy { get; set; }
 
         /// <summary>
         /// Pagination behavior of the `listManagedInstances` API

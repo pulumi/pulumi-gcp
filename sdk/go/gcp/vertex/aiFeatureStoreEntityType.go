@@ -53,6 +53,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
+//				Description:  pulumi.String("test description"),
 //				Featurestore: featurestore.ID(),
 //				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
 //					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
@@ -126,6 +127,7 @@ import (
 //						Value: pulumi.Float64(0.3),
 //					},
 //				},
+//				OfflineStorageTtlDays: pulumi.Int(30),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -150,6 +152,8 @@ type AiFeatureStoreEntityType struct {
 
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Description of the EntityType.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -162,6 +166,10 @@ type AiFeatureStoreEntityType struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrOutput `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	OfflineStorageTtlDays pulumi.IntPtrOutput `pulumi:"offlineStorageTtlDays"`
 	// The region of the EntityType.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -202,6 +210,8 @@ func GetAiFeatureStoreEntityType(ctx *pulumi.Context,
 type aiFeatureStoreEntityTypeState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. Description of the EntityType.
+	Description *string `pulumi:"description"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -214,6 +224,10 @@ type aiFeatureStoreEntityTypeState struct {
 	MonitoringConfig *AiFeatureStoreEntityTypeMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 	// The region of the EntityType.
 	Region *string `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -223,6 +237,8 @@ type aiFeatureStoreEntityTypeState struct {
 type AiFeatureStoreEntityTypeState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// Optional. Description of the EntityType.
+	Description pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -235,6 +251,10 @@ type AiFeatureStoreEntityTypeState struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrInput
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	OfflineStorageTtlDays pulumi.IntPtrInput
 	// The region of the EntityType.
 	Region pulumi.StringPtrInput
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -246,6 +266,8 @@ func (AiFeatureStoreEntityTypeState) ElementType() reflect.Type {
 }
 
 type aiFeatureStoreEntityTypeArgs struct {
+	// Optional. Description of the EntityType.
+	Description *string `pulumi:"description"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
 	Featurestore string `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
@@ -256,10 +278,16 @@ type aiFeatureStoreEntityTypeArgs struct {
 	MonitoringConfig *AiFeatureStoreEntityTypeMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 }
 
 // The set of arguments for constructing a AiFeatureStoreEntityType resource.
 type AiFeatureStoreEntityTypeArgs struct {
+	// Optional. Description of the EntityType.
+	Description pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
 	Featurestore pulumi.StringInput
 	// A set of key/value label pairs to assign to this EntityType.
@@ -270,6 +298,10 @@ type AiFeatureStoreEntityTypeArgs struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrInput
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	OfflineStorageTtlDays pulumi.IntPtrInput
 }
 
 func (AiFeatureStoreEntityTypeArgs) ElementType() reflect.Type {
@@ -364,6 +396,11 @@ func (o AiFeatureStoreEntityTypeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Description of the EntityType.
+func (o AiFeatureStoreEntityTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // Used to perform consistent read-modify-write updates.
 func (o AiFeatureStoreEntityTypeOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -391,6 +428,13 @@ func (o AiFeatureStoreEntityTypeOutput) MonitoringConfig() AiFeatureStoreEntityT
 // The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 func (o AiFeatureStoreEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+func (o AiFeatureStoreEntityTypeOutput) OfflineStorageTtlDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.IntPtrOutput { return v.OfflineStorageTtlDays }).(pulumi.IntPtrOutput)
 }
 
 // The region of the EntityType.

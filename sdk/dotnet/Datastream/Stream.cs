@@ -284,6 +284,290 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Postgresql
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var source = new Gcp.Datastream.ConnectionProfile("source", new()
+    ///     {
+    ///         DisplayName = "Postgresql Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
+    ///         {
+    ///             Hostname = "hostname",
+    ///             Port = 3306,
+    ///             Username = "user",
+    ///             Password = "pass",
+    ///             Database = "postgres",
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new Gcp.Datastream.ConnectionProfile("destination", new()
+    ///     {
+    ///         DisplayName = "BigQuery Destination",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         DisplayName = "Postgres to BigQuery",
+    ///         Location = "us-central1",
+    ///         StreamId = "my-stream",
+    ///         DesiredState = "RUNNING",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = source.Id,
+    ///             PostgresqlSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigArgs
+    ///             {
+    ///                 MaxConcurrentBackfillTasks = 12,
+    ///                 Publication = "publication",
+    ///                 ReplicationSlot = "replication_slot",
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     PostgresqlSchemas = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
+    ///                         {
+    ///                             Schema = "schema",
+    ///                             PostgresqlTables = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs
+    ///                                 {
+    ///                                     Table = "table",
+    ///                                     PostgresqlColumns = new[]
+    ///                                     {
+    ///                                         new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs
+    ///                                         {
+    ///                                             Column = "column",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ExcludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs
+    ///                 {
+    ///                     PostgresqlSchemas = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
+    ///                         {
+    ///                             Schema = "schema",
+    ///                             PostgresqlTables = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs
+    ///                                 {
+    ///                                     Table = "table",
+    ///                                     PostgresqlColumns = new[]
+    ///                                     {
+    ///                                         new Gcp.Datastream.Inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs
+    ///                                         {
+    ///                                             Column = "column",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destination.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 DataFreshness = "900s",
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillAll = new Gcp.Datastream.Inputs.StreamBackfillAllArgs
+    ///         {
+    ///             PostgresqlExcludedObjects = new Gcp.Datastream.Inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs
+    ///             {
+    ///                 PostgresqlSchemas = new[]
+    ///                 {
+    ///                     new Gcp.Datastream.Inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs
+    ///                     {
+    ///                         Schema = "schema",
+    ///                         PostgresqlTables = new[]
+    ///                         {
+    ///                             new Gcp.Datastream.Inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs
+    ///                             {
+    ///                                 Table = "table",
+    ///                                 PostgresqlColumns = new[]
+    ///                                 {
+    ///                                     new Gcp.Datastream.Inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs
+    ///                                     {
+    ///                                         Column = "column",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Stream Oracle
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var source = new Gcp.Datastream.ConnectionProfile("source", new()
+    ///     {
+    ///         DisplayName = "Oracle Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         OracleProfile = new Gcp.Datastream.Inputs.ConnectionProfileOracleProfileArgs
+    ///         {
+    ///             Hostname = "hostname",
+    ///             Port = 1521,
+    ///             Username = "user",
+    ///             Password = "pass",
+    ///             DatabaseService = "ORCL",
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new Gcp.Datastream.ConnectionProfile("destination", new()
+    ///     {
+    ///         DisplayName = "BigQuery Destination",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var stream5 = new Gcp.Datastream.Stream("stream5", new()
+    ///     {
+    ///         DisplayName = "Oracle to BigQuery",
+    ///         Location = "us-central1",
+    ///         StreamId = "my-stream",
+    ///         DesiredState = "RUNNING",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = source.Id,
+    ///             OracleSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigArgs
+    ///             {
+    ///                 MaxConcurrentCdcTasks = 8,
+    ///                 MaxConcurrentBackfillTasks = 12,
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     OracleSchemas = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs
+    ///                         {
+    ///                             Schema = "schema",
+    ///                             OracleTables = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs
+    ///                                 {
+    ///                                     Table = "table",
+    ///                                     OracleColumns = new[]
+    ///                                     {
+    ///                                         new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs
+    ///                                         {
+    ///                                             Column = "column",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ExcludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs
+    ///                 {
+    ///                     OracleSchemas = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs
+    ///                         {
+    ///                             Schema = "schema",
+    ///                             OracleTables = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs
+    ///                                 {
+    ///                                     Table = "table",
+    ///                                     OracleColumns = new[]
+    ///                                     {
+    ///                                         new Gcp.Datastream.Inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs
+    ///                                         {
+    ///                                             Column = "column",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 DropLargeObjects = null,
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destination.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 DataFreshness = "900s",
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillAll = new Gcp.Datastream.Inputs.StreamBackfillAllArgs
+    ///         {
+    ///             OracleExcludedObjects = new Gcp.Datastream.Inputs.StreamBackfillAllOracleExcludedObjectsArgs
+    ///             {
+    ///                 OracleSchemas = new[]
+    ///                 {
+    ///                     new Gcp.Datastream.Inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs
+    ///                     {
+    ///                         Schema = "schema",
+    ///                         OracleTables = new[]
+    ///                         {
+    ///                             new Gcp.Datastream.Inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs
+    ///                             {
+    ///                                 Table = "table",
+    ///                                 OracleColumns = new[]
+    ///                                 {
+    ///                                     new Gcp.Datastream.Inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs
+    ///                                     {
+    ///                                         Column = "column",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Stream Bigquery
     /// 
     /// ```csharp

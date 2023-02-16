@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Represents a RegionTargetTcpProxy resource, which is used by one or more
+    /// forwarding rules to route incoming TCP requests to a regional TCP proxy load
+    /// balancer.
+    /// 
+    /// To get more information about RegionTargetTcpProxy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetTcpProxies)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

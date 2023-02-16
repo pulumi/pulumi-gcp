@@ -632,6 +632,24 @@ func Provider() tfbridge.ProviderInfo {
 			// Cloud Build V2
 			"google_cloudbuildv2_connection": {Tok: gcpResource(gcpCloudBuildV2, "Connection")},
 			"google_cloudbuildv2_repository": {Tok: gcpResource(gcpCloudBuildV2, "Repository")},
+			"google_cloudbuildv2_connection_iam_binding": {
+				Tok: gcpResource(gcpCloudBuildV2, "ConnectionIAMBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudbuildv2_connection_iam.html.markdown",
+				},
+			},
+			"google_cloudbuildv2_connection_iam_member": {
+				Tok: gcpResource(gcpCloudBuildV2, "ConnectionIAMMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudbuildv2_connection_iam.html.markdown",
+				},
+			},
+			"google_cloudbuildv2_connection_iam_policy": {
+				Tok: gcpResource(gcpCloudBuildV2, "ConnectionIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloudbuildv2_connection_iam.html.markdown",
+				},
+			},
 
 			// Cloud Deploy
 			"google_clouddeploy_delivery_pipeline": {Tok: gcpResource(gcpCloudDeploy, "DeliveryPipeline")},
@@ -1472,6 +1490,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Firestore resources
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
 			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
+			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database")},
 
 			// Monitoring resources
 			"google_monitoring_alert_policy":         {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
@@ -2610,6 +2629,14 @@ func Provider() tfbridge.ProviderInfo {
 			"google_apigee_endpoint_attachment": {Tok: gcpResource(gcpApigee, "EndpointAttachment")},
 			"google_apigee_nat_address":         {Tok: gcpResource(gcpApigee, "NatAddress")},
 			"google_apigee_sync_authorization":  {Tok: gcpResource(gcpApigee, "SyncAuthorization")},
+			"google_apigee_addons_config": {
+				Tok: gcpResource(gcpApigee, "AddonsConfig"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"addons_config": {
+						CSharpName: "AddonsConfigDetails",
+					},
+				},
+			},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

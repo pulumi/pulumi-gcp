@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
+    /// An AlloyDB Backup.
+    /// 
+    /// To get more information about Backup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
+    /// * How-to Guides
+    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    /// 
     /// ## Example Usage
     /// ### Alloydb Backup Full
     /// 
@@ -30,9 +38,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
     ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
@@ -41,9 +46,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
     ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
@@ -54,9 +56,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             privateIpAlloc.Name,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultInstance = new Gcp.Alloydb.Instance("defaultInstance", new()
@@ -66,7 +65,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         InstanceType = "PRIMARY",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             vpcConnection,
@@ -85,7 +83,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             defaultInstance,

@@ -25,7 +25,7 @@ class AndroidAppArgs:
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-               AndroidApp. Default to 'DELETE'.
+               AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -63,7 +63,7 @@ class AndroidAppArgs:
         """
         (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
         'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        AndroidApp. Default to 'DELETE'.
+        AndroidApp. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -140,7 +140,7 @@ class _AndroidAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-               AndroidApp. Default to 'DELETE'.
+               AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -191,7 +191,7 @@ class _AndroidAppState:
         """
         (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
         'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        AndroidApp. Default to 'DELETE'.
+        AndroidApp. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -341,7 +341,7 @@ class AndroidApp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-               AndroidApp. Default to 'DELETE'.
+               AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
@@ -464,7 +464,7 @@ class AndroidApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-               AndroidApp. Default to 'DELETE'.
+               AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -507,7 +507,7 @@ class AndroidApp(pulumi.CustomResource):
         """
         (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
         'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-        AndroidApp. Default to 'DELETE'.
+        AndroidApp. Defaults to 'DELETE'.
         """
         return pulumi.get(self, "deletion_policy")
 

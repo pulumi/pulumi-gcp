@@ -10,12 +10,262 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AddonsConfigAddonsConfigArgs',
+    'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs',
+    'AddonsConfigAddonsConfigApiSecurityConfigArgs',
+    'AddonsConfigAddonsConfigConnectorsPlatformConfigArgs',
+    'AddonsConfigAddonsConfigIntegrationConfigArgs',
+    'AddonsConfigAddonsConfigMonetizationConfigArgs',
     'EnvironmentIamBindingConditionArgs',
     'EnvironmentIamMemberConditionArgs',
     'EnvironmentNodeConfigArgs',
     'OrganizationPropertiesArgs',
     'OrganizationPropertiesPropertyArgs',
 ]
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigArgs:
+    def __init__(__self__, *,
+                 advanced_api_ops_config: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']] = None,
+                 api_security_config: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']] = None,
+                 connectors_platform_config: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']] = None,
+                 integration_config: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']] = None,
+                 monetization_config: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']] = None):
+        """
+        :param pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Monetization add-on.
+               Structure is documented below.
+        :param pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs'] api_security_config: Configuration for the Monetization add-on.
+               Structure is documented below.
+        :param pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs'] connectors_platform_config: Configuration for the Monetization add-on.
+               Structure is documented below.
+        :param pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs'] integration_config: Configuration for the Monetization add-on.
+               Structure is documented below.
+        :param pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
+               Structure is documented below.
+        """
+        if advanced_api_ops_config is not None:
+            pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        if api_security_config is not None:
+            pulumi.set(__self__, "api_security_config", api_security_config)
+        if connectors_platform_config is not None:
+            pulumi.set(__self__, "connectors_platform_config", connectors_platform_config)
+        if integration_config is not None:
+            pulumi.set(__self__, "integration_config", integration_config)
+        if monetization_config is not None:
+            pulumi.set(__self__, "monetization_config", monetization_config)
+
+    @property
+    @pulumi.getter(name="advancedApiOpsConfig")
+    def advanced_api_ops_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_api_ops_config")
+
+    @advanced_api_ops_config.setter
+    def advanced_api_ops_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]):
+        pulumi.set(self, "advanced_api_ops_config", value)
+
+    @property
+    @pulumi.getter(name="apiSecurityConfig")
+    def api_security_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_security_config")
+
+    @api_security_config.setter
+    def api_security_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgs']]):
+        pulumi.set(self, "api_security_config", value)
+
+    @property
+    @pulumi.getter(name="connectorsPlatformConfig")
+    def connectors_platform_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connectors_platform_config")
+
+    @connectors_platform_config.setter
+    def connectors_platform_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']]):
+        pulumi.set(self, "connectors_platform_config", value)
+
+    @property
+    @pulumi.getter(name="integrationConfig")
+    def integration_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "integration_config")
+
+    @integration_config.setter
+    def integration_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgs']]):
+        pulumi.set(self, "integration_config", value)
+
+    @property
+    @pulumi.getter(name="monetizationConfig")
+    def monetization_config(self) -> Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monetization_config")
+
+    @monetization_config.setter
+    def monetization_config(self, value: Optional[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgs']]):
+        pulumi.set(self, "monetization_config", value)
+
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigApiSecurityConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[str] expires_at: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[str] expires_at: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigIntegrationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class AddonsConfigAddonsConfigMonetizationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
 
 @pulumi.input_type
 class EnvironmentIamBindingConditionArgs:

@@ -164,6 +164,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceTemplateReservationAffinity | undefined>;
     /**
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    public readonly resourcePolicies!: pulumi.Output<string | undefined>;
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
@@ -224,6 +228,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
+            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
@@ -258,6 +263,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
+            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
@@ -385,6 +391,10 @@ export interface InstanceTemplateState {
      * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
+    /**
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    resourcePolicies?: pulumi.Input<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
@@ -523,6 +533,10 @@ export interface InstanceTemplateArgs {
      * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceTemplateReservationAffinity>;
+    /**
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    resourcePolicies?: pulumi.Input<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.

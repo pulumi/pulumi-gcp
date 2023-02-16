@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A managed alloydb cluster instance.
+ *
+ * To get more information about Instance, see:
+ *
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *
  * ## Example Usage
  * ### Alloydb Instance Basic
  *
@@ -15,9 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {}, {
- *     provider: google_beta,
- * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
@@ -25,23 +31,17 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
  *     network: defaultNetwork.id,
- * }, {
- *     provider: google_beta,
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
  *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
- * }, {
- *     provider: google_beta,
  * });
  * const defaultInstance = new gcp.alloydb.Instance("defaultInstance", {
  *     cluster: defaultCluster.name,
@@ -51,7 +51,6 @@ import * as utilities from "../utilities";
  *         cpuCount: 2,
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [vpcConnection],
  * });
  * ```

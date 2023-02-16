@@ -154,6 +154,10 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     public readonly interfaces!: pulumi.Output<outputs.compute.ExternalVpnGatewayInterface[] | undefined>;
     /**
+     * Labels for the external VPN gateway resource.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -193,6 +197,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             const state = argsOrState as ExternalVpnGatewayState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["interfaces"] = state ? state.interfaces : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
@@ -201,6 +206,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             const args = argsOrState as ExternalVpnGatewayArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
@@ -224,6 +230,10 @@ export interface ExternalVpnGatewayState {
      * Structure is documented below.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.compute.ExternalVpnGatewayInterface>[]>;
+    /**
+     * Labels for the external VPN gateway resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -263,6 +273,10 @@ export interface ExternalVpnGatewayArgs {
      * Structure is documented below.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.compute.ExternalVpnGatewayInterface>[]>;
+    /**
+     * Labels for the external VPN gateway resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

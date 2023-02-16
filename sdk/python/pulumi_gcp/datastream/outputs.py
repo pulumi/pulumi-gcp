@@ -26,6 +26,14 @@ __all__ = [
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabase',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn',
+    'StreamBackfillAllOracleExcludedObjects',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchema',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn',
+    'StreamBackfillAllPostgresqlExcludedObjects',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
     'StreamBackfillNone',
     'StreamDestinationConfig',
     'StreamDestinationConfigBigqueryDestinationConfig',
@@ -45,6 +53,26 @@ __all__ = [
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn',
+    'StreamSourceConfigOracleSourceConfig',
+    'StreamSourceConfigOracleSourceConfigDropLargeObjects',
+    'StreamSourceConfigOracleSourceConfigExcludeObjects',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn',
+    'StreamSourceConfigOracleSourceConfigIncludeObjects',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn',
+    'StreamSourceConfigOracleSourceConfigStreamLargeObjects',
+    'StreamSourceConfigPostgresqlSourceConfig',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjects',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjects',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
 ]
 
 @pulumi.output_type
@@ -660,6 +688,10 @@ class StreamBackfillAll(dict):
         suggest = None
         if key == "mysqlExcludedObjects":
             suggest = "mysql_excluded_objects"
+        elif key == "oracleExcludedObjects":
+            suggest = "oracle_excluded_objects"
+        elif key == "postgresqlExcludedObjects":
+            suggest = "postgresql_excluded_objects"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAll. Access the value via the '{suggest}' property getter instead.")
@@ -673,13 +705,23 @@ class StreamBackfillAll(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None):
+                 mysql_excluded_objects: Optional['outputs.StreamBackfillAllMysqlExcludedObjects'] = None,
+                 oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
+                 postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None):
         """
         :param 'StreamBackfillAllMysqlExcludedObjectsArgs' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param 'StreamBackfillAllOracleExcludedObjectsArgs' oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param 'StreamBackfillAllPostgresqlExcludedObjectsArgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         """
         if mysql_excluded_objects is not None:
             pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
+        if oracle_excluded_objects is not None:
+            pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
+        if postgresql_excluded_objects is not None:
+            pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -689,6 +731,24 @@ class StreamBackfillAll(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "mysql_excluded_objects")
+
+    @property
+    @pulumi.getter(name="oracleExcludedObjects")
+    def oracle_excluded_objects(self) -> Optional['outputs.StreamBackfillAllOracleExcludedObjects']:
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_excluded_objects")
+
+    @property
+    @pulumi.getter(name="postgresqlExcludedObjects")
+    def postgresql_excluded_objects(self) -> Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects']:
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_excluded_objects")
 
 
 @pulumi.output_type
@@ -938,6 +998,540 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
+
+
+@pulumi.output_type
+class StreamBackfillAllOracleExcludedObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleSchemas":
+            suggest = "oracle_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllOracleExcludedObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllOracleExcludedObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllOracleExcludedObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oracle_schemas: Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchema']):
+        """
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchema']:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+
+@pulumi.output_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleTables":
+            suggest = "oracle_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllOracleExcludedObjectsOracleSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 oracle_tables: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+
+@pulumi.output_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleColumns":
+            suggest = "oracle_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 oracle_columns: Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[Sequence['outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn']]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+
+@pulumi.output_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 encoding: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param str encoding: Column encoding.
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamBackfillAllPostgresqlExcludedObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlSchemas":
+            suggest = "postgresql_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllPostgresqlExcludedObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_schemas: Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema']):
+        """
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema']:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+
+@pulumi.output_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlTables":
+            suggest = "postgresql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 postgresql_tables: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable']] = None):
+        """
+        :param str schema: Database name.
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+
+@pulumi.output_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlColumns":
+            suggest = "postgresql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 postgresql_columns: Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[Sequence['outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+
+@pulumi.output_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
 
 
 @pulumi.output_type
@@ -1387,10 +1981,14 @@ class StreamSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "mysqlSourceConfig":
-            suggest = "mysql_source_config"
-        elif key == "sourceConnectionProfile":
+        if key == "sourceConnectionProfile":
             suggest = "source_connection_profile"
+        elif key == "mysqlSourceConfig":
+            suggest = "mysql_source_config"
+        elif key == "oracleSourceConfig":
+            suggest = "oracle_source_config"
+        elif key == "postgresqlSourceConfig":
+            suggest = "postgresql_source_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1404,24 +2002,26 @@ class StreamSourceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 mysql_source_config: 'outputs.StreamSourceConfigMysqlSourceConfig',
-                 source_connection_profile: str):
+                 source_connection_profile: str,
+                 mysql_source_config: Optional['outputs.StreamSourceConfigMysqlSourceConfig'] = None,
+                 oracle_source_config: Optional['outputs.StreamSourceConfigOracleSourceConfig'] = None,
+                 postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None):
         """
+        :param str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         :param 'StreamSourceConfigMysqlSourceConfigArgs' mysql_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        :param 'StreamSourceConfigOracleSourceConfigArgs' oracle_source_config: MySQL data source configuration.
+               Structure is documented below.
+        :param 'StreamSourceConfigPostgresqlSourceConfigArgs' postgresql_source_config: PostgreSQL data source configuration.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
-
-    @property
-    @pulumi.getter(name="mysqlSourceConfig")
-    def mysql_source_config(self) -> 'outputs.StreamSourceConfigMysqlSourceConfig':
-        """
-        MySQL data source configuration.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "mysql_source_config")
+        if mysql_source_config is not None:
+            pulumi.set(__self__, "mysql_source_config", mysql_source_config)
+        if oracle_source_config is not None:
+            pulumi.set(__self__, "oracle_source_config", oracle_source_config)
+        if postgresql_source_config is not None:
+            pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -1430,6 +2030,33 @@ class StreamSourceConfig(dict):
         Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         """
         return pulumi.get(self, "source_connection_profile")
+
+    @property
+    @pulumi.getter(name="mysqlSourceConfig")
+    def mysql_source_config(self) -> Optional['outputs.StreamSourceConfigMysqlSourceConfig']:
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_source_config")
+
+    @property
+    @pulumi.getter(name="oracleSourceConfig")
+    def oracle_source_config(self) -> Optional['outputs.StreamSourceConfigOracleSourceConfig']:
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_source_config")
+
+    @property
+    @pulumi.getter(name="postgresqlSourceConfig")
+    def postgresql_source_config(self) -> Optional['outputs.StreamSourceConfigPostgresqlSourceConfig']:
+        """
+        PostgreSQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_source_config")
 
 
 @pulumi.output_type
@@ -1998,5 +2625,1297 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dropLargeObjects":
+            suggest = "drop_large_objects"
+        elif key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+        elif key == "streamLargeObjects":
+            suggest = "stream_large_objects"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 drop_large_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigDropLargeObjects'] = None,
+                 exclude_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigExcludeObjects'] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigIncludeObjects'] = None,
+                 max_concurrent_backfill_tasks: Optional[int] = None,
+                 max_concurrent_cdc_tasks: Optional[int] = None,
+                 stream_large_objects: Optional['outputs.StreamSourceConfigOracleSourceConfigStreamLargeObjects'] = None):
+        """
+        :param 'StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs' drop_large_objects: Configuration to drop large object values.
+        :param 'StreamSourceConfigOracleSourceConfigExcludeObjectsArgs' exclude_objects: Oracle objects to exclude from the stream.
+               Structure is documented below.
+        :param 'StreamSourceConfigOracleSourceConfigIncludeObjectsArgs' include_objects: Oracle objects to retrieve from the source.
+               Structure is documented below.
+        :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        :param 'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs' stream_large_objects: Configuration to drop large object values.
+        """
+        if drop_large_objects is not None:
+            pulumi.set(__self__, "drop_large_objects", drop_large_objects)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        if stream_large_objects is not None:
+            pulumi.set(__self__, "stream_large_objects", stream_large_objects)
+
+    @property
+    @pulumi.getter(name="dropLargeObjects")
+    def drop_large_objects(self) -> Optional['outputs.StreamSourceConfigOracleSourceConfigDropLargeObjects']:
+        """
+        Configuration to drop large object values.
+        """
+        return pulumi.get(self, "drop_large_objects")
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigOracleSourceConfigExcludeObjects']:
+        """
+        Oracle objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigOracleSourceConfigIncludeObjects']:
+        """
+        Oracle objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[int]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[int]:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @property
+    @pulumi.getter(name="streamLargeObjects")
+    def stream_large_objects(self) -> Optional['outputs.StreamSourceConfigOracleSourceConfigStreamLargeObjects']:
+        """
+        Configuration to drop large object values.
+        """
+        return pulumi.get(self, "stream_large_objects")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigDropLargeObjects(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigExcludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleSchemas":
+            suggest = "oracle_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigExcludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema']):
+        """
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema']:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleTables":
+            suggest = "oracle_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleColumns":
+            suggest = "oracle_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn']]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 encoding: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param str encoding: Column encoding.
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigIncludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleSchemas":
+            suggest = "oracle_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigIncludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oracle_schemas: Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema']):
+        """
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs'] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema']:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleTables":
+            suggest = "oracle_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 oracle_tables: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable']] = None):
+        """
+        :param str schema: Schema name.
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs'] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable']]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oracleColumns":
+            suggest = "oracle_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 oracle_columns: Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn']]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 encoding: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param str encoding: Column encoding.
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigOracleSourceConfigStreamLargeObjects(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicationSlot":
+            suggest = "replication_slot"
+        elif key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 publication: str,
+                 replication_slot: str,
+                 exclude_objects: Optional['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjects'] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjects'] = None,
+                 max_concurrent_backfill_tasks: Optional[int] = None):
+        """
+        :param str publication: The name of the publication that includes the set of all tables
+               that are defined in the stream's include_objects.
+        :param str replication_slot: The name of the logical replication slot that's configured with
+               the pgoutput plugin.
+        :param 'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs' exclude_objects: PostgreSQL objects to exclude from the stream.
+               Structure is documented below.
+        :param 'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs' include_objects: PostgreSQL objects to retrieve from the source.
+               Structure is documented below.
+        :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non
+               negative. If not set (or set to 0), the system's default value will be used.
+        """
+        pulumi.set(__self__, "publication", publication)
+        pulumi.set(__self__, "replication_slot", replication_slot)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+
+    @property
+    @pulumi.getter
+    def publication(self) -> str:
+        """
+        The name of the publication that includes the set of all tables
+        that are defined in the stream's include_objects.
+        """
+        return pulumi.get(self, "publication")
+
+    @property
+    @pulumi.getter(name="replicationSlot")
+    def replication_slot(self) -> str:
+        """
+        The name of the logical replication slot that's configured with
+        the pgoutput plugin.
+        """
+        return pulumi.get(self, "replication_slot")
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjects']:
+        """
+        PostgreSQL objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjects']:
+        """
+        PostgreSQL objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[int]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non
+        negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlSchemas":
+            suggest = "postgresql_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigExcludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema']):
+        """
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema']:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlTables":
+            suggest = "postgresql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable']] = None):
+        """
+        :param str schema: Database name.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlColumns":
+            suggest = "postgresql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjects(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlSchemas":
+            suggest = "postgresql_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigIncludeObjects. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjects.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjects.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_schemas: Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema']):
+        """
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs'] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema']:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlTables":
+            suggest = "postgresql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 postgresql_tables: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable']] = None):
+        """
+        :param str schema: Database name.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs'] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlColumns":
+            suggest = "postgresql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table: str,
+                 postgresql_columns: Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']] = None):
+        """
+        :param str table: Table name.
+        :param Sequence['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[Sequence['outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn']]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 length: Optional[int] = None,
+                 nullable: Optional[bool] = None,
+                 ordinal_position: Optional[int] = None,
+                 precision: Optional[int] = None,
+                 primary_key: Optional[bool] = None,
+                 scale: Optional[int] = None):
+        """
+        :param str column: Column name.
+        :param str data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[int]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[bool]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[int]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[int]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[bool]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[int]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
 
 

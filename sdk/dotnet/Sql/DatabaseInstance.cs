@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Sql
     ///             {
     ///                 Ipv4Enabled = false,
     ///                 PrivateNetwork = privateNetwork.Id,
+    ///                 EnablePrivatePathForGoogleCloudServices = true,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

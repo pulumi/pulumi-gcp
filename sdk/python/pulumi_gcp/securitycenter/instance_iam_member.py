@@ -240,9 +240,6 @@ class InstanceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_instance = gcp.datafusion.Instance("basicInstance",
-            options={
-                "prober_test_run": "true",
-            },
             region="us-central1",
             type="BASIC")
         ```
@@ -275,10 +272,7 @@ class InstanceIamMember(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            options={
-                "prober_test_run": "true",
-            })
+            ))
         ```
         ### Data Fusion Instance Cmek
 
@@ -309,9 +303,6 @@ class InstanceIamMember(pulumi.CustomResource):
 
         enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
             enable_rbac=True,
-            options={
-                "prober_test_run": "true",
-            },
             region="us-central1",
             type="ENTERPRISE")
         ```
@@ -393,9 +384,6 @@ class InstanceIamMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_instance = gcp.datafusion.Instance("basicInstance",
-            options={
-                "prober_test_run": "true",
-            },
             region="us-central1",
             type="BASIC")
         ```
@@ -428,10 +416,7 @@ class InstanceIamMember(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            options={
-                "prober_test_run": "true",
-            })
+            ))
         ```
         ### Data Fusion Instance Cmek
 
@@ -462,9 +447,6 @@ class InstanceIamMember(pulumi.CustomResource):
 
         enterprise_instance = gcp.datafusion.Instance("enterpriseInstance",
             enable_rbac=True,
-            options={
-                "prober_test_run": "true",
-            },
             region="us-central1",
             type="ENTERPRISE")
         ```

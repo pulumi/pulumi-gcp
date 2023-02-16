@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * An AlloyDB Backup.
+ *
+ * To get more information about Backup, see:
+ *
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *
  * ## Example Usage
  * ### Alloydb Backup Full
  *
@@ -19,30 +27,23 @@ import * as utilities from "../utilities";
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
  *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
- * }, {
- *     provider: google_beta,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
  *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
- * }, {
- *     provider: google_beta,
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
  *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
- * }, {
- *     provider: google_beta,
  * });
  * const defaultInstance = new gcp.alloydb.Instance("defaultInstance", {
  *     cluster: defaultCluster.name,
  *     instanceId: "alloydb-instance",
  *     instanceType: "PRIMARY",
  * }, {
- *     provider: google_beta,
  *     dependsOn: [vpcConnection],
  * });
  * const defaultBackup = new gcp.alloydb.Backup("defaultBackup", {
@@ -54,7 +55,6 @@ import * as utilities from "../utilities";
  *         label: "key",
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [defaultInstance],
  * });
  * ```

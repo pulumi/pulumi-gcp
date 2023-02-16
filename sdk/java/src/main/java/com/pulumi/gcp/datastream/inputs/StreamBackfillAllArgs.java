@@ -6,6 +6,8 @@ package com.pulumi.gcp.datastream.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +34,46 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.mysqlExcludedObjects);
     }
 
+    /**
+     * PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oracleExcludedObjects")
+    private @Nullable Output<StreamBackfillAllOracleExcludedObjectsArgs> oracleExcludedObjects;
+
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllOracleExcludedObjectsArgs>> oracleExcludedObjects() {
+        return Optional.ofNullable(this.oracleExcludedObjects);
+    }
+
+    /**
+     * PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="postgresqlExcludedObjects")
+    private @Nullable Output<StreamBackfillAllPostgresqlExcludedObjectsArgs> postgresqlExcludedObjects;
+
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllPostgresqlExcludedObjectsArgs>> postgresqlExcludedObjects() {
+        return Optional.ofNullable(this.postgresqlExcludedObjects);
+    }
+
     private StreamBackfillAllArgs() {}
 
     private StreamBackfillAllArgs(StreamBackfillAllArgs $) {
         this.mysqlExcludedObjects = $.mysqlExcludedObjects;
+        this.oracleExcludedObjects = $.oracleExcludedObjects;
+        this.postgresqlExcludedObjects = $.postgresqlExcludedObjects;
     }
 
     public static Builder builder() {
@@ -77,6 +115,52 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder mysqlExcludedObjects(StreamBackfillAllMysqlExcludedObjectsArgs mysqlExcludedObjects) {
             return mysqlExcludedObjects(Output.of(mysqlExcludedObjects));
+        }
+
+        /**
+         * @param oracleExcludedObjects PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracleExcludedObjects(@Nullable Output<StreamBackfillAllOracleExcludedObjectsArgs> oracleExcludedObjects) {
+            $.oracleExcludedObjects = oracleExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param oracleExcludedObjects PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracleExcludedObjects(StreamBackfillAllOracleExcludedObjectsArgs oracleExcludedObjects) {
+            return oracleExcludedObjects(Output.of(oracleExcludedObjects));
+        }
+
+        /**
+         * @param postgresqlExcludedObjects PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresqlExcludedObjects(@Nullable Output<StreamBackfillAllPostgresqlExcludedObjectsArgs> postgresqlExcludedObjects) {
+            $.postgresqlExcludedObjects = postgresqlExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param postgresqlExcludedObjects PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresqlExcludedObjects(StreamBackfillAllPostgresqlExcludedObjectsArgs postgresqlExcludedObjects) {
+            return postgresqlExcludedObjects(Output.of(postgresqlExcludedObjects));
         }
 
         public StreamBackfillAllArgs build() {

@@ -51,12 +51,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			key1Binding, err := kms.NewCryptoKeyIAMBinding(ctx, "key1Binding", &kms.CryptoKeyIAMBindingArgs{
+//			key1Member, err := kms.NewCryptoKeyIAMMember(ctx, "key1Member", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number)),
-//				},
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-eventarc.iam.gserviceaccount.com", testProject.Number)),
 //			})
 //			if err != nil {
 //				return err
@@ -67,7 +65,7 @@ import (
 //				CryptoKeyName:      pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
 //				ThirdPartyProvider: pulumi.String(fmt.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				key1Binding,
+//				key1Member,
 //			}))
 //			if err != nil {
 //				return err

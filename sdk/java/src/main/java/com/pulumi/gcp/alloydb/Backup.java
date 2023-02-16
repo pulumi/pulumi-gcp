@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An AlloyDB Backup.
+ * 
+ * To get more information about Backup, see:
+ * 
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ * 
  * ## Example Usage
  * ### Alloydb Backup Full
  * ```java
@@ -59,33 +67,26 @@ import javax.annotation.Nullable;
  *             .clusterId(&#34;alloydb-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .prefixLength(16)
  *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
  *             .network(defaultNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .cluster(defaultCluster.name())
  *             .instanceId(&#34;alloydb-instance&#34;)
  *             .instanceType(&#34;PRIMARY&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 
@@ -96,7 +97,6 @@ import javax.annotation.Nullable;
  *             .description(&#34;example description&#34;)
  *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(defaultInstance)
  *                 .build());
  * 

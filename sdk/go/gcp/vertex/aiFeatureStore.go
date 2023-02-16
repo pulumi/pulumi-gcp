@@ -54,6 +54,42 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Featurestore With Beta Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					FixedNodeCount: pulumi.Int(2),
+//				},
+//				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("kms-name"),
+//				},
+//				OnlineStorageTtlDays: pulumi.Int(30),
+//				ForceDestroy:         pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Featurestore Scaling
 //
 // ```go
@@ -139,6 +175,11 @@ type AiFeatureStore struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrOutput `pulumi:"onlineServingConfig"`
+	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+	// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+	// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+	// featurestore. If not set, default to 4000 days
+	OnlineStorageTtlDays pulumi.IntPtrOutput `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -193,6 +234,11 @@ type aiFeatureStoreState struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig *AiFeatureStoreOnlineServingConfig `pulumi:"onlineServingConfig"`
+	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+	// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+	// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+	// featurestore. If not set, default to 4000 days
+	OnlineStorageTtlDays *int `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -219,6 +265,11 @@ type AiFeatureStoreState struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrInput
+	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+	// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+	// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+	// featurestore. If not set, default to 4000 days
+	OnlineStorageTtlDays pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -245,6 +296,11 @@ type aiFeatureStoreArgs struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig *AiFeatureStoreOnlineServingConfig `pulumi:"onlineServingConfig"`
+	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+	// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+	// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+	// featurestore. If not set, default to 4000 days
+	OnlineStorageTtlDays *int `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -266,6 +322,11 @@ type AiFeatureStoreArgs struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrInput
+	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+	// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+	// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+	// featurestore. If not set, default to 4000 days
+	OnlineStorageTtlDays pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -395,6 +456,14 @@ func (o AiFeatureStoreOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o AiFeatureStoreOutput) OnlineServingConfig() AiFeatureStoreOnlineServingConfigPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStore) AiFeatureStoreOnlineServingConfigPtrOutput { return v.OnlineServingConfig }).(AiFeatureStoreOnlineServingConfigPtrOutput)
+}
+
+// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+// featurestore. If not set, default to 4000 days
+func (o AiFeatureStoreOutput) OnlineStorageTtlDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStore) pulumi.IntPtrOutput { return v.OnlineStorageTtlDays }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

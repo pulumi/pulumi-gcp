@@ -24,17 +24,17 @@ import * as utilities from "../utilities";
  *     name: "key",
  *     keyRing: testKeyRing.id,
  * }));
- * const key1Binding = new gcp.kms.CryptoKeyIAMBinding("key1Binding", {
+ * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1Member", {
  *     cryptoKeyId: data.google_kms_crypto_key.key1.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`)],
+ *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),
  * });
  * const primary = new gcp.eventarc.GoogleChannelConfig("primary", {
  *     location: "us-west1",
  *     project: testProject.then(testProject => testProject.projectId),
  *     cryptoKeyName: data.google_kms_crypto_key.key1.id,
  * }, {
- *     dependsOn: [key1Binding],
+ *     dependsOn: [key1Member],
  * });
  * ```
  *

@@ -171,6 +171,8 @@ type RegionInstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyOutput `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -287,6 +289,8 @@ type regionInstanceGroupManagerState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy *RegionInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -369,6 +373,8 @@ type RegionInstanceGroupManagerState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -451,6 +457,8 @@ type regionInstanceGroupManagerArgs struct {
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy *RegionInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -526,6 +534,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones pulumi.StringArrayInput
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -716,6 +726,13 @@ func (o RegionInstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The full URL of the instance group created by the manager.
 func (o RegionInstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The instance lifecycle policy for this managed instance group.
+func (o RegionInstanceGroupManagerOutput) InstanceLifecyclePolicy() RegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+		return v.InstanceLifecyclePolicy
+	}).(RegionInstanceGroupManagerInstanceLifecyclePolicyOutput)
 }
 
 // Pagination behavior of the `listManagedInstances` API

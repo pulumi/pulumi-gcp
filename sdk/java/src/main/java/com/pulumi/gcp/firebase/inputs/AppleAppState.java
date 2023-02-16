@@ -63,18 +63,18 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional) Set to &#39;ABANDON&#39; to allow the AppleApp to be untracked from terraform state rather than deleted upon
-     * &#39;terraform destroy&#39;. This is useful because the AppleApp may be serving traffic. Set to &#39;DELETE&#39; to delete the AppleApp.
-     * Default to &#39;DELETE&#39;.
+     * (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
+     * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
+     * &#39;DELETE&#39;.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return (Optional) Set to &#39;ABANDON&#39; to allow the AppleApp to be untracked from terraform state rather than deleted upon
-     * &#39;terraform destroy&#39;. This is useful because the AppleApp may be serving traffic. Set to &#39;DELETE&#39; to delete the AppleApp.
-     * Default to &#39;DELETE&#39;.
+     * @return (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
+     * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
+     * &#39;DELETE&#39;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -242,9 +242,9 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AppleApp to be untracked from terraform state rather than deleted upon
-         * &#39;terraform destroy&#39;. This is useful because the AppleApp may be serving traffic. Set to &#39;DELETE&#39; to delete the AppleApp.
-         * Default to &#39;DELETE&#39;.
+         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
+         * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
+         * &#39;DELETE&#39;.
          * 
          * @return builder
          * 
@@ -255,9 +255,9 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AppleApp to be untracked from terraform state rather than deleted upon
-         * &#39;terraform destroy&#39;. This is useful because the AppleApp may be serving traffic. Set to &#39;DELETE&#39; to delete the AppleApp.
-         * Default to &#39;DELETE&#39;.
+         * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
+         * destroy&#39;. This is useful because the Apple may be serving traffic. Set to &#39;DELETE&#39; to delete the Apple. Defaults to
+         * &#39;DELETE&#39;.
          * 
          * @return builder
          * 

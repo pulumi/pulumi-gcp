@@ -397,6 +397,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reservationAffinity);
     }
     /**
+     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    @Export(name="resourcePolicies", type=String.class, parameters={})
+    private Output</* @Nullable */ String> resourcePolicies;
+
+    /**
+     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    public Output<Optional<String>> resourcePolicies() {
+        return Codegen.optional(this.resourcePolicies);
+    }
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      * 

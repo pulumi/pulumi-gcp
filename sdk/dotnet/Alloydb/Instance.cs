@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
+    /// A managed alloydb cluster instance.
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+    /// * How-to Guides
+    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    /// 
     /// ## Example Usage
     /// ### Alloydb Instance Basic
     /// 
@@ -22,12 +30,7 @@ namespace Pulumi.Gcp.Alloydb
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
-    ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
@@ -43,9 +46,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Password = "alloydb-cluster",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
@@ -54,9 +54,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
     ///         Network = defaultNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
@@ -67,9 +64,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             privateIpAlloc.Name,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultInstance = new Gcp.Alloydb.Instance("defaultInstance", new()
@@ -83,7 +77,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             vpcConnection,

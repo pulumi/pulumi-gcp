@@ -10,6 +10,21 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { ConnectionIAMBindingArgs, ConnectionIAMBindingState } from "./connectionIAMBinding";
+export type ConnectionIAMBinding = import("./connectionIAMBinding").ConnectionIAMBinding;
+export const ConnectionIAMBinding: typeof import("./connectionIAMBinding").ConnectionIAMBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionIAMBinding"], () => require("./connectionIAMBinding"));
+
+export { ConnectionIAMMemberArgs, ConnectionIAMMemberState } from "./connectionIAMMember";
+export type ConnectionIAMMember = import("./connectionIAMMember").ConnectionIAMMember;
+export const ConnectionIAMMember: typeof import("./connectionIAMMember").ConnectionIAMMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionIAMMember"], () => require("./connectionIAMMember"));
+
+export { ConnectionIAMPolicyArgs, ConnectionIAMPolicyState } from "./connectionIAMPolicy";
+export type ConnectionIAMPolicy = import("./connectionIAMPolicy").ConnectionIAMPolicy;
+export const ConnectionIAMPolicy: typeof import("./connectionIAMPolicy").ConnectionIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionIAMPolicy"], () => require("./connectionIAMPolicy"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
@@ -22,6 +37,12 @@ const _module = {
         switch (type) {
             case "gcp:cloudbuildv2/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding":
+                return new ConnectionIAMBinding(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember":
+                return new ConnectionIAMMember(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy":
+                return new ConnectionIAMPolicy(name, <any>undefined, { urn })
             case "gcp:cloudbuildv2/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
             default:
@@ -30,4 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connection", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/repository", _module)

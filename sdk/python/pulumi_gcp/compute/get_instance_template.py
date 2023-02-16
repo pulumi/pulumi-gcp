@@ -22,7 +22,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -95,6 +95,9 @@ class GetInstanceTemplateResult:
         if reservation_affinities and not isinstance(reservation_affinities, list):
             raise TypeError("Expected argument 'reservation_affinities' to be a list")
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
+        if resource_policies and not isinstance(resource_policies, list):
+            raise TypeError("Expected argument 'resource_policies' to be a list")
+        pulumi.set(__self__, "resource_policies", resource_policies)
         if schedulings and not isinstance(schedulings, list):
             raise TypeError("Expected argument 'schedulings' to be a list")
         pulumi.set(__self__, "schedulings", schedulings)
@@ -313,6 +316,14 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "reservation_affinities")
 
     @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence[str]:
+        """
+        (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
     @pulumi.getter
     def schedulings(self) -> Sequence['outputs.GetInstanceTemplateSchedulingResult']:
         """
@@ -393,6 +404,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             project=self.project,
             region=self.region,
             reservation_affinities=self.reservation_affinities,
+            resource_policies=self.resource_policies,
             schedulings=self.schedulings,
             self_link=self.self_link,
             service_accounts=self.service_accounts,
@@ -465,6 +477,7 @@ def get_instance_template(filter: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         reservation_affinities=__ret__.reservation_affinities,
+        resource_policies=__ret__.resource_policies,
         schedulings=__ret__.schedulings,
         self_link=__ret__.self_link,
         service_accounts=__ret__.service_accounts,

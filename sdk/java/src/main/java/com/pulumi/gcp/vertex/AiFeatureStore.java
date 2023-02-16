@@ -13,6 +13,7 @@ import com.pulumi.gcp.vertex.inputs.AiFeatureStoreState;
 import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiFeatureStoreOnlineServingConfig;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -63,6 +64,49 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .region(&#34;us-central1&#34;)
  *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vertex Ai Featurestore With Beta Fields
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStore;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .fixedNodeCount(2)
+ *                 .build())
+ *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
+ *                 .kmsKeyName(&#34;kms-name&#34;)
+ *                 .build())
+ *             .onlineStorageTtlDays(30)
+ *             .forceDestroy(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }
@@ -235,6 +279,26 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AiFeatureStoreOnlineServingConfig>> onlineServingConfig() {
         return Codegen.optional(this.onlineServingConfig);
+    }
+    /**
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+     * featurestore. If not set, default to 4000 days
+     * 
+     */
+    @Export(name="onlineStorageTtlDays", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> onlineStorageTtlDays;
+
+    /**
+     * @return TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+     * featurestore. If not set, default to 4000 days
+     * 
+     */
+    public Output<Optional<Integer>> onlineStorageTtlDays() {
+        return Codegen.optional(this.onlineStorageTtlDays);
     }
     /**
      * The ID of the project in which the resource belongs.
