@@ -23,6 +23,7 @@ class RegionInstanceGroupManagerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
@@ -58,6 +59,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -102,6 +104,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "distribution_policy_target_shape", distribution_policy_target_shape)
         if distribution_policy_zones is not None:
             pulumi.set(__self__, "distribution_policy_zones", distribution_policy_zones)
+        if instance_lifecycle_policy is not None:
+            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
             pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
@@ -225,6 +229,18 @@ class RegionInstanceGroupManagerArgs:
     @distribution_policy_zones.setter
     def distribution_policy_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "distribution_policy_zones", value)
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @instance_lifecycle_policy.setter
+    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+        pulumi.set(self, "instance_lifecycle_policy", value)
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")
@@ -412,6 +428,7 @@ class _RegionInstanceGroupManagerState:
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
@@ -449,6 +466,7 @@ class _RegionInstanceGroupManagerState:
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -502,6 +520,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
+        if instance_lifecycle_policy is not None:
+            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
             pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
@@ -641,6 +661,18 @@ class _RegionInstanceGroupManagerState:
     @instance_group.setter
     def instance_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @instance_lifecycle_policy.setter
+    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+        pulumi.set(self, "instance_lifecycle_policy", value)
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")
@@ -866,6 +898,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -988,6 +1021,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -1138,6 +1172,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -1169,6 +1204,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
             __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
+            __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
@@ -1207,6 +1243,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
+            instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -1249,6 +1286,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
                If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -1298,6 +1336,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
         __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
         __props__.__dict__["name"] = name
         __props__.__dict__["named_ports"] = named_ports
@@ -1390,6 +1429,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> pulumi.Output['outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy']:
+        """
+        The instance lifecycle policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
 
     @property
     @pulumi.getter(name="listManagedInstancesResults")

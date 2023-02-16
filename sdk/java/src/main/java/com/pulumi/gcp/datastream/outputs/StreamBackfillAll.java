@@ -5,6 +5,8 @@ package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllMysqlExcludedObjects;
+import com.pulumi.gcp.datastream.outputs.StreamBackfillAllOracleExcludedObjects;
+import com.pulumi.gcp.datastream.outputs.StreamBackfillAllPostgresqlExcludedObjects;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,18 @@ public final class StreamBackfillAll {
      * 
      */
     private @Nullable StreamBackfillAllMysqlExcludedObjects mysqlExcludedObjects;
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamBackfillAllOracleExcludedObjects oracleExcludedObjects;
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamBackfillAllPostgresqlExcludedObjects postgresqlExcludedObjects;
 
     private StreamBackfillAll() {}
     /**
@@ -26,6 +40,22 @@ public final class StreamBackfillAll {
      */
     public Optional<StreamBackfillAllMysqlExcludedObjects> mysqlExcludedObjects() {
         return Optional.ofNullable(this.mysqlExcludedObjects);
+    }
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamBackfillAllOracleExcludedObjects> oracleExcludedObjects() {
+        return Optional.ofNullable(this.oracleExcludedObjects);
+    }
+    /**
+     * @return PostgreSQL data source objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamBackfillAllPostgresqlExcludedObjects> postgresqlExcludedObjects() {
+        return Optional.ofNullable(this.postgresqlExcludedObjects);
     }
 
     public static Builder builder() {
@@ -38,10 +68,14 @@ public final class StreamBackfillAll {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable StreamBackfillAllMysqlExcludedObjects mysqlExcludedObjects;
+        private @Nullable StreamBackfillAllOracleExcludedObjects oracleExcludedObjects;
+        private @Nullable StreamBackfillAllPostgresqlExcludedObjects postgresqlExcludedObjects;
         public Builder() {}
         public Builder(StreamBackfillAll defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mysqlExcludedObjects = defaults.mysqlExcludedObjects;
+    	      this.oracleExcludedObjects = defaults.oracleExcludedObjects;
+    	      this.postgresqlExcludedObjects = defaults.postgresqlExcludedObjects;
         }
 
         @CustomType.Setter
@@ -49,9 +83,21 @@ public final class StreamBackfillAll {
             this.mysqlExcludedObjects = mysqlExcludedObjects;
             return this;
         }
+        @CustomType.Setter
+        public Builder oracleExcludedObjects(@Nullable StreamBackfillAllOracleExcludedObjects oracleExcludedObjects) {
+            this.oracleExcludedObjects = oracleExcludedObjects;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder postgresqlExcludedObjects(@Nullable StreamBackfillAllPostgresqlExcludedObjects postgresqlExcludedObjects) {
+            this.postgresqlExcludedObjects = postgresqlExcludedObjects;
+            return this;
+        }
         public StreamBackfillAll build() {
             final var o = new StreamBackfillAll();
             o.mysqlExcludedObjects = mysqlExcludedObjects;
+            o.oracleExcludedObjects = oracleExcludedObjects;
+            o.postgresqlExcludedObjects = postgresqlExcludedObjects;
             return o;
         }
     }

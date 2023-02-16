@@ -713,6 +713,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
                     ipv4_enabled=False,
                     private_network=private_network.id,
+                    enable_private_path_for_google_cloud_services=True,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta,
@@ -816,6 +817,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
                     ipv4_enabled=False,
                     private_network=private_network.id,
+                    enable_private_path_for_google_cloud_services=True,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta,

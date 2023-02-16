@@ -36,6 +36,29 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * ### Vertex Ai Featurestore With Beta Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
+ *     onlineStorageTtlDays: 30,
+ *     forceDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Vertex Ai Featurestore Scaling
  *
  * ```typescript
@@ -139,6 +162,13 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public readonly onlineServingConfig!: pulumi.Output<outputs.vertex.AiFeatureStoreOnlineServingConfig | undefined>;
     /**
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+     * featurestore. If not set, default to 4000 days
+     */
+    public readonly onlineStorageTtlDays!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -172,6 +202,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["onlineServingConfig"] = state ? state.onlineServingConfig : undefined;
+            resourceInputs["onlineStorageTtlDays"] = state ? state.onlineStorageTtlDays : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -182,6 +213,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["onlineServingConfig"] = args ? args.onlineServingConfig : undefined;
+            resourceInputs["onlineStorageTtlDays"] = args ? args.onlineStorageTtlDays : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -228,6 +260,13 @@ export interface AiFeatureStoreState {
      */
     onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
     /**
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+     * featurestore. If not set, default to 4000 days
+     */
+    onlineStorageTtlDays?: pulumi.Input<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -268,6 +307,13 @@ export interface AiFeatureStoreArgs {
      * Structure is documented below.
      */
     onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
+    /**
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+     * featurestore. If not set, default to 4000 days
+     */
+    onlineStorageTtlDays?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

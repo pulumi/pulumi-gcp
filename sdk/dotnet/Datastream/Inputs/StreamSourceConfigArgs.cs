@@ -16,8 +16,22 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// MySQL data source configuration.
         /// Structure is documented below.
         /// </summary>
-        [Input("mysqlSourceConfig", required: true)]
-        public Input<Inputs.StreamSourceConfigMysqlSourceConfigArgs> MysqlSourceConfig { get; set; } = null!;
+        [Input("mysqlSourceConfig")]
+        public Input<Inputs.StreamSourceConfigMysqlSourceConfigArgs>? MysqlSourceConfig { get; set; }
+
+        /// <summary>
+        /// MySQL data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oracleSourceConfig")]
+        public Input<Inputs.StreamSourceConfigOracleSourceConfigArgs>? OracleSourceConfig { get; set; }
+
+        /// <summary>
+        /// PostgreSQL data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postgresqlSourceConfig")]
+        public Input<Inputs.StreamSourceConfigPostgresqlSourceConfigArgs>? PostgresqlSourceConfig { get; set; }
 
         /// <summary>
         /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}

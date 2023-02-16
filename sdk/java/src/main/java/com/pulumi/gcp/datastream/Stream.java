@@ -264,6 +264,247 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Datastream Stream Postgresql
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var source = new ConnectionProfile(&#34;source&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Postgresql Source&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;source-profile&#34;)
+ *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
+ *                 .hostname(&#34;hostname&#34;)
+ *                 .port(3306)
+ *                 .username(&#34;user&#34;)
+ *                 .password(&#34;pass&#34;)
+ *                 .database(&#34;postgres&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var destination = new ConnectionProfile(&#34;destination&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;BigQuery Destination&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;destination-profile&#34;)
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
+ *             .displayName(&#34;Postgres to BigQuery&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .streamId(&#34;my-stream&#34;)
+ *             .desiredState(&#34;RUNNING&#34;)
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(source.id())
+ *                 .postgresqlSourceConfig(StreamSourceConfigPostgresqlSourceConfigArgs.builder()
+ *                     .maxConcurrentBackfillTasks(12)
+ *                     .publication(&#34;publication&#34;)
+ *                     .replicationSlot(&#34;replication_slot&#34;)
+ *                     .includeObjects(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs.builder()
+ *                         .postgresqlSchemas(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs.builder()
+ *                             .schema(&#34;schema&#34;)
+ *                             .postgresqlTables(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
+ *                                 .table(&#34;table&#34;)
+ *                                 .postgresqlColumns(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
+ *                                     .column(&#34;column&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .excludeObjects(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs.builder()
+ *                         .postgresqlSchemas(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs.builder()
+ *                             .schema(&#34;schema&#34;)
+ *                             .postgresqlTables(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
+ *                                 .table(&#34;table&#34;)
+ *                                 .postgresqlColumns(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
+ *                                     .column(&#34;column&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destination.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .dataFreshness(&#34;900s&#34;)
+ *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
+ *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
+ *                             .location(&#34;us-central1&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillAll(StreamBackfillAllArgs.builder()
+ *                 .postgresqlExcludedObjects(StreamBackfillAllPostgresqlExcludedObjectsArgs.builder()
+ *                     .postgresqlSchemas(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs.builder()
+ *                         .schema(&#34;schema&#34;)
+ *                         .postgresqlTables(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs.builder()
+ *                             .table(&#34;table&#34;)
+ *                             .postgresqlColumns(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs.builder()
+ *                                 .column(&#34;column&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Datastream Stream Oracle
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var source = new ConnectionProfile(&#34;source&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Oracle Source&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;source-profile&#34;)
+ *             .oracleProfile(ConnectionProfileOracleProfileArgs.builder()
+ *                 .hostname(&#34;hostname&#34;)
+ *                 .port(1521)
+ *                 .username(&#34;user&#34;)
+ *                 .password(&#34;pass&#34;)
+ *                 .databaseService(&#34;ORCL&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var destination = new ConnectionProfile(&#34;destination&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;BigQuery Destination&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;destination-profile&#34;)
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var stream5 = new Stream(&#34;stream5&#34;, StreamArgs.builder()        
+ *             .displayName(&#34;Oracle to BigQuery&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .streamId(&#34;my-stream&#34;)
+ *             .desiredState(&#34;RUNNING&#34;)
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(source.id())
+ *                 .oracleSourceConfig(StreamSourceConfigOracleSourceConfigArgs.builder()
+ *                     .maxConcurrentCdcTasks(8)
+ *                     .maxConcurrentBackfillTasks(12)
+ *                     .includeObjects(StreamSourceConfigOracleSourceConfigIncludeObjectsArgs.builder()
+ *                         .oracleSchemas(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs.builder()
+ *                             .schema(&#34;schema&#34;)
+ *                             .oracleTables(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs.builder()
+ *                                 .table(&#34;table&#34;)
+ *                                 .oracleColumns(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
+ *                                     .column(&#34;column&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .excludeObjects(StreamSourceConfigOracleSourceConfigExcludeObjectsArgs.builder()
+ *                         .oracleSchemas(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs.builder()
+ *                             .schema(&#34;schema&#34;)
+ *                             .oracleTables(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs.builder()
+ *                                 .table(&#34;table&#34;)
+ *                                 .oracleColumns(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
+ *                                     .column(&#34;column&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .dropLargeObjects()
+ *                     .build())
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destination.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .dataFreshness(&#34;900s&#34;)
+ *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
+ *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
+ *                             .location(&#34;us-central1&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillAll(StreamBackfillAllArgs.builder()
+ *                 .oracleExcludedObjects(StreamBackfillAllOracleExcludedObjectsArgs.builder()
+ *                     .oracleSchemas(StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs.builder()
+ *                         .schema(&#34;schema&#34;)
+ *                         .oracleTables(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs.builder()
+ *                             .table(&#34;table&#34;)
+ *                             .oracleColumns(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs.builder()
+ *                                 .column(&#34;column&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Datastream Stream Bigquery
  * ```java
  * package generated_program;

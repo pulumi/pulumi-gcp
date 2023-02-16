@@ -17,6 +17,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a RegionTargetTcpProxy resource, which is used by one or more
+ * forwarding rules to route incoming TCP requests to a regional TCP proxy load
+ * balancer.
+ * 
+ * To get more information about RegionTargetTcpProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetTcpProxies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
+ * 
  * ## Example Usage
  * ### Region Target Tcp Proxy Basic
  * 
@@ -33,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.RegionTargetTcpProxy;
  * import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,9 +63,7 @@ import javax.annotation.Nullable;
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
  *             .protocol(&#34;TCP&#34;)
@@ -64,16 +71,12 @@ import javax.annotation.Nullable;
  *             .region(&#34;europe-west4&#34;)
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultRegionTargetTcpProxy = new RegionTargetTcpProxy(&#34;defaultRegionTargetTcpProxy&#34;, RegionTargetTcpProxyArgs.builder()        
  *             .region(&#34;europe-west4&#34;)
  *             .backendService(defaultRegionBackendService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

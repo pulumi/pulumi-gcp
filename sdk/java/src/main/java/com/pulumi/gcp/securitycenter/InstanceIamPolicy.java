@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicInstance = new Instance(&#34;basicInstance&#34;, InstanceArgs.builder()        
- *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .build());
@@ -112,7 +111,6 @@ import javax.annotation.Nullable;
  *                     return String.format(&#34;%s/%s&#34;, address,prefixLength);
  *                 }))
  *                 .build())
- *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .build());
  * 
  *     }
@@ -203,7 +201,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var enterpriseInstance = new Instance(&#34;enterpriseInstance&#34;, InstanceArgs.builder()        
  *             .enableRbac(true)
- *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;ENTERPRISE&#34;)
  *             .build());

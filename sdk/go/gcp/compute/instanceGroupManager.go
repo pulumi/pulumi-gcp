@@ -177,6 +177,8 @@ type InstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyOutput `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -290,6 +292,8 @@ type instanceGroupManagerState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -369,6 +373,8 @@ type InstanceGroupManagerState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -448,6 +454,8 @@ type instanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -519,6 +527,8 @@ type InstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
+	// The instance lifecycle policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
 	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
 	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -699,6 +709,13 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The full URL of the instance group created by the manager.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The instance lifecycle policy for this managed instance group.
+func (o InstanceGroupManagerOutput) InstanceLifecyclePolicy() InstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerInstanceLifecyclePolicyOutput {
+		return v.InstanceLifecyclePolicy
+	}).(InstanceGroupManagerInstanceLifecyclePolicyOutput)
 }
 
 // Pagination behavior of the `listManagedInstances` API

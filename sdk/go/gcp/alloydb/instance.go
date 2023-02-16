@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A managed alloydb cluster instance.
+//
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+// * How-to Guides
+//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
+//
 // ## Example Usage
 // ### Alloydb Instance Basic
 //
@@ -35,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil, pulumi.Provider(google_beta))
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -48,7 +56,7 @@ import (
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -57,7 +65,7 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
 //				Network:      defaultNetwork.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -67,7 +75,7 @@ import (
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -78,7 +86,7 @@ import (
 //				MachineConfig: &alloydb.InstanceMachineConfigArgs{
 //					CpuCount: pulumi.Int(2),
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpcConnection,
 //			}))
 //			if err != nil {

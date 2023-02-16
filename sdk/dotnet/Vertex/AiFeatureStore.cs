@@ -48,6 +48,39 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Featurestore With Beta Fields
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
+    ///         OnlineStorageTtlDays = 30,
+    ///         ForceDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Featurestore Scaling
     /// 
     /// ```csharp
@@ -148,6 +181,15 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("onlineServingConfig")]
         public Output<Outputs.AiFeatureStoreOnlineServingConfig?> OnlineServingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        /// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        /// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        /// featurestore. If not set, default to 4000 days
+        /// </summary>
+        [Output("onlineStorageTtlDays")]
+        public Output<int?> OnlineStorageTtlDays { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -253,6 +295,15 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureStoreOnlineServingConfigArgs>? OnlineServingConfig { get; set; }
 
         /// <summary>
+        /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        /// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        /// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        /// featurestore. If not set, default to 4000 days
+        /// </summary>
+        [Input("onlineStorageTtlDays")]
+        public Input<int>? OnlineStorageTtlDays { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -322,6 +373,15 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("onlineServingConfig")]
         public Input<Inputs.AiFeatureStoreOnlineServingConfigGetArgs>? OnlineServingConfig { get; set; }
+
+        /// <summary>
+        /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        /// periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        /// that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        /// featurestore. If not set, default to 4000 days
+        /// </summary>
+        [Input("onlineStorageTtlDays")]
+        public Input<int>? OnlineStorageTtlDays { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

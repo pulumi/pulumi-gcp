@@ -24,10 +24,10 @@ import * as utilities from "../utilities";
  *     name: "key",
  *     keyRing: testKeyRing.id,
  * }));
- * const key1Binding = new gcp.kms.CryptoKeyIAMBinding("key1Binding", {
+ * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1Member", {
  *     cryptoKeyId: data.google_kms_crypto_key.key1.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`)],
+ *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),
  * });
  * const primary = new gcp.eventarc.Channel("primary", {
  *     location: "us-west1",
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     cryptoKeyName: data.google_kms_crypto_key.key1.id,
  *     thirdPartyProvider: testProject.then(testProject => `projects/${testProject.projectId}/locations/us-west1/providers/datadog`),
  * }, {
- *     dependsOn: [key1Binding],
+ *     dependsOn: [key1Member],
  * });
  * ```
  *

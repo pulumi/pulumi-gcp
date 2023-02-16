@@ -126,6 +126,7 @@ __all__ = [
     'InstanceFromTemplateShieldedInstanceConfigArgs',
     'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPoliciesArgs',
+    'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerNamedPortArgs',
     'InstanceGroupManagerStatefulDiskArgs',
     'InstanceGroupManagerStatefulExternalIpArgs',
@@ -242,6 +243,7 @@ __all__ = [
     'RegionHealthCheckTcpHealthCheckArgs',
     'RegionInstanceGroupManagerAllInstancesConfigArgs',
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
     'RegionInstanceGroupManagerStatefulExternalIpArgs',
@@ -8331,6 +8333,29 @@ class InstanceGroupManagerAutoHealingPoliciesArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerInstanceLifecyclePolicyArgs:
+    def __init__(__self__, *,
+                 force_update_on_repair: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        if force_update_on_repair is not None:
+            pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> Optional[pulumi.Input[str]]:
+        """
+        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        return pulumi.get(self, "force_update_on_repair")
+
+    @force_update_on_repair.setter
+    def force_update_on_repair(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_update_on_repair", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerNamedPortArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -16274,6 +16299,31 @@ class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
     @initial_delay_sec.setter
     def initial_delay_sec(self, value: pulumi.Input[int]):
         pulumi.set(self, "initial_delay_sec", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
+    def __init__(__self__, *,
+                 force_update_on_repair: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+               - - -
+        """
+        if force_update_on_repair is not None:
+            pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> Optional[pulumi.Input[str]]:
+        """
+        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+        - - -
+        """
+        return pulumi.get(self, "force_update_on_repair")
+
+    @force_update_on_repair.setter
+    def force_update_on_repair(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_update_on_repair", value)
 
 
 @pulumi.input_type

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeState;
 import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEntityTypeMonitoringConfig;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -70,6 +71,7 @@ import javax.annotation.Nullable;
  * 
  *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .description(&#34;test description&#34;)
  *             .featurestore(featurestore.id())
  *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
  *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
@@ -152,6 +154,7 @@ import javax.annotation.Nullable;
  *                     .value(0.3)
  *                     .build())
  *                 .build())
+ *             .offlineStorageTtlDays(30)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -184,6 +187,20 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Optional. Description of the EntityType.
+     * 
+     */
+    @Export(name="description", type=String.class, parameters={})
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Optional. Description of the EntityType.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * Used to perform consistent read-modify-write updates.
@@ -258,6 +275,24 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * 
+     */
+    @Export(name="offlineStorageTtlDays", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> offlineStorageTtlDays;
+
+    /**
+     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * 
+     */
+    public Output<Optional<Integer>> offlineStorageTtlDays() {
+        return Codegen.optional(this.offlineStorageTtlDays);
     }
     /**
      * The region of the EntityType.

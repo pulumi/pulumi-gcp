@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetDatabaseInstanceSettingIpConfiguration {
     private String allocatedIpRange;
     private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
+    private Boolean enablePrivatePathForGoogleCloudServices;
     private Boolean ipv4Enabled;
     private String privateNetwork;
     private Boolean requireSsl;
@@ -24,6 +25,9 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     }
     public List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks() {
         return this.authorizedNetworks;
+    }
+    public Boolean enablePrivatePathForGoogleCloudServices() {
+        return this.enablePrivatePathForGoogleCloudServices;
     }
     public Boolean ipv4Enabled() {
         return this.ipv4Enabled;
@@ -46,6 +50,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     public static final class Builder {
         private String allocatedIpRange;
         private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
+        private Boolean enablePrivatePathForGoogleCloudServices;
         private Boolean ipv4Enabled;
         private String privateNetwork;
         private Boolean requireSsl;
@@ -54,6 +59,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.authorizedNetworks = defaults.authorizedNetworks;
+    	      this.enablePrivatePathForGoogleCloudServices = defaults.enablePrivatePathForGoogleCloudServices;
     	      this.ipv4Enabled = defaults.ipv4Enabled;
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.requireSsl = defaults.requireSsl;
@@ -71,6 +77,11 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         }
         public Builder authorizedNetworks(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+        @CustomType.Setter
+        public Builder enablePrivatePathForGoogleCloudServices(Boolean enablePrivatePathForGoogleCloudServices) {
+            this.enablePrivatePathForGoogleCloudServices = Objects.requireNonNull(enablePrivatePathForGoogleCloudServices);
+            return this;
         }
         @CustomType.Setter
         public Builder ipv4Enabled(Boolean ipv4Enabled) {
@@ -91,6 +102,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
             final var o = new GetDatabaseInstanceSettingIpConfiguration();
             o.allocatedIpRange = allocatedIpRange;
             o.authorizedNetworks = authorizedNetworks;
+            o.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             o.ipv4Enabled = ipv4Enabled;
             o.privateNetwork = privateNetwork;
             o.requireSsl = requireSsl;

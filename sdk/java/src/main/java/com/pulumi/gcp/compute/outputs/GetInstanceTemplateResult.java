@@ -147,6 +147,11 @@ public final class GetInstanceTemplateResult {
     private String region;
     private List<GetInstanceTemplateReservationAffinity> reservationAffinities;
     /**
+     * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    private List<String> resourcePolicies;
+    /**
      * @return The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      * 
@@ -350,6 +355,13 @@ public final class GetInstanceTemplateResult {
         return this.reservationAffinities;
     }
     /**
+     * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    public List<String> resourcePolicies() {
+        return this.resourcePolicies;
+    }
+    /**
      * @return The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      * 
@@ -427,6 +439,7 @@ public final class GetInstanceTemplateResult {
         private @Nullable String project;
         private String region;
         private List<GetInstanceTemplateReservationAffinity> reservationAffinities;
+        private List<String> resourcePolicies;
         private List<GetInstanceTemplateScheduling> schedulings;
         private String selfLink;
         private List<GetInstanceTemplateServiceAccount> serviceAccounts;
@@ -460,6 +473,7 @@ public final class GetInstanceTemplateResult {
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
+    	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.schedulings = defaults.schedulings;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceAccounts = defaults.serviceAccounts;
@@ -610,6 +624,14 @@ public final class GetInstanceTemplateResult {
             return reservationAffinities(List.of(reservationAffinities));
         }
         @CustomType.Setter
+        public Builder resourcePolicies(List<String> resourcePolicies) {
+            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            return this;
+        }
+        public Builder resourcePolicies(String... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
+        }
+        @CustomType.Setter
         public Builder schedulings(List<GetInstanceTemplateScheduling> schedulings) {
             this.schedulings = Objects.requireNonNull(schedulings);
             return this;
@@ -677,6 +699,7 @@ public final class GetInstanceTemplateResult {
             o.project = project;
             o.region = region;
             o.reservationAffinities = reservationAffinities;
+            o.resourcePolicies = resourcePolicies;
             o.schedulings = schedulings;
             o.selfLink = selfLink;
             o.serviceAccounts = serviceAccounts;

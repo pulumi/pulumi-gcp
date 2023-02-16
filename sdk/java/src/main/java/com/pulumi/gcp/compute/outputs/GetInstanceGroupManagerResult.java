@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAutoHealingPolicy;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulExternalIp;
@@ -34,6 +35,7 @@ public final class GetInstanceGroupManagerResult {
      */
     private String id;
     private String instanceGroup;
+    private List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
     private String listManagedInstancesResults;
     private @Nullable String name;
     private List<GetInstanceGroupManagerNamedPort> namedPorts;
@@ -77,6 +79,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public String instanceGroup() {
         return this.instanceGroup;
+    }
+    public List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies() {
+        return this.instanceLifecyclePolicies;
     }
     public String listManagedInstancesResults() {
         return this.listManagedInstancesResults;
@@ -146,6 +151,7 @@ public final class GetInstanceGroupManagerResult {
         private String fingerprint;
         private String id;
         private String instanceGroup;
+        private List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
         private String listManagedInstancesResults;
         private @Nullable String name;
         private List<GetInstanceGroupManagerNamedPort> namedPorts;
@@ -173,6 +179,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.instanceGroup = defaults.instanceGroup;
+    	      this.instanceLifecyclePolicies = defaults.instanceLifecyclePolicies;
     	      this.listManagedInstancesResults = defaults.listManagedInstancesResults;
     	      this.name = defaults.name;
     	      this.namedPorts = defaults.namedPorts;
@@ -232,6 +239,14 @@ public final class GetInstanceGroupManagerResult {
         public Builder instanceGroup(String instanceGroup) {
             this.instanceGroup = Objects.requireNonNull(instanceGroup);
             return this;
+        }
+        @CustomType.Setter
+        public Builder instanceLifecyclePolicies(List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies) {
+            this.instanceLifecyclePolicies = Objects.requireNonNull(instanceLifecyclePolicies);
+            return this;
+        }
+        public Builder instanceLifecyclePolicies(GetInstanceGroupManagerInstanceLifecyclePolicy... instanceLifecyclePolicies) {
+            return instanceLifecyclePolicies(List.of(instanceLifecyclePolicies));
         }
         @CustomType.Setter
         public Builder listManagedInstancesResults(String listManagedInstancesResults) {
@@ -351,6 +366,7 @@ public final class GetInstanceGroupManagerResult {
             o.fingerprint = fingerprint;
             o.id = id;
             o.instanceGroup = instanceGroup;
+            o.instanceLifecyclePolicies = instanceLifecyclePolicies;
             o.listManagedInstancesResults = listManagedInstancesResults;
             o.name = name;
             o.namedPorts = namedPorts;

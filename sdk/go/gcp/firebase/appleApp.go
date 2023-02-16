@@ -106,9 +106,9 @@ type AppleApp struct {
 	AppStoreId pulumi.StringPtrOutput `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringPtrOutput `pulumi:"bundleId"`
-	// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-	// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-	// Default to 'DELETE'.
+	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -161,9 +161,9 @@ type appleAppState struct {
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId *string `pulumi:"bundleId"`
-	// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-	// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-	// Default to 'DELETE'.
+	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+	// 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
@@ -185,9 +185,9 @@ type AppleAppState struct {
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringPtrInput
-	// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-	// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-	// Default to 'DELETE'.
+	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
@@ -210,9 +210,9 @@ type appleAppArgs struct {
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId *string `pulumi:"bundleId"`
-	// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-	// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-	// Default to 'DELETE'.
+	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+	// 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName string `pulumi:"displayName"`
@@ -229,9 +229,9 @@ type AppleAppArgs struct {
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId pulumi.StringPtrInput
-	// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-	// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-	// Default to 'DELETE'.
+	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringInput
@@ -345,9 +345,9 @@ func (o AppleAppOutput) BundleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringPtrOutput { return v.BundleId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-// Default to 'DELETE'.
+// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+// 'DELETE'.
 func (o AppleAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

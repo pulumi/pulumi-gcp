@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     {
         public readonly string AllocatedIpRange;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult> AuthorizedNetworks;
+        public readonly bool EnablePrivatePathForGoogleCloudServices;
         public readonly bool Ipv4Enabled;
         public readonly string PrivateNetwork;
         public readonly bool RequireSsl;
@@ -25,6 +26,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult> authorizedNetworks,
 
+            bool enablePrivatePathForGoogleCloudServices,
+
             bool ipv4Enabled,
 
             string privateNetwork,
@@ -33,6 +36,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
+            EnablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;
             RequireSsl = requireSsl;

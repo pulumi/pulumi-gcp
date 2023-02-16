@@ -10,6 +10,972 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AddonsConfigAddonsConfig struct {
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	AdvancedApiOpsConfig *AddonsConfigAddonsConfigAdvancedApiOpsConfig `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	ApiSecurityConfig *AddonsConfigAddonsConfigApiSecurityConfig `pulumi:"apiSecurityConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	ConnectorsPlatformConfig *AddonsConfigAddonsConfigConnectorsPlatformConfig `pulumi:"connectorsPlatformConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	IntegrationConfig *AddonsConfigAddonsConfigIntegrationConfig `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	MonetizationConfig *AddonsConfigAddonsConfigMonetizationConfig `pulumi:"monetizationConfig"`
+}
+
+// AddonsConfigAddonsConfigInput is an input type that accepts AddonsConfigAddonsConfigArgs and AddonsConfigAddonsConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigInput` via:
+//
+//	AddonsConfigAddonsConfigArgs{...}
+type AddonsConfigAddonsConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigOutput() AddonsConfigAddonsConfigOutput
+	ToAddonsConfigAddonsConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigOutput
+}
+
+type AddonsConfigAddonsConfigArgs struct {
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	AdvancedApiOpsConfig AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	ApiSecurityConfig AddonsConfigAddonsConfigApiSecurityConfigPtrInput `pulumi:"apiSecurityConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	ConnectorsPlatformConfig AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput `pulumi:"connectorsPlatformConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	IntegrationConfig AddonsConfigAddonsConfigIntegrationConfigPtrInput `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	// Structure is documented below.
+	MonetizationConfig AddonsConfigAddonsConfigMonetizationConfigPtrInput `pulumi:"monetizationConfig"`
+}
+
+func (AddonsConfigAddonsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigOutput() AddonsConfigAddonsConfigOutput {
+	return i.ToAddonsConfigAddonsConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigOutput).ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigArgs, AddonsConfigAddonsConfigPtr and AddonsConfigAddonsConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput
+	ToAddonsConfigAddonsConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigPtrType AddonsConfigAddonsConfigArgs
+
+func AddonsConfigAddonsConfigPtr(v *AddonsConfigAddonsConfigArgs) AddonsConfigAddonsConfigPtrInput {
+	return (*addonsConfigAddonsConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigPtrType) ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigPtrType) ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigOutput() AddonsConfigAddonsConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigOutput) AdvancedApiOpsConfig() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+		return v.AdvancedApiOpsConfig
+	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigOutput) ApiSecurityConfig() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
+		return v.ApiSecurityConfig
+	}).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigOutput) ConnectorsPlatformConfig() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigConnectorsPlatformConfig {
+		return v.ConnectorsPlatformConfig
+	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigOutput) IntegrationConfig() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigIntegrationConfig {
+		return v.IntegrationConfig
+	}).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigOutput) MonetizationConfig() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigMonetizationConfig {
+		return v.MonetizationConfig
+	}).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigPtrOutput) ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigPtrOutput) ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigPtrOutput) Elem() AddonsConfigAddonsConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) AddonsConfigAddonsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfig
+		return ret
+	}).(AddonsConfigAddonsConfigOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigPtrOutput) AdvancedApiOpsConfig() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedApiOpsConfig
+	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigPtrOutput) ApiSecurityConfig() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecurityConfig
+	}).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigPtrOutput) ConnectorsPlatformConfig() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigConnectorsPlatformConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorsPlatformConfig
+	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigPtrOutput) IntegrationConfig() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigIntegrationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationConfig
+	}).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+// Structure is documented below.
+func (o AddonsConfigAddonsConfigPtrOutput) MonetizationConfig() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfig) *AddonsConfigAddonsConfigMonetizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MonetizationConfig
+	}).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigAdvancedApiOpsConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AddonsConfigAddonsConfigAdvancedApiOpsConfigInput is an input type that accepts AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs and AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigAdvancedApiOpsConfigInput` via:
+//
+//	AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs{...}
+type AddonsConfigAddonsConfigAdvancedApiOpsConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput
+	ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput
+}
+
+type AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigAdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
+	return i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput).ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs, AddonsConfigAddonsConfigAdvancedApiOpsConfigPtr and AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput
+	ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs
+
+func AddonsConfigAddonsConfigAdvancedApiOpsConfigPtr(v *AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput {
+	return (*addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigAdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigAdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigAdvancedApiOpsConfig) *AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigAdvancedApiOpsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigAdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) Elem() AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigAdvancedApiOpsConfig) AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfigAdvancedApiOpsConfig
+		return ret
+	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigAdvancedApiOpsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AddonsConfigAddonsConfigApiSecurityConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	ExpiresAt *string `pulumi:"expiresAt"`
+}
+
+// AddonsConfigAddonsConfigApiSecurityConfigInput is an input type that accepts AddonsConfigAddonsConfigApiSecurityConfigArgs and AddonsConfigAddonsConfigApiSecurityConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigApiSecurityConfigInput` via:
+//
+//	AddonsConfigAddonsConfigApiSecurityConfigArgs{...}
+type AddonsConfigAddonsConfigApiSecurityConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigApiSecurityConfigOutput() AddonsConfigAddonsConfigApiSecurityConfigOutput
+	ToAddonsConfigAddonsConfigApiSecurityConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigApiSecurityConfigOutput
+}
+
+type AddonsConfigAddonsConfigApiSecurityConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+}
+
+func (AddonsConfigAddonsConfigApiSecurityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigApiSecurityConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfigApiSecurityConfigOutput() AddonsConfigAddonsConfigApiSecurityConfigOutput {
+	return i.ToAddonsConfigAddonsConfigApiSecurityConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfigApiSecurityConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigApiSecurityConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigApiSecurityConfigOutput).ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigApiSecurityConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigApiSecurityConfigArgs, AddonsConfigAddonsConfigApiSecurityConfigPtr and AddonsConfigAddonsConfigApiSecurityConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigApiSecurityConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigApiSecurityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigApiSecurityConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput
+	ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigApiSecurityConfigPtrType AddonsConfigAddonsConfigApiSecurityConfigArgs
+
+func AddonsConfigAddonsConfigApiSecurityConfigPtr(v *AddonsConfigAddonsConfigApiSecurityConfigArgs) AddonsConfigAddonsConfigApiSecurityConfigPtrInput {
+	return (*addonsConfigAddonsConfigApiSecurityConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigApiSecurityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigApiSecurityConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigApiSecurityConfigPtrType) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigApiSecurityConfigPtrType) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigApiSecurityConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigApiSecurityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigApiSecurityConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsConfigApiSecurityConfigOutput() AddonsConfigAddonsConfigApiSecurityConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsConfigApiSecurityConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigApiSecurityConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+type AddonsConfigAddonsConfigApiSecurityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigApiSecurityConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Elem() AddonsConfigAddonsConfigApiSecurityConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) AddonsConfigAddonsConfigApiSecurityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfigApiSecurityConfig
+		return ret
+	}).(AddonsConfigAddonsConfigApiSecurityConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddonsConfigAddonsConfigConnectorsPlatformConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	ExpiresAt *string `pulumi:"expiresAt"`
+}
+
+// AddonsConfigAddonsConfigConnectorsPlatformConfigInput is an input type that accepts AddonsConfigAddonsConfigConnectorsPlatformConfigArgs and AddonsConfigAddonsConfigConnectorsPlatformConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigConnectorsPlatformConfigInput` via:
+//
+//	AddonsConfigAddonsConfigConnectorsPlatformConfigArgs{...}
+type AddonsConfigAddonsConfigConnectorsPlatformConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigOutput
+	ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigOutput
+}
+
+type AddonsConfigAddonsConfigConnectorsPlatformConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
+}
+
+func (AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigConnectorsPlatformConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
+	return i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput).ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigConnectorsPlatformConfigArgs, AddonsConfigAddonsConfigConnectorsPlatformConfigPtr and AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigConnectorsPlatformConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput
+	ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigConnectorsPlatformConfigPtrType AddonsConfigAddonsConfigConnectorsPlatformConfigArgs
+
+func AddonsConfigAddonsConfigConnectorsPlatformConfigPtr(v *AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput {
+	return (*addonsConfigAddonsConfigConnectorsPlatformConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigConnectorsPlatformConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigConnectorsPlatformConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigConnectorsPlatformConfigPtrType) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigConnectorsPlatformConfigPtrType) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigConnectorsPlatformConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigConnectorsPlatformConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigConnectorsPlatformConfig) *AddonsConfigAddonsConfigConnectorsPlatformConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+type AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigConnectorsPlatformConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Elem() AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) AddonsConfigAddonsConfigConnectorsPlatformConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfigConnectorsPlatformConfig
+		return ret
+	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddonsConfigAddonsConfigIntegrationConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AddonsConfigAddonsConfigIntegrationConfigInput is an input type that accepts AddonsConfigAddonsConfigIntegrationConfigArgs and AddonsConfigAddonsConfigIntegrationConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigIntegrationConfigInput` via:
+//
+//	AddonsConfigAddonsConfigIntegrationConfigArgs{...}
+type AddonsConfigAddonsConfigIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigIntegrationConfigOutput() AddonsConfigAddonsConfigIntegrationConfigOutput
+	ToAddonsConfigAddonsConfigIntegrationConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigIntegrationConfigOutput
+}
+
+type AddonsConfigAddonsConfigIntegrationConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AddonsConfigAddonsConfigIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfigIntegrationConfigOutput() AddonsConfigAddonsConfigIntegrationConfigOutput {
+	return i.ToAddonsConfigAddonsConfigIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfigIntegrationConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigIntegrationConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigIntegrationConfigOutput).ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigIntegrationConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigIntegrationConfigArgs, AddonsConfigAddonsConfigIntegrationConfigPtr and AddonsConfigAddonsConfigIntegrationConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigIntegrationConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigIntegrationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigIntegrationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput
+	ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigIntegrationConfigPtrType AddonsConfigAddonsConfigIntegrationConfigArgs
+
+func AddonsConfigAddonsConfigIntegrationConfigPtr(v *AddonsConfigAddonsConfigIntegrationConfigArgs) AddonsConfigAddonsConfigIntegrationConfigPtrInput {
+	return (*addonsConfigAddonsConfigIntegrationConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigIntegrationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigIntegrationConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigIntegrationConfigPtrType) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigIntegrationConfigPtrType) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsConfigIntegrationConfigOutput() AddonsConfigAddonsConfigIntegrationConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsConfigIntegrationConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigIntegrationConfig) *AddonsConfigAddonsConfigIntegrationConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigIntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AddonsConfigAddonsConfigIntegrationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigIntegrationConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Elem() AddonsConfigAddonsConfigIntegrationConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigIntegrationConfig) AddonsConfigAddonsConfigIntegrationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfigIntegrationConfig
+		return ret
+	}).(AddonsConfigAddonsConfigIntegrationConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigIntegrationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AddonsConfigAddonsConfigMonetizationConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AddonsConfigAddonsConfigMonetizationConfigInput is an input type that accepts AddonsConfigAddonsConfigMonetizationConfigArgs and AddonsConfigAddonsConfigMonetizationConfigOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigMonetizationConfigInput` via:
+//
+//	AddonsConfigAddonsConfigMonetizationConfigArgs{...}
+type AddonsConfigAddonsConfigMonetizationConfigInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigMonetizationConfigOutput() AddonsConfigAddonsConfigMonetizationConfigOutput
+	ToAddonsConfigAddonsConfigMonetizationConfigOutputWithContext(context.Context) AddonsConfigAddonsConfigMonetizationConfigOutput
+}
+
+type AddonsConfigAddonsConfigMonetizationConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AddonsConfigAddonsConfigMonetizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfig)(nil)).Elem()
+}
+
+func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConfigMonetizationConfigOutput() AddonsConfigAddonsConfigMonetizationConfigOutput {
+	return i.ToAddonsConfigAddonsConfigMonetizationConfigOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConfigMonetizationConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigMonetizationConfigOutput)
+}
+
+func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigMonetizationConfigOutput).ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx)
+}
+
+// AddonsConfigAddonsConfigMonetizationConfigPtrInput is an input type that accepts AddonsConfigAddonsConfigMonetizationConfigArgs, AddonsConfigAddonsConfigMonetizationConfigPtr and AddonsConfigAddonsConfigMonetizationConfigPtrOutput values.
+// You can construct a concrete instance of `AddonsConfigAddonsConfigMonetizationConfigPtrInput` via:
+//
+//	        AddonsConfigAddonsConfigMonetizationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonsConfigAddonsConfigMonetizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput
+	ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput
+}
+
+type addonsConfigAddonsConfigMonetizationConfigPtrType AddonsConfigAddonsConfigMonetizationConfigArgs
+
+func AddonsConfigAddonsConfigMonetizationConfigPtr(v *AddonsConfigAddonsConfigMonetizationConfigArgs) AddonsConfigAddonsConfigMonetizationConfigPtrInput {
+	return (*addonsConfigAddonsConfigMonetizationConfigPtrType)(v)
+}
+
+func (*addonsConfigAddonsConfigMonetizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigMonetizationConfig)(nil)).Elem()
+}
+
+func (i *addonsConfigAddonsConfigMonetizationConfigPtrType) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return i.ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *addonsConfigAddonsConfigMonetizationConfigPtrType) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
+}
+
+type AddonsConfigAddonsConfigMonetizationConfigOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigMonetizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsConfigMonetizationConfigOutput() AddonsConfigAddonsConfigMonetizationConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsConfigMonetizationConfigOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o.ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigMonetizationConfig) *AddonsConfigAddonsConfigMonetizationConfig {
+		return &v
+	}).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddonsConfigAddonsConfigMonetizationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AddonsConfigAddonsConfigMonetizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonsConfigAddonsConfigMonetizationConfig)(nil)).Elem()
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
+	return o
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Elem() AddonsConfigAddonsConfigMonetizationConfigOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigMonetizationConfig) AddonsConfigAddonsConfigMonetizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigAddonsConfigMonetizationConfig
+		return ret
+	}).(AddonsConfigAddonsConfigMonetizationConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddonsConfigAddonsConfigMonetizationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EnvironmentIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -779,6 +1745,18 @@ func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Orga
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigAdvancedApiOpsConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigApiSecurityConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigApiSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigApiSecurityConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigApiSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigConnectorsPlatformConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigConnectorsPlatformConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigConnectorsPlatformConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigConnectorsPlatformConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionPtrInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
@@ -789,6 +1767,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigApiSecurityConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigIntegrationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigOutput{})
+	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionOutput{})

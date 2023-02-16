@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
@@ -104,6 +105,21 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The instance lifecycle policy for this managed instance group.
+     * 
+     */
+    @Import(name="instanceLifecyclePolicy")
+    private @Nullable Output<InstanceGroupManagerInstanceLifecyclePolicyArgs> instanceLifecyclePolicy;
+
+    /**
+     * @return The instance lifecycle policy for this managed instance group.
+     * 
+     */
+    public Optional<Output<InstanceGroupManagerInstanceLifecyclePolicyArgs>> instanceLifecyclePolicy() {
+        return Optional.ofNullable(this.instanceLifecyclePolicy);
     }
 
     /**
@@ -365,6 +381,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         this.autoHealingPolicies = $.autoHealingPolicies;
         this.baseInstanceName = $.baseInstanceName;
         this.description = $.description;
+        this.instanceLifecyclePolicy = $.instanceLifecyclePolicy;
         this.listManagedInstancesResults = $.listManagedInstancesResults;
         this.name = $.name;
         this.namedPorts = $.namedPorts;
@@ -501,6 +518,27 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceLifecyclePolicy(@Nullable Output<InstanceGroupManagerInstanceLifecyclePolicyArgs> instanceLifecyclePolicy) {
+            $.instanceLifecyclePolicy = instanceLifecyclePolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceLifecyclePolicy The instance lifecycle policy for this managed instance group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceLifecyclePolicy(InstanceGroupManagerInstanceLifecyclePolicyArgs instanceLifecyclePolicy) {
+            return instanceLifecyclePolicy(Output.of(instanceLifecyclePolicy));
         }
 
         /**

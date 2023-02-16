@@ -6,8 +6,12 @@ package com.pulumi.gcp.datastream.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,16 +23,50 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
      * Structure is documented below.
      * 
      */
-    @Import(name="mysqlSourceConfig", required=true)
-    private Output<StreamSourceConfigMysqlSourceConfigArgs> mysqlSourceConfig;
+    @Import(name="mysqlSourceConfig")
+    private @Nullable Output<StreamSourceConfigMysqlSourceConfigArgs> mysqlSourceConfig;
 
     /**
      * @return MySQL data source configuration.
      * Structure is documented below.
      * 
      */
-    public Output<StreamSourceConfigMysqlSourceConfigArgs> mysqlSourceConfig() {
-        return this.mysqlSourceConfig;
+    public Optional<Output<StreamSourceConfigMysqlSourceConfigArgs>> mysqlSourceConfig() {
+        return Optional.ofNullable(this.mysqlSourceConfig);
+    }
+
+    /**
+     * MySQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oracleSourceConfig")
+    private @Nullable Output<StreamSourceConfigOracleSourceConfigArgs> oracleSourceConfig;
+
+    /**
+     * @return MySQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigOracleSourceConfigArgs>> oracleSourceConfig() {
+        return Optional.ofNullable(this.oracleSourceConfig);
+    }
+
+    /**
+     * PostgreSQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="postgresqlSourceConfig")
+    private @Nullable Output<StreamSourceConfigPostgresqlSourceConfigArgs> postgresqlSourceConfig;
+
+    /**
+     * @return PostgreSQL data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigPostgresqlSourceConfigArgs>> postgresqlSourceConfig() {
+        return Optional.ofNullable(this.postgresqlSourceConfig);
     }
 
     /**
@@ -50,6 +88,8 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
 
     private StreamSourceConfigArgs(StreamSourceConfigArgs $) {
         this.mysqlSourceConfig = $.mysqlSourceConfig;
+        this.oracleSourceConfig = $.oracleSourceConfig;
+        this.postgresqlSourceConfig = $.postgresqlSourceConfig;
         this.sourceConnectionProfile = $.sourceConnectionProfile;
     }
 
@@ -78,7 +118,7 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder mysqlSourceConfig(Output<StreamSourceConfigMysqlSourceConfigArgs> mysqlSourceConfig) {
+        public Builder mysqlSourceConfig(@Nullable Output<StreamSourceConfigMysqlSourceConfigArgs> mysqlSourceConfig) {
             $.mysqlSourceConfig = mysqlSourceConfig;
             return this;
         }
@@ -92,6 +132,52 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs mysqlSourceConfig) {
             return mysqlSourceConfig(Output.of(mysqlSourceConfig));
+        }
+
+        /**
+         * @param oracleSourceConfig MySQL data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracleSourceConfig(@Nullable Output<StreamSourceConfigOracleSourceConfigArgs> oracleSourceConfig) {
+            $.oracleSourceConfig = oracleSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param oracleSourceConfig MySQL data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracleSourceConfig(StreamSourceConfigOracleSourceConfigArgs oracleSourceConfig) {
+            return oracleSourceConfig(Output.of(oracleSourceConfig));
+        }
+
+        /**
+         * @param postgresqlSourceConfig PostgreSQL data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresqlSourceConfig(@Nullable Output<StreamSourceConfigPostgresqlSourceConfigArgs> postgresqlSourceConfig) {
+            $.postgresqlSourceConfig = postgresqlSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param postgresqlSourceConfig PostgreSQL data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postgresqlSourceConfig(StreamSourceConfigPostgresqlSourceConfigArgs postgresqlSourceConfig) {
+            return postgresqlSourceConfig(Output.of(postgresqlSourceConfig));
         }
 
         /**
@@ -116,7 +202,6 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public StreamSourceConfigArgs build() {
-            $.mysqlSourceConfig = Objects.requireNonNull($.mysqlSourceConfig, "expected parameter 'mysqlSourceConfig' to be non-null");
             $.sourceConnectionProfile = Objects.requireNonNull($.sourceConnectionProfile, "expected parameter 'sourceConnectionProfile' to be non-null");
             return $;
         }

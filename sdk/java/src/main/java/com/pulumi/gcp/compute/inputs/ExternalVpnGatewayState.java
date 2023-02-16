@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayInterfaceArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
      */
     public Optional<Output<List<ExternalVpnGatewayInterfaceArgs>>> interfaces() {
         return Optional.ofNullable(this.interfaces);
+    }
+
+    /**
+     * Labels for the external VPN gateway resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for the external VPN gateway resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -130,6 +146,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     private ExternalVpnGatewayState(ExternalVpnGatewayState $) {
         this.description = $.description;
         this.interfaces = $.interfaces;
+        this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.redundancyType = $.redundancyType;
@@ -207,6 +224,27 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
          */
         public Builder interfaces(ExternalVpnGatewayInterfaceArgs... interfaces) {
             return interfaces(List.of(interfaces));
+        }
+
+        /**
+         * @param labels Labels for the external VPN gateway resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for the external VPN gateway resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

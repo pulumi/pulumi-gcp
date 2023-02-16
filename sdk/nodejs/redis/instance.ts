@@ -225,7 +225,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * AUTH String set on the instance. This field will only be populated if authEnabled is true.
+     * AUTH String set on the instance. This field will only be populated if auth_enabled is true.
      */
     public /*out*/ readonly authString!: pulumi.Output<string>;
     /**
@@ -514,7 +514,7 @@ export interface InstanceState {
      */
     authEnabled?: pulumi.Input<boolean>;
     /**
-     * AUTH String set on the instance. This field will only be populated if authEnabled is true.
+     * AUTH String set on the instance. This field will only be populated if auth_enabled is true.
      */
     authString?: pulumi.Input<string>;
     /**

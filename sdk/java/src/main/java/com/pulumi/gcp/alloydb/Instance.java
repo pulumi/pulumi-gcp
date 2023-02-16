@@ -19,6 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A managed alloydb cluster instance.
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ * 
  * ## Example Usage
  * ### Alloydb Instance Basic
  * ```java
@@ -30,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
@@ -57,9 +64,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
- *             .build());
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .clusterId(&#34;alloydb-cluster&#34;)
@@ -68,26 +73,20 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password(&#34;alloydb-cluster&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
  *             .addressType(&#34;INTERNAL&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .prefixLength(16)
  *             .network(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
  *             .network(defaultNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .cluster(defaultCluster.name())
@@ -97,7 +96,6 @@ import javax.annotation.Nullable;
  *                 .cpuCount(2)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 

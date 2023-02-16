@@ -18,11 +18,28 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.StreamBackfillAllMysqlExcludedObjects? MysqlExcludedObjects;
+        /// <summary>
+        /// PostgreSQL data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamBackfillAllOracleExcludedObjects? OracleExcludedObjects;
+        /// <summary>
+        /// PostgreSQL data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamBackfillAllPostgresqlExcludedObjects? PostgresqlExcludedObjects;
 
         [OutputConstructor]
-        private StreamBackfillAll(Outputs.StreamBackfillAllMysqlExcludedObjects? mysqlExcludedObjects)
+        private StreamBackfillAll(
+            Outputs.StreamBackfillAllMysqlExcludedObjects? mysqlExcludedObjects,
+
+            Outputs.StreamBackfillAllOracleExcludedObjects? oracleExcludedObjects,
+
+            Outputs.StreamBackfillAllPostgresqlExcludedObjects? postgresqlExcludedObjects)
         {
             MysqlExcludedObjects = mysqlExcludedObjects;
+            OracleExcludedObjects = oracleExcludedObjects;
+            PostgresqlExcludedObjects = postgresqlExcludedObjects;
         }
     }
 }

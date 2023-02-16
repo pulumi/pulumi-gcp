@@ -169,6 +169,12 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.ExternalVpnGatewayInterface>> Interfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Labels for the external VPN gateway resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -265,6 +271,18 @@ namespace Pulumi.Gcp.Compute
             set => _interfaces = value;
         }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for the external VPN gateway resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
@@ -316,6 +334,18 @@ namespace Pulumi.Gcp.Compute
         {
             get => _interfaces ?? (_interfaces = new InputList<Inputs.ExternalVpnGatewayInterfaceGetArgs>());
             set => _interfaces = value;
+        }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for the external VPN gateway resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
         }
 
         /// <summary>

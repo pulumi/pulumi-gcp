@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiFeatureStoreEntityTypeArgs Empty = new AiFeatureStoreEntityTypeArgs();
+
+    /**
+     * Optional. Description of the EntityType.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Optional. Description of the EntityType.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
 
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
@@ -81,13 +97,34 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * 
+     */
+    @Import(name="offlineStorageTtlDays")
+    private @Nullable Output<Integer> offlineStorageTtlDays;
+
+    /**
+     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * 
+     */
+    public Optional<Output<Integer>> offlineStorageTtlDays() {
+        return Optional.ofNullable(this.offlineStorageTtlDays);
+    }
+
     private AiFeatureStoreEntityTypeArgs() {}
 
     private AiFeatureStoreEntityTypeArgs(AiFeatureStoreEntityTypeArgs $) {
+        this.description = $.description;
         this.featurestore = $.featurestore;
         this.labels = $.labels;
         this.monitoringConfig = $.monitoringConfig;
         this.name = $.name;
+        this.offlineStorageTtlDays = $.offlineStorageTtlDays;
     }
 
     public static Builder builder() {
@@ -106,6 +143,27 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
 
         public Builder(AiFeatureStoreEntityTypeArgs defaults) {
             $ = new AiFeatureStoreEntityTypeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description Optional. Description of the EntityType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Optional. Description of the EntityType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -194,6 +252,31 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param offlineStorageTtlDays Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+         * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+         * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder offlineStorageTtlDays(@Nullable Output<Integer> offlineStorageTtlDays) {
+            $.offlineStorageTtlDays = offlineStorageTtlDays;
+            return this;
+        }
+
+        /**
+         * @param offlineStorageTtlDays Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+         * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+         * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder offlineStorageTtlDays(Integer offlineStorageTtlDays) {
+            return offlineStorageTtlDays(Output.of(offlineStorageTtlDays));
         }
 
         public AiFeatureStoreEntityTypeArgs build() {

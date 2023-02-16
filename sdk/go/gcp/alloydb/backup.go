@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An AlloyDB Backup.
+//
+// To get more information about Backup, see:
+//
+// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
+// * How-to Guides
+//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
+//
 // ## Example Usage
 // ### Alloydb Backup Full
 //
@@ -38,7 +46,7 @@ import (
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				Network:   *pulumi.String(defaultNetwork.Id),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -47,7 +55,7 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
 //				Network:      *pulumi.String(defaultNetwork.Id),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -57,7 +65,7 @@ import (
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -65,7 +73,7 @@ import (
 //				Cluster:      defaultCluster.Name,
 //				InstanceId:   pulumi.String("alloydb-instance"),
 //				InstanceType: pulumi.String("PRIMARY"),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpcConnection,
 //			}))
 //			if err != nil {
@@ -79,7 +87,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultInstance,
 //			}))
 //			if err != nil {

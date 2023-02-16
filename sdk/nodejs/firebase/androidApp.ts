@@ -79,7 +79,7 @@ export class AndroidApp extends pulumi.CustomResource {
     /**
      * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
      * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Default to 'DELETE'.
+     * AndroidApp. Defaults to 'DELETE'.
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -169,7 +169,7 @@ export interface AndroidAppState {
     /**
      * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
      * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Default to 'DELETE'.
+     * AndroidApp. Defaults to 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface AndroidAppArgs {
     /**
      * (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
      * 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-     * AndroidApp. Default to 'DELETE'.
+     * AndroidApp. Defaults to 'DELETE'.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

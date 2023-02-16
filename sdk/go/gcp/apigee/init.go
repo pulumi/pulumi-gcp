@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:apigee/addonsConfig:AddonsConfig":
+		r = &AddonsConfig{}
 	case "gcp:apigee/endpointAttachment:EndpointAttachment":
 		r = &EndpointAttachment{}
 	case "gcp:apigee/envGroup:EnvGroup":
@@ -58,6 +60,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/addonsConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/endpointAttachment",

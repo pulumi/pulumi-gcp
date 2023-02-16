@@ -21,6 +21,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     private @Nullable String allocatedIpRange;
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks;
     /**
+     * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
+    private @Nullable Boolean enablePrivatePathForGoogleCloudServices;
+    /**
      * @return Whether this Cloud SQL instance should be assigned
      * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
      * `private_network` must be configured.
@@ -52,6 +57,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     }
     public List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks() {
         return this.authorizedNetworks == null ? List.of() : this.authorizedNetworks;
+    }
+    /**
+     * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
+    public Optional<Boolean> enablePrivatePathForGoogleCloudServices() {
+        return Optional.ofNullable(this.enablePrivatePathForGoogleCloudServices);
     }
     /**
      * @return Whether this Cloud SQL instance should be assigned
@@ -92,6 +104,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     public static final class Builder {
         private @Nullable String allocatedIpRange;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks;
+        private @Nullable Boolean enablePrivatePathForGoogleCloudServices;
         private @Nullable Boolean ipv4Enabled;
         private @Nullable String privateNetwork;
         private @Nullable Boolean requireSsl;
@@ -100,6 +113,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.authorizedNetworks = defaults.authorizedNetworks;
+    	      this.enablePrivatePathForGoogleCloudServices = defaults.enablePrivatePathForGoogleCloudServices;
     	      this.ipv4Enabled = defaults.ipv4Enabled;
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.requireSsl = defaults.requireSsl;
@@ -117,6 +131,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         }
         public Builder authorizedNetworks(DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+        @CustomType.Setter
+        public Builder enablePrivatePathForGoogleCloudServices(@Nullable Boolean enablePrivatePathForGoogleCloudServices) {
+            this.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
+            return this;
         }
         @CustomType.Setter
         public Builder ipv4Enabled(@Nullable Boolean ipv4Enabled) {
@@ -137,6 +156,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             final var o = new DatabaseInstanceSettingsIpConfiguration();
             o.allocatedIpRange = allocatedIpRange;
             o.authorizedNetworks = authorizedNetworks;
+            o.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             o.ipv4Enabled = ipv4Enabled;
             o.privateNetwork = privateNetwork;
             o.requireSsl = requireSsl;

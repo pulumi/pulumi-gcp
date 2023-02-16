@@ -169,6 +169,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * The instance lifecycle policy for this managed instance group.
+     */
+    public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
+    /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
      * If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
@@ -274,6 +278,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicyZones"] = state ? state.distributionPolicyZones : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
+            resourceInputs["instanceLifecyclePolicy"] = state ? state.instanceLifecyclePolicy : undefined;
             resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
@@ -304,6 +309,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicyTargetShape"] = args ? args.distributionPolicyTargetShape : undefined;
             resourceInputs["distributionPolicyZones"] = args ? args.distributionPolicyZones : undefined;
+            resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
@@ -375,6 +381,10 @@ export interface RegionInstanceGroupManagerState {
      * The full URL of the instance group created by the manager.
      */
     instanceGroup?: pulumi.Input<string>;
+    /**
+     * The instance lifecycle policy for this managed instance group.
+     */
+    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
     /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -500,6 +510,10 @@ export interface RegionInstanceGroupManagerArgs {
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
     distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The instance lifecycle policy for this managed instance group.
+     */
+    instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
     /**
      * Pagination behavior of the `listManagedInstances` API
      * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.

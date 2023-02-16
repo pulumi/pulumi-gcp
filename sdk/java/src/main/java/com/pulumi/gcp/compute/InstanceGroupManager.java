@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerState;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
@@ -275,6 +276,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceGroup() {
         return this.instanceGroup;
+    }
+    /**
+     * The instance lifecycle policy for this managed instance group.
+     * 
+     */
+    @Export(name="instanceLifecyclePolicy", type=InstanceGroupManagerInstanceLifecyclePolicy.class, parameters={})
+    private Output<InstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy;
+
+    /**
+     * @return The instance lifecycle policy for this managed instance group.
+     * 
+     */
+    public Output<InstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy() {
+        return this.instanceLifecyclePolicy;
     }
     /**
      * Pagination behavior of the `listManagedInstances` API

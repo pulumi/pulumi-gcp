@@ -262,6 +262,10 @@ namespace Pulumi.Gcp.Compute
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> ReservationAffinities;
         /// <summary>
+        /// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        public readonly ImmutableArray<string> ResourcePolicies;
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -338,6 +342,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceTemplateReservationAffinityResult> reservationAffinities,
 
+            ImmutableArray<string> resourcePolicies,
+
             ImmutableArray<Outputs.GetInstanceTemplateSchedulingResult> schedulings,
 
             string selfLink,
@@ -374,6 +380,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             Region = region;
             ReservationAffinities = reservationAffinities;
+            ResourcePolicies = resourcePolicies;
             Schedulings = schedulings;
             SelfLink = selfLink;
             ServiceAccounts = serviceAccounts;

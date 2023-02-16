@@ -118,8 +118,11 @@ type Network struct {
 	// fail if the speficied /48 is already in used by another resource.
 	// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
 	InternalIpv6Range pulumi.StringOutput `pulumi:"internalIpv6Range"`
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-	// and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+	// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+	// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+	// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+	// with varying MTUs.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -196,8 +199,11 @@ type networkState struct {
 	// fail if the speficied /48 is already in used by another resource.
 	// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
 	InternalIpv6Range *string `pulumi:"internalIpv6Range"`
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-	// and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+	// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+	// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+	// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+	// with varying MTUs.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -246,8 +252,11 @@ type NetworkState struct {
 	// fail if the speficied /48 is already in used by another resource.
 	// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
 	InternalIpv6Range pulumi.StringPtrInput
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-	// and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+	// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+	// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+	// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+	// with varying MTUs.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -297,8 +306,11 @@ type networkArgs struct {
 	// fail if the speficied /48 is already in used by another resource.
 	// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
 	InternalIpv6Range *string `pulumi:"internalIpv6Range"`
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-	// and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+	// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+	// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+	// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+	// with varying MTUs.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -343,8 +355,11 @@ type NetworkArgs struct {
 	// fail if the speficied /48 is already in used by another resource.
 	// If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
 	InternalIpv6Range pulumi.StringPtrInput
-	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-	// and the maximum value is 1500 bytes.
+	// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+	// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+	// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+	// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+	// with varying MTUs.
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -495,8 +510,11 @@ func (o NetworkOutput) InternalIpv6Range() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.InternalIpv6Range }).(pulumi.StringOutput)
 }
 
-// Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-// and the maximum value is 1500 bytes.
+// Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+// The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+// Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+// with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+// with varying MTUs.
 func (o NetworkOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v *Network) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }

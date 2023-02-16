@@ -1854,6 +1854,12 @@ type StreamBackfillAll struct {
 	// MySQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	MysqlExcludedObjects *StreamBackfillAllMysqlExcludedObjects `pulumi:"mysqlExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	OracleExcludedObjects *StreamBackfillAllOracleExcludedObjects `pulumi:"oracleExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	PostgresqlExcludedObjects *StreamBackfillAllPostgresqlExcludedObjects `pulumi:"postgresqlExcludedObjects"`
 }
 
 // StreamBackfillAllInput is an input type that accepts StreamBackfillAllArgs and StreamBackfillAllOutput values.
@@ -1871,6 +1877,12 @@ type StreamBackfillAllArgs struct {
 	// MySQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	MysqlExcludedObjects StreamBackfillAllMysqlExcludedObjectsPtrInput `pulumi:"mysqlExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	OracleExcludedObjects StreamBackfillAllOracleExcludedObjectsPtrInput `pulumi:"oracleExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	// Structure is documented below.
+	PostgresqlExcludedObjects StreamBackfillAllPostgresqlExcludedObjectsPtrInput `pulumi:"postgresqlExcludedObjects"`
 }
 
 func (StreamBackfillAllArgs) ElementType() reflect.Type {
@@ -1956,6 +1968,20 @@ func (o StreamBackfillAllOutput) MysqlExcludedObjects() StreamBackfillAllMysqlEx
 	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllMysqlExcludedObjects { return v.MysqlExcludedObjects }).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
 }
 
+// PostgreSQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) OracleExcludedObjects() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllOracleExcludedObjects { return v.OracleExcludedObjects }).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
+}
+
+// PostgreSQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) PostgresqlExcludedObjects() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllPostgresqlExcludedObjects {
+		return v.PostgresqlExcludedObjects
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
+}
+
 type StreamBackfillAllPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamBackfillAllPtrOutput) ElementType() reflect.Type {
@@ -1989,6 +2015,28 @@ func (o StreamBackfillAllPtrOutput) MysqlExcludedObjects() StreamBackfillAllMysq
 		}
 		return v.MysqlExcludedObjects
 	}).(StreamBackfillAllMysqlExcludedObjectsPtrOutput)
+}
+
+// PostgreSQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) OracleExcludedObjects() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllOracleExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.OracleExcludedObjects
+	}).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
+}
+
+// PostgreSQL data source objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) PostgresqlExcludedObjects() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllPostgresqlExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlExcludedObjects
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
 }
 
 type StreamBackfillAllMysqlExcludedObjects struct {
@@ -2520,6 +2568,1105 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
 		return vs[0].([]StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
 	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjects struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas []StreamBackfillAllOracleExcludedObjectsOracleSchema `pulumi:"oracleSchemas"`
+}
+
+// StreamBackfillAllOracleExcludedObjectsInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsArgs and StreamBackfillAllOracleExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsArgs{...}
+type StreamBackfillAllOracleExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOutput() StreamBackfillAllOracleExcludedObjectsOutput
+	ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsArgs struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput `pulumi:"oracleSchemas"`
+}
+
+func (StreamBackfillAllOracleExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsOutput() StreamBackfillAllOracleExcludedObjectsOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsArgs) ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOutput).ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllOracleExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsArgs, StreamBackfillAllOracleExcludedObjectsPtr and StreamBackfillAllOracleExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllOracleExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllOracleExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput
+	ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllOracleExcludedObjectsPtrType StreamBackfillAllOracleExcludedObjectsArgs
+
+func StreamBackfillAllOracleExcludedObjectsPtr(v *StreamBackfillAllOracleExcludedObjectsArgs) StreamBackfillAllOracleExcludedObjectsPtrInput {
+	return (*streamBackfillAllOracleExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllOracleExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllOracleExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllOracleExcludedObjectsPtrType) ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllOracleExcludedObjectsPtrType) ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOutput) ToStreamBackfillAllOracleExcludedObjectsOutput() StreamBackfillAllOracleExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOutput) ToStreamBackfillAllOracleExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOutput) ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOutput) ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllOracleExcludedObjects) *StreamBackfillAllOracleExcludedObjects {
+		return &v
+	}).(StreamBackfillAllOracleExcludedObjectsPtrOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamBackfillAllOracleExcludedObjectsOutput) OracleSchemas() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjects) []StreamBackfillAllOracleExcludedObjectsOracleSchema {
+		return v.OracleSchemas
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllOracleExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) ToStreamBackfillAllOracleExcludedObjectsPtrOutput() StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) ToStreamBackfillAllOracleExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) Elem() StreamBackfillAllOracleExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllOracleExcludedObjects) StreamBackfillAllOracleExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllOracleExcludedObjects
+		return ret
+	}).(StreamBackfillAllOracleExcludedObjectsOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) OracleSchemas() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllOracleExcludedObjects) []StreamBackfillAllOracleExcludedObjectsOracleSchema {
+		if v == nil {
+			return nil
+		}
+		return v.OracleSchemas
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchema struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs and StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs{...}
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput)
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaArray{ StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs{...} }
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaArray []StreamBackfillAllOracleExcludedObjectsOracleSchemaInput
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
+	return o
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) OracleTables() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchema) []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
+		return v.OracleTables
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+// Schema name.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllOracleExcludedObjectsOracleSchema {
+		return vs[0].([]StreamBackfillAllOracleExcludedObjectsOracleSchema)[vs[1].(int)]
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs{...}
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput)
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray{ StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs{...} }
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable) []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
+		return v.OracleColumns
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
+		return vs[0].([]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable)[vs[1].(int)]
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType *string `pulumi:"dataType"`
+	// Column encoding.
+	Encoding *string `pulumi:"encoding"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs{...}
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column encoding.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+// StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray and StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
+//
+//	StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray{ StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs{...} }
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+	ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnInput
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return i.ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column encoding.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
+		return vs[0].([]StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
+	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjects struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema `pulumi:"postgresqlSchemas"`
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsArgs and StreamBackfillAllPostgresqlExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsArgs{...}
+type StreamBackfillAllPostgresqlExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsOutput() StreamBackfillAllPostgresqlExcludedObjectsOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsArgs struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput `pulumi:"postgresqlSchemas"`
+}
+
+func (StreamBackfillAllPostgresqlExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsOutput() StreamBackfillAllPostgresqlExcludedObjectsOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsOutput).ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsArgs, StreamBackfillAllPostgresqlExcludedObjectsPtr and StreamBackfillAllPostgresqlExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllPostgresqlExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllPostgresqlExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllPostgresqlExcludedObjectsPtrType StreamBackfillAllPostgresqlExcludedObjectsArgs
+
+func StreamBackfillAllPostgresqlExcludedObjectsPtr(v *StreamBackfillAllPostgresqlExcludedObjectsArgs) StreamBackfillAllPostgresqlExcludedObjectsPtrInput {
+	return (*streamBackfillAllPostgresqlExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllPostgresqlExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllPostgresqlExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllPostgresqlExcludedObjectsPtrType) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllPostgresqlExcludedObjectsPtrType) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToStreamBackfillAllPostgresqlExcludedObjectsOutput() StreamBackfillAllPostgresqlExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToStreamBackfillAllPostgresqlExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllPostgresqlExcludedObjects) *StreamBackfillAllPostgresqlExcludedObjects {
+		return &v
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamBackfillAllPostgresqlExcludedObjectsOutput) PostgresqlSchemas() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjects) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
+		return v.PostgresqlSchemas
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllPostgresqlExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutput() StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) Elem() StreamBackfillAllPostgresqlExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllPostgresqlExcludedObjects) StreamBackfillAllPostgresqlExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllPostgresqlExcludedObjects
+		return ret
+	}).(StreamBackfillAllPostgresqlExcludedObjectsOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) PostgresqlSchemas() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllPostgresqlExcludedObjects) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlSchemas
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs{...}
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput)
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray{ StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs{...} }
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
+		return v.PostgresqlTables
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+// Database name.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
+		return vs[0].([]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema)[vs[1].(int)]
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs{...}
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray{ StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs{...} }
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableInput
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return v.PostgresqlColumns
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
+		return vs[0].([]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable)[vs[1].(int)]
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType *string `pulumi:"dataType"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...}
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
+// StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
+//
+//	StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{ StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...} }
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+	ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return i.ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return vs[0].([]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
+	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
 type StreamBackfillNone struct {
@@ -4017,7 +5164,13 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Sche
 type StreamSourceConfig struct {
 	// MySQL data source configuration.
 	// Structure is documented below.
-	MysqlSourceConfig StreamSourceConfigMysqlSourceConfig `pulumi:"mysqlSourceConfig"`
+	MysqlSourceConfig *StreamSourceConfigMysqlSourceConfig `pulumi:"mysqlSourceConfig"`
+	// MySQL data source configuration.
+	// Structure is documented below.
+	OracleSourceConfig *StreamSourceConfigOracleSourceConfig `pulumi:"oracleSourceConfig"`
+	// PostgreSQL data source configuration.
+	// Structure is documented below.
+	PostgresqlSourceConfig *StreamSourceConfigPostgresqlSourceConfig `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
 }
@@ -4036,7 +5189,13 @@ type StreamSourceConfigInput interface {
 type StreamSourceConfigArgs struct {
 	// MySQL data source configuration.
 	// Structure is documented below.
-	MysqlSourceConfig StreamSourceConfigMysqlSourceConfigInput `pulumi:"mysqlSourceConfig"`
+	MysqlSourceConfig StreamSourceConfigMysqlSourceConfigPtrInput `pulumi:"mysqlSourceConfig"`
+	// MySQL data source configuration.
+	// Structure is documented below.
+	OracleSourceConfig StreamSourceConfigOracleSourceConfigPtrInput `pulumi:"oracleSourceConfig"`
+	// PostgreSQL data source configuration.
+	// Structure is documented below.
+	PostgresqlSourceConfig StreamSourceConfigPostgresqlSourceConfigPtrInput `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
 }
@@ -4120,8 +5279,20 @@ func (o StreamSourceConfigOutput) ToStreamSourceConfigPtrOutputWithContext(ctx c
 
 // MySQL data source configuration.
 // Structure is documented below.
-func (o StreamSourceConfigOutput) MysqlSourceConfig() StreamSourceConfigMysqlSourceConfigOutput {
-	return o.ApplyT(func(v StreamSourceConfig) StreamSourceConfigMysqlSourceConfig { return v.MysqlSourceConfig }).(StreamSourceConfigMysqlSourceConfigOutput)
+func (o StreamSourceConfigOutput) MysqlSourceConfig() StreamSourceConfigMysqlSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigMysqlSourceConfig { return v.MysqlSourceConfig }).(StreamSourceConfigMysqlSourceConfigPtrOutput)
+}
+
+// MySQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) OracleSourceConfig() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigOracleSourceConfig { return v.OracleSourceConfig }).(StreamSourceConfigOracleSourceConfigPtrOutput)
+}
+
+// PostgreSQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) PostgresqlSourceConfig() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigPostgresqlSourceConfig { return v.PostgresqlSourceConfig }).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
 }
 
 // Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -4160,8 +5331,30 @@ func (o StreamSourceConfigPtrOutput) MysqlSourceConfig() StreamSourceConfigMysql
 		if v == nil {
 			return nil
 		}
-		return &v.MysqlSourceConfig
+		return v.MysqlSourceConfig
 	}).(StreamSourceConfigMysqlSourceConfigPtrOutput)
+}
+
+// MySQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) OracleSourceConfig() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigOracleSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OracleSourceConfig
+	}).(StreamSourceConfigOracleSourceConfigPtrOutput)
+}
+
+// PostgreSQL data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) PostgresqlSourceConfig() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigPostgresqlSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlSourceConfig
+	}).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
 }
 
 // Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -5435,6 +6628,2941 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
 }
 
+type StreamSourceConfigOracleSourceConfig struct {
+	// Configuration to drop large object values.
+	DropLargeObjects *StreamSourceConfigOracleSourceConfigDropLargeObjects `pulumi:"dropLargeObjects"`
+	// Oracle objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigOracleSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// Oracle objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigOracleSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+	// Configuration to drop large object values.
+	StreamLargeObjects *StreamSourceConfigOracleSourceConfigStreamLargeObjects `pulumi:"streamLargeObjects"`
+}
+
+// StreamSourceConfigOracleSourceConfigInput is an input type that accepts StreamSourceConfigOracleSourceConfigArgs and StreamSourceConfigOracleSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigArgs{...}
+type StreamSourceConfigOracleSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigOutput() StreamSourceConfigOracleSourceConfigOutput
+	ToStreamSourceConfigOracleSourceConfigOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigOutput
+}
+
+type StreamSourceConfigOracleSourceConfigArgs struct {
+	// Configuration to drop large object values.
+	DropLargeObjects StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput `pulumi:"dropLargeObjects"`
+	// Oracle objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// Oracle objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+	// Configuration to drop large object values.
+	StreamLargeObjects StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput `pulumi:"streamLargeObjects"`
+}
+
+func (StreamSourceConfigOracleSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSourceConfigOutput() StreamSourceConfigOracleSourceConfigOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigOutput)
+}
+
+func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigArgs) ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigOutput).ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigOracleSourceConfigPtrInput is an input type that accepts StreamSourceConfigOracleSourceConfigArgs, StreamSourceConfigOracleSourceConfigPtr and StreamSourceConfigOracleSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigOracleSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigOracleSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput
+	ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigPtrOutput
+}
+
+type streamSourceConfigOracleSourceConfigPtrType StreamSourceConfigOracleSourceConfigArgs
+
+func StreamSourceConfigOracleSourceConfigPtr(v *StreamSourceConfigOracleSourceConfigArgs) StreamSourceConfigOracleSourceConfigPtrInput {
+	return (*streamSourceConfigOracleSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigOracleSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigOracleSourceConfigPtrType) ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigOracleSourceConfigPtrType) ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigOutput) ToStreamSourceConfigOracleSourceConfigOutput() StreamSourceConfigOracleSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigOutput) ToStreamSourceConfigOracleSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigOutput) ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOracleSourceConfigOutput) ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfig {
+		return &v
+	}).(StreamSourceConfigOracleSourceConfigPtrOutput)
+}
+
+// Configuration to drop large object values.
+func (o StreamSourceConfigOracleSourceConfigOutput) DropLargeObjects() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigDropLargeObjects {
+		return v.DropLargeObjects
+	}).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
+}
+
+// Oracle objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigOutput) ExcludeObjects() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Oracle objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigOutput) IncludeObjects() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigOracleSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigOracleSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+// Configuration to drop large object values.
+func (o StreamSourceConfigOracleSourceConfigOutput) StreamLargeObjects() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+		return v.StreamLargeObjects
+	}).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) ToStreamSourceConfigOracleSourceConfigPtrOutput() StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) ToStreamSourceConfigOracleSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) Elem() StreamSourceConfigOracleSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) StreamSourceConfigOracleSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigOracleSourceConfig
+		return ret
+	}).(StreamSourceConfigOracleSourceConfigOutput)
+}
+
+// Configuration to drop large object values.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) DropLargeObjects() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigDropLargeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.DropLargeObjects
+	}).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
+}
+
+// Oracle objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Oracle objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration to drop large object values.
+func (o StreamSourceConfigOracleSourceConfigPtrOutput) StreamLargeObjects() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfig) *StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLargeObjects
+	}).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigDropLargeObjects struct {
+}
+
+// StreamSourceConfigOracleSourceConfigDropLargeObjectsInput is an input type that accepts StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs and StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigDropLargeObjectsInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs{...}
+type StreamSourceConfigOracleSourceConfigDropLargeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput
+	ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput
+}
+
+type StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs struct {
+}
+
+func (StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigDropLargeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput)
+}
+
+func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput).ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput is an input type that accepts StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs, StreamSourceConfigOracleSourceConfigDropLargeObjectsPtr and StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput
+	ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput
+}
+
+type streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs
+
+func StreamSourceConfigOracleSourceConfigDropLargeObjectsPtr(v *StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput {
+	return (*streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigDropLargeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigOracleSourceConfigDropLargeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigDropLargeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o.ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfigDropLargeObjects) *StreamSourceConfigOracleSourceConfigDropLargeObjects {
+		return &v
+	}).(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigDropLargeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigDropLargeObjects) StreamSourceConfigOracleSourceConfigDropLargeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigOracleSourceConfigDropLargeObjects
+		return ret
+	}).(StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjects struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema `pulumi:"oracleSchemas"`
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsArgs and StreamSourceConfigOracleSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigOracleSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsArgs struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput `pulumi:"oracleSchemas"`
+}
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOutput).ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsArgs, StreamSourceConfigOracleSourceConfigExcludeObjectsPtr and StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigOracleSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigOracleSourceConfigExcludeObjectsPtrType StreamSourceConfigOracleSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigOracleSourceConfigExcludeObjectsPtr(v *StreamSourceConfigOracleSourceConfigExcludeObjectsArgs) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigOracleSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigOracleSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigOracleSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigOracleSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfigExcludeObjects) *StreamSourceConfigOracleSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjects) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
+		return v.OracleSchemas
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigExcludeObjects) StreamSourceConfigOracleSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigOracleSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigExcludeObjects) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
+		if v == nil {
+			return nil
+		}
+		return v.OracleSchemas
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs{...}
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray{ StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs{...} }
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
+	return o
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) OracleTables() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
+		return v.OracleTables
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+// Schema name.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs{...}
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray{ StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs{...} }
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableInput
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
+		return v.OracleColumns
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType *string `pulumi:"dataType"`
+	// Column encoding.
+	Encoding *string `pulumi:"encoding"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs{...}
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column encoding.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray and StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray{ StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs{...} }
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+	ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnInput
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column encoding.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjects struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema `pulumi:"oracleSchemas"`
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsArgs and StreamSourceConfigOracleSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigOracleSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsArgs struct {
+	// Oracle schemas/databases in the database server
+	// Structure is documented below.
+	OracleSchemas StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput `pulumi:"oracleSchemas"`
+}
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOutput).ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsArgs, StreamSourceConfigOracleSourceConfigIncludeObjectsPtr and StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigOracleSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigOracleSourceConfigIncludeObjectsPtrType StreamSourceConfigOracleSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigOracleSourceConfigIncludeObjectsPtr(v *StreamSourceConfigOracleSourceConfigIncludeObjectsArgs) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigOracleSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigOracleSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigOracleSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigOracleSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfigIncludeObjects) *StreamSourceConfigOracleSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjects) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
+		return v.OracleSchemas
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigIncludeObjects) StreamSourceConfigOracleSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigOracleSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOutput)
+}
+
+// Oracle schemas/databases in the database server
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) OracleSchemas() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigIncludeObjects) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
+		if v == nil {
+			return nil
+		}
+		return v.OracleSchemas
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs{...}
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs struct {
+	// Tables in the database.
+	// Structure is documented below.
+	OracleTables StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray{ StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs{...} }
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
+	return o
+}
+
+// Tables in the database.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) OracleTables() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable {
+		return v.OracleTables
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+// Schema name.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs{...}
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs struct {
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	OracleColumns StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray{ StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs{...} }
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableInput
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
+	return o
+}
+
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
+		return v.OracleColumns
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType *string `pulumi:"dataType"`
+	// Column encoding.
+	Encoding *string `pulumi:"encoding"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs{...}
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column encoding.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+// StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput is an input type that accepts StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray and StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray{ StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs{...} }
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+	ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnInput
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column encoding.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) ToStreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
+		return vs[0].([]StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn)[vs[1].(int)]
+	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigStreamLargeObjects struct {
+}
+
+// StreamSourceConfigOracleSourceConfigStreamLargeObjectsInput is an input type that accepts StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs and StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigStreamLargeObjectsInput` via:
+//
+//	StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs{...}
+type StreamSourceConfigOracleSourceConfigStreamLargeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput
+	ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput
+}
+
+type StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs struct {
+}
+
+func (StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigStreamLargeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput)
+}
+
+func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput).ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput is an input type that accepts StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs, StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtr and StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput
+	ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput
+}
+
+type streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs
+
+func StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtr(v *StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput {
+	return (*streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigStreamLargeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return i.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigOracleSourceConfigStreamLargeObjectsPtrType) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigOracleSourceConfigStreamLargeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o.ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigOracleSourceConfigStreamLargeObjects) *StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+		return &v
+	}).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput)
+}
+
+type StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigOracleSourceConfigStreamLargeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput() StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) ToStreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput) Elem() StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigOracleSourceConfigStreamLargeObjects) StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigOracleSourceConfigStreamLargeObjects
+		return ret
+	}).(StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfig struct {
+	// PostgreSQL objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigPostgresqlSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// PostgreSQL objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigPostgresqlSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non
+	// negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// The name of the publication that includes the set of all tables
+	// that are defined in the stream's include_objects.
+	Publication string `pulumi:"publication"`
+	// The name of the logical replication slot that's configured with
+	// the pgoutput plugin.
+	ReplicationSlot string `pulumi:"replicationSlot"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigArgs and StreamSourceConfigPostgresqlSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigOutput() StreamSourceConfigPostgresqlSourceConfigOutput
+	ToStreamSourceConfigPostgresqlSourceConfigOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigArgs struct {
+	// PostgreSQL objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// PostgreSQL objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non
+	// negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// The name of the publication that includes the set of all tables
+	// that are defined in the stream's include_objects.
+	Publication pulumi.StringInput `pulumi:"publication"`
+	// The name of the logical replication slot that's configured with
+	// the pgoutput plugin.
+	ReplicationSlot pulumi.StringInput `pulumi:"replicationSlot"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgresqlSourceConfigOutput() StreamSourceConfigPostgresqlSourceConfigOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgresqlSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigOutput)
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigArgs) ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigOutput).ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigPtrInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigArgs, StreamSourceConfigPostgresqlSourceConfigPtr and StreamSourceConfigPostgresqlSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigPostgresqlSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigPostgresqlSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput
+	ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput
+}
+
+type streamSourceConfigPostgresqlSourceConfigPtrType StreamSourceConfigPostgresqlSourceConfigArgs
+
+func StreamSourceConfigPostgresqlSourceConfigPtr(v *StreamSourceConfigPostgresqlSourceConfigArgs) StreamSourceConfigPostgresqlSourceConfigPtrInput {
+	return (*streamSourceConfigPostgresqlSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigPostgresqlSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigPtrType) ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigPtrType) ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToStreamSourceConfigPostgresqlSourceConfigOutput() StreamSourceConfigPostgresqlSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToStreamSourceConfigPostgresqlSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfig {
+		return &v
+	}).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
+}
+
+// PostgreSQL objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ExcludeObjects() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// PostgreSQL objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) IncludeObjects() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non
+// negative. If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// The name of the publication that includes the set of all tables
+// that are defined in the stream's include_objects.
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) Publication() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfig) string { return v.Publication }).(pulumi.StringOutput)
+}
+
+// The name of the logical replication slot that's configured with
+// the pgoutput plugin.
+func (o StreamSourceConfigPostgresqlSourceConfigOutput) ReplicationSlot() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfig) string { return v.ReplicationSlot }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigPtrOutput() StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) StreamSourceConfigPostgresqlSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigPostgresqlSourceConfig
+		return ret
+	}).(StreamSourceConfigPostgresqlSourceConfigOutput)
+}
+
+// PostgreSQL objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// PostgreSQL objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) *StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non
+// negative. If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the publication that includes the set of all tables
+// that are defined in the stream's include_objects.
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) Publication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publication
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the logical replication slot that's configured with
+// the pgoutput plugin.
+func (o StreamSourceConfigPostgresqlSourceConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationSlot
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjects struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema `pulumi:"postgresqlSchemas"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput `pulumi:"postgresqlSchemas"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput).ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs, StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtr and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtr(v *StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigPostgresqlSourceConfigExcludeObjects) *StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjects) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
+		return v.PostgresqlSchemas
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfigExcludeObjects) StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigPostgresqlSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfigExcludeObjects) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlSchemas
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray{ StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
+		return v.PostgresqlTables
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+// Database name.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray{ StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableInput
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return v.PostgresqlColumns
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType *string `pulumi:"dataType"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{ StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjects struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema `pulumi:"postgresqlSchemas"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs struct {
+	// PostgreSQL schemas on the server
+	// Structure is documented below.
+	PostgresqlSchemas StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput `pulumi:"postgresqlSchemas"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput).ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs, StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtr and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtr(v *StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigPostgresqlSourceConfigIncludeObjects) *StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjects) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
+		return v.PostgresqlSchemas
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigPostgresqlSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfigIncludeObjects) StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigPostgresqlSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput)
+}
+
+// PostgreSQL schemas on the server
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) PostgresqlSchemas() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigPostgresqlSourceConfigIncludeObjects) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlSchemas
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema string `pulumi:"schema"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs struct {
+	// Tables in the schema.
+	// Structure is documented below.
+	PostgresqlTables StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray{ StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
+	return o
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable {
+		return v.PostgresqlTables
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+// Database name.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	PostgresqlColumns StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray{ StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableInput
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return o
+}
+
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return v.PostgresqlColumns
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable) string {
+		return v.Table
+	}).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType *string `pulumi:"dataType"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...}
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
+// StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput is an input type that accepts StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray and StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput` via:
+//
+//	StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{ StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{...} }
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+	ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return i.ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Length
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Precision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
+		return v.PrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) ToStreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+		return vs[0].([]StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
+	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfileInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfilePtrInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
@@ -5466,6 +9594,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput)(nil)).Elem(), StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNoneInput)(nil)).Elem(), StreamBackfillNoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillNonePtrInput)(nil)).Elem(), StreamBackfillNoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigInput)(nil)).Elem(), StreamDestinationConfigArgs{})
@@ -5504,6 +9648,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigDropLargeObjectsInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigStreamLargeObjectsInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
@@ -5534,6 +9718,22 @@ func init() {
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillNoneOutput{})
 	pulumi.RegisterOutputType(StreamBackfillNonePtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigOutput{})
@@ -5572,4 +9772,44 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigDropLargeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigDropLargeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigStreamLargeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigOracleSourceConfigStreamLargeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
 }

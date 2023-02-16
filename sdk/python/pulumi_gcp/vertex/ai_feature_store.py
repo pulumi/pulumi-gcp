@@ -21,6 +21,7 @@ class AiFeatureStoreArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
+                 online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -32,6 +33,10 @@ class AiFeatureStoreArgs:
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
+        :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+               periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+               that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+               featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
@@ -46,6 +51,8 @@ class AiFeatureStoreArgs:
             pulumi.set(__self__, "name", name)
         if online_serving_config is not None:
             pulumi.set(__self__, "online_serving_config", online_serving_config)
+        if online_storage_ttl_days is not None:
+            pulumi.set(__self__, "online_storage_ttl_days", online_storage_ttl_days)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -114,6 +121,21 @@ class AiFeatureStoreArgs:
         pulumi.set(self, "online_serving_config", value)
 
     @property
+    @pulumi.getter(name="onlineStorageTtlDays")
+    def online_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        featurestore. If not set, default to 4000 days
+        """
+        return pulumi.get(self, "online_storage_ttl_days")
+
+    @online_storage_ttl_days.setter
+    def online_storage_ttl_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "online_storage_ttl_days", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -149,6 +171,7 @@ class _AiFeatureStoreState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_serving_config: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigArgs']] = None,
+                 online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -163,6 +186,10 @@ class _AiFeatureStoreState:
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
+        :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+               periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+               that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+               featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
@@ -182,6 +209,8 @@ class _AiFeatureStoreState:
             pulumi.set(__self__, "name", name)
         if online_serving_config is not None:
             pulumi.set(__self__, "online_serving_config", online_serving_config)
+        if online_storage_ttl_days is not None:
+            pulumi.set(__self__, "online_storage_ttl_days", online_storage_ttl_days)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -276,6 +305,21 @@ class _AiFeatureStoreState:
         pulumi.set(self, "online_serving_config", value)
 
     @property
+    @pulumi.getter(name="onlineStorageTtlDays")
+    def online_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        featurestore. If not set, default to 4000 days
+        """
+        return pulumi.get(self, "online_storage_ttl_days")
+
+    @online_storage_ttl_days.setter
+    def online_storage_ttl_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "online_storage_ttl_days", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -323,6 +367,7 @@ class AiFeatureStore(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+                 online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -354,6 +399,27 @@ class AiFeatureStore(pulumi.CustomResource):
                 fixed_node_count=2,
             ),
             region="us-central1")
+        ```
+        ### Vertex Ai Featurestore With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            online_storage_ttl_days=30,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Vertex Ai Featurestore Scaling
 
@@ -407,6 +473,10 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
                Structure is documented below.
+        :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+               periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+               that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+               featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
@@ -445,6 +515,27 @@ class AiFeatureStore(pulumi.CustomResource):
                 fixed_node_count=2,
             ),
             region="us-central1")
+        ```
+        ### Vertex Ai Featurestore With Beta Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
+            online_storage_ttl_days=30,
+            force_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Vertex Ai Featurestore Scaling
 
@@ -509,6 +600,7 @@ class AiFeatureStore(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+                 online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -525,6 +617,7 @@ class AiFeatureStore(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["online_serving_config"] = online_serving_config
+            __props__.__dict__["online_storage_ttl_days"] = online_storage_ttl_days
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
@@ -547,6 +640,7 @@ class AiFeatureStore(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+            online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStore':
@@ -566,6 +660,10 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
                Structure is documented below.
+        :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+               periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+               that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+               featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
@@ -582,6 +680,7 @@ class AiFeatureStore(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["online_serving_config"] = online_serving_config
+        __props__.__dict__["online_storage_ttl_days"] = online_storage_ttl_days
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
@@ -644,6 +743,17 @@ class AiFeatureStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "online_serving_config")
+
+    @property
+    @pulumi.getter(name="onlineStorageTtlDays")
+    def online_storage_ttl_days(self) -> pulumi.Output[Optional[int]]:
+        """
+        TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
+        periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
+        that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
+        featurestore. If not set, default to 4000 days
+        """
+        return pulumi.get(self, "online_storage_ttl_days")
 
     @property
     @pulumi.getter

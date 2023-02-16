@@ -127,6 +127,7 @@ __all__ = [
     'InstanceFromTemplateShieldedInstanceConfig',
     'InstanceGroupManagerAllInstancesConfig',
     'InstanceGroupManagerAutoHealingPolicies',
+    'InstanceGroupManagerInstanceLifecyclePolicy',
     'InstanceGroupManagerNamedPort',
     'InstanceGroupManagerStatefulDisk',
     'InstanceGroupManagerStatefulExternalIp',
@@ -243,6 +244,7 @@ __all__ = [
     'RegionHealthCheckTcpHealthCheck',
     'RegionInstanceGroupManagerAllInstancesConfig',
     'RegionInstanceGroupManagerAutoHealingPolicies',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicy',
     'RegionInstanceGroupManagerNamedPort',
     'RegionInstanceGroupManagerStatefulDisk',
     'RegionInstanceGroupManagerStatefulExternalIp',
@@ -521,6 +523,7 @@ __all__ = [
     'GetInstanceConfidentialInstanceConfigResult',
     'GetInstanceGroupManagerAllInstancesConfigResult',
     'GetInstanceGroupManagerAutoHealingPolicyResult',
+    'GetInstanceGroupManagerInstanceLifecyclePolicyResult',
     'GetInstanceGroupManagerNamedPortResult',
     'GetInstanceGroupManagerStatefulDiskResult',
     'GetInstanceGroupManagerStatefulExternalIpResult',
@@ -8314,6 +8317,42 @@ class InstanceGroupManagerAutoHealingPolicies(dict):
         it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
         """
         return pulumi.get(self, "initial_delay_sec")
+
+
+@pulumi.output_type
+class InstanceGroupManagerInstanceLifecyclePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forceUpdateOnRepair":
+            suggest = "force_update_on_repair"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerInstanceLifecyclePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerInstanceLifecyclePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerInstanceLifecyclePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 force_update_on_repair: Optional[str] = None):
+        """
+        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        if force_update_on_repair is not None:
+            pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> Optional[str]:
+        """
+        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+        return pulumi.get(self, "force_update_on_repair")
 
 
 @pulumi.output_type
@@ -16215,6 +16254,44 @@ class RegionInstanceGroupManagerAutoHealingPolicies(dict):
         it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
         """
         return pulumi.get(self, "initial_delay_sec")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forceUpdateOnRepair":
+            suggest = "force_update_on_repair"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceLifecyclePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerInstanceLifecyclePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerInstanceLifecyclePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 force_update_on_repair: Optional[str] = None):
+        """
+        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+               - - -
+        """
+        if force_update_on_repair is not None:
+            pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> Optional[str]:
+        """
+        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+        - - -
+        """
+        return pulumi.get(self, "force_update_on_repair")
 
 
 @pulumi.output_type
@@ -34346,6 +34423,18 @@ class GetInstanceGroupManagerAutoHealingPolicyResult(dict):
     @pulumi.getter(name="initialDelaySec")
     def initial_delay_sec(self) -> int:
         return pulumi.get(self, "initial_delay_sec")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
+    def __init__(__self__, *,
+                 force_update_on_repair: str):
+        pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> str:
+        return pulumi.get(self, "force_update_on_repair")
 
 
 @pulumi.output_type

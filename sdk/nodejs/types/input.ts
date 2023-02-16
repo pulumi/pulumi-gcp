@@ -1758,6 +1758,77 @@ export namespace apigateway {
 }
 
 export namespace apigee {
+    export interface AddonsConfigAddonsConfig {
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        advancedApiOpsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigAdvancedApiOpsConfig>;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        apiSecurityConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigApiSecurityConfig>;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        connectorsPlatformConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigConnectorsPlatformConfig>;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        integrationConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigIntegrationConfig>;
+        /**
+         * Configuration for the Monetization add-on.
+         * Structure is documented below.
+         */
+        monetizationConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfigMonetizationConfig>;
+    }
+
+    export interface AddonsConfigAddonsConfigAdvancedApiOpsConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AddonsConfigAddonsConfigApiSecurityConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        expiresAt?: pulumi.Input<string>;
+    }
+
+    export interface AddonsConfigAddonsConfigConnectorsPlatformConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        expiresAt?: pulumi.Input<string>;
+    }
+
+    export interface AddonsConfigAddonsConfigIntegrationConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AddonsConfigAddonsConfigMonetizationConfig {
+        /**
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface EnvironmentIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -7180,6 +7251,18 @@ export namespace cloudbuildv2 {
         service: pulumi.Input<string>;
     }
 
+    export interface ConnectionIAMBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ConnectionIAMMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface ConnectionInstallationState {
         actionUri?: pulumi.Input<string>;
         message?: pulumi.Input<string>;
@@ -12145,6 +12228,13 @@ export namespace compute {
         initialDelaySec: pulumi.Input<number>;
     }
 
+    export interface InstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+         */
+        forceUpdateOnRepair?: pulumi.Input<string>;
+    }
+
     export interface InstanceGroupManagerNamedPort {
         /**
          * The name of the port.
@@ -14552,6 +14642,14 @@ export namespace compute {
          * it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
          */
         initialDelaySec: pulumi.Input<number>;
+    }
+
+    export interface RegionInstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+         * - - -
+         */
+        forceUpdateOnRepair?: pulumi.Input<string>;
     }
 
     export interface RegionInstanceGroupManagerNamedPort {
@@ -27377,6 +27475,16 @@ export namespace datastream {
          * Structure is documented below.
          */
         mysqlExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllMysqlExcludedObjects>;
+        /**
+         * PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        oracleExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllOracleExcludedObjects>;
+        /**
+         * PostgreSQL data source objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        postgresqlExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllPostgresqlExcludedObjects>;
     }
 
     export interface StreamBackfillAllMysqlExcludedObjects {
@@ -27441,6 +27549,146 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: pulumi.Input<boolean>;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchema>[]>;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>[]>;
+        /**
+         * Schema name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column encoding.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema>[]>;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>[]>;
+        /**
+         * Database name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
     }
 
     export interface StreamBackfillNone {
@@ -27564,7 +27812,17 @@ export namespace datastream {
          * MySQL data source configuration.
          * Structure is documented below.
          */
-        mysqlSourceConfig: pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfig>;
+        mysqlSourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfigMysqlSourceConfig>;
+        /**
+         * MySQL data source configuration.
+         * Structure is documented below.
+         */
+        oracleSourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfig>;
+        /**
+         * PostgreSQL data source configuration.
+         * Structure is documented below.
+         */
+        postgresqlSourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfig>;
         /**
          * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
          */
@@ -27715,6 +27973,351 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: pulumi.Input<boolean>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfig {
+        /**
+         * Configuration to drop large object values.
+         */
+        dropLargeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjects>;
+        /**
+         * Oracle objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjects>;
+        /**
+         * Oracle objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjects>;
+        /**
+         * Maximum number of concurrent backfill tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentBackfillTasks?: pulumi.Input<number>;
+        /**
+         * Maximum number of concurrent CDC tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentCdcTasks?: pulumi.Input<number>;
+        /**
+         * Configuration to drop large object values.
+         */
+        streamLargeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigStreamLargeObjects>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigDropLargeObjects {
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>[]>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>[]>;
+        /**
+         * Schema name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column encoding.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjects {
+        /**
+         * Oracle schemas/databases in the database server
+         * Structure is documented below.
+         */
+        oracleSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema>[]>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
+        /**
+         * Tables in the database.
+         * Structure is documented below.
+         */
+        oracleTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>[]>;
+        /**
+         * Schema name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable {
+        /**
+         * Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        oracleColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column encoding.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamSourceConfigOracleSourceConfigStreamLargeObjects {
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfig {
+        /**
+         * PostgreSQL objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjects>;
+        /**
+         * PostgreSQL objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjects>;
+        /**
+         * Maximum number of concurrent backfill tasks. The number should be non
+         * negative. If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentBackfillTasks?: pulumi.Input<number>;
+        /**
+         * The name of the publication that includes the set of all tables
+         * that are defined in the stream's include_objects.
+         */
+        publication: pulumi.Input<string>;
+        /**
+         * The name of the logical replication slot that's configured with
+         * the pgoutput plugin.
+         */
+        replicationSlot: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema>[]>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>[]>;
+        /**
+         * Database name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+        /**
+         * PostgreSQL schemas on the server
+         * Structure is documented below.
+         */
+        postgresqlSchemas: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>[]>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
+        /**
+         * Tables in the schema.
+         * Structure is documented below.
+         */
+        postgresqlTables?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>[]>;
+        /**
+         * Database name.
+         */
+        schema: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable {
+        /**
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.
+         */
+        postgresqlColumns?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>[]>;
+        /**
+         * Table name.
+         */
+        table: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
+        /**
+         * Column name.
+         */
+        column?: pulumi.Input<string>;
+        /**
+         * The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html
+         */
+        dataType?: pulumi.Input<string>;
+        /**
+         * Column length.
+         */
+        length?: pulumi.Input<number>;
+        /**
+         * Whether or not the column can accept a null value.
+         */
+        nullable?: pulumi.Input<boolean>;
+        /**
+         * The ordinal position of the column in the table.
+         */
+        ordinalPosition?: pulumi.Input<number>;
+        /**
+         * Column precision.
+         */
+        precision?: pulumi.Input<number>;
+        /**
+         * Whether or not the column represents a primary key.
+         */
+        primaryKey?: pulumi.Input<boolean>;
+        /**
+         * Column scale.
+         */
+        scale?: pulumi.Input<number>;
     }
 }
 
@@ -37266,6 +37869,10 @@ export namespace sql {
          */
         allocatedIpRange?: pulumi.Input<string>;
         authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>[]>;
+        /**
+         * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         */
+        enablePrivatePathForGoogleCloudServices?: pulumi.Input<boolean>;
         /**
          * Whether this Cloud SQL instance should be assigned
          * a public IPV4 address. At least `ipv4Enabled` must be enabled or a

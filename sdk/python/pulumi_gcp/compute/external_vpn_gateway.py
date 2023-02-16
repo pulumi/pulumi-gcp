@@ -18,6 +18,7 @@ class ExternalVpnGatewayArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None):
@@ -26,6 +27,7 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -42,6 +44,8 @@ class ExternalVpnGatewayArgs:
             pulumi.set(__self__, "description", description)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -73,6 +77,18 @@ class ExternalVpnGatewayArgs:
     @interfaces.setter
     def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for the external VPN gateway resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -124,6 +140,7 @@ class _ExternalVpnGatewayState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -133,6 +150,7 @@ class _ExternalVpnGatewayState:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -150,6 +168,8 @@ class _ExternalVpnGatewayState:
             pulumi.set(__self__, "description", description)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -183,6 +203,18 @@ class _ExternalVpnGatewayState:
     @interfaces.setter
     def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for the external VPN gateway resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -248,6 +280,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -355,6 +388,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -488,6 +522,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -502,6 +537,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["interfaces"] = interfaces
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
@@ -518,6 +554,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             redundancy_type: Optional[pulumi.Input[str]] = None,
@@ -532,6 +569,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -551,6 +589,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["interfaces"] = interfaces
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["redundancy_type"] = redundancy_type
@@ -573,6 +612,14 @@ class ExternalVpnGateway(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "interfaces")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for the external VPN gateway resource.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

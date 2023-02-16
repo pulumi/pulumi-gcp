@@ -75,25 +75,26 @@ type LookupInstanceGroupManagerResult struct {
 	Description         string                                      `pulumi:"description"`
 	Fingerprint         string                                      `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                          string                                      `pulumi:"id"`
-	InstanceGroup               string                                      `pulumi:"instanceGroup"`
-	ListManagedInstancesResults string                                      `pulumi:"listManagedInstancesResults"`
-	Name                        *string                                     `pulumi:"name"`
-	NamedPorts                  []GetInstanceGroupManagerNamedPort          `pulumi:"namedPorts"`
-	Operation                   string                                      `pulumi:"operation"`
-	Project                     *string                                     `pulumi:"project"`
-	SelfLink                    *string                                     `pulumi:"selfLink"`
-	StatefulDisks               []GetInstanceGroupManagerStatefulDisk       `pulumi:"statefulDisks"`
-	StatefulExternalIps         []GetInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
-	StatefulInternalIps         []GetInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
-	Statuses                    []GetInstanceGroupManagerStatus             `pulumi:"statuses"`
-	TargetPools                 []string                                    `pulumi:"targetPools"`
-	TargetSize                  int                                         `pulumi:"targetSize"`
-	UpdatePolicies              []GetInstanceGroupManagerUpdatePolicy       `pulumi:"updatePolicies"`
-	Versions                    []GetInstanceGroupManagerVersion            `pulumi:"versions"`
-	WaitForInstances            bool                                        `pulumi:"waitForInstances"`
-	WaitForInstancesStatus      string                                      `pulumi:"waitForInstancesStatus"`
-	Zone                        *string                                     `pulumi:"zone"`
+	Id                          string                                           `pulumi:"id"`
+	InstanceGroup               string                                           `pulumi:"instanceGroup"`
+	InstanceLifecyclePolicies   []GetInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicies"`
+	ListManagedInstancesResults string                                           `pulumi:"listManagedInstancesResults"`
+	Name                        *string                                          `pulumi:"name"`
+	NamedPorts                  []GetInstanceGroupManagerNamedPort               `pulumi:"namedPorts"`
+	Operation                   string                                           `pulumi:"operation"`
+	Project                     *string                                          `pulumi:"project"`
+	SelfLink                    *string                                          `pulumi:"selfLink"`
+	StatefulDisks               []GetInstanceGroupManagerStatefulDisk            `pulumi:"statefulDisks"`
+	StatefulExternalIps         []GetInstanceGroupManagerStatefulExternalIp      `pulumi:"statefulExternalIps"`
+	StatefulInternalIps         []GetInstanceGroupManagerStatefulInternalIp      `pulumi:"statefulInternalIps"`
+	Statuses                    []GetInstanceGroupManagerStatus                  `pulumi:"statuses"`
+	TargetPools                 []string                                         `pulumi:"targetPools"`
+	TargetSize                  int                                              `pulumi:"targetSize"`
+	UpdatePolicies              []GetInstanceGroupManagerUpdatePolicy            `pulumi:"updatePolicies"`
+	Versions                    []GetInstanceGroupManagerVersion                 `pulumi:"versions"`
+	WaitForInstances            bool                                             `pulumi:"waitForInstances"`
+	WaitForInstancesStatus      string                                           `pulumi:"waitForInstancesStatus"`
+	Zone                        *string                                          `pulumi:"zone"`
 }
 
 func LookupInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupManagerResultOutput {
@@ -171,6 +172,12 @@ func (o LookupInstanceGroupManagerResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) InstanceLifecyclePolicies() GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) []GetInstanceGroupManagerInstanceLifecyclePolicy {
+		return v.InstanceLifecyclePolicies
+	}).(GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) ListManagedInstancesResults() pulumi.StringOutput {

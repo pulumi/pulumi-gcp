@@ -81,7 +81,7 @@ type AndroidApp struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-	// AndroidApp. Default to 'DELETE'.
+	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -140,7 +140,7 @@ type androidAppState struct {
 	AppId *string `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-	// AndroidApp. Default to 'DELETE'.
+	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName *string `pulumi:"displayName"`
@@ -168,7 +168,7 @@ type AndroidAppState struct {
 	AppId pulumi.StringPtrInput
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-	// AndroidApp. Default to 'DELETE'.
+	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringPtrInput
@@ -197,7 +197,7 @@ func (AndroidAppState) ElementType() reflect.Type {
 type androidAppArgs struct {
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-	// AndroidApp. Default to 'DELETE'.
+	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName string `pulumi:"displayName"`
@@ -217,7 +217,7 @@ type androidAppArgs struct {
 type AndroidAppArgs struct {
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-	// AndroidApp. Default to 'DELETE'.
+	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringInput
@@ -328,7 +328,7 @@ func (o AndroidAppOutput) AppId() pulumi.StringOutput {
 
 // (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 // 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
-// AndroidApp. Default to 'DELETE'.
+// AndroidApp. Defaults to 'DELETE'.
 func (o AndroidAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

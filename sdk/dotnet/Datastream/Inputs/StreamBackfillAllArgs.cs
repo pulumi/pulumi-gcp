@@ -19,6 +19,20 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("mysqlExcludedObjects")]
         public Input<Inputs.StreamBackfillAllMysqlExcludedObjectsArgs>? MysqlExcludedObjects { get; set; }
 
+        /// <summary>
+        /// PostgreSQL data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oracleExcludedObjects")]
+        public Input<Inputs.StreamBackfillAllOracleExcludedObjectsArgs>? OracleExcludedObjects { get; set; }
+
+        /// <summary>
+        /// PostgreSQL data source objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postgresqlExcludedObjects")]
+        public Input<Inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs>? PostgresqlExcludedObjects { get; set; }
+
         public StreamBackfillAllArgs()
         {
         }

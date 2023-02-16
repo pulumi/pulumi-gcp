@@ -105,6 +105,8 @@ type InstanceTemplate struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingOutput `pulumi:"scheduling"`
@@ -224,6 +226,8 @@ type instanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling *InstanceTemplateScheduling `pulumi:"scheduling"`
@@ -309,6 +313,8 @@ type InstanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingPtrInput
@@ -396,6 +402,8 @@ type instanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling *InstanceTemplateScheduling `pulumi:"scheduling"`
@@ -476,6 +484,8 @@ type InstanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
 	Scheduling InstanceTemplateSchedulingPtrInput
@@ -710,6 +720,11 @@ func (o InstanceTemplateOutput) Region() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceTemplateOutput) ReservationAffinity() InstanceTemplateReservationAffinityPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateReservationAffinityPtrOutput { return v.ReservationAffinity }).(InstanceTemplateReservationAffinityPtrOutput)
+}
+
+// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+func (o InstanceTemplateOutput) ResourcePolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringPtrOutput { return v.ResourcePolicies }).(pulumi.StringPtrOutput)
 }
 
 // The scheduling strategy to use. More details about

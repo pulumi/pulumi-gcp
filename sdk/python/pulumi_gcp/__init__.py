@@ -543,6 +543,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/addonsConfig",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/addonsConfig:AddonsConfig": "AddonsConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/endpointAttachment",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -1323,6 +1331,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudbuildv2",
   "classes": {
    "gcp:cloudbuildv2/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuildv2/connectionIAMBinding",
+  "fqn": "pulumi_gcp.cloudbuildv2",
+  "classes": {
+   "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding": "ConnectionIAMBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuildv2/connectionIAMMember",
+  "fqn": "pulumi_gcp.cloudbuildv2",
+  "classes": {
+   "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": "ConnectionIAMMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudbuildv2/connectionIAMPolicy",
+  "fqn": "pulumi_gcp.cloudbuildv2",
+  "classes": {
+   "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": "ConnectionIAMPolicy"
   }
  },
  {
@@ -3507,6 +3539,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebaserules",
   "classes": {
    "gcp:firebaserules/ruleset:Ruleset": "Ruleset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firestore/database",
+  "fqn": "pulumi_gcp.firestore",
+  "classes": {
+   "gcp:firestore/database:Database": "Database"
   }
  },
  {

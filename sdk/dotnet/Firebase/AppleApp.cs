@@ -99,9 +99,9 @@ namespace Pulumi.Gcp.Firebase
         public Output<string?> BundleId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-        /// Default to 'DELETE'.
+        /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+        /// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+        /// 'DELETE'.
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -191,9 +191,9 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? BundleId { get; set; }
 
         /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-        /// Default to 'DELETE'.
+        /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+        /// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+        /// 'DELETE'.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -245,9 +245,9 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? BundleId { get; set; }
 
         /// <summary>
-        /// (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
-        /// 'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
-        /// Default to 'DELETE'.
+        /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
+        /// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
+        /// 'DELETE'.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

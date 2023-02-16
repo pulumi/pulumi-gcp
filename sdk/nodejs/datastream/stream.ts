@@ -189,6 +189,176 @@ import * as utilities from "../utilities";
  *     dependsOn: [keyUser],
  * });
  * ```
+ * ### Datastream Stream Postgresql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const source = new gcp.datastream.ConnectionProfile("source", {
+ *     displayName: "Postgresql Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     postgresqlProfile: {
+ *         hostname: "hostname",
+ *         port: 3306,
+ *         username: "user",
+ *         password: "pass",
+ *         database: "postgres",
+ *     },
+ * });
+ * const destination = new gcp.datastream.ConnectionProfile("destination", {
+ *     displayName: "BigQuery Destination",
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     displayName: "Postgres to BigQuery",
+ *     location: "us-central1",
+ *     streamId: "my-stream",
+ *     desiredState: "RUNNING",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: source.id,
+ *         postgresqlSourceConfig: {
+ *             maxConcurrentBackfillTasks: 12,
+ *             publication: "publication",
+ *             replicationSlot: "replication_slot",
+ *             includeObjects: {
+ *                 postgresqlSchemas: [{
+ *                     schema: "schema",
+ *                     postgresqlTables: [{
+ *                         table: "table",
+ *                         postgresqlColumns: [{
+ *                             column: "column",
+ *                         }],
+ *                     }],
+ *                 }],
+ *             },
+ *             excludeObjects: {
+ *                 postgresqlSchemas: [{
+ *                     schema: "schema",
+ *                     postgresqlTables: [{
+ *                         table: "table",
+ *                         postgresqlColumns: [{
+ *                             column: "column",
+ *                         }],
+ *                     }],
+ *                 }],
+ *             },
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destination.id,
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillAll: {
+ *         postgresqlExcludedObjects: {
+ *             postgresqlSchemas: [{
+ *                 schema: "schema",
+ *                 postgresqlTables: [{
+ *                     table: "table",
+ *                     postgresqlColumns: [{
+ *                         column: "column",
+ *                     }],
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Datastream Stream Oracle
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const source = new gcp.datastream.ConnectionProfile("source", {
+ *     displayName: "Oracle Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     oracleProfile: {
+ *         hostname: "hostname",
+ *         port: 1521,
+ *         username: "user",
+ *         password: "pass",
+ *         databaseService: "ORCL",
+ *     },
+ * });
+ * const destination = new gcp.datastream.ConnectionProfile("destination", {
+ *     displayName: "BigQuery Destination",
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const stream5 = new gcp.datastream.Stream("stream5", {
+ *     displayName: "Oracle to BigQuery",
+ *     location: "us-central1",
+ *     streamId: "my-stream",
+ *     desiredState: "RUNNING",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: source.id,
+ *         oracleSourceConfig: {
+ *             maxConcurrentCdcTasks: 8,
+ *             maxConcurrentBackfillTasks: 12,
+ *             includeObjects: {
+ *                 oracleSchemas: [{
+ *                     schema: "schema",
+ *                     oracleTables: [{
+ *                         table: "table",
+ *                         oracleColumns: [{
+ *                             column: "column",
+ *                         }],
+ *                     }],
+ *                 }],
+ *             },
+ *             excludeObjects: {
+ *                 oracleSchemas: [{
+ *                     schema: "schema",
+ *                     oracleTables: [{
+ *                         table: "table",
+ *                         oracleColumns: [{
+ *                             column: "column",
+ *                         }],
+ *                     }],
+ *                 }],
+ *             },
+ *             dropLargeObjects: {},
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destination.id,
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     backfillAll: {
+ *         oracleExcludedObjects: {
+ *             oracleSchemas: [{
+ *                 schema: "schema",
+ *                 oracleTables: [{
+ *                     table: "table",
+ *                     oracleColumns: [{
+ *                         column: "column",
+ *                     }],
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Datastream Stream Bigquery
  *
  * ```typescript

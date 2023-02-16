@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             { "foo", "bar" },
     ///         },
+    ///         Description = "test description",
     ///         Featurestore = featurestore.Id,
     ///         MonitoringConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs
     ///         {
@@ -130,6 +131,7 @@ namespace Pulumi.Gcp.Vertex
     ///                 Value = 0.3,
     ///             },
     ///         },
+    ///         OfflineStorageTtlDays = 30,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -154,6 +156,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Description of the EntityType.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.
@@ -186,6 +194,14 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// </summary>
+        [Output("offlineStorageTtlDays")]
+        public Output<int?> OfflineStorageTtlDays { get; private set; } = null!;
 
         /// <summary>
         /// The region of the EntityType.
@@ -246,6 +262,12 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiFeatureStoreEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Description of the EntityType.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
         /// </summary>
         [Input("featurestore", required: true)]
@@ -277,6 +299,14 @@ namespace Pulumi.Gcp.Vertex
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// </summary>
+        [Input("offlineStorageTtlDays")]
+        public Input<int>? OfflineStorageTtlDays { get; set; }
+
         public AiFeatureStoreEntityTypeArgs()
         {
         }
@@ -290,6 +320,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Description of the EntityType.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.
@@ -328,6 +364,14 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
+        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
+        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// </summary>
+        [Input("offlineStorageTtlDays")]
+        public Input<int>? OfflineStorageTtlDays { get; set; }
 
         /// <summary>
         /// The region of the EntityType.

@@ -125,6 +125,7 @@ import javax.annotation.Nullable;
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
  *                     .ipv4Enabled(false)
  *                     .privateNetwork(privateNetwork.id())
+ *                     .enablePrivatePathForGoogleCloudServices(true)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

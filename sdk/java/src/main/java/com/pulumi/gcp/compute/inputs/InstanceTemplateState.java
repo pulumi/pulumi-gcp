@@ -397,6 +397,21 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    @Import(name="resourcePolicies")
+    private @Nullable Output<String> resourcePolicies;
+
+    /**
+     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    public Optional<Output<String>> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
+    }
+
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      * 
@@ -514,6 +529,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.project = $.project;
         this.region = $.region;
         this.reservationAffinity = $.reservationAffinity;
+        this.resourcePolicies = $.resourcePolicies;
         this.scheduling = $.scheduling;
         this.selfLink = $.selfLink;
         this.serviceAccount = $.serviceAccount;
@@ -1065,6 +1081,27 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder reservationAffinity(InstanceTemplateReservationAffinityArgs reservationAffinity) {
             return reservationAffinity(Output.of(reservationAffinity));
+        }
+
+        /**
+         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(@Nullable Output<String> resourcePolicies) {
+            $.resourcePolicies = resourcePolicies;
+            return this;
+        }
+
+        /**
+         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(String resourcePolicies) {
+            return resourcePolicies(Output.of(resourcePolicies));
         }
 
         /**

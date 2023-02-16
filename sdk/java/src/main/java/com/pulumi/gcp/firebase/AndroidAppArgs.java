@@ -19,7 +19,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
      * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-     * AndroidApp. Default to &#39;DELETE&#39;.
+     * AndroidApp. Defaults to &#39;DELETE&#39;.
      * 
      */
     @Import(name="deletionPolicy")
@@ -28,7 +28,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
      * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-     * AndroidApp. Default to &#39;DELETE&#39;.
+     * AndroidApp. Defaults to &#39;DELETE&#39;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -146,7 +146,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
          * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-         * AndroidApp. Default to &#39;DELETE&#39;.
+         * AndroidApp. Defaults to &#39;DELETE&#39;.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy (Optional) Set to &#39;ABANDON&#39; to allow the AndroidApp to be untracked from terraform state rather than deleted upon
          * &#39;terraform destroy&#39;. This is useful because the AndroidApp may be serving traffic. Set to &#39;DELETE&#39; to delete the
-         * AndroidApp. Default to &#39;DELETE&#39;.
+         * AndroidApp. Defaults to &#39;DELETE&#39;.
          * 
          * @return builder
          * 

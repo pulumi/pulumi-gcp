@@ -17,7 +17,17 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// MySQL data source configuration.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.StreamSourceConfigMysqlSourceConfig MysqlSourceConfig;
+        public readonly Outputs.StreamSourceConfigMysqlSourceConfig? MysqlSourceConfig;
+        /// <summary>
+        /// MySQL data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigOracleSourceConfig? OracleSourceConfig;
+        /// <summary>
+        /// PostgreSQL data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigPostgresqlSourceConfig? PostgresqlSourceConfig;
         /// <summary>
         /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         /// </summary>
@@ -25,11 +35,17 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
         [OutputConstructor]
         private StreamSourceConfig(
-            Outputs.StreamSourceConfigMysqlSourceConfig mysqlSourceConfig,
+            Outputs.StreamSourceConfigMysqlSourceConfig? mysqlSourceConfig,
+
+            Outputs.StreamSourceConfigOracleSourceConfig? oracleSourceConfig,
+
+            Outputs.StreamSourceConfigPostgresqlSourceConfig? postgresqlSourceConfig,
 
             string sourceConnectionProfile)
         {
             MysqlSourceConfig = mysqlSourceConfig;
+            OracleSourceConfig = oracleSourceConfig;
+            PostgresqlSourceConfig = postgresqlSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
         }
     }

@@ -184,6 +184,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceTemplateReservationAffinity?> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Output("resourcePolicies")]
+        public Output<string?> ResourcePolicies { get; private set; } = null!;
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -444,6 +450,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -664,6 +676,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.InstanceTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }
+
+        /// <summary>
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
 
         /// <summary>
         /// The scheduling strategy to use. More details about

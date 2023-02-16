@@ -25,6 +25,14 @@ __all__ = [
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs',
     'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
+    'StreamBackfillAllOracleExcludedObjectsArgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsArgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
     'StreamBackfillNoneArgs',
     'StreamDestinationConfigArgs',
     'StreamDestinationConfigBigqueryDestinationConfigArgs',
@@ -44,6 +52,26 @@ __all__ = [
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
+    'StreamSourceConfigOracleSourceConfigArgs',
+    'StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsArgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsArgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs',
+    'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs',
+    'StreamSourceConfigPostgresqlSourceConfigArgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
 ]
 
 @pulumi.input_type
@@ -677,13 +705,23 @@ class PrivateConnectionVpcPeeringConfigArgs:
 @pulumi.input_type
 class StreamBackfillAllArgs:
     def __init__(__self__, *,
-                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None):
+                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None,
+                 oracle_excluded_objects: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']] = None,
+                 postgresql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']] = None):
         """
         :param pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs'] oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         """
         if mysql_excluded_objects is not None:
             pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
+        if oracle_excluded_objects is not None:
+            pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
+        if postgresql_excluded_objects is not None:
+            pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -697,6 +735,32 @@ class StreamBackfillAllArgs:
     @mysql_excluded_objects.setter
     def mysql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]):
         pulumi.set(self, "mysql_excluded_objects", value)
+
+    @property
+    @pulumi.getter(name="oracleExcludedObjects")
+    def oracle_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]:
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_excluded_objects")
+
+    @oracle_excluded_objects.setter
+    def oracle_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]):
+        pulumi.set(self, "oracle_excluded_objects", value)
+
+    @property
+    @pulumi.getter(name="postgresqlExcludedObjects")
+    def postgresql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]:
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_excluded_objects")
+
+    @postgresql_excluded_objects.setter
+    def postgresql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]):
+        pulumi.set(self, "postgresql_excluded_objects", value)
 
 
 @pulumi.input_type
@@ -922,6 +986,504 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @primary_key.setter
     def primary_key(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllOracleExcludedObjectsArgs:
+    def __init__(__self__, *,
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+    @oracle_schemas.setter
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]):
+        pulumi.set(self, "oracle_schemas", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+    @oracle_tables.setter
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]):
+        pulumi.set(self, "oracle_tables", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+    @oracle_columns.setter
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+        pulumi.set(self, "oracle_columns", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param pulumi.Input[str] encoding: Column encoding.
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllPostgresqlExcludedObjectsArgs:
+    def __init__(__self__, *,
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+    @postgresql_schemas.setter
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]):
+        pulumi.set(self, "postgresql_schemas", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+    @postgresql_tables.setter
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+        pulumi.set(self, "postgresql_tables", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+    @postgresql_columns.setter
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+        pulumi.set(self, "postgresql_columns", value)
+
+
+@pulumi.input_type
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
 
 
 @pulumi.input_type
@@ -1306,28 +1868,26 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
 @pulumi.input_type
 class StreamSourceConfigArgs:
     def __init__(__self__, *,
-                 mysql_source_config: pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs'],
-                 source_connection_profile: pulumi.Input[str]):
+                 source_connection_profile: pulumi.Input[str],
+                 mysql_source_config: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']] = None,
+                 oracle_source_config: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']] = None,
+                 postgresql_source_config: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']] = None):
         """
+        :param pulumi.Input[str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param pulumi.Input[str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigArgs'] oracle_source_config: MySQL data source configuration.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs'] postgresql_source_config: PostgreSQL data source configuration.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
-
-    @property
-    @pulumi.getter(name="mysqlSourceConfig")
-    def mysql_source_config(self) -> pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']:
-        """
-        MySQL data source configuration.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "mysql_source_config")
-
-    @mysql_source_config.setter
-    def mysql_source_config(self, value: pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']):
-        pulumi.set(self, "mysql_source_config", value)
+        if mysql_source_config is not None:
+            pulumi.set(__self__, "mysql_source_config", mysql_source_config)
+        if oracle_source_config is not None:
+            pulumi.set(__self__, "oracle_source_config", oracle_source_config)
+        if postgresql_source_config is not None:
+            pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -1340,6 +1900,45 @@ class StreamSourceConfigArgs:
     @source_connection_profile.setter
     def source_connection_profile(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_connection_profile", value)
+
+    @property
+    @pulumi.getter(name="mysqlSourceConfig")
+    def mysql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]:
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_source_config")
+
+    @mysql_source_config.setter
+    def mysql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]):
+        pulumi.set(self, "mysql_source_config", value)
+
+    @property
+    @pulumi.getter(name="oracleSourceConfig")
+    def oracle_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]:
+        """
+        MySQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_source_config")
+
+    @oracle_source_config.setter
+    def oracle_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]):
+        pulumi.set(self, "oracle_source_config", value)
+
+    @property
+    @pulumi.getter(name="postgresqlSourceConfig")
+    def postgresql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]:
+        """
+        PostgreSQL data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_source_config")
+
+    @postgresql_source_config.setter
+    def postgresql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]):
+        pulumi.set(self, "postgresql_source_config", value)
 
 
 @pulumi.input_type
@@ -1851,5 +2450,1219 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @primary_key.setter
     def primary_key(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigArgs:
+    def __init__(__self__, *,
+                 drop_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']] = None,
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
+                 max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None,
+                 stream_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']] = None):
+        """
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs'] drop_large_objects: Configuration to drop large object values.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs'] exclude_objects: Oracle objects to exclude from the stream.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs'] include_objects: Oracle objects to retrieve from the source.
+               Structure is documented below.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs'] stream_large_objects: Configuration to drop large object values.
+        """
+        if drop_large_objects is not None:
+            pulumi.set(__self__, "drop_large_objects", drop_large_objects)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        if stream_large_objects is not None:
+            pulumi.set(__self__, "stream_large_objects", stream_large_objects)
+
+    @property
+    @pulumi.getter(name="dropLargeObjects")
+    def drop_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]:
+        """
+        Configuration to drop large object values.
+        """
+        return pulumi.get(self, "drop_large_objects")
+
+    @drop_large_objects.setter
+    def drop_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]):
+        pulumi.set(self, "drop_large_objects", value)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]:
+        """
+        Oracle objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]:
+        """
+        Oracle objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @max_concurrent_cdc_tasks.setter
+    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_cdc_tasks", value)
+
+    @property
+    @pulumi.getter(name="streamLargeObjects")
+    def stream_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]:
+        """
+        Configuration to drop large object values.
+        """
+        return pulumi.get(self, "stream_large_objects")
+
+    @stream_large_objects.setter
+    def stream_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]):
+        pulumi.set(self, "stream_large_objects", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs:
+    def __init__(__self__, *,
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+    @oracle_schemas.setter
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]):
+        pulumi.set(self, "oracle_schemas", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+    @oracle_tables.setter
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]):
+        pulumi.set(self, "oracle_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+    @oracle_columns.setter
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+        pulumi.set(self, "oracle_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param pulumi.Input[str] encoding: Column encoding.
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsArgs:
+    def __init__(__self__, *,
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "oracle_schemas", oracle_schemas)
+
+    @property
+    @pulumi.getter(name="oracleSchemas")
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]:
+        """
+        Oracle schemas/databases in the database server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_schemas")
+
+    @oracle_schemas.setter
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]):
+        pulumi.set(self, "oracle_schemas", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if oracle_tables is not None:
+            pulumi.set(__self__, "oracle_tables", oracle_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="oracleTables")
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]:
+        """
+        Tables in the database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_tables")
+
+    @oracle_tables.setter
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]):
+        pulumi.set(self, "oracle_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if oracle_columns is not None:
+            pulumi.set(__self__, "oracle_columns", oracle_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="oracleColumns")
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+        """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_columns")
+
+    @oracle_columns.setter
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+        pulumi.set(self, "oracle_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        :param pulumi.Input[str] encoding: Column encoding.
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column encoding.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigArgs:
+    def __init__(__self__, *,
+                 publication: pulumi.Input[str],
+                 replication_slot: pulumi.Input[str],
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] publication: The name of the publication that includes the set of all tables
+               that are defined in the stream's include_objects.
+        :param pulumi.Input[str] replication_slot: The name of the logical replication slot that's configured with
+               the pgoutput plugin.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs'] include_objects: PostgreSQL objects to retrieve from the source.
+               Structure is documented below.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non
+               negative. If not set (or set to 0), the system's default value will be used.
+        """
+        pulumi.set(__self__, "publication", publication)
+        pulumi.set(__self__, "replication_slot", replication_slot)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+
+    @property
+    @pulumi.getter
+    def publication(self) -> pulumi.Input[str]:
+        """
+        The name of the publication that includes the set of all tables
+        that are defined in the stream's include_objects.
+        """
+        return pulumi.get(self, "publication")
+
+    @publication.setter
+    def publication(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publication", value)
+
+    @property
+    @pulumi.getter(name="replicationSlot")
+    def replication_slot(self) -> pulumi.Input[str]:
+        """
+        The name of the logical replication slot that's configured with
+        the pgoutput plugin.
+        """
+        return pulumi.get(self, "replication_slot")
+
+    @replication_slot.setter
+    def replication_slot(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replication_slot", value)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]:
+        """
+        PostgreSQL objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]:
+        """
+        PostgreSQL objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non
+        negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs:
+    def __init__(__self__, *,
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+    @postgresql_schemas.setter
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]):
+        pulumi.set(self, "postgresql_schemas", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+    @postgresql_tables.setter
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+        pulumi.set(self, "postgresql_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+    @postgresql_columns.setter
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+        pulumi.set(self, "postgresql_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs:
+    def __init__(__self__, *,
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]:
+        """
+        PostgreSQL schemas on the server
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+    @postgresql_schemas.setter
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]):
+        pulumi.set(self, "postgresql_schemas", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+    @postgresql_tables.setter
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+        pulumi.set(self, "postgresql_tables", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs:
+    def __init__(__self__, *,
+                 table: pulumi.Input[str],
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+
+    @property
+    @pulumi.getter
+    def table(self) -> pulumi.Input[str]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+    @postgresql_columns.setter
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+        pulumi.set(self, "postgresql_columns", value)
+
+
+@pulumi.input_type
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
 
 

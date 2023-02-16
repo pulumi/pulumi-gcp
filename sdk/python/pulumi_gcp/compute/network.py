@@ -41,8 +41,11 @@ class NetworkArgs:
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
                fail if the speficied /48 is already in used by another resource.
                If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-               and the maximum value is 1500 bytes.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+               The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+               Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+               with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+               with varying MTUs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -153,8 +156,11 @@ class NetworkArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-        and the maximum value is 1500 bytes.
+        Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+        The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+        Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+        with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+        with varying MTUs.
         """
         return pulumi.get(self, "mtu")
 
@@ -245,8 +251,11 @@ class _NetworkState:
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
                fail if the speficied /48 is already in used by another resource.
                If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-               and the maximum value is 1500 bytes.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+               The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+               Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+               with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+               with varying MTUs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -375,8 +384,11 @@ class _NetworkState:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-        and the maximum value is 1500 bytes.
+        Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+        The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+        Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+        with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+        with varying MTUs.
         """
         return pulumi.get(self, "mtu")
 
@@ -524,8 +536,11 @@ class Network(pulumi.CustomResource):
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
                fail if the speficied /48 is already in used by another resource.
                If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-               and the maximum value is 1500 bytes.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+               The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+               Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+               with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+               with varying MTUs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -684,8 +699,11 @@ class Network(pulumi.CustomResource):
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
                fail if the speficied /48 is already in used by another resource.
                If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-               and the maximum value is 1500 bytes.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+               The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+               Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+               with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+               with varying MTUs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -784,8 +802,11 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def mtu(self) -> pulumi.Output[int]:
         """
-        Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-        and the maximum value is 1500 bytes.
+        Maximum Transmission Unit in bytes. The default value is 1460 bytes.
+        The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
+        Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
+        with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
+        with varying MTUs.
         """
         return pulumi.get(self, "mtu")
 

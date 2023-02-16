@@ -1182,11 +1182,13 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
+                 enable_private_path_for_google_cloud_services: Optional[pulumi.Input[bool]] = None,
                  ipv4_enabled: Optional[pulumi.Input[bool]] = None,
                  private_network: Optional[pulumi.Input[str]] = None,
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param pulumi.Input[bool] enable_private_path_for_google_cloud_services: Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
         :param pulumi.Input[bool] ipv4_enabled: Whether this Cloud SQL instance should be assigned
                a public IPV4 address. At least `ipv4_enabled` must be enabled or a
                `private_network` must be configured.
@@ -1201,6 +1203,8 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if enable_private_path_for_google_cloud_services is not None:
+            pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         if ipv4_enabled is not None:
             pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         if private_network is not None:
@@ -1228,6 +1232,18 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @authorized_networks.setter
     def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]):
         pulumi.set(self, "authorized_networks", value)
+
+    @property
+    @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
+    def enable_private_path_for_google_cloud_services(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        """
+        return pulumi.get(self, "enable_private_path_for_google_cloud_services")
+
+    @enable_private_path_for_google_cloud_services.setter
+    def enable_private_path_for_google_cloud_services(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_path_for_google_cloud_services", value)
 
     @property
     @pulumi.getter(name="ipv4Enabled")

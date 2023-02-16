@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
+        /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        /// </summary>
+        [Input("enablePrivatePathForGoogleCloudServices")]
+        public Input<bool>? EnablePrivatePathForGoogleCloudServices { get; set; }
+
+        /// <summary>
         /// Whether this Cloud SQL instance should be assigned
         /// a public IPV4 address. At least `ipv4_enabled` must be enabled or a
         /// `private_network` must be configured.
