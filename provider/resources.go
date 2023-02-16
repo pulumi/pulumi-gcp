@@ -238,10 +238,8 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 	// validate the gcloud config
 	err := config.LoadAndValidate(context.Background())
 	if err != nil {
-		return fmt.Errorf("failed to load application credentials.\n" +
-			"To use your default gcloud credentials, run:\n" +
-			"\t`gcloud auth application-default login`\n" +
-			"See https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.")
+		return fmt.Errorf(
+			"failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t`gcloud auth application-default login`\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: %w", err)
 	}
 	return nil
 }
