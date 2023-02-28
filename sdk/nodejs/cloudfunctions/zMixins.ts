@@ -334,6 +334,14 @@ export interface CallbackFunctionArgs {
      */
     labels?: pulumi.Input<{ [key: string]: any }>;
     /**
+     * MaxInstances sets limit on the maximum number of function instances that may coexist at a given time.
+     */
+    maxInstances?: pulumi.Input<number>;
+    /**
+     * MinInstances sets limit on minimum number of function instances that may coexist at a given time.
+     */
+    minInstances?: pulumi.Input<number>;
+    /**
      * Location of the function. If it is not provided, the provider location is used.
      */
     location?: pulumi.Input<string>;
