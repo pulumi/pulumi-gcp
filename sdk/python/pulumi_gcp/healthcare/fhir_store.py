@@ -663,10 +663,34 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
+            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+                pubsub_topic=topic.id,
+            ))
+        ```
+        ### Healthcare Fhir Store Notification Configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            labels={
+                "label1": "labelvalue1",
+            },
             notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
                 send_full_resource=True,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -837,10 +861,34 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
+            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+                pubsub_topic=topic.id,
+            ))
+        ```
+        ### Healthcare Fhir Store Notification Configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic", opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            labels={
+                "label1": "labelvalue1",
+            },
             notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
                 send_full_resource=True,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

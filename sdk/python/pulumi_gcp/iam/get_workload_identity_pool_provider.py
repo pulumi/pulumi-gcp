@@ -158,6 +158,8 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
                                         workload_identity_pool_provider_id: Optional[str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolProviderResult:
     """
+    Get a IAM workload identity provider from Google Cloud by its id.
+
     ## Example Usage
 
     ```python
@@ -205,6 +207,8 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
                                                workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolProviderResult]:
     """
+    Get a IAM workload identity provider from Google Cloud by its id.
+
     ## Example Usage
 
     ```python

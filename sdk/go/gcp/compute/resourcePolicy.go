@@ -119,6 +119,36 @@ import (
 //	}
 //
 // ```
+// ### Resource Policy Placement Policy Max Distance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+//				Region: pulumi.String("us-central1"),
+//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
+//					VmCount:     pulumi.Int(2),
+//					Collocation: pulumi.String("COLLOCATED"),
+//					MaxDistance: pulumi.Int(2),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Resource Policy Instance Schedule Policy
 //
 // ```go

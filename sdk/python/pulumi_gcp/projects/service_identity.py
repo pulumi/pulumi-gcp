@@ -15,18 +15,14 @@ __all__ = ['ServiceIdentityArgs', 'ServiceIdentity']
 class ServiceIdentityArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
-                 email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIdentity resource.
         :param pulumi.Input[str] service: The service to generate identity for.
-        :param pulumi.Input[str] email: The email address of the Google managed service account.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "service", service)
-        if email is not None:
-            pulumi.set(__self__, "email", email)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -41,18 +37,6 @@ class ServiceIdentityArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
-
-    @property
-    @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        The email address of the Google managed service account.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter
@@ -131,11 +115,23 @@ class ServiceIdentity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Generate service identity for a service.
+
+        > **Note:** Once created, this resource cannot be updated or destroyed. These
+        actions are a no-op.
+
+        > **Note:** This resource can be used to retrieve the emails of the [Google-managed service accounts](https://cloud.google.com/iam/docs/service-agents)
+        of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com` to
+        verify if an API supports this.
+
+        To get more information about Service Identity, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+
         ## Example Usage
         ### Service Identity Basic
 
@@ -160,7 +156,6 @@ class ServiceIdentity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email: The email address of the Google managed service account.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
@@ -172,6 +167,19 @@ class ServiceIdentity(pulumi.CustomResource):
                  args: ServiceIdentityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Generate service identity for a service.
+
+        > **Note:** Once created, this resource cannot be updated or destroyed. These
+        actions are a no-op.
+
+        > **Note:** This resource can be used to retrieve the emails of the [Google-managed service accounts](https://cloud.google.com/iam/docs/service-agents)
+        of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com` to
+        verify if an API supports this.
+
+        To get more information about Service Identity, see:
+
+        * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+
         ## Example Usage
         ### Service Identity Basic
 
@@ -209,7 +217,6 @@ class ServiceIdentity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -221,11 +228,11 @@ class ServiceIdentity(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIdentityArgs.__new__(ServiceIdentityArgs)
 
-            __props__.__dict__["email"] = email
             __props__.__dict__["project"] = project
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
+            __props__.__dict__["email"] = None
         super(ServiceIdentity, __self__).__init__(
             'gcp:projects/serviceIdentity:ServiceIdentity',
             resource_name,

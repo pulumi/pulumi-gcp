@@ -64,15 +64,16 @@ type LookupTriggerArgs struct {
 
 // A collection of values returned by getTrigger.
 type LookupTriggerResult struct {
-	ApprovalConfigs []GetTriggerApprovalConfig `pulumi:"approvalConfigs"`
-	Builds          []GetTriggerBuild          `pulumi:"builds"`
-	CreateTime      string                     `pulumi:"createTime"`
-	Description     string                     `pulumi:"description"`
-	Disabled        bool                       `pulumi:"disabled"`
-	Filename        string                     `pulumi:"filename"`
-	Filter          string                     `pulumi:"filter"`
-	GitFileSources  []GetTriggerGitFileSource  `pulumi:"gitFileSources"`
-	Githubs         []GetTriggerGithub         `pulumi:"githubs"`
+	ApprovalConfigs               []GetTriggerApprovalConfig               `pulumi:"approvalConfigs"`
+	BitbucketServerTriggerConfigs []GetTriggerBitbucketServerTriggerConfig `pulumi:"bitbucketServerTriggerConfigs"`
+	Builds                        []GetTriggerBuild                        `pulumi:"builds"`
+	CreateTime                    string                                   `pulumi:"createTime"`
+	Description                   string                                   `pulumi:"description"`
+	Disabled                      bool                                     `pulumi:"disabled"`
+	Filename                      string                                   `pulumi:"filename"`
+	Filter                        string                                   `pulumi:"filter"`
+	GitFileSources                []GetTriggerGitFileSource                `pulumi:"gitFileSources"`
+	Githubs                       []GetTriggerGithub                       `pulumi:"githubs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                            `pulumi:"id"`
 	IgnoredFiles           []string                          `pulumi:"ignoredFiles"`
@@ -136,6 +137,12 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx co
 
 func (o LookupTriggerResultOutput) ApprovalConfigs() GetTriggerApprovalConfigArrayOutput {
 	return o.ApplyT(func(v LookupTriggerResult) []GetTriggerApprovalConfig { return v.ApprovalConfigs }).(GetTriggerApprovalConfigArrayOutput)
+}
+
+func (o LookupTriggerResultOutput) BitbucketServerTriggerConfigs() GetTriggerBitbucketServerTriggerConfigArrayOutput {
+	return o.ApplyT(func(v LookupTriggerResult) []GetTriggerBitbucketServerTriggerConfig {
+		return v.BitbucketServerTriggerConfigs
+	}).(GetTriggerBitbucketServerTriggerConfigArrayOutput)
 }
 
 func (o LookupTriggerResultOutput) Builds() GetTriggerBuildArrayOutput {

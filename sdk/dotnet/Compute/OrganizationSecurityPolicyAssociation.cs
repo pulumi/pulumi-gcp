@@ -10,7 +10,91 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// An association for the OrganizationSecurityPolicy.
+    /// 
+    /// To get more information about OrganizationSecurityPolicyAssociation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+    /// * How-to Guides
+    ///     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+    /// 
     /// ## Example Usage
+    /// ### Organization Security Policy Association Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var securityPolicyTarget = new Gcp.Organizations.Folder("securityPolicyTarget", new()
+    ///     {
+    ///         DisplayName = "tf-test-secpol",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
+    ///     {
+    ///         DisplayName = "tf-test",
+    ///         Parent = securityPolicyTarget.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     {
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         EnableLogging = true,
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "192.168.0.0/16",
+    ///                     "10.0.0.0/8",
+    ///                 },
+    ///                 Layer4Configs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                     {
+    ///                         IpProtocol = "tcp",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "22",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                     {
+    ///                         IpProtocol = "icmp",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Priority = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", new()
+    ///     {
+    ///         AttachmentId = policyOrganizationSecurityPolicy.Parent,
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

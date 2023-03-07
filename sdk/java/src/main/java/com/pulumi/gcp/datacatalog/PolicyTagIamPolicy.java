@@ -14,6 +14,120 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
+ * 
+ * * `gcp.datacatalog.PolicyTagIamPolicy`: Authoritative. Sets the IAM policy for the policytag and replaces any existing policy already attached.
+ * * `gcp.datacatalog.PolicyTagIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the policytag are preserved.
+ * * `gcp.datacatalog.PolicyTagIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the policytag are preserved.
+ * 
+ * &gt; **Note:** `gcp.datacatalog.PolicyTagIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.PolicyTagIamBinding` and `gcp.datacatalog.PolicyTagIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.datacatalog.PolicyTagIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.PolicyTagIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamPolicy;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new PolicyTagIamPolicy(&#34;policy&#34;, PolicyTagIamPolicyArgs.builder()        
+ *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamBinding;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new PolicyTagIamBinding(&#34;binding&#34;, PolicyTagIamBindingArgs.builder()        
+ *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamMember;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new PolicyTagIamMember(&#34;member&#34;, PolicyTagIamMemberArgs.builder()        
+ *             .policyTag(google_data_catalog_policy_tag.basic_policy_tag().name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* {{policy_tag}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

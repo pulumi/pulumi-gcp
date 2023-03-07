@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the github enterprise config that should be applied to this installation.
+        /// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+        /// </summary>
+        [Input("enterpriseConfigResourceName")]
+        public Input<string>? EnterpriseConfigResourceName { get; set; }
+
+        /// <summary>
         /// Name of the repository. For example: The name for
         /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         /// </summary>

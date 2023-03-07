@@ -139,8 +139,6 @@ def get_secret_version(project: Optional[str] = None,
                        version: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionResult:
     """
-    Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-
     ## Example Usage
 
     ```python
@@ -183,8 +181,6 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               version: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
-    Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-
     ## Example Usage
 
     ```python

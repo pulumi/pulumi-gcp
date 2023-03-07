@@ -102,6 +102,31 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Placement Policy Max Distance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
+    ///         {
+    ///             VmCount = 2,
+    ///             Collocation = "COLLOCATED",
+    ///             MaxDistance = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Resource Policy Instance Schedule Policy
     /// 
     /// ```csharp

@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Denotes one policy tag in a taxonomy.
+//
+// To get more information about PolicyTag, see:
+//
+// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//
 // ## Example Usage
 // ### Data Catalog Taxonomies Policy Tag Basic
 //
@@ -27,13 +35,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
-//				Region:      pulumi.String("us"),
 //				DisplayName: pulumi.String("taxonomy_display_name"),
 //				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
 //					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -41,7 +48,7 @@ import (
 //				Taxonomy:    myTaxonomy.ID(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -65,13 +72,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myTaxonomy, err := datacatalog.NewTaxonomy(ctx, "myTaxonomy", &datacatalog.TaxonomyArgs{
-//				Region:      pulumi.String("us"),
 //				DisplayName: pulumi.String("taxonomy_display_name"),
 //				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
 //					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -79,7 +85,7 @@ import (
 //				Taxonomy:    myTaxonomy.ID(),
 //				DisplayName: pulumi.String("High"),
 //				Description: pulumi.String("A policy tag category used for high security access"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -88,7 +94,7 @@ import (
 //				DisplayName:     pulumi.String("ssn"),
 //				Description:     pulumi.String("A hash of the users ssn"),
 //				ParentPolicyTag: parentPolicy.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -97,7 +103,7 @@ import (
 //				DisplayName:     pulumi.String("dob"),
 //				Description:     pulumi.String("The users date of birth"),
 //				ParentPolicyTag: parentPolicy.ID(),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				childPolicy,
 //			}))
 //			if err != nil {

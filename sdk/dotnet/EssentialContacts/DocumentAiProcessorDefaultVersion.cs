@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     var processorDocumentAiProcessorDefaultVersion = new Gcp.EssentialContacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", new()
     ///     {
     ///         Processor = processorDocumentAiProcessor.Id,
-    ///         Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/pretrained-next"),
+    ///         Version = processorDocumentAiProcessor.Id.Apply(id =&gt; $"{id}/processorVersions/stable"),
     ///     });
     /// 
     /// });
@@ -56,7 +56,8 @@ namespace Pulumi.Gcp.EssentialContacts
         public Output<string> Processor { get; private set; } = null!;
 
         /// <summary>
-        /// The version to set
+        /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+        /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -114,7 +115,8 @@ namespace Pulumi.Gcp.EssentialContacts
         public Input<string> Processor { get; set; } = null!;
 
         /// <summary>
-        /// The version to set
+        /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+        /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -134,7 +136,8 @@ namespace Pulumi.Gcp.EssentialContacts
         public Input<string>? Processor { get; set; }
 
         /// <summary>
-        /// The version to set
+        /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+        /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -14,6 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerGithub {
     /**
+     * @return The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
+    private @Nullable String enterpriseConfigResourceName;
+    /**
      * @return Name of the repository. For example: The name for
      * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
@@ -39,6 +45,14 @@ public final class TriggerGithub {
     private @Nullable TriggerGithubPush push;
 
     private TriggerGithub() {}
+    /**
+     * @return The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
+    public Optional<String> enterpriseConfigResourceName() {
+        return Optional.ofNullable(this.enterpriseConfigResourceName);
+    }
     /**
      * @return Name of the repository. For example: The name for
      * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
@@ -81,6 +95,7 @@ public final class TriggerGithub {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String enterpriseConfigResourceName;
         private @Nullable String name;
         private @Nullable String owner;
         private @Nullable TriggerGithubPullRequest pullRequest;
@@ -88,12 +103,18 @@ public final class TriggerGithub {
         public Builder() {}
         public Builder(TriggerGithub defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enterpriseConfigResourceName = defaults.enterpriseConfigResourceName;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
     	      this.pullRequest = defaults.pullRequest;
     	      this.push = defaults.push;
         }
 
+        @CustomType.Setter
+        public Builder enterpriseConfigResourceName(@Nullable String enterpriseConfigResourceName) {
+            this.enterpriseConfigResourceName = enterpriseConfigResourceName;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
@@ -116,6 +137,7 @@ public final class TriggerGithub {
         }
         public TriggerGithub build() {
             final var o = new TriggerGithub();
+            o.enterpriseConfigResourceName = enterpriseConfigResourceName;
             o.name = name;
             o.owner = owner;
             o.pullRequest = pullRequest;

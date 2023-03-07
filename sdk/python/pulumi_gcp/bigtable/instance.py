@@ -28,8 +28,8 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-               terraform destroy or terraform apply that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -77,8 +77,8 @@ class InstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        terraform destroy or terraform apply that would delete the instance will fail.
+        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -167,8 +167,8 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-               terraform destroy or terraform apply that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -216,8 +216,8 @@ class _InstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        terraform destroy or terraform apply that would delete the instance will fail.
+        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -305,6 +305,21 @@ class Instance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## +---
+
+        subcategory: "Cloud Bigtable"
+        description: |-
+          Creates a Google Bigtable instance.
+        ---
+
+        # bigtable.Instance
+
+        Creates a Google Bigtable instance. For more information see:
+
+        * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigtable/docs)
+
         ## Example Usage
         ### Simple Instance
 
@@ -373,8 +388,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-               terraform destroy or terraform apply that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -393,6 +408,21 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## +---
+
+        subcategory: "Cloud Bigtable"
+        description: |-
+          Creates a Google Bigtable instance.
+        ---
+
+        # bigtable.Instance
+
+        Creates a Google Bigtable instance. For more information see:
+
+        * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigtable/docs)
+
         ## Example Usage
         ### Simple Instance
 
@@ -524,8 +554,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-               terraform destroy or terraform apply that would delete the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -564,8 +594,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        terraform destroy or terraform apply that would delete the instance will fail.
+        Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         """
         return pulumi.get(self, "deletion_protection")
 

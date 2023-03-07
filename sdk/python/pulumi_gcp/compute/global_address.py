@@ -37,7 +37,7 @@ class GlobalAddressArgs:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -55,8 +55,9 @@ class GlobalAddressArgs:
                or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
+               * VPC_PEERING - for peer networks
+               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -138,7 +139,7 @@ class GlobalAddressArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 
@@ -211,8 +212,9 @@ class GlobalAddressArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-        ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        The purpose of the resource. Possible values include:
+        * VPC_PEERING - for peer networks
+        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -252,7 +254,7 @@ class _GlobalAddressState:
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -270,8 +272,9 @@ class _GlobalAddressState:
                or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
+               * VPC_PEERING - for peer networks
+               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if address is not None:
@@ -384,7 +387,7 @@ class _GlobalAddressState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 
@@ -457,8 +460,9 @@ class _GlobalAddressState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-        ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        The purpose of the resource. Possible values include:
+        * VPC_PEERING - for peer networks
+        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -514,6 +518,21 @@ class GlobalAddress(pulumi.CustomResource):
 
         default = gcp.compute.GlobalAddress("default")
         ```
+        ### Global Address Private Services Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.GlobalAddress("default",
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.105",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -544,7 +563,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -562,8 +581,9 @@ class GlobalAddress(pulumi.CustomResource):
                or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
+               * VPC_PEERING - for peer networks
+               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         """
         ...
     @overload
@@ -589,6 +609,21 @@ class GlobalAddress(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.GlobalAddress("default")
+        ```
+        ### Global Address Private Services Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.GlobalAddress("default",
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.105",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -697,7 +732,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -715,8 +750,9 @@ class GlobalAddress(pulumi.CustomResource):
                or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
+               * VPC_PEERING - for peer networks
+               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -797,7 +833,7 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 
@@ -850,8 +886,9 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[Optional[str]]:
         """
-        The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-        ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+        The purpose of the resource. Possible values include:
+        * VPC_PEERING - for peer networks
+        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 

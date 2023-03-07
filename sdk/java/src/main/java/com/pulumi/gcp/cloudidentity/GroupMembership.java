@@ -186,6 +186,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     }
     /**
      * EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     @Export(name="memberKey", type=GroupMembershipMemberKey.class, parameters={})
@@ -193,6 +194,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
 
     /**
      * @return EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     public Output<GroupMembershipMemberKey> memberKey() {

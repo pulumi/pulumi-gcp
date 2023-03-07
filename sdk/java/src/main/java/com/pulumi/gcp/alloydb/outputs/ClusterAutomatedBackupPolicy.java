@@ -24,7 +24,7 @@ public final class ClusterAutomatedBackupPolicy {
      */
     private @Nullable String backupWindow;
     /**
-     * @return Whether automated automated backups are enabled.
+     * @return Whether automated backups are enabled.
      * 
      */
     private @Nullable Boolean enabled;
@@ -68,7 +68,7 @@ public final class ClusterAutomatedBackupPolicy {
         return Optional.ofNullable(this.backupWindow);
     }
     /**
-     * @return Whether automated automated backups are enabled.
+     * @return Whether automated backups are enabled.
      * 
      */
     public Optional<Boolean> enabled() {

@@ -19,6 +19,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A ScanConfig resource contains the configurations to launch a scan.
+ * 
+ * To get more information about ScanConfig, see:
+ * 
+ * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+ * * How-to Guides
+ *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+ * 
+ * &gt; **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
+ * 
  * ## Example Usage
  * ### Scan Config Basic
  * ```java
@@ -50,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var scan_config = new SecurityScanConfig(&#34;scan-config&#34;, SecurityScanConfigArgs.builder()        
- *             .displayName(&#34;terraform-scan-config&#34;)
+ *             .displayName(&#34;scan-config&#34;)
  *             .startingUrls(scannerStaticIp.address().applyValue(address -&gt; String.format(&#34;http://%s&#34;, address)))
  *             .targetPlatforms(&#34;COMPUTE&#34;)
  *             .build(), CustomResourceOptions.builder()

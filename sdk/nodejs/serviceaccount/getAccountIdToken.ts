@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+ *
+ * For more information see
+ * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+ *
+ * ## Example Usage
+ *
+ * ### ServiceAccount JSON Credential File.
+ *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+ *
+ * ### Service Account Impersonation.
+ *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+ *
+ *   Note: to use the following, you must grant `targetServiceAccount` the
+ *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ */
 export function getAccountIdToken(args: GetAccountIdTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIdTokenResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -54,6 +71,23 @@ export interface GetAccountIdTokenResult {
     readonly targetAudience: string;
     readonly targetServiceAccount?: string;
 }
+/**
+ * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+ *
+ * For more information see
+ * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+ *
+ * ## Example Usage
+ *
+ * ### ServiceAccount JSON Credential File.
+ *   `gcp.serviceAccount.getAccountIdToken` will use the configured provider credentials
+ *
+ * ### Service Account Impersonation.
+ *   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
+ *
+ *   Note: to use the following, you must grant `targetServiceAccount` the
+ *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ */
 export function getAccountIdTokenOutput(args: GetAccountIdTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIdTokenResult> {
     return pulumi.output(args).apply((a: any) => getAccountIdToken(a, opts))
 }

@@ -85,8 +85,9 @@ class RegionInstanceGroupManagerArgs:
                instance group. This value should always be explicitly set unless this resource is attached to
                an autoscaler, in which case it should never be set. Defaults to `0`.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
-        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-               operation does not succeed, Terraform will continue trying until it times out.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
+               continue trying until it times out.
         :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -392,8 +393,9 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-        operation does not succeed, Terraform will continue trying until it times out.
+        Whether to wait for all instances to be created/updated before
+        returning. Note that if this is set to true and the operation does not succeed, the provider will
+        continue trying until it times out.
         """
         return pulumi.get(self, "wait_for_instances")
 
@@ -497,8 +499,9 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-               operation does not succeed, Terraform will continue trying until it times out.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
+               continue trying until it times out.
         :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -862,8 +865,9 @@ class _RegionInstanceGroupManagerState:
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-        operation does not succeed, Terraform will continue trying until it times out.
+        Whether to wait for all instances to be created/updated before
+        returning. Note that if this is set to true and the operation does not succeed, the provider will
+        continue trying until it times out.
         """
         return pulumi.get(self, "wait_for_instances")
 
@@ -1050,8 +1054,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-               operation does not succeed, Terraform will continue trying until it times out.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
+               continue trying until it times out.
         :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -1317,8 +1322,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-               operation does not succeed, Terraform will continue trying until it times out.
+        :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
+               continue trying until it times out.
         :param pulumi.Input[str] wait_for_instances_status: When used with `wait_for_instances` it specifies the status to wait for.
                When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
                set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
@@ -1570,8 +1576,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="waitForInstances")
     def wait_for_instances(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-        operation does not succeed, Terraform will continue trying until it times out.
+        Whether to wait for all instances to be created/updated before
+        returning. Note that if this is set to true and the operation does not succeed, the provider will
+        continue trying until it times out.
         """
         return pulumi.get(self, "wait_for_instances")
 

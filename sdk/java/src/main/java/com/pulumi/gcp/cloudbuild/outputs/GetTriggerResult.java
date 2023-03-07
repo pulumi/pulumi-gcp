@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerApprovalConfig;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBitbucketServerTriggerConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuild;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGithub;
@@ -24,6 +25,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTriggerResult {
     private List<GetTriggerApprovalConfig> approvalConfigs;
+    private List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
     private List<GetTriggerBuild> builds;
     private String createTime;
     private String description;
@@ -56,6 +58,9 @@ public final class GetTriggerResult {
     private GetTriggerResult() {}
     public List<GetTriggerApprovalConfig> approvalConfigs() {
         return this.approvalConfigs;
+    }
+    public List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs() {
+        return this.bitbucketServerTriggerConfigs;
     }
     public List<GetTriggerBuild> builds() {
         return this.builds;
@@ -144,6 +149,7 @@ public final class GetTriggerResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetTriggerApprovalConfig> approvalConfigs;
+        private List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
         private List<GetTriggerBuild> builds;
         private String createTime;
         private String description;
@@ -172,6 +178,7 @@ public final class GetTriggerResult {
         public Builder(GetTriggerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.approvalConfigs = defaults.approvalConfigs;
+    	      this.bitbucketServerTriggerConfigs = defaults.bitbucketServerTriggerConfigs;
     	      this.builds = defaults.builds;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
@@ -205,6 +212,14 @@ public final class GetTriggerResult {
         }
         public Builder approvalConfigs(GetTriggerApprovalConfig... approvalConfigs) {
             return approvalConfigs(List.of(approvalConfigs));
+        }
+        @CustomType.Setter
+        public Builder bitbucketServerTriggerConfigs(List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs) {
+            this.bitbucketServerTriggerConfigs = Objects.requireNonNull(bitbucketServerTriggerConfigs);
+            return this;
+        }
+        public Builder bitbucketServerTriggerConfigs(GetTriggerBitbucketServerTriggerConfig... bitbucketServerTriggerConfigs) {
+            return bitbucketServerTriggerConfigs(List.of(bitbucketServerTriggerConfigs));
         }
         @CustomType.Setter
         public Builder builds(List<GetTriggerBuild> builds) {
@@ -362,6 +377,7 @@ public final class GetTriggerResult {
         public GetTriggerResult build() {
             final var o = new GetTriggerResult();
             o.approvalConfigs = approvalConfigs;
+            o.bitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
             o.builds = builds;
             o.createTime = createTime;
             o.description = description;

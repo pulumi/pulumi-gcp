@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,6 +34,11 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
      * 
      */
     private String cpuManagerPolicy;
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+     * 
+     */
+    private @Nullable Integer podPidsLimit;
 
     private ClusterNodePoolNodeConfigKubeletConfig() {}
     /**
@@ -62,6 +68,13 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
     }
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+     * 
+     */
+    public Optional<Integer> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,12 +88,14 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private @Nullable Integer podPidsLimit;
         public Builder() {}
         public Builder(ClusterNodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.podPidsLimit = defaults.podPidsLimit;
         }
 
         @CustomType.Setter
@@ -98,11 +113,17 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
         }
+        @CustomType.Setter
+        public Builder podPidsLimit(@Nullable Integer podPidsLimit) {
+            this.podPidsLimit = podPidsLimit;
+            return this;
+        }
         public ClusterNodePoolNodeConfigKubeletConfig build() {
             final var o = new ClusterNodePoolNodeConfigKubeletConfig();
             o.cpuCfsQuota = cpuCfsQuota;
             o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             o.cpuManagerPolicy = cpuManagerPolicy;
+            o.podPidsLimit = podPidsLimit;
             return o;
         }
     }

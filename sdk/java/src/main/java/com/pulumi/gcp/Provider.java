@@ -472,6 +472,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> gkehubFeatureCustomEndpoint() {
         return Codegen.optional(this.gkehubFeatureCustomEndpoint);
     }
+    @Export(name="googlePartnerName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> googlePartnerName;
+
+    public Output<Optional<String>> googlePartnerName() {
+        return Codegen.optional(this.googlePartnerName);
+    }
     @Export(name="healthcareCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> healthcareCustomEndpoint;
 

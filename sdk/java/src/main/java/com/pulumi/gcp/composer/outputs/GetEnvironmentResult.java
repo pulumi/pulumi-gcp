@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEnvironmentResult {
+    /**
+     * @return Configuration parameters for the environment.
+     * 
+     */
     private List<GetEnvironmentConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,6 +30,10 @@ public final class GetEnvironmentResult {
     private @Nullable String region;
 
     private GetEnvironmentResult() {}
+    /**
+     * @return Configuration parameters for the environment.
+     * 
+     */
     public List<GetEnvironmentConfig> configs() {
         return this.configs;
     }

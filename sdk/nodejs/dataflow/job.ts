@@ -85,7 +85,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
-     * One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
@@ -105,9 +105,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
     /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
+     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
     public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
     /**
@@ -260,7 +258,7 @@ export interface JobState {
      */
     network?: pulumi.Input<string>;
     /**
-     * One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
     onDelete?: pulumi.Input<string>;
     /**
@@ -280,9 +278,7 @@ export interface JobState {
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
+     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**
@@ -359,7 +355,7 @@ export interface JobArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+     * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
     onDelete?: pulumi.Input<string>;
     /**
@@ -379,9 +375,7 @@ export interface JobArgs {
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
+     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
     skipWaitOnJobTermination?: pulumi.Input<boolean>;
     /**

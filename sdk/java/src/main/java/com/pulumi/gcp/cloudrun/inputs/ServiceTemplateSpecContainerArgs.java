@@ -156,9 +156,21 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         return this.image;
     }
 
+    /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
     @Import(name="livenessProbe")
     private @Nullable Output<ServiceTemplateSpecContainerLivenessProbeArgs> livenessProbe;
 
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<ServiceTemplateSpecContainerLivenessProbeArgs>> livenessProbe() {
         return Optional.ofNullable(this.livenessProbe);
     }
@@ -524,11 +536,27 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
             return image(Output.of(image));
         }
 
+        /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder livenessProbe(@Nullable Output<ServiceTemplateSpecContainerLivenessProbeArgs> livenessProbe) {
             $.livenessProbe = livenessProbe;
             return this;
         }
 
+        /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder livenessProbe(ServiceTemplateSpecContainerLivenessProbeArgs livenessProbe) {
             return livenessProbe(Output.of(livenessProbe));
         }

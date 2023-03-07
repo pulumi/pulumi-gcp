@@ -202,13 +202,60 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),
 //				},
+//				NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
+//					PubsubTopic: topic.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Healthcare Fhir Store Notification Configs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Dataset:                     dataset.ID(),
+//				Version:                     pulumi.String("R4"),
+//				EnableUpdateCreate:          pulumi.Bool(false),
+//				DisableReferentialIntegrity: pulumi.Bool(false),
+//				DisableResourceVersioning:   pulumi.Bool(false),
+//				EnableHistoryImport:         pulumi.Bool(false),
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
 //						PubsubTopic:      topic.ID(),
 //						SendFullResource: pulumi.Bool(true),
 //					},
 //				},
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

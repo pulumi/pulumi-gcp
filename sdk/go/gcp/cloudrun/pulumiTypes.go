@@ -11,6 +11,12 @@ import (
 )
 
 type DomainMappingMetadata struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -50,6 +56,12 @@ type DomainMappingMetadataInput interface {
 }
 
 type DomainMappingMetadataArgs struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -154,6 +166,12 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 	}).(DomainMappingMetadataPtrOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 func (o DomainMappingMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -224,6 +242,12 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 	}).(DomainMappingMetadataOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
 func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -1221,6 +1245,15 @@ func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ServiceMetadata struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -1260,6 +1293,15 @@ type ServiceMetadataInput interface {
 }
 
 type ServiceMetadataArgs struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -1364,6 +1406,15 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 	}).(ServiceMetadataPtrOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -1434,6 +1485,15 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 	}).(ServiceMetadataOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
@@ -1991,6 +2051,15 @@ func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
 }
 
 type ServiceTemplateMetadata struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
@@ -2035,6 +2104,15 @@ type ServiceTemplateMetadataInput interface {
 }
 
 type ServiceTemplateMetadataArgs struct {
+	// Annotations is a key value map stored with a resource that
+	// may be set by external tools to store and retrieve arbitrary metadata. More
+	// info: http://kubernetes.io/docs/user-guide/annotations
+	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+	// - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+	//   for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// A sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
@@ -2144,6 +2222,15 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 	}).(ServiceTemplateMetadataPtrOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2222,6 +2309,15 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 	}).(ServiceTemplateMetadataOutput)
 }
 
+// Annotations is a key value map stored with a resource that
+// may be set by external tools to store and retrieve arbitrary metadata. More
+// info: http://kubernetes.io/docs/user-guide/annotations
+// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+// Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+//   - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+//     for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {
@@ -2649,7 +2745,10 @@ type ServiceTemplateSpecContainer struct {
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
 	// More info: https://kubernetes.io/docs/concepts/containers/images
-	Image         string                                     `pulumi:"image"`
+	Image string `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Structure is documented below.
 	LivenessProbe *ServiceTemplateSpecContainerLivenessProbe `pulumi:"livenessProbe"`
 	// List of open ports in the container.
 	// More Info:
@@ -2723,7 +2822,10 @@ type ServiceTemplateSpecContainerArgs struct {
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
 	// More info: https://kubernetes.io/docs/concepts/containers/images
-	Image         pulumi.StringInput                                `pulumi:"image"`
+	Image pulumi.StringInput `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Structure is documented below.
 	LivenessProbe ServiceTemplateSpecContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// List of open ports in the container.
 	// More Info:
@@ -2852,6 +2954,9 @@ func (o ServiceTemplateSpecContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) LivenessProbe() ServiceTemplateSpecContainerLivenessProbePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerLivenessProbe {
 		return v.LivenessProbe

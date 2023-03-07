@@ -1311,6 +1311,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudbuild/bitbucketServerConfig",
+  "fqn": "pulumi_gcp.cloudbuild",
+  "classes": {
+   "gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig": "BitbucketServerConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudbuild/trigger",
   "fqn": "pulumi_gcp.cloudbuild",
   "classes": {
@@ -3487,10 +3495,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/hostingRelease",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/hostingRelease:HostingRelease": "HostingRelease"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/hostingSite",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/hostingSite:HostingSite": "HostingSite"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/hostingVersion",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/hostingVersion:HostingVersion": "HostingVersion"
   }
  },
  {
@@ -5135,6 +5159,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/muteConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/muteConfig:MuteConfig": "MuteConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/notificationConfig",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -5787,6 +5819,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.workstations",
   "classes": {
    "gcp:workstations/workstationCluster:WorkstationCluster": "WorkstationCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationConfig",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationConfig:WorkstationConfig": "WorkstationConfig"
   }
  }
 ]

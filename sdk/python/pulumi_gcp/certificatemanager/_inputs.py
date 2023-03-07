@@ -364,6 +364,7 @@ class CertificateSelfManagedArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] pem_certificate: The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] private_key_pem: (Optional, Deprecated)
@@ -406,6 +407,7 @@ class CertificateSelfManagedArgs:
         """
         The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "pem_certificate")
 

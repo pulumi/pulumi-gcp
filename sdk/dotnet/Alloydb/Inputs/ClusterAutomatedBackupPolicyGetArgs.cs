@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         public Input<string>? BackupWindow { get; set; }
 
         /// <summary>
-        /// Whether automated automated backups are enabled.
+        /// Whether automated backups are enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

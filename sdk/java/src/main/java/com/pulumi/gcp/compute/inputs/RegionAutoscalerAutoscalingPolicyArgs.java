@@ -170,9 +170,21 @@ public final class RegionAutoscalerAutoscalingPolicyArgs extends com.pulumi.reso
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * Defines scale down controls to reduce the risk of response latency
+     * and outages due to abrupt scale-in events
+     * Structure is documented below.
+     * 
+     */
     @Import(name="scaleDownControl")
     private @Nullable Output<RegionAutoscalerAutoscalingPolicyScaleDownControlArgs> scaleDownControl;
 
+    /**
+     * @return Defines scale down controls to reduce the risk of response latency
+     * and outages due to abrupt scale-in events
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<RegionAutoscalerAutoscalingPolicyScaleDownControlArgs>> scaleDownControl() {
         return Optional.ofNullable(this.scaleDownControl);
     }
@@ -446,11 +458,27 @@ public final class RegionAutoscalerAutoscalingPolicyArgs extends com.pulumi.reso
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param scaleDownControl Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownControl(@Nullable Output<RegionAutoscalerAutoscalingPolicyScaleDownControlArgs> scaleDownControl) {
             $.scaleDownControl = scaleDownControl;
             return this;
         }
 
+        /**
+         * @param scaleDownControl Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownControl(RegionAutoscalerAutoscalingPolicyScaleDownControlArgs scaleDownControl) {
             return scaleDownControl(Output.of(scaleDownControl));
         }

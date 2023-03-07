@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * });
  * const processorDocumentAiProcessorDefaultVersion = new gcp.essentialcontacts.DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", {
  *     processor: processorDocumentAiProcessor.id,
- *     version: pulumi.interpolate`${processorDocumentAiProcessor.id}/processorVersions/pretrained-next`,
+ *     version: pulumi.interpolate`${processorDocumentAiProcessor.id}/processorVersions/stable`,
  * });
  * ```
  *
@@ -66,7 +66,8 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
      */
     public readonly processor!: pulumi.Output<string>;
     /**
-     * The version to set
+     * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -110,7 +111,8 @@ export interface DocumentAiProcessorDefaultVersionState {
      */
     processor?: pulumi.Input<string>;
     /**
-     * The version to set
+     * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      */
     version?: pulumi.Input<string>;
 }
@@ -124,7 +126,8 @@ export interface DocumentAiProcessorDefaultVersionArgs {
      */
     processor: pulumi.Input<string>;
     /**
-     * The version to set
+     * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      */
     version: pulumi.Input<string>;
 }

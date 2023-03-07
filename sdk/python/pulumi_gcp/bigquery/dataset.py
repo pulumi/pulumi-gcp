@@ -1179,7 +1179,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxTimeTravelHours")
-    def max_time_travel_hours(self) -> pulumi.Output[Optional[str]]:
+    def max_time_travel_hours(self) -> pulumi.Output[str]:
         """
         Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         """

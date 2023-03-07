@@ -342,7 +342,7 @@ type Dataset struct {
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
-	MaxTimeTravelHours pulumi.StringPtrOutput `pulumi:"maxTimeTravelHours"`
+	MaxTimeTravelHours pulumi.StringOutput `pulumi:"maxTimeTravelHours"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -735,8 +735,8 @@ func (o DatasetOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
-func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.MaxTimeTravelHours }).(pulumi.StringPtrOutput)
+func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.MaxTimeTravelHours }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

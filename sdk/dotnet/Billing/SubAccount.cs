@@ -10,6 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Billing
 {
     /// <summary>
+    /// Allows creation and management of a Google Cloud Billing Subaccount.
+    /// 
+    /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subaccount = new Gcp.Billing.SubAccount("subaccount", new()
+    ///     {
+    ///         DisplayName = "My Billing Account",
+    ///         MasterBillingAccount = "012345-567890-ABCDEF",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Billing Subaccounts can be imported using any of these accepted formats
@@ -27,6 +47,11 @@ namespace Pulumi.Gcp.Billing
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// Default is "".
+        /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
@@ -101,6 +126,11 @@ namespace Pulumi.Gcp.Billing
 
     public sealed class SubAccountArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// Default is "".
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 
@@ -131,6 +161,11 @@ namespace Pulumi.Gcp.Billing
         [Input("billingAccountId")]
         public Input<string>? BillingAccountId { get; set; }
 
+        /// <summary>
+        /// If set to "RENAME_ON_DESTROY" the billing account display_name
+        /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+        /// Default is "".
+        /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
 

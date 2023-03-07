@@ -17,6 +17,7 @@ __all__ = ['TriggerArgs', 'Trigger']
 class TriggerArgs:
     def __init__(__self__, *,
                  approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']] = None,
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +44,8 @@ class TriggerArgs:
         :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
+        :param pulumi.Input['TriggerBitbucketServerTriggerConfigArgs'] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
@@ -113,6 +116,8 @@ class TriggerArgs:
         """
         if approval_config is not None:
             pulumi.set(__self__, "approval_config", approval_config)
+        if bitbucket_server_trigger_config is not None:
+            pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if description is not None:
@@ -170,6 +175,19 @@ class TriggerArgs:
     @approval_config.setter
     def approval_config(self, value: Optional[pulumi.Input['TriggerApprovalConfigArgs']]):
         pulumi.set(self, "approval_config", value)
+
+    @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']]:
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
+
+    @bitbucket_server_trigger_config.setter
+    def bitbucket_server_trigger_config(self, value: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']]):
+        pulumi.set(self, "bitbucket_server_trigger_config", value)
 
     @property
     @pulumi.getter
@@ -473,6 +491,7 @@ class TriggerArgs:
 class _TriggerState:
     def __init__(__self__, *,
                  approval_config: Optional[pulumi.Input['TriggerApprovalConfigArgs']] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']] = None,
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -501,6 +520,8 @@ class _TriggerState:
         :param pulumi.Input['TriggerApprovalConfigArgs'] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
+        :param pulumi.Input['TriggerBitbucketServerTriggerConfigArgs'] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
@@ -573,6 +594,8 @@ class _TriggerState:
         """
         if approval_config is not None:
             pulumi.set(__self__, "approval_config", approval_config)
+        if bitbucket_server_trigger_config is not None:
+            pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if create_time is not None:
@@ -634,6 +657,19 @@ class _TriggerState:
     @approval_config.setter
     def approval_config(self, value: Optional[pulumi.Input['TriggerApprovalConfigArgs']]):
         pulumi.set(self, "approval_config", value)
+
+    @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']]:
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
+
+    @bitbucket_server_trigger_config.setter
+    def bitbucket_server_trigger_config(self, value: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']]):
+        pulumi.set(self, "bitbucket_server_trigger_config", value)
 
     @property
     @pulumi.getter
@@ -963,6 +999,7 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -1022,7 +1059,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="tf-test-my-service-account")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1207,6 +1244,63 @@ class Trigger(pulumi.CustomResource):
             filename="cloudbuild.yaml",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Cloudbuild Trigger Bitbucket Server Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
+                    invert_regex=True,
+                    tag="^0.1.*",
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Pull Request
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
+                    branch="^master$",
+                    comment_control="COMMENTS_ENABLED",
+                    invert_regex=False,
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                name="terraform-provider-google",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            location="us-central1")
+        ```
 
         ## Import
 
@@ -1233,6 +1327,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
@@ -1344,7 +1440,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="my-service-account")
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="tf-test-my-service-account")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1529,6 +1625,63 @@ class Trigger(pulumi.CustomResource):
             filename="cloudbuild.yaml",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Cloudbuild Trigger Bitbucket Server Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
+                    invert_regex=True,
+                    tag="^0.1.*",
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Bitbucket Server Pull Request
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
+            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
+                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                project_key="STAG",
+                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
+                    branch="^master$",
+                    comment_control="COMMENTS_ENABLED",
+                    invert_regex=False,
+                ),
+                repo_slug="terraform-provider-google",
+            ),
+            filename="cloudbuild.yaml",
+            location="us-central1")
+        ```
+        ### Cloudbuild Trigger Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
+            filename="cloudbuild.yaml",
+            github=gcp.cloudbuild.TriggerGithubArgs(
+                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                name="terraform-provider-google",
+                owner="hashicorp",
+                push=gcp.cloudbuild.TriggerGithubPushArgs(
+                    branch="^main$",
+                ),
+            ),
+            location="us-central1")
+        ```
 
         ## Import
 
@@ -1566,6 +1719,7 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
                  build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -1597,6 +1751,7 @@ class Trigger(pulumi.CustomResource):
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
             __props__.__dict__["approval_config"] = approval_config
+            __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
@@ -1631,6 +1786,7 @@ class Trigger(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
+            bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
             build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1664,6 +1820,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
@@ -1739,6 +1897,7 @@ class Trigger(pulumi.CustomResource):
         __props__ = _TriggerState.__new__(_TriggerState)
 
         __props__.__dict__["approval_config"] = approval_config
+        __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
         __props__.__dict__["build"] = build
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -1774,6 +1933,15 @@ class Trigger(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "approval_config")
+
+    @property
+    @pulumi.getter(name="bitbucketServerTriggerConfig")
+    def bitbucket_server_trigger_config(self) -> pulumi.Output[Optional['outputs.TriggerBitbucketServerTriggerConfig']]:
+        """
+        BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bitbucket_server_trigger_config")
 
     @property
     @pulumi.getter

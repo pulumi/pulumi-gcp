@@ -50,14 +50,12 @@ class JobArgs:
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
-        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -240,7 +238,7 @@ class JobArgs:
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> Optional[pulumi.Input[str]]:
         """
-        One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         """
         return pulumi.get(self, "on_delete")
 
@@ -300,9 +298,7 @@ class JobArgs:
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
+        If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
@@ -388,14 +384,12 @@ class _JobState:
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
-        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -578,7 +572,7 @@ class _JobState:
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> Optional[pulumi.Input[str]]:
         """
-        One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         """
         return pulumi.get(self, "on_delete")
 
@@ -638,9 +632,7 @@ class _JobState:
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
+        If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         """
         return pulumi.get(self, "skip_wait_on_job_termination")
 
@@ -782,14 +774,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
-        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
@@ -935,14 +925,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
         :param pulumi.Input[str] network: The network to which VMs will be assigned. If it is not provided, "default" will be used.
-        :param pulumi.Input[str] on_delete: One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[Mapping[str, Any]] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
-        :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-               terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-               different, e.g. by embedding a release ID or by using a random_id.
+        :param pulumi.Input[bool] skip_wait_on_job_termination: If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -1067,7 +1055,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="onDelete")
     def on_delete(self) -> pulumi.Output[Optional[str]]:
         """
-        One of "drain" or "cancel". Specifies behavior of deletion during terraform destroy.
+        One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         """
         return pulumi.get(self, "on_delete")
 
@@ -1107,9 +1095,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="skipWaitOnJobTermination")
     def skip_wait_on_job_termination(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-        terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-        different, e.g. by embedding a release ID or by using a random_id.
+        If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
         """
         return pulumi.get(self, "skip_wait_on_job_termination")
 

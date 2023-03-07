@@ -428,16 +428,18 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     }
 
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      * 
      */
     @Import(name="waitForInstances")
     private @Nullable Output<Boolean> waitForInstances;
 
     /**
-     * @return Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * @return Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      * 
      */
     public Optional<Output<Boolean>> waitForInstances() {
@@ -1137,8 +1139,9 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param waitForInstances Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-         * operation does not succeed, Terraform will continue trying until it times out.
+         * @param waitForInstances Whether to wait for all instances to be created/updated before
+         * returning. Note that if this is set to true and the operation does not succeed, the provider will
+         * continue trying until it times out.
          * 
          * @return builder
          * 
@@ -1149,8 +1152,9 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param waitForInstances Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-         * operation does not succeed, Terraform will continue trying until it times out.
+         * @param waitForInstances Whether to wait for all instances to be created/updated before
+         * returning. Note that if this is set to true and the operation does not succeed, the provider will
+         * continue trying until it times out.
          * 
          * @return builder
          * 

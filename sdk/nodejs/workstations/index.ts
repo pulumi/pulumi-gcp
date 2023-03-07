@@ -10,6 +10,11 @@ export type WorkstationCluster = import("./workstationCluster").WorkstationClust
 export const WorkstationCluster: typeof import("./workstationCluster").WorkstationCluster = null as any;
 utilities.lazyLoad(exports, ["WorkstationCluster"], () => require("./workstationCluster"));
 
+export { WorkstationConfigArgs, WorkstationConfigState } from "./workstationConfig";
+export type WorkstationConfig = import("./workstationConfig").WorkstationConfig;
+export const WorkstationConfig: typeof import("./workstationConfig").WorkstationConfig = null as any;
+utilities.lazyLoad(exports, ["WorkstationConfig"], () => require("./workstationConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:workstations/workstationCluster:WorkstationCluster":
                 return new WorkstationCluster(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationConfig:WorkstationConfig":
+                return new WorkstationConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstationCluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfig", _module)

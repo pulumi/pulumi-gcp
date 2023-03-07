@@ -123,6 +123,7 @@ type LookupClusterResult struct {
 	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`
 	PrivateIpv6GoogleAccess         string                                     `pulumi:"privateIpv6GoogleAccess"`
 	Project                         *string                                    `pulumi:"project"`
+	ProtectConfigs                  []GetClusterProtectConfig                  `pulumi:"protectConfigs"`
 	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
@@ -407,6 +408,10 @@ func (o LookupClusterResultOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput
 
 func (o LookupClusterResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupClusterResultOutput) ProtectConfigs() GetClusterProtectConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterProtectConfig { return v.ProtectConfigs }).(GetClusterProtectConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ReleaseChannels() GetClusterReleaseChannelArrayOutput {

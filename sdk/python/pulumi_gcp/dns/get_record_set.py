@@ -132,6 +132,7 @@ def get_record_set(managed_zone: Optional[str] = None,
     :param str managed_zone: The Name of the zone.
     :param str name: The DNS name for the resource.
     :param str project: The ID of the project for the Google Cloud.
+    :param str type: The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
     """
     __args__ = dict()
     __args__['managedZone'] = managed_zone
@@ -180,5 +181,6 @@ def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
     :param str managed_zone: The Name of the zone.
     :param str name: The DNS name for the resource.
     :param str project: The ID of the project for the Google Cloud.
+    :param str type: The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
     """
     ...

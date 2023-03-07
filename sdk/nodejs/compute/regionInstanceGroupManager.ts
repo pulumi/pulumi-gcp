@@ -245,8 +245,9 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly versions!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerVersion[]>;
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      */
     public readonly waitForInstances!: pulumi.Output<boolean | undefined>;
     /**
@@ -458,8 +459,9 @@ export interface RegionInstanceGroupManagerState {
      */
     versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;
     /**
@@ -579,8 +581,9 @@ export interface RegionInstanceGroupManagerArgs {
      */
     versions: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      */
     waitForInstances?: pulumi.Input<boolean>;
     /**

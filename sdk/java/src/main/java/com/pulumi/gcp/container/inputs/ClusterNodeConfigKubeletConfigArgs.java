@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,12 +74,28 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         return this.cpuManagerPolicy;
     }
 
+    /**
+     * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+     * 
+     */
+    @Import(name="podPidsLimit")
+    private @Nullable Output<Integer> podPidsLimit;
+
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+     * 
+     */
+    public Optional<Output<Integer>> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
+    }
+
     private ClusterNodeConfigKubeletConfigArgs() {}
 
     private ClusterNodeConfigKubeletConfigArgs(ClusterNodeConfigKubeletConfigArgs $) {
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.podPidsLimit = $.podPidsLimit;
     }
 
     public static Builder builder() {
@@ -172,6 +189,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             return cpuManagerPolicy(Output.of(cpuManagerPolicy));
+        }
+
+        /**
+         * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podPidsLimit(@Nullable Output<Integer> podPidsLimit) {
+            $.podPidsLimit = podPidsLimit;
+            return this;
+        }
+
+        /**
+         * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podPidsLimit(Integer podPidsLimit) {
+            return podPidsLimit(Output.of(podPidsLimit));
         }
 
         public ClusterNodeConfigKubeletConfigArgs build() {

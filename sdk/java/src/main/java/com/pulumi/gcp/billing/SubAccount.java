@@ -16,6 +16,39 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Allows creation and management of a Google Cloud Billing Subaccount.
+ * 
+ * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.billing.SubAccount;
+ * import com.pulumi.gcp.billing.SubAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var subaccount = new SubAccount(&#34;subaccount&#34;, SubAccountArgs.builder()        
+ *             .displayName(&#34;My Billing Account&#34;)
+ *             .masterBillingAccount(&#34;012345-567890-ABCDEF&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Billing Subaccounts can be imported using any of these accepted formats
@@ -41,9 +74,21 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
     public Output<String> billingAccountId() {
         return this.billingAccountId;
     }
+    /**
+     * If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
+     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
+     * Default is &#34;&#34;.
+     * 
+     */
     @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
+    /**
+     * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
+     * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
+     * Default is &#34;&#34;.
+     * 
+     */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }

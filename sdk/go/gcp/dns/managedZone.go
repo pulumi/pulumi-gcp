@@ -29,27 +29,16 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rnd, err := random.NewRandomId(ctx, "rnd", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
+//			_, err := dns.NewManagedZone(ctx, "example-zone", &dns.ManagedZoneArgs{
 //				Description: pulumi.String("Example DNS zone"),
-//				DnsName: rnd.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("example-%v.com.", hex), nil
-//				}).(pulumi.StringOutput),
+//				DnsName:     pulumi.String("my-domain.com."),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -439,7 +428,7 @@ type ManagedZone struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
@@ -474,12 +463,12 @@ type ManagedZone struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-	// information related to the namespace associated with the zone.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrOutput `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -529,7 +518,7 @@ type managedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName *string `pulumi:"dnsName"`
@@ -564,12 +553,12 @@ type managedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-	// information related to the namespace associated with the zone.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -585,7 +574,7 @@ type ManagedZoneState struct {
 	// The time that this resource was created on the server.
 	// This is in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringPtrInput
@@ -620,12 +609,12 @@ type ManagedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-	// information related to the namespace associated with the zone.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -642,7 +631,7 @@ type managedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName string `pulumi:"dnsName"`
@@ -672,12 +661,12 @@ type managedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-	// information related to the namespace associated with the zone.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -691,7 +680,7 @@ type ManagedZoneArgs struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringInput
@@ -721,12 +710,12 @@ type ManagedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
-	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-	// information related to the namespace associated with the zone.
+	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -834,7 +823,7 @@ func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// A textual description field. Defaults to 'Managed by Terraform'.
+// A textual description field. Defaults to 'Managed by Pulumi'.
 func (o ManagedZoneOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -905,15 +894,15 @@ func (o ManagedZoneOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-// automatically configured records for VPC resources. This only applies to networks listed under
-// 'private_visibility_config'.
+// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+// lookup queries using automatically configured records for VPC resources. This only applies
+// to networks listed under `privateVisibilityConfig`.
 func (o ManagedZoneOutput) ReverseLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.BoolPtrOutput { return v.ReverseLookup }).(pulumi.BoolPtrOutput)
 }
 
-// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-// information related to the namespace associated with the zone.
+// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+// Structure is documented below.
 func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneServiceDirectoryConfigPtrOutput { return v.ServiceDirectoryConfig }).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }

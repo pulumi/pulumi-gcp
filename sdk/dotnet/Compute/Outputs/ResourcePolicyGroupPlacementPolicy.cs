@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Possible values are `COLLOCATED`.
         /// </summary>
         public readonly string? Collocation;
+        public readonly int? MaxDistance;
         /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field
         /// unless you use a compact policy and you want your policy to work only if it contains this
@@ -39,10 +40,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? collocation,
 
+            int? maxDistance,
+
             int? vmCount)
         {
             AvailabilityDomainCount = availabilityDomainCount;
             Collocation = collocation;
+            MaxDistance = maxDistance;
             VmCount = vmCount;
         }
     }

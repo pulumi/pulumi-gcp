@@ -123,6 +123,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .networkConfig(WorkerPoolNetworkConfigArgs.builder()
  *                 .peeredNetwork(network.id())
+ *                 .peeredNetworkIpRange(&#34;/29&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(workerPoolConn)

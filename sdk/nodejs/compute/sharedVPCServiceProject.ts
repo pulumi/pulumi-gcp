@@ -68,6 +68,11 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
     }
 
     /**
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+     * Possible values are: "ABANDON".
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The ID of a host project to associate.
      */
     public readonly hostProject!: pulumi.Output<string>;
@@ -89,6 +94,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCServiceProjectState | undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["hostProject"] = state ? state.hostProject : undefined;
             resourceInputs["serviceProject"] = state ? state.serviceProject : undefined;
         } else {
@@ -99,6 +105,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             if ((!args || args.serviceProject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceProject'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["hostProject"] = args ? args.hostProject : undefined;
             resourceInputs["serviceProject"] = args ? args.serviceProject : undefined;
         }
@@ -111,6 +118,11 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SharedVPCServiceProject resources.
  */
 export interface SharedVPCServiceProjectState {
+    /**
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+     * Possible values are: "ABANDON".
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The ID of a host project to associate.
      */
@@ -125,6 +137,11 @@ export interface SharedVPCServiceProjectState {
  * The set of arguments for constructing a SharedVPCServiceProject resource.
  */
 export interface SharedVPCServiceProjectArgs {
+    /**
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+     * Possible values are: "ABANDON".
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The ID of a host project to associate.
      */

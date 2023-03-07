@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const daily = gcp.compute.getResourcePolicy({
+ *     name: "daily",
+ *     region: "us-central1",
+ * });
+ * ```
+ */
 export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +70,19 @@ export interface GetResourcePolicyResult {
     readonly selfLink: string;
     readonly snapshotSchedulePolicies: outputs.compute.GetResourcePolicySnapshotSchedulePolicy[];
 }
+/**
+ * Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const daily = gcp.compute.getResourcePolicy({
+ *     name: "daily",
+ *     region: "us-central1",
+ * });
+ * ```
+ */
 export function getResourcePolicyOutput(args: GetResourcePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePolicyResult> {
     return pulumi.output(args).apply((a: any) => getResourcePolicy(a, opts))
 }

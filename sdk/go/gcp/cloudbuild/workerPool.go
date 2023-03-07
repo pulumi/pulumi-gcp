@@ -104,7 +104,8 @@ import (
 //					NoExternalIp: pulumi.Bool(false),
 //				},
 //				NetworkConfig: &cloudbuild.WorkerPoolNetworkConfigArgs{
-//					PeeredNetwork: network.ID(),
+//					PeeredNetwork:        network.ID(),
+//					PeeredNetworkIpRange: pulumi.String("/29"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				workerPoolConn,

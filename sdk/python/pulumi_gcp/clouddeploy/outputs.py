@@ -21,6 +21,7 @@ __all__ = [
     'TargetAnthosCluster',
     'TargetExecutionConfig',
     'TargetGke',
+    'TargetMultiTarget',
     'TargetRun',
 ]
 
@@ -433,6 +434,41 @@ class TargetGke(dict):
         Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         return pulumi.get(self, "internal_ip")
+
+
+@pulumi.output_type
+class TargetMultiTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetIds":
+            suggest = "target_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetMultiTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetMultiTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetMultiTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_ids: Sequence[str]):
+        """
+        :param Sequence[str] target_ids: Required. The target_ids of this multiTarget.
+        """
+        pulumi.set(__self__, "target_ids", target_ids)
+
+    @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> Sequence[str]:
+        """
+        Required. The target_ids of this multiTarget.
+        """
+        return pulumi.get(self, "target_ids")
 
 
 @pulumi.output_type

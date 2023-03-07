@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,7 @@ public final class NodePoolNodeConfigKubeletConfig {
     private @Nullable Boolean cpuCfsQuota;
     private @Nullable String cpuCfsQuotaPeriod;
     private String cpuManagerPolicy;
+    private @Nullable Integer podPidsLimit;
 
     private NodePoolNodeConfigKubeletConfig() {}
     public Optional<Boolean> cpuCfsQuota() {
@@ -25,6 +27,9 @@ public final class NodePoolNodeConfigKubeletConfig {
     }
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
+    }
+    public Optional<Integer> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
     }
 
     public static Builder builder() {
@@ -39,12 +44,14 @@ public final class NodePoolNodeConfigKubeletConfig {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private @Nullable Integer podPidsLimit;
         public Builder() {}
         public Builder(NodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.podPidsLimit = defaults.podPidsLimit;
         }
 
         @CustomType.Setter
@@ -62,11 +69,17 @@ public final class NodePoolNodeConfigKubeletConfig {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
         }
+        @CustomType.Setter
+        public Builder podPidsLimit(@Nullable Integer podPidsLimit) {
+            this.podPidsLimit = podPidsLimit;
+            return this;
+        }
         public NodePoolNodeConfigKubeletConfig build() {
             final var o = new NodePoolNodeConfigKubeletConfig();
             o.cpuCfsQuota = cpuCfsQuota;
             o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             o.cpuManagerPolicy = cpuManagerPolicy;
+            o.podPidsLimit = podPidsLimit;
             return o;
         }
     }

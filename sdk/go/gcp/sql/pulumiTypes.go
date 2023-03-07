@@ -8899,6 +8899,142 @@ func (o GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput) Inde
 	}).(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput)
 }
 
+type GetDatabasesDatabase struct {
+	Charset        string `pulumi:"charset"`
+	Collation      string `pulumi:"collation"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	// The name of the Cloud SQL database instance in which the database belongs.
+	Instance string `pulumi:"instance"`
+	Name     string `pulumi:"name"`
+	// The ID of the project in which the instance belongs.
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+}
+
+// GetDatabasesDatabaseInput is an input type that accepts GetDatabasesDatabaseArgs and GetDatabasesDatabaseOutput values.
+// You can construct a concrete instance of `GetDatabasesDatabaseInput` via:
+//
+//	GetDatabasesDatabaseArgs{...}
+type GetDatabasesDatabaseInput interface {
+	pulumi.Input
+
+	ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput
+	ToGetDatabasesDatabaseOutputWithContext(context.Context) GetDatabasesDatabaseOutput
+}
+
+type GetDatabasesDatabaseArgs struct {
+	Charset        pulumi.StringInput `pulumi:"charset"`
+	Collation      pulumi.StringInput `pulumi:"collation"`
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
+	// The name of the Cloud SQL database instance in which the database belongs.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	Name     pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the instance belongs.
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+}
+
+func (GetDatabasesDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput {
+	return i.ToGetDatabasesDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesDatabaseArgs) ToGetDatabasesDatabaseOutputWithContext(ctx context.Context) GetDatabasesDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseOutput)
+}
+
+// GetDatabasesDatabaseArrayInput is an input type that accepts GetDatabasesDatabaseArray and GetDatabasesDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetDatabasesDatabaseArrayInput` via:
+//
+//	GetDatabasesDatabaseArray{ GetDatabasesDatabaseArgs{...} }
+type GetDatabasesDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput
+	ToGetDatabasesDatabaseArrayOutputWithContext(context.Context) GetDatabasesDatabaseArrayOutput
+}
+
+type GetDatabasesDatabaseArray []GetDatabasesDatabaseInput
+
+func (GetDatabasesDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput {
+	return i.ToGetDatabasesDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetDatabasesDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseArrayOutput)
+}
+
+type GetDatabasesDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutput() GetDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutputWithContext(ctx context.Context) GetDatabasesDatabaseOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseOutput) Charset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Charset }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud SQL database instance in which the database belongs.
+func (o GetDatabasesDatabaseOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the instance belongs.
+func (o GetDatabasesDatabaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesDatabaseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type GetDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasesDatabase)(nil)).Elem()
+}
+
+func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutput() GetDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutputWithContext(ctx context.Context) GetDatabasesDatabaseArrayOutput {
+	return o
+}
+
+func (o GetDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetDatabasesDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesDatabase {
+		return vs[0].([]GetDatabasesDatabase)[vs[1].(int)]
+	}).(GetDatabasesDatabaseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
@@ -9018,6 +9154,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
@@ -9136,4 +9274,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
+	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
 }

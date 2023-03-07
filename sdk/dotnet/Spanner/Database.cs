@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner
 {
     /// <summary>
+    /// A Cloud Spanner Database which is hosted on a Spanner instance.
+    /// 
+    /// To get more information about Database, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/spanner/)
+    /// 
+    /// &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+    /// 
     /// ## Example Usage
     /// ### Spanner Database Basic
     /// 
@@ -83,8 +93,8 @@ namespace Pulumi.Gcp.Spanner
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        /// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` that would delete the instance will fail.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -202,8 +212,8 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        /// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -277,8 +287,8 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-        /// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` that would delete the instance will fail.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

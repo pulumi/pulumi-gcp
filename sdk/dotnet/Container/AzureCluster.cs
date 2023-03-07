@@ -123,10 +123,16 @@ namespace Pulumi.Gcp.Container
         public Output<string> AzureRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Azure authentication configuration for management of Azure resources
+        /// </summary>
+        [Output("azureServicesAuthentication")]
+        public Output<Outputs.AzureClusterAzureServicesAuthentication?> AzureServicesAuthentication { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Output("client")]
-        public Output<string> Client { get; private set; } = null!;
+        public Output<string?> Client { get; private set; } = null!;
 
         /// <summary>
         /// Configuration related to the cluster control plane.
@@ -303,10 +309,16 @@ namespace Pulumi.Gcp.Container
         public Input<string> AzureRegion { get; set; } = null!;
 
         /// <summary>
+        /// Azure authentication configuration for management of Azure resources
+        /// </summary>
+        [Input("azureServicesAuthentication")]
+        public Input<Inputs.AzureClusterAzureServicesAuthenticationArgs>? AzureServicesAuthentication { get; set; }
+
+        /// <summary>
         /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
-        [Input("client", required: true)]
-        public Input<string> Client { get; set; } = null!;
+        [Input("client")]
+        public Input<string>? Client { get; set; }
 
         /// <summary>
         /// Configuration related to the cluster control plane.
@@ -395,6 +407,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("azureRegion")]
         public Input<string>? AzureRegion { get; set; }
+
+        /// <summary>
+        /// Azure authentication configuration for management of Azure resources
+        /// </summary>
+        [Input("azureServicesAuthentication")]
+        public Input<Inputs.AzureClusterAzureServicesAuthenticationGetArgs>? AzureServicesAuthentication { get; set; }
 
         /// <summary>
         /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.

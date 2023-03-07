@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///         NetworkConfig = new Gcp.CloudBuild.Inputs.WorkerPoolNetworkConfigArgs
     ///         {
     ///             PeeredNetwork = network.Id,
+    ///             PeeredNetworkIpRange = "/29",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

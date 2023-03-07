@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+ *
+ * To get more information about NodeGroup, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+ * * How-to Guides
+ *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ *
+ * > **Warning:** Due to limitations of the API, this provider cannot update the
+ * number of nodes in a node group and changes to node group size either
+ * through provider config or through external changes will cause
+ * the provider to delete and recreate the node group.
+ *
  * ## Example Usage
  * ### Node Group Basic
  *
@@ -19,8 +32,8 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-f",
- *     description: "example google_compute_node_group for Terraform Google Provider",
+ *     zone: "us-central1-a",
+ *     description: "example google_compute_node_group for the Google Provider",
  *     size: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  * });
@@ -36,8 +49,8 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
- *     zone: "us-central1-f",
- *     description: "example google_compute_node_group for Terraform Google Provider",
+ *     zone: "us-central1-a",
+ *     description: "example google_compute_node_group for Google Provider",
  *     maintenancePolicy: "RESTART_IN_PLACE",
  *     maintenanceWindow: {
  *         startTime: "08:00",

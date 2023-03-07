@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuildServiceAccount", new()
     ///     {
-    ///         AccountId = "my-service-account",
+    ///         AccountId = "tf-test-my-service-account",
     ///     });
     /// 
     ///     var actAs = new Gcp.Projects.IAMMember("actAs", new()
@@ -362,6 +362,90 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// ### Cloudbuild Trigger Bitbucket Server Push
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_push_trigger = new Gcp.CloudBuild.Trigger("bbs-push-trigger", new()
+    ///     {
+    ///         BitbucketServerTriggerConfig = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigArgs
+    ///         {
+    ///             BitbucketServerConfigResource = "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+    ///             ProjectKey = "STAG",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigPushArgs
+    ///             {
+    ///                 InvertRegex = true,
+    ///                 Tag = "^0.1.*",
+    ///             },
+    ///             RepoSlug = "terraform-provider-google",
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Bitbucket Server Pull Request
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bbs_pull_request_trigger = new Gcp.CloudBuild.Trigger("bbs-pull-request-trigger", new()
+    ///     {
+    ///         BitbucketServerTriggerConfig = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigArgs
+    ///         {
+    ///             BitbucketServerConfigResource = "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+    ///             ProjectKey = "STAG",
+    ///             PullRequest = new Gcp.CloudBuild.Inputs.TriggerBitbucketServerTriggerConfigPullRequestArgs
+    ///             {
+    ///                 Branch = "^master$",
+    ///                 CommentControl = "COMMENTS_ENABLED",
+    ///                 InvertRegex = false,
+    ///             },
+    ///             RepoSlug = "terraform-provider-google",
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Github Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ghe_trigger = new Gcp.CloudBuild.Trigger("ghe-trigger", new()
+    ///     {
+    ///         Filename = "cloudbuild.yaml",
+    ///         Github = new Gcp.CloudBuild.Inputs.TriggerGithubArgs
+    ///         {
+    ///             EnterpriseConfigResourceName = "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+    ///             Name = "terraform-provider-google",
+    ///             Owner = "hashicorp",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerGithubPushArgs
+    ///             {
+    ///                 Branch = "^main$",
+    ///             },
+    ///         },
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -394,6 +478,13 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("approvalConfig")]
         public Output<Outputs.TriggerApprovalConfig> ApprovalConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bitbucketServerTriggerConfig")]
+        public Output<Outputs.TriggerBitbucketServerTriggerConfig?> BitbucketServerTriggerConfig { get; private set; } = null!;
 
         /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.
@@ -634,6 +725,13 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<Inputs.TriggerApprovalConfigArgs>? ApprovalConfig { get; set; }
 
         /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketServerTriggerConfig")]
+        public Input<Inputs.TriggerBitbucketServerTriggerConfigArgs>? BitbucketServerTriggerConfig { get; set; }
+
+        /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.
         /// Structure is documented below.
         /// </summary>
@@ -844,6 +942,13 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("approvalConfig")]
         public Input<Inputs.TriggerApprovalConfigGetArgs>? ApprovalConfig { get; set; }
+
+        /// <summary>
+        /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketServerTriggerConfig")]
+        public Input<Inputs.TriggerBitbucketServerTriggerConfigGetArgs>? BitbucketServerTriggerConfig { get; set; }
 
         /// <summary>
         /// Contents of the build template. Either a filename or build template must be provided.

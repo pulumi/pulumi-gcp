@@ -34,8 +34,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,7 +43,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
 //				Collection: pulumi.String("somenewcollection"),
-//				DocumentId: pulumi.String(fmt.Sprintf("my-doc-%vrandom_suffix}", "%{")),
+//				DocumentId: pulumi.String("my-doc"),
 //				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
 //				Project:    pulumi.String("my-project-name"),
 //			})
@@ -75,7 +73,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			mydoc, err := firestore.NewDocument(ctx, "mydoc", &firestore.DocumentArgs{
 //				Collection: pulumi.String("somenewcollection"),
-//				DocumentId: pulumi.String(fmt.Sprintf("my-doc-%vrandom_suffix}", "%{")),
+//				DocumentId: pulumi.String("my-doc"),
 //				Fields:     pulumi.String("{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"),
 //				Project:    pulumi.String("my-project-name"),
 //			})

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeGrpcArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeHttpGetArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeTcpSocketArgs;
 import java.lang.Integer;
@@ -30,6 +31,23 @@ public final class ServiceTemplateContainerStartupProbeArgs extends com.pulumi.r
      */
     public Optional<Output<Integer>> failureThreshold() {
         return Optional.ofNullable(this.failureThreshold);
+    }
+
+    /**
+     * GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="grpc")
+    private @Nullable Output<ServiceTemplateContainerStartupProbeGrpcArgs> grpc;
+
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateContainerStartupProbeGrpcArgs>> grpc() {
+        return Optional.ofNullable(this.grpc);
     }
 
     /**
@@ -115,6 +133,7 @@ public final class ServiceTemplateContainerStartupProbeArgs extends com.pulumi.r
 
     private ServiceTemplateContainerStartupProbeArgs(ServiceTemplateContainerStartupProbeArgs $) {
         this.failureThreshold = $.failureThreshold;
+        this.grpc = $.grpc;
         this.httpGet = $.httpGet;
         this.initialDelaySeconds = $.initialDelaySeconds;
         this.periodSeconds = $.periodSeconds;
@@ -159,6 +178,29 @@ public final class ServiceTemplateContainerStartupProbeArgs extends com.pulumi.r
          */
         public Builder failureThreshold(Integer failureThreshold) {
             return failureThreshold(Output.of(failureThreshold));
+        }
+
+        /**
+         * @param grpc GRPC specifies an action involving a GRPC port.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grpc(@Nullable Output<ServiceTemplateContainerStartupProbeGrpcArgs> grpc) {
+            $.grpc = grpc;
+            return this;
+        }
+
+        /**
+         * @param grpc GRPC specifies an action involving a GRPC port.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grpc(ServiceTemplateContainerStartupProbeGrpcArgs grpc) {
+            return grpc(Output.of(grpc));
         }
 
         /**

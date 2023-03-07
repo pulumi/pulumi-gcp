@@ -279,22 +279,24 @@ public class Agent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.supportedLanguageCodes);
     }
     /**
-     * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
-     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
-     * agent tier is changed outside of Terraform. Possible values: [&#34;TIER_STANDARD&#34;, &#34;TIER_ENTERPRISE&#34;,
-     * &#34;TIER_ENTERPRISE_PLUS&#34;]
+     * The agent tier. If not specified, TIER_STANDARD is assumed.
+     * * TIER_STANDARD: Standard tier.
+     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
+     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
+     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      * 
      */
     @Export(name="tier", type=String.class, parameters={})
     private Output</* @Nullable */ String> tier;
 
     /**
-     * @return The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
-     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
-     * agent tier is changed outside of Terraform. Possible values: [&#34;TIER_STANDARD&#34;, &#34;TIER_ENTERPRISE&#34;,
-     * &#34;TIER_ENTERPRISE_PLUS&#34;]
+     * @return The agent tier. If not specified, TIER_STANDARD is assumed.
+     * * TIER_STANDARD: Standard tier.
+     * * TIER_ENTERPRISE: Enterprise tier (Essentials).
+     * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
+     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      * 
      */
     public Output<Optional<String>> tier() {

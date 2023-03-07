@@ -95,16 +95,18 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-     * Terraform to delete/recreate the entire google_bigtable_table resource.
+     * A list of predefined keys to split the table on.
+     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
     @Import(name="splitKeys")
     private @Nullable Output<List<String>> splitKeys;
 
     /**
-     * @return A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-     * Terraform to delete/recreate the entire google_bigtable_table resource.
+     * @return A list of predefined keys to split the table on.
+     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
     public Optional<Output<List<String>>> splitKeys() {
@@ -258,8 +260,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splitKeys A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-         * Terraform to delete/recreate the entire google_bigtable_table resource.
+         * @param splitKeys A list of predefined keys to split the table on.
+         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+         * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder
          * 
@@ -270,8 +273,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splitKeys A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-         * Terraform to delete/recreate the entire google_bigtable_table resource.
+         * @param splitKeys A list of predefined keys to split the table on.
+         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+         * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder
          * 
@@ -281,8 +285,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splitKeys A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-         * Terraform to delete/recreate the entire google_bigtable_table resource.
+         * @param splitKeys A list of predefined keys to split the table on.
+         * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+         * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder
          * 

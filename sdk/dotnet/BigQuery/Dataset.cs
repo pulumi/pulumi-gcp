@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.BigQuery
         /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         /// </summary>
         [Output("maxTimeTravelHours")]
-        public Output<string?> MaxTimeTravelHours { get; private set; } = null!;
+        public Output<string> MaxTimeTravelHours { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

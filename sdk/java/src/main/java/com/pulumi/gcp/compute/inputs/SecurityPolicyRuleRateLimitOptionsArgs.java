@@ -6,10 +6,12 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsBanThresholdArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -86,6 +88,21 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
+     * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * 
+     */
+    @Import(name="enforceOnKeyConfigs")
+    private @Nullable Output<List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs>> enforceOnKeyConfigs;
+
+    /**
+     * @return ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs>>> enforceOnKeyConfigs() {
+        return Optional.ofNullable(this.enforceOnKeyConfigs);
+    }
+
+    /**
      * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
      * 
      */
@@ -154,6 +171,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         this.banThreshold = $.banThreshold;
         this.conformAction = $.conformAction;
         this.enforceOnKey = $.enforceOnKey;
+        this.enforceOnKeyConfigs = $.enforceOnKeyConfigs;
         this.enforceOnKeyName = $.enforceOnKeyName;
         this.exceedAction = $.exceedAction;
         this.exceedRedirectOptions = $.exceedRedirectOptions;
@@ -266,6 +284,37 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
          */
         public Builder enforceOnKey(String enforceOnKey) {
             return enforceOnKey(Output.of(enforceOnKey));
+        }
+
+        /**
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceOnKeyConfigs(@Nullable Output<List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs>> enforceOnKeyConfigs) {
+            $.enforceOnKeyConfigs = enforceOnKeyConfigs;
+            return this;
+        }
+
+        /**
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceOnKeyConfigs(List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs> enforceOnKeyConfigs) {
+            return enforceOnKeyConfigs(Output.of(enforceOnKeyConfigs));
+        }
+
+        /**
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceOnKeyConfigs(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs... enforceOnKeyConfigs) {
+            return enforceOnKeyConfigs(List.of(enforceOnKeyConfigs));
         }
 
         /**

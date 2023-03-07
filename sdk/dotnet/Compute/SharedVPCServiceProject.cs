@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.Compute
     public partial class SharedVPCServiceProject : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+        /// Possible values are: "ABANDON".
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of a host project to associate.
         /// </summary>
         [Output("hostProject")]
@@ -112,6 +119,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class SharedVPCServiceProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+        /// Possible values are: "ABANDON".
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The ID of a host project to associate.
         /// </summary>
         [Input("hostProject", required: true)]
@@ -131,6 +145,13 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SharedVPCServiceProjectState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+        /// Possible values are: "ABANDON".
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// The ID of a host project to associate.
         /// </summary>

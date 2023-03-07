@@ -88,9 +88,11 @@ type Project struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-	// See Google Cloud Billing API Access Control for more details.
+	// The alphanumeric ID of the billing account this project
+	// belongs to. The user or service account performing this operation with the provider
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -113,7 +115,8 @@ type Project struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+	// If true, the resource can be deleted
+	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
 }
 
@@ -153,9 +156,11 @@ type projectState struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-	// See Google Cloud Billing API Access Control for more details.
+	// The alphanumeric ID of the billing account this project
+	// belongs to. The user or service account performing this operation with the provider
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -178,7 +183,8 @@ type projectState struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
-	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+	// If true, the resource can be deleted
+	// without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
@@ -187,9 +193,11 @@ type ProjectState struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-	// See Google Cloud Billing API Access Control for more details.
+	// The alphanumeric ID of the billing account this project
+	// belongs to. The user or service account performing this operation with the provider
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -212,7 +220,8 @@ type ProjectState struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
-	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+	// If true, the resource can be deleted
+	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -225,9 +234,11 @@ type projectArgs struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
-	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-	// See Google Cloud Billing API Access Control for more details.
+	// The alphanumeric ID of the billing account this project
+	// belongs to. The user or service account performing this operation with the provider
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -248,7 +259,8 @@ type projectArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId string `pulumi:"projectId"`
-	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+	// If true, the resource can be deleted
+	// without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
@@ -258,9 +270,11 @@ type ProjectArgs struct {
 	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
 	// if you set auto_create_network to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
-	// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-	// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-	// See Google Cloud Billing API Access Control for more details.
+	// The alphanumeric ID of the billing account this project
+	// belongs to. The user or service account performing this operation with the provider
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
 	// created under. Only one of `orgId` or `folderId` may be
@@ -281,7 +295,8 @@ type ProjectArgs struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringInput
-	// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+	// If true, the resource can be deleted
+	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput
 }
 
@@ -379,9 +394,11 @@ func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AutoCreateNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-// operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-// See Google Cloud Billing API Access Control for more details.
+// The alphanumeric ID of the billing account this project
+// belongs to. The user or service account performing this operation with the provider
+// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+// for more details.
 func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }
@@ -425,7 +442,8 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+// If true, the resource can be deleted
+// without deleting the Project via the Google API.
 func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
 }

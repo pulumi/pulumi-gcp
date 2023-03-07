@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A collection of policy tags that classify data along a common axis.
+ *
+ * To get more information about Taxonomy, see:
+ *
+ * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *
  * ## Example Usage
  * ### Data Catalog Taxonomy Basic
  *
@@ -13,12 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicTaxonomy = new gcp.datacatalog.Taxonomy("basicTaxonomy", {
- *     region: "us",
- *     displayName: "my_display_name",
- *     description: "A collection of policy tags",
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * }, {
- *     provider: google_beta,
+ *     description: "A collection of policy tags",
+ *     displayName: "my_taxonomy",
  * });
  * ```
  *

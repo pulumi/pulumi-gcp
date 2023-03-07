@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.PerInstanceConfigPreservedStateDisk;
+import com.pulumi.gcp.compute.outputs.PerInstanceConfigPreservedStateExternalIp;
+import com.pulumi.gcp.compute.outputs.PerInstanceConfigPreservedStateInternalIp;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,8 @@ public final class PerInstanceConfigPreservedState {
      * 
      */
     private @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
+    private @Nullable List<PerInstanceConfigPreservedStateExternalIp> externalIps;
+    private @Nullable List<PerInstanceConfigPreservedStateInternalIp> internalIps;
     /**
      * @return Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
      * 
@@ -33,6 +37,12 @@ public final class PerInstanceConfigPreservedState {
      */
     public List<PerInstanceConfigPreservedStateDisk> disks() {
         return this.disks == null ? List.of() : this.disks;
+    }
+    public List<PerInstanceConfigPreservedStateExternalIp> externalIps() {
+        return this.externalIps == null ? List.of() : this.externalIps;
+    }
+    public List<PerInstanceConfigPreservedStateInternalIp> internalIps() {
+        return this.internalIps == null ? List.of() : this.internalIps;
     }
     /**
      * @return Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
@@ -52,11 +62,15 @@ public final class PerInstanceConfigPreservedState {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
+        private @Nullable List<PerInstanceConfigPreservedStateExternalIp> externalIps;
+        private @Nullable List<PerInstanceConfigPreservedStateInternalIp> internalIps;
         private @Nullable Map<String,String> metadata;
         public Builder() {}
         public Builder(PerInstanceConfigPreservedState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disks = defaults.disks;
+    	      this.externalIps = defaults.externalIps;
+    	      this.internalIps = defaults.internalIps;
     	      this.metadata = defaults.metadata;
         }
 
@@ -69,6 +83,22 @@ public final class PerInstanceConfigPreservedState {
             return disks(List.of(disks));
         }
         @CustomType.Setter
+        public Builder externalIps(@Nullable List<PerInstanceConfigPreservedStateExternalIp> externalIps) {
+            this.externalIps = externalIps;
+            return this;
+        }
+        public Builder externalIps(PerInstanceConfigPreservedStateExternalIp... externalIps) {
+            return externalIps(List.of(externalIps));
+        }
+        @CustomType.Setter
+        public Builder internalIps(@Nullable List<PerInstanceConfigPreservedStateInternalIp> internalIps) {
+            this.internalIps = internalIps;
+            return this;
+        }
+        public Builder internalIps(PerInstanceConfigPreservedStateInternalIp... internalIps) {
+            return internalIps(List.of(internalIps));
+        }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
@@ -76,6 +106,8 @@ public final class PerInstanceConfigPreservedState {
         public PerInstanceConfigPreservedState build() {
             final var o = new PerInstanceConfigPreservedState();
             o.disks = disks;
+            o.externalIps = externalIps;
+            o.internalIps = internalIps;
             o.metadata = metadata;
             return o;
         }

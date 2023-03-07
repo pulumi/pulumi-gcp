@@ -497,6 +497,14 @@ Object.defineProperty(exports, "dialogflowCxCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const disableGooglePartnerName: boolean | undefined;
+Object.defineProperty(exports, "disableGooglePartnerName", {
+    get() {
+        return __config.getObject<boolean>("disableGooglePartnerName");
+    },
+    enumerable: true,
+});
+
 export declare const dnsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dnsCustomEndpoint", {
     get() {
@@ -613,6 +621,14 @@ export declare const gkehubFeatureCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkehubFeatureCustomEndpoint", {
     get() {
         return __config.get("gkehubFeatureCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const googlePartnerName: string | undefined;
+Object.defineProperty(exports, "googlePartnerName", {
+    get() {
+        return __config.get("googlePartnerName");
     },
     enumerable: true,
 });

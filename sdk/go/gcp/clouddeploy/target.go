@@ -14,6 +14,57 @@ import (
 // The Cloud Deploy `Target` resource
 //
 // ## Example Usage
+// ### Multi_target
+// tests creating and updating a multi-target
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("multi-target description"),
+//				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
+//					&clouddeploy.TargetExecutionConfigArgs{
+//						Usages: pulumi.StringArray{
+//							pulumi.String("RENDER"),
+//							pulumi.String("DEPLOY"),
+//						},
+//						ExecutionTimeout: pulumi.String("3600s"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				MultiTarget: &clouddeploy.TargetMultiTargetArgs{
+//					TargetIds: pulumi.StringArray{
+//						pulumi.String("1"),
+//						pulumi.String("2"),
+//					},
+//				},
+//				Project:         pulumi.String("my-project-name"),
+//				RequireApproval: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Run_target
 // tests creating and updating a cloud run target
 // ```go
@@ -144,6 +195,8 @@ type Target struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
+	// (Beta only) Information specifying a multiTarget.
+	MultiTarget TargetMultiTargetPtrOutput `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
@@ -210,6 +263,8 @@ type targetState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
+	// (Beta only) Information specifying a multiTarget.
+	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
 	// The project for the resource
@@ -245,6 +300,8 @@ type TargetState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
+	// (Beta only) Information specifying a multiTarget.
+	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
 	// The project for the resource
@@ -280,6 +337,8 @@ type targetArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
+	// (Beta only) Information specifying a multiTarget.
+	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
 	// The project for the resource
@@ -306,6 +365,8 @@ type TargetArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
+	// (Beta only) Information specifying a multiTarget.
+	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
 	// The project for the resource
@@ -446,6 +507,11 @@ func (o TargetOutput) Labels() pulumi.StringMapOutput {
 // The location for the resource
 func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// (Beta only) Information specifying a multiTarget.
+func (o TargetOutput) MultiTarget() TargetMultiTargetPtrOutput {
+	return o.ApplyT(func(v *Target) TargetMultiTargetPtrOutput { return v.MultiTarget }).(TargetMultiTargetPtrOutput)
 }
 
 // Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.

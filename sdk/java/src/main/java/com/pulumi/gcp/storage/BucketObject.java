@@ -99,14 +99,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cacheControl);
     }
     /**
-     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+     * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      * 
      */
     @Export(name="content", type=String.class, parameters={})
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+     * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      * 
      */
     public Output<Optional<String>> content() {

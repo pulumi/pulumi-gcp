@@ -88,8 +88,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-     * and Network Load Balancing.
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
      */
     public readonly connectionTrackingPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceConnectionTrackingPolicy | undefined>;
     /**
@@ -339,8 +341,10 @@ export interface RegionBackendServiceState {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-     * and Network Load Balancing.
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
      */
     connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
     /**
@@ -514,8 +518,10 @@ export interface RegionBackendServiceArgs {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-     * and Network Load Balancing.
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
      */
     connectionTrackingPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceConnectionTrackingPolicy>;
     /**

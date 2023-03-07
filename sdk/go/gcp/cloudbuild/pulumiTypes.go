@@ -10,6 +10,291 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BitbucketServerConfigConnectedRepository struct {
+	// Identifier for the project storing the repository.
+	ProjectKey string `pulumi:"projectKey"`
+	// Identifier for the repository.
+	RepoSlug string `pulumi:"repoSlug"`
+}
+
+// BitbucketServerConfigConnectedRepositoryInput is an input type that accepts BitbucketServerConfigConnectedRepositoryArgs and BitbucketServerConfigConnectedRepositoryOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigConnectedRepositoryInput` via:
+//
+//	BitbucketServerConfigConnectedRepositoryArgs{...}
+type BitbucketServerConfigConnectedRepositoryInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigConnectedRepositoryOutput() BitbucketServerConfigConnectedRepositoryOutput
+	ToBitbucketServerConfigConnectedRepositoryOutputWithContext(context.Context) BitbucketServerConfigConnectedRepositoryOutput
+}
+
+type BitbucketServerConfigConnectedRepositoryArgs struct {
+	// Identifier for the project storing the repository.
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
+	// Identifier for the repository.
+	RepoSlug pulumi.StringInput `pulumi:"repoSlug"`
+}
+
+func (BitbucketServerConfigConnectedRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigConnectedRepository)(nil)).Elem()
+}
+
+func (i BitbucketServerConfigConnectedRepositoryArgs) ToBitbucketServerConfigConnectedRepositoryOutput() BitbucketServerConfigConnectedRepositoryOutput {
+	return i.ToBitbucketServerConfigConnectedRepositoryOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigConnectedRepositoryArgs) ToBitbucketServerConfigConnectedRepositoryOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigConnectedRepositoryOutput)
+}
+
+// BitbucketServerConfigConnectedRepositoryArrayInput is an input type that accepts BitbucketServerConfigConnectedRepositoryArray and BitbucketServerConfigConnectedRepositoryArrayOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigConnectedRepositoryArrayInput` via:
+//
+//	BitbucketServerConfigConnectedRepositoryArray{ BitbucketServerConfigConnectedRepositoryArgs{...} }
+type BitbucketServerConfigConnectedRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigConnectedRepositoryArrayOutput() BitbucketServerConfigConnectedRepositoryArrayOutput
+	ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(context.Context) BitbucketServerConfigConnectedRepositoryArrayOutput
+}
+
+type BitbucketServerConfigConnectedRepositoryArray []BitbucketServerConfigConnectedRepositoryInput
+
+func (BitbucketServerConfigConnectedRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BitbucketServerConfigConnectedRepository)(nil)).Elem()
+}
+
+func (i BitbucketServerConfigConnectedRepositoryArray) ToBitbucketServerConfigConnectedRepositoryArrayOutput() BitbucketServerConfigConnectedRepositoryArrayOutput {
+	return i.ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigConnectedRepositoryArray) ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigConnectedRepositoryArrayOutput)
+}
+
+type BitbucketServerConfigConnectedRepositoryOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigConnectedRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigConnectedRepository)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigConnectedRepositoryOutput) ToBitbucketServerConfigConnectedRepositoryOutput() BitbucketServerConfigConnectedRepositoryOutput {
+	return o
+}
+
+func (o BitbucketServerConfigConnectedRepositoryOutput) ToBitbucketServerConfigConnectedRepositoryOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryOutput {
+	return o
+}
+
+// Identifier for the project storing the repository.
+func (o BitbucketServerConfigConnectedRepositoryOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigConnectedRepository) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Identifier for the repository.
+func (o BitbucketServerConfigConnectedRepositoryOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigConnectedRepository) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+type BitbucketServerConfigConnectedRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigConnectedRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BitbucketServerConfigConnectedRepository)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigConnectedRepositoryArrayOutput) ToBitbucketServerConfigConnectedRepositoryArrayOutput() BitbucketServerConfigConnectedRepositoryArrayOutput {
+	return o
+}
+
+func (o BitbucketServerConfigConnectedRepositoryArrayOutput) ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryArrayOutput {
+	return o
+}
+
+func (o BitbucketServerConfigConnectedRepositoryArrayOutput) Index(i pulumi.IntInput) BitbucketServerConfigConnectedRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BitbucketServerConfigConnectedRepository {
+		return vs[0].([]BitbucketServerConfigConnectedRepository)[vs[1].(int)]
+	}).(BitbucketServerConfigConnectedRepositoryOutput)
+}
+
+type BitbucketServerConfigSecrets struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName string `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName string `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+	// Changing this field will result in deleting/ recreating the resource.
+	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
+}
+
+// BitbucketServerConfigSecretsInput is an input type that accepts BitbucketServerConfigSecretsArgs and BitbucketServerConfigSecretsOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigSecretsInput` via:
+//
+//	BitbucketServerConfigSecretsArgs{...}
+type BitbucketServerConfigSecretsInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigSecretsOutput() BitbucketServerConfigSecretsOutput
+	ToBitbucketServerConfigSecretsOutputWithContext(context.Context) BitbucketServerConfigSecretsOutput
+}
+
+type BitbucketServerConfigSecretsArgs struct {
+	// The resource name for the admin access token's secret version.
+	AdminAccessTokenVersionName pulumi.StringInput `pulumi:"adminAccessTokenVersionName"`
+	// The resource name for the read access token's secret version.
+	ReadAccessTokenVersionName pulumi.StringInput `pulumi:"readAccessTokenVersionName"`
+	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+	// Changing this field will result in deleting/ recreating the resource.
+	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
+}
+
+func (BitbucketServerConfigSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigSecrets)(nil)).Elem()
+}
+
+func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsOutput() BitbucketServerConfigSecretsOutput {
+	return i.ToBitbucketServerConfigSecretsOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigSecretsOutput)
+}
+
+func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput {
+	return i.ToBitbucketServerConfigSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigSecretsOutput).ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx)
+}
+
+// BitbucketServerConfigSecretsPtrInput is an input type that accepts BitbucketServerConfigSecretsArgs, BitbucketServerConfigSecretsPtr and BitbucketServerConfigSecretsPtrOutput values.
+// You can construct a concrete instance of `BitbucketServerConfigSecretsPtrInput` via:
+//
+//	        BitbucketServerConfigSecretsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketServerConfigSecretsPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput
+	ToBitbucketServerConfigSecretsPtrOutputWithContext(context.Context) BitbucketServerConfigSecretsPtrOutput
+}
+
+type bitbucketServerConfigSecretsPtrType BitbucketServerConfigSecretsArgs
+
+func BitbucketServerConfigSecretsPtr(v *BitbucketServerConfigSecretsArgs) BitbucketServerConfigSecretsPtrInput {
+	return (*bitbucketServerConfigSecretsPtrType)(v)
+}
+
+func (*bitbucketServerConfigSecretsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerConfigSecrets)(nil)).Elem()
+}
+
+func (i *bitbucketServerConfigSecretsPtrType) ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput {
+	return i.ToBitbucketServerConfigSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketServerConfigSecretsPtrType) ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigSecretsPtrOutput)
+}
+
+type BitbucketServerConfigSecretsOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketServerConfigSecrets)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigSecretsOutput) ToBitbucketServerConfigSecretsOutput() BitbucketServerConfigSecretsOutput {
+	return o
+}
+
+func (o BitbucketServerConfigSecretsOutput) ToBitbucketServerConfigSecretsOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsOutput {
+	return o
+}
+
+func (o BitbucketServerConfigSecretsOutput) ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput {
+	return o.ToBitbucketServerConfigSecretsPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketServerConfigSecretsOutput) ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerConfigSecrets) *BitbucketServerConfigSecrets {
+		return &v
+	}).(BitbucketServerConfigSecretsPtrOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerConfigSecretsOutput) AdminAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigSecrets) string { return v.AdminAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerConfigSecretsOutput) ReadAccessTokenVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigSecrets) string { return v.ReadAccessTokenVersionName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+// Changing this field will result in deleting/ recreating the resource.
+func (o BitbucketServerConfigSecretsOutput) WebhookSecretVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketServerConfigSecrets) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
+}
+
+type BitbucketServerConfigSecretsPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketServerConfigSecretsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketServerConfigSecrets)(nil)).Elem()
+}
+
+func (o BitbucketServerConfigSecretsPtrOutput) ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput {
+	return o
+}
+
+func (o BitbucketServerConfigSecretsPtrOutput) ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsPtrOutput {
+	return o
+}
+
+func (o BitbucketServerConfigSecretsPtrOutput) Elem() BitbucketServerConfigSecretsOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigSecrets) BitbucketServerConfigSecrets {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketServerConfigSecrets
+		return ret
+	}).(BitbucketServerConfigSecretsOutput)
+}
+
+// The resource name for the admin access token's secret version.
+func (o BitbucketServerConfigSecretsPtrOutput) AdminAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the read access token's secret version.
+func (o BitbucketServerConfigSecretsPtrOutput) ReadAccessTokenVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAccessTokenVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+// Changing this field will result in deleting/ recreating the resource.
+func (o BitbucketServerConfigSecretsPtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfigSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
 type TriggerApprovalConfig struct {
 	// Whether or not approval is needed. If this is set on a build, it will become pending when run,
 	// and will need to be explicitly approved to start.
@@ -149,6 +434,591 @@ func (o TriggerApprovalConfigPtrOutput) ApprovalRequired() pulumi.BoolPtrOutput 
 		}
 		return v.ApprovalRequired
 	}).(pulumi.BoolPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfig struct {
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource string `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey string `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	// Structure is documented below.
+	PullRequest *TriggerBitbucketServerTriggerConfigPullRequest `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	// Structure is documented below.
+	Push *TriggerBitbucketServerTriggerConfigPush `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+	// For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug string `pulumi:"repoSlug"`
+}
+
+// TriggerBitbucketServerTriggerConfigInput is an input type that accepts TriggerBitbucketServerTriggerConfigArgs and TriggerBitbucketServerTriggerConfigOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigInput` via:
+//
+//	TriggerBitbucketServerTriggerConfigArgs{...}
+type TriggerBitbucketServerTriggerConfigInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigOutput() TriggerBitbucketServerTriggerConfigOutput
+	ToTriggerBitbucketServerTriggerConfigOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigOutput
+}
+
+type TriggerBitbucketServerTriggerConfigArgs struct {
+	// The Bitbucket server config resource that this trigger config maps to.
+	BitbucketServerConfigResource pulumi.StringInput `pulumi:"bitbucketServerConfigResource"`
+	// Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
+	// Filter to match changes in pull requests.
+	// Structure is documented below.
+	PullRequest TriggerBitbucketServerTriggerConfigPullRequestPtrInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	// Structure is documented below.
+	Push TriggerBitbucketServerTriggerConfigPushPtrInput `pulumi:"push"`
+	// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+	// For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+	RepoSlug pulumi.StringInput `pulumi:"repoSlug"`
+}
+
+func (TriggerBitbucketServerTriggerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTriggerConfigOutput() TriggerBitbucketServerTriggerConfigOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigOutput)
+}
+
+func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigOutput).ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerBitbucketServerTriggerConfigPtrInput is an input type that accepts TriggerBitbucketServerTriggerConfigArgs, TriggerBitbucketServerTriggerConfigPtr and TriggerBitbucketServerTriggerConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigPtrInput` via:
+//
+//	        TriggerBitbucketServerTriggerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerBitbucketServerTriggerConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput
+	ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigPtrOutput
+}
+
+type triggerBitbucketServerTriggerConfigPtrType TriggerBitbucketServerTriggerConfigArgs
+
+func TriggerBitbucketServerTriggerConfigPtr(v *TriggerBitbucketServerTriggerConfigArgs) TriggerBitbucketServerTriggerConfigPtrInput {
+	return (*triggerBitbucketServerTriggerConfigPtrType)(v)
+}
+
+func (*triggerBitbucketServerTriggerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i *triggerBitbucketServerTriggerConfigPtrType) ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBitbucketServerTriggerConfigPtrType) ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigOutput) ToTriggerBitbucketServerTriggerConfigOutput() TriggerBitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigOutput) ToTriggerBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigOutput) ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput {
+	return o.ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBitbucketServerTriggerConfigOutput) ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfig {
+		return &v
+	}).(TriggerBitbucketServerTriggerConfigPtrOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o TriggerBitbucketServerTriggerConfigOutput) BitbucketServerConfigResource() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfig) string { return v.BitbucketServerConfigResource }).(pulumi.StringOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o TriggerBitbucketServerTriggerConfigOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfig) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Filter to match changes in pull requests.
+// Structure is documented below.
+func (o TriggerBitbucketServerTriggerConfigOutput) PullRequest() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfigPullRequest {
+		return v.PullRequest
+	}).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+// Structure is documented below.
+func (o TriggerBitbucketServerTriggerConfigOutput) Push() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfigPush { return v.Push }).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+// For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o TriggerBitbucketServerTriggerConfigOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfig) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) Elem() TriggerBitbucketServerTriggerConfigOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) TriggerBitbucketServerTriggerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBitbucketServerTriggerConfig
+		return ret
+	}).(TriggerBitbucketServerTriggerConfigOutput)
+}
+
+// The Bitbucket server config resource that this trigger config maps to.
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) BitbucketServerConfigResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BitbucketServerConfigResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) ProjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+// Structure is documented below.
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) PullRequest() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfigPullRequest {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+// Structure is documented below.
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) Push() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfigPush {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
+}
+
+// Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+// For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) RepoSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoSlug
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPullRequest struct {
+	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch string `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl *string `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex *bool `pulumi:"invertRegex"`
+}
+
+// TriggerBitbucketServerTriggerConfigPullRequestInput is an input type that accepts TriggerBitbucketServerTriggerConfigPullRequestArgs and TriggerBitbucketServerTriggerConfigPullRequestOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigPullRequestInput` via:
+//
+//	TriggerBitbucketServerTriggerConfigPullRequestArgs{...}
+type TriggerBitbucketServerTriggerConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigPullRequestOutput() TriggerBitbucketServerTriggerConfigPullRequestOutput
+	ToTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigPullRequestOutput
+}
+
+type TriggerBitbucketServerTriggerConfigPullRequestArgs struct {
+	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
+	// If true, branches that do NOT match the gitRef will trigger a build.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+}
+
+func (TriggerBitbucketServerTriggerConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketServerTriggerConfigPullRequestOutput() TriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPullRequestOutput)
+}
+
+func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPullRequestOutput).ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx)
+}
+
+// TriggerBitbucketServerTriggerConfigPullRequestPtrInput is an input type that accepts TriggerBitbucketServerTriggerConfigPullRequestArgs, TriggerBitbucketServerTriggerConfigPullRequestPtr and TriggerBitbucketServerTriggerConfigPullRequestPtrOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigPullRequestPtrInput` via:
+//
+//	        TriggerBitbucketServerTriggerConfigPullRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerBitbucketServerTriggerConfigPullRequestPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput
+	ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput
+}
+
+type triggerBitbucketServerTriggerConfigPullRequestPtrType TriggerBitbucketServerTriggerConfigPullRequestArgs
+
+func TriggerBitbucketServerTriggerConfigPullRequestPtr(v *TriggerBitbucketServerTriggerConfigPullRequestArgs) TriggerBitbucketServerTriggerConfigPullRequestPtrInput {
+	return (*triggerBitbucketServerTriggerConfigPullRequestPtrType)(v)
+}
+
+func (*triggerBitbucketServerTriggerConfigPullRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (i *triggerBitbucketServerTriggerConfigPullRequestPtrType) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBitbucketServerTriggerConfigPullRequestPtrType) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucketServerTriggerConfigPullRequestOutput() TriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o.ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfigPullRequest) *TriggerBitbucketServerTriggerConfigPullRequest {
+		return &v
+	}).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
+}
+
+// Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPullRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Elem() TriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) TriggerBitbucketServerTriggerConfigPullRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBitbucketServerTriggerConfigPullRequest
+		return ret
+	}).(TriggerBitbucketServerTriggerConfigPullRequestOutput)
+}
+
+// Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommentControl
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the gitRef will trigger a build.
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPush struct {
+	// Regex of branches to match.  Specify only one of branch or tag.
+	Branch *string `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
+	// Regex of tags to match.  Specify only one of branch or tag.
+	Tag *string `pulumi:"tag"`
+}
+
+// TriggerBitbucketServerTriggerConfigPushInput is an input type that accepts TriggerBitbucketServerTriggerConfigPushArgs and TriggerBitbucketServerTriggerConfigPushOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigPushInput` via:
+//
+//	TriggerBitbucketServerTriggerConfigPushArgs{...}
+type TriggerBitbucketServerTriggerConfigPushInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigPushOutput() TriggerBitbucketServerTriggerConfigPushOutput
+	ToTriggerBitbucketServerTriggerConfigPushOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigPushOutput
+}
+
+type TriggerBitbucketServerTriggerConfigPushArgs struct {
+	// Regex of branches to match.  Specify only one of branch or tag.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
+	// Regex of tags to match.  Specify only one of branch or tag.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (TriggerBitbucketServerTriggerConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTriggerConfigPushOutput() TriggerBitbucketServerTriggerConfigPushOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPushOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPushOutput)
+}
+
+func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPushOutput).ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx)
+}
+
+// TriggerBitbucketServerTriggerConfigPushPtrInput is an input type that accepts TriggerBitbucketServerTriggerConfigPushArgs, TriggerBitbucketServerTriggerConfigPushPtr and TriggerBitbucketServerTriggerConfigPushPtrOutput values.
+// You can construct a concrete instance of `TriggerBitbucketServerTriggerConfigPushPtrInput` via:
+//
+//	        TriggerBitbucketServerTriggerConfigPushArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerBitbucketServerTriggerConfigPushPtrInput interface {
+	pulumi.Input
+
+	ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput
+	ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput
+}
+
+type triggerBitbucketServerTriggerConfigPushPtrType TriggerBitbucketServerTriggerConfigPushArgs
+
+func TriggerBitbucketServerTriggerConfigPushPtr(v *TriggerBitbucketServerTriggerConfigPushArgs) TriggerBitbucketServerTriggerConfigPushPtrInput {
+	return (*triggerBitbucketServerTriggerConfigPushPtrType)(v)
+}
+
+func (*triggerBitbucketServerTriggerConfigPushPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (i *triggerBitbucketServerTriggerConfigPushPtrType) ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return i.ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerBitbucketServerTriggerConfigPushPtrType) ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPushOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerTriggerConfigPushOutput() TriggerBitbucketServerTriggerConfigPushOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o.ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfigPush) *TriggerBitbucketServerTriggerConfigPush {
+		return &v
+	}).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
+}
+
+// Regex of branches to match.  Specify only one of branch or tag.
+func (o TriggerBitbucketServerTriggerConfigPushOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerBitbucketServerTriggerConfigPushOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.  Specify only one of branch or tag.
+func (o TriggerBitbucketServerTriggerConfigPushOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBitbucketServerTriggerConfigPushPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerBitbucketServerTriggerConfigPushPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput {
+	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Elem() TriggerBitbucketServerTriggerConfigPushOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) TriggerBitbucketServerTriggerConfigPush {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerBitbucketServerTriggerConfigPush
+		return ret
+	}).(TriggerBitbucketServerTriggerConfigPushOutput)
+}
+
+// Regex of branches to match.  Specify only one of branch or tag.
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Regex of tags to match.  Specify only one of branch or tag.
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
 }
 
 type TriggerBuild struct {
@@ -3337,6 +4207,9 @@ func (o TriggerGitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type TriggerGithub struct {
+	// The resource name of the github enterprise config that should be applied to this installation.
+	// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+	EnterpriseConfigResourceName *string `pulumi:"enterpriseConfigResourceName"`
 	// Name of the repository. For example: The name for
 	// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 	Name *string `pulumi:"name"`
@@ -3363,6 +4236,9 @@ type TriggerGithubInput interface {
 }
 
 type TriggerGithubArgs struct {
+	// The resource name of the github enterprise config that should be applied to this installation.
+	// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+	EnterpriseConfigResourceName pulumi.StringPtrInput `pulumi:"enterpriseConfigResourceName"`
 	// Name of the repository. For example: The name for
 	// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3454,6 +4330,12 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Con
 	}).(TriggerGithubPtrOutput)
 }
 
+// The resource name of the github enterprise config that should be applied to this installation.
+// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+func (o TriggerGithubOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGithub) *string { return v.EnterpriseConfigResourceName }).(pulumi.StringPtrOutput)
+}
+
 // Name of the repository. For example: The name for
 // https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 func (o TriggerGithubOutput) Name() pulumi.StringPtrOutput {
@@ -3502,6 +4384,17 @@ func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
 	}).(TriggerGithubOutput)
 }
 
+// The resource name of the github enterprise config that should be applied to this installation.
+// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+func (o TriggerGithubPtrOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnterpriseConfigResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the repository. For example: The name for
 // https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 func (o TriggerGithubPtrOutput) Name() pulumi.StringPtrOutput {
@@ -3548,8 +4441,9 @@ func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
 
 type TriggerGithubPullRequest struct {
 	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
-	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -3569,8 +4463,9 @@ type TriggerGithubPullRequestInput interface {
 
 type TriggerGithubPullRequestArgs struct {
 	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringInput `pulumi:"branch"`
-	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -3655,11 +4550,12 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithC
 }
 
 // Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
 
-// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 // Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
@@ -3695,6 +4591,7 @@ func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput
 }
 
 // Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {
@@ -3704,7 +4601,7 @@ func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 // Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
@@ -4283,8 +5180,9 @@ func (o TriggerRepositoryEventConfigPtrOutput) Repository() pulumi.StringPtrOutp
 
 type TriggerRepositoryEventConfigPullRequest struct {
 	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch *string `pulumi:"branch"`
-	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -4304,8 +5202,9 @@ type TriggerRepositoryEventConfigPullRequestInput interface {
 
 type TriggerRepositoryEventConfigPullRequestArgs struct {
 	// Regex of branches to match.
+	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
@@ -4390,11 +5289,12 @@ func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventC
 }
 
 // Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 // Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
@@ -4430,6 +5330,7 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Elem() TriggerReposito
 }
 
 // Regex of branches to match.
+// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
 		if v == nil {
@@ -4439,7 +5340,7 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
 // Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
@@ -5279,6 +6180,8 @@ func (o TriggerWebhookConfigPtrOutput) State() pulumi.StringPtrOutput {
 type WorkerPoolNetworkConfig struct {
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange *string `pulumi:"peeredNetworkIpRange"`
 }
 
 // WorkerPoolNetworkConfigInput is an input type that accepts WorkerPoolNetworkConfigArgs and WorkerPoolNetworkConfigOutput values.
@@ -5295,6 +6198,8 @@ type WorkerPoolNetworkConfigInput interface {
 type WorkerPoolNetworkConfigArgs struct {
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
+	// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange pulumi.StringPtrInput `pulumi:"peeredNetworkIpRange"`
 }
 
 func (WorkerPoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -5379,6 +6284,11 @@ func (o WorkerPoolNetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolNetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
 
+// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o WorkerPoolNetworkConfigOutput) PeeredNetworkIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolNetworkConfig) *string { return v.PeeredNetworkIpRange }).(pulumi.StringPtrOutput)
+}
+
 type WorkerPoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolNetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -5410,6 +6320,16 @@ func (o WorkerPoolNetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.PeeredNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o WorkerPoolNetworkConfigPtrOutput) PeeredNetworkIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeredNetworkIpRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5680,6 +6600,340 @@ func (o GetTriggerApprovalConfigArrayOutput) Index(i pulumi.IntInput) GetTrigger
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerApprovalConfig {
 		return vs[0].([]GetTriggerApprovalConfig)[vs[1].(int)]
 	}).(GetTriggerApprovalConfigOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfig struct {
+	BitbucketServerConfigResource string                                              `pulumi:"bitbucketServerConfigResource"`
+	ProjectKey                    string                                              `pulumi:"projectKey"`
+	PullRequests                  []GetTriggerBitbucketServerTriggerConfigPullRequest `pulumi:"pullRequests"`
+	Pushes                        []GetTriggerBitbucketServerTriggerConfigPush        `pulumi:"pushes"`
+	RepoSlug                      string                                              `pulumi:"repoSlug"`
+}
+
+// GetTriggerBitbucketServerTriggerConfigInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigArgs and GetTriggerBitbucketServerTriggerConfigOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigArgs{...}
+type GetTriggerBitbucketServerTriggerConfigInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigOutput() GetTriggerBitbucketServerTriggerConfigOutput
+	ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigArgs struct {
+	BitbucketServerConfigResource pulumi.StringInput                                          `pulumi:"bitbucketServerConfigResource"`
+	ProjectKey                    pulumi.StringInput                                          `pulumi:"projectKey"`
+	PullRequests                  GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput `pulumi:"pullRequests"`
+	Pushes                        GetTriggerBitbucketServerTriggerConfigPushArrayInput        `pulumi:"pushes"`
+	RepoSlug                      pulumi.StringInput                                          `pulumi:"repoSlug"`
+}
+
+func (GetTriggerBitbucketServerTriggerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigArgs) ToGetTriggerBitbucketServerTriggerConfigOutput() GetTriggerBitbucketServerTriggerConfigOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigArgs) ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigOutput)
+}
+
+// GetTriggerBitbucketServerTriggerConfigArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigArray and GetTriggerBitbucketServerTriggerConfigArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigArrayInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigArray{ GetTriggerBitbucketServerTriggerConfigArgs{...} }
+type GetTriggerBitbucketServerTriggerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigArrayOutput() GetTriggerBitbucketServerTriggerConfigArrayOutput
+	ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigArrayOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigArray []GetTriggerBitbucketServerTriggerConfigInput
+
+func (GetTriggerBitbucketServerTriggerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigArray) ToGetTriggerBitbucketServerTriggerConfigArrayOutput() GetTriggerBitbucketServerTriggerConfigArrayOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigArray) ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigArrayOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) ToGetTriggerBitbucketServerTriggerConfigOutput() GetTriggerBitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) BitbucketServerConfigResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfig) string { return v.BitbucketServerConfigResource }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfig) string { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) PullRequests() GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfig) []GetTriggerBitbucketServerTriggerConfigPullRequest {
+		return v.PullRequests
+	}).(GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) Pushes() GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfig) []GetTriggerBitbucketServerTriggerConfigPush {
+		return v.Pushes
+	}).(GetTriggerBitbucketServerTriggerConfigPushArrayOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) RepoSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfig) string { return v.RepoSlug }).(pulumi.StringOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfig)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) ToGetTriggerBitbucketServerTriggerConfigArrayOutput() GetTriggerBitbucketServerTriggerConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBitbucketServerTriggerConfig {
+		return vs[0].([]GetTriggerBitbucketServerTriggerConfig)[vs[1].(int)]
+	}).(GetTriggerBitbucketServerTriggerConfigOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPullRequest struct {
+	Branch         string `pulumi:"branch"`
+	CommentControl string `pulumi:"commentControl"`
+	InvertRegex    bool   `pulumi:"invertRegex"`
+}
+
+// GetTriggerBitbucketServerTriggerConfigPullRequestInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPullRequestArgs and GetTriggerBitbucketServerTriggerConfigPullRequestOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPullRequestInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigPullRequestArgs{...}
+type GetTriggerBitbucketServerTriggerConfigPullRequestInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigPullRequestOutput() GetTriggerBitbucketServerTriggerConfigPullRequestOutput
+	ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigPullRequestArgs struct {
+	Branch         pulumi.StringInput `pulumi:"branch"`
+	CommentControl pulumi.StringInput `pulumi:"commentControl"`
+	InvertRegex    pulumi.BoolInput   `pulumi:"invertRegex"`
+}
+
+func (GetTriggerBitbucketServerTriggerConfigPullRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArgs) ToGetTriggerBitbucketServerTriggerConfigPullRequestOutput() GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArgs) ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPullRequestOutput)
+}
+
+// GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPullRequestArray and GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigPullRequestArray{ GetTriggerBitbucketServerTriggerConfigPullRequestArgs{...} }
+type GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput() GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput
+	ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigPullRequestArray []GetTriggerBitbucketServerTriggerConfigPullRequestInput
+
+func (GetTriggerBitbucketServerTriggerConfigPullRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArray) ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput() GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArray) ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPullRequestOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestOutput() GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) CommentControl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPullRequest) string { return v.CommentControl }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPullRequest) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfigPullRequest)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput() GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBitbucketServerTriggerConfigPullRequest {
+		return vs[0].([]GetTriggerBitbucketServerTriggerConfigPullRequest)[vs[1].(int)]
+	}).(GetTriggerBitbucketServerTriggerConfigPullRequestOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPush struct {
+	Branch      string `pulumi:"branch"`
+	InvertRegex bool   `pulumi:"invertRegex"`
+	Tag         string `pulumi:"tag"`
+}
+
+// GetTriggerBitbucketServerTriggerConfigPushInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPushArgs and GetTriggerBitbucketServerTriggerConfigPushOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPushInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigPushArgs{...}
+type GetTriggerBitbucketServerTriggerConfigPushInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigPushOutput() GetTriggerBitbucketServerTriggerConfigPushOutput
+	ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigPushOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigPushArgs struct {
+	Branch      pulumi.StringInput `pulumi:"branch"`
+	InvertRegex pulumi.BoolInput   `pulumi:"invertRegex"`
+	Tag         pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetTriggerBitbucketServerTriggerConfigPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPushArgs) ToGetTriggerBitbucketServerTriggerConfigPushOutput() GetTriggerBitbucketServerTriggerConfigPushOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPushArgs) ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPushOutput)
+}
+
+// GetTriggerBitbucketServerTriggerConfigPushArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPushArray and GetTriggerBitbucketServerTriggerConfigPushArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPushArrayInput` via:
+//
+//	GetTriggerBitbucketServerTriggerConfigPushArray{ GetTriggerBitbucketServerTriggerConfigPushArgs{...} }
+type GetTriggerBitbucketServerTriggerConfigPushArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBitbucketServerTriggerConfigPushArrayOutput() GetTriggerBitbucketServerTriggerConfigPushArrayOutput
+	ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(context.Context) GetTriggerBitbucketServerTriggerConfigPushArrayOutput
+}
+
+type GetTriggerBitbucketServerTriggerConfigPushArray []GetTriggerBitbucketServerTriggerConfigPushInput
+
+func (GetTriggerBitbucketServerTriggerConfigPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPushArray) ToGetTriggerBitbucketServerTriggerConfigPushArrayOutput() GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
+	return i.ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBitbucketServerTriggerConfigPushArray) ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPushArrayOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPushOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) ToGetTriggerBitbucketServerTriggerConfigPushOutput() GetTriggerBitbucketServerTriggerConfigPushOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPush) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPush) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBitbucketServerTriggerConfigPush) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetTriggerBitbucketServerTriggerConfigPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBitbucketServerTriggerConfigPush)(nil)).Elem()
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPushArrayOutput() GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
+	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBitbucketServerTriggerConfigPush {
+		return vs[0].([]GetTriggerBitbucketServerTriggerConfigPush)[vs[1].(int)]
+	}).(GetTriggerBitbucketServerTriggerConfigPushOutput)
 }
 
 type GetTriggerBuild struct {
@@ -7428,10 +8682,11 @@ func (o GetTriggerGitFileSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerG
 }
 
 type GetTriggerGithub struct {
-	Name         string                        `pulumi:"name"`
-	Owner        string                        `pulumi:"owner"`
-	PullRequests []GetTriggerGithubPullRequest `pulumi:"pullRequests"`
-	Pushes       []GetTriggerGithubPush        `pulumi:"pushes"`
+	EnterpriseConfigResourceName string                        `pulumi:"enterpriseConfigResourceName"`
+	Name                         string                        `pulumi:"name"`
+	Owner                        string                        `pulumi:"owner"`
+	PullRequests                 []GetTriggerGithubPullRequest `pulumi:"pullRequests"`
+	Pushes                       []GetTriggerGithubPush        `pulumi:"pushes"`
 }
 
 // GetTriggerGithubInput is an input type that accepts GetTriggerGithubArgs and GetTriggerGithubOutput values.
@@ -7446,10 +8701,11 @@ type GetTriggerGithubInput interface {
 }
 
 type GetTriggerGithubArgs struct {
-	Name         pulumi.StringInput                    `pulumi:"name"`
-	Owner        pulumi.StringInput                    `pulumi:"owner"`
-	PullRequests GetTriggerGithubPullRequestArrayInput `pulumi:"pullRequests"`
-	Pushes       GetTriggerGithubPushArrayInput        `pulumi:"pushes"`
+	EnterpriseConfigResourceName pulumi.StringInput                    `pulumi:"enterpriseConfigResourceName"`
+	Name                         pulumi.StringInput                    `pulumi:"name"`
+	Owner                        pulumi.StringInput                    `pulumi:"owner"`
+	PullRequests                 GetTriggerGithubPullRequestArrayInput `pulumi:"pullRequests"`
+	Pushes                       GetTriggerGithubPushArrayInput        `pulumi:"pushes"`
 }
 
 func (GetTriggerGithubArgs) ElementType() reflect.Type {
@@ -7501,6 +8757,10 @@ func (o GetTriggerGithubOutput) ToGetTriggerGithubOutput() GetTriggerGithubOutpu
 
 func (o GetTriggerGithubOutput) ToGetTriggerGithubOutputWithContext(ctx context.Context) GetTriggerGithubOutput {
 	return o
+}
+
+func (o GetTriggerGithubOutput) EnterpriseConfigResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGithub) string { return v.EnterpriseConfigResourceName }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerGithubOutput) Name() pulumi.StringOutput {
@@ -8526,8 +9786,18 @@ func (o GetTriggerWebhookConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerW
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigConnectedRepositoryInput)(nil)).Elem(), BitbucketServerConfigConnectedRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigConnectedRepositoryArrayInput)(nil)).Elem(), BitbucketServerConfigConnectedRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigSecretsInput)(nil)).Elem(), BitbucketServerConfigSecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigSecretsPtrInput)(nil)).Elem(), BitbucketServerConfigSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerApprovalConfigPtrInput)(nil)).Elem(), TriggerApprovalConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPtrInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPullRequestInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPullRequestPtrInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPushInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBitbucketServerTriggerConfigPushPtrInput)(nil)).Elem(), TriggerBitbucketServerTriggerConfigPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildInput)(nil)).Elem(), TriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildPtrInput)(nil)).Elem(), TriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsInput)(nil)).Elem(), TriggerBuildArtifactsArgs{})
@@ -8584,6 +9854,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigPtrInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerApprovalConfigInput)(nil)).Elem(), GetTriggerApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerApprovalConfigArrayInput)(nil)).Elem(), GetTriggerApprovalConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigArrayInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPullRequestInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigPullRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigPullRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPushInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBitbucketServerTriggerConfigPushArrayInput)(nil)).Elem(), GetTriggerBitbucketServerTriggerConfigPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildInput)(nil)).Elem(), GetTriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArrayInput)(nil)).Elem(), GetTriggerBuildArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactInput)(nil)).Elem(), GetTriggerBuildArtifactArgs{})
@@ -8634,8 +9910,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerTriggerTemplateArrayInput)(nil)).Elem(), GetTriggerTriggerTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigInput)(nil)).Elem(), GetTriggerWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigArrayInput)(nil)).Elem(), GetTriggerWebhookConfigArray{})
+	pulumi.RegisterOutputType(BitbucketServerConfigConnectedRepositoryOutput{})
+	pulumi.RegisterOutputType(BitbucketServerConfigConnectedRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(BitbucketServerConfigSecretsOutput{})
+	pulumi.RegisterOutputType(BitbucketServerConfigSecretsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerApprovalConfigOutput{})
 	pulumi.RegisterOutputType(TriggerApprovalConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigPushOutput{})
+	pulumi.RegisterOutputType(TriggerBitbucketServerTriggerConfigPushPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildOutput{})
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsOutput{})
@@ -8692,6 +9978,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetTriggerApprovalConfigOutput{})
 	pulumi.RegisterOutputType(GetTriggerApprovalConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigPullRequestOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigPushOutput{})
+	pulumi.RegisterOutputType(GetTriggerBitbucketServerTriggerConfigPushArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactOutput{})

@@ -11,69 +11,91 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allows creation and management of a single binding within IAM policy for
+// an existing Google Cloud Platform folder.
+//
+// > **Note:** This resource _must not_ be used in conjunction with
+//
+//	`folder.IAMPolicy` or they will fight over what your policy
+//	should be.
+//
+// > **Note:** On create, this resource will overwrite members of any existing roles.
+//
+//	Use `pulumi import` and inspect the output to ensure
+//	your existing members are preserved.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("Department 1"),
+//				Parent:      pulumi.String("organizations/1234567"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
+//				Folder: department1.Name,
+//				Role:   pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:alice@gmail.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
 //
-// This member resource can be imported using the `folder`, role, and member e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding my_folder "folder roles/viewer user:foo@example.com"
-//
-// ```
-//
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `folder` and role, e.g.
+// These bindings can be imported using the `folder` and role, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding my_folder "folder roles/viewer"
+//	$ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
 //
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question.
+//	-> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
 //
-// This policy resource can be imported using the `folder`.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding my_folder folder
-//
-// ```
-//
-//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding my_folder "folder foo.googleapis.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
-//
-// ```
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the folder's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder  pulumi.StringOutput      `pulumi:"folder"`
+	Folder pulumi.StringOutput `pulumi:"folder"`
+	// An array of identities that will be granted the privilege in the `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `organizations/{{org_id}}/roles/{{role_id}}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -115,32 +137,42 @@ func GetIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IAMBinding resources.
 type iambindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the folder's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder  *string  `pulumi:"folder"`
+	Folder *string `pulumi:"folder"`
+	// An array of identities that will be granted the privilege in the `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `organizations/{{org_id}}/roles/{{role_id}}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
 type IAMBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the folder's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder  pulumi.StringPtrInput
+	Folder pulumi.StringPtrInput
+	// An array of identities that will be granted the privilege in the `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `organizations/{{org_id}}/roles/{{role_id}}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
@@ -149,29 +181,39 @@ func (IAMBindingState) ElementType() reflect.Type {
 }
 
 type iambindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder  string   `pulumi:"folder"`
+	Folder string `pulumi:"folder"`
+	// An array of identities that will be granted the privilege in the `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `organizations/{{org_id}}/roles/{{role_id}}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a IAMBinding resource.
 type IAMBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder  pulumi.StringInput
+	Folder pulumi.StringInput
+	// An array of identities that will be granted the privilege in the `role`.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `organizations/{{org_id}}/roles/{{role_id}}`.
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
@@ -262,8 +304,6 @@ func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAM
 	return o
 }
 
-// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-// Structure is documented below.
 func (o IAMBindingOutput) Condition() IAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *IAMBinding) IAMBindingConditionPtrOutput { return v.Condition }).(IAMBindingConditionPtrOutput)
 }
@@ -278,13 +318,20 @@ func (o IAMBindingOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }
 
+// An array of identities that will be granted the privilege in the `role`.
+// Each entry can have one of the following values:
+// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The role that should be applied. Only one
 // `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-// `organizations/{{org_id}}/roles/{{role_id}}`.
+// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o IAMBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// A ScanConfig resource contains the configurations to launch a scan.
+    /// 
+    /// To get more information about ScanConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+    /// * How-to Guides
+    ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+    /// 
+    /// &gt; **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
+    /// 
     /// ## Example Usage
     /// ### Scan Config Basic
     /// 
@@ -29,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
     ///     {
-    ///         DisplayName = "terraform-scan-config",
+    ///         DisplayName = "scan-config",
     ///         StartingUrls = new[]
     ///         {
     ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),

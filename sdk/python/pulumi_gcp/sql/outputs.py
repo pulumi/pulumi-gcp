@@ -70,6 +70,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingMaintenanceWindowResult',
     'GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult',
     'GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult',
+    'GetDatabasesDatabaseResult',
 ]
 
 @pulumi.output_type
@@ -3602,5 +3603,69 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
     @pulumi.getter(name="uploadInterval")
     def upload_interval(self) -> str:
         return pulumi.get(self, "upload_interval")
+
+
+@pulumi.output_type
+class GetDatabasesDatabaseResult(dict):
+    def __init__(__self__, *,
+                 charset: str,
+                 collation: str,
+                 deletion_policy: str,
+                 instance: str,
+                 name: str,
+                 project: str,
+                 self_link: str):
+        """
+        :param str instance: The name of the Cloud SQL database instance in which the database belongs.
+        :param str project: The ID of the project in which the instance belongs.
+        """
+        pulumi.set(__self__, "charset", charset)
+        pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def charset(self) -> str:
+        return pulumi.get(self, "charset")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> str:
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> str:
+        return pulumi.get(self, "deletion_policy")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> str:
+        """
+        The name of the Cloud SQL database instance in which the database belongs.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the instance belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        return pulumi.get(self, "self_link")
 
 

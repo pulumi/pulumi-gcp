@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        /// <summary>
+        /// Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        /// </summary>
         [Input("maxRunDuration")]
         public Input<Inputs.InstanceTemplateSchedulingMaxRunDurationArgs>? MaxRunDuration { get; set; }
 

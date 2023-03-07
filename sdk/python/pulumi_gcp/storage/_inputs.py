@@ -1141,6 +1141,8 @@ class TransferJobTransferSpecArgs:
                  object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']] = None,
                  posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']] = None,
                  posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']] = None,
+                 sink_agent_pool_name: Optional[pulumi.Input[str]] = None,
+                 source_agent_pool_name: Optional[pulumi.Input[str]] = None,
                  transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
         """
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
@@ -1151,6 +1153,8 @@ class TransferJobTransferSpecArgs:
         :param pulumi.Input['TransferJobTransferSpecObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs'] posix_data_sink: A POSIX data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs'] posix_data_source: A POSIX filesystem data source. Structure documented below.
+        :param pulumi.Input[str] sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        :param pulumi.Input[str] source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         :param pulumi.Input['TransferJobTransferSpecTransferOptionsArgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
@@ -1169,6 +1173,10 @@ class TransferJobTransferSpecArgs:
             pulumi.set(__self__, "posix_data_sink", posix_data_sink)
         if posix_data_source is not None:
             pulumi.set(__self__, "posix_data_source", posix_data_source)
+        if sink_agent_pool_name is not None:
+            pulumi.set(__self__, "sink_agent_pool_name", sink_agent_pool_name)
+        if source_agent_pool_name is not None:
+            pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -1267,6 +1275,30 @@ class TransferJobTransferSpecArgs:
     @posix_data_source.setter
     def posix_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]):
         pulumi.set(self, "posix_data_source", value)
+
+    @property
+    @pulumi.getter(name="sinkAgentPoolName")
+    def sink_agent_pool_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "sink_agent_pool_name")
+
+    @sink_agent_pool_name.setter
+    def sink_agent_pool_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sink_agent_pool_name", value)
+
+    @property
+    @pulumi.getter(name="sourceAgentPoolName")
+    def source_agent_pool_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "source_agent_pool_name")
+
+    @source_agent_pool_name.setter
+    def source_agent_pool_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_agent_pool_name", value)
 
     @property
     @pulumi.getter(name="transferOptions")

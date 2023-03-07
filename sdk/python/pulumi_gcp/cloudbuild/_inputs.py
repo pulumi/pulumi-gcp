@@ -10,7 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'BitbucketServerConfigConnectedRepositoryArgs',
+    'BitbucketServerConfigSecretsArgs',
     'TriggerApprovalConfigArgs',
+    'TriggerBitbucketServerTriggerConfigArgs',
+    'TriggerBitbucketServerTriggerConfigPullRequestArgs',
+    'TriggerBitbucketServerTriggerConfigPushArgs',
     'TriggerBuildArgs',
     'TriggerBuildArtifactsArgs',
     'TriggerBuildArtifactsObjectsArgs',
@@ -41,6 +46,97 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class BitbucketServerConfigConnectedRepositoryArgs:
+    def __init__(__self__, *,
+                 project_key: pulumi.Input[str],
+                 repo_slug: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] project_key: Identifier for the project storing the repository.
+        :param pulumi.Input[str] repo_slug: Identifier for the repository.
+        """
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "repo_slug", repo_slug)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> pulumi.Input[str]:
+        """
+        Identifier for the project storing the repository.
+        """
+        return pulumi.get(self, "project_key")
+
+    @project_key.setter
+    def project_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_key", value)
+
+    @property
+    @pulumi.getter(name="repoSlug")
+    def repo_slug(self) -> pulumi.Input[str]:
+        """
+        Identifier for the repository.
+        """
+        return pulumi.get(self, "repo_slug")
+
+    @repo_slug.setter
+    def repo_slug(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_slug", value)
+
+
+@pulumi.input_type
+class BitbucketServerConfigSecretsArgs:
+    def __init__(__self__, *,
+                 admin_access_token_version_name: pulumi.Input[str],
+                 read_access_token_version_name: pulumi.Input[str],
+                 webhook_secret_version_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] admin_access_token_version_name: The resource name for the admin access token's secret version.
+        :param pulumi.Input[str] read_access_token_version_name: The resource name for the read access token's secret version.
+        :param pulumi.Input[str] webhook_secret_version_name: Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+               Changing this field will result in deleting/ recreating the resource.
+        """
+        pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
+        pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
+        pulumi.set(__self__, "webhook_secret_version_name", webhook_secret_version_name)
+
+    @property
+    @pulumi.getter(name="adminAccessTokenVersionName")
+    def admin_access_token_version_name(self) -> pulumi.Input[str]:
+        """
+        The resource name for the admin access token's secret version.
+        """
+        return pulumi.get(self, "admin_access_token_version_name")
+
+    @admin_access_token_version_name.setter
+    def admin_access_token_version_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "admin_access_token_version_name", value)
+
+    @property
+    @pulumi.getter(name="readAccessTokenVersionName")
+    def read_access_token_version_name(self) -> pulumi.Input[str]:
+        """
+        The resource name for the read access token's secret version.
+        """
+        return pulumi.get(self, "read_access_token_version_name")
+
+    @read_access_token_version_name.setter
+    def read_access_token_version_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "read_access_token_version_name", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretVersionName")
+    def webhook_secret_version_name(self) -> pulumi.Input[str]:
+        """
+        Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+        Changing this field will result in deleting/ recreating the resource.
+        """
+        return pulumi.get(self, "webhook_secret_version_name")
+
+    @webhook_secret_version_name.setter
+    def webhook_secret_version_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_secret_version_name", value)
+
+
+@pulumi.input_type
 class TriggerApprovalConfigArgs:
     def __init__(__self__, *,
                  approval_required: Optional[pulumi.Input[bool]] = None):
@@ -63,6 +159,209 @@ class TriggerApprovalConfigArgs:
     @approval_required.setter
     def approval_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "approval_required", value)
+
+
+@pulumi.input_type
+class TriggerBitbucketServerTriggerConfigArgs:
+    def __init__(__self__, *,
+                 bitbucket_server_config_resource: pulumi.Input[str],
+                 project_key: pulumi.Input[str],
+                 repo_slug: pulumi.Input[str],
+                 pull_request: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgs']] = None,
+                 push: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs']] = None):
+        """
+        :param pulumi.Input[str] bitbucket_server_config_resource: The Bitbucket server config resource that this trigger config maps to.
+        :param pulumi.Input[str] project_key: Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        :param pulumi.Input[str] repo_slug: Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+               For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+        :param pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgs'] pull_request: Filter to match changes in pull requests.
+               Structure is documented below.
+        :param pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs'] push: Filter to match changes in refs like branches, tags.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bitbucket_server_config_resource", bitbucket_server_config_resource)
+        pulumi.set(__self__, "project_key", project_key)
+        pulumi.set(__self__, "repo_slug", repo_slug)
+        if pull_request is not None:
+            pulumi.set(__self__, "pull_request", pull_request)
+        if push is not None:
+            pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfigResource")
+    def bitbucket_server_config_resource(self) -> pulumi.Input[str]:
+        """
+        The Bitbucket server config resource that this trigger config maps to.
+        """
+        return pulumi.get(self, "bitbucket_server_config_resource")
+
+    @bitbucket_server_config_resource.setter
+    def bitbucket_server_config_resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bitbucket_server_config_resource", value)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> pulumi.Input[str]:
+        """
+        Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        """
+        return pulumi.get(self, "project_key")
+
+    @project_key.setter
+    def project_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_key", value)
+
+    @property
+    @pulumi.getter(name="repoSlug")
+    def repo_slug(self) -> pulumi.Input[str]:
+        """
+        Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+        For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+        """
+        return pulumi.get(self, "repo_slug")
+
+    @repo_slug.setter
+    def repo_slug(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_slug", value)
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgs']]:
+        """
+        Filter to match changes in pull requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @pull_request.setter
+    def pull_request(self, value: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgs']]):
+        pulumi.set(self, "pull_request", value)
+
+    @property
+    @pulumi.getter
+    def push(self) -> Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs']]:
+        """
+        Filter to match changes in refs like branches, tags.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push")
+
+    @push.setter
+    def push(self, value: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgs']]):
+        pulumi.set(self, "push", value)
+
+
+@pulumi.input_type
+class TriggerBitbucketServerTriggerConfigPullRequestArgs:
+    def __init__(__self__, *,
+                 branch: pulumi.Input[str],
+                 comment_control: Optional[pulumi.Input[str]] = None,
+                 invert_regex: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] branch: Regex of branches to match.
+               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        :param pulumi.Input[str] comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        pulumi.set(__self__, "branch", branch)
+        if comment_control is not None:
+            pulumi.set(__self__, "comment_control", comment_control)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> pulumi.Input[str]:
+        """
+        Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: pulumi.Input[str]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        return pulumi.get(self, "comment_control")
+
+    @comment_control.setter
+    def comment_control(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment_control", value)
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @invert_regex.setter
+    def invert_regex(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invert_regex", value)
+
+
+@pulumi.input_type
+class TriggerBitbucketServerTriggerConfigPushArgs:
+    def __init__(__self__, *,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 invert_regex: Optional[pulumi.Input[bool]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] branch: Regex of branches to match.  Specify only one of branch or tag.
+        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex of branches to match.  Specify only one of branch or tag.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @invert_regex.setter
+    def invert_regex(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invert_regex", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex of tags to match.  Specify only one of branch or tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type
@@ -1554,11 +1853,14 @@ class TriggerGitFileSourceArgs:
 @pulumi.input_type
 class TriggerGithubArgs:
     def __init__(__self__, *,
+                 enterprise_config_resource_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  pull_request: Optional[pulumi.Input['TriggerGithubPullRequestArgs']] = None,
                  push: Optional[pulumi.Input['TriggerGithubPushArgs']] = None):
         """
+        :param pulumi.Input[str] enterprise_config_resource_name: The resource name of the github enterprise config that should be applied to this installation.
+               For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
         :param pulumi.Input[str] name: Name of the repository. For example: The name for
                https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         :param pulumi.Input[str] owner: Owner of the repository. For example: The owner for
@@ -1568,6 +1870,8 @@ class TriggerGithubArgs:
         :param pulumi.Input['TriggerGithubPushArgs'] push: filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
                Structure is documented below.
         """
+        if enterprise_config_resource_name is not None:
+            pulumi.set(__self__, "enterprise_config_resource_name", enterprise_config_resource_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
@@ -1576,6 +1880,19 @@ class TriggerGithubArgs:
             pulumi.set(__self__, "pull_request", pull_request)
         if push is not None:
             pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="enterpriseConfigResourceName")
+    def enterprise_config_resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the github enterprise config that should be applied to this installation.
+        For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+        """
+        return pulumi.get(self, "enterprise_config_resource_name")
+
+    @enterprise_config_resource_name.setter
+    def enterprise_config_resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enterprise_config_resource_name", value)
 
     @property
     @pulumi.getter
@@ -1638,7 +1955,8 @@ class TriggerGithubPullRequestArgs:
                  invert_regex: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] branch: Regex of branches to match.
-        :param pulumi.Input[str] comment_control: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        :param pulumi.Input[str] comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
                Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
@@ -1653,6 +1971,7 @@ class TriggerGithubPullRequestArgs:
     def branch(self) -> pulumi.Input[str]:
         """
         Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "branch")
 
@@ -1664,7 +1983,7 @@ class TriggerGithubPullRequestArgs:
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
         Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
@@ -1694,7 +2013,7 @@ class TriggerGithubPushArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
         if branch is not None:
@@ -1720,7 +2039,7 @@ class TriggerGithubPushArgs:
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -1880,7 +2199,8 @@ class TriggerRepositoryEventConfigPullRequestArgs:
                  invert_regex: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] branch: Regex of branches to match.
-        :param pulumi.Input[str] comment_control: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        :param pulumi.Input[str] comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
                Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
@@ -1896,6 +2216,7 @@ class TriggerRepositoryEventConfigPullRequestArgs:
     def branch(self) -> Optional[pulumi.Input[str]]:
         """
         Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "branch")
 
@@ -1907,7 +2228,7 @@ class TriggerRepositoryEventConfigPullRequestArgs:
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
         Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
@@ -1937,7 +2258,7 @@ class TriggerRepositoryEventConfigPushArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
         if branch is not None:
@@ -1963,7 +2284,7 @@ class TriggerRepositoryEventConfigPushArgs:
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -2232,11 +2553,15 @@ class TriggerWebhookConfigArgs:
 @pulumi.input_type
 class WorkerPoolNetworkConfigArgs:
     def __init__(__self__, *,
-                 peered_network: pulumi.Input[str]):
+                 peered_network: pulumi.Input[str],
+                 peered_network_ip_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        :param pulumi.Input[str] peered_network_ip_range: Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
         """
         pulumi.set(__self__, "peered_network", peered_network)
+        if peered_network_ip_range is not None:
+            pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
 
     @property
     @pulumi.getter(name="peeredNetwork")
@@ -2249,6 +2574,18 @@ class WorkerPoolNetworkConfigArgs:
     @peered_network.setter
     def peered_network(self, value: pulumi.Input[str]):
         pulumi.set(self, "peered_network", value)
+
+    @property
+    @pulumi.getter(name="peeredNetworkIpRange")
+    def peered_network_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        """
+        return pulumi.get(self, "peered_network_ip_range")
+
+    @peered_network_ip_range.setter
+    def peered_network_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peered_network_ip_range", value)
 
 
 @pulumi.input_type

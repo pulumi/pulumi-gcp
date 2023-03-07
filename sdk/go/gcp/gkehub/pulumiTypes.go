@@ -1632,6 +1632,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Ba
 }
 
 type FeatureMembershipMesh struct {
+	// Deprecated: Deprecated in favor of the `management` field
 	ControlPlane *string `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management *string `pulumi:"management"`
@@ -1649,6 +1650,7 @@ type FeatureMembershipMeshInput interface {
 }
 
 type FeatureMembershipMeshArgs struct {
+	// Deprecated: Deprecated in favor of the `management` field
 	ControlPlane pulumi.StringPtrInput `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management pulumi.StringPtrInput `pulumi:"management"`
@@ -1731,6 +1733,7 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
+// Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
 }
@@ -1764,6 +1767,7 @@ func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
 	}).(FeatureMembershipMeshOutput)
 }
 
+// Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshPtrOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipMesh) *string {
 		if v == nil {

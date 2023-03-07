@@ -29,6 +29,12 @@ public final class ClusterPrivateClusterConfig {
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
+    /**
+     * @return Controls cluster master global
+     * access settings. If unset, the provider will no longer manage this field and will
+     * not modify the previously-set value. Structure is documented below.
+     * 
+     */
     private @Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig;
     /**
      * @return The IP range in CIDR notation to use for
@@ -83,6 +89,12 @@ public final class ClusterPrivateClusterConfig {
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    /**
+     * @return Controls cluster master global
+     * access settings. If unset, the provider will no longer manage this field and will
+     * not modify the previously-set value. Structure is documented below.
+     * 
+     */
     public Optional<ClusterPrivateClusterConfigMasterGlobalAccessConfig> masterGlobalAccessConfig() {
         return Optional.ofNullable(this.masterGlobalAccessConfig);
     }

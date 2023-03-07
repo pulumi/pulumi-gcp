@@ -158,7 +158,9 @@ type TableIamBinding struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringOutput      `pulumi:"instance"`
 	Members  pulumi.StringArrayOutput `pulumi:"members"`
-	Project  pulumi.StringOutput      `pulumi:"project"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -214,7 +216,9 @@ type tableIamBindingState struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance *string  `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
-	Project  *string  `pulumi:"project"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -230,7 +234,9 @@ type TableIamBindingState struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringPtrInput
 	Members  pulumi.StringArrayInput
-	Project  pulumi.StringPtrInput
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -248,7 +254,9 @@ type tableIamBindingArgs struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance string   `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
-	Project  *string  `pulumi:"project"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -263,7 +271,9 @@ type TableIamBindingArgs struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringInput
 	Members  pulumi.StringArrayInput
-	Project  pulumi.StringPtrInput
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -377,6 +387,8 @@ func (o TableIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// The project in which the table belongs. If it
+// is not provided, this provider will use the provider default.
 func (o TableIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

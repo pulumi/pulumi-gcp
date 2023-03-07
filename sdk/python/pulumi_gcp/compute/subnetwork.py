@@ -72,12 +72,11 @@ class SubnetworkArgs:
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
@@ -285,12 +284,11 @@ class SubnetworkArgs:
     @pulumi.getter(name="secondaryIpRanges")
     def secondary_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
         """
-        An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        syntax: 'example=[]' For more details about this behavior, see [this
-        section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        An array of configurations for secondary IP ranges for VM instances
+        contained in this subnetwork. The primary IP of such VM must belong
+        to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 
@@ -384,12 +382,11 @@ class _SubnetworkState:
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
@@ -676,12 +673,11 @@ class _SubnetworkState:
     @pulumi.getter(name="secondaryIpRanges")
     def secondary_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]]:
         """
-        An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        syntax: 'example=[]' For more details about this behavior, see [this
-        section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        An array of configurations for secondary IP ranges for VM instances
+        contained in this subnetwork. The primary IP of such VM must belong
+        to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 
@@ -910,12 +906,11 @@ class Subnetwork(pulumi.CustomResource):
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
@@ -1203,12 +1198,11 @@ class Subnetwork(pulumi.CustomResource):
                for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
                is ready to be promoted to ACTIVE or is currently draining.
                Possible values are `ACTIVE` and `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
@@ -1409,12 +1403,11 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="secondaryIpRanges")
     def secondary_ip_ranges(self) -> pulumi.Output[Sequence['outputs.SubnetworkSecondaryIpRange']]:
         """
-        An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        syntax: 'example=[]' For more details about this behavior, see [this
-        section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        An array of configurations for secondary IP ranges for VM instances
+        contained in this subnetwork. The primary IP of such VM must belong
+        to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        to either primary or secondary ranges.
+        Structure is documented below.
         """
         return pulumi.get(self, "secondary_ip_ranges")
 

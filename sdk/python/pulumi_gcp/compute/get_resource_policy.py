@@ -128,7 +128,16 @@ def get_resource_policy(name: Optional[str] = None,
                         region: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcePolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    daily = gcp.compute.get_resource_policy(name="daily",
+        region="us-central1")
+    ```
+
 
     :param str name: The name of the Resource Policy.
     :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.
@@ -159,7 +168,16 @@ def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
                                region: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcePolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    daily = gcp.compute.get_resource_policy(name="daily",
+        region="us-central1")
+    ```
+
 
     :param str name: The name of the Resource Policy.
     :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.

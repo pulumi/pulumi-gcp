@@ -15,9 +15,17 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
 
     public static final RegionDiskSourceSnapshotEncryptionKeyArgs Empty = new RegionDiskSourceSnapshotEncryptionKeyArgs();
 
+    /**
+     * The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     @Import(name="kmsKeyName")
     private @Nullable Output<String> kmsKeyName;
 
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     public Optional<Output<String>> kmsKeyName() {
         return Optional.ofNullable(this.kmsKeyName);
     }
@@ -82,11 +90,23 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
             $ = new RegionDiskSourceSnapshotEncryptionKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
             $.kmsKeyName = kmsKeyName;
             return this;
         }
 
+        /**
+         * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyName(String kmsKeyName) {
             return kmsKeyName(Output.of(kmsKeyName));
         }

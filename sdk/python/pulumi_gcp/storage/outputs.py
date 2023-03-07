@@ -1205,6 +1205,10 @@ class TransferJobTransferSpec(dict):
             suggest = "posix_data_sink"
         elif key == "posixDataSource":
             suggest = "posix_data_source"
+        elif key == "sinkAgentPoolName":
+            suggest = "sink_agent_pool_name"
+        elif key == "sourceAgentPoolName":
+            suggest = "source_agent_pool_name"
         elif key == "transferOptions":
             suggest = "transfer_options"
 
@@ -1228,6 +1232,8 @@ class TransferJobTransferSpec(dict):
                  object_conditions: Optional['outputs.TransferJobTransferSpecObjectConditions'] = None,
                  posix_data_sink: Optional['outputs.TransferJobTransferSpecPosixDataSink'] = None,
                  posix_data_source: Optional['outputs.TransferJobTransferSpecPosixDataSource'] = None,
+                 sink_agent_pool_name: Optional[str] = None,
+                 source_agent_pool_name: Optional[str] = None,
                  transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None):
         """
         :param 'TransferJobTransferSpecAwsS3DataSourceArgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
@@ -1238,6 +1244,8 @@ class TransferJobTransferSpec(dict):
         :param 'TransferJobTransferSpecObjectConditionsArgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         :param 'TransferJobTransferSpecPosixDataSinkArgs' posix_data_sink: A POSIX data sink. Structure documented below.
         :param 'TransferJobTransferSpecPosixDataSourceArgs' posix_data_source: A POSIX filesystem data source. Structure documented below.
+        :param str sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        :param str source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
@@ -1256,6 +1264,10 @@ class TransferJobTransferSpec(dict):
             pulumi.set(__self__, "posix_data_sink", posix_data_sink)
         if posix_data_source is not None:
             pulumi.set(__self__, "posix_data_source", posix_data_source)
+        if sink_agent_pool_name is not None:
+            pulumi.set(__self__, "sink_agent_pool_name", sink_agent_pool_name)
+        if source_agent_pool_name is not None:
+            pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -1322,6 +1334,22 @@ class TransferJobTransferSpec(dict):
         A POSIX filesystem data source. Structure documented below.
         """
         return pulumi.get(self, "posix_data_source")
+
+    @property
+    @pulumi.getter(name="sinkAgentPoolName")
+    def sink_agent_pool_name(self) -> Optional[str]:
+        """
+        Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "sink_agent_pool_name")
+
+    @property
+    @pulumi.getter(name="sourceAgentPoolName")
+    def source_agent_pool_name(self) -> Optional[str]:
+        """
+        Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        """
+        return pulumi.get(self, "source_agent_pool_name")
 
     @property
     @pulumi.getter(name="transferOptions")

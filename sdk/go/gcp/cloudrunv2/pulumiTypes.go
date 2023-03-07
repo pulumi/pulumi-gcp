@@ -6087,6 +6087,9 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Version() p
 type ServiceTemplateContainerLivenessProbe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc *ServiceTemplateContainerLivenessProbeGrpc `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet *ServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGet"`
@@ -6118,6 +6121,9 @@ type ServiceTemplateContainerLivenessProbeInput interface {
 type ServiceTemplateContainerLivenessProbeArgs struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc ServiceTemplateContainerLivenessProbeGrpcPtrInput `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet ServiceTemplateContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
@@ -6217,6 +6223,14 @@ func (o ServiceTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.I
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateContainerLivenessProbeOutput) Grpc() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeGrpc {
+		return v.Grpc
+	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
 // HTTPGet specifies the http request to perform.
 // Structure is documented below.
 func (o ServiceTemplateContainerLivenessProbeOutput) HttpGet() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
@@ -6285,6 +6299,17 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) FailureThreshold() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateContainerLivenessProbePtrOutput) Grpc() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
 // HTTPGet specifies the http request to perform.
 // Structure is documented below.
 func (o ServiceTemplateContainerLivenessProbePtrOutput) HttpGet() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
@@ -6338,6 +6363,170 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.
 		}
 		return v.TimeoutSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// ServiceTemplateContainerLivenessProbeGrpcInput is an input type that accepts ServiceTemplateContainerLivenessProbeGrpcArgs and ServiceTemplateContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeGrpcInput` via:
+//
+//	ServiceTemplateContainerLivenessProbeGrpcArgs{...}
+type ServiceTemplateContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerLivenessProbeGrpcOutput() ServiceTemplateContainerLivenessProbeGrpcOutput
+	ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(context.Context) ServiceTemplateContainerLivenessProbeGrpcOutput
+}
+
+type ServiceTemplateContainerLivenessProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServiceTemplateContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcOutput() ServiceTemplateContainerLivenessProbeGrpcOutput {
+	return i.ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcOutput)
+}
+
+func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcOutput).ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerLivenessProbeGrpcPtrInput is an input type that accepts ServiceTemplateContainerLivenessProbeGrpcArgs, ServiceTemplateContainerLivenessProbeGrpcPtr and ServiceTemplateContainerLivenessProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeGrpcPtrInput` via:
+//
+//	        ServiceTemplateContainerLivenessProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerLivenessProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput
+	ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput
+}
+
+type serviceTemplateContainerLivenessProbeGrpcPtrType ServiceTemplateContainerLivenessProbeGrpcArgs
+
+func ServiceTemplateContainerLivenessProbeGrpcPtr(v *ServiceTemplateContainerLivenessProbeGrpcArgs) ServiceTemplateContainerLivenessProbeGrpcPtrInput {
+	return (*serviceTemplateContainerLivenessProbeGrpcPtrType)(v)
+}
+
+func (*serviceTemplateContainerLivenessProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContainerLivenessProbeGrpcOutput() ServiceTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeGrpc) *ServiceTemplateContainerLivenessProbeGrpc {
+		return &v
+	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Elem() ServiceTemplateContainerLivenessProbeGrpcOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) ServiceTemplateContainerLivenessProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerLivenessProbeGrpc
+		return ret
+	}).(ServiceTemplateContainerLivenessProbeGrpcOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateContainerLivenessProbeHttpGet struct {
@@ -7010,6 +7199,9 @@ func (o ServiceTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOut
 type ServiceTemplateContainerStartupProbe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc *ServiceTemplateContainerStartupProbeGrpc `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	HttpGet *ServiceTemplateContainerStartupProbeHttpGet `pulumi:"httpGet"`
@@ -7038,6 +7230,9 @@ type ServiceTemplateContainerStartupProbeInput interface {
 type ServiceTemplateContainerStartupProbeArgs struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	// Structure is documented below.
+	Grpc ServiceTemplateContainerStartupProbeGrpcPtrInput `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	HttpGet ServiceTemplateContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
@@ -7134,6 +7329,12 @@ func (o ServiceTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.In
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateContainerStartupProbeOutput) Grpc() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerStartupProbe) *ServiceTemplateContainerStartupProbeGrpc { return v.Grpc }).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
 // HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 // Structure is documented below.
 func (o ServiceTemplateContainerStartupProbeOutput) HttpGet() ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
@@ -7199,6 +7400,17 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) FailureThreshold() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
+// Structure is documented below.
+func (o ServiceTemplateContainerStartupProbePtrOutput) Grpc() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbe) *ServiceTemplateContainerStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
 // HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 // Structure is documented below.
 func (o ServiceTemplateContainerStartupProbePtrOutput) HttpGet() ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
@@ -7249,6 +7461,170 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.I
 		}
 		return v.TimeoutSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateContainerStartupProbeGrpc struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// ServiceTemplateContainerStartupProbeGrpcInput is an input type that accepts ServiceTemplateContainerStartupProbeGrpcArgs and ServiceTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerStartupProbeGrpcInput` via:
+//
+//	ServiceTemplateContainerStartupProbeGrpcArgs{...}
+type ServiceTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerStartupProbeGrpcOutput() ServiceTemplateContainerStartupProbeGrpcOutput
+	ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) ServiceTemplateContainerStartupProbeGrpcOutput
+}
+
+type ServiceTemplateContainerStartupProbeGrpcArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServiceTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcOutput() ServiceTemplateContainerStartupProbeGrpcOutput {
+	return i.ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcOutput)
+}
+
+func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcOutput).ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerStartupProbeGrpcPtrInput is an input type that accepts ServiceTemplateContainerStartupProbeGrpcArgs, ServiceTemplateContainerStartupProbeGrpcPtr and ServiceTemplateContainerStartupProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerStartupProbeGrpcPtrInput` via:
+//
+//	        ServiceTemplateContainerStartupProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerStartupProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput
+	ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput
+}
+
+type serviceTemplateContainerStartupProbeGrpcPtrType ServiceTemplateContainerStartupProbeGrpcArgs
+
+func ServiceTemplateContainerStartupProbeGrpcPtr(v *ServiceTemplateContainerStartupProbeGrpcArgs) ServiceTemplateContainerStartupProbeGrpcPtrInput {
+	return (*serviceTemplateContainerStartupProbeGrpcPtrType)(v)
+}
+
+func (*serviceTemplateContainerStartupProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+type ServiceTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContainerStartupProbeGrpcOutput() ServiceTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbeGrpc) *ServiceTemplateContainerStartupProbeGrpc {
+		return &v
+	}).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateContainerStartupProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerStartupProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Elem() ServiceTemplateContainerStartupProbeGrpcOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) ServiceTemplateContainerStartupProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerStartupProbeGrpc
+		return ret
+	}).(ServiceTemplateContainerStartupProbeGrpcOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateContainerStartupProbeHttpGet struct {
@@ -9142,6 +9518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrInput)(nil)).Elem(), ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbePtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeGrpcInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeGrpcPtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
@@ -9154,6 +9532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesPtrInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbePtrInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeGrpcPtrInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
@@ -9256,6 +9636,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
@@ -9268,6 +9650,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})

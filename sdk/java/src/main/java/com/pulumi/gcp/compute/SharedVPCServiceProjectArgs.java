@@ -7,11 +7,30 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SharedVPCServiceProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SharedVPCServiceProjectArgs Empty = new SharedVPCServiceProjectArgs();
+
+    /**
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+     * Possible values are: &#34;ABANDON&#34;.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+     * Possible values are: &#34;ABANDON&#34;.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
 
     /**
      * The ID of a host project to associate.
@@ -46,6 +65,7 @@ public final class SharedVPCServiceProjectArgs extends com.pulumi.resources.Reso
     private SharedVPCServiceProjectArgs() {}
 
     private SharedVPCServiceProjectArgs(SharedVPCServiceProjectArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.hostProject = $.hostProject;
         this.serviceProject = $.serviceProject;
     }
@@ -66,6 +86,29 @@ public final class SharedVPCServiceProjectArgs extends com.pulumi.resources.Reso
 
         public Builder(SharedVPCServiceProjectArgs defaults) {
             $ = new SharedVPCServiceProjectArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+         * Possible values are: &#34;ABANDON&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+         * Possible values are: &#34;ABANDON&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

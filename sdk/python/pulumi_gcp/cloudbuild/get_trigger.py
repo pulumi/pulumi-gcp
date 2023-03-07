@@ -22,10 +22,13 @@ class GetTriggerResult:
     """
     A collection of values returned by getTrigger.
     """
-    def __init__(__self__, approval_configs=None, builds=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
+    def __init__(__self__, approval_configs=None, bitbucket_server_trigger_configs=None, builds=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_sources=None, githubs=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, location=None, name=None, project=None, pubsub_configs=None, repository_event_configs=None, service_account=None, source_to_builds=None, substitutions=None, tags=None, trigger_id=None, trigger_templates=None, webhook_configs=None):
         if approval_configs and not isinstance(approval_configs, list):
             raise TypeError("Expected argument 'approval_configs' to be a list")
         pulumi.set(__self__, "approval_configs", approval_configs)
+        if bitbucket_server_trigger_configs and not isinstance(bitbucket_server_trigger_configs, list):
+            raise TypeError("Expected argument 'bitbucket_server_trigger_configs' to be a list")
+        pulumi.set(__self__, "bitbucket_server_trigger_configs", bitbucket_server_trigger_configs)
         if builds and not isinstance(builds, list):
             raise TypeError("Expected argument 'builds' to be a list")
         pulumi.set(__self__, "builds", builds)
@@ -103,6 +106,11 @@ class GetTriggerResult:
     @pulumi.getter(name="approvalConfigs")
     def approval_configs(self) -> Sequence['outputs.GetTriggerApprovalConfigResult']:
         return pulumi.get(self, "approval_configs")
+
+    @property
+    @pulumi.getter(name="bitbucketServerTriggerConfigs")
+    def bitbucket_server_trigger_configs(self) -> Sequence['outputs.GetTriggerBitbucketServerTriggerConfigResult']:
+        return pulumi.get(self, "bitbucket_server_trigger_configs")
 
     @property
     @pulumi.getter
@@ -235,6 +243,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             yield self
         return GetTriggerResult(
             approval_configs=self.approval_configs,
+            bitbucket_server_trigger_configs=self.bitbucket_server_trigger_configs,
             builds=self.builds,
             create_time=self.create_time,
             description=self.description,
@@ -297,6 +306,7 @@ def get_trigger(location: Optional[str] = None,
 
     return AwaitableGetTriggerResult(
         approval_configs=__ret__.approval_configs,
+        bitbucket_server_trigger_configs=__ret__.bitbucket_server_trigger_configs,
         builds=__ret__.builds,
         create_time=__ret__.create_time,
         description=__ret__.description,

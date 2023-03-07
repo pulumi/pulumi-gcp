@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Generate service identity for a service.
+ *
+ * > **Note:** Once created, this resource cannot be updated or destroyed. These
+ * actions are a no-op.
+ *
+ * > **Note:** This resource can be used to retrieve the emails of the [Google-managed service accounts](https://cloud.google.com/iam/docs/service-agents)
+ * of the APIs that Google has configured with a Service Identity. You can run `gcloud beta services identity create --service SERVICE_NAME.googleapis.com` to
+ * verify if an API supports this.
+ *
+ * To get more information about Service Identity, see:
+ *
+ * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
+ *
  * ## Example Usage
  * ### Service Identity Basic
  *
@@ -61,7 +74,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * The email address of the Google managed service account.
      */
-    public readonly email!: pulumi.Output<string>;
+    public /*out*/ readonly email!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -93,9 +106,9 @@ export class ServiceIdentity extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["email"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceIdentity.__pulumiType, name, resourceInputs, opts);
@@ -125,10 +138,6 @@ export interface ServiceIdentityState {
  * The set of arguments for constructing a ServiceIdentity resource.
  */
 export interface ServiceIdentityArgs {
-    /**
-     * The email address of the Google managed service account.
-     */
-    email?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

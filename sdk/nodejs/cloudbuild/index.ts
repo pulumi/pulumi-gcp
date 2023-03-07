@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BitbucketServerConfigArgs, BitbucketServerConfigState } from "./bitbucketServerConfig";
+export type BitbucketServerConfig = import("./bitbucketServerConfig").BitbucketServerConfig;
+export const BitbucketServerConfig: typeof import("./bitbucketServerConfig").BitbucketServerConfig = null as any;
+utilities.lazyLoad(exports, ["BitbucketServerConfig"], () => require("./bitbucketServerConfig"));
+
 export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
 export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
 export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
@@ -25,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig":
+                return new BitbucketServerConfig(name, <any>undefined, { urn })
             case "gcp:cloudbuild/trigger:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             case "gcp:cloudbuild/workerPool:WorkerPool":
@@ -34,5 +41,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "cloudbuild/bitbucketServerConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudbuild/trigger", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudbuild/workerPool", _module)

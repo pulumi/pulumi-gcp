@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("peeredNetwork", required: true)]
         public Input<string> PeeredNetwork { get; set; } = null!;
 
+        /// <summary>
+        /// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        /// </summary>
+        [Input("peeredNetworkIpRange")]
+        public Input<string>? PeeredNetworkIpRange { get; set; }
+
         public WorkerPoolNetworkConfigArgs()
         {
         }

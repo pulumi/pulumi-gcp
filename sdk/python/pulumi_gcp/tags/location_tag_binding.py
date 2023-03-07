@@ -147,15 +147,6 @@ class LocationTagBinding(pulumi.CustomResource):
                  tag_value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## subcategory: "Tags"
-
-        page_title: "Google: tags.LocationTagBinding"
-        description: |-
-          A LocationTagBinding represents a connection between a TagValue and a Regional cloud resources.
-        ---
-
-        # google\\_tags\\_location\\_tag\\_binding
-
         A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 
         To get more information about TagBinding, see:
@@ -209,15 +200,6 @@ class LocationTagBinding(pulumi.CustomResource):
                  args: LocationTagBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## subcategory: "Tags"
-
-        page_title: "Google: tags.LocationTagBinding"
-        description: |-
-          A LocationTagBinding represents a connection between a TagValue and a Regional cloud resources.
-        ---
-
-        # google\\_tags\\_location\\_tag\\_binding
-
         A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 
         To get more information about TagBinding, see:

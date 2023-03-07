@@ -63,6 +63,12 @@ class DomainMappingMetadataArgs:
         """
         :param pulumi.Input[str] namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata. More
+               info: http://kubernetes.io/docs/user-guide/annotations
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -110,6 +116,14 @@ class DomainMappingMetadataArgs:
     @property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata. More
+        info: http://kubernetes.io/docs/user-guide/annotations
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -558,6 +572,15 @@ class ServiceMetadataArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata. More
+               info: http://kubernetes.io/docs/user-guide/annotations
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+               - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -595,6 +618,17 @@ class ServiceMetadataArgs:
     @property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata. More
+        info: http://kubernetes.io/docs/user-guide/annotations
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+        - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -931,6 +965,15 @@ class ServiceTemplateMetadataArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata. More
+               info: http://kubernetes.io/docs/user-guide/annotations
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+               - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         :param pulumi.Input[int] generation: A sequence number representing a specific generation of the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
@@ -974,6 +1017,17 @@ class ServiceTemplateMetadataArgs:
     @property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata. More
+        info: http://kubernetes.io/docs/user-guide/annotations
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+        - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
+        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -1259,6 +1313,9 @@ class ServiceTemplateSpecContainerArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+               https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]] ports: List of open ports in the container.
                More Info:
                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
@@ -1391,6 +1448,11 @@ class ServiceTemplateSpecContainerArgs:
     @property
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Structure is documented below.
+        """
         return pulumi.get(self, "liveness_probe")
 
     @liveness_probe.setter

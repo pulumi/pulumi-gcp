@@ -163,16 +163,14 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
+     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      * 
      */
     @Import(name="envVariables")
     private @Nullable Output<Map<String,String>> envVariables;
 
     /**
-     * @return Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
+     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      * 
      */
     public Optional<Output<Map<String,String>>> envVariables() {
@@ -780,8 +778,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param envVariables Environment variables available to the application. As these are not returned in the API request, Terraform will not
-         * detect any changes made outside of the Terraform config.
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
          * 
          * @return builder
          * 
@@ -792,8 +789,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param envVariables Environment variables available to the application. As these are not returned in the API request, Terraform will not
-         * detect any changes made outside of the Terraform config.
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
          * 
          * @return builder
          * 

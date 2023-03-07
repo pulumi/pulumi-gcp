@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("cpuManagerPolicy", required: true)]
         public Input<string> CpuManagerPolicy { get; set; } = null!;
 
+        [Input("podPidsLimit")]
+        public Input<int>? PodPidsLimit { get; set; }
+
         public NodePoolNodeConfigKubeletConfigArgs()
         {
         }

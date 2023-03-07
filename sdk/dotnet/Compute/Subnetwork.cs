@@ -339,12 +339,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        /// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        /// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        /// syntax: 'example=[]' For more details about this behavior, see [this
-        /// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        /// An array of configurations for secondary IP ranges for VM instances
+        /// contained in this subnetwork. The primary IP of such VM must belong
+        /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         [Output("secondaryIpRanges")]
         public Output<ImmutableArray<Outputs.SubnetworkSecondaryIpRange>> SecondaryIpRanges { get; private set; } = null!;
@@ -513,12 +512,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.SubnetworkSecondaryIpRangeArgs>? _secondaryIpRanges;
 
         /// <summary>
-        /// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        /// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        /// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        /// syntax: 'example=[]' For more details about this behavior, see [this
-        /// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        /// An array of configurations for secondary IP ranges for VM instances
+        /// contained in this subnetwork. The primary IP of such VM must belong
+        /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeArgs> SecondaryIpRanges
         {
@@ -677,12 +675,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.SubnetworkSecondaryIpRangeGetArgs>? _secondaryIpRanges;
 
         /// <summary>
-        /// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-        /// VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-        /// ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-        /// to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-        /// syntax: 'example=[]' For more details about this behavior, see [this
-        /// section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        /// An array of configurations for secondary IP ranges for VM instances
+        /// contained in this subnetwork. The primary IP of such VM must belong
+        /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        /// to either primary or secondary ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SubnetworkSecondaryIpRangeGetArgs> SecondaryIpRanges
         {

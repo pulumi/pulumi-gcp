@@ -158,7 +158,9 @@ type TableIamMember struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	Member   pulumi.StringOutput `pulumi:"member"`
-	Project  pulumi.StringOutput `pulumi:"project"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -214,7 +216,9 @@ type tableIamMemberState struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance *string `pulumi:"instance"`
 	Member   *string `pulumi:"member"`
-	Project  *string `pulumi:"project"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -230,7 +234,9 @@ type TableIamMemberState struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringPtrInput
 	Member   pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -246,9 +252,11 @@ func (TableIamMemberState) ElementType() reflect.Type {
 type tableIamMemberArgs struct {
 	Condition *TableIamMemberCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance string  `pulumi:"instance"`
-	Member   string  `pulumi:"member"`
-	Project  *string `pulumi:"project"`
+	Instance string `pulumi:"instance"`
+	Member   string `pulumi:"member"`
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -263,7 +271,9 @@ type TableIamMemberArgs struct {
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringInput
 	Member   pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The project in which the table belongs. If it
+	// is not provided, this provider will use the provider default.
+	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -377,6 +387,8 @@ func (o TableIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
+// The project in which the table belongs. If it
+// is not provided, this provider will use the provider default.
 func (o TableIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

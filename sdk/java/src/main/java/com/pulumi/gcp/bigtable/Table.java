@@ -17,6 +17,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a Google Cloud Bigtable table inside an instance. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -165,16 +169,18 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-     * Terraform to delete/recreate the entire google_bigtable_table resource.
+     * A list of predefined keys to split the table on.
+     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
     @Export(name="splitKeys", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> splitKeys;
 
     /**
-     * @return A list of predefined keys to split the table on. !&gt; Warning: Modifying the split_keys of an existing table will cause
-     * Terraform to delete/recreate the entire google_bigtable_table resource.
+     * @return A list of predefined keys to split the table on.
+     * !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
     public Output<Optional<List<String>>> splitKeys() {

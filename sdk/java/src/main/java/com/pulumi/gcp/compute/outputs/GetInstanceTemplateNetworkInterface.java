@@ -14,6 +14,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateNetworkInterface {
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running the prvovider can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be repeated multiple times. Structure documented below.
+     * 
+     */
     private List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
@@ -60,6 +69,15 @@ public final class GetInstanceTemplateNetworkInterface {
     private String subnetworkProject;
 
     private GetInstanceTemplateNetworkInterface() {}
+    /**
+     * @return Access configurations, i.e. IPs via which this
+     * instance can be accessed via the Internet. Omit to ensure that the instance
+     * is not accessible from the Internet (this means that ssh provisioners will
+     * not work unless you are running the prvovider can send traffic to the instance&#39;s
+     * network (e.g. via tunnel or because it is running on another cloud instance
+     * on that network). This block can be repeated multiple times. Structure documented below.
+     * 
+     */
     public List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs;
     }

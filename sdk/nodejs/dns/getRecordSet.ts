@@ -54,6 +54,9 @@ export interface GetRecordSetArgs {
      * The ID of the project for the Google Cloud.
      */
     project?: string;
+    /**
+     * The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+     */
     type: string;
 }
 
@@ -121,5 +124,8 @@ export interface GetRecordSetOutputArgs {
      * The ID of the project for the Google Cloud.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+     */
     type: pulumi.Input<string>;
 }

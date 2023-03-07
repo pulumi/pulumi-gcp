@@ -18,6 +18,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * Regex of branches to match.
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     @Import(name="branch", required=true)
@@ -25,6 +26,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * @return Regex of branches to match.
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     public Output<String> branch() {
@@ -32,7 +34,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+     * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
      * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -40,7 +42,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> commentControl;
 
     /**
-     * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
      * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -91,6 +93,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param branch Regex of branches to match.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
          * 
          * @return builder
          * 
@@ -102,6 +105,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param branch Regex of branches to match.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
          * 
          * @return builder
          * 
@@ -111,7 +115,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param commentControl Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
          * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder
@@ -123,7 +127,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param commentControl Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
          * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder

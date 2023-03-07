@@ -29,8 +29,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basicEntryGroup", {
- *     description: "entry group created by Terraform",
- *     displayName: "terraform entry group",
+ *     description: "example entry group",
+ *     displayName: "entry group",
  *     entryGroupId: "my_group",
  * });
  * ```

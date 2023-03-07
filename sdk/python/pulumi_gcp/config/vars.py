@@ -261,6 +261,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dialogflowCxCustomEndpoint')
 
     @property
+    def disable_google_partner_name(self) -> Optional[bool]:
+        return __config__.get_bool('disableGooglePartnerName')
+
+    @property
     def dns_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dnsCustomEndpoint')
 
@@ -319,6 +323,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def gkehub_feature_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkehubFeatureCustomEndpoint')
+
+    @property
+    def google_partner_name(self) -> Optional[str]:
+        return __config__.get('googlePartnerName')
 
     @property
     def healthcare_custom_endpoint(self) -> Optional[str]:

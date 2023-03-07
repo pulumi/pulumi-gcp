@@ -66,6 +66,116 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Big Query Routine Json
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
+ *             .datasetId(test.datasetId())
+ *             .routineId(&#34;tf_test_routine_id&#34;)
+ *             .routineType(&#34;SCALAR_FUNCTION&#34;)
+ *             .language(&#34;JAVASCRIPT&#34;)
+ *             .definitionBody(&#34;CREATE FUNCTION multiplyInputs return x*y;&#34;)
+ *             .arguments(            
+ *                 RoutineArgumentArgs.builder()
+ *                     .name(&#34;x&#34;)
+ *                     .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *                     .build(),
+ *                 RoutineArgumentArgs.builder()
+ *                     .name(&#34;y&#34;)
+ *                     .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *                     .build())
+ *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;FLOAT64\&#34;}&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Big Query Routine Tvf
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
+ *             .datasetId(test.datasetId())
+ *             .routineId(&#34;tf_test_routine_id&#34;)
+ *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
+ *             .language(&#34;SQL&#34;)
+ *             .definitionBody(&#34;&#34;&#34;
+ * SELECT 1 + value AS value
+ *             &#34;&#34;&#34;)
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name(&#34;value&#34;)
+ *                 .argumentKind(&#34;FIXED_TYPE&#34;)
+ *                 .dataType(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                     )))
+ *                 .build())
+ *             .returnTableType(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;columns&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;name&#34;, &#34;value&#34;),
+ *                         jsonProperty(&#34;type&#34;, jsonObject(
+ *                             jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                         ))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

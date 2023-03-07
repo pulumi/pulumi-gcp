@@ -17,6 +17,264 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
+ * 
+ * * `gcp.compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
+ * * `gcp.compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
+ * * `gcp.compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamPolicy` **cannot** be used in conjunction with `gcp.compute.MachineImageIamBinding` and `gcp.compute.MachineImageIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * ## google\_compute\_machine\_image\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/compute.admin&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy(&#34;policy&#34;, MachineImageIamPolicyArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicy;
+ * import com.pulumi.gcp.compute.MachineImageIamPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/compute.admin&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;expires_after_2019_12_31&#34;)
+ *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new MachineImageIamPolicy(&#34;policy&#34;, MachineImageIamPolicyArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## google\_compute\_machine\_image\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new MachineImageIamBinding(&#34;binding&#34;, MachineImageIamBindingArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .role(&#34;roles/compute.admin&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamBinding;
+ * import com.pulumi.gcp.compute.MachineImageIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamBindingConditionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new MachineImageIamBinding(&#34;binding&#34;, MachineImageIamBindingArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .role(&#34;roles/compute.admin&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(MachineImageIamBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## google\_compute\_machine\_image\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new MachineImageIamMember(&#34;member&#34;, MachineImageIamMemberArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .role(&#34;roles/compute.admin&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * With IAM Conditions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.MachineImageIamMember;
+ * import com.pulumi.gcp.compute.MachineImageIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.MachineImageIamMemberConditionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new MachineImageIamMember(&#34;member&#34;, MachineImageIamMemberArgs.builder()        
+ *             .project(google_compute_machine_image.image().project())
+ *             .machineImage(google_compute_machine_image.image().name())
+ *             .role(&#34;roles/compute.admin&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(MachineImageIamMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/global/machineImages/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly string? BackupWindow;
         /// <summary>
-        /// Whether automated automated backups are enabled.
+        /// Whether automated backups are enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

@@ -130,6 +130,55 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
                  policy_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
+
+        * `healthcare.Hl7StoreIamPolicy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
+        * `healthcare.Hl7StoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the HL7v2 store are preserved.
+        * `healthcare.Hl7StoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the HL7v2 store are preserved.
+
+        > **Note:** `healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `healthcare.Hl7StoreIamBinding` and `healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
@@ -172,6 +221,55 @@ class Hl7StoreIamPolicy(pulumi.CustomResource):
                  args: Hl7StoreIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
+
+        * `healthcare.Hl7StoreIamPolicy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
+        * `healthcare.Hl7StoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the HL7v2 store are preserved.
+        * `healthcare.Hl7StoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the HL7v2 store are preserved.
+
+        > **Note:** `healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `healthcare.Hl7StoreIamBinding` and `healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7V2Store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
         ## Import
 
         IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

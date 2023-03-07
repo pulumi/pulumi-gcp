@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbeGrpc;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbeHttpGet;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbeTcpSocket;
 import java.lang.Integer;
@@ -18,6 +19,12 @@ public final class ServiceTemplateContainerStartupProbe {
      * 
      */
     private @Nullable Integer failureThreshold;
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateContainerStartupProbeGrpc grpc;
     /**
      * @return HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
      * Structure is documented below.
@@ -53,6 +60,14 @@ public final class ServiceTemplateContainerStartupProbe {
      */
     public Optional<Integer> failureThreshold() {
         return Optional.ofNullable(this.failureThreshold);
+    }
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateContainerStartupProbeGrpc> grpc() {
+        return Optional.ofNullable(this.grpc);
     }
     /**
      * @return HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
@@ -102,6 +117,7 @@ public final class ServiceTemplateContainerStartupProbe {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer failureThreshold;
+        private @Nullable ServiceTemplateContainerStartupProbeGrpc grpc;
         private @Nullable ServiceTemplateContainerStartupProbeHttpGet httpGet;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
@@ -111,6 +127,7 @@ public final class ServiceTemplateContainerStartupProbe {
         public Builder(ServiceTemplateContainerStartupProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.failureThreshold = defaults.failureThreshold;
+    	      this.grpc = defaults.grpc;
     	      this.httpGet = defaults.httpGet;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
@@ -121,6 +138,11 @@ public final class ServiceTemplateContainerStartupProbe {
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
             this.failureThreshold = failureThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder grpc(@Nullable ServiceTemplateContainerStartupProbeGrpc grpc) {
+            this.grpc = grpc;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +173,7 @@ public final class ServiceTemplateContainerStartupProbe {
         public ServiceTemplateContainerStartupProbe build() {
             final var o = new ServiceTemplateContainerStartupProbe();
             o.failureThreshold = failureThreshold;
+            o.grpc = grpc;
             o.httpGet = httpGet;
             o.initialDelaySeconds = initialDelaySeconds;
             o.periodSeconds = periodSeconds;

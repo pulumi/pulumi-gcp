@@ -71,6 +71,23 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * ### Resource Policy Placement Policy Max Distance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     region: "us-central1",
+ *     groupPlacementPolicy: {
+ *         vmCount: 2,
+ *         collocation: "COLLOCATED",
+ *         maxDistance: 2,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Resource Policy Instance Schedule Policy
  *
  * ```typescript

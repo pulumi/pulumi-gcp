@@ -11,36 +11,46 @@ import (
 )
 
 // ## Example Usage
-// ### Certificate Manager Self Managed Certificate
+// ### Certificate Manager Certificate Basic
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 //				Description: pulumi.String("The default cert"),
 //				Scope:       pulumi.String("EDGE_CACHE"),
-//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//						instance2.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//						instance2.ID(),
+//					},
 //				},
 //			})
 //			if err != nil {

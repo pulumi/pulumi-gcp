@@ -6,6 +6,7 @@ package com.pulumi.gcp.container;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
+import com.pulumi.gcp.container.inputs.AzureClusterAzureServicesAuthenticationArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterLoggingConfigArgs;
@@ -67,18 +68,33 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Azure authentication configuration for management of Azure resources
+     * 
+     */
+    @Import(name="azureServicesAuthentication")
+    private @Nullable Output<AzureClusterAzureServicesAuthenticationArgs> azureServicesAuthentication;
+
+    /**
+     * @return Azure authentication configuration for management of Azure resources
+     * 
+     */
+    public Optional<Output<AzureClusterAzureServicesAuthenticationArgs>> azureServicesAuthentication() {
+        return Optional.ofNullable(this.azureServicesAuthentication);
+    }
+
+    /**
      * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
-    @Import(name="client", required=true)
-    private Output<String> client;
+    @Import(name="client")
+    private @Nullable Output<String> client;
 
     /**
      * @return Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
-    public Output<String> client() {
-        return this.client;
+    public Optional<Output<String>> client() {
+        return Optional.ofNullable(this.client);
     }
 
     /**
@@ -226,6 +242,7 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
         this.azureRegion = $.azureRegion;
+        this.azureServicesAuthentication = $.azureServicesAuthentication;
         this.client = $.client;
         this.controlPlane = $.controlPlane;
         this.description = $.description;
@@ -320,12 +337,33 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param azureServicesAuthentication Azure authentication configuration for management of Azure resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureServicesAuthentication(@Nullable Output<AzureClusterAzureServicesAuthenticationArgs> azureServicesAuthentication) {
+            $.azureServicesAuthentication = azureServicesAuthentication;
+            return this;
+        }
+
+        /**
+         * @param azureServicesAuthentication Azure authentication configuration for management of Azure resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureServicesAuthentication(AzureClusterAzureServicesAuthenticationArgs azureServicesAuthentication) {
+            return azureServicesAuthentication(Output.of(azureServicesAuthentication));
+        }
+
+        /**
          * @param client Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
          * 
          * @return builder
          * 
          */
-        public Builder client(Output<String> client) {
+        public Builder client(@Nullable Output<String> client) {
             $.client = client;
             return this;
         }
@@ -536,7 +574,6 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         public AzureClusterArgs build() {
             $.authorization = Objects.requireNonNull($.authorization, "expected parameter 'authorization' to be non-null");
             $.azureRegion = Objects.requireNonNull($.azureRegion, "expected parameter 'azureRegion' to be non-null");
-            $.client = Objects.requireNonNull($.client, "expected parameter 'client' to be non-null");
             $.controlPlane = Objects.requireNonNull($.controlPlane, "expected parameter 'controlPlane' to be non-null");
             $.fleet = Objects.requireNonNull($.fleet, "expected parameter 'fleet' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");

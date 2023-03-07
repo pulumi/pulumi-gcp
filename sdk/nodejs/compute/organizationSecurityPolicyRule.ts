@@ -7,7 +7,54 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A rule for the OrganizationSecurityPolicy.
+ *
+ * To get more information about OrganizationSecurityPolicyRule, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
+ * * How-to Guides
+ *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ *
  * ## Example Usage
+ * ### Organization Security Policy Rule Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policyOrganizationSecurityPolicy = new gcp.compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", {
+ *     displayName: "tf-test",
+ *     parent: "organizations/123456789",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", {
+ *     policyId: policyOrganizationSecurityPolicy.id,
+ *     action: "allow",
+ *     direction: "INGRESS",
+ *     enableLogging: true,
+ *     match: {
+ *         config: {
+ *             srcIpRanges: [
+ *                 "192.168.0.0/16",
+ *                 "10.0.0.0/8",
+ *             ],
+ *             layer4Configs: [
+ *                 {
+ *                     ipProtocol: "tcp",
+ *                     ports: ["22"],
+ *                 },
+ *                 {
+ *                     ipProtocol: "icmp",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     priority: 100,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

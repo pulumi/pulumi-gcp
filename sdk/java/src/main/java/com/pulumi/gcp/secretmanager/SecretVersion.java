@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A secret version resource.
+ * 
+ * &gt; **Warning:** All arguments including `payload.secret_data` will be stored in the raw
+ * state as plain-text.
+ * 
  * ## Example Usage
  * ### Secret Version Basic
  * ```java

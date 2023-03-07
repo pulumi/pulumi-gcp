@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceTemplateNetworkInterfaceResult
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running the prvovider can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be repeated multiple times. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult> AccessConfigs;
         /// <summary>
         /// An

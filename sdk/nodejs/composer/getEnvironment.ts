@@ -42,6 +42,9 @@ export interface GetEnvironmentArgs {
  * A collection of values returned by getEnvironment.
  */
 export interface GetEnvironmentResult {
+    /**
+     * Configuration parameters for the environment.
+     */
     readonly configs: outputs.composer.GetEnvironmentConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.

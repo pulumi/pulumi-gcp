@@ -213,14 +213,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Labels to apply to this rule.
+     * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this rule.
+     * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -886,7 +886,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Labels to apply to this rule.
+         * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
          * @return builder
          * 
@@ -897,7 +897,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Labels to apply to this rule.
+         * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
          * @return builder
          * 

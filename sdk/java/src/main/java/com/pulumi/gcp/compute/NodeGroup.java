@@ -19,6 +19,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+ * 
+ * To get more information about NodeGroup, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+ * * How-to Guides
+ *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ * 
+ * &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+ * number of nodes in a node group and changes to node group size either
+ * through provider config or through external changes will cause
+ * the provider to delete and recreate the node group.
+ * 
  * ## Example Usage
  * ### Node Group Basic
  * ```java
@@ -50,8 +63,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .zone(&#34;us-central1-f&#34;)
- *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .description(&#34;example google_compute_node_group for the Google Provider&#34;)
  *             .size(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .build());
@@ -91,8 +104,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
- *             .zone(&#34;us-central1-f&#34;)
- *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .description(&#34;example google_compute_node_group for Google Provider&#34;)
  *             .maintenancePolicy(&#34;RESTART_IN_PLACE&#34;)
  *             .maintenanceWindow(NodeGroupMaintenanceWindowArgs.builder()
  *                 .startTime(&#34;08:00&#34;)

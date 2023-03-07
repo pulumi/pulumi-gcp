@@ -316,13 +316,1604 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) ServiceAttachmentUri() 
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkstationConfigCondition struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details []map[string]interface{} `pulumi:"details"`
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+}
+
+// WorkstationConfigConditionInput is an input type that accepts WorkstationConfigConditionArgs and WorkstationConfigConditionOutput values.
+// You can construct a concrete instance of `WorkstationConfigConditionInput` via:
+//
+//	WorkstationConfigConditionArgs{...}
+type WorkstationConfigConditionInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigConditionOutput() WorkstationConfigConditionOutput
+	ToWorkstationConfigConditionOutputWithContext(context.Context) WorkstationConfigConditionOutput
+}
+
+type WorkstationConfigConditionArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details pulumi.MapArrayInput `pulumi:"details"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (WorkstationConfigConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigCondition)(nil)).Elem()
+}
+
+func (i WorkstationConfigConditionArgs) ToWorkstationConfigConditionOutput() WorkstationConfigConditionOutput {
+	return i.ToWorkstationConfigConditionOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigConditionArgs) ToWorkstationConfigConditionOutputWithContext(ctx context.Context) WorkstationConfigConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigConditionOutput)
+}
+
+// WorkstationConfigConditionArrayInput is an input type that accepts WorkstationConfigConditionArray and WorkstationConfigConditionArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigConditionArrayInput` via:
+//
+//	WorkstationConfigConditionArray{ WorkstationConfigConditionArgs{...} }
+type WorkstationConfigConditionArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigConditionArrayOutput() WorkstationConfigConditionArrayOutput
+	ToWorkstationConfigConditionArrayOutputWithContext(context.Context) WorkstationConfigConditionArrayOutput
+}
+
+type WorkstationConfigConditionArray []WorkstationConfigConditionInput
+
+func (WorkstationConfigConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigCondition)(nil)).Elem()
+}
+
+func (i WorkstationConfigConditionArray) ToWorkstationConfigConditionArrayOutput() WorkstationConfigConditionArrayOutput {
+	return i.ToWorkstationConfigConditionArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigConditionArray) ToWorkstationConfigConditionArrayOutputWithContext(ctx context.Context) WorkstationConfigConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigConditionArrayOutput)
+}
+
+type WorkstationConfigConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigConditionOutput) ToWorkstationConfigConditionOutput() WorkstationConfigConditionOutput {
+	return o
+}
+
+func (o WorkstationConfigConditionOutput) ToWorkstationConfigConditionOutputWithContext(ctx context.Context) WorkstationConfigConditionOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o WorkstationConfigConditionOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigCondition) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details.
+func (o WorkstationConfigConditionOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigCondition) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
+// Human readable message indicating details about the current status.
+func (o WorkstationConfigConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigConditionArrayOutput) ToWorkstationConfigConditionArrayOutput() WorkstationConfigConditionArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigConditionArrayOutput) ToWorkstationConfigConditionArrayOutputWithContext(ctx context.Context) WorkstationConfigConditionArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigConditionArrayOutput) Index(i pulumi.IntInput) WorkstationConfigConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigCondition {
+		return vs[0].([]WorkstationConfigCondition)[vs[1].(int)]
+	}).(WorkstationConfigConditionOutput)
+}
+
+type WorkstationConfigContainer struct {
+	// Arguments passed to the entrypoint.
+	Args []string `pulumi:"args"`
+	// If set, overrides the default ENTRYPOINT specified by the image.
+	Commands []string `pulumi:"commands"`
+	// Environment variables passed to the container.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env map[string]string `pulumi:"env"`
+	// Docker image defining the container. This image must be accessible by the config"s service account.
+	Image *string `pulumi:"image"`
+	// If set, overrides the USER specified in the image with the given uid.
+	RunAsUser *int `pulumi:"runAsUser"`
+	// If set, overrides the default DIR specified by the image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// WorkstationConfigContainerInput is an input type that accepts WorkstationConfigContainerArgs and WorkstationConfigContainerOutput values.
+// You can construct a concrete instance of `WorkstationConfigContainerInput` via:
+//
+//	WorkstationConfigContainerArgs{...}
+type WorkstationConfigContainerInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigContainerOutput() WorkstationConfigContainerOutput
+	ToWorkstationConfigContainerOutputWithContext(context.Context) WorkstationConfigContainerOutput
+}
+
+type WorkstationConfigContainerArgs struct {
+	// Arguments passed to the entrypoint.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// If set, overrides the default ENTRYPOINT specified by the image.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Environment variables passed to the container.
+	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Docker image defining the container. This image must be accessible by the config"s service account.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// If set, overrides the USER specified in the image with the given uid.
+	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
+	// If set, overrides the default DIR specified by the image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (WorkstationConfigContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigContainer)(nil)).Elem()
+}
+
+func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerOutput() WorkstationConfigContainerOutput {
+	return i.ToWorkstationConfigContainerOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerOutputWithContext(ctx context.Context) WorkstationConfigContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigContainerOutput)
+}
+
+func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput {
+	return i.ToWorkstationConfigContainerPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerPtrOutputWithContext(ctx context.Context) WorkstationConfigContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigContainerOutput).ToWorkstationConfigContainerPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigContainerPtrInput is an input type that accepts WorkstationConfigContainerArgs, WorkstationConfigContainerPtr and WorkstationConfigContainerPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigContainerPtrInput` via:
+//
+//	        WorkstationConfigContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigContainerPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput
+	ToWorkstationConfigContainerPtrOutputWithContext(context.Context) WorkstationConfigContainerPtrOutput
+}
+
+type workstationConfigContainerPtrType WorkstationConfigContainerArgs
+
+func WorkstationConfigContainerPtr(v *WorkstationConfigContainerArgs) WorkstationConfigContainerPtrInput {
+	return (*workstationConfigContainerPtrType)(v)
+}
+
+func (*workstationConfigContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigContainer)(nil)).Elem()
+}
+
+func (i *workstationConfigContainerPtrType) ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput {
+	return i.ToWorkstationConfigContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigContainerPtrType) ToWorkstationConfigContainerPtrOutputWithContext(ctx context.Context) WorkstationConfigContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigContainerPtrOutput)
+}
+
+type WorkstationConfigContainerOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigContainer)(nil)).Elem()
+}
+
+func (o WorkstationConfigContainerOutput) ToWorkstationConfigContainerOutput() WorkstationConfigContainerOutput {
+	return o
+}
+
+func (o WorkstationConfigContainerOutput) ToWorkstationConfigContainerOutputWithContext(ctx context.Context) WorkstationConfigContainerOutput {
+	return o
+}
+
+func (o WorkstationConfigContainerOutput) ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput {
+	return o.ToWorkstationConfigContainerPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigContainerOutput) ToWorkstationConfigContainerPtrOutputWithContext(ctx context.Context) WorkstationConfigContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigContainer) *WorkstationConfigContainer {
+		return &v
+	}).(WorkstationConfigContainerPtrOutput)
+}
+
+// Arguments passed to the entrypoint.
+func (o WorkstationConfigContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// If set, overrides the default ENTRYPOINT specified by the image.
+func (o WorkstationConfigContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables passed to the container.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o WorkstationConfigContainerOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+// Docker image defining the container. This image must be accessible by the config"s service account.
+func (o WorkstationConfigContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// If set, overrides the USER specified in the image with the given uid.
+func (o WorkstationConfigContainerOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
+}
+
+// If set, overrides the default DIR specified by the image.
+func (o WorkstationConfigContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigContainer)(nil)).Elem()
+}
+
+func (o WorkstationConfigContainerPtrOutput) ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigContainerPtrOutput) ToWorkstationConfigContainerPtrOutputWithContext(ctx context.Context) WorkstationConfigContainerPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigContainerPtrOutput) Elem() WorkstationConfigContainerOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) WorkstationConfigContainer {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigContainer
+		return ret
+	}).(WorkstationConfigContainerOutput)
+}
+
+// Arguments passed to the entrypoint.
+func (o WorkstationConfigContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// If set, overrides the default ENTRYPOINT specified by the image.
+func (o WorkstationConfigContainerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables passed to the container.
+// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o WorkstationConfigContainerPtrOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringMapOutput)
+}
+
+// Docker image defining the container. This image must be accessible by the config"s service account.
+func (o WorkstationConfigContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, overrides the USER specified in the image with the given uid.
+func (o WorkstationConfigContainerPtrOutput) RunAsUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsUser
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set, overrides the default DIR specified by the image.
+func (o WorkstationConfigContainerPtrOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkingDir
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigEncryptionKey struct {
+	// The name of the Google Cloud KMS encryption key.
+	KmsKey string `pulumi:"kmsKey"`
+	// The service account to use with the specified KMS key.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+}
+
+// WorkstationConfigEncryptionKeyInput is an input type that accepts WorkstationConfigEncryptionKeyArgs and WorkstationConfigEncryptionKeyOutput values.
+// You can construct a concrete instance of `WorkstationConfigEncryptionKeyInput` via:
+//
+//	WorkstationConfigEncryptionKeyArgs{...}
+type WorkstationConfigEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEncryptionKeyOutput() WorkstationConfigEncryptionKeyOutput
+	ToWorkstationConfigEncryptionKeyOutputWithContext(context.Context) WorkstationConfigEncryptionKeyOutput
+}
+
+type WorkstationConfigEncryptionKeyArgs struct {
+	// The name of the Google Cloud KMS encryption key.
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+	// The service account to use with the specified KMS key.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+}
+
+func (WorkstationConfigEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEncryptionKey)(nil)).Elem()
+}
+
+func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyOutput() WorkstationConfigEncryptionKeyOutput {
+	return i.ToWorkstationConfigEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEncryptionKeyOutput)
+}
+
+func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput {
+	return i.ToWorkstationConfigEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEncryptionKeyOutput).ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigEncryptionKeyPtrInput is an input type that accepts WorkstationConfigEncryptionKeyArgs, WorkstationConfigEncryptionKeyPtr and WorkstationConfigEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigEncryptionKeyPtrInput` via:
+//
+//	        WorkstationConfigEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput
+	ToWorkstationConfigEncryptionKeyPtrOutputWithContext(context.Context) WorkstationConfigEncryptionKeyPtrOutput
+}
+
+type workstationConfigEncryptionKeyPtrType WorkstationConfigEncryptionKeyArgs
+
+func WorkstationConfigEncryptionKeyPtr(v *WorkstationConfigEncryptionKeyArgs) WorkstationConfigEncryptionKeyPtrInput {
+	return (*workstationConfigEncryptionKeyPtrType)(v)
+}
+
+func (*workstationConfigEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigEncryptionKey)(nil)).Elem()
+}
+
+func (i *workstationConfigEncryptionKeyPtrType) ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput {
+	return i.ToWorkstationConfigEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigEncryptionKeyPtrType) ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEncryptionKeyPtrOutput)
+}
+
+type WorkstationConfigEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEncryptionKey)(nil)).Elem()
+}
+
+func (o WorkstationConfigEncryptionKeyOutput) ToWorkstationConfigEncryptionKeyOutput() WorkstationConfigEncryptionKeyOutput {
+	return o
+}
+
+func (o WorkstationConfigEncryptionKeyOutput) ToWorkstationConfigEncryptionKeyOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyOutput {
+	return o
+}
+
+func (o WorkstationConfigEncryptionKeyOutput) ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput {
+	return o.ToWorkstationConfigEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigEncryptionKeyOutput) ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigEncryptionKey) *WorkstationConfigEncryptionKey {
+		return &v
+	}).(WorkstationConfigEncryptionKeyPtrOutput)
+}
+
+// The name of the Google Cloud KMS encryption key.
+func (o WorkstationConfigEncryptionKeyOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigEncryptionKey) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+// The service account to use with the specified KMS key.
+func (o WorkstationConfigEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+type WorkstationConfigEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigEncryptionKey)(nil)).Elem()
+}
+
+func (o WorkstationConfigEncryptionKeyPtrOutput) ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigEncryptionKeyPtrOutput) ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigEncryptionKeyPtrOutput) Elem() WorkstationConfigEncryptionKeyOutput {
+	return o.ApplyT(func(v *WorkstationConfigEncryptionKey) WorkstationConfigEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigEncryptionKey
+		return ret
+	}).(WorkstationConfigEncryptionKeyOutput)
+}
+
+// The name of the Google Cloud KMS encryption key.
+func (o WorkstationConfigEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use with the specified KMS key.
+func (o WorkstationConfigEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigHost struct {
+	// Specifies a Compute Engine instance as the host.
+	// Structure is documented below.
+	GceInstance *WorkstationConfigHostGceInstance `pulumi:"gceInstance"`
+}
+
+// WorkstationConfigHostInput is an input type that accepts WorkstationConfigHostArgs and WorkstationConfigHostOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostInput` via:
+//
+//	WorkstationConfigHostArgs{...}
+type WorkstationConfigHostInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostOutput() WorkstationConfigHostOutput
+	ToWorkstationConfigHostOutputWithContext(context.Context) WorkstationConfigHostOutput
+}
+
+type WorkstationConfigHostArgs struct {
+	// Specifies a Compute Engine instance as the host.
+	// Structure is documented below.
+	GceInstance WorkstationConfigHostGceInstancePtrInput `pulumi:"gceInstance"`
+}
+
+func (WorkstationConfigHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHost)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostArgs) ToWorkstationConfigHostOutput() WorkstationConfigHostOutput {
+	return i.ToWorkstationConfigHostOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostArgs) ToWorkstationConfigHostOutputWithContext(ctx context.Context) WorkstationConfigHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostOutput)
+}
+
+func (i WorkstationConfigHostArgs) ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput {
+	return i.ToWorkstationConfigHostPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostArgs) ToWorkstationConfigHostPtrOutputWithContext(ctx context.Context) WorkstationConfigHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostOutput).ToWorkstationConfigHostPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostPtrInput is an input type that accepts WorkstationConfigHostArgs, WorkstationConfigHostPtr and WorkstationConfigHostPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostPtrInput` via:
+//
+//	        WorkstationConfigHostArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput
+	ToWorkstationConfigHostPtrOutputWithContext(context.Context) WorkstationConfigHostPtrOutput
+}
+
+type workstationConfigHostPtrType WorkstationConfigHostArgs
+
+func WorkstationConfigHostPtr(v *WorkstationConfigHostArgs) WorkstationConfigHostPtrInput {
+	return (*workstationConfigHostPtrType)(v)
+}
+
+func (*workstationConfigHostPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHost)(nil)).Elem()
+}
+
+func (i *workstationConfigHostPtrType) ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput {
+	return i.ToWorkstationConfigHostPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostPtrType) ToWorkstationConfigHostPtrOutputWithContext(ctx context.Context) WorkstationConfigHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostPtrOutput)
+}
+
+type WorkstationConfigHostOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHost)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostOutput) ToWorkstationConfigHostOutput() WorkstationConfigHostOutput {
+	return o
+}
+
+func (o WorkstationConfigHostOutput) ToWorkstationConfigHostOutputWithContext(ctx context.Context) WorkstationConfigHostOutput {
+	return o
+}
+
+func (o WorkstationConfigHostOutput) ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput {
+	return o.ToWorkstationConfigHostPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostOutput) ToWorkstationConfigHostPtrOutputWithContext(ctx context.Context) WorkstationConfigHostPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHost) *WorkstationConfigHost {
+		return &v
+	}).(WorkstationConfigHostPtrOutput)
+}
+
+// Specifies a Compute Engine instance as the host.
+// Structure is documented below.
+func (o WorkstationConfigHostOutput) GceInstance() WorkstationConfigHostGceInstancePtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHost) *WorkstationConfigHostGceInstance { return v.GceInstance }).(WorkstationConfigHostGceInstancePtrOutput)
+}
+
+type WorkstationConfigHostPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHost)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostPtrOutput) ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostPtrOutput) ToWorkstationConfigHostPtrOutputWithContext(ctx context.Context) WorkstationConfigHostPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostPtrOutput) Elem() WorkstationConfigHostOutput {
+	return o.ApplyT(func(v *WorkstationConfigHost) WorkstationConfigHost {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHost
+		return ret
+	}).(WorkstationConfigHostOutput)
+}
+
+// Specifies a Compute Engine instance as the host.
+// Structure is documented below.
+func (o WorkstationConfigHostPtrOutput) GceInstance() WorkstationConfigHostGceInstancePtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHost) *WorkstationConfigHostGceInstance {
+		if v == nil {
+			return nil
+		}
+		return v.GceInstance
+	}).(WorkstationConfigHostGceInstancePtrOutput)
+}
+
+type WorkstationConfigHostGceInstance struct {
+	// Size of the boot disk in GB.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// A set of Compute Engine Confidential VM instance options.
+	// Structure is documented below.
+	ConfidentialInstanceConfig *WorkstationConfigHostGceInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Whether instances have no public IP address.
+	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
+	// The name of a Compute Engine machine type.
+	MachineType *string `pulumi:"machineType"`
+	// Number of instances to pool for faster workstation startup.
+	PoolSize *int `pulumi:"poolSize"`
+	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// A set of Compute Engine Shielded instance options.
+	// Structure is documented below.
+	ShieldedInstanceConfig *WorkstationConfigHostGceInstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Network tags to add to the Compute Engine machines backing the Workstations.
+	Tags []string `pulumi:"tags"`
+}
+
+// WorkstationConfigHostGceInstanceInput is an input type that accepts WorkstationConfigHostGceInstanceArgs and WorkstationConfigHostGceInstanceOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceInput` via:
+//
+//	WorkstationConfigHostGceInstanceArgs{...}
+type WorkstationConfigHostGceInstanceInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceOutput() WorkstationConfigHostGceInstanceOutput
+	ToWorkstationConfigHostGceInstanceOutputWithContext(context.Context) WorkstationConfigHostGceInstanceOutput
+}
+
+type WorkstationConfigHostGceInstanceArgs struct {
+	// Size of the boot disk in GB.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// A set of Compute Engine Confidential VM instance options.
+	// Structure is documented below.
+	ConfidentialInstanceConfig WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
+	// Whether instances have no public IP address.
+	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
+	// The name of a Compute Engine machine type.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Number of instances to pool for faster workstation startup.
+	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
+	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// A set of Compute Engine Shielded instance options.
+	// Structure is documented below.
+	ShieldedInstanceConfig WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Network tags to add to the Compute Engine machines backing the Workstations.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (WorkstationConfigHostGceInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstance)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstanceOutput() WorkstationConfigHostGceInstanceOutput {
+	return i.ToWorkstationConfigHostGceInstanceOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstanceOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput {
+	return i.ToWorkstationConfigHostGceInstancePtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceOutput).ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostGceInstancePtrInput is an input type that accepts WorkstationConfigHostGceInstanceArgs, WorkstationConfigHostGceInstancePtr and WorkstationConfigHostGceInstancePtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstancePtrInput` via:
+//
+//	        WorkstationConfigHostGceInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostGceInstancePtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput
+	ToWorkstationConfigHostGceInstancePtrOutputWithContext(context.Context) WorkstationConfigHostGceInstancePtrOutput
+}
+
+type workstationConfigHostGceInstancePtrType WorkstationConfigHostGceInstanceArgs
+
+func WorkstationConfigHostGceInstancePtr(v *WorkstationConfigHostGceInstanceArgs) WorkstationConfigHostGceInstancePtrInput {
+	return (*workstationConfigHostGceInstancePtrType)(v)
+}
+
+func (*workstationConfigHostGceInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstance)(nil)).Elem()
+}
+
+func (i *workstationConfigHostGceInstancePtrType) ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput {
+	return i.ToWorkstationConfigHostGceInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostGceInstancePtrType) ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstancePtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstance)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstanceOutput() WorkstationConfigHostGceInstanceOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstanceOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput {
+	return o.ToWorkstationConfigHostGceInstancePtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstance {
+		return &v
+	}).(WorkstationConfigHostGceInstancePtrOutput)
+}
+
+// Size of the boot disk in GB.
+func (o WorkstationConfigHostGceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// A set of Compute Engine Confidential VM instance options.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstanceOutput) ConfidentialInstanceConfig() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
+		return v.ConfidentialInstanceConfig
+	}).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
+}
+
+// Whether instances have no public IP address.
+func (o WorkstationConfigHostGceInstanceOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.DisablePublicIpAddresses }).(pulumi.BoolPtrOutput)
+}
+
+// The name of a Compute Engine machine type.
+func (o WorkstationConfigHostGceInstanceOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Number of instances to pool for faster workstation startup.
+func (o WorkstationConfigHostGceInstanceOutput) PoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
+}
+
+// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+func (o WorkstationConfigHostGceInstanceOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// A set of Compute Engine Shielded instance options.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstanceOutput) ShieldedInstanceConfig() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
+}
+
+// Network tags to add to the Compute Engine machines backing the Workstations.
+func (o WorkstationConfigHostGceInstanceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type WorkstationConfigHostGceInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstance)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstancePtrOutput) ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstancePtrOutput) ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstancePtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstancePtrOutput) Elem() WorkstationConfigHostGceInstanceOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) WorkstationConfigHostGceInstance {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHostGceInstance
+		return ret
+	}).(WorkstationConfigHostGceInstanceOutput)
+}
+
+// Size of the boot disk in GB.
+func (o WorkstationConfigHostGceInstancePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// A set of Compute Engine Confidential VM instance options.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstancePtrOutput) ConfidentialInstanceConfig() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceConfig
+	}).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
+}
+
+// Whether instances have no public IP address.
+func (o WorkstationConfigHostGceInstancePtrOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePublicIpAddresses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of a Compute Engine machine type.
+func (o WorkstationConfigHostGceInstancePtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of instances to pool for faster workstation startup.
+func (o WorkstationConfigHostGceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PoolSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+func (o WorkstationConfigHostGceInstancePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// A set of Compute Engine Shielded instance options.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstancePtrOutput) ShieldedInstanceConfig() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstanceShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
+}
+
+// Network tags to add to the Compute Engine machines backing the Workstations.
+func (o WorkstationConfigHostGceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfig struct {
+	// Whether the instance has confidential compute enabled.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+}
+
+// WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput is an input type that accepts WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs and WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput` via:
+//
+//	WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{...}
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput
+	ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput
+}
+
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs struct {
+	// Whether the instance has confidential compute enabled.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
+	return i.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput).ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput is an input type that accepts WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs, WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtr and WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput` via:
+//
+//	        WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput
+	ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput
+}
+
+type workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs
+
+func WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtr(v *WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput {
+	return (*workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstanceConfidentialInstanceConfig) *WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
+		return &v
+	}).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
+}
+
+// Whether the instance has confidential compute enabled.
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceConfidentialInstanceConfig) *bool {
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) Elem() WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceConfidentialInstanceConfig) WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHostGceInstanceConfidentialInstanceConfig
+		return ret
+	}).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput)
+}
+
+// Whether the instance has confidential compute enabled.
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceShieldedInstanceConfig struct {
+	// Whether the instance has integrity monitoring enabled.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Whether the instance has Secure Boot enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Whether the instance has the vTPM enabled.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// WorkstationConfigHostGceInstanceShieldedInstanceConfigInput is an input type that accepts WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs and WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceShieldedInstanceConfigInput` via:
+//
+//	WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{...}
+type WorkstationConfigHostGceInstanceShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput
+	ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutputWithContext(context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput
+}
+
+type WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs struct {
+	// Whether the instance has integrity monitoring enabled.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Whether the instance has Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Whether the instance has the vTPM enabled.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
+	return i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput).ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput is an input type that accepts WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs, WorkstationConfigHostGceInstanceShieldedInstanceConfigPtr and WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput` via:
+//
+//	        WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput
+	ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput
+}
+
+type workstationConfigHostGceInstanceShieldedInstanceConfigPtrType WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs
+
+func WorkstationConfigHostGceInstanceShieldedInstanceConfigPtr(v *WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput {
+	return (*workstationConfigHostGceInstanceShieldedInstanceConfigPtrType)(v)
+}
+
+func (*workstationConfigHostGceInstanceShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *workstationConfigHostGceInstanceShieldedInstanceConfigPtrType) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigHostGceInstanceShieldedInstanceConfigPtrType) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstanceShieldedInstanceConfig) *WorkstationConfigHostGceInstanceShieldedInstanceConfig {
+		return &v
+	}).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
+}
+
+// Whether the instance has integrity monitoring enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the instance has Secure Boot enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the instance has the vTPM enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigHostGceInstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) Elem() WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceShieldedInstanceConfig) WorkstationConfigHostGceInstanceShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigHostGceInstanceShieldedInstanceConfig
+		return ret
+	}).(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput)
+}
+
+// Whether the instance has integrity monitoring enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the instance has Secure Boot enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the instance has the vTPM enabled.
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectory struct {
+	// PersistentDirectory backed by a Compute Engine regional persistent disk.
+	// Structure is documented below.
+	GcePd *WorkstationConfigPersistentDirectoryGcePd `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath *string `pulumi:"mountPath"`
+}
+
+// WorkstationConfigPersistentDirectoryInput is an input type that accepts WorkstationConfigPersistentDirectoryArgs and WorkstationConfigPersistentDirectoryOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryInput` via:
+//
+//	WorkstationConfigPersistentDirectoryArgs{...}
+type WorkstationConfigPersistentDirectoryInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryOutput() WorkstationConfigPersistentDirectoryOutput
+	ToWorkstationConfigPersistentDirectoryOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryOutput
+}
+
+type WorkstationConfigPersistentDirectoryArgs struct {
+	// PersistentDirectory backed by a Compute Engine regional persistent disk.
+	// Structure is documented below.
+	GcePd WorkstationConfigPersistentDirectoryGcePdPtrInput `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+}
+
+func (WorkstationConfigPersistentDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectory)(nil)).Elem()
+}
+
+func (i WorkstationConfigPersistentDirectoryArgs) ToWorkstationConfigPersistentDirectoryOutput() WorkstationConfigPersistentDirectoryOutput {
+	return i.ToWorkstationConfigPersistentDirectoryOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryArgs) ToWorkstationConfigPersistentDirectoryOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryOutput)
+}
+
+// WorkstationConfigPersistentDirectoryArrayInput is an input type that accepts WorkstationConfigPersistentDirectoryArray and WorkstationConfigPersistentDirectoryArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryArrayInput` via:
+//
+//	WorkstationConfigPersistentDirectoryArray{ WorkstationConfigPersistentDirectoryArgs{...} }
+type WorkstationConfigPersistentDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryArrayOutput() WorkstationConfigPersistentDirectoryArrayOutput
+	ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryArrayOutput
+}
+
+type WorkstationConfigPersistentDirectoryArray []WorkstationConfigPersistentDirectoryInput
+
+func (WorkstationConfigPersistentDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigPersistentDirectory)(nil)).Elem()
+}
+
+func (i WorkstationConfigPersistentDirectoryArray) ToWorkstationConfigPersistentDirectoryArrayOutput() WorkstationConfigPersistentDirectoryArrayOutput {
+	return i.ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryArray) ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryArrayOutput)
+}
+
+type WorkstationConfigPersistentDirectoryOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectory)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersistentDirectoryOutput() WorkstationConfigPersistentDirectoryOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersistentDirectoryOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryOutput {
+	return o
+}
+
+// PersistentDirectory backed by a Compute Engine regional persistent disk.
+// Structure is documented below.
+func (o WorkstationConfigPersistentDirectoryOutput) GcePd() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectory) *WorkstationConfigPersistentDirectoryGcePd {
+		return v.GcePd
+	}).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o WorkstationConfigPersistentDirectoryOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectory) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigPersistentDirectory)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryArrayOutput) ToWorkstationConfigPersistentDirectoryArrayOutput() WorkstationConfigPersistentDirectoryArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryArrayOutput) ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryArrayOutput) Index(i pulumi.IntInput) WorkstationConfigPersistentDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigPersistentDirectory {
+		return vs[0].([]WorkstationConfigPersistentDirectory)[vs[1].(int)]
+	}).(WorkstationConfigPersistentDirectoryOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGcePd struct {
+	// Type of the disk to use.
+	DiskType *string `pulumi:"diskType"`
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+	FsType *string `pulumi:"fsType"`
+	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
+	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+	SizeGb *int `pulumi:"sizeGb"`
+}
+
+// WorkstationConfigPersistentDirectoryGcePdInput is an input type that accepts WorkstationConfigPersistentDirectoryGcePdArgs and WorkstationConfigPersistentDirectoryGcePdOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryGcePdInput` via:
+//
+//	WorkstationConfigPersistentDirectoryGcePdArgs{...}
+type WorkstationConfigPersistentDirectoryGcePdInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryGcePdOutput() WorkstationConfigPersistentDirectoryGcePdOutput
+	ToWorkstationConfigPersistentDirectoryGcePdOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryGcePdOutput
+}
+
+type WorkstationConfigPersistentDirectoryGcePdArgs struct {
+	// Type of the disk to use.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+	FsType pulumi.StringPtrInput `pulumi:"fsType"`
+	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
+	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+}
+
+func (WorkstationConfigPersistentDirectoryGcePdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePd)(nil)).Elem()
+}
+
+func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersistentDirectoryGcePdOutput() WorkstationConfigPersistentDirectoryGcePdOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGcePdOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersistentDirectoryGcePdOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGcePdOutput)
+}
+
+func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGcePdOutput).ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigPersistentDirectoryGcePdPtrInput is an input type that accepts WorkstationConfigPersistentDirectoryGcePdArgs, WorkstationConfigPersistentDirectoryGcePdPtr and WorkstationConfigPersistentDirectoryGcePdPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigPersistentDirectoryGcePdPtrInput` via:
+//
+//	        WorkstationConfigPersistentDirectoryGcePdArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigPersistentDirectoryGcePdPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput
+	ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput
+}
+
+type workstationConfigPersistentDirectoryGcePdPtrType WorkstationConfigPersistentDirectoryGcePdArgs
+
+func WorkstationConfigPersistentDirectoryGcePdPtr(v *WorkstationConfigPersistentDirectoryGcePdArgs) WorkstationConfigPersistentDirectoryGcePdPtrInput {
+	return (*workstationConfigPersistentDirectoryGcePdPtrType)(v)
+}
+
+func (*workstationConfigPersistentDirectoryGcePdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigPersistentDirectoryGcePd)(nil)).Elem()
+}
+
+func (i *workstationConfigPersistentDirectoryGcePdPtrType) ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return i.ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigPersistentDirectoryGcePdPtrType) ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGcePdOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryGcePdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePd)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPersistentDirectoryGcePdOutput() WorkstationConfigPersistentDirectoryGcePdOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPersistentDirectoryGcePdOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return o.ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigPersistentDirectoryGcePd) *WorkstationConfigPersistentDirectoryGcePd {
+		return &v
+	}).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
+}
+
+// Type of the disk to use.
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) FsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.FsType }).(pulumi.StringPtrOutput)
+}
+
+// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+type WorkstationConfigPersistentDirectoryGcePdPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigPersistentDirectoryGcePdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigPersistentDirectoryGcePd)(nil)).Elem()
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) Elem() WorkstationConfigPersistentDirectoryGcePdOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) WorkstationConfigPersistentDirectoryGcePd {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigPersistentDirectoryGcePd
+		return ret
+	}).(WorkstationConfigPersistentDirectoryGcePdOutput)
+}
+
+// Type of the disk to use.
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) FsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReclaimPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterConditionInput)(nil)).Elem(), WorkstationClusterConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterConditionArrayInput)(nil)).Elem(), WorkstationClusterConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterPrivateClusterConfigInput)(nil)).Elem(), WorkstationClusterPrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterPrivateClusterConfigPtrInput)(nil)).Elem(), WorkstationClusterPrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigConditionInput)(nil)).Elem(), WorkstationConfigConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigConditionArrayInput)(nil)).Elem(), WorkstationConfigConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigContainerInput)(nil)).Elem(), WorkstationConfigContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigContainerPtrInput)(nil)).Elem(), WorkstationConfigContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEncryptionKeyInput)(nil)).Elem(), WorkstationConfigEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEncryptionKeyPtrInput)(nil)).Elem(), WorkstationConfigEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostInput)(nil)).Elem(), WorkstationConfigHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostPtrInput)(nil)).Elem(), WorkstationConfigHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceInput)(nil)).Elem(), WorkstationConfigHostGceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstancePtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryArrayInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdPtrInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
 	pulumi.RegisterOutputType(WorkstationClusterConditionOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterConditionArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterPrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterPrivateClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigConditionOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigConditionArrayOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigContainerOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigContainerPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstancePtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdPtrOutput{})
 }

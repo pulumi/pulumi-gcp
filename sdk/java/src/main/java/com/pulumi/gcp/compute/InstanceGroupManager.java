@@ -512,16 +512,18 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.versions;
     }
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * continue trying until it times out.
      * 
      */
     @Export(name="waitForInstances", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForInstances;
 
     /**
-     * @return Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * @return Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, this provider will
+     * continue trying until it times out.
      * 
      */
     public Output<Optional<Boolean>> waitForInstances() {

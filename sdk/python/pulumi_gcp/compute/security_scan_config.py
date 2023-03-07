@@ -426,6 +426,16 @@ class SecurityScanConfig(pulumi.CustomResource):
                  user_agent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A ScanConfig resource contains the configurations to launch a scan.
+
+        To get more information about ScanConfig, see:
+
+        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+        * How-to Guides
+            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+
+        > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
+
         ## Example Usage
         ### Scan Config Basic
 
@@ -435,7 +445,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="terraform-scan-config",
+            display_name="scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -488,6 +498,16 @@ class SecurityScanConfig(pulumi.CustomResource):
                  args: SecurityScanConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A ScanConfig resource contains the configurations to launch a scan.
+
+        To get more information about ScanConfig, see:
+
+        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+        * How-to Guides
+            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+
+        > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
+
         ## Example Usage
         ### Scan Config Basic
 
@@ -497,7 +517,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
         scan_config = gcp.compute.SecurityScanConfig("scan-config",
-            display_name="terraform-scan-config",
+            display_name="scan-config",
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"],
             opts=pulumi.ResourceOptions(provider=google_beta))

@@ -123,6 +123,10 @@ export class TableIamMember extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -196,6 +200,10 @@ export interface TableIamMemberState {
      */
     instance?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -219,6 +227,10 @@ export interface TableIamMemberArgs {
      */
     instance: pulumi.Input<string>;
     member: pulumi.Input<string>;
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, this provider will use the provider default.
+     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

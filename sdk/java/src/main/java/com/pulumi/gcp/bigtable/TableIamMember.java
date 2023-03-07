@@ -197,9 +197,19 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> member() {
         return this.member;
     }
+    /**
+     * The project in which the table belongs. If it
+     * is not provided, this provider will use the provider default.
+     * 
+     */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
+    /**
+     * @return The project in which the table belongs. If it
+     * is not provided, this provider will use the provider default.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

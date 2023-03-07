@@ -24,6 +24,112 @@ import javax.annotation.Nullable;
  * Beta only: The Cloudbuildv2 Connection resource
  * 
  * ## Example Usage
+ * ### Ghe
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import com.pulumi.gcp.cloudbuildv2.Connection;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
+ * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var private_key_secret = new Secret(&#34;private-key-secret&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;ghe-pk-secret&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var private_key_secret_version = new SecretVersion(&#34;private-key-secret-version&#34;, SecretVersionArgs.builder()        
+ *             .secret(private_key_secret.id())
+ *             .secretData(Files.readString(Paths.get(&#34;private-key.pem&#34;)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var webhook_secret_secret = new Secret(&#34;webhook-secret-secret&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;github-token-secret&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var webhook_secret_secret_version = new SecretVersion(&#34;webhook-secret-secret-version&#34;, SecretVersionArgs.builder()        
+ *             .secret(webhook_secret_secret.id())
+ *             .secretData(&#34;&lt;webhook-secret-data&gt;&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
+ *                 .members(&#34;serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy_pk = new SecretIamPolicy(&#34;policy-pk&#34;, SecretIamPolicyArgs.builder()        
+ *             .secretId(private_key_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var policy_whs = new SecretIamPolicy(&#34;policy-whs&#34;, SecretIamPolicyArgs.builder()        
+ *             .secretId(webhook_secret_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
+ *                 .hostUri(&#34;https://ghe.com&#34;)
+ *                 .privateKeySecretVersion(private_key_secret_version.id())
+ *                 .webhookSecretSecretVersion(webhook_secret_secret_version.id())
+ *                 .appId(200)
+ *                 .appSlug(&#34;gcb-app&#34;)
+ *                 .appInstallationId(300)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(                
+ *                     policy_pk,
+ *                     policy_whs)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### GitHub Connection
  * Creates a Connection to github.com
  * ```java

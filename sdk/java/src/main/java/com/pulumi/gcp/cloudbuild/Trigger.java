@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuild.TriggerArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerState;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerApprovalConfig;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerBitbucketServerTriggerConfig;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuild;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGithub;
@@ -214,7 +215,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cloudbuildServiceAccount = new Account(&#34;cloudbuildServiceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;my-service-account&#34;)
+ *             .accountId(&#34;tf-test-my-service-account&#34;)
  *             .build());
  * 
  *         var actAs = new IAMMember(&#34;actAs&#34;, IAMMemberArgs.builder()        
@@ -579,6 +580,129 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudbuild Trigger Bitbucket Server Push
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigPushArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bbs_push_trigger = new Trigger(&#34;bbs-push-trigger&#34;, TriggerArgs.builder()        
+ *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
+ *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
+ *                 .projectKey(&#34;STAG&#34;)
+ *                 .push(TriggerBitbucketServerTriggerConfigPushArgs.builder()
+ *                     .invertRegex(true)
+ *                     .tag(&#34;^0.1.*&#34;)
+ *                     .build())
+ *                 .repoSlug(&#34;terraform-provider-google&#34;)
+ *                 .build())
+ *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudbuild Trigger Bitbucket Server Pull Request
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigPullRequestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bbs_pull_request_trigger = new Trigger(&#34;bbs-pull-request-trigger&#34;, TriggerArgs.builder()        
+ *             .bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs.builder()
+ *                 .bitbucketServerConfigResource(&#34;projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig&#34;)
+ *                 .projectKey(&#34;STAG&#34;)
+ *                 .pullRequest(TriggerBitbucketServerTriggerConfigPullRequestArgs.builder()
+ *                     .branch(&#34;^master$&#34;)
+ *                     .commentControl(&#34;COMMENTS_ENABLED&#34;)
+ *                     .invertRegex(false)
+ *                     .build())
+ *                 .repoSlug(&#34;terraform-provider-google&#34;)
+ *                 .build())
+ *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudbuild Trigger Github Enterprise
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubPushArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ghe_trigger = new Trigger(&#34;ghe-trigger&#34;, TriggerArgs.builder()        
+ *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .github(TriggerGithubArgs.builder()
+ *                 .enterpriseConfigResourceName(&#34;projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID&#34;)
+ *                 .name(&#34;terraform-provider-google&#34;)
+ *                 .owner(&#34;hashicorp&#34;)
+ *                 .push(TriggerGithubPushArgs.builder()
+ *                     .branch(&#34;^main$&#34;)
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -622,6 +746,22 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<TriggerApprovalConfig> approvalConfig() {
         return this.approvalConfig;
+    }
+    /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bitbucketServerTriggerConfig", type=TriggerBitbucketServerTriggerConfig.class, parameters={})
+    private Output</* @Nullable */ TriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfig;
+
+    /**
+     * @return BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TriggerBitbucketServerTriggerConfig>> bitbucketServerTriggerConfig() {
+        return Codegen.optional(this.bitbucketServerTriggerConfig);
     }
     /**
      * Contents of the build template. Either a filename or build template must be provided.

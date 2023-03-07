@@ -100,18 +100,18 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
-     * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
-     * tables in a BigQuery dataset.
+     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+     * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
+     * Structure is documented below.
      * 
      */
     @Import(name="streamConfigs")
     private @Nullable Output<List<DicomStoreStreamConfigArgs>> streamConfigs;
 
     /**
-     * @return To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
-     * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
-     * tables in a BigQuery dataset.
+     * @return To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+     * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DicomStoreStreamConfigArgs>>> streamConfigs() {
@@ -251,9 +251,9 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
-         * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
-         * tables in a BigQuery dataset.
+         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -264,9 +264,9 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
-         * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
-         * tables in a BigQuery dataset.
+         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -276,9 +276,9 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store. streamConfigs is an array, so
-         * you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery
-         * tables in a BigQuery dataset.
+         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -39,6 +39,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("enforceOnKey")]
         public Input<string>? EnforceOnKey { get; set; }
 
+        [Input("enforceOnKeyConfigs")]
+        private InputList<Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigGetArgs>? _enforceOnKeyConfigs;
+
+        /// <summary>
+        /// ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigGetArgs> EnforceOnKeyConfigs
+        {
+            get => _enforceOnKeyConfigs ?? (_enforceOnKeyConfigs = new InputList<Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigGetArgs>());
+            set => _enforceOnKeyConfigs = value;
+        }
+
         /// <summary>
         /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>

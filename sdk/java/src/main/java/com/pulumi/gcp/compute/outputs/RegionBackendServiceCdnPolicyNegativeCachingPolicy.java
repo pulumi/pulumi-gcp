@@ -17,6 +17,11 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicy {
      * 
      */
     private @Nullable Integer code;
+    /**
+     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * 
+     */
     private @Nullable Integer ttl;
 
     private RegionBackendServiceCdnPolicyNegativeCachingPolicy() {}
@@ -28,6 +33,11 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicy {
     public Optional<Integer> code() {
         return Optional.ofNullable(this.code);
     }
+    /**
+     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * 
+     */
     public Optional<Integer> ttl() {
         return Optional.ofNullable(this.ttl);
     }

@@ -169,8 +169,6 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -206,8 +204,6 @@ public final class SecretmanagerFunctions {
         return getSecretVersion(args, InvokeOptions.Empty);
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -243,8 +239,6 @@ public final class SecretmanagerFunctions {
         return getSecretVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -280,8 +274,6 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invoke("gcp:secretmanager/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -317,8 +309,6 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -354,8 +344,6 @@ public final class SecretmanagerFunctions {
         return getSecretVersionAccess(args, InvokeOptions.Empty);
     }
     /**
-     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -391,8 +379,6 @@ public final class SecretmanagerFunctions {
         return getSecretVersionAccessPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -428,8 +414,6 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invoke("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", TypeShape.of(GetSecretVersionAccessResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a payload of Secret Manager secret&#39;s version. It only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

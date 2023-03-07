@@ -64,6 +64,9 @@ import (
 type SharedVPCServiceProject struct {
 	pulumi.CustomResourceState
 
+	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+	// Possible values are: "ABANDON".
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The ID of a host project to associate.
 	HostProject pulumi.StringOutput `pulumi:"hostProject"`
 	// The ID of the project that will serve as a Shared VPC service project.
@@ -105,6 +108,9 @@ func GetSharedVPCServiceProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SharedVPCServiceProject resources.
 type sharedVPCServiceProjectState struct {
+	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+	// Possible values are: "ABANDON".
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of a host project to associate.
 	HostProject *string `pulumi:"hostProject"`
 	// The ID of the project that will serve as a Shared VPC service project.
@@ -112,6 +118,9 @@ type sharedVPCServiceProjectState struct {
 }
 
 type SharedVPCServiceProjectState struct {
+	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+	// Possible values are: "ABANDON".
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of a host project to associate.
 	HostProject pulumi.StringPtrInput
 	// The ID of the project that will serve as a Shared VPC service project.
@@ -123,6 +132,9 @@ func (SharedVPCServiceProjectState) ElementType() reflect.Type {
 }
 
 type sharedVPCServiceProjectArgs struct {
+	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+	// Possible values are: "ABANDON".
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of a host project to associate.
 	HostProject string `pulumi:"hostProject"`
 	// The ID of the project that will serve as a Shared VPC service project.
@@ -131,6 +143,9 @@ type sharedVPCServiceProjectArgs struct {
 
 // The set of arguments for constructing a SharedVPCServiceProject resource.
 type SharedVPCServiceProjectArgs struct {
+	// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+	// Possible values are: "ABANDON".
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of a host project to associate.
 	HostProject pulumi.StringInput
 	// The ID of the project that will serve as a Shared VPC service project.
@@ -222,6 +237,12 @@ func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectOutput() SharedV
 
 func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectOutputWithContext(ctx context.Context) SharedVPCServiceProjectOutput {
 	return o
+}
+
+// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
+// Possible values are: "ABANDON".
+func (o SharedVPCServiceProjectOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedVPCServiceProject) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The ID of a host project to associate.

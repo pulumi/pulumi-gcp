@@ -27,6 +27,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * 
      */
     private @Nullable String collocation;
+    private @Nullable Integer maxDistance;
     /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
@@ -55,6 +56,9 @@ public final class ResourcePolicyGroupPlacementPolicy {
     public Optional<String> collocation() {
         return Optional.ofNullable(this.collocation);
     }
+    public Optional<Integer> maxDistance() {
+        return Optional.ofNullable(this.maxDistance);
+    }
     /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
@@ -76,12 +80,14 @@ public final class ResourcePolicyGroupPlacementPolicy {
     public static final class Builder {
         private @Nullable Integer availabilityDomainCount;
         private @Nullable String collocation;
+        private @Nullable Integer maxDistance;
         private @Nullable Integer vmCount;
         public Builder() {}
         public Builder(ResourcePolicyGroupPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityDomainCount = defaults.availabilityDomainCount;
     	      this.collocation = defaults.collocation;
+    	      this.maxDistance = defaults.maxDistance;
     	      this.vmCount = defaults.vmCount;
         }
 
@@ -96,6 +102,11 @@ public final class ResourcePolicyGroupPlacementPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder maxDistance(@Nullable Integer maxDistance) {
+            this.maxDistance = maxDistance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vmCount(@Nullable Integer vmCount) {
             this.vmCount = vmCount;
             return this;
@@ -104,6 +115,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
             final var o = new ResourcePolicyGroupPlacementPolicy();
             o.availabilityDomainCount = availabilityDomainCount;
             o.collocation = collocation;
+            o.maxDistance = maxDistance;
             o.vmCount = vmCount;
             return o;
         }

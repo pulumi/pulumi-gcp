@@ -222,8 +222,9 @@ type InstanceGroupManager struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions InstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-	// operation does not succeed, Terraform will continue trying until it times out.
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -337,8 +338,9 @@ type instanceGroupManagerState struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-	// operation does not succeed, Terraform will continue trying until it times out.
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -418,8 +420,9 @@ type InstanceGroupManagerState struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions InstanceGroupManagerVersionArrayInput
-	// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-	// operation does not succeed, Terraform will continue trying until it times out.
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -494,8 +497,9 @@ type instanceGroupManagerArgs struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-	// operation does not succeed, Terraform will continue trying until it times out.
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -567,8 +571,9 @@ type InstanceGroupManagerArgs struct {
 	// version deals with a specific instance template, allowing canary release scenarios.
 	// Structure is documented below.
 	Versions InstanceGroupManagerVersionArrayInput
-	// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-	// operation does not succeed, Terraform will continue trying until it times out.
+	// Whether to wait for all instances to be created/updated before
+	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 	// When used with `waitForInstances` it specifies the status to wait for.
 	// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -807,8 +812,9 @@ func (o InstanceGroupManagerOutput) Versions() InstanceGroupManagerVersionArrayO
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerVersionArrayOutput { return v.Versions }).(InstanceGroupManagerVersionArrayOutput)
 }
 
-// Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-// operation does not succeed, Terraform will continue trying until it times out.
+// Whether to wait for all instances to be created/updated before
+// returning. Note that if this is set to true and the operation does not succeed, this provider will
+// continue trying until it times out.
 func (o InstanceGroupManagerOutput) WaitForInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.BoolPtrOutput { return v.WaitForInstances }).(pulumi.BoolPtrOutput)
 }

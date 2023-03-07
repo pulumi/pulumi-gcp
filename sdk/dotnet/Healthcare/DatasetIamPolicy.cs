@@ -10,6 +10,90 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.healthcare.DatasetIamPolicy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
+    /// * `gcp.healthcare.DatasetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataset are preserved.
+    /// * `gcp.healthcare.DatasetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataset are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DatasetIamBinding` and `gcp.healthcare.DatasetIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = "your-dataset-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.DatasetIamBinding("dataset", new()
+    ///     {
+    ///         DatasetId = "your-dataset-id",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.Healthcare.DatasetIamMember("dataset", new()
+    ///     {
+    ///         DatasetId = "your-dataset-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

@@ -74,7 +74,8 @@ type LookupManagedZoneArgs struct {
 type LookupManagedZoneResult struct {
 	// A textual description field.
 	Description string `pulumi:"description"`
-	DnsName     string `pulumi:"dnsName"`
+	// The fully qualified DNS name of this zone, e.g. `example.io.`.
+	DnsName string `pulumi:"dnsName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	ManagedZoneId int    `pulumi:"managedZoneId"`
@@ -134,6 +135,7 @@ func (o LookupManagedZoneResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The fully qualified DNS name of this zone, e.g. `example.io.`.
 func (o LookupManagedZoneResultOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.DnsName }).(pulumi.StringOutput)
 }

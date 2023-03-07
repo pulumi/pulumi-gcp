@@ -31,14 +31,16 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
     }
 
     /**
-     * The version to set
+     * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The version to set
+     * @return The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      * 
      */
     public Optional<Output<String>> version() {
@@ -92,7 +94,8 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
         }
 
         /**
-         * @param version The version to set
+         * @param version The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+         * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
         }
 
         /**
-         * @param version The version to set
+         * @param version The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+         * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
          * 
          * @return builder
          * 

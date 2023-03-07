@@ -84,18 +84,22 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of instances in the pool. They can be given as URLs, or in the form of &#34;zone/name&#34;. Note that the instances need
-     * not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-     * dependency on the instances from the target pool.
+     * List of instances in the pool. They can be given as
+     * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use the
+     * interpolation to create a dependency on the instances from the
+     * target pool.
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
     /**
-     * @return List of instances in the pool. They can be given as URLs, or in the form of &#34;zone/name&#34;. Note that the instances need
-     * not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-     * dependency on the instances from the target pool.
+     * @return List of instances in the pool. They can be given as
+     * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
+     * at the time of target pool creation, so there is no need to use the
+     * interpolation to create a dependency on the instances from the
+     * target pool.
      * 
      */
     public Optional<Output<List<String>>> instances() {
@@ -295,9 +299,11 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances List of instances in the pool. They can be given as URLs, or in the form of &#34;zone/name&#34;. Note that the instances need
-         * not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-         * dependency on the instances from the target pool.
+         * @param instances List of instances in the pool. They can be given as
+         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
+         * at the time of target pool creation, so there is no need to use the
+         * interpolation to create a dependency on the instances from the
+         * target pool.
          * 
          * @return builder
          * 
@@ -308,9 +314,11 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances List of instances in the pool. They can be given as URLs, or in the form of &#34;zone/name&#34;. Note that the instances need
-         * not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-         * dependency on the instances from the target pool.
+         * @param instances List of instances in the pool. They can be given as
+         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
+         * at the time of target pool creation, so there is no need to use the
+         * interpolation to create a dependency on the instances from the
+         * target pool.
          * 
          * @return builder
          * 
@@ -320,9 +328,11 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances List of instances in the pool. They can be given as URLs, or in the form of &#34;zone/name&#34;. Note that the instances need
-         * not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-         * dependency on the instances from the target pool.
+         * @param instances List of instances in the pool. They can be given as
+         * URLs, or in the form of &#34;zone/name&#34;. Note that the instances need not exist
+         * at the time of target pool creation, so there is no need to use the
+         * interpolation to create a dependency on the instances from the
+         * target pool.
          * 
          * @return builder
          * 

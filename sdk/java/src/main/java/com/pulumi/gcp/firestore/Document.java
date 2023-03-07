@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
  *             .collection(&#34;somenewcollection&#34;)
- *             .documentId(&#34;my-doc-%{random_suffix}&#34;)
+ *             .documentId(&#34;my-doc&#34;)
  *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .build());
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydoc = new Document(&#34;mydoc&#34;, DocumentArgs.builder()        
  *             .collection(&#34;somenewcollection&#34;)
- *             .documentId(&#34;my-doc-%{random_suffix}&#34;)
+ *             .documentId(&#34;my-doc&#34;)
  *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .build());

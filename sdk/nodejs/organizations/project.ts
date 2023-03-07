@@ -76,9 +76,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
     /**
-     * The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-     * See Google Cloud Billing API Access Control for more details.
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with the provider
+     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+     * for more details.
      */
     public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
@@ -115,7 +117,8 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
      */
     public readonly skipDelete!: pulumi.Output<boolean>;
 
@@ -172,9 +175,11 @@ export interface ProjectState {
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**
-     * The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-     * See Google Cloud Billing API Access Control for more details.
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with the provider
+     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+     * for more details.
      */
     billingAccount?: pulumi.Input<string>;
     /**
@@ -211,7 +216,8 @@ export interface ProjectState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
      */
     skipDelete?: pulumi.Input<boolean>;
 }
@@ -227,9 +233,11 @@ export interface ProjectArgs {
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**
-     * The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-     * See Google Cloud Billing API Access Control for more details.
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with the provider
+     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+     * for more details.
      */
     billingAccount?: pulumi.Input<string>;
     /**
@@ -262,7 +270,8 @@ export interface ProjectArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
      */
     skipDelete?: pulumi.Input<boolean>;
 }

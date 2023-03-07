@@ -59,6 +59,7 @@ export interface GetTriggerArgs {
  */
 export interface GetTriggerResult {
     readonly approvalConfigs: outputs.cloudbuild.GetTriggerApprovalConfig[];
+    readonly bitbucketServerTriggerConfigs: outputs.cloudbuild.GetTriggerBitbucketServerTriggerConfig[];
     readonly builds: outputs.cloudbuild.GetTriggerBuild[];
     readonly createTime: string;
     readonly description: string;

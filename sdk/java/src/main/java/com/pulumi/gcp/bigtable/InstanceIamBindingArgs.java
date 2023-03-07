@@ -46,9 +46,19 @@ public final class InstanceIamBindingArgs extends com.pulumi.resources.ResourceA
         return this.members;
     }
 
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, a default will be supplied.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The project in which the instance belongs. If it
+     * is not provided, a default will be supplied.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -143,11 +153,25 @@ public final class InstanceIamBindingArgs extends com.pulumi.resources.ResourceA
             return members(List.of(members));
         }
 
+        /**
+         * @param project The project in which the instance belongs. If it
+         * is not provided, a default will be supplied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The project in which the instance belongs. If it
+         * is not provided, a default will be supplied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

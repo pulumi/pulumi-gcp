@@ -40,6 +40,88 @@ import javax.annotation.Nullable;
  * `billing_project` you defined.
  * 
  * ## Example Usage
+ * ### Access Context Manager Access Level Condition Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevel;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelCondition;
+ * import com.pulumi.gcp.accesscontextmanager.AccessLevelConditionArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .title(&#34;my policy&#34;)
+ *             .build());
+ * 
+ *         var access_level_service_account = new AccessLevel(&#34;access-level-service-account&#34;, AccessLevelArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
+ *             .title(&#34;tf_test_chromeos_no_lock&#34;)
+ *             .basic(AccessLevelBasicArgs.builder()
+ *                 .conditions(AccessLevelBasicConditionArgs.builder()
+ *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
+ *                         .requireScreenLock(true)
+ *                         .osConstraints(AccessLevelBasicConditionDevicePolicyOsConstraintArgs.builder()
+ *                             .osType(&#34;DESKTOP_CHROME_OS&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .regions(                    
+ *                         &#34;CH&#34;,
+ *                         &#34;IT&#34;,
+ *                         &#34;US&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var created_later = new Account(&#34;created-later&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;tf-test&#34;)
+ *             .build());
+ * 
+ *         var access_level_conditions = new AccessLevelCondition(&#34;access-level-conditions&#34;, AccessLevelConditionArgs.builder()        
+ *             .accessLevel(access_level_service_account.name())
+ *             .ipSubnetworks(&#34;192.0.4.0/24&#34;)
+ *             .members(            
+ *                 &#34;user:test@google.com&#34;,
+ *                 &#34;user:test2@google.com&#34;,
+ *                 created_later.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .negate(false)
+ *             .devicePolicy(AccessLevelConditionDevicePolicyArgs.builder()
+ *                 .requireScreenLock(false)
+ *                 .requireAdminApproval(false)
+ *                 .requireCorpOwned(true)
+ *                 .osConstraints(AccessLevelConditionDevicePolicyOsConstraintArgs.builder()
+ *                     .osType(&#34;DESKTOP_CHROME_OS&#34;)
+ *                     .build())
+ *                 .build())
+ *             .regions(            
+ *                 &#34;IT&#34;,
+ *                 &#34;US&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

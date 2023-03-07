@@ -202,6 +202,61 @@ class ApiIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
+
+        * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
+        * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
+        * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+
+        > **Note:** `apigateway.ApiIamPolicy` **cannot** be used in conjunction with `apigateway.ApiIamBinding` and `apigateway.ApiIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiIamPolicy("policy",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiIamBinding("binding",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiIamMember("member",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}} * {{project}}/{{api}} * {{api}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway api IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -241,6 +296,61 @@ class ApiIamBinding(pulumi.CustomResource):
                  args: ApiIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
+
+        * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
+        * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
+        * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+
+        > **Note:** `apigateway.ApiIamPolicy` **cannot** be used in conjunction with `apigateway.ApiIamBinding` and `apigateway.ApiIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiIamPolicy("policy",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiIamBinding("binding",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiIamMember("member",
+            project=google_api_gateway_api["api"]["project"],
+            api=google_api_gateway_api["api"]["api_id"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}} * {{project}}/{{api}} * {{api}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway api IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

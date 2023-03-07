@@ -256,24 +256,22 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-     * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-     * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-     * syntax: &#39;example=[]&#39; For more details about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      * 
      */
     @Import(name="secondaryIpRanges")
     private @Nullable Output<List<SubnetworkSecondaryIpRangeArgs>> secondaryIpRanges;
 
     /**
-     * @return An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-     * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-     * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-     * syntax: &#39;example=[]&#39; For more details about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * @return An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SubnetworkSecondaryIpRangeArgs>>> secondaryIpRanges() {
@@ -645,12 +643,11 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-         * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-         * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-         * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-         * syntax: &#39;example=[]&#39; For more details about this behavior, see [this
-         * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances
+         * contained in this subnetwork. The primary IP of such VM must belong
+         * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+         * to either primary or secondary ranges.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -661,12 +658,11 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-         * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-         * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-         * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-         * syntax: &#39;example=[]&#39; For more details about this behavior, see [this
-         * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances
+         * contained in this subnetwork. The primary IP of such VM must belong
+         * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+         * to either primary or secondary ranges.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -676,12 +672,11 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-         * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-         * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-         * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-         * syntax: &#39;example=[]&#39; For more details about this behavior, see [this
-         * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+         * @param secondaryIpRanges An array of configurations for secondary IP ranges for VM instances
+         * contained in this subnetwork. The primary IP of such VM must belong
+         * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+         * to either primary or secondary ranges.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -11,24 +11,43 @@ namespace Pulumi.Gcp.CertificateManager
 {
     /// <summary>
     /// ## Example Usage
-    /// ### Certificate Manager Self Managed Certificate
+    /// ### Certificate Manager Certificate Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain2.hashicorptest.com",
+    ///     });
+    /// 
     ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
     ///     {
     ///         Description = "The default cert",
     ///         Scope = "EDGE_CACHE",
-    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///                 instance2.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///                 instance2.Id,
+    ///             },
     ///         },
     ///     });
     /// 

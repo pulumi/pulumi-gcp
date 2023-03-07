@@ -92,6 +92,7 @@ type Provider struct {
 	GkeBackupCustomEndpoint            pulumi.StringPtrOutput `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHubCustomEndpoint               pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
+	GooglePartnerName                  pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
 	Iam2CustomEndpoint                 pulumi.StringPtrOutput `pulumi:"iam2CustomEndpoint"`
 	IamBetaCustomEndpoint              pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
@@ -234,6 +235,7 @@ type providerArgs struct {
 	DeploymentManagerCustomEndpoint    *string           `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint           *string           `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint         *string           `pulumi:"dialogflowCxCustomEndpoint"`
+	DisableGooglePartnerName           *bool             `pulumi:"disableGooglePartnerName"`
 	DnsCustomEndpoint                  *string           `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint           *string           `pulumi:"documentAiCustomEndpoint"`
 	EssentialContactsCustomEndpoint    *string           `pulumi:"essentialContactsCustomEndpoint"`
@@ -249,6 +251,7 @@ type providerArgs struct {
 	GkeBackupCustomEndpoint            *string           `pulumi:"gkeBackupCustomEndpoint"`
 	GkeHubCustomEndpoint               *string           `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint        *string           `pulumi:"gkehubFeatureCustomEndpoint"`
+	GooglePartnerName                  *string           `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint           *string           `pulumi:"healthcareCustomEndpoint"`
 	Iam2CustomEndpoint                 *string           `pulumi:"iam2CustomEndpoint"`
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
@@ -371,6 +374,7 @@ type ProviderArgs struct {
 	DeploymentManagerCustomEndpoint    pulumi.StringPtrInput
 	DialogflowCustomEndpoint           pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint         pulumi.StringPtrInput
+	DisableGooglePartnerName           pulumi.BoolPtrInput
 	DnsCustomEndpoint                  pulumi.StringPtrInput
 	DocumentAiCustomEndpoint           pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint    pulumi.StringPtrInput
@@ -386,6 +390,7 @@ type ProviderArgs struct {
 	GkeBackupCustomEndpoint            pulumi.StringPtrInput
 	GkeHubCustomEndpoint               pulumi.StringPtrInput
 	GkehubFeatureCustomEndpoint        pulumi.StringPtrInput
+	GooglePartnerName                  pulumi.StringPtrInput
 	HealthcareCustomEndpoint           pulumi.StringPtrInput
 	Iam2CustomEndpoint                 pulumi.StringPtrInput
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
@@ -780,6 +785,10 @@ func (o ProviderOutput) GkeHubCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) GkehubFeatureCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GkehubFeatureCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) GooglePartnerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GooglePartnerName }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) HealthcareCustomEndpoint() pulumi.StringPtrOutput {

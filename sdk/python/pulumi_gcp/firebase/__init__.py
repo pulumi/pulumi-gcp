@@ -11,11 +11,16 @@ from .database_instance import *
 from .get_android_app import *
 from .get_apple_app import *
 from .get_apple_app_config import *
+from .get_hosting_channel import *
 from .get_web_app import *
 from .get_web_app_config import *
 from .hosting_channel import *
+from .hosting_release import *
 from .hosting_site import *
+from .hosting_version import *
 from .project import *
 from .project_location import *
 from .storage_bucket import *
 from .web_app import *
+from ._inputs import *
+from . import outputs

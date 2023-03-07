@@ -16,9 +16,19 @@ public final class BackendServiceCircuitBreakersArgs extends com.pulumi.resource
 
     public static final BackendServiceCircuitBreakersArgs Empty = new BackendServiceCircuitBreakersArgs();
 
+    /**
+     * The timeout for new network connections to hosts.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="connectTimeout")
     private @Nullable Output<BackendServiceCircuitBreakersConnectTimeoutArgs> connectTimeout;
 
+    /**
+     * @return The timeout for new network connections to hosts.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<BackendServiceCircuitBreakersConnectTimeoutArgs>> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
@@ -141,11 +151,25 @@ public final class BackendServiceCircuitBreakersArgs extends com.pulumi.resource
             $ = new BackendServiceCircuitBreakersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectTimeout The timeout for new network connections to hosts.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectTimeout(@Nullable Output<BackendServiceCircuitBreakersConnectTimeoutArgs> connectTimeout) {
             $.connectTimeout = connectTimeout;
             return this;
         }
 
+        /**
+         * @param connectTimeout The timeout for new network connections to hosts.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectTimeout(BackendServiceCircuitBreakersConnectTimeoutArgs connectTimeout) {
             return connectTimeout(Output.of(connectTimeout));
         }

@@ -27,6 +27,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Backend Service defines a group of virtual machines that will serve
+ * traffic for load balancing. This resource is a global backend service,
+ * appropriate for external load balancing or self-managed internal load balancing.
+ * For managed internal load balancing, use a regional backend service instead.
+ * 
+ * Currently self-managed internal load balancing is only available in beta.
+ * 
+ * To get more information about BackendService, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+ * 
+ * &gt; **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+ * state as plain-text.
+ * 
  * ## Example Usage
  * ### Backend Service Basic
  * 

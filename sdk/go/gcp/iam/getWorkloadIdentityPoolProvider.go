@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get a IAM workload identity provider from Google Cloud by its id.
+//
 // ## Example Usage
 //
 // ```go

@@ -109,6 +109,11 @@ public final class GetInstanceTemplateResult {
      */
     private String minCpuPlatform;
     private @Nullable Boolean mostRecent;
+    /**
+     * @return The name of the instance template. If you leave
+     * this blank, the provider will auto-generate a unique name.
+     * 
+     */
     private @Nullable String name;
     /**
      * @return Creates a unique name beginning with the specified
@@ -303,6 +308,11 @@ public final class GetInstanceTemplateResult {
     public Optional<Boolean> mostRecent() {
         return Optional.ofNullable(this.mostRecent);
     }
+    /**
+     * @return The name of the instance template. If you leave
+     * this blank, the provider will auto-generate a unique name.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

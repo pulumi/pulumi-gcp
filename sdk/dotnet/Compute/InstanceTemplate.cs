@@ -10,6 +10,184 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Manages a VM instance template resource within GCE. For more information see
+    /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+    /// and
+    /// [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+    /// 
+    /// ## Example Usage
+    /// ### Automatic Envoy Deployment
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///         {
+    ///             Preemptible = false,
+    ///             AutomaticRestart = true,
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "gce-software-declaration", @"{
+    ///   ""softwareRecipes"": [{
+    ///     ""name"": ""install-gce-service-proxy-agent"",
+    ///     ""desired_state"": ""INSTALLED"",
+    ///     ""installSteps"": [{
+    ///       ""scriptRun"": {
+    ///         ""script"": ""#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-""$ZONE""/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   ""$SERVICE_PROXY_AGENT_DIRECTORY""   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     ""$SERVICE_PROXY_AGENT_DIRECTORY""\nsudo tar -xzf ""$SERVICE_PROXY_AGENT_DIRECTORY""/service-proxy-agent-0.2.tgz -C ""$SERVICE_PROXY_AGENT_DIRECTORY""\n""$SERVICE_PROXY_AGENT_DIRECTORY""/service-proxy-agent/service-proxy-agent-bootstrap.sh""
+    ///       }
+    ///     }]
+    ///   }]
+    /// }
+    /// " },
+    ///             { "gce-service-proxy", @"{
+    ///   ""api-version"": ""0.2"",
+    ///   ""proxy-spec"": {
+    ///     ""proxy-port"": 15001,
+    ///     ""network"": ""my-network"",
+    ///     ""tracing"": ""ON"",
+    ///     ""access-log"": ""/var/log/envoy/access.log""
+    ///   }
+    ///   ""service"": {
+    ///     ""serving-ports"": [80, 81]
+    ///   },
+    ///  ""labels"": {
+    ///    ""app_name"": ""bookserver_app"",
+    ///    ""app_version"": ""STABLE""
+    ///   }
+    /// }
+    /// " },
+    ///             { "enable-guest-attributes", "true" },
+    ///             { "enable-osconfig", "true" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Email = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "gce-service-proxy", "on" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Deploying the Latest Image
+    /// 
+    /// A common way to use instance templates and managed instance groups is to deploy the
+    /// latest image in a family, usually the latest build of your application. There are two
+    /// ways to do this in the provider, and they have their pros and cons. The difference ends
+    /// up being in how "latest" is interpreted. You can either deploy the latest image available
+    /// when the provider runs, or you can have each instance check what the latest image is when
+    /// it's being created, either as part of a scaling event or being rebuilt by the instance
+    /// group manager.
+    /// 
+    /// If you're not sure, we recommend deploying the latest image available when the provider runs,
+    /// because this means all the instances in your group will be based on the same image, always,
+    /// and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+    /// You can achieve this by using the `gcp.compute.Image`
+    /// data source, which will retrieve the latest image on every `pulumi apply`, and will update
+    /// the template to use that specific image:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
+    ///     {
+    ///         NamePrefix = "instance-template-",
+    ///         MachineType = "e2-medium",
+    ///         Region = "us-central1",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To have instances update to the latest on every scaling event or instance re-creation,
+    /// use the family as the image for the disk, and it will use GCP's default behavior, setting
+    /// the image for the template to the family:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new()
+    ///     {
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///         MachineType = "e2-medium",
+    ///         NamePrefix = "instance-template-",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance templates can be imported using any of these accepted formats
@@ -127,7 +305,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> MinCpuPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
+        /// The name of the instance template. If you leave
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -387,7 +566,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
+        /// The name of the instance template. If you leave
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -615,7 +795,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
+        /// The name of the instance template. If you leave
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

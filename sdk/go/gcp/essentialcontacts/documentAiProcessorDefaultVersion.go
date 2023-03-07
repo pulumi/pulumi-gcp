@@ -41,7 +41,7 @@ import (
 //			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processorDocumentAiProcessorDefaultVersion", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
 //				Processor: processorDocumentAiProcessor.ID(),
 //				Version: processorDocumentAiProcessor.ID().ApplyT(func(id string) (string, error) {
-//					return fmt.Sprintf("%v/processorVersions/pretrained-next", id), nil
+//					return fmt.Sprintf("%v/processorVersions/stable", id), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
@@ -67,7 +67,8 @@ type DocumentAiProcessorDefaultVersion struct {
 
 	// The processor to set the version on.
 	Processor pulumi.StringOutput `pulumi:"processor"`
-	// The version to set
+	// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+	// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -108,14 +109,16 @@ func GetDocumentAiProcessorDefaultVersion(ctx *pulumi.Context,
 type documentAiProcessorDefaultVersionState struct {
 	// The processor to set the version on.
 	Processor *string `pulumi:"processor"`
-	// The version to set
+	// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+	// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 	Version *string `pulumi:"version"`
 }
 
 type DocumentAiProcessorDefaultVersionState struct {
 	// The processor to set the version on.
 	Processor pulumi.StringPtrInput
-	// The version to set
+	// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+	// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 	Version pulumi.StringPtrInput
 }
 
@@ -126,7 +129,8 @@ func (DocumentAiProcessorDefaultVersionState) ElementType() reflect.Type {
 type documentAiProcessorDefaultVersionArgs struct {
 	// The processor to set the version on.
 	Processor string `pulumi:"processor"`
-	// The version to set
+	// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+	// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 	Version string `pulumi:"version"`
 }
 
@@ -134,7 +138,8 @@ type documentAiProcessorDefaultVersionArgs struct {
 type DocumentAiProcessorDefaultVersionArgs struct {
 	// The processor to set the version on.
 	Processor pulumi.StringInput
-	// The version to set
+	// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+	// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 	Version pulumi.StringInput
 }
 
@@ -230,7 +235,8 @@ func (o DocumentAiProcessorDefaultVersionOutput) Processor() pulumi.StringOutput
 	return o.ApplyT(func(v *DocumentAiProcessorDefaultVersion) pulumi.StringOutput { return v.Processor }).(pulumi.StringOutput)
 }
 
-// The version to set
+// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
 func (o DocumentAiProcessorDefaultVersionOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentAiProcessorDefaultVersion) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

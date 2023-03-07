@@ -18,6 +18,173 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a group of dissimilar Compute Engine virtual machine instances.
+ * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+ * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+ * 
+ * ## Example Usage
+ * ### Empty Instance Group
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new InstanceGroup(&#34;test&#34;, InstanceGroupArgs.builder()        
+ *             .description(&#34;Test instance group&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .network(google_compute_network.default().id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Example Usage - With instances and named ports
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var webservers = new InstanceGroup(&#34;webservers&#34;, InstanceGroupArgs.builder()        
+ *             .description(&#34;Test instance group&#34;)
+ *             .instances(            
+ *                 google_compute_instance.test().id(),
+ *                 google_compute_instance.test2().id())
+ *             .namedPorts(            
+ *                 InstanceGroupNamedPortArgs.builder()
+ *                     .name(&#34;http&#34;)
+ *                     .port(&#34;8080&#34;)
+ *                     .build(),
+ *                 InstanceGroupNamedPortArgs.builder()
+ *                     .name(&#34;https&#34;)
+ *                     .port(&#34;8443&#34;)
+ *                     .build())
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Example Usage - Recreating an instance group in use
+ * Recreating an instance group that&#39;s in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * as shown in this example to avoid this type of error.
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.InstanceGroup;
+ * import com.pulumi.gcp.compute.InstanceGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
+ * import com.pulumi.gcp.compute.HttpsHealthCheck;
+ * import com.pulumi.gcp.compute.HttpsHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family(&#34;debian-11&#34;)
+ *             .project(&#34;debian-cloud&#34;)
+ *             .build());
+ * 
+ *         var stagingVm = new Instance(&#34;stagingVm&#34;, InstanceArgs.builder()        
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .zone(&#34;us-central1-c&#34;)
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(debianImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .network(&#34;default&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var stagingGroup = new InstanceGroup(&#34;stagingGroup&#34;, InstanceGroupArgs.builder()        
+ *             .zone(&#34;us-central1-c&#34;)
+ *             .instances(stagingVm.id())
+ *             .namedPorts(            
+ *                 InstanceGroupNamedPortArgs.builder()
+ *                     .name(&#34;http&#34;)
+ *                     .port(&#34;8080&#34;)
+ *                     .build(),
+ *                 InstanceGroupNamedPortArgs.builder()
+ *                     .name(&#34;https&#34;)
+ *                     .port(&#34;8443&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var stagingHealth = new HttpsHealthCheck(&#34;stagingHealth&#34;, HttpsHealthCheckArgs.builder()        
+ *             .requestPath(&#34;/health_check&#34;)
+ *             .build());
+ * 
+ *         var stagingService = new BackendService(&#34;stagingService&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;https&#34;)
+ *             .protocol(&#34;HTTPS&#34;)
+ *             .backends(BackendServiceBackendArgs.builder()
+ *                 .group(stagingGroup.id())
+ *                 .build())
+ *             .healthChecks(stagingHealth.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.

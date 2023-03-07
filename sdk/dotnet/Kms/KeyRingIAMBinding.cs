@@ -10,6 +10,192 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+    /// * `gcp.kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+    /// * `gcp.kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_kms\_key\_ring\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_kms\_key\_ring\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/cloudkms.admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     {
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
+    ///         {
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Role = "roles/cloudkms.admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_kms\_key\_ring\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/cloudkms.admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     {
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
+    ///         {
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Member = "user:jane@example.com",
+    ///         Role = "roles/cloudkms.admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

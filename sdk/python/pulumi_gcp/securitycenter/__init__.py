@@ -8,6 +8,7 @@ import typing
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
+from .mute_config import *
 from .notification_config import *
 from .source import *
 from .source_iam_binding import *

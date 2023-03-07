@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase web application configuration
+//
+// To get more information about WebApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/)
 func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pulumi.InvokeOption) (*GetWebAppConfigResult, error) {
 	var rv GetWebAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, opts...)

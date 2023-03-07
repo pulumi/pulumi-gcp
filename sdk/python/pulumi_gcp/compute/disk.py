@@ -75,15 +75,23 @@ class DiskArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
-        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-               'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-               with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-               ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-               downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
+               field when creating a persistent disk using the `image` or
+               `snapshot` parameter, or specify it alone to create an empty
+               persistent disk.
+               If you specify this field along with `image` or `snapshot`,
+               the value must not be less than the size of the image
+               or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
                snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
                * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
@@ -300,9 +308,11 @@ class DiskArgs:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-        the resource policy, as resource policies can not be updated more than one at a time. Use
-        ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        Resource policies applied to this disk for automatic snapshot creations.
+        ~>**NOTE** This value does not support updating the
+        resource policy, as resource policies can not be updated more than
+        one at a time. Use
+        `compute.DiskResourcePolicyAttachment`
         to allow for updating the resource policy attached to the disk.
         """
         return pulumi.get(self, "resource_policies")
@@ -315,11 +325,17 @@ class DiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-        'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-        with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-        ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-        downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        Size of the persistent disk, specified in GB. You can specify this
+        field when creating a persistent disk using the `image` or
+        `snapshot` parameter, or specify it alone to create an empty
+        persistent disk.
+        If you specify this field along with `image` or `snapshot`,
+        the value must not be less than the size of the image
+        or the size of the snapshot.
+        ~>**NOTE** If you change the size, the provider updates the disk size
+        if upsizing is detected but recreates the disk if downsizing is requested.
+        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        and recreating.
         """
         return pulumi.get(self, "size")
 
@@ -492,16 +508,24 @@ class _DiskState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-               'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-               with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-               ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-               downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
+               field when creating a persistent disk using the `image` or
+               `snapshot` parameter, or specify it alone to create an empty
+               persistent disk.
+               If you specify this field along with `image` or `snapshot`,
+               the value must not be less than the size of the image
+               or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
                snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
                * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
@@ -801,9 +825,11 @@ class _DiskState:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-        the resource policy, as resource policies can not be updated more than one at a time. Use
-        ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        Resource policies applied to this disk for automatic snapshot creations.
+        ~>**NOTE** This value does not support updating the
+        resource policy, as resource policies can not be updated more than
+        one at a time. Use
+        `compute.DiskResourcePolicyAttachment`
         to allow for updating the resource policy attached to the disk.
         """
         return pulumi.get(self, "resource_policies")
@@ -828,11 +854,17 @@ class _DiskState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-        'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-        with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-        ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-        downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        Size of the persistent disk, specified in GB. You can specify this
+        field when creating a persistent disk using the `image` or
+        `snapshot` parameter, or specify it alone to create an empty
+        persistent disk.
+        If you specify this field along with `image` or `snapshot`,
+        the value must not be less than the size of the image
+        or the size of the snapshot.
+        ~>**NOTE** If you change the size, the provider updates the disk size
+        if upsizing is detected but recreates the disk if downsizing is requested.
+        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        and recreating.
         """
         return pulumi.get(self, "size")
 
@@ -1014,6 +1046,28 @@ class Disk(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Persistent disks are durable storage devices that function similarly to
+        the physical disks in a desktop or a server. Compute Engine manages the
+        hardware behind these devices to ensure data redundancy and optimize
+        performance for you. Persistent disks are available as either standard
+        hard disk drives (HDD) or solid-state drives (SSD).
+
+        Persistent disks are located independently from your virtual machine
+        instances, so you can detach or move persistent disks to keep your data
+        even after you delete your instances. Persistent disk performance scales
+        automatically with size, so you can resize your existing persistent disks
+        or add more persistent disks to an instance to meet your performance and
+        storage space requirements.
+
+        Add a persistent disk to your instance when you need reliable and
+        affordable storage with consistent performance characteristics.
+
+        To get more information about Disk, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
+        * How-to Guides
+            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+
         ## Example Usage
         ### Disk Basic
 
@@ -1092,15 +1146,23 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
-        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-               'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-               with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-               ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-               downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
+               field when creating a persistent disk using the `image` or
+               `snapshot` parameter, or specify it alone to create an empty
+               persistent disk.
+               If you specify this field along with `image` or `snapshot`,
+               the value must not be less than the size of the image
+               or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
                snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
                * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
@@ -1131,6 +1193,28 @@ class Disk(pulumi.CustomResource):
                  args: Optional[DiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Persistent disks are durable storage devices that function similarly to
+        the physical disks in a desktop or a server. Compute Engine manages the
+        hardware behind these devices to ensure data redundancy and optimize
+        performance for you. Persistent disks are available as either standard
+        hard disk drives (HDD) or solid-state drives (SSD).
+
+        Persistent disks are located independently from your virtual machine
+        instances, so you can detach or move persistent disks to keep your data
+        even after you delete your instances. Persistent disk performance scales
+        automatically with size, so you can resize your existing persistent disks
+        or add more persistent disks to an instance to meet your performance and
+        storage space requirements.
+
+        Add a persistent disk to your instance when you need reliable and
+        affordable storage with consistent performance characteristics.
+
+        To get more information about Disk, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
+        * How-to Guides
+            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+
         ## Example Usage
         ### Disk Basic
 
@@ -1328,16 +1412,24 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-               the resource policy, as resource policies can not be updated more than one at a time. Use
-               ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+               ~>**NOTE** This value does not support updating the
+               resource policy, as resource policies can not be updated more than
+               one at a time. Use
+               `compute.DiskResourcePolicyAttachment`
                to allow for updating the resource policy attached to the disk.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-               'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-               with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-               ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-               downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
+               field when creating a persistent disk using the `image` or
+               `snapshot` parameter, or specify it alone to create an empty
+               persistent disk.
+               If you specify this field along with `image` or `snapshot`,
+               the value must not be less than the size of the image
+               or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
                snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
                * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
@@ -1556,9 +1648,11 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[Sequence[str]]:
         """
-        Resource policies applied to this disk for automatic snapshot creations. ~>**NOTE** This value does not support updating
-        the resource policy, as resource policies can not be updated more than one at a time. Use
-        ['google_compute_disk_resource_policy_attachment'](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk_resource_policy_attachment)
+        Resource policies applied to this disk for automatic snapshot creations.
+        ~>**NOTE** This value does not support updating the
+        resource policy, as resource policies can not be updated more than
+        one at a time. Use
+        `compute.DiskResourcePolicyAttachment`
         to allow for updating the resource policy attached to the disk.
         """
         return pulumi.get(self, "resource_policies")
@@ -1575,11 +1669,17 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-        'image' or 'snapshot' parameter, or specify it alone to create an empty persistent disk. If you specify this field along
-        with 'image' or 'snapshot', the value must not be less than the size of the image or the size of the snapshot.
-        ~>**NOTE** If you change the size, Terraform updates the disk size if upsizing is detected but recreates the disk if
-        downsizing is requested. You can add 'lifecycle.prevent_destroy' in the config to prevent destroying and recreating.
+        Size of the persistent disk, specified in GB. You can specify this
+        field when creating a persistent disk using the `image` or
+        `snapshot` parameter, or specify it alone to create an empty
+        persistent disk.
+        If you specify this field along with `image` or `snapshot`,
+        the value must not be less than the size of the image
+        or the size of the snapshot.
+        ~>**NOTE** If you change the size, the provider updates the disk size
+        if upsizing is detected but recreates the disk if downsizing is requested.
+        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        and recreating.
         """
         return pulumi.get(self, "size")
 

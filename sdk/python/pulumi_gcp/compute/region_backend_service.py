@@ -58,8 +58,10 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-               and Network Load Balancing.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -250,8 +252,10 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-        and Network Load Balancing.
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "connection_tracking_policy")
 
@@ -581,8 +585,10 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-               and Network Load Balancing.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -783,8 +789,10 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
-        Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-        and Network Load Balancing.
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "connection_tracking_policy")
 
@@ -1174,8 +1182,10 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-               and Network Load Balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -1407,8 +1417,10 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-               and Network Load Balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+               This is available only for Layer 4 Internal Load Balancing and
+               Network Load Balancing.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
@@ -1566,8 +1578,10 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConnectionTrackingPolicy']]:
         """
-        Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-        and Network Load Balancing.
+        Connection Tracking configuration for this BackendService.
+        This is available only for Layer 4 Internal Load Balancing and
+        Network Load Balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "connection_tracking_policy")
 

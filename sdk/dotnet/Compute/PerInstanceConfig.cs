@@ -20,6 +20,106 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
     /// 
     /// ## Example Usage
+    /// ### Stateful Igm
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var igm_basic = new Gcp.Compute.InstanceTemplate("igm-basic", new()
+    ///     {
+    ///         MachineType = "e2-medium",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var igm_no_tp = new Gcp.Compute.InstanceGroupManager("igm-no-tp", new()
+    ///     {
+    ///         Description = "Test instance group manager",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
+    ///             {
+    ///                 Name = "prod",
+    ///                 InstanceTemplate = igm_basic.SelfLink,
+    ///             },
+    ///         },
+    ///         BaseInstanceName = "igm-no-tp",
+    ///         Zone = "us-central1-c",
+    ///         TargetSize = 2,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Disk("default", new()
+    ///     {
+    ///         Type = "pd-ssd",
+    ///         Zone = google_compute_instance_group_manager.Igm.Zone,
+    ///         Image = "debian-11-bullseye-v20220719",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///     });
+    /// 
+    ///     var withDisk = new Gcp.Compute.PerInstanceConfig("withDisk", new()
+    ///     {
+    ///         Zone = google_compute_instance_group_manager.Igm.Zone,
+    ///         InstanceGroupManager = google_compute_instance_group_manager.Igm.Name,
+    ///         PreservedState = new Gcp.Compute.Inputs.PerInstanceConfigPreservedStateArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///                 { "instance_template", igm_basic.SelfLink },
+    ///             },
+    ///             Disks = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.PerInstanceConfigPreservedStateDiskArgs
+    ///                 {
+    ///                     DeviceName = "my-stateful-disk",
+    ///                     Source = @default.Id,
+    ///                     Mode = "READ_ONLY",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

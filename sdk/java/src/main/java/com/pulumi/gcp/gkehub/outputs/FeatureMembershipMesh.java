@@ -11,6 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipMesh {
+    /**
+     * @deprecated
+     * Deprecated in favor of the `management` field
+     * 
+     */
+    @Deprecated /* Deprecated in favor of the `management` field */
     private @Nullable String controlPlane;
     /**
      * @return Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -19,6 +25,12 @@ public final class FeatureMembershipMesh {
     private @Nullable String management;
 
     private FeatureMembershipMesh() {}
+    /**
+     * @deprecated
+     * Deprecated in favor of the `management` field
+     * 
+     */
+    @Deprecated /* Deprecated in favor of the `management` field */
     public Optional<String> controlPlane() {
         return Optional.ofNullable(this.controlPlane);
     }

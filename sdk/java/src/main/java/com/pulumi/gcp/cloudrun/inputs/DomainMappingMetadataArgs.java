@@ -17,9 +17,27 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
 
     public static final DomainMappingMetadataArgs Empty = new DomainMappingMetadataArgs();
 
+    /**
+     * Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: http://kubernetes.io/docs/user-guide/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
+    /**
+     * @return Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: http://kubernetes.io/docs/user-guide/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
@@ -168,11 +186,33 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
             $ = new DomainMappingMetadataArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param annotations Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param annotations Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }

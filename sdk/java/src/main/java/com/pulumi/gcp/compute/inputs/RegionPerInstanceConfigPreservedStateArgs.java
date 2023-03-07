@@ -6,6 +6,8 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateDiskArgs;
+import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateExternalIpArgs;
+import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateInternalIpArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,20 @@ public final class RegionPerInstanceConfigPreservedStateArgs extends com.pulumi.
         return Optional.ofNullable(this.disks);
     }
 
+    @Import(name="externalIps")
+    private @Nullable Output<List<RegionPerInstanceConfigPreservedStateExternalIpArgs>> externalIps;
+
+    public Optional<Output<List<RegionPerInstanceConfigPreservedStateExternalIpArgs>>> externalIps() {
+        return Optional.ofNullable(this.externalIps);
+    }
+
+    @Import(name="internalIps")
+    private @Nullable Output<List<RegionPerInstanceConfigPreservedStateInternalIpArgs>> internalIps;
+
+    public Optional<Output<List<RegionPerInstanceConfigPreservedStateInternalIpArgs>>> internalIps() {
+        return Optional.ofNullable(this.internalIps);
+    }
+
     /**
      * Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
      * 
@@ -54,6 +70,8 @@ public final class RegionPerInstanceConfigPreservedStateArgs extends com.pulumi.
 
     private RegionPerInstanceConfigPreservedStateArgs(RegionPerInstanceConfigPreservedStateArgs $) {
         this.disks = $.disks;
+        this.externalIps = $.externalIps;
+        this.internalIps = $.internalIps;
         this.metadata = $.metadata;
     }
 
@@ -107,6 +125,32 @@ public final class RegionPerInstanceConfigPreservedStateArgs extends com.pulumi.
          */
         public Builder disks(RegionPerInstanceConfigPreservedStateDiskArgs... disks) {
             return disks(List.of(disks));
+        }
+
+        public Builder externalIps(@Nullable Output<List<RegionPerInstanceConfigPreservedStateExternalIpArgs>> externalIps) {
+            $.externalIps = externalIps;
+            return this;
+        }
+
+        public Builder externalIps(List<RegionPerInstanceConfigPreservedStateExternalIpArgs> externalIps) {
+            return externalIps(Output.of(externalIps));
+        }
+
+        public Builder externalIps(RegionPerInstanceConfigPreservedStateExternalIpArgs... externalIps) {
+            return externalIps(List.of(externalIps));
+        }
+
+        public Builder internalIps(@Nullable Output<List<RegionPerInstanceConfigPreservedStateInternalIpArgs>> internalIps) {
+            $.internalIps = internalIps;
+            return this;
+        }
+
+        public Builder internalIps(List<RegionPerInstanceConfigPreservedStateInternalIpArgs> internalIps) {
+            return internalIps(Output.of(internalIps));
+        }
+
+        public Builder internalIps(RegionPerInstanceConfigPreservedStateInternalIpArgs... internalIps) {
+            return internalIps(List.of(internalIps));
         }
 
         /**

@@ -11,7 +11,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// OAuth brand data. Only "Organization Internal" brands can be created
+// programmatically via API. To convert it into an external brands
+// please use the GCP Console.
+//
+// > **Note:** Brands can only be created once for a Google Cloud
+// project and the underlying Google API doesn't not support DELETE or PATCH methods.
+// Destroying a provider-managed Brand will remove it from state
+// but *will not delete it from Google Cloud.*
+//
+// To get more information about Brand, see:
+//
+// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+// * How-to Guides
+//   - [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+//
 // ## Example Usage
+// ### Iap Brand
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iap"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("tf-test"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			projectService, err := projects.NewService(ctx, "projectService", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("iap.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iap.NewBrand(ctx, "projectBrand", &iap.BrandArgs{
+//				SupportEmail:     pulumi.String("support@example.com"),
+//				ApplicationTitle: pulumi.String("Cloud IAP protected Application"),
+//				Project:          projectService.Project,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

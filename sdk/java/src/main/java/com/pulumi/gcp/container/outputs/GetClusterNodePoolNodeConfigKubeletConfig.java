@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     private Boolean cpuCfsQuota;
     private String cpuCfsQuotaPeriod;
     private String cpuManagerPolicy;
+    private Integer podPidsLimit;
 
     private GetClusterNodePoolNodeConfigKubeletConfig() {}
     public Boolean cpuCfsQuota() {
@@ -23,6 +25,9 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     }
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
+    }
+    public Integer podPidsLimit() {
+        return this.podPidsLimit;
     }
 
     public static Builder builder() {
@@ -37,12 +42,14 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private Integer podPidsLimit;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.podPidsLimit = defaults.podPidsLimit;
         }
 
         @CustomType.Setter
@@ -60,11 +67,17 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
         }
+        @CustomType.Setter
+        public Builder podPidsLimit(Integer podPidsLimit) {
+            this.podPidsLimit = Objects.requireNonNull(podPidsLimit);
+            return this;
+        }
         public GetClusterNodePoolNodeConfigKubeletConfig build() {
             final var o = new GetClusterNodePoolNodeConfigKubeletConfig();
             o.cpuCfsQuota = cpuCfsQuota;
             o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             o.cpuManagerPolicy = cpuManagerPolicy;
+            o.podPidsLimit = podPidsLimit;
             return o;
         }
     }

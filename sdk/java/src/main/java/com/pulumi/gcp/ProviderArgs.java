@@ -446,6 +446,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dialogflowCxCustomEndpoint);
     }
 
+    @Import(name="disableGooglePartnerName", json=true)
+    private @Nullable Output<Boolean> disableGooglePartnerName;
+
+    public Optional<Output<Boolean>> disableGooglePartnerName() {
+        return Optional.ofNullable(this.disableGooglePartnerName);
+    }
+
     @Import(name="dnsCustomEndpoint")
     private @Nullable Output<String> dnsCustomEndpoint;
 
@@ -549,6 +556,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> gkehubFeatureCustomEndpoint() {
         return Optional.ofNullable(this.gkehubFeatureCustomEndpoint);
+    }
+
+    @Import(name="googlePartnerName")
+    private @Nullable Output<String> googlePartnerName;
+
+    public Optional<Output<String>> googlePartnerName() {
+        return Optional.ofNullable(this.googlePartnerName);
     }
 
     @Import(name="healthcareCustomEndpoint")
@@ -1014,6 +1028,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
+        this.disableGooglePartnerName = $.disableGooglePartnerName;
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
@@ -1029,6 +1044,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
         this.gkehubFeatureCustomEndpoint = $.gkehubFeatureCustomEndpoint;
+        this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
@@ -1655,6 +1671,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dialogflowCxCustomEndpoint(Output.of(dialogflowCxCustomEndpoint));
         }
 
+        public Builder disableGooglePartnerName(@Nullable Output<Boolean> disableGooglePartnerName) {
+            $.disableGooglePartnerName = disableGooglePartnerName;
+            return this;
+        }
+
+        public Builder disableGooglePartnerName(Boolean disableGooglePartnerName) {
+            return disableGooglePartnerName(Output.of(disableGooglePartnerName));
+        }
+
         public Builder dnsCustomEndpoint(@Nullable Output<String> dnsCustomEndpoint) {
             $.dnsCustomEndpoint = dnsCustomEndpoint;
             return this;
@@ -1788,6 +1813,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder gkehubFeatureCustomEndpoint(String gkehubFeatureCustomEndpoint) {
             return gkehubFeatureCustomEndpoint(Output.of(gkehubFeatureCustomEndpoint));
+        }
+
+        public Builder googlePartnerName(@Nullable Output<String> googlePartnerName) {
+            $.googlePartnerName = googlePartnerName;
+            return this;
+        }
+
+        public Builder googlePartnerName(String googlePartnerName) {
+            return googlePartnerName(Output.of(googlePartnerName));
         }
 
         public Builder healthcareCustomEndpoint(@Nullable Output<String> healthcareCustomEndpoint) {

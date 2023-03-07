@@ -56,7 +56,7 @@ class JobArgs:
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
-        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         :param pulumi.Input['JobRetryConfigArgs'] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
@@ -208,7 +208,7 @@ class JobArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -301,7 +301,7 @@ class _JobState:
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
-        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         :param pulumi.Input['JobRetryConfigArgs'] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
@@ -456,7 +456,7 @@ class _JobState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         """
         return pulumi.get(self, "region")
 
@@ -662,7 +662,7 @@ class Job(pulumi.CustomResource):
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
-        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         :param pulumi.Input[pulumi.InputType['JobRetryConfigArgs']] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
@@ -881,7 +881,7 @@ class Job(pulumi.CustomResource):
                If the job providers a Pub/Sub target the cron will publish
                a message to the provided topic
                Structure is documented below.
-        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        :param pulumi.Input[str] region: Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         :param pulumi.Input[pulumi.InputType['JobRetryConfigArgs']] retry_config: By default, if a job does not complete successfully,
                meaning that an acknowledgement is not received from the handler,
                then it will be retried with exponential backoff according to the settings
@@ -996,7 +996,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Region where the scheduler job resides. If it is not provided, Terraform will use the provider default.
+        Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
         """
         return pulumi.get(self, "region")
 

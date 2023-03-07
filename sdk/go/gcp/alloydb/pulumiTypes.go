@@ -15,7 +15,7 @@ type ClusterAutomatedBackupPolicy struct {
 	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	BackupWindow *string `pulumi:"backupWindow"`
-	// Whether automated automated backups are enabled.
+	// Whether automated backups are enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Labels to apply to backups created using this configuration.
 	Labels map[string]string `pulumi:"labels"`
@@ -48,7 +48,7 @@ type ClusterAutomatedBackupPolicyArgs struct {
 	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	BackupWindow pulumi.StringPtrInput `pulumi:"backupWindow"`
-	// Whether automated automated backups are enabled.
+	// Whether automated backups are enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Labels to apply to backups created using this configuration.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -149,7 +149,7 @@ func (o ClusterAutomatedBackupPolicyOutput) BackupWindow() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *string { return v.BackupWindow }).(pulumi.StringPtrOutput)
 }
 
-// Whether automated automated backups are enabled.
+// Whether automated backups are enabled.
 func (o ClusterAutomatedBackupPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -224,7 +224,7 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) BackupWindow() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether automated automated backups are enabled.
+// Whether automated backups are enabled.
 func (o ClusterAutomatedBackupPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAutomatedBackupPolicy) *bool {
 		if v == nil {

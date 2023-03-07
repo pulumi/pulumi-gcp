@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? FailureThreshold;
         /// <summary>
+        /// GRPC specifies an action involving a GRPC port.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateContainerStartupProbeGrpc? Grpc;
+        /// <summary>
         /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         /// Structure is documented below.
         /// </summary>
@@ -44,6 +49,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private ServiceTemplateContainerStartupProbe(
             int? failureThreshold,
 
+            Outputs.ServiceTemplateContainerStartupProbeGrpc? grpc,
+
             Outputs.ServiceTemplateContainerStartupProbeHttpGet? httpGet,
 
             int? initialDelaySeconds,
@@ -55,6 +62,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             int? timeoutSeconds)
         {
             FailureThreshold = failureThreshold;
+            Grpc = grpc;
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;

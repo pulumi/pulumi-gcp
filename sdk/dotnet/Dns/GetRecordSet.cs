@@ -109,6 +109,9 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+        /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
 
@@ -138,6 +141,9 @@ namespace Pulumi.Gcp.Dns
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

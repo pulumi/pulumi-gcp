@@ -140,7 +140,42 @@ class Client(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Contains the data that describes an Identity Aware Proxy owned client.
+
+        > **Note:** Only internal org clients can be created via declarative tools. External clients must be
+        manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+        in this tool.
+
+        To get more information about Client, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+        * How-to Guides
+            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+
+        > **Warning:** All arguments including `secret` will be stored in the raw
+        state as plain-text.
+
         ## Example Usage
+        ### Iap Client
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test",
+            org_id="123456789")
+        project_service = gcp.projects.Service("projectService",
+            project=project.project_id,
+            service="iap.googleapis.com")
+        project_brand = gcp.iap.Brand("projectBrand",
+            support_email="support@example.com",
+            application_title="Cloud IAP protected Application",
+            project=project_service.project)
+        project_client = gcp.iap.Client("projectClient",
+            display_name="Test Client",
+            brand=project_brand.name)
+        ```
 
         ## Import
 
@@ -168,7 +203,42 @@ class Client(pulumi.CustomResource):
                  args: ClientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Contains the data that describes an Identity Aware Proxy owned client.
+
+        > **Note:** Only internal org clients can be created via declarative tools. External clients must be
+        manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+        in this tool.
+
+        To get more information about Client, see:
+
+        * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+        * How-to Guides
+            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+
+        > **Warning:** All arguments including `secret` will be stored in the raw
+        state as plain-text.
+
         ## Example Usage
+        ### Iap Client
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="tf-test",
+            org_id="123456789")
+        project_service = gcp.projects.Service("projectService",
+            project=project.project_id,
+            service="iap.googleapis.com")
+        project_brand = gcp.iap.Brand("projectBrand",
+            support_email="support@example.com",
+            application_title="Cloud IAP protected Application",
+            project=project_service.project)
+        project_client = gcp.iap.Client("projectClient",
+            display_name="Test Client",
+            brand=project_brand.name)
+        ```
 
         ## Import
 
