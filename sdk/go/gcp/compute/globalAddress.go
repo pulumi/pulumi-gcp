@@ -43,6 +43,40 @@ import (
 //	}
 //
 // ```
+// ### Global Address Private Services Connect
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
+//				AddressType: pulumi.String("INTERNAL"),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				Network:     network.ID(),
+//				Address:     pulumi.String("100.100.100.105"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -87,7 +121,7 @@ type GlobalAddress struct {
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -110,8 +144,9 @@ type GlobalAddress struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-	// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+	// The purpose of the resource. Possible values include:
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -165,7 +200,7 @@ type globalAddressState struct {
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -188,8 +223,9 @@ type globalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-	// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+	// The purpose of the resource. Possible values include:
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -215,7 +251,7 @@ type GlobalAddressState struct {
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -238,8 +274,9 @@ type GlobalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-	// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+	// The purpose of the resource. Possible values include:
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -265,7 +302,7 @@ type globalAddressArgs struct {
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -288,8 +325,9 @@ type globalAddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-	// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+	// The purpose of the resource. Possible values include:
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -310,7 +348,7 @@ type GlobalAddressArgs struct {
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -333,8 +371,9 @@ type GlobalAddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-	// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+	// The purpose of the resource. Possible values include:
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 	Purpose pulumi.StringPtrInput
 }
 
@@ -462,7 +501,7 @@ func (o GlobalAddressOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// Labels to apply to this address. A list of key->value pairs.
+// Labels to apply to this address.  A list of key->value pairs.
 func (o GlobalAddressOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -500,8 +539,9 @@ func (o GlobalAddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The purpose of the resource. Possible values include: * VPC_PEERING - for peer networks * PRIVATE_SERVICE_CONNECT - for
-// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Private Service Connect networks
+// The purpose of the resource. Possible values include:
+// * VPC_PEERING - for peer networks
+// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
 func (o GlobalAddressOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }

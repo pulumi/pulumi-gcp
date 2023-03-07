@@ -10,7 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Organization security policies are used to control incoming/outgoing traffic.
+    /// 
+    /// To get more information about OrganizationSecurityPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+    /// * How-to Guides
+    ///     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+    /// 
     /// ## Example Usage
+    /// ### Organization Security Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+    ///     {
+    ///         DisplayName = "tf-test",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

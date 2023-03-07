@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string KmsKeySelfLink;
         public readonly string KmsKeyServiceAccount;
         public readonly string RawKey;
+        public readonly string RsaEncryptedKey;
         public readonly string Sha256;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string rawKey,
 
+            string rsaEncryptedKey,
+
             string sha256)
         {
             KmsKeySelfLink = kmsKeySelfLink;
             KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
+            RsaEncryptedKey = rsaEncryptedKey;
             Sha256 = sha256;
         }
     }

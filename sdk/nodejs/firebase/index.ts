@@ -35,6 +35,11 @@ export const getAppleAppConfig: typeof import("./getAppleAppConfig").getAppleApp
 export const getAppleAppConfigOutput: typeof import("./getAppleAppConfig").getAppleAppConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getAppleAppConfig","getAppleAppConfigOutput"], () => require("./getAppleAppConfig"));
 
+export { GetHostingChannelArgs, GetHostingChannelResult, GetHostingChannelOutputArgs } from "./getHostingChannel";
+export const getHostingChannel: typeof import("./getHostingChannel").getHostingChannel = null as any;
+export const getHostingChannelOutput: typeof import("./getHostingChannel").getHostingChannelOutput = null as any;
+utilities.lazyLoad(exports, ["getHostingChannel","getHostingChannelOutput"], () => require("./getHostingChannel"));
+
 export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
 export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
 export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
@@ -50,10 +55,20 @@ export type HostingChannel = import("./hostingChannel").HostingChannel;
 export const HostingChannel: typeof import("./hostingChannel").HostingChannel = null as any;
 utilities.lazyLoad(exports, ["HostingChannel"], () => require("./hostingChannel"));
 
+export { HostingReleaseArgs, HostingReleaseState } from "./hostingRelease";
+export type HostingRelease = import("./hostingRelease").HostingRelease;
+export const HostingRelease: typeof import("./hostingRelease").HostingRelease = null as any;
+utilities.lazyLoad(exports, ["HostingRelease"], () => require("./hostingRelease"));
+
 export { HostingSiteArgs, HostingSiteState } from "./hostingSite";
 export type HostingSite = import("./hostingSite").HostingSite;
 export const HostingSite: typeof import("./hostingSite").HostingSite = null as any;
 utilities.lazyLoad(exports, ["HostingSite"], () => require("./hostingSite"));
+
+export { HostingVersionArgs, HostingVersionState } from "./hostingVersion";
+export type HostingVersion = import("./hostingVersion").HostingVersion;
+export const HostingVersion: typeof import("./hostingVersion").HostingVersion = null as any;
+utilities.lazyLoad(exports, ["HostingVersion"], () => require("./hostingVersion"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -88,8 +103,12 @@ const _module = {
                 return new DatabaseInstance(name, <any>undefined, { urn })
             case "gcp:firebase/hostingChannel:HostingChannel":
                 return new HostingChannel(name, <any>undefined, { urn })
+            case "gcp:firebase/hostingRelease:HostingRelease":
+                return new HostingRelease(name, <any>undefined, { urn })
             case "gcp:firebase/hostingSite:HostingSite":
                 return new HostingSite(name, <any>undefined, { urn })
+            case "gcp:firebase/hostingVersion:HostingVersion":
+                return new HostingVersion(name, <any>undefined, { urn })
             case "gcp:firebase/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "gcp:firebase/projectLocation:ProjectLocation":
@@ -107,7 +126,9 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/hostingRelease", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/hostingVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/projectLocation", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/storageBucket", _module)

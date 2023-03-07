@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecObjectConditionsArgs
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecPosixDataSinkArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecPosixDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecTransferOptionsArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -144,6 +145,36 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+     * 
+     */
+    @Import(name="sinkAgentPoolName")
+    private @Nullable Output<String> sinkAgentPoolName;
+
+    /**
+     * @return Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+     * 
+     */
+    public Optional<Output<String>> sinkAgentPoolName() {
+        return Optional.ofNullable(this.sinkAgentPoolName);
+    }
+
+    /**
+     * Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+     * 
+     */
+    @Import(name="sourceAgentPoolName")
+    private @Nullable Output<String> sourceAgentPoolName;
+
+    /**
+     * @return Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+     * 
+     */
+    public Optional<Output<String>> sourceAgentPoolName() {
+        return Optional.ofNullable(this.sourceAgentPoolName);
+    }
+
+    /**
      * Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
@@ -169,6 +200,8 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
         this.objectConditions = $.objectConditions;
         this.posixDataSink = $.posixDataSink;
         this.posixDataSource = $.posixDataSource;
+        this.sinkAgentPoolName = $.sinkAgentPoolName;
+        this.sourceAgentPoolName = $.sourceAgentPoolName;
         this.transferOptions = $.transferOptions;
     }
 
@@ -356,6 +389,48 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
          */
         public Builder posixDataSource(TransferJobTransferSpecPosixDataSourceArgs posixDataSource) {
             return posixDataSource(Output.of(posixDataSource));
+        }
+
+        /**
+         * @param sinkAgentPoolName Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sinkAgentPoolName(@Nullable Output<String> sinkAgentPoolName) {
+            $.sinkAgentPoolName = sinkAgentPoolName;
+            return this;
+        }
+
+        /**
+         * @param sinkAgentPoolName Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sinkAgentPoolName(String sinkAgentPoolName) {
+            return sinkAgentPoolName(Output.of(sinkAgentPoolName));
+        }
+
+        /**
+         * @param sourceAgentPoolName Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAgentPoolName(@Nullable Output<String> sourceAgentPoolName) {
+            $.sourceAgentPoolName = sourceAgentPoolName;
+            return this;
+        }
+
+        /**
+         * @param sourceAgentPoolName Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAgentPoolName(String sourceAgentPoolName) {
+            return sourceAgentPoolName(Output.of(sourceAgentPoolName));
         }
 
         /**

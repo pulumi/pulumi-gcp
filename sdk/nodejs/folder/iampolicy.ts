@@ -5,6 +5,152 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
+ *
+ * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+ *
+ * > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+ *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+ *
+ * ## google\_folder\_iam\_policy
+ *
+ * !> **Be careful!** You can accidentally lock yourself out of your folder
+ *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    from anyone without permissions on its parent folder/organization. Proceed with caution.
+ *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    to avoid locking yourself out, and it should generally only be used with folders
+ *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ *    applying the change.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const folder = new gcp.folder.IAMPolicy("folder", {
+ *     folder: "folders/1234567",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         condition: {
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *             title: "expires_after_2019_12_31",
+ *         },
+ *         members: ["user:jane@example.com"],
+ *         role: "roles/compute.admin",
+ *     }],
+ * });
+ * const folder = new gcp.folder.IAMPolicy("folder", {
+ *     folder: "folders/1234567",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_folder\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     folder: "folders/1234567",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMBinding("folder", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     folder: "folders/1234567",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/container.admin",
+ * });
+ * ```
+ *
+ * ## google\_folder\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     folder: "folders/1234567",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IAMMember("folder", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     folder: "folders/1234567",
+ *     member: "user:jane@example.com",
+ *     role: "roles/firebase.admin",
+ * });
+ * ```
+ *
+ * ## google\_folder\_iam\_audit\_config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.folder.IamAuditConfig("folder", {
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *             logType: "DATA_READ",
+ *         },
+ *     ],
+ *     folder: "folders/1234567",
+ *     service: "allServices",
+ * });
+ * ```
+ *
  * ## Import
  *
  * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

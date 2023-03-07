@@ -119,6 +119,7 @@ export interface GetClusterResult {
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
     readonly privateIpv6GoogleAccess: string;
     readonly project?: string;
+    readonly protectConfigs: outputs.container.GetClusterProtectConfig[];
     readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};

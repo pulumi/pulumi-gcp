@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,12 +38,20 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         return this.cpuManagerPolicy;
     }
 
+    @Import(name="podPidsLimit")
+    private @Nullable Output<Integer> podPidsLimit;
+
+    public Optional<Output<Integer>> podPidsLimit() {
+        return Optional.ofNullable(this.podPidsLimit);
+    }
+
     private NodePoolNodeConfigKubeletConfigArgs() {}
 
     private NodePoolNodeConfigKubeletConfigArgs(NodePoolNodeConfigKubeletConfigArgs $) {
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.podPidsLimit = $.podPidsLimit;
     }
 
     public static Builder builder() {
@@ -88,6 +97,15 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
 
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             return cpuManagerPolicy(Output.of(cpuManagerPolicy));
+        }
+
+        public Builder podPidsLimit(@Nullable Output<Integer> podPidsLimit) {
+            $.podPidsLimit = podPidsLimit;
+            return this;
+        }
+
+        public Builder podPidsLimit(Integer podPidsLimit) {
+            return podPidsLimit(Output.of(podPidsLimit));
         }
 
         public NodePoolNodeConfigKubeletConfigArgs build() {

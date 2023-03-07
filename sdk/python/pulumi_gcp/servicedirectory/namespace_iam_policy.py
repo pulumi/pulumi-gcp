@@ -119,6 +119,54 @@ class NamespaceIamPolicy(pulumi.CustomResource):
                  policy_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Service Directory Namespace. Each of these resources serves a different use case:
+
+        * `servicedirectory.NamespaceIamPolicy`: Authoritative. Sets the IAM policy for the namespace and replaces any existing policy already attached.
+        * `servicedirectory.NamespaceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the namespace are preserved.
+        * `servicedirectory.NamespaceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the namespace are preserved.
+
+        > **Note:** `servicedirectory.NamespaceIamPolicy` **cannot** be used in conjunction with `servicedirectory.NamespaceIamBinding` and `servicedirectory.NamespaceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.servicedirectory.NamespaceIamBinding("binding",
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.servicedirectory.NamespaceIamMember("member",
+            role="roles/viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} * {{project}}/{{location}}/{{namespace_id}} * {{location}}/{{namespace_id}} Any variables not passed in the import command will be taken from the provider configuration. Service Directory namespace IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -156,6 +204,54 @@ class NamespaceIamPolicy(pulumi.CustomResource):
                  args: NamespaceIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Service Directory Namespace. Each of these resources serves a different use case:
+
+        * `servicedirectory.NamespaceIamPolicy`: Authoritative. Sets the IAM policy for the namespace and replaces any existing policy already attached.
+        * `servicedirectory.NamespaceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the namespace are preserved.
+        * `servicedirectory.NamespaceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the namespace are preserved.
+
+        > **Note:** `servicedirectory.NamespaceIamPolicy` **cannot** be used in conjunction with `servicedirectory.NamespaceIamBinding` and `servicedirectory.NamespaceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.servicedirectory.NamespaceIamPolicy("policy", policy_data=admin.policy_data,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.servicedirectory.NamespaceIamBinding("binding",
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_service\\_directory\\_namespace\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.servicedirectory.NamespaceIamMember("member",
+            role="roles/viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}} * {{project}}/{{location}}/{{namespace_id}} * {{location}}/{{namespace_id}} Any variables not passed in the import command will be taken from the provider configuration. Service Directory namespace IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

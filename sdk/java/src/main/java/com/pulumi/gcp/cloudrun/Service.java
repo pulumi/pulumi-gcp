@@ -46,6 +46,90 @@ import javax.annotation.Nullable;
  * Have a look at the Cloud Run Anthos example below.
  * 
  * ## Example Usage
+ * ### Cloud Run Service Pubsub
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.cloudrun.IamBinding;
+ * import com.pulumi.gcp.cloudrun.IamBindingArgs;
+ * import com.pulumi.gcp.projects.IAMBinding;
+ * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigOidcTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image(&#34;gcr.io/cloudrun/hello&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .traffics(ServiceTrafficArgs.builder()
+ *                 .percent(100)
+ *                 .latestRevision(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;cloud-run-pubsub-invoker&#34;)
+ *             .displayName(&#34;Cloud Run Pub/Sub Invoker&#34;)
+ *             .build());
+ * 
+ *         var binding = new IamBinding(&#34;binding&#34;, IamBindingArgs.builder()        
+ *             .location(default_.location())
+ *             .service(default_.name())
+ *             .role(&#34;roles/run.invoker&#34;)
+ *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var project = new IAMBinding(&#34;project&#34;, IAMBindingArgs.builder()        
+ *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+ *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var topic = new Topic(&#34;topic&#34;);
+ * 
+ *         var subscription = new Subscription(&#34;subscription&#34;, SubscriptionArgs.builder()        
+ *             .topic(topic.name())
+ *             .pushConfig(SubscriptionPushConfigArgs.builder()
+ *                 .pushEndpoint(default_.statuses().applyValue(statuses -&gt; statuses[0].url()))
+ *                 .oidcToken(SubscriptionPushConfigOidcTokenArgs.builder()
+ *                     .serviceAccountEmail(sa.email())
+ *                     .build())
+ *                 .attributes(Map.of(&#34;x-goog-version&#34;, &#34;v1&#34;))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloud Run Service Basic
  * ```java
  * package generated_program;
@@ -138,7 +222,7 @@ import javax.annotation.Nullable;
  *                     .annotations(Map.ofEntries(
  *                         Map.entry(&#34;autoscaling.knative.dev/maxScale&#34;, &#34;1000&#34;),
  *                         Map.entry(&#34;run.googleapis.com/cloudsql-instances&#34;, instance.connectionName()),
- *                         Map.entry(&#34;run.googleapis.com/client-name&#34;, &#34;terraform&#34;)
+ *                         Map.entry(&#34;run.googleapis.com/client-name&#34;, &#34;demo&#34;)
  *                     ))
  *                     .build())
  *                 .build())

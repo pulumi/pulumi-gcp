@@ -66,7 +66,6 @@ namespace Pulumi.Gcp.DataFusion
     ///         EnableStackdriverLogging = true,
     ///         EnableStackdriverMonitoring = true,
     ///         PrivateInstance = true,
-    ///         Version = "6.6.0",
     ///         DataprocServiceAccount = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///         Labels = 
     ///         {
@@ -168,7 +167,6 @@ namespace Pulumi.Gcp.DataFusion
     ///     {
     ///         Region = "us-central1",
     ///         Type = "BASIC",
-    ///         Version = "6.7.0",
     ///         EventPublishConfig = new Gcp.DataFusion.Inputs.InstanceEventPublishConfigArgs
     ///         {
     ///             Enabled = true,

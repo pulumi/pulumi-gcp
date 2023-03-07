@@ -13,6 +13,58 @@ namespace Pulumi.Gcp.CloudDeploy
     /// The Cloud Deploy `Target` resource
     /// 
     /// ## Example Usage
+    /// ### Multi_target
+    /// tests creating and updating a multi-target
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Description = "multi-target description",
+    ///         ExecutionConfigs = new[]
+    ///         {
+    ///             new Gcp.CloudDeploy.Inputs.TargetExecutionConfigArgs
+    ///             {
+    ///                 Usages = new[]
+    ///                 {
+    ///                     "RENDER",
+    ///                     "DEPLOY",
+    ///                 },
+    ///                 ExecutionTimeout = "3600s",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
+    ///         MultiTarget = new Gcp.CloudDeploy.Inputs.TargetMultiTargetArgs
+    ///         {
+    ///             TargetIds = new[]
+    ///             {
+    ///                 "1",
+    ///                 "2",
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         RequireApproval = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Run_target
     /// tests creating and updating a cloud run target
     /// ```csharp
@@ -169,6 +221,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// (Beta only) Information specifying a multiTarget.
+        /// </summary>
+        [Output("multiTarget")]
+        public Output<Outputs.TargetMultiTarget?> MultiTarget { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
         /// </summary>
         [Output("name")]
@@ -317,6 +375,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Beta only) Information specifying a multiTarget.
+        /// </summary>
+        [Input("multiTarget")]
+        public Input<Inputs.TargetMultiTargetArgs>? MultiTarget { get; set; }
+
+        /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
         /// </summary>
         [Input("name")]
@@ -419,6 +483,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// (Beta only) Information specifying a multiTarget.
+        /// </summary>
+        [Input("multiTarget")]
+        public Input<Inputs.TargetMultiTargetGetArgs>? MultiTarget { get; set; }
 
         /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.

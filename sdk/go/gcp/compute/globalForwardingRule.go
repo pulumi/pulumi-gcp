@@ -201,15 +201,20 @@ type GlobalForwardingRule struct {
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+	// This signifies what the GlobalForwardingRule will be used for.
+	// The value of INTERNAL_SELF_MANAGED means that this will be used for
+	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+	// will be used for External Global Load Balancing (HTTP(S) LB,
+	// External TCP/UDP LB, SSL Proxy)
+	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
+	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -235,9 +240,11 @@ type GlobalForwardingRule struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-	// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-	// specified, the default network will be used.
+	// This field is not used for external load balancing.
+	// For INTERNAL_SELF_MANAGED load balancing, this field
+	// identifies the network that the load balanced IP should belong to
+	// for this global forwarding rule. If this field is not specified,
+	// the default network will be used.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -266,10 +273,12 @@ type GlobalForwardingRule struct {
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-	// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-	// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-	// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+	// The URL of the target resource to receive the matched traffic.
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+	// are valid.
+	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 	Target pulumi.StringOutput `pulumi:"target"`
 }
 
@@ -333,15 +342,20 @@ type globalForwardingRuleState struct {
 	IpVersion *string `pulumi:"ipVersion"`
 	// Used internally during label updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+	// This signifies what the GlobalForwardingRule will be used for.
+	// The value of INTERNAL_SELF_MANAGED means that this will be used for
+	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+	// will be used for External Global Load Balancing (HTTP(S) LB,
+	// External TCP/UDP LB, SSL Proxy)
+	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
+	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -367,9 +381,11 @@ type globalForwardingRuleState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-	// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-	// specified, the default network will be used.
+	// This field is not used for external load balancing.
+	// For INTERNAL_SELF_MANAGED load balancing, this field
+	// identifies the network that the load balanced IP should belong to
+	// for this global forwarding rule. If this field is not specified,
+	// the default network will be used.
 	Network *string `pulumi:"network"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -398,10 +414,12 @@ type globalForwardingRuleState struct {
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-	// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-	// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-	// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+	// The URL of the target resource to receive the matched traffic.
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+	// are valid.
+	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 	Target *string `pulumi:"target"`
 }
 
@@ -434,15 +452,20 @@ type GlobalForwardingRuleState struct {
 	IpVersion pulumi.StringPtrInput
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+	// This signifies what the GlobalForwardingRule will be used for.
+	// The value of INTERNAL_SELF_MANAGED means that this will be used for
+	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+	// will be used for External Global Load Balancing (HTTP(S) LB,
+	// External TCP/UDP LB, SSL Proxy)
+	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
+	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -468,9 +491,11 @@ type GlobalForwardingRuleState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-	// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-	// specified, the default network will be used.
+	// This field is not used for external load balancing.
+	// For INTERNAL_SELF_MANAGED load balancing, this field
+	// identifies the network that the load balanced IP should belong to
+	// for this global forwarding rule. If this field is not specified,
+	// the default network will be used.
 	Network pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -499,10 +524,12 @@ type GlobalForwardingRuleState struct {
 	PscConnectionStatus pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-	// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-	// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-	// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+	// The URL of the target resource to receive the matched traffic.
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+	// are valid.
+	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 	Target pulumi.StringPtrInput
 }
 
@@ -537,15 +564,20 @@ type globalForwardingRuleArgs struct {
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+	// This signifies what the GlobalForwardingRule will be used for.
+	// The value of INTERNAL_SELF_MANAGED means that this will be used for
+	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+	// will be used for External Global Load Balancing (HTTP(S) LB,
+	// External TCP/UDP LB, SSL Proxy)
+	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
+	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -571,9 +603,11 @@ type globalForwardingRuleArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-	// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-	// specified, the default network will be used.
+	// This field is not used for external load balancing.
+	// For INTERNAL_SELF_MANAGED load balancing, this field
+	// identifies the network that the load balanced IP should belong to
+	// for this global forwarding rule. If this field is not specified,
+	// the default network will be used.
 	Network *string `pulumi:"network"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -595,10 +629,12 @@ type globalForwardingRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-	// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-	// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-	// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+	// The URL of the target resource to receive the matched traffic.
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+	// are valid.
+	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 	Target string `pulumi:"target"`
 }
 
@@ -630,15 +666,20 @@ type GlobalForwardingRuleArgs struct {
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are `IPV4` and `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+	// This signifies what the GlobalForwardingRule will be used for.
+	// The value of INTERNAL_SELF_MANAGED means that this will be used for
+	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+	// will be used for External Global Load Balancing (HTTP(S) LB,
+	// External TCP/UDP LB, SSL Proxy)
+	// Note: This field must be set "" if the global address is
+	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+	// that this will be used for Global external HTTP(S) load balancers.
+	// Note: This field must be set "" if the global address is
+	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -664,9 +705,11 @@ type GlobalForwardingRuleArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-	// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-	// specified, the default network will be used.
+	// This field is not used for external load balancing.
+	// For INTERNAL_SELF_MANAGED load balancing, this field
+	// identifies the network that the load balanced IP should belong to
+	// for this global forwarding rule. If this field is not specified,
+	// the default network will be used.
 	Network pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -688,10 +731,12 @@ type GlobalForwardingRuleArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-	// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-	// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-	// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+	// The URL of the target resource to receive the matched traffic.
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+	// are valid.
+	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 	Target pulumi.StringInput
 }
 
@@ -825,18 +870,23 @@ func (o GlobalForwardingRuleOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// Labels to apply to this rule.
+// Labels to apply to this forwarding rule.  A list of key->value pairs.
 func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+// This signifies what the GlobalForwardingRule will be used for.
+// The value of INTERNAL_SELF_MANAGED means that this will be used for
+// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+// will be used for External Global Load Balancing (HTTP(S) LB,
+// External TCP/UDP LB, SSL Proxy)
+// Note: This field must be set "" if the global address is
+// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
+// that this will be used for Global external HTTP(S) load balancers.
+// Note: This field must be set "" if the global address is
+// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+// Default value is `EXTERNAL`.
+// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -871,9 +921,11 @@ func (o GlobalForwardingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is not used for external load balancing. For `INTERNAL` and `INTERNAL_SELF_MANAGED` load balancing, this
-// field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not
-// specified, the default network will be used.
+// This field is not used for external load balancing.
+// For INTERNAL_SELF_MANAGED load balancing, this field
+// identifies the network that the load balanced IP should belong to
+// for this global forwarding rule. If this field is not specified,
+// the default network will be used.
 func (o GlobalForwardingRuleOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -920,10 +972,12 @@ func (o GlobalForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in
-// the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing
-// resource. The forwarded traffic must be of a type appropriate to the target object. For `INTERNAL_SELF_MANAGED` load
-// balancing, only `targetHttpProxy` is valid, not `targetHttpsProxy`.
+// The URL of the target resource to receive the matched traffic.
+// The forwarded traffic must be of a type appropriate to the target object.
+// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+// are valid.
+// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
 func (o GlobalForwardingRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

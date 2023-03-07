@@ -4,8 +4,6 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity;
-import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigReservationAffinity;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -39,16 +37,6 @@ public final class ClusterClusterConfigGceClusterConfig {
      * 
      */
     private @Nullable String network;
-    /**
-     * @return Node Group Affinity for sole-tenant clusters.
-     * 
-     */
-    private @Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
-    /**
-     * @return Reservation Affinity for consuming zonal reservation.
-     * 
-     */
-    private @Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
@@ -123,20 +111,6 @@ public final class ClusterClusterConfigGceClusterConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Node Group Affinity for sole-tenant clusters.
-     * 
-     */
-    public Optional<ClusterClusterConfigGceClusterConfigNodeGroupAffinity> nodeGroupAffinity() {
-        return Optional.ofNullable(this.nodeGroupAffinity);
-    }
-    /**
-     * @return Reservation Affinity for consuming zonal reservation.
-     * 
-     */
-    public Optional<ClusterClusterConfigGceClusterConfigReservationAffinity> reservationAffinity() {
-        return Optional.ofNullable(this.reservationAffinity);
-    }
-    /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
@@ -204,8 +178,6 @@ public final class ClusterClusterConfigGceClusterConfig {
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
         private @Nullable String network;
-        private @Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity;
-        private @Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
         private @Nullable String serviceAccount;
         private @Nullable List<String> serviceAccountScopes;
         private @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -218,8 +190,6 @@ public final class ClusterClusterConfigGceClusterConfig {
     	      this.internalIpOnly = defaults.internalIpOnly;
     	      this.metadata = defaults.metadata;
     	      this.network = defaults.network;
-    	      this.nodeGroupAffinity = defaults.nodeGroupAffinity;
-    	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceAccountScopes = defaults.serviceAccountScopes;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -241,16 +211,6 @@ public final class ClusterClusterConfigGceClusterConfig {
         @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder nodeGroupAffinity(@Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity) {
-            this.nodeGroupAffinity = nodeGroupAffinity;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder reservationAffinity(@Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity) {
-            this.reservationAffinity = reservationAffinity;
             return this;
         }
         @CustomType.Setter
@@ -294,8 +254,6 @@ public final class ClusterClusterConfigGceClusterConfig {
             o.internalIpOnly = internalIpOnly;
             o.metadata = metadata;
             o.network = network;
-            o.nodeGroupAffinity = nodeGroupAffinity;
-            o.reservationAffinity = reservationAffinity;
             o.serviceAccount = serviceAccount;
             o.serviceAccountScopes = serviceAccountScopes;
             o.shieldedInstanceConfig = shieldedInstanceConfig;

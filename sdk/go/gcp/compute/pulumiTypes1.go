@@ -10,6 +10,1001 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetDiskDiskEncryptionKey struct {
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	RawKey               string `pulumi:"rawKey"`
+	RsaEncryptedKey      string `pulumi:"rsaEncryptedKey"`
+	Sha256               string `pulumi:"sha256"`
+}
+
+// GetDiskDiskEncryptionKeyInput is an input type that accepts GetDiskDiskEncryptionKeyArgs and GetDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetDiskDiskEncryptionKeyInput` via:
+//
+//	GetDiskDiskEncryptionKeyArgs{...}
+type GetDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput
+	ToGetDiskDiskEncryptionKeyOutputWithContext(context.Context) GetDiskDiskEncryptionKeyOutput
+}
+
+type GetDiskDiskEncryptionKeyArgs struct {
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+	RsaEncryptedKey      pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	Sha256               pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskDiskEncryptionKeyArgs) ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput {
+	return i.ToGetDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetDiskDiskEncryptionKeyArgs) ToGetDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskDiskEncryptionKeyOutput)
+}
+
+// GetDiskDiskEncryptionKeyArrayInput is an input type that accepts GetDiskDiskEncryptionKeyArray and GetDiskDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetDiskDiskEncryptionKeyArrayInput` via:
+//
+//	GetDiskDiskEncryptionKeyArray{ GetDiskDiskEncryptionKeyArgs{...} }
+type GetDiskDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput
+	ToGetDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetDiskDiskEncryptionKeyArrayOutput
+}
+
+type GetDiskDiskEncryptionKeyArray []GetDiskDiskEncryptionKeyInput
+
+func (GetDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskDiskEncryptionKeyArray) ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput {
+	return i.ToGetDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskDiskEncryptionKeyArray) ToGetDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskDiskEncryptionKeyArrayOutput)
+}
+
+type GetDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+func (o GetDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskDiskEncryptionKeyArrayOutput) ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskDiskEncryptionKeyArrayOutput) ToGetDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskDiskEncryptionKey {
+		return vs[0].([]GetDiskDiskEncryptionKey)[vs[1].(int)]
+	}).(GetDiskDiskEncryptionKeyOutput)
+}
+
+type GetDiskSourceImageEncryptionKey struct {
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	RawKey               string `pulumi:"rawKey"`
+	Sha256               string `pulumi:"sha256"`
+}
+
+// GetDiskSourceImageEncryptionKeyInput is an input type that accepts GetDiskSourceImageEncryptionKeyArgs and GetDiskSourceImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetDiskSourceImageEncryptionKeyInput` via:
+//
+//	GetDiskSourceImageEncryptionKeyArgs{...}
+type GetDiskSourceImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput
+	ToGetDiskSourceImageEncryptionKeyOutputWithContext(context.Context) GetDiskSourceImageEncryptionKeyOutput
+}
+
+type GetDiskSourceImageEncryptionKeyArgs struct {
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+	Sha256               pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskSourceImageEncryptionKeyArgs) ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput {
+	return i.ToGetDiskSourceImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetDiskSourceImageEncryptionKeyArgs) ToGetDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceImageEncryptionKeyOutput)
+}
+
+// GetDiskSourceImageEncryptionKeyArrayInput is an input type that accepts GetDiskSourceImageEncryptionKeyArray and GetDiskSourceImageEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetDiskSourceImageEncryptionKeyArrayInput` via:
+//
+//	GetDiskSourceImageEncryptionKeyArray{ GetDiskSourceImageEncryptionKeyArgs{...} }
+type GetDiskSourceImageEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput
+	ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetDiskSourceImageEncryptionKeyArrayOutput
+}
+
+type GetDiskSourceImageEncryptionKeyArray []GetDiskSourceImageEncryptionKeyInput
+
+func (GetDiskSourceImageEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskSourceImageEncryptionKeyArray) ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput {
+	return i.ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskSourceImageEncryptionKeyArray) ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+type GetDiskSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetDiskSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) ToGetDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceImageEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetDiskSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskSourceImageEncryptionKeyArrayOutput) ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskSourceImageEncryptionKeyArrayOutput) ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskSourceImageEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskSourceImageEncryptionKey {
+		return vs[0].([]GetDiskSourceImageEncryptionKey)[vs[1].(int)]
+	}).(GetDiskSourceImageEncryptionKeyOutput)
+}
+
+type GetDiskSourceSnapshotEncryptionKey struct {
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	RawKey               string `pulumi:"rawKey"`
+	Sha256               string `pulumi:"sha256"`
+}
+
+// GetDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetDiskSourceSnapshotEncryptionKeyArgs and GetDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput
+	ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetDiskSourceSnapshotEncryptionKeyArgs struct {
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+	Sha256               pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskSourceSnapshotEncryptionKeyArgs) ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetDiskSourceSnapshotEncryptionKeyArgs) ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetDiskSourceSnapshotEncryptionKeyArray and GetDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetDiskSourceSnapshotEncryptionKeyArray{ GetDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetDiskSourceSnapshotEncryptionKeyArray []GetDiskSourceSnapshotEncryptionKeyInput
+
+func (GetDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetDiskSourceSnapshotEncryptionKeyArray) ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskSourceSnapshotEncryptionKeyArray) ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+type GetForwardingRuleServiceDirectoryRegistration struct {
+	Namespace string `pulumi:"namespace"`
+	Service   string `pulumi:"service"`
+}
+
+// GetForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts GetForwardingRuleServiceDirectoryRegistrationArgs and GetForwardingRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `GetForwardingRuleServiceDirectoryRegistrationInput` via:
+//
+//	GetForwardingRuleServiceDirectoryRegistrationArgs{...}
+type GetForwardingRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput
+	ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput
+}
+
+type GetForwardingRuleServiceDirectoryRegistrationArgs struct {
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	Service   pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRuleServiceDirectoryRegistrationArgs) ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput {
+	return i.ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRuleServiceDirectoryRegistrationArgs) ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+// GetForwardingRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetForwardingRuleServiceDirectoryRegistrationArray and GetForwardingRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//	GetForwardingRuleServiceDirectoryRegistrationArray{ GetForwardingRuleServiceDirectoryRegistrationArgs{...} }
+type GetForwardingRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput
+	ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type GetForwardingRuleServiceDirectoryRegistrationArray []GetForwardingRuleServiceDirectoryRegistrationInput
+
+func (GetForwardingRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRuleServiceDirectoryRegistrationArray) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRuleServiceDirectoryRegistrationArray) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+type GetForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationOutput) ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationOutput) ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetForwardingRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRuleServiceDirectoryRegistration {
+		return vs[0].([]GetForwardingRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(GetForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilter struct {
+	FilterLabels        []GetGlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
+	FilterMatchCriteria string                                             `pulumi:"filterMatchCriteria"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArgs and GetGlobalForwardingRuleMetadataFilterOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterArgs{...}
+type GetGlobalForwardingRuleMetadataFilterInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput
+	ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArgs struct {
+	FilterLabels        GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
+	FilterMatchCriteria pulumi.StringInput                                         `pulumi:"filterMatchCriteria"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArray and GetGlobalForwardingRuleMetadataFilterArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterArrayInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterArray{ GetGlobalForwardingRuleMetadataFilterArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArray []GetGlobalForwardingRuleMetadataFilterInput
+
+func (GetGlobalForwardingRuleMetadataFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterLabels() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) []GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return v.FilterLabels
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilter {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilter)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
+	// The name of the global forwarding rule.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArgs and GetGlobalForwardingRuleMetadataFilterFilterLabelOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...}
+type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
+	// The name of the global forwarding rule.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArray and GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterFilterLabelArray{ GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArray []GetGlobalForwardingRuleMetadataFilterFilterLabelInput
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+// The name of the global forwarding rule.
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilterFilterLabel)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+type GetHcVpnGatewayVpnInterface struct {
+	Id                     int    `pulumi:"id"`
+	InterconnectAttachment string `pulumi:"interconnectAttachment"`
+	IpAddress              string `pulumi:"ipAddress"`
+}
+
+// GetHcVpnGatewayVpnInterfaceInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArgs and GetHcVpnGatewayVpnInterfaceOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceInput` via:
+//
+//	GetHcVpnGatewayVpnInterfaceArgs{...}
+type GetHcVpnGatewayVpnInterfaceInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput
+	ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArgs struct {
+	Id                     pulumi.IntInput    `pulumi:"id"`
+	InterconnectAttachment pulumi.StringInput `pulumi:"interconnectAttachment"`
+	IpAddress              pulumi.StringInput `pulumi:"ipAddress"`
+}
+
+func (GetHcVpnGatewayVpnInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
+// GetHcVpnGatewayVpnInterfaceArrayInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArray and GetHcVpnGatewayVpnInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceArrayInput` via:
+//
+//	GetHcVpnGatewayVpnInterfaceArray{ GetHcVpnGatewayVpnInterfaceArgs{...} }
+type GetHcVpnGatewayVpnInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput
+	ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArray []GetHcVpnGatewayVpnInterfaceInput
+
+func (GetHcVpnGatewayVpnInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceArrayOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) Index(i pulumi.IntInput) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHcVpnGatewayVpnInterface {
+		return vs[0].([]GetHcVpnGatewayVpnInterface)[vs[1].(int)]
+	}).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
+type GetHealthCheckGrpcHealthCheck struct {
+	GrpcServiceName   string `pulumi:"grpcServiceName"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+}
+
+// GetHealthCheckGrpcHealthCheckInput is an input type that accepts GetHealthCheckGrpcHealthCheckArgs and GetHealthCheckGrpcHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckInput` via:
+//
+//	GetHealthCheckGrpcHealthCheckArgs{...}
+type GetHealthCheckGrpcHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput
+	ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArgs struct {
+	GrpcServiceName   pulumi.StringInput `pulumi:"grpcServiceName"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+}
+
+func (GetHealthCheckGrpcHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+// GetHealthCheckGrpcHealthCheckArrayInput is an input type that accepts GetHealthCheckGrpcHealthCheckArray and GetHealthCheckGrpcHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckArrayInput` via:
+//
+//	GetHealthCheckGrpcHealthCheckArray{ GetHealthCheckGrpcHealthCheckArgs{...} }
+type GetHealthCheckGrpcHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput
+	ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckArrayOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArray []GetHealthCheckGrpcHealthCheckInput
+
+func (GetHealthCheckGrpcHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckArrayOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.GrpcServiceName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckGrpcHealthCheck {
+		return vs[0].([]GetHealthCheckGrpcHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+type GetHealthCheckHttp2HealthCheck struct {
+	Host              string `pulumi:"host"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	RequestPath       string `pulumi:"requestPath"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckHttp2HealthCheckInput is an input type that accepts GetHealthCheckHttp2HealthCheckArgs and GetHealthCheckHttp2HealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckInput` via:
+//
+//	GetHealthCheckHttp2HealthCheckArgs{...}
+type GetHealthCheckHttp2HealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput
+	ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArgs struct {
+	Host              pulumi.StringInput `pulumi:"host"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttp2HealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
+// GetHealthCheckHttp2HealthCheckArrayInput is an input type that accepts GetHealthCheckHttp2HealthCheckArray and GetHealthCheckHttp2HealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckArrayInput` via:
+//
+//	GetHealthCheckHttp2HealthCheckArray{ GetHealthCheckHttp2HealthCheckArgs{...} }
+type GetHealthCheckHttp2HealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput
+	ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckArrayOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArray []GetHealthCheckHttp2HealthCheckInput
+
+func (GetHealthCheckHttp2HealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttp2HealthCheck {
+		return vs[0].([]GetHealthCheckHttp2HealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
 type GetHealthCheckHttpHealthCheck struct {
 	Host              string `pulumi:"host"`
 	Port              int    `pulumi:"port"`
@@ -5422,6 +6417,12 @@ func (o GetInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceTemplateNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running the prvovider can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -5462,6 +6463,12 @@ type GetInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetInstanceTemplateNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running the prvovider can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -5541,6 +6548,12 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkI
 	return o
 }
 
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Omit to ensure that the instance
+// is not accessible from the Internet (this means that ssh provisioners will
+// not work unless you are running the prvovider can send traffic to the instance's
+// network (e.g. via tunnel or because it is running on another cloud instance
+// on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAccessConfig {
 		return v.AccessConfigs
@@ -7578,6 +8591,7 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 type GetResourcePolicyGroupPlacementPolicy struct {
 	AvailabilityDomainCount int    `pulumi:"availabilityDomainCount"`
 	Collocation             string `pulumi:"collocation"`
+	MaxDistance             int    `pulumi:"maxDistance"`
 	VmCount                 int    `pulumi:"vmCount"`
 }
 
@@ -7595,6 +8609,7 @@ type GetResourcePolicyGroupPlacementPolicyInput interface {
 type GetResourcePolicyGroupPlacementPolicyArgs struct {
 	AvailabilityDomainCount pulumi.IntInput    `pulumi:"availabilityDomainCount"`
 	Collocation             pulumi.StringInput `pulumi:"collocation"`
+	MaxDistance             pulumi.IntInput    `pulumi:"maxDistance"`
 	VmCount                 pulumi.IntInput    `pulumi:"vmCount"`
 }
 
@@ -7655,6 +8670,10 @@ func (o GetResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() p
 
 func (o GetResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) MaxDistance() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.MaxDistance }).(pulumi.IntOutput)
 }
 
 func (o GetResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntOutput {
@@ -10178,6 +11197,24 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceArrayInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcHealthCheckInput)(nil)).Elem(), GetHealthCheckGrpcHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckGrpcHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttp2HealthCheckInput)(nil)).Elem(), GetHealthCheckHttp2HealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttp2HealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttp2HealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpsHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpsHealthCheckArgs{})
@@ -10354,6 +11391,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckOutput{})

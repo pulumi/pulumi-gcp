@@ -26,6 +26,7 @@ public final class CertificateSelfManaged {
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String pemCertificate;
@@ -65,6 +66,7 @@ public final class CertificateSelfManaged {
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> pemCertificate() {

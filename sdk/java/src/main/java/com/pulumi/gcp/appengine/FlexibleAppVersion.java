@@ -334,16 +334,14 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.entrypoint);
     }
     /**
-     * Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
+     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      * 
      */
     @Export(name="envVariables", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> envVariables;
 
     /**
-     * @return Environment variables available to the application. As these are not returned in the API request, Terraform will not
-     * detect any changes made outside of the Terraform config.
+     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      * 
      */
     public Output<Optional<Map<String,String>>> envVariables() {

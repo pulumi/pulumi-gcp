@@ -20,6 +20,7 @@ class DatabaseInstanceArgs:
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,20 +41,38 @@ class DatabaseInstanceArgs:
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: Configuration for creating a new instance as a clone of another instance.
-        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+               resource creation, this provider will attempt to clone another instance as indicated in the context. The
+               configuration is detailed below.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for up to one week.
+        :param pulumi.Input[str] name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
+        :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
@@ -65,6 +84,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if maintenance_version is not None:
             pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name is not None:
@@ -108,7 +129,9 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        Configuration for creating a new instance as a clone of another instance.
+        The context needed to create this instance as a clone of another instance. When this field is set during
+        resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        configuration is detailed below.
         """
         return pulumi.get(self, "clone")
 
@@ -120,7 +143,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -131,11 +155,33 @@ class DatabaseInstanceArgs:
     @property
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to the encryption key used for the CMEK disk encryption.  Setting
+        up disk encryption currently requires manual steps outside of this provider.
+        The provided key must be in the same region as the SQL instance.  In order
+        to use this feature, a special kind of service account must be created and
+        granted permission on this key.  This step can currently only be done
+        manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        """
         return pulumi.get(self, "encryption_key_name")
 
     @encryption_key_name.setter
     def encryption_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="maintenanceVersion")
@@ -167,8 +213,10 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-        created. This is done because after a name is used, it cannot be reused for up to one week.
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """
         return pulumi.get(self, "name")
 
@@ -218,6 +266,12 @@ class DatabaseInstanceArgs:
     @property
     @pulumi.getter(name="restoreBackupContext")
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
+        """
+        The context needed to restore the database to a backup run. This field will
+        cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
+        """
         return pulumi.get(self, "restore_backup_context")
 
     @restore_backup_context.setter
@@ -279,7 +333,9 @@ class _DatabaseInstanceState:
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
-        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: Configuration for creating a new instance as a clone of another instance.
+        :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+               resource creation, this provider will attempt to clone another instance as indicated in the context. The
+               configuration is detailed below.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -291,26 +347,38 @@ class _DatabaseInstanceState:
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
-        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-               output when the resource is configured with a count.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for up to one week.
-        :param pulumi.Input[str] private_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-               access an IP of a specific type without performing filtering in a Terraform config.
+        :param pulumi.Input[str] name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-               access an IP of a specific type without performing filtering in a Terraform config.
+        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
+        :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
@@ -381,7 +449,9 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def clone(self) -> Optional[pulumi.Input['DatabaseInstanceCloneArgs']]:
         """
-        Configuration for creating a new instance as a clone of another instance.
+        The context needed to create this instance as a clone of another instance. When this field is set during
+        resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        configuration is detailed below.
         """
         return pulumi.get(self, "clone")
 
@@ -426,7 +496,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -437,6 +508,16 @@ class _DatabaseInstanceState:
     @property
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to the encryption key used for the CMEK disk encryption.  Setting
+        up disk encryption currently requires manual steps outside of this provider.
+        The provided key must be in the same region as the SQL instance.  In order
+        to use this feature, a special kind of service account must be created and
+        granted permission on this key.  This step can currently only be done
+        manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        """
         return pulumi.get(self, "encryption_key_name")
 
     @encryption_key_name.setter
@@ -447,8 +528,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="firstIpAddress")
     def first_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-        output when the resource is configured with a count.
+        The first IPv4 address of any type assigned.
         """
         return pulumi.get(self, "first_ip_address")
 
@@ -507,8 +587,10 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-        created. This is done because after a name is used, it cannot be reused for up to one week.
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """
         return pulumi.get(self, "name")
 
@@ -520,8 +602,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-        access an IP of a specific type without performing filtering in a Terraform config.
+        The first private (`PRIVATE`) IPv4 address assigned.
         """
         return pulumi.get(self, "private_ip_address")
 
@@ -546,8 +627,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-        access an IP of a specific type without performing filtering in a Terraform config.
+        The first public (`PRIMARY`) IPv4 address assigned.
         """
         return pulumi.get(self, "public_ip_address")
 
@@ -584,6 +664,12 @@ class _DatabaseInstanceState:
     @property
     @pulumi.getter(name="restoreBackupContext")
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
+        """
+        The context needed to restore the database to a backup run. This field will
+        cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
+        """
         return pulumi.get(self, "restore_backup_context")
 
     @restore_backup_context.setter
@@ -659,6 +745,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -670,6 +757,18 @@ class DatabaseInstance(pulumi.CustomResource):
                  settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None,
                  __props__=None):
         """
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+
+        > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
+        default 'root'@'%' user with no password. This user will be deleted by the provider on
+        instance creation. You should use `sql.User` to define a custom user with
+        a restricted host and strong password.
+
+        > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi update` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
+
         ## Example Usage
         ### SQL Second Generation Instance
 
@@ -740,7 +839,9 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+               resource creation, this provider will attempt to clone another instance as indicated in the context. The
+               configuration is detailed below.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -750,19 +851,35 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for up to one week.
+        :param pulumi.Input[str] name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
@@ -774,6 +891,18 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: DatabaseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+
+        > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
+        default 'root'@'%' user with no password. This user will be deleted by the provider on
+        instance creation. You should use `sql.User` to define a custom user with
+        a restricted host and strong password.
+
+        > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi update` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
+
         ## Example Usage
         ### SQL Second Generation Instance
 
@@ -861,6 +990,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -885,6 +1015,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key_name"] = encryption_key_name
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["name"] = name
@@ -897,7 +1028,6 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
             __props__.__dict__["first_ip_address"] = None
-            __props__.__dict__["instance_type"] = None
             __props__.__dict__["ip_addresses"] = None
             __props__.__dict__["private_ip_address"] = None
             __props__.__dict__["public_ip_address"] = None
@@ -947,7 +1077,9 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+               resource creation, this provider will attempt to clone another instance as indicated in the context. The
+               configuration is detailed below.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -959,26 +1091,38 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
-        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-               output when the resource is configured with a count.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[str] instance_type: The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for up to one week.
-        :param pulumi.Input[str] private_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-               access an IP of a specific type without performing filtering in a Terraform config.
+        :param pulumi.Input[str] name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_ip_address: IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-               access an IP of a specific type without performing filtering in a Terraform config.
+        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+               cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+               **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+               block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
@@ -1027,7 +1171,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def clone(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceClone']]:
         """
-        Configuration for creating a new instance as a clone of another instance.
+        The context needed to create this instance as a clone of another instance. When this field is set during
+        resource creation, this provider will attempt to clone another instance as indicated in the context. The
+        configuration is detailed below.
         """
         return pulumi.get(self, "clone")
 
@@ -1060,21 +1206,31 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Used to block Terraform from deleting a SQL Instance. Defaults to true.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> pulumi.Output[str]:
+        """
+        The full path to the encryption key used for the CMEK disk encryption.  Setting
+        up disk encryption currently requires manual steps outside of this provider.
+        The provided key must be in the same region as the SQL instance.  In order
+        to use this feature, a special kind of service account must be created and
+        granted permission on this key.  This step can currently only be done
+        manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        """
         return pulumi.get(self, "encryption_key_name")
 
     @property
     @pulumi.getter(name="firstIpAddress")
     def first_ip_address(self) -> pulumi.Output[str]:
         """
-        The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-        output when the resource is configured with a count.
+        The first IPv4 address of any type assigned.
         """
         return pulumi.get(self, "first_ip_address")
 
@@ -1113,8 +1269,10 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-        created. This is done because after a name is used, it cannot be reused for up to one week.
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         """
         return pulumi.get(self, "name")
 
@@ -1122,8 +1280,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> pulumi.Output[str]:
         """
-        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-        access an IP of a specific type without performing filtering in a Terraform config.
+        The first private (`PRIVATE`) IPv4 address assigned.
         """
         return pulumi.get(self, "private_ip_address")
 
@@ -1140,8 +1297,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> pulumi.Output[str]:
         """
-        IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-        access an IP of a specific type without performing filtering in a Terraform config.
+        The first public (`PRIMARY`) IPv4 address assigned.
         """
         return pulumi.get(self, "public_ip_address")
 
@@ -1166,6 +1322,12 @@ class DatabaseInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="restoreBackupContext")
     def restore_backup_context(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceRestoreBackupContext']]:
+        """
+        The context needed to restore the database to a backup run. This field will
+        cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+        **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+        block during resource creation/update will trigger the restore action after the resource is created/updated.
+        """
         return pulumi.get(self, "restore_backup_context")
 
     @property

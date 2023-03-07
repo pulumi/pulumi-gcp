@@ -149,14 +149,14 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return The URI of the created resource.
+     * @return The URI of the created resourc
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -414,7 +414,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfLink The URI of the created resource.
+         * @param selfLink The URI of the created resourc
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfLink The URI of the created resource.
+         * @param selfLink The URI of the created resourc
          * 
          * @return builder
          * 

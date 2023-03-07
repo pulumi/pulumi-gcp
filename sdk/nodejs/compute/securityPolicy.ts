@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+ * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+ * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+ *
+ * Security Policy is used by google_compute_backend_service.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -105,21 +111,43 @@ import * as utilities from "../utilities";
  *     },
  * ]});
  * ```
+ * ### With EnforceOnKey Value As Empty String
+ * A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
  *
- * Security policies can be imported using any of the following formats
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     description: "throttle rule with enforce_on_key_configs",
+ *     rules: [{
+ *         action: "throttle",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
+ *             },
+ *             versionedExpr: "SRC_IPS_V1",
+ *         },
+ *         priority: 2147483647,
+ *         rateLimitOptions: {
+ *             conformAction: "allow",
+ *             enforceOnKey: "",
+ *             enforceOnKeyConfigs: [{
+ *                 enforceOnKeyType: "IP",
+ *             }],
+ *             exceedAction: "redirect",
+ *             exceedRedirectOptions: {
+ *                 target: "<https://www.example.com>",
+ *                 type: "EXTERNAL_302",
+ *             },
+ *             rateLimitThreshold: {
+ *                 count: 10,
+ *                 intervalSec: 60,
+ *             },
+ *         },
+ *     }],
+ * });
  * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
@@ -187,7 +215,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
@@ -284,7 +312,7 @@ export interface SecurityPolicyState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      */
     selfLink?: pulumi.Input<string>;
     /**

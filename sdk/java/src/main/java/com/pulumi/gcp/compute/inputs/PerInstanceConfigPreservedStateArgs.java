@@ -6,6 +6,8 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateDiskArgs;
+import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateExternalIpArgs;
+import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateInternalIpArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,20 @@ public final class PerInstanceConfigPreservedStateArgs extends com.pulumi.resour
         return Optional.ofNullable(this.disks);
     }
 
+    @Import(name="externalIps")
+    private @Nullable Output<List<PerInstanceConfigPreservedStateExternalIpArgs>> externalIps;
+
+    public Optional<Output<List<PerInstanceConfigPreservedStateExternalIpArgs>>> externalIps() {
+        return Optional.ofNullable(this.externalIps);
+    }
+
+    @Import(name="internalIps")
+    private @Nullable Output<List<PerInstanceConfigPreservedStateInternalIpArgs>> internalIps;
+
+    public Optional<Output<List<PerInstanceConfigPreservedStateInternalIpArgs>>> internalIps() {
+        return Optional.ofNullable(this.internalIps);
+    }
+
     /**
      * Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
      * 
@@ -54,6 +70,8 @@ public final class PerInstanceConfigPreservedStateArgs extends com.pulumi.resour
 
     private PerInstanceConfigPreservedStateArgs(PerInstanceConfigPreservedStateArgs $) {
         this.disks = $.disks;
+        this.externalIps = $.externalIps;
+        this.internalIps = $.internalIps;
         this.metadata = $.metadata;
     }
 
@@ -107,6 +125,32 @@ public final class PerInstanceConfigPreservedStateArgs extends com.pulumi.resour
          */
         public Builder disks(PerInstanceConfigPreservedStateDiskArgs... disks) {
             return disks(List.of(disks));
+        }
+
+        public Builder externalIps(@Nullable Output<List<PerInstanceConfigPreservedStateExternalIpArgs>> externalIps) {
+            $.externalIps = externalIps;
+            return this;
+        }
+
+        public Builder externalIps(List<PerInstanceConfigPreservedStateExternalIpArgs> externalIps) {
+            return externalIps(Output.of(externalIps));
+        }
+
+        public Builder externalIps(PerInstanceConfigPreservedStateExternalIpArgs... externalIps) {
+            return externalIps(List.of(externalIps));
+        }
+
+        public Builder internalIps(@Nullable Output<List<PerInstanceConfigPreservedStateInternalIpArgs>> internalIps) {
+            $.internalIps = internalIps;
+            return this;
+        }
+
+        public Builder internalIps(List<PerInstanceConfigPreservedStateInternalIpArgs> internalIps) {
+            return internalIps(Output.of(internalIps));
+        }
+
+        public Builder internalIps(PerInstanceConfigPreservedStateInternalIpArgs... internalIps) {
+            return internalIps(List.of(internalIps));
         }
 
         /**

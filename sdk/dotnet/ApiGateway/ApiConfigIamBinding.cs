@@ -10,6 +10,102 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
+    /// * `gcp.apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
+    /// * `gcp.apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.ApiConfigIamBinding` and `gcp.apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_api\_gateway\_api\_config\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/apigateway.viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.ApiGateway.ApiConfigIamPolicy("policy", new()
+    ///     {
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_api\_gateway\_api\_config\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.ApiGateway.ApiConfigIamBinding("binding", new()
+    ///     {
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_api\_gateway\_api\_config\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.ApiGateway.ApiConfigIamMember("member", new()
+    ///     {
+    ///         Api = google_api_gateway_api_config.Api_cfg.Api,
+    ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
+    ///         Role = "roles/apigateway.viewer",
+    ///         Member = "user:jane@example.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

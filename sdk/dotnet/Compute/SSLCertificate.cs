@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// An SslCertificate resource, used for HTTPS load balancing. This resource
+    /// provides a mechanism to upload an SSL key and certificate to
+    /// the load balancer to serve secure connections from the user.
+    /// 
+    /// To get more information about SslCertificate, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+    /// 
+    /// &gt; **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
+    /// state as plain-text.
+    /// 
     /// ## Example Usage
     /// ### Ssl Certificate Basic
     /// 

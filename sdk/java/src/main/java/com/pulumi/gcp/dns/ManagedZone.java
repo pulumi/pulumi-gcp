@@ -43,8 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
  * import com.pulumi.gcp.dns.ManagedZone;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import java.util.List;
@@ -60,13 +58,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rnd = new RandomId(&#34;rnd&#34;, RandomIdArgs.builder()        
- *             .byteLength(4)
- *             .build());
- * 
  *         var example_zone = new ManagedZone(&#34;example-zone&#34;, ManagedZoneArgs.builder()        
  *             .description(&#34;Example DNS zone&#34;)
- *             .dnsName(rnd.hex().applyValue(hex -&gt; String.format(&#34;example-%s.com.&#34;, hex)))
+ *             .dnsName(&#34;my-domain.com.&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 
@@ -484,14 +478,14 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.creationTime;
     }
     /**
-     * A textual description field. Defaults to &#39;Managed by Terraform&#39;.
+     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return A textual description field. Defaults to &#39;Managed by Terraform&#39;.
+     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
      * 
      */
     public Output<String> description() {
@@ -674,34 +668,34 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-     * automatically configured records for VPC resources. This only applies to networks listed under
-     * &#39;private_visibility_config&#39;.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * lookup queries using automatically configured records for VPC resources. This only applies
+     * to networks listed under `private_visibility_config`.
      * 
      */
     @Export(name="reverseLookup", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> reverseLookup;
 
     /**
-     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-     * automatically configured records for VPC resources. This only applies to networks listed under
-     * &#39;private_visibility_config&#39;.
+     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * lookup queries using automatically configured records for VPC resources. This only applies
+     * to networks listed under `private_visibility_config`.
      * 
      */
     public Output<Optional<Boolean>> reverseLookup() {
         return Codegen.optional(this.reverseLookup);
     }
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-     * information related to the namespace associated with the zone.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * Structure is documented below.
      * 
      */
     @Export(name="serviceDirectoryConfig", type=ManagedZoneServiceDirectoryConfig.class, parameters={})
     private Output</* @Nullable */ ManagedZoneServiceDirectoryConfig> serviceDirectoryConfig;
 
     /**
-     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-     * information related to the namespace associated with the zone.
+     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ManagedZoneServiceDirectoryConfig>> serviceDirectoryConfig() {

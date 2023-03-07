@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A secret version resource.
+//
+// > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
+// state as plain-text.
+//
 // ## Example Usage
 // ### Secret Version Basic
 //

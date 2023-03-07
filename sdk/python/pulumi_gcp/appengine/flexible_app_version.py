@@ -67,8 +67,7 @@ class FlexibleAppVersionArgs:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
@@ -314,8 +313,7 @@ class FlexibleAppVersionArgs:
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Environment variables available to the application. As these are not returned in the API request, Terraform will not
-        detect any changes made outside of the Terraform config.
+        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         """
         return pulumi.get(self, "env_variables")
 
@@ -582,8 +580,7 @@ class _FlexibleAppVersionState:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionEntrypointArgs'] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionHandlerArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
@@ -799,8 +796,7 @@ class _FlexibleAppVersionState:
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Environment variables available to the application. As these are not returned in the API request, Terraform will not
-        detect any changes made outside of the Terraform config.
+        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         """
         return pulumi.get(self, "env_variables")
 
@@ -1251,8 +1247,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
@@ -1564,8 +1559,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionEntrypointArgs']] entrypoint: The entrypoint for the application.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlexibleAppVersionHandlerArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
@@ -1724,8 +1718,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @pulumi.getter(name="envVariables")
     def env_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Environment variables available to the application. As these are not returned in the API request, Terraform will not
-        detect any changes made outside of the Terraform config.
+        Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         """
         return pulumi.get(self, "env_variables")
 

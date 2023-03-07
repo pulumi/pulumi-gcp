@@ -8,10 +8,20 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'WorkstationClusterCondition',
     'WorkstationClusterPrivateClusterConfig',
+    'WorkstationConfigCondition',
+    'WorkstationConfigContainer',
+    'WorkstationConfigEncryptionKey',
+    'WorkstationConfigHost',
+    'WorkstationConfigHostGceInstance',
+    'WorkstationConfigHostGceInstanceConfidentialInstanceConfig',
+    'WorkstationConfigHostGceInstanceShieldedInstanceConfig',
+    'WorkstationConfigPersistentDirectory',
+    'WorkstationConfigPersistentDirectoryGcePd',
 ]
 
 @pulumi.output_type
@@ -126,5 +136,602 @@ class WorkstationClusterPrivateClusterConfig(dict):
         To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         return pulumi.get(self, "service_attachment_uri")
+
+
+@pulumi.output_type
+class WorkstationConfigCondition(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details.
+        :param str message: Human readable message indicating details about the current status.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class WorkstationConfigContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runAsUser":
+            suggest = "run_as_user"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigContainer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 env: Optional[Mapping[str, str]] = None,
+                 image: Optional[str] = None,
+                 run_as_user: Optional[int] = None,
+                 working_dir: Optional[str] = None):
+        """
+        :param Sequence[str] args: Arguments passed to the entrypoint.
+        :param Sequence[str] commands: If set, overrides the default ENTRYPOINT specified by the image.
+        :param Mapping[str, str] env: Environment variables passed to the container.
+               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param str image: Docker image defining the container. This image must be accessible by the config"s service account.
+        :param int run_as_user: If set, overrides the USER specified in the image with the given uid.
+        :param str working_dir: If set, overrides the default DIR specified by the image.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if run_as_user is not None:
+            pulumi.set(__self__, "run_as_user", run_as_user)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        Arguments passed to the entrypoint.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        If set, overrides the default ENTRYPOINT specified by the image.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[Mapping[str, str]]:
+        """
+        Environment variables passed to the container.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        Docker image defining the container. This image must be accessible by the config"s service account.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="runAsUser")
+    def run_as_user(self) -> Optional[int]:
+        """
+        If set, overrides the USER specified in the image with the given uid.
+        """
+        return pulumi.get(self, "run_as_user")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[str]:
+        """
+        If set, overrides the default DIR specified by the image.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class WorkstationConfigEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: str,
+                 kms_key_service_account: str):
+        """
+        :param str kms_key: The name of the Google Cloud KMS encryption key.
+        :param str kms_key_service_account: The service account to use with the specified KMS key.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The name of the Google Cloud KMS encryption key.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        """
+        The service account to use with the specified KMS key.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class WorkstationConfigHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gceInstance":
+            suggest = "gce_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gce_instance: Optional['outputs.WorkstationConfigHostGceInstance'] = None):
+        """
+        :param 'WorkstationConfigHostGceInstanceArgs' gce_instance: Specifies a Compute Engine instance as the host.
+               Structure is documented below.
+        """
+        if gce_instance is not None:
+            pulumi.set(__self__, "gce_instance", gce_instance)
+
+    @property
+    @pulumi.getter(name="gceInstance")
+    def gce_instance(self) -> Optional['outputs.WorkstationConfigHostGceInstance']:
+        """
+        Specifies a Compute Engine instance as the host.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gce_instance")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
+        elif key == "disablePublicIpAddresses":
+            suggest = "disable_public_ip_addresses"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "poolSize":
+            suggest = "pool_size"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[int] = None,
+                 confidential_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig'] = None,
+                 disable_public_ip_addresses: Optional[bool] = None,
+                 machine_type: Optional[str] = None,
+                 pool_size: Optional[int] = None,
+                 service_account: Optional[str] = None,
+                 shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
+                 tags: Optional[Sequence[str]] = None):
+        """
+        :param int boot_disk_size_gb: Size of the boot disk in GB.
+        :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
+               Structure is documented below.
+        :param bool disable_public_ip_addresses: Whether instances have no public IP address.
+        :param str machine_type: The name of a Compute Engine machine type.
+        :param int pool_size: Number of instances to pool for faster workstation startup.
+        :param str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
+               Structure is documented below.
+        :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if disable_public_ip_addresses is not None:
+            pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if pool_size is not None:
+            pulumi.set(__self__, "pool_size", pool_size)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[int]:
+        """
+        Size of the boot disk in GB.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig']:
+        """
+        A set of Compute Engine Confidential VM instance options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @property
+    @pulumi.getter(name="disablePublicIpAddresses")
+    def disable_public_ip_addresses(self) -> Optional[bool]:
+        """
+        Whether instances have no public IP address.
+        """
+        return pulumi.get(self, "disable_public_ip_addresses")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        The name of a Compute Engine machine type.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="poolSize")
+    def pool_size(self) -> Optional[int]:
+        """
+        Number of instances to pool for faster workstation startup.
+        """
+        return pulumi.get(self, "pool_size")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig']:
+        """
+        A set of Compute Engine Shielded instance options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        """
+        Network tags to add to the Compute Engine machines backing the Workstations.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceConfidentialInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceConfidentialInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstanceConfidentialInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstanceConfidentialInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_confidential_compute: Optional[bool] = None):
+        """
+        :param bool enable_confidential_compute: Whether the instance has confidential compute enabled.
+        """
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[bool]:
+        """
+        Whether the instance has confidential compute enabled.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstanceShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstanceShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None,
+                 enable_vtpm: Optional[bool] = None):
+        """
+        :param bool enable_integrity_monitoring: Whether the instance has integrity monitoring enabled.
+        :param bool enable_secure_boot: Whether the instance has Secure Boot enabled.
+        :param bool enable_vtpm: Whether the instance has the vTPM enabled.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        """
+        Whether the instance has integrity monitoring enabled.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        """
+        Whether the instance has Secure Boot enabled.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[bool]:
+        """
+        Whether the instance has the vTPM enabled.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class WorkstationConfigPersistentDirectory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcePd":
+            suggest = "gce_pd"
+        elif key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigPersistentDirectory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigPersistentDirectory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigPersistentDirectory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gce_pd: Optional['outputs.WorkstationConfigPersistentDirectoryGcePd'] = None,
+                 mount_path: Optional[str] = None):
+        """
+        :param 'WorkstationConfigPersistentDirectoryGcePdArgs' gce_pd: PersistentDirectory backed by a Compute Engine regional persistent disk.
+               Structure is documented below.
+        :param str mount_path: Location of this directory in the running workstation.
+        """
+        if gce_pd is not None:
+            pulumi.set(__self__, "gce_pd", gce_pd)
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+
+    @property
+    @pulumi.getter(name="gcePd")
+    def gce_pd(self) -> Optional['outputs.WorkstationConfigPersistentDirectoryGcePd']:
+        """
+        PersistentDirectory backed by a Compute Engine regional persistent disk.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gce_pd")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        Location of this directory in the running workstation.
+        """
+        return pulumi.get(self, "mount_path")
+
+
+@pulumi.output_type
+class WorkstationConfigPersistentDirectoryGcePd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "fsType":
+            suggest = "fs_type"
+        elif key == "reclaimPolicy":
+            suggest = "reclaim_policy"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigPersistentDirectoryGcePd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigPersistentDirectoryGcePd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigPersistentDirectoryGcePd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_type: Optional[str] = None,
+                 fs_type: Optional[str] = None,
+                 reclaim_policy: Optional[str] = None,
+                 size_gb: Optional[int] = None):
+        """
+        :param str disk_type: Type of the disk to use.
+        :param str fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+        :param str reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+               Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+        :param int size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
+        """
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if fs_type is not None:
+            pulumi.set(__self__, "fs_type", fs_type)
+        if reclaim_policy is not None:
+            pulumi.set(__self__, "reclaim_policy", reclaim_policy)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        """
+        Type of the disk to use.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="fsType")
+    def fs_type(self) -> Optional[str]:
+        """
+        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+        """
+        return pulumi.get(self, "fs_type")
+
+    @property
+    @pulumi.getter(name="reclaimPolicy")
+    def reclaim_policy(self) -> Optional[str]:
+        """
+        What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+        Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+        """
+        return pulumi.get(self, "reclaim_policy")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[int]:
+        """
+        Size of the disk in GB. Must be empty if sourceSnapshot is set.
+        """
+        return pulumi.get(self, "size_gb")
 
 

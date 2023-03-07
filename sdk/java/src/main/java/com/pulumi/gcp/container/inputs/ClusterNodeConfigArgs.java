@@ -31,14 +31,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     public static final ClusterNodeConfigArgs Empty = new ClusterNodeConfigArgs();
 
     /**
-     * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     @Import(name="bootDiskKmsKey")
     private @Nullable Output<String> bootDiskKmsKey;
 
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     public Optional<Output<String>> bootDiskKmsKey() {
@@ -119,9 +119,19 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.gcfsConfig);
     }
 
+    /**
+     * List of the type and count of accelerator cards attached to the instance.
+     * Structure documented below.
+     * 
+     */
     @Import(name="guestAccelerators")
     private @Nullable Output<List<ClusterNodeConfigGuestAcceleratorArgs>> guestAccelerators;
 
+    /**
+     * @return List of the type and count of accelerator cards attached to the instance.
+     * Structure documented below.
+     * 
+     */
     public Optional<Output<List<ClusterNodeConfigGuestAcceleratorArgs>>> guestAccelerators() {
         return Optional.ofNullable(this.guestAccelerators);
     }
@@ -270,9 +280,25 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.machineType);
     }
 
+    /**
+     * The metadata key/value pairs assigned to instances in
+     * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+     * `true` by the API; if `metadata` is set but that default value is not
+     * included, the provider will attempt to unset the value. To avoid this, set the
+     * value in your config.
+     * 
+     */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
+    /**
+     * @return The metadata key/value pairs assigned to instances in
+     * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+     * `true` by the API; if `metadata` is set but that default value is not
+     * included, the provider will attempt to unset the value. To avoid this, set the
+     * value in your config.
+     * 
+     */
     public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
@@ -385,19 +411,9 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.resourceLabels);
     }
 
-    /**
-     * ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="sandboxConfig")
     private @Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig;
 
-    /**
-     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<ClusterNodeConfigSandboxConfigArgs>> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -470,9 +486,31 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
+     * However, GKE will add taints to your nodes if you enable certain features such
+     * as GPUs. If this field is set, any diffs on this field will cause the provider to
+     * recreate the underlying resource. Taint values can be updated safely in
+     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
+     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
+     * recommended. Structure is documented below.
+     * 
+     */
     @Import(name="taints")
     private @Nullable Output<List<ClusterNodeConfigTaintArgs>> taints;
 
+    /**
+     * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+     * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
+     * However, GKE will add taints to your nodes if you enable certain features such
+     * as GPUs. If this field is set, any diffs on this field will cause the provider to
+     * recreate the underlying resource. Taint values can be updated safely in
+     * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
+     * this field to manage taints. If you do, `lifecycle.ignore_changes` is
+     * recommended. Structure is documented below.
+     * 
+     */
     public Optional<Output<List<ClusterNodeConfigTaintArgs>>> taints() {
         return Optional.ofNullable(this.taints);
     }
@@ -546,7 +584,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
          * 
          * @return builder
          * 
@@ -557,7 +595,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
          * 
          * @return builder
          * 
@@ -664,15 +702,36 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return gcfsConfig(Output.of(gcfsConfig));
         }
 
+        /**
+         * @param guestAccelerators List of the type and count of accelerator cards attached to the instance.
+         * Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestAccelerators(@Nullable Output<List<ClusterNodeConfigGuestAcceleratorArgs>> guestAccelerators) {
             $.guestAccelerators = guestAccelerators;
             return this;
         }
 
+        /**
+         * @param guestAccelerators List of the type and count of accelerator cards attached to the instance.
+         * Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestAccelerators(List<ClusterNodeConfigGuestAcceleratorArgs> guestAccelerators) {
             return guestAccelerators(Output.of(guestAccelerators));
         }
 
+        /**
+         * @param guestAccelerators List of the type and count of accelerator cards attached to the instance.
+         * Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestAccelerators(ClusterNodeConfigGuestAcceleratorArgs... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
@@ -869,11 +928,31 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return machineType(Output.of(machineType));
         }
 
+        /**
+         * @param metadata The metadata key/value pairs assigned to instances in
+         * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+         * `true` by the API; if `metadata` is set but that default value is not
+         * included, the provider will attempt to unset the value. To avoid this, set the
+         * value in your config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata The metadata key/value pairs assigned to instances in
+         * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+         * `true` by the API; if `metadata` is set but that default value is not
+         * included, the provider will attempt to unset the value. To avoid this, set the
+         * value in your config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
@@ -1034,25 +1113,11 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return resourceLabels(Output.of(resourceLabels));
         }
 
-        /**
-         * @param sandboxConfig ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sandboxConfig(@Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig) {
             $.sandboxConfig = sandboxConfig;
             return this;
         }
 
-        /**
-         * @param sandboxConfig ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version = &#34;1.12.7-gke.17&#34;` or later to use it.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sandboxConfig(ClusterNodeConfigSandboxConfigArgs sandboxConfig) {
             return sandboxConfig(Output.of(sandboxConfig));
         }
@@ -1160,15 +1225,54 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return tags(List.of(tags));
         }
 
+        /**
+         * @param taints A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+         * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
+         * However, GKE will add taints to your nodes if you enable certain features such
+         * as GPUs. If this field is set, any diffs on this field will cause the provider to
+         * recreate the underlying resource. Taint values can be updated safely in
+         * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
+         * this field to manage taints. If you do, `lifecycle.ignore_changes` is
+         * recommended. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(@Nullable Output<List<ClusterNodeConfigTaintArgs>> taints) {
             $.taints = taints;
             return this;
         }
 
+        /**
+         * @param taints A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+         * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
+         * However, GKE will add taints to your nodes if you enable certain features such
+         * as GPUs. If this field is set, any diffs on this field will cause the provider to
+         * recreate the underlying resource. Taint values can be updated safely in
+         * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
+         * this field to manage taints. If you do, `lifecycle.ignore_changes` is
+         * recommended. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(List<ClusterNodeConfigTaintArgs> taints) {
             return taints(Output.of(taints));
         }
 
+        /**
+         * @param taints A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+         * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
+         * However, GKE will add taints to your nodes if you enable certain features such
+         * as GPUs. If this field is set, any diffs on this field will cause the provider to
+         * recreate the underlying resource. Taint values can be updated safely in
+         * Kubernetes (eg. through `kubectl`), and it&#39;s recommended that you do not use
+         * this field to manage taints. If you do, `lifecycle.ignore_changes` is
+         * recommended. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taints(ClusterNodeConfigTaintArgs... taints) {
             return taints(List.of(taints));
         }

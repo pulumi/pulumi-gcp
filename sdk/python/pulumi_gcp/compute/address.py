@@ -36,7 +36,7 @@ class AddressArgs:
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -142,7 +142,7 @@ class AddressArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 
@@ -304,7 +304,7 @@ class _AddressState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -444,7 +444,7 @@ class _AddressState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 
@@ -744,7 +744,7 @@ class Address(pulumi.CustomResource):
                Default value is `EXTERNAL`.
                Possible values are `INTERNAL` and `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -998,7 +998,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -1107,7 +1107,7 @@ class Address(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels to apply to this address. A list of key->value pairs.
+        Labels to apply to this address.  A list of key->value pairs.
         """
         return pulumi.get(self, "labels")
 

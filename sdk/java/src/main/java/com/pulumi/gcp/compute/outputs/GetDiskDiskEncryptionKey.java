@@ -12,6 +12,7 @@ public final class GetDiskDiskEncryptionKey {
     private String kmsKeySelfLink;
     private String kmsKeyServiceAccount;
     private String rawKey;
+    private String rsaEncryptedKey;
     private String sha256;
 
     private GetDiskDiskEncryptionKey() {}
@@ -23,6 +24,9 @@ public final class GetDiskDiskEncryptionKey {
     }
     public String rawKey() {
         return this.rawKey;
+    }
+    public String rsaEncryptedKey() {
+        return this.rsaEncryptedKey;
     }
     public String sha256() {
         return this.sha256;
@@ -40,6 +44,7 @@ public final class GetDiskDiskEncryptionKey {
         private String kmsKeySelfLink;
         private String kmsKeyServiceAccount;
         private String rawKey;
+        private String rsaEncryptedKey;
         private String sha256;
         public Builder() {}
         public Builder(GetDiskDiskEncryptionKey defaults) {
@@ -47,6 +52,7 @@ public final class GetDiskDiskEncryptionKey {
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -66,6 +72,11 @@ public final class GetDiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            this.rsaEncryptedKey = Objects.requireNonNull(rsaEncryptedKey);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(String sha256) {
             this.sha256 = Objects.requireNonNull(sha256);
             return this;
@@ -75,6 +86,7 @@ public final class GetDiskDiskEncryptionKey {
             o.kmsKeySelfLink = kmsKeySelfLink;
             o.kmsKeyServiceAccount = kmsKeyServiceAccount;
             o.rawKey = rawKey;
+            o.rsaEncryptedKey = rsaEncryptedKey;
             o.sha256 = sha256;
             return o;
         }

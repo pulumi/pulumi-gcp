@@ -34,6 +34,14 @@ public final class DiskDiskEncryptionKey {
      */
     private @Nullable String rawKey;
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -70,6 +78,16 @@ public final class DiskDiskEncryptionKey {
         return Optional.ofNullable(this.rawKey);
     }
     /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -90,6 +108,7 @@ public final class DiskDiskEncryptionKey {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         private @Nullable String sha256;
         public Builder() {}
         public Builder(DiskDiskEncryptionKey defaults) {
@@ -97,6 +116,7 @@ public final class DiskDiskEncryptionKey {
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -116,6 +136,11 @@ public final class DiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
             this.sha256 = sha256;
             return this;
@@ -125,6 +150,7 @@ public final class DiskDiskEncryptionKey {
             o.kmsKeySelfLink = kmsKeySelfLink;
             o.kmsKeyServiceAccount = kmsKeyServiceAccount;
             o.rawKey = rawKey;
+            o.rsaEncryptedKey = rsaEncryptedKey;
             o.sha256 = sha256;
             return o;
         }

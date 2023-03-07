@@ -1282,6 +1282,143 @@ func (o TargetGkePtrOutput) InternalIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TargetMultiTarget struct {
+	// Required. The targetIds of this multiTarget.
+	TargetIds []string `pulumi:"targetIds"`
+}
+
+// TargetMultiTargetInput is an input type that accepts TargetMultiTargetArgs and TargetMultiTargetOutput values.
+// You can construct a concrete instance of `TargetMultiTargetInput` via:
+//
+//	TargetMultiTargetArgs{...}
+type TargetMultiTargetInput interface {
+	pulumi.Input
+
+	ToTargetMultiTargetOutput() TargetMultiTargetOutput
+	ToTargetMultiTargetOutputWithContext(context.Context) TargetMultiTargetOutput
+}
+
+type TargetMultiTargetArgs struct {
+	// Required. The targetIds of this multiTarget.
+	TargetIds pulumi.StringArrayInput `pulumi:"targetIds"`
+}
+
+func (TargetMultiTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetMultiTarget)(nil)).Elem()
+}
+
+func (i TargetMultiTargetArgs) ToTargetMultiTargetOutput() TargetMultiTargetOutput {
+	return i.ToTargetMultiTargetOutputWithContext(context.Background())
+}
+
+func (i TargetMultiTargetArgs) ToTargetMultiTargetOutputWithContext(ctx context.Context) TargetMultiTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetMultiTargetOutput)
+}
+
+func (i TargetMultiTargetArgs) ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput {
+	return i.ToTargetMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (i TargetMultiTargetArgs) ToTargetMultiTargetPtrOutputWithContext(ctx context.Context) TargetMultiTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetMultiTargetOutput).ToTargetMultiTargetPtrOutputWithContext(ctx)
+}
+
+// TargetMultiTargetPtrInput is an input type that accepts TargetMultiTargetArgs, TargetMultiTargetPtr and TargetMultiTargetPtrOutput values.
+// You can construct a concrete instance of `TargetMultiTargetPtrInput` via:
+//
+//	        TargetMultiTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetMultiTargetPtrInput interface {
+	pulumi.Input
+
+	ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput
+	ToTargetMultiTargetPtrOutputWithContext(context.Context) TargetMultiTargetPtrOutput
+}
+
+type targetMultiTargetPtrType TargetMultiTargetArgs
+
+func TargetMultiTargetPtr(v *TargetMultiTargetArgs) TargetMultiTargetPtrInput {
+	return (*targetMultiTargetPtrType)(v)
+}
+
+func (*targetMultiTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetMultiTarget)(nil)).Elem()
+}
+
+func (i *targetMultiTargetPtrType) ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput {
+	return i.ToTargetMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *targetMultiTargetPtrType) ToTargetMultiTargetPtrOutputWithContext(ctx context.Context) TargetMultiTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetMultiTargetPtrOutput)
+}
+
+type TargetMultiTargetOutput struct{ *pulumi.OutputState }
+
+func (TargetMultiTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetMultiTarget)(nil)).Elem()
+}
+
+func (o TargetMultiTargetOutput) ToTargetMultiTargetOutput() TargetMultiTargetOutput {
+	return o
+}
+
+func (o TargetMultiTargetOutput) ToTargetMultiTargetOutputWithContext(ctx context.Context) TargetMultiTargetOutput {
+	return o
+}
+
+func (o TargetMultiTargetOutput) ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput {
+	return o.ToTargetMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (o TargetMultiTargetOutput) ToTargetMultiTargetPtrOutputWithContext(ctx context.Context) TargetMultiTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetMultiTarget) *TargetMultiTarget {
+		return &v
+	}).(TargetMultiTargetPtrOutput)
+}
+
+// Required. The targetIds of this multiTarget.
+func (o TargetMultiTargetOutput) TargetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetMultiTarget) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
+}
+
+type TargetMultiTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetMultiTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetMultiTarget)(nil)).Elem()
+}
+
+func (o TargetMultiTargetPtrOutput) ToTargetMultiTargetPtrOutput() TargetMultiTargetPtrOutput {
+	return o
+}
+
+func (o TargetMultiTargetPtrOutput) ToTargetMultiTargetPtrOutputWithContext(ctx context.Context) TargetMultiTargetPtrOutput {
+	return o
+}
+
+func (o TargetMultiTargetPtrOutput) Elem() TargetMultiTargetOutput {
+	return o.ApplyT(func(v *TargetMultiTarget) TargetMultiTarget {
+		if v != nil {
+			return *v
+		}
+		var ret TargetMultiTarget
+		return ret
+	}).(TargetMultiTargetOutput)
+}
+
+// Required. The targetIds of this multiTarget.
+func (o TargetMultiTargetPtrOutput) TargetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetMultiTarget) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetIds
+	}).(pulumi.StringArrayOutput)
+}
+
 type TargetRun struct {
 	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location string `pulumi:"location"`
@@ -1440,6 +1577,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigArrayInput)(nil)).Elem(), TargetExecutionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkeInput)(nil)).Elem(), TargetGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkePtrInput)(nil)).Elem(), TargetGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetMultiTargetInput)(nil)).Elem(), TargetMultiTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetMultiTargetPtrInput)(nil)).Elem(), TargetMultiTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunInput)(nil)).Elem(), TargetRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunPtrInput)(nil)).Elem(), TargetRunArgs{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionOutput{})
@@ -1462,6 +1601,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetExecutionConfigArrayOutput{})
 	pulumi.RegisterOutputType(TargetGkeOutput{})
 	pulumi.RegisterOutputType(TargetGkePtrOutput{})
+	pulumi.RegisterOutputType(TargetMultiTargetOutput{})
+	pulumi.RegisterOutputType(TargetMultiTargetPtrOutput{})
 	pulumi.RegisterOutputType(TargetRunOutput{})
 	pulumi.RegisterOutputType(TargetRunPtrOutput{})
 }

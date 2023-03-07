@@ -197,6 +197,9 @@ public final class Config {
     public Optional<String> dialogflowCxCustomEndpoint() {
         return Codegen.stringProp("dialogflowCxCustomEndpoint").config(config).get();
     }
+    public Optional<Boolean> disableGooglePartnerName() {
+        return Codegen.booleanProp("disableGooglePartnerName").config(config).get();
+    }
     public Optional<String> dnsCustomEndpoint() {
         return Codegen.stringProp("dnsCustomEndpoint").config(config).get();
     }
@@ -241,6 +244,9 @@ public final class Config {
     }
     public Optional<String> gkehubFeatureCustomEndpoint() {
         return Codegen.stringProp("gkehubFeatureCustomEndpoint").config(config).get();
+    }
+    public Optional<String> googlePartnerName() {
+        return Codegen.stringProp("googlePartnerName").config(config).get();
     }
     public Optional<String> healthcareCustomEndpoint() {
         return Codegen.stringProp("healthcareCustomEndpoint").config(config).get();

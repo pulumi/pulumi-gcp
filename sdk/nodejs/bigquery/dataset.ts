@@ -276,7 +276,7 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      */
-    public readonly maxTimeTravelHours!: pulumi.Output<string | undefined>;
+    public readonly maxTimeTravelHours!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -15,9 +15,21 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
 
     public static final FeatureMembershipMeshArgs Empty = new FeatureMembershipMeshArgs();
 
+    /**
+     * @deprecated
+     * Deprecated in favor of the `management` field
+     * 
+     */
+    @Deprecated /* Deprecated in favor of the `management` field */
     @Import(name="controlPlane")
     private @Nullable Output<String> controlPlane;
 
+    /**
+     * @deprecated
+     * Deprecated in favor of the `management` field
+     * 
+     */
+    @Deprecated /* Deprecated in favor of the `management` field */
     public Optional<Output<String>> controlPlane() {
         return Optional.ofNullable(this.controlPlane);
     }
@@ -62,11 +74,27 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
             $ = new FeatureMembershipMeshArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated in favor of the `management` field
+         * 
+         */
+        @Deprecated /* Deprecated in favor of the `management` field */
         public Builder controlPlane(@Nullable Output<String> controlPlane) {
             $.controlPlane = controlPlane;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated in favor of the `management` field
+         * 
+         */
+        @Deprecated /* Deprecated in favor of the `management` field */
         public Builder controlPlane(String controlPlane) {
             return controlPlane(Output.of(controlPlane));
         }

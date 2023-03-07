@@ -36,6 +36,103 @@ import (
 // Have a look at the Cloud Run Anthos example below.
 //
 // ## Example Usage
+// ### Cloud Run Service Pubsub
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Image: pulumi.String("gcr.io/cloudrun/hello"),
+//							},
+//						},
+//					},
+//				},
+//				Traffics: cloudrun.ServiceTrafficArray{
+//					&cloudrun.ServiceTrafficArgs{
+//						Percent:        pulumi.Int(100),
+//						LatestRevision: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceAccount.NewAccount(ctx, "sa", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("cloud-run-pubsub-invoker"),
+//				DisplayName: pulumi.String("Cloud Run Pub/Sub Invoker"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
+//				Location: _default.Location,
+//				Service:  _default.Name,
+//				Role:     pulumi.String("roles/run.invoker"),
+//				Members: pulumi.StringArray{
+//					sa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//				Role: pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				Members: pulumi.StringArray{
+//					sa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "subscription", &pubsub.SubscriptionArgs{
+//				Topic: topic.Name,
+//				PushConfig: &pubsub.SubscriptionPushConfigArgs{
+//					PushEndpoint: _default.Statuses.ApplyT(func(statuses []cloudrun.ServiceStatus) (*string, error) {
+//						return &statuses[0].Url, nil
+//					}).(pulumi.StringPtrOutput),
+//					OidcToken: &pubsub.SubscriptionPushConfigOidcTokenArgs{
+//						ServiceAccountEmail: sa.Email,
+//					},
+//					Attributes: pulumi.StringMap{
+//						"x-goog-version": pulumi.String("v1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloud Run Service Basic
 //
 // ```go
@@ -116,7 +213,7 @@ import (
 //						Annotations: pulumi.StringMap{
 //							"autoscaling.knative.dev/maxScale":      pulumi.String("1000"),
 //							"run.googleapis.com/cloudsql-instances": instance.ConnectionName,
-//							"run.googleapis.com/client-name":        pulumi.String("terraform"),
+//							"run.googleapis.com/client-name":        pulumi.String("demo"),
 //						},
 //					},
 //				},

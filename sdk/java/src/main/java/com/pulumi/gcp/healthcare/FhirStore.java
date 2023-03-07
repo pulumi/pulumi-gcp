@@ -211,11 +211,67 @@ import javax.annotation.Nullable;
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
  *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
+ *                 .pubsubTopic(topic.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Healthcare Fhir Store Notification Configs
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.FhirStore;
+ * import com.pulumi.gcp.healthcare.FhirStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic(&#34;topic&#34;, TopicArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(google_beta)
+ *             .build());
+ * 
+ *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
+ *             .dataset(dataset.id())
+ *             .version(&#34;R4&#34;)
+ *             .enableUpdateCreate(false)
+ *             .disableReferentialIntegrity(false)
+ *             .disableResourceVersioning(false)
+ *             .enableHistoryImport(false)
+ *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
  *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .sendFullResource(true)
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }

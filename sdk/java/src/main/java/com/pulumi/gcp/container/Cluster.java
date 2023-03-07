@@ -37,6 +37,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaults;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.ClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
+import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
@@ -52,6 +53,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a Google Kubernetes Engine (GKE) cluster. For more information see
+ * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
+ * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+ * 
+ * &gt; **Warning:** All arguments and attributes, including basic auth username and
+ * passwords as well as certificate outputs will be stored in the raw state as
+ * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * 
  * ## Example Usage
  * ### With A Separately Managed Node Pool (Recommended)
  * ```java
@@ -153,6 +162,43 @@ import javax.annotation.Nullable;
  *                     &#34;bar&#34;)
  *                 .build())
  *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Autopilot
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;service-account-id&#34;)
+ *             .displayName(&#34;Service Account&#34;)
+ *             .build());
+ * 
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .enableAutopilot(true)
+ *             .location(&#34;us-central1-a&#34;)
  *             .build());
  * 
  *     }
@@ -273,7 +319,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterIpv4Cidr;
     }
     /**
-     * ) Configuration for
+     * Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -282,7 +328,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterClusterTelemetry> clusterTelemetry;
 
     /**
-     * @return ) Configuration for
+     * @return Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -487,7 +533,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableKubernetesAlpha);
     }
     /**
-     * )
      * Whether L4ILB Subsetting is enabled for this cluster.
      * 
      */
@@ -495,8 +540,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableL4IlbSubsetting;
 
     /**
-     * @return )
-     * Whether L4ILB Subsetting is enabled for this cluster.
+     * @return Whether L4ILB Subsetting is enabled for this cluster.
      * 
      */
     public Output<Optional<Boolean>> enableL4IlbSubsetting() {
@@ -581,14 +625,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gatewayApiConfig);
     }
     /**
-     * ). Structure is documented below.
+     * . Structure is documented below.
      * 
      */
     @Export(name="identityServiceConfig", type=ClusterIdentityServiceConfig.class, parameters={})
     private Output<ClusterIdentityServiceConfig> identityServiceConfig;
 
     /**
-     * @return ). Structure is documented below.
+     * @return . Structure is documented below.
      * 
      */
     public Output<ClusterIdentityServiceConfig> identityServiceConfig() {
@@ -805,18 +849,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.meshCertificates;
     }
     /**
-     * The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
-     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
+     * The minimum version of the master. GKE
+     * will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only `master_version` field to obtain that.
+     * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
+     * official release (which is not necessarily the latest version).  Most users will find
+     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
+     * are available. If you intend to specify versions manually,
+     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+     * describe the various acceptable formats for this field.
      * 
      */
     @Export(name="minMasterVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> minMasterVersion;
 
     /**
-     * @return The minimum version of the master. GKE will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only master_version field to obtain that. If unset, the cluster&#39;s version will be
-     * set by GKE to the version of the most recent official release (which is not necessarily the latest version).
+     * @return The minimum version of the master. GKE
+     * will auto-update the master to new versions, so this does not guarantee the
+     * current master version--use the read-only `master_version` field to obtain that.
+     * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
+     * official release (which is not necessarily the latest version).  Most users will find
+     * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
+     * are available. If you intend to specify versions manually,
+     * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
+     * describe the various acceptable formats for this field.
      * 
      */
     public Output<Optional<String>> minMasterVersion() {
@@ -935,14 +991,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.networkingMode;
     }
     /**
-     * The configuration of the nodepool
+     * Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn&#39;t recommended to be used.
+     * Structure is documented below.
      * 
      */
     @Export(name="nodeConfig", type=ClusterNodeConfig.class, parameters={})
     private Output<ClusterNodeConfig> nodeConfig;
 
     /**
-     * @return The configuration of the nodepool
+     * @return Parameters used in creating the default node pool.
+     * Generally, this field should not be used at the same time as a
+     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * manages the default node pool, which isn&#39;t recommended to be used.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterNodeConfig> nodeConfig() {
@@ -1025,24 +1089,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.nodePools;
     }
     /**
-     * The Kubernetes version on the nodes. Must either be unset or set to the same value as min_master_version on create.
-     * Defaults to the default version set by GKE which is not necessarily the latest version. This only affects nodes in the
-     * default node pool. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as
-     * Terraform will see spurious diffs when fuzzy versions are used. See the google_container_engine_versions data source&#39;s
-     * version_prefix field to approximate fuzzy versions in a Terraform-compatible way. To update nodes in other node pools,
-     * use the version attribute on the node pool.
+     * The Kubernetes version on the nodes. Must either be unset
+     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * version set by GKE which is not necessarily the latest version. This only affects
+     * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions.
+     * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
     @Export(name="nodeVersion", type=String.class, parameters={})
     private Output<String> nodeVersion;
 
     /**
-     * @return The Kubernetes version on the nodes. Must either be unset or set to the same value as min_master_version on create.
-     * Defaults to the default version set by GKE which is not necessarily the latest version. This only affects nodes in the
-     * default node pool. While a fuzzy version can be specified, it&#39;s recommended that you specify explicit versions as
-     * Terraform will see spurious diffs when fuzzy versions are used. See the google_container_engine_versions data source&#39;s
-     * version_prefix field to approximate fuzzy versions in a Terraform-compatible way. To update nodes in other node pools,
-     * use the version attribute on the node pool.
+     * @return The Kubernetes version on the nodes. Must either be unset
+     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * version set by GKE which is not necessarily the latest version. This only affects
+     * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions.
+     * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
     public Output<String> nodeVersion() {
@@ -1133,16 +1201,46 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
-     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
+     * )
+     * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * 
+     */
+    @Export(name="protectConfig", type=ClusterProtectConfig.class, parameters={})
+    private Output<ClusterProtectConfig> protectConfig;
+
+    /**
+     * @return )
+     * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * 
+     */
+    public Output<ClusterProtectConfig> protectConfig() {
+        return this.protectConfig;
+    }
+    /**
+     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters.
+     * When updating this field, GKE imposes specific version requirements. See
+     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
+     * for more details; the `gcp.container.getEngineVersions` datasource can provide
+     * the default version for a channel. Note that removing the `release_channel`
+     * field from your config will cause the provider to stop managing your cluster&#39;s
+     * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
+     * channel. Structure is documented below.
      * 
      */
     @Export(name="releaseChannel", type=ClusterReleaseChannel.class, parameters={})
     private Output<ClusterReleaseChannel> releaseChannel;
 
     /**
-     * @return Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE
-     * clusters. Note that removing this field from your config will not unenroll it. Instead, use the &#34;UNSPECIFIED&#34; channel.
+     * @return Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters.
+     * When updating this field, GKE imposes specific version requirements. See
+     * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
+     * for more details; the `gcp.container.getEngineVersions` datasource can provide
+     * the default version for a channel. Note that removing the `release_channel`
+     * field from your config will cause the provider to stop managing your cluster&#39;s
+     * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
+     * channel. Structure is documented below.
      * 
      */
     public Output<ClusterReleaseChannel> releaseChannel() {

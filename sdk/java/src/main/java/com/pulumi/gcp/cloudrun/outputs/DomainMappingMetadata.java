@@ -13,6 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingMetadata {
+    /**
+     * @return Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: http://kubernetes.io/docs/user-guide/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     */
     private @Nullable Map<String,String> annotations;
     /**
      * @return A sequence number representing a specific generation of the desired state.
@@ -58,6 +67,15 @@ public final class DomainMappingMetadata {
     private @Nullable String uid;
 
     private DomainMappingMetadata() {}
+    /**
+     * @return Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: http://kubernetes.io/docs/user-guide/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }

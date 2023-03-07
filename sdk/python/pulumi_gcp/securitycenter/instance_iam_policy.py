@@ -213,7 +213,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_stackdriver_monitoring=True,
             private_instance=True,
-            version="6.6.0",
             dataproc_service_account=default.email,
             labels={
                 "example_key": "example_value",
@@ -265,7 +264,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            version="6.7.0",
             event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
                 enabled=True,
                 topic=event_topic.id,
@@ -357,7 +355,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_stackdriver_monitoring=True,
             private_instance=True,
-            version="6.6.0",
             dataproc_service_account=default.email,
             labels={
                 "example_key": "example_value",
@@ -409,7 +406,6 @@ class InstanceIamPolicy(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            version="6.7.0",
             event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
                 enabled=True,
                 topic=event_topic.id,

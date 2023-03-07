@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly bool CpuCfsQuota;
         public readonly string CpuCfsQuotaPeriod;
         public readonly string CpuManagerPolicy;
+        public readonly int PodPidsLimit;
 
         [OutputConstructor]
         private GetClusterNodeConfigKubeletConfigResult(
@@ -23,11 +24,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string cpuCfsQuotaPeriod,
 
-            string cpuManagerPolicy)
+            string cpuManagerPolicy,
+
+            int podPidsLimit)
         {
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            PodPidsLimit = podPidsLimit;
         }
     }
 }

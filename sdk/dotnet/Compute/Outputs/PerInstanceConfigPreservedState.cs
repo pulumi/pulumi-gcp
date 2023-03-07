@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PerInstanceConfigPreservedStateDisk> Disks;
+        public readonly ImmutableArray<Outputs.PerInstanceConfigPreservedStateExternalIp> ExternalIps;
+        public readonly ImmutableArray<Outputs.PerInstanceConfigPreservedStateInternalIp> InternalIps;
         /// <summary>
         /// Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
         /// </summary>
@@ -27,9 +29,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         private PerInstanceConfigPreservedState(
             ImmutableArray<Outputs.PerInstanceConfigPreservedStateDisk> disks,
 
+            ImmutableArray<Outputs.PerInstanceConfigPreservedStateExternalIp> externalIps,
+
+            ImmutableArray<Outputs.PerInstanceConfigPreservedStateInternalIp> internalIps,
+
             ImmutableDictionary<string, string>? metadata)
         {
             Disks = disks;
+            ExternalIps = externalIps;
+            InternalIps = internalIps;
             Metadata = metadata;
         }
     }

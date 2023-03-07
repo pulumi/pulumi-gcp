@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A collection of policy tags that classify data along a common axis.
+ * 
+ * To get more information about Taxonomy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ * 
  * ## Example Usage
  * ### Data Catalog Taxonomy Basic
  * ```java
@@ -26,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.datacatalog.Taxonomy;
  * import com.pulumi.gcp.datacatalog.TaxonomyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,13 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicTaxonomy = new Taxonomy(&#34;basicTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .region(&#34;us&#34;)
- *             .displayName(&#34;my_display_name&#34;)
- *             .description(&#34;A collection of policy tags&#34;)
  *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .description(&#34;A collection of policy tags&#34;)
+ *             .displayName(&#34;my_taxonomy&#34;)
+ *             .build());
  * 
  *     }
  * }

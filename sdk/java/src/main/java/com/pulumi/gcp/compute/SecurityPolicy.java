@@ -20,6 +20,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+ * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+ * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+ * 
+ * Security Policy is used by google_compute_backend_service.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -187,21 +193,68 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### With EnforceOnKey Value As Empty String
+ * A scenario example that won&#39;t cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
+ * ```java
+ * package generated_program;
  * 
- * ## Import
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- * Security policies can be imported using any of the following formats
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
- * ```
+ *     public static void stack(Context ctx) {
+ *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .description(&#34;throttle rule with enforce_on_key_configs&#34;)
+ *             .rules(SecurityPolicyRuleArgs.builder()
+ *                 .action(&#34;throttle&#34;)
+ *                 .description(&#34;default rule&#34;)
+ *                 .match(SecurityPolicyRuleMatchArgs.builder()
+ *                     .config(SecurityPolicyRuleMatchConfigArgs.builder()
+ *                         .srcIpRanges(&#34;*&#34;)
+ *                         .build())
+ *                     .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                     .build())
+ *                 .priority(&#34;2147483647&#34;)
+ *                 .rateLimitOptions(SecurityPolicyRuleRateLimitOptionsArgs.builder()
+ *                     .conformAction(&#34;allow&#34;)
+ *                     .enforceOnKey(&#34;&#34;)
+ *                     .enforceOnKeyConfigs(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs.builder()
+ *                         .enforceOnKeyType(&#34;IP&#34;)
+ *                         .build())
+ *                     .exceedAction(&#34;redirect&#34;)
+ *                     .exceedRedirectOptions(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs.builder()
+ *                         .target(&#34;&lt;https://www.example.com&gt;&#34;)
+ *                         .type(&#34;EXTERNAL_302&#34;)
+ *                         .build())
+ *                     .rateLimitThreshold(SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs.builder()
+ *                         .count(10)
+ *                         .intervalSec(60)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
  * 
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
- * ```
- * 
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+ *     }
+ * }
  * ```
  * 
  */
@@ -328,14 +381,14 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * The URI of the created resource.
+     * The URI of the created resourc
      * 
      */
     @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
-     * @return The URI of the created resource.
+     * @return The URI of the created resourc
      * 
      */
     public Output<String> selfLink() {

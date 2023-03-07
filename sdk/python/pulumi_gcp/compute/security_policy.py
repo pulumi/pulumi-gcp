@@ -198,7 +198,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link: The URI of the created resourc
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
                They filter requests before they hit the origin servers.
@@ -333,7 +333,7 @@ class _SecurityPolicyState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the created resource.
+        The URI of the created resourc
         """
         return pulumi.get(self, "self_link")
 
@@ -376,6 +376,12 @@ class SecurityPolicy(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        Security Policy is used by google_compute_backend_service.
+
         ## Example Usage
 
         ```python
@@ -472,21 +478,42 @@ class SecurityPolicy(pulumi.CustomResource):
             ),
         ])
         ```
+        ### With EnforceOnKey Value As Empty String
+        A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
 
-        Security policies can be imported using any of the following formats
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="throttle rule with enforce_on_key_configs",
+            rules=[gcp.compute.SecurityPolicyRuleArgs(
+                action="throttle",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
+                    conform_action="allow",
+                    enforce_on_key="",
+                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
+                        enforce_on_key_type="IP",
+                    )],
+                    exceed_action="redirect",
+                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
+                        target="<https://www.example.com>",
+                        type="EXTERNAL_302",
+                    ),
+                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
+                        count=10,
+                        interval_sec=60,
+                    ),
+                ),
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -518,6 +545,12 @@ class SecurityPolicy(pulumi.CustomResource):
                  args: Optional[SecurityPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        Security Policy is used by google_compute_backend_service.
+
         ## Example Usage
 
         ```python
@@ -614,21 +647,42 @@ class SecurityPolicy(pulumi.CustomResource):
             ),
         ])
         ```
+        ### With EnforceOnKey Value As Empty String
+        A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
 
-        Security policies can be imported using any of the following formats
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="throttle rule with enforce_on_key_configs",
+            rules=[gcp.compute.SecurityPolicyRuleArgs(
+                action="throttle",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
+                    conform_action="allow",
+                    enforce_on_key="",
+                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
+                        enforce_on_key_type="IP",
+                    )],
+                    exceed_action="redirect",
+                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
+                        target="<https://www.example.com>",
+                        type="EXTERNAL_302",
+                    ),
+                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
+                        count=10,
+                        interval_sec=60,
+                    ),
+                ),
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -712,7 +766,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link: The URI of the created resourc
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
                They filter requests before they hit the origin servers.
@@ -810,7 +864,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        The URI of the created resource.
+        The URI of the created resourc
         """
         return pulumi.get(self, "self_link")
 

@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A collection of policy tags that classify data along a common axis.
+//
+// To get more information about Taxonomy, see:
+//
+// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
+//
 // ## Example Usage
 // ### Data Catalog Taxonomy Basic
 //
@@ -27,13 +35,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datacatalog.NewTaxonomy(ctx, "basicTaxonomy", &datacatalog.TaxonomyArgs{
-//				Region:      pulumi.String("us"),
-//				DisplayName: pulumi.String("my_display_name"),
-//				Description: pulumi.String("A collection of policy tags"),
 //				ActivatedPolicyTypes: pulumi.StringArray{
 //					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Description: pulumi.String("A collection of policy tags"),
+//				DisplayName: pulumi.String("my_taxonomy"),
+//			})
 //			if err != nil {
 //				return err
 //			}

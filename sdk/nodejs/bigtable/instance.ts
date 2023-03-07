@@ -7,6 +7,21 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## +---
+ *
+ * subcategory: "Cloud Bigtable"
+ * description: |-
+ *   Creates a Google Bigtable instance.
+ * ---
+ *
+ * # gcp.bigtable.Instance
+ *
+ * Creates a Google Bigtable instance. For more information see:
+ *
+ * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+ *
  * ## Example Usage
  * ### Simple Instance
  *
@@ -107,8 +122,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -185,8 +200,8 @@ export interface InstanceState {
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -229,8 +244,8 @@ export interface InstanceArgs {
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

@@ -73,6 +73,12 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     private String image;
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
     private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
     /**
      * @return List of open ports in the container.
@@ -176,6 +182,12 @@ public final class ServiceTemplateSpecContainer {
     public String image() {
         return this.image;
     }
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
     public Optional<ServiceTemplateSpecContainerLivenessProbe> livenessProbe() {
         return Optional.ofNullable(this.livenessProbe);
     }

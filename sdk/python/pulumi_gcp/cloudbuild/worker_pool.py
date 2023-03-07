@@ -396,6 +396,7 @@ class WorkerPool(pulumi.CustomResource):
             ),
             network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
                 peered_network=network.id,
+                peered_network_ip_range="/29",
             ),
             opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
@@ -480,6 +481,7 @@ class WorkerPool(pulumi.CustomResource):
             ),
             network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
                 peered_network=network.id,
+                peered_network_ip_range="/29",
             ),
             opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```

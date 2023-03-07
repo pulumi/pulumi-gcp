@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionBackendServiceCircuitBreakersArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The timeout for new network connections to hosts.
+        /// Structure is documented below.
+        /// </summary>
         [Input("connectTimeout")]
         public Input<Inputs.RegionBackendServiceCircuitBreakersConnectTimeoutArgs>? ConnectTimeout { get; set; }
 

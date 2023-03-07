@@ -14,11 +14,12 @@ import javax.annotation.Nullable;
 public final class TriggerRepositoryEventConfigPullRequest {
     /**
      * @return Regex of branches to match.
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     private @Nullable String branch;
     /**
-     * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
      * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -32,13 +33,14 @@ public final class TriggerRepositoryEventConfigPullRequest {
     private TriggerRepositoryEventConfigPullRequest() {}
     /**
      * @return Regex of branches to match.
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
      * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */

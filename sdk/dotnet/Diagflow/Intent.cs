@@ -49,6 +49,81 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// ### Dialogflow Intent Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agentProjectProject = new Gcp.Organizations.Project("agentProjectProject", new()
+    ///     {
+    ///         ProjectId = "tf-test-dialogflow",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var agentProjectService = new Gcp.Projects.Service("agentProjectService", new()
+    ///     {
+    ///         Project = agentProjectProject.ProjectId,
+    ///         ServiceName = "dialogflow.googleapis.com",
+    ///         DisableDependentServices = false,
+    ///     });
+    /// 
+    ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflowServiceAccount", new()
+    ///     {
+    ///         AccountId = "tf-test-dialogflow",
+    ///     });
+    /// 
+    ///     var agentCreate = new Gcp.Projects.IAMMember("agentCreate", new()
+    ///     {
+    ///         Project = agentProjectService.Project,
+    ///         Role = "roles/dialogflow.admin",
+    ///         Member = dialogflowServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new()
+    ///     {
+    ///         Project = agentProjectProject.ProjectId,
+    ///         DisplayName = "example_agent",
+    ///         DefaultLanguageCode = "en",
+    ///         TimeZone = "America/New_York",
+    ///     });
+    /// 
+    ///     var fullIntent = new Gcp.Diagflow.Intent("fullIntent", new()
+    ///     {
+    ///         Project = agentProjectProject.ProjectId,
+    ///         DisplayName = "full-intent",
+    ///         WebhookState = "WEBHOOK_STATE_ENABLED",
+    ///         Priority = 1,
+    ///         IsFallback = false,
+    ///         MlDisabled = true,
+    ///         Action = "some_action",
+    ///         ResetContexts = true,
+    ///         InputContextNames = new[]
+    ///         {
+    ///             agentProjectProject.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/agent/sessions/-/contexts/some_id"),
+    ///         },
+    ///         Events = new[]
+    ///         {
+    ///             "some_event",
+    ///         },
+    ///         DefaultResponsePlatforms = new[]
+    ///         {
+    ///             "FACEBOOK",
+    ///             "SLACK",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             basicAgent,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -74,14 +74,14 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigHttpLoadBalancingArgs>? HttpLoadBalancing { get; set; }
 
         /// <summary>
-        /// ).
+        /// .
         /// Structure is documented below.
         /// </summary>
         [Input("istioConfig")]
         public Input<Inputs.ClusterAddonsConfigIstioConfigArgs>? IstioConfig { get; set; }
 
         /// <summary>
-        /// ).
+        /// .
         /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
         [Input("kalmConfig")]

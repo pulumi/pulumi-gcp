@@ -274,12 +274,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-     * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-     * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-     * syntax: 'example=[]' For more details about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
@@ -464,12 +463,11 @@ export interface SubnetworkState {
      */
     role?: pulumi.Input<string>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-     * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-     * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-     * syntax: 'example=[]' For more details about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
@@ -565,12 +563,11 @@ export interface SubnetworkArgs {
      */
     role?: pulumi.Input<string>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-     * VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-     * ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-     * to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-     * syntax: 'example=[]' For more details about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges.
+     * Structure is documented below.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**

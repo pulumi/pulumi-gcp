@@ -18,6 +18,23 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     public static final TriggerGithubArgs Empty = new TriggerGithubArgs();
 
     /**
+     * The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
+    @Import(name="enterpriseConfigResourceName")
+    private @Nullable Output<String> enterpriseConfigResourceName;
+
+    /**
+     * @return The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
+    public Optional<Output<String>> enterpriseConfigResourceName() {
+        return Optional.ofNullable(this.enterpriseConfigResourceName);
+    }
+
+    /**
      * Name of the repository. For example: The name for
      * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
@@ -88,6 +105,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     private TriggerGithubArgs() {}
 
     private TriggerGithubArgs(TriggerGithubArgs $) {
+        this.enterpriseConfigResourceName = $.enterpriseConfigResourceName;
         this.name = $.name;
         this.owner = $.owner;
         this.pullRequest = $.pullRequest;
@@ -110,6 +128,29 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TriggerGithubArgs defaults) {
             $ = new TriggerGithubArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enterpriseConfigResourceName The resource name of the github enterprise config that should be applied to this installation.
+         * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enterpriseConfigResourceName(@Nullable Output<String> enterpriseConfigResourceName) {
+            $.enterpriseConfigResourceName = enterpriseConfigResourceName;
+            return this;
+        }
+
+        /**
+         * @param enterpriseConfigResourceName The resource name of the github enterprise config that should be applied to this installation.
+         * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enterpriseConfigResourceName(String enterpriseConfigResourceName) {
+            return enterpriseConfigResourceName(Output.of(enterpriseConfigResourceName));
         }
 
         /**

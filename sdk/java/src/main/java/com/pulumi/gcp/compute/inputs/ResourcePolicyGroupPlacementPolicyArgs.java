@@ -56,6 +56,13 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         return Optional.ofNullable(this.collocation);
     }
 
+    @Import(name="maxDistance")
+    private @Nullable Output<Integer> maxDistance;
+
+    public Optional<Output<Integer>> maxDistance() {
+        return Optional.ofNullable(this.maxDistance);
+    }
+
     /**
      * Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
@@ -80,6 +87,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     private ResourcePolicyGroupPlacementPolicyArgs(ResourcePolicyGroupPlacementPolicyArgs $) {
         this.availabilityDomainCount = $.availabilityDomainCount;
         this.collocation = $.collocation;
+        this.maxDistance = $.maxDistance;
         this.vmCount = $.vmCount;
     }
 
@@ -151,6 +159,15 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
          */
         public Builder collocation(String collocation) {
             return collocation(Output.of(collocation));
+        }
+
+        public Builder maxDistance(@Nullable Output<Integer> maxDistance) {
+            $.maxDistance = maxDistance;
+            return this;
+        }
+
+        public Builder maxDistance(Integer maxDistance) {
+            return maxDistance(Output.of(maxDistance));
         }
 
         /**

@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+    /// 
+    /// To get more information about NodeGroup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+    /// * How-to Guides
+    ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+    /// 
+    /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+    /// number of nodes in a node group and changes to node group size either
+    /// through provider config or through external changes will cause
+    /// the provider to delete and recreate the node group.
+    /// 
     /// ## Example Usage
     /// ### Node Group Basic
     /// 
@@ -28,8 +41,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
-    ///         Zone = "us-central1-f",
-    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for the Google Provider",
     ///         Size = 1,
     ///         NodeTemplate = soletenant_tmpl.Id,
     ///     });
@@ -53,8 +66,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
     ///     {
-    ///         Zone = "us-central1-f",
-    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Google Provider",
     ///         MaintenancePolicy = "RESTART_IN_PLACE",
     ///         MaintenanceWindow = new Gcp.Compute.Inputs.NodeGroupMaintenanceWindowArgs
     ///         {

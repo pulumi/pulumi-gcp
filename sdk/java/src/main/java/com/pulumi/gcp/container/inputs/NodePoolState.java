@@ -56,16 +56,26 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      * 
      */
     @Import(name="initialNodeCount")
     private @Nullable Output<Integer> initialNodeCount;
 
     /**
-     * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * @return The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      * 
      */
     public Optional<Output<Integer>> initialNodeCount() {
@@ -158,14 +168,16 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+     * The name of the node pool. If left blank, the provider will
+     * auto-generate a unique name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+     * @return The name of the node pool. If left blank, the provider will
+     * auto-generate a unique name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -322,22 +334,24 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-     * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-     * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-     * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-     * versions in a Terraform-compatible way.
+     * The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-     * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-     * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-     * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-     * versions in a Terraform-compatible way.
+     * @return The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     public Optional<Output<String>> version() {
@@ -431,8 +445,13 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialNodeCount The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-         * Changing this will force recreation of the resource.
+         * @param initialNodeCount The initial number of nodes for the pool. In
+         * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+         * this will force recreation of the resource. WARNING: Resizing your node pool manually
+         * may change this value in your existing cluster, which will trigger destruction
+         * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+         * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+         * ignore subsqeuent changes to this field.
          * 
          * @return builder
          * 
@@ -443,8 +462,13 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialNodeCount The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-         * Changing this will force recreation of the resource.
+         * @param initialNodeCount The initial number of nodes for the pool. In
+         * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+         * this will force recreation of the resource. WARNING: Resizing your node pool manually
+         * may change this value in your existing cluster, which will trigger destruction
+         * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+         * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+         * ignore subsqeuent changes to this field.
          * 
          * @return builder
          * 
@@ -589,7 +613,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+         * @param name The name of the node pool. If left blank, the provider will
+         * auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -600,7 +625,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+         * @param name The name of the node pool. If left blank, the provider will
+         * auto-generate a unique name.
          * 
          * @return builder
          * 
@@ -822,11 +848,12 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-         * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-         * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-         * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-         * versions in a Terraform-compatible way.
+         * @param version The Kubernetes version for the nodes in this pool. Note that if this field
+         * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+         * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+         * recommended that you specify explicit versions as the provider will see spurious diffs
+         * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+         * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
          * 
          * @return builder
          * 
@@ -837,11 +864,12 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-         * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-         * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-         * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-         * versions in a Terraform-compatible way.
+         * @param version The Kubernetes version for the nodes in this pool. Note that if this field
+         * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+         * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+         * recommended that you specify explicit versions as the provider will see spurious diffs
+         * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+         * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
          * 
          * @return builder
          * 

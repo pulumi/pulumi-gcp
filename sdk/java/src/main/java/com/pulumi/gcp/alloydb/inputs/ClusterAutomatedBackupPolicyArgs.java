@@ -40,14 +40,14 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Whether automated automated backups are enabled.
+     * Whether automated backups are enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether automated automated backups are enabled.
+     * @return Whether automated backups are enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -191,7 +191,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Whether automated automated backups are enabled.
+         * @param enabled Whether automated backups are enabled.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Whether automated automated backups are enabled.
+         * @param enabled Whether automated backups are enabled.
          * 
          * @return builder
          * 

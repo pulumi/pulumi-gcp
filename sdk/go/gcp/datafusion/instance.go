@@ -89,7 +89,6 @@ import (
 //				EnableStackdriverLogging:    pulumi.Bool(true),
 //				EnableStackdriverMonitoring: pulumi.Bool(true),
 //				PrivateInstance:             pulumi.Bool(true),
-//				Version:                     pulumi.String("6.6.0"),
 //				DataprocServiceAccount:      *pulumi.String(_default.Email),
 //				Labels: pulumi.StringMap{
 //					"example_key": pulumi.String("example_value"),
@@ -219,9 +218,8 @@ import (
 //				return err
 //			}
 //			_, err = datafusion.NewInstance(ctx, "eventInstance", &datafusion.InstanceArgs{
-//				Region:  pulumi.String("us-central1"),
-//				Type:    pulumi.String("BASIC"),
-//				Version: pulumi.String("6.7.0"),
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("BASIC"),
 //				EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
 //					Enabled: pulumi.Bool(true),
 //					Topic:   eventTopic.ID(),

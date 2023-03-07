@@ -103,7 +103,34 @@ class Project(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
+        Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
+        identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
+        Once Firebase has been added to a Google Project it cannot be removed.
+
+        To get more information about Project, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
+        ### Firebase Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            labels={
+                "firebase": "enabled",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -129,7 +156,34 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
+        Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
+        identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
+        Once Firebase has been added to a Google Project it cannot be removed.
+
+        To get more information about Project, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
+        ### Firebase Project Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            labels={
+                "firebase": "enabled",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

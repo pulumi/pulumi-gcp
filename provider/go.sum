@@ -166,8 +166,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/GoogleCloudPlatform/cloudsql-proxy v1.31.2/go.mod h1:qR6jVnZTKDCW3j+fC9mOEPHm++1nKDMkqbbkD6KNsfo=
-github.com/GoogleCloudPlatform/declarative-resource-client-library v1.31.0 h1:4Orb9zAllU52CUtZfKu9OWYyDK6neeBt2ye6NKqAfOg=
-github.com/GoogleCloudPlatform/declarative-resource-client-library v1.31.0/go.mod h1:pL2Qt5HT+x6xrTd806oMiM3awW6kNIXB/iiuClz6m6k=
+github.com/GoogleCloudPlatform/declarative-resource-client-library v1.34.0 h1:o7t+hPFv+Ax5O2vxzIH7dEtvlWA7JJOlOd7mWFvMa6s=
+github.com/GoogleCloudPlatform/declarative-resource-client-library v1.34.0/go.mod h1:pL2Qt5HT+x6xrTd806oMiM3awW6kNIXB/iiuClz6m6k=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/Masterminds/goutils v1.1.0/go.mod h1:8cTjp+g8YejhMuvIA5y2vz3BpJxksy863GQaJW2MFNU=
@@ -1160,8 +1160,8 @@ github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 h1:BQSFePA1RWJOl
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99/go.mod h1:1lJo3i6rXxKeerYnT8Nvf0QmHCRC1n8sfWVwXF2Frvo=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
 github.com/jessevdk/go-flags v1.5.0/go.mod h1:Fw0T6WPc1dYxT4mKEZRfG5kJhaTDP9pj1c2EWnYs/m4=
-github.com/jhump/protoreflect v1.6.0 h1:h5jfMVslIg6l29nsMs0D8Wj17RDVdNYti0vDN/PZZoE=
 github.com/jhump/protoreflect v1.6.0/go.mod h1:eaTn3RZAmMBcV0fifFvlm6VHNz3wSkYyXYWUh7ymB74=
+github.com/jhump/protoreflect v1.6.1 h1:4/2yi5LyDPP7nN+Hiird1SAJ6YoxUm13/oxHGRnbPd8=
 github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
 github.com/jmespath/go-jmespath v0.0.0-20160803190731-bd40a432e4c7/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
 github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=
@@ -1555,8 +1555,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9 h1:JMw+t5I+6E8Lna7JF+ghAoOLOl23UIbshJyRNP+K1HU=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9/go.mod h1:mYPs/uchNcBq7AclQv9QUtSf9iNcfp1Ag21jqTlDf2M=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20230216140231-387f8adeb6a7 h1:6i9RZR8MPsjyholYjhmH7dhJUconLj3Y4BbccssqnXg=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20230216140231-387f8adeb6a7/go.mod h1:LcpN8YCNx8yB54Hs54Flx34cNVWQys6FIU8ZeeGEU50=
+github.com/pulumi/terraform-provider-google-beta v1.20.1-0.20230307171238-23b2271b4580 h1:IUcIkBo1UyyMtjZDWW1xjYUy18Zilc3u18Kfn+DMVOU=
+github.com/pulumi/terraform-provider-google-beta v1.20.1-0.20230307171238-23b2271b4580/go.mod h1:t2+a8diaNw8ijSr89vu1SXw8xaHPZ6xSHnNEnRHNfvk=
 github.com/rakyll/embedmd v0.0.0-20171029212350-c8060a0752a2/go.mod h1:7jOTMgqac46PZcF54q6l2hkLEG8op93fZu61KmxWDV4=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
@@ -2688,7 +2688,7 @@ k8s.io/utils v0.0.0-20211116205334-6203023598ed/go.mod h1:jPW/WVKK9YHAvNhRxK0md/
 k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9/go.mod h1:jPW/WVKK9YHAvNhRxK0md/EJ228hCsBRufyofKtW8HA=
 lukechampine.com/frand v1.4.2 h1:RzFIpOvkMXuPMBb9maa4ND4wjBn71E1Jpf8BzJHMaVw=
 lukechampine.com/frand v1.4.2/go.mod h1:4S/TM2ZgrKejMcKMbeLjISpJMO+/eZ1zu3vYX9dtj3s=
-mvdan.cc/gofumpt v0.1.1 h1:bi/1aS/5W00E2ny5q65w9SnKpWEF/UIOqDYBILpo9rA=
+mvdan.cc/gofumpt v0.1.0 h1:hsVv+Y9UsZ/mFZTxJZuHVI6shSQCtzZ11h1JEFPAZLw=
 nhooyr.io/websocket v1.8.6/go.mod h1:B70DZP8IakI65RVQ51MsWP/8jndNma26DVA/nFSCgW0=
 pgregory.net/rapid v0.4.7 h1:MTNRktPuv5FNqOO151TM9mDTa+XHcX6ypYeISDVD14g=
 rsc.io/binaryregexp v0.2.0 h1:HfqmD5MEmC0zvwBuF187nq9mdnXjXsSivRiXN7SmRkE=

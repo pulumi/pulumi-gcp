@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string? InstanceTerminationAction;
+        /// <summary>
+        /// Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        /// </summary>
         public readonly Outputs.InstanceTemplateSchedulingMaxRunDuration? MaxRunDuration;
         public readonly int? MinNodeCpus;
         /// <summary>

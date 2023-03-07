@@ -40,6 +40,60 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// });
     /// ```
+    /// ### TPU Node Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var available = Gcp.Tpu.GetTensorflowVersions.Invoke();
+    /// 
+    ///     var network = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "default",
+    ///     });
+    /// 
+    ///     var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new()
+    ///     {
+    ///         Network = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             serviceRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var tpu = new Gcp.Tpu.Node("tpu", new()
+    ///     {
+    ///         Zone = "us-central1-b",
+    ///         AcceleratorType = "v3-8",
+    ///         TensorflowVersion = available.Apply(getTensorflowVersionsResult =&gt; getTensorflowVersionsResult.Versions[0]),
+    ///         Description = "Google Provider test TPU",
+    ///         UseServiceNetworking = true,
+    ///         Network = privateServiceConnection.Network,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         SchedulingConfig = new Gcp.Tpu.Inputs.NodeSchedulingConfigArgs
+    ///         {
+    ///             Preemptible = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

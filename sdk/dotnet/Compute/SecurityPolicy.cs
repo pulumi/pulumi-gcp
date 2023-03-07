@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+    /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+    /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+    /// 
+    /// Security Policy is used by google_compute_backend_service.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -165,21 +171,65 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### With EnforceOnKey Value As Empty String
+    /// A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
     /// 
-    /// ## Import
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
     /// 
-    /// Security policies can be imported using any of the following formats
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "throttle rule with enforce_on_key_configs",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "throttle",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///                 RateLimitOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsArgs
+    ///                 {
+    ///                     ConformAction = "allow",
+    ///                     EnforceOnKey = "",
+    ///                     EnforceOnKeyConfigs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs
+    ///                         {
+    ///                             EnforceOnKeyType = "IP",
+    ///                         },
+    ///                     },
+    ///                     ExceedAction = "redirect",
+    ///                     ExceedRedirectOptions = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs
+    ///                     {
+    ///                         Target = "&lt;https://www.example.com&gt;",
+    ///                         Type = "EXTERNAL_302",
+    ///                     },
+    ///                     RateLimitThreshold = new Gcp.Compute.Inputs.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs
+    ///                     {
+    ///                         Count = 10,
+    ///                         IntervalSec = 60,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+    /// });
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
@@ -238,7 +288,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.SecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the created resource.
+        /// The URI of the created resourc
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -434,7 +484,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The URI of the created resource.
+        /// The URI of the created resourc
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

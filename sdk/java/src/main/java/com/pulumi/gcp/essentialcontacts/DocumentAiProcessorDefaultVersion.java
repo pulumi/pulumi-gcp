@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion(&#34;processorDocumentAiProcessorDefaultVersion&#34;, DocumentAiProcessorDefaultVersionArgs.builder()        
  *             .processor(processorDocumentAiProcessor.id())
- *             .version(processorDocumentAiProcessor.id().applyValue(id -&gt; String.format(&#34;%s/processorVersions/pretrained-next&#34;, id)))
+ *             .version(processorDocumentAiProcessor.id().applyValue(id -&gt; String.format(&#34;%s/processorVersions/stable&#34;, id)))
  *             .build());
  * 
  *     }
@@ -82,14 +82,16 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
         return this.processor;
     }
     /**
-     * The version to set
+     * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
-     * @return The version to set
+     * @return The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
+     * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      * 
      */
     public Output<String> version() {

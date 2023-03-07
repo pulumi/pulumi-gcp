@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerGithub
     {
         /// <summary>
+        /// The resource name of the github enterprise config that should be applied to this installation.
+        /// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+        /// </summary>
+        public readonly string? EnterpriseConfigResourceName;
+        /// <summary>
         /// Name of the repository. For example: The name for
         /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         /// </summary>
@@ -36,6 +41,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private TriggerGithub(
+            string? enterpriseConfigResourceName,
+
             string? name,
 
             string? owner,
@@ -44,6 +51,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             Outputs.TriggerGithubPush? push)
         {
+            EnterpriseConfigResourceName = enterpriseConfigResourceName;
             Name = name;
             Owner = owner;
             PullRequest = pullRequest;

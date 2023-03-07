@@ -13,6 +13,7 @@ import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecObjectConditions;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecPosixDataSink;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecPosixDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecTransferOptions;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +60,16 @@ public final class TransferJobTransferSpec {
      * 
      */
     private @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
+    /**
+     * @return Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+     * 
+     */
+    private @Nullable String sinkAgentPoolName;
+    /**
+     * @return Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+     * 
+     */
+    private @Nullable String sourceAgentPoolName;
     /**
      * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
@@ -123,6 +134,20 @@ public final class TransferJobTransferSpec {
         return Optional.ofNullable(this.posixDataSource);
     }
     /**
+     * @return Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+     * 
+     */
+    public Optional<String> sinkAgentPoolName() {
+        return Optional.ofNullable(this.sinkAgentPoolName);
+    }
+    /**
+     * @return Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+     * 
+     */
+    public Optional<String> sourceAgentPoolName() {
+        return Optional.ofNullable(this.sourceAgentPoolName);
+    }
+    /**
      * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
@@ -147,6 +172,8 @@ public final class TransferJobTransferSpec {
         private @Nullable TransferJobTransferSpecObjectConditions objectConditions;
         private @Nullable TransferJobTransferSpecPosixDataSink posixDataSink;
         private @Nullable TransferJobTransferSpecPosixDataSource posixDataSource;
+        private @Nullable String sinkAgentPoolName;
+        private @Nullable String sourceAgentPoolName;
         private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
         public Builder() {}
         public Builder(TransferJobTransferSpec defaults) {
@@ -159,6 +186,8 @@ public final class TransferJobTransferSpec {
     	      this.objectConditions = defaults.objectConditions;
     	      this.posixDataSink = defaults.posixDataSink;
     	      this.posixDataSource = defaults.posixDataSource;
+    	      this.sinkAgentPoolName = defaults.sinkAgentPoolName;
+    	      this.sourceAgentPoolName = defaults.sourceAgentPoolName;
     	      this.transferOptions = defaults.transferOptions;
         }
 
@@ -203,6 +232,16 @@ public final class TransferJobTransferSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder sinkAgentPoolName(@Nullable String sinkAgentPoolName) {
+            this.sinkAgentPoolName = sinkAgentPoolName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceAgentPoolName(@Nullable String sourceAgentPoolName) {
+            this.sourceAgentPoolName = sourceAgentPoolName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transferOptions(@Nullable TransferJobTransferSpecTransferOptions transferOptions) {
             this.transferOptions = transferOptions;
             return this;
@@ -217,6 +256,8 @@ public final class TransferJobTransferSpec {
             o.objectConditions = objectConditions;
             o.posixDataSink = posixDataSink;
             o.posixDataSource = posixDataSource;
+            o.sinkAgentPoolName = sinkAgentPoolName;
+            o.sourceAgentPoolName = sourceAgentPoolName;
             o.transferOptions = transferOptions;
             return o;
         }

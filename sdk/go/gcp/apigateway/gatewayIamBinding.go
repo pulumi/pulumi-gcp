@@ -11,6 +11,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
+//
+// * `apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.
+// * `apigateway.GatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the gateway are preserved.
+// * `apigateway.GatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the gateway are preserved.
+//
+// > **Note:** `apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `apigateway.GatewayIamBinding` and `apigateway.GatewayIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `apigateway.GatewayIamBinding` resources **can be** used in conjunction with `apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_api\_gateway\_gateway\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/apigateway.viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewGatewayIamPolicy(ctx, "policy", &apigateway.GatewayIamPolicyArgs{
+//				Project:    pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
+//				Region:     pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
+//				Gateway:    pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_api\_gateway\_gateway\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewGatewayIamBinding(ctx, "binding", &apigateway.GatewayIamBindingArgs{
+//				Project: pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
+//				Region:  pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
+//				Gateway: pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				Role:    pulumi.String("roles/apigateway.viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_api\_gateway\_gateway\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewGatewayIamMember(ctx, "member", &apigateway.GatewayIamMemberArgs{
+//				Project: pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
+//				Region:  pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
+//				Gateway: pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
+//				Role:    pulumi.String("roles/apigateway.viewer"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     },
  *     networkConfig: {
  *         peeredNetwork: network.id,
+ *         peeredNetworkIpRange: "/29",
  *     },
  * }, {
  *     dependsOn: [workerPoolConn],

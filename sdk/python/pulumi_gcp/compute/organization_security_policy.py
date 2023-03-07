@@ -218,7 +218,26 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Organization security policies are used to control incoming/outgoing traffic.
+
+        To get more information about OrganizationSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * How-to Guides
+            * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+
         ## Example Usage
+        ### Organization Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -251,7 +270,26 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  args: OrganizationSecurityPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Organization security policies are used to control incoming/outgoing traffic.
+
+        To get more information about OrganizationSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * How-to Guides
+            * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+
         ## Example Usage
+        ### Organization Security Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            display_name="tf-test",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

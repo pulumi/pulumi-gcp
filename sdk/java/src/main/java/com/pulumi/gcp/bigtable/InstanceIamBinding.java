@@ -195,9 +195,19 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<List<String>> members() {
         return this.members;
     }
+    /**
+     * The project in which the instance belongs. If it
+     * is not provided, a default will be supplied.
+     * 
+     */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
+    /**
+     * @return The project in which the instance belongs. If it
+     * is not provided, a default will be supplied.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

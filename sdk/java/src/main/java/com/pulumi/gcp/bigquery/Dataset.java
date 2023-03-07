@@ -515,14 +515,14 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxTimeTravelHours", type=String.class, parameters={})
-    private Output</* @Nullable */ String> maxTimeTravelHours;
+    private Output<String> maxTimeTravelHours;
 
     /**
      * @return Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      * 
      */
-    public Output<Optional<String>> maxTimeTravelHours() {
-        return Codegen.optional(this.maxTimeTravelHours);
+    public Output<String> maxTimeTravelHours() {
+        return this.maxTimeTravelHours;
     }
     /**
      * The ID of the project in which the resource belongs.

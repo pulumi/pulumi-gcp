@@ -324,18 +324,30 @@ class Certificate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Certificate Manager Self Managed Certificate
+        ### Certificate Manager Certificate Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
             ))
         ```
 
@@ -387,18 +399,30 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Certificate Manager Self Managed Certificate
+        ### Certificate Manager Certificate Basic
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
             ))
         ```
 

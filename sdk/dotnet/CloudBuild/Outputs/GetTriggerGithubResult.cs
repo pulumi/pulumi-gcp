@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerGithubResult
     {
+        public readonly string EnterpriseConfigResourceName;
         public readonly string Name;
         public readonly string Owner;
         public readonly ImmutableArray<Outputs.GetTriggerGithubPullRequestResult> PullRequests;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private GetTriggerGithubResult(
+            string enterpriseConfigResourceName,
+
             string name,
 
             string owner,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             ImmutableArray<Outputs.GetTriggerGithubPushResult> pushes)
         {
+            EnterpriseConfigResourceName = enterpriseConfigResourceName;
             Name = name;
             Owner = owner;
             PullRequests = pullRequests;

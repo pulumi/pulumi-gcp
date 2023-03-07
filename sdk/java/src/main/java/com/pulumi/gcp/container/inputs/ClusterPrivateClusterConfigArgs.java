@@ -59,9 +59,21 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.enablePrivateNodes);
     }
 
+    /**
+     * Controls cluster master global
+     * access settings. If unset, the provider will no longer manage this field and will
+     * not modify the previously-set value. Structure is documented below.
+     * 
+     */
     @Import(name="masterGlobalAccessConfig")
     private @Nullable Output<ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs> masterGlobalAccessConfig;
 
+    /**
+     * @return Controls cluster master global
+     * access settings. If unset, the provider will no longer manage this field and will
+     * not modify the previously-set value. Structure is documented below.
+     * 
+     */
     public Optional<Output<ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs>> masterGlobalAccessConfig() {
         return Optional.ofNullable(this.masterGlobalAccessConfig);
     }
@@ -238,11 +250,27 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
             return enablePrivateNodes(Output.of(enablePrivateNodes));
         }
 
+        /**
+         * @param masterGlobalAccessConfig Controls cluster master global
+         * access settings. If unset, the provider will no longer manage this field and will
+         * not modify the previously-set value. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterGlobalAccessConfig(@Nullable Output<ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs> masterGlobalAccessConfig) {
             $.masterGlobalAccessConfig = masterGlobalAccessConfig;
             return this;
         }
 
+        /**
+         * @param masterGlobalAccessConfig Controls cluster master global
+         * access settings. If unset, the provider will no longer manage this field and will
+         * not modify the previously-set value. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterGlobalAccessConfig(ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs masterGlobalAccessConfig) {
             return masterGlobalAccessConfig(Output.of(masterGlobalAccessConfig));
         }

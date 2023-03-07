@@ -2466,10 +2466,6 @@ type ClusterClusterConfigGceClusterConfig struct {
 	// network to the cluster will be part of. Conflicts with `subnetwork`.
 	// If neither is specified, this defaults to the "default" network.
 	Network *string `pulumi:"network"`
-	// Node Group Affinity for sole-tenant clusters.
-	NodeGroupAffinity *ClusterClusterConfigGceClusterConfigNodeGroupAffinity `pulumi:"nodeGroupAffinity"`
-	// Reservation Affinity for consuming zonal reservation.
-	ReservationAffinity *ClusterClusterConfigGceClusterConfigReservationAffinity `pulumi:"reservationAffinity"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -2522,10 +2518,6 @@ type ClusterClusterConfigGceClusterConfigArgs struct {
 	// network to the cluster will be part of. Conflicts with `subnetwork`.
 	// If neither is specified, this defaults to the "default" network.
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Node Group Affinity for sole-tenant clusters.
-	NodeGroupAffinity ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput `pulumi:"nodeGroupAffinity"`
-	// Reservation Affinity for consuming zonal reservation.
-	ReservationAffinity ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -2652,20 +2644,6 @@ func (o ClusterClusterConfigGceClusterConfigOutput) Network() pulumi.StringPtrOu
 	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Node Group Affinity for sole-tenant clusters.
-func (o ClusterClusterConfigGceClusterConfigOutput) NodeGroupAffinity() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
-		return v.NodeGroupAffinity
-	}).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
-}
-
-// Reservation Affinity for consuming zonal reservation.
-func (o ClusterClusterConfigGceClusterConfigOutput) ReservationAffinity() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigReservationAffinity {
-		return v.ReservationAffinity
-	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
 func (o ClusterClusterConfigGceClusterConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
@@ -2772,26 +2750,6 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Network() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Node Group Affinity for sole-tenant clusters.
-func (o ClusterClusterConfigGceClusterConfigPtrOutput) NodeGroupAffinity() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
-		if v == nil {
-			return nil
-		}
-		return v.NodeGroupAffinity
-	}).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
-}
-
-// Reservation Affinity for consuming zonal reservation.
-func (o ClusterClusterConfigGceClusterConfigPtrOutput) ReservationAffinity() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigReservationAffinity {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationAffinity
-	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
 func (o ClusterClusterConfigGceClusterConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
@@ -2863,320 +2821,6 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Zone() pulumi.StringPtrOu
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinity struct {
-	// The URI of a sole-tenant node group resource that the cluster will be created on.
-	NodeGroupUri string `pulumi:"nodeGroupUri"`
-}
-
-// ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput is an input type that accepts ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs and ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput values.
-// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput` via:
-//
-//	ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{...}
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput interface {
-	pulumi.Input
-
-	ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput
-	ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput
-}
-
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs struct {
-	// The URI of a sole-tenant node group resource that the cluster will be created on.
-	NodeGroupUri pulumi.StringInput `pulumi:"nodeGroupUri"`
-}
-
-func (ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
-}
-
-func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
-	return i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(context.Background())
-}
-
-func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput)
-}
-
-func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput).ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx)
-}
-
-// ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput is an input type that accepts ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs, ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtr and ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput values.
-// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput` via:
-//
-//	        ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput interface {
-	pulumi.Input
-
-	ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput
-	ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput
-}
-
-type clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs
-
-func ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtr(v *ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput {
-	return (*clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType)(v)
-}
-
-func (*clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
-}
-
-func (i *clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return i.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterClusterConfigGceClusterConfigNodeGroupAffinityPtrType) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput struct{ *pulumi.OutputState }
-
-func (ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o.ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigNodeGroupAffinity) *ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
-		return &v
-	}).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput)
-}
-
-// The URI of a sole-tenant node group resource that the cluster will be created on.
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput) NodeGroupUri() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigNodeGroupAffinity) string { return v.NodeGroupUri }).(pulumi.StringOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigNodeGroupAffinity)(nil)).Elem()
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput() ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) Elem() ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigNodeGroupAffinity) ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterClusterConfigGceClusterConfigNodeGroupAffinity
-		return ret
-	}).(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput)
-}
-
-// The URI of a sole-tenant node group resource that the cluster will be created on.
-func (o ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigNodeGroupAffinity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeGroupUri
-	}).(pulumi.StringPtrOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigReservationAffinity struct {
-	// Corresponds to the type of reservation consumption.
-	ConsumeReservationType *string `pulumi:"consumeReservationType"`
-	// Corresponds to the label key of reservation resource.
-	Key *string `pulumi:"key"`
-	// Corresponds to the label values of reservation resource.
-	Values []string `pulumi:"values"`
-}
-
-// ClusterClusterConfigGceClusterConfigReservationAffinityInput is an input type that accepts ClusterClusterConfigGceClusterConfigReservationAffinityArgs and ClusterClusterConfigGceClusterConfigReservationAffinityOutput values.
-// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigReservationAffinityInput` via:
-//
-//	ClusterClusterConfigGceClusterConfigReservationAffinityArgs{...}
-type ClusterClusterConfigGceClusterConfigReservationAffinityInput interface {
-	pulumi.Input
-
-	ToClusterClusterConfigGceClusterConfigReservationAffinityOutput() ClusterClusterConfigGceClusterConfigReservationAffinityOutput
-	ToClusterClusterConfigGceClusterConfigReservationAffinityOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityOutput
-}
-
-type ClusterClusterConfigGceClusterConfigReservationAffinityArgs struct {
-	// Corresponds to the type of reservation consumption.
-	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
-	// Corresponds to the label key of reservation resource.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Corresponds to the label values of reservation resource.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
-}
-
-func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterClusterConfigGceClusterConfigReservationAffinityOutput() ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
-	return i.ToClusterClusterConfigGceClusterConfigReservationAffinityOutputWithContext(context.Background())
-}
-
-func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigReservationAffinityOutput)
-}
-
-func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return i.ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigReservationAffinityOutput).ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx)
-}
-
-// ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput is an input type that accepts ClusterClusterConfigGceClusterConfigReservationAffinityArgs, ClusterClusterConfigGceClusterConfigReservationAffinityPtr and ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput values.
-// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput` via:
-//
-//	        ClusterClusterConfigGceClusterConfigReservationAffinityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput interface {
-	pulumi.Input
-
-	ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput
-	ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput
-}
-
-type clusterClusterConfigGceClusterConfigReservationAffinityPtrType ClusterClusterConfigGceClusterConfigReservationAffinityArgs
-
-func ClusterClusterConfigGceClusterConfigReservationAffinityPtr(v *ClusterClusterConfigGceClusterConfigReservationAffinityArgs) ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput {
-	return (*clusterClusterConfigGceClusterConfigReservationAffinityPtrType)(v)
-}
-
-func (*clusterClusterConfigGceClusterConfigReservationAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
-}
-
-func (i *clusterClusterConfigGceClusterConfigReservationAffinityPtrType) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return i.ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterClusterConfigGceClusterConfigReservationAffinityPtrType) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigReservationAffinityOutput struct{ *pulumi.OutputState }
-
-func (ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityOutput() ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o.ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigReservationAffinity) *ClusterClusterConfigGceClusterConfigReservationAffinity {
-		return &v
-	}).(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput)
-}
-
-// Corresponds to the type of reservation consumption.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigReservationAffinity) *string {
-		return v.ConsumeReservationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Corresponds to the label key of reservation resource.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Corresponds to the label values of reservation resource.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigReservationAffinity)(nil)).Elem()
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput() ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ToClusterClusterConfigGceClusterConfigReservationAffinityPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput {
-	return o
-}
-
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) Elem() ClusterClusterConfigGceClusterConfigReservationAffinityOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigReservationAffinity) ClusterClusterConfigGceClusterConfigReservationAffinity {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterClusterConfigGceClusterConfigReservationAffinity
-		return ret
-	}).(ClusterClusterConfigGceClusterConfigReservationAffinityOutput)
-}
-
-// Corresponds to the type of reservation consumption.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigReservationAffinity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ConsumeReservationType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Corresponds to the label key of reservation resource.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigReservationAffinity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Corresponds to the label values of reservation resource.
-func (o ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigReservationAffinity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterClusterConfigGceClusterConfigShieldedInstanceConfig struct {
@@ -4427,7 +4071,6 @@ type ClusterClusterConfigPreemptibleWorkerConfig struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
-	// * SPOT
 	Preemptibility *string `pulumi:"preemptibility"`
 }
 
@@ -4454,7 +4097,6 @@ type ClusterClusterConfigPreemptibleWorkerConfigArgs struct {
 	// * PREEMPTIBILITY_UNSPECIFIED
 	// * NON_PREEMPTIBLE
 	// * PREEMPTIBLE
-	// * SPOT
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
 }
 
@@ -4557,7 +4199,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) NumInstances() pulumi
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
-// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) *string { return v.Preemptibility }).(pulumi.StringPtrOutput)
 }
@@ -4621,7 +4262,6 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) NumInstances() pul
 // * PREEMPTIBILITY_UNSPECIFIED
 // * NON_PREEMPTIBLE
 // * PREEMPTIBLE
-// * SPOT
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) *string {
 		if v == nil {
@@ -24850,10 +24490,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigEndpointConfigPtrInput)(nil)).Elem(), ClusterClusterConfigEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigReservationAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigInitializationActionInput)(nil)).Elem(), ClusterClusterConfigInitializationActionArgs{})
@@ -25118,10 +24754,6 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigPtrOutput{})
-	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput{})
-	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
-	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigReservationAffinityOutput{})
-	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigInitializationActionOutput{})

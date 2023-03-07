@@ -625,7 +625,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloud_build_trigger.html.markdown",
 				},
 			},
-			"google_cloudbuild_worker_pool": {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
+			"google_cloudbuild_worker_pool":             {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
+			"google_cloudbuild_bitbucket_server_config": {Tok: gcpResource(gcpCloudBuild, "BitbucketServerConfig")},
 
 			// Cloud Build V2
 			"google_cloudbuildv2_connection": {Tok: gcpResource(gcpCloudBuildV2, "Connection")},
@@ -1478,6 +1479,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firebase_web_app":           {Tok: gcpResource(gcpFirebase, "WebApp")},
 			"google_firebase_hosting_channel":   {Tok: gcpResource(gcpFirebase, "HostingChannel")},
 			"google_firebase_hosting_site":      {Tok: gcpResource(gcpFirebase, "HostingSite")},
+			"google_firebase_hosting_release":   {Tok: gcpResource(gcpFirebase, "HostingRelease")},
+			"google_firebase_hosting_version":   {Tok: gcpResource(gcpFirebase, "HostingVersion")},
 			"google_firebase_storage_bucket":    {Tok: gcpResource(gcpFirebase, "StorageBucket")},
 			"google_firebase_database_instance": {Tok: gcpResource(gcpFirebase, "DatabaseInstance")},
 
@@ -2184,6 +2187,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Security Center
 			"google_scc_source":              {Tok: gcpResource(gcpSecurityCenter, "Source")},
 			"google_scc_notification_config": {Tok: gcpResource(gcpSecurityCenter, "NotificationConfig")},
+			"google_scc_mute_config":         {Tok: gcpResource(gcpSecurityCenter, "MuteConfig")},
 			"google_scc_source_iam_binding": {
 				Tok: gcpResource(gcpSecurityCenter, "SourceIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -2755,6 +2759,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Workstations
 			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
+			"google_workstations_workstation_config":  {Tok: gcpResource(gcpWorkstations, "WorkstationConfig")},
 
 			//eventarc
 			"google_eventarc_channel": {
@@ -3224,6 +3229,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_kms_secret_ciphertext":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretCiphertext")},
 
 			"google_logging_project_cmek_settings": {Tok: gcpDataSource(gcpLogging, "getProjectCmekSettings")},
+			"google_logging_sink":                  {Tok: gcpDataSource(gcpLogging, "getSink")},
 
 			"google_organization": {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),
@@ -3332,6 +3338,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_sql_database":           {Tok: gcpDataSource(gcpSQL, "getDatabase")},
+			"google_sql_databases":          {Tok: gcpDataSource(gcpSQL, "getDatabases")},
 			"google_sql_database_instance":  {Tok: gcpDataSource(gcpSQL, "getDatabaseInstance")},
 			"google_sql_database_instances": {Tok: gcpDataSource(gcpSQL, "getDatabaseInstances")},
 			"google_service_networking_peered_dns_domain": {
@@ -3382,6 +3389,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpFirebase, "getAppleApp"),
 				Docs: &tfbridge.DocInfo{
 					Source: "firebase_apple_app.html.markdown",
+				},
+			},
+			"google_firebase_hosting_channel": {
+				Tok: gcpDataSource(gcpFirebase, "getHostingChannel"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_firebase_hosting_channel.html.markdown",
 				},
 			},
 			"google_firebase_web_app_config": {

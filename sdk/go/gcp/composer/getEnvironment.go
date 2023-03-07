@@ -33,6 +33,7 @@ type LookupEnvironmentArgs struct {
 
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
+	// Configuration parameters for the environment.
 	Configs []GetEnvironmentConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string            `pulumi:"id"`
@@ -85,6 +86,7 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
+// Configuration parameters for the environment.
 func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
 }

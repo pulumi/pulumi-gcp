@@ -3270,6 +3270,10 @@ type TransferJobTransferSpec struct {
 	PosixDataSink *TransferJobTransferSpecPosixDataSink `pulumi:"posixDataSink"`
 	// A POSIX filesystem data source. Structure documented below.
 	PosixDataSource *TransferJobTransferSpecPosixDataSource `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName *string `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName *string `pulumi:"sourceAgentPoolName"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions *TransferJobTransferSpecTransferOptions `pulumi:"transferOptions"`
 }
@@ -3302,6 +3306,10 @@ type TransferJobTransferSpecArgs struct {
 	PosixDataSink TransferJobTransferSpecPosixDataSinkPtrInput `pulumi:"posixDataSink"`
 	// A POSIX filesystem data source. Structure documented below.
 	PosixDataSource TransferJobTransferSpecPosixDataSourcePtrInput `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName pulumi.StringPtrInput `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName pulumi.StringPtrInput `pulumi:"sourceAgentPoolName"`
 	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 	TransferOptions TransferJobTransferSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
 }
@@ -3425,6 +3433,16 @@ func (o TransferJobTransferSpecOutput) PosixDataSource() TransferJobTransferSpec
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecPosixDataSource { return v.PosixDataSource }).(TransferJobTransferSpecPosixDataSourcePtrOutput)
 }
 
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferJobTransferSpecOutput) SinkAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *string { return v.SinkAgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferJobTransferSpecOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *string { return v.SourceAgentPoolName }).(pulumi.StringPtrOutput)
+}
+
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
@@ -3532,6 +3550,26 @@ func (o TransferJobTransferSpecPtrOutput) PosixDataSource() TransferJobTransferS
 		}
 		return v.PosixDataSource
 	}).(TransferJobTransferSpecPosixDataSourcePtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferJobTransferSpecPtrOutput) SinkAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SinkAgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferJobTransferSpecPtrOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAgentPoolName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.

@@ -29,6 +29,8 @@ __all__ = [
     'ProjectBucketConfigCmekSettings',
     'ProjectSinkBigqueryOptions',
     'ProjectSinkExclusion',
+    'GetSinkBigqueryOptionResult',
+    'GetSinkExclusionResult',
 ]
 
 @pulumi.output_type
@@ -1092,5 +1094,74 @@ class ProjectSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetSinkBigqueryOptionResult(dict):
+    def __init__(__self__, *,
+                 use_partitioned_tables: bool):
+        """
+        :param bool use_partitioned_tables: Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+        """
+        pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
+
+    @property
+    @pulumi.getter(name="usePartitionedTables")
+    def use_partitioned_tables(self) -> bool:
+        """
+        Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+        """
+        return pulumi.get(self, "use_partitioned_tables")
+
+
+@pulumi.output_type
+class GetSinkExclusionResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 disabled: bool,
+                 filter: str,
+                 name: str):
+        """
+        :param str description: A description of this exclusion.
+        :param bool disabled: Whether this exclusion is disabled and it does not exclude any log entries.
+        :param str filter: An advanced logs filter that matches the log entries to be excluded.
+        :param str name: A client-assigned identifier, such as `load-balancer-exclusion`.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description of this exclusion.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether this exclusion is disabled and it does not exclude any log entries.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        An advanced logs filter that matches the log entries to be excluded.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`.
+        """
+        return pulumi.get(self, "name")
 
 

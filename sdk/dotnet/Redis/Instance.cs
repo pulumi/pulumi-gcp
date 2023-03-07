@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Redis
     ///         AlternativeLocationId = "us-central1-f",
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         RedisVersion = "REDIS_4_0",
-    ///         DisplayName = "Terraform Test Instance",
+    ///         DisplayName = "Test Instance",
     ///         ReservedIpRange = "192.168.0.0/29",
     ///         Labels = 
     ///         {
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Redis
     ///         AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
     ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
     ///         RedisVersion = "REDIS_4_0",
-    ///         DisplayName = "Terraform Test Instance",
+    ///         DisplayName = "Test Instance",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]

@@ -39,7 +39,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// * PREEMPTIBILITY_UNSPECIFIED
         /// * NON_PREEMPTIBLE
         /// * PREEMPTIBLE
-        /// * SPOT
         /// </summary>
         [Input("preemptibility")]
         public Input<string>? Preemptibility { get; set; }

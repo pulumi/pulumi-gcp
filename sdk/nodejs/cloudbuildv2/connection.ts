@@ -10,6 +10,76 @@ import * as utilities from "../utilities";
  * Beta only: The Cloudbuildv2 Connection resource
  *
  * ## Example Usage
+ * ### Ghe
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const private_key_secret = new gcp.secretmanager.Secret("private-key-secret", {
+ *     secretId: "ghe-pk-secret",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const private_key_secret_version = new gcp.secretmanager.SecretVersion("private-key-secret-version", {
+ *     secret: private_key_secret.id,
+ *     secretData: fs.readFileSync("private-key.pem"),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const webhook_secret_secret = new gcp.secretmanager.Secret("webhook-secret-secret", {
+ *     secretId: "github-token-secret",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const webhook_secret_secret_version = new gcp.secretmanager.SecretVersion("webhook-secret-secret-version", {
+ *     secret: webhook_secret_secret.id,
+ *     secretData: "<webhook-secret-data>",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/secretmanager.secretAccessor",
+ *         members: ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+ *     }],
+ * });
+ * const policy_pk = new gcp.secretmanager.SecretIamPolicy("policy-pk", {
+ *     secretId: private_key_secret.secretId,
+ *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const policy_whs = new gcp.secretmanager.SecretIamPolicy("policy-whs", {
+ *     secretId: webhook_secret_secret.secretId,
+ *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
+ *     location: "us-central1",
+ *     githubEnterpriseConfig: {
+ *         hostUri: "https://ghe.com",
+ *         privateKeySecretVersion: private_key_secret_version.id,
+ *         webhookSecretSecretVersion: webhook_secret_secret_version.id,
+ *         appId: 200,
+ *         appSlug: "gcb-app",
+ *         appInstallationId: 300,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [
+ *         policy_pk,
+ *         policy_whs,
+ *     ],
+ * });
+ * ```
  * ### GitHub Connection
  * Creates a Connection to github.com
  * ```typescript

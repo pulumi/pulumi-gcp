@@ -6,6 +6,8 @@ package com.pulumi.gcp.cloudbuild.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkerPoolNetworkConfig {
@@ -14,6 +16,11 @@ public final class WorkerPoolNetworkConfig {
      * 
      */
     private String peeredNetwork;
+    /**
+     * @return Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+     * 
+     */
+    private @Nullable String peeredNetworkIpRange;
 
     private WorkerPoolNetworkConfig() {}
     /**
@@ -22,6 +29,13 @@ public final class WorkerPoolNetworkConfig {
      */
     public String peeredNetwork() {
         return this.peeredNetwork;
+    }
+    /**
+     * @return Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+     * 
+     */
+    public Optional<String> peeredNetworkIpRange() {
+        return Optional.ofNullable(this.peeredNetworkIpRange);
     }
 
     public static Builder builder() {
@@ -34,10 +48,12 @@ public final class WorkerPoolNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private String peeredNetwork;
+        private @Nullable String peeredNetworkIpRange;
         public Builder() {}
         public Builder(WorkerPoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.peeredNetwork = defaults.peeredNetwork;
+    	      this.peeredNetworkIpRange = defaults.peeredNetworkIpRange;
         }
 
         @CustomType.Setter
@@ -45,9 +61,15 @@ public final class WorkerPoolNetworkConfig {
             this.peeredNetwork = Objects.requireNonNull(peeredNetwork);
             return this;
         }
+        @CustomType.Setter
+        public Builder peeredNetworkIpRange(@Nullable String peeredNetworkIpRange) {
+            this.peeredNetworkIpRange = peeredNetworkIpRange;
+            return this;
+        }
         public WorkerPoolNetworkConfig build() {
             final var o = new WorkerPoolNetworkConfig();
             o.peeredNetwork = peeredNetwork;
+            o.peeredNetworkIpRange = peeredNetworkIpRange;
             return o;
         }
     }

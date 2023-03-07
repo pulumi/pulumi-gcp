@@ -562,16 +562,20 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionDrainingTimeoutSec);
     }
     /**
-     * Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-     * and Network Load Balancing.
+     * Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
      * 
      */
     @Export(name="connectionTrackingPolicy", type=RegionBackendServiceConnectionTrackingPolicy.class, parameters={})
     private Output</* @Nullable */ RegionBackendServiceConnectionTrackingPolicy> connectionTrackingPolicy;
 
     /**
-     * @return Connection Tracking configuration for this BackendService. This is available only for Layer 4 Internal Load Balancing
-     * and Network Load Balancing.
+     * @return Connection Tracking configuration for this BackendService.
+     * This is available only for Layer 4 Internal Load Balancing and
+     * Network Load Balancing.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionBackendServiceConnectionTrackingPolicy>> connectionTrackingPolicy() {

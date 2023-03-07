@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Cloud Spanner Database which is hosted on a Spanner instance.
+//
+// To get more information about Database, see:
+//
+// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/spanner/)
+//
+// > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
+//
 // ## Example Usage
 // ### Spanner Database Basic
 //
@@ -91,8 +101,8 @@ type Database struct {
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
 	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -156,8 +166,8 @@ type databaseState struct {
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
 	Ddls []string `pulumi:"ddls"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -190,8 +200,8 @@ type DatabaseState struct {
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
 	Ddls pulumi.StringArrayInput
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -228,8 +238,8 @@ type databaseArgs struct {
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
 	Ddls []string `pulumi:"ddls"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -261,8 +271,8 @@ type DatabaseArgs struct {
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
 	Ddls pulumi.StringArrayInput
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Encryption configuration for the database
 	// Structure is documented below.
@@ -385,8 +395,8 @@ func (o DatabaseOutput) Ddls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.Ddls }).(pulumi.StringArrayOutput)
 }
 
-// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-// 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+// in state, a `destroy` or `update` that would delete the instance will fail.
 func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }

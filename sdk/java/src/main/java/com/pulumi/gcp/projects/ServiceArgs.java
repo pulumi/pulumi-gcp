@@ -37,9 +37,17 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableDependentServices);
     }
 
+    /**
+     * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+     * 
+     */
     @Import(name="disableOnDestroy")
     private @Nullable Output<Boolean> disableOnDestroy;
 
+    /**
+     * @return If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+     * 
+     */
     public Optional<Output<Boolean>> disableOnDestroy() {
         return Optional.ofNullable(this.disableOnDestroy);
     }
@@ -130,11 +138,23 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
             return disableDependentServices(Output.of(disableDependentServices));
         }
 
+        /**
+         * @param disableOnDestroy If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOnDestroy(@Nullable Output<Boolean> disableOnDestroy) {
             $.disableOnDestroy = disableOnDestroy;
             return this;
         }
 
+        /**
+         * @param disableOnDestroy If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOnDestroy(Boolean disableOnDestroy) {
             return disableOnDestroy(Output.of(disableOnDestroy));
         }

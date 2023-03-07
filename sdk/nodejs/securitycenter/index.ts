@@ -20,6 +20,11 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { MuteConfigArgs, MuteConfigState } from "./muteConfig";
+export type MuteConfig = import("./muteConfig").MuteConfig;
+export const MuteConfig: typeof import("./muteConfig").MuteConfig = null as any;
+utilities.lazyLoad(exports, ["MuteConfig"], () => require("./muteConfig"));
+
 export { NotificationConfigArgs, NotificationConfigState } from "./notificationConfig";
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
@@ -56,6 +61,8 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:securitycenter/muteConfig:MuteConfig":
+                return new MuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
                 return new NotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
@@ -74,6 +81,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)

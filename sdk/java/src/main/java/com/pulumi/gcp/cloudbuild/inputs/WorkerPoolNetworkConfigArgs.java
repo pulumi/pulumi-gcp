@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkerPoolNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,10 +30,26 @@ public final class WorkerPoolNetworkConfigArgs extends com.pulumi.resources.Reso
         return this.peeredNetwork;
     }
 
+    /**
+     * Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+     * 
+     */
+    @Import(name="peeredNetworkIpRange")
+    private @Nullable Output<String> peeredNetworkIpRange;
+
+    /**
+     * @return Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+     * 
+     */
+    public Optional<Output<String>> peeredNetworkIpRange() {
+        return Optional.ofNullable(this.peeredNetworkIpRange);
+    }
+
     private WorkerPoolNetworkConfigArgs() {}
 
     private WorkerPoolNetworkConfigArgs(WorkerPoolNetworkConfigArgs $) {
         this.peeredNetwork = $.peeredNetwork;
+        this.peeredNetworkIpRange = $.peeredNetworkIpRange;
     }
 
     public static Builder builder() {
@@ -71,6 +89,27 @@ public final class WorkerPoolNetworkConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder peeredNetwork(String peeredNetwork) {
             return peeredNetwork(Output.of(peeredNetwork));
+        }
+
+        /**
+         * @param peeredNetworkIpRange Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peeredNetworkIpRange(@Nullable Output<String> peeredNetworkIpRange) {
+            $.peeredNetworkIpRange = peeredNetworkIpRange;
+            return this;
+        }
+
+        /**
+         * @param peeredNetworkIpRange Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peeredNetworkIpRange(String peeredNetworkIpRange) {
+            return peeredNetworkIpRange(Output.of(peeredNetworkIpRange));
         }
 
         public WorkerPoolNetworkConfigArgs build() {

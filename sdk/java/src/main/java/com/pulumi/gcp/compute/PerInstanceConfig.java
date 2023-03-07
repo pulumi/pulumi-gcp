@@ -27,6 +27,105 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  * 
  * ## Example Usage
+ * ### Stateful Igm
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.PerInstanceConfig;
+ * import com.pulumi.gcp.compute.PerInstanceConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family(&#34;debian-11&#34;)
+ *             .project(&#34;debian-cloud&#34;)
+ *             .build());
+ * 
+ *         var igm_basic = new InstanceTemplate(&#34;igm-basic&#34;, InstanceTemplateArgs.builder()        
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .canIpForward(false)
+ *             .tags(            
+ *                 &#34;foo&#34;,
+ *                 &#34;bar&#34;)
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network(&#34;default&#34;)
+ *                 .build())
+ *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
+ *                 .scopes(                
+ *                     &#34;userinfo-email&#34;,
+ *                     &#34;compute-ro&#34;,
+ *                     &#34;storage-ro&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var igm_no_tp = new InstanceGroupManager(&#34;igm-no-tp&#34;, InstanceGroupManagerArgs.builder()        
+ *             .description(&#34;Test instance group manager&#34;)
+ *             .versions(InstanceGroupManagerVersionArgs.builder()
+ *                 .name(&#34;prod&#34;)
+ *                 .instanceTemplate(igm_basic.selfLink())
+ *                 .build())
+ *             .baseInstanceName(&#34;igm-no-tp&#34;)
+ *             .zone(&#34;us-central1-c&#34;)
+ *             .targetSize(2)
+ *             .build());
+ * 
+ *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(google_compute_instance_group_manager.igm().zone())
+ *             .image(&#34;debian-11-bullseye-v20220719&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .build());
+ * 
+ *         var withDisk = new PerInstanceConfig(&#34;withDisk&#34;, PerInstanceConfigArgs.builder()        
+ *             .zone(google_compute_instance_group_manager.igm().zone())
+ *             .instanceGroupManager(google_compute_instance_group_manager.igm().name())
+ *             .preservedState(PerInstanceConfigPreservedStateArgs.builder()
+ *                 .metadata(Map.ofEntries(
+ *                     Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                     Map.entry(&#34;instance_template&#34;, igm_basic.selfLink())
+ *                 ))
+ *                 .disks(PerInstanceConfigPreservedStateDiskArgs.builder()
+ *                     .deviceName(&#34;my-stateful-disk&#34;)
+ *                     .source(default_.id())
+ *                     .mode(&#34;READ_ONLY&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

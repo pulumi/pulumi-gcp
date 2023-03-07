@@ -15,15 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## subcategory: &#34;Tags&#34;
- * 
- * page_title: &#34;Google: gcp.tags.LocationTagBinding&#34;
- * description: |-
- *   A LocationTagBinding represents a connection between a TagValue and a Regional cloud resources.
- * ---
- * 
- * # google\_tags\_location\_tag\_binding
- * 
  * A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
  * 
  * To get more information about TagBinding, see:

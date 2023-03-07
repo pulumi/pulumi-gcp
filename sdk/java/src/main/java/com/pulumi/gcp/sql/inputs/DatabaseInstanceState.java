@@ -39,14 +39,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration for creating a new instance as a clone of another instance.
+     * The context needed to create this instance as a clone of another instance. When this field is set during
+     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
+     * configuration is detailed below.
      * 
      */
     @Import(name="clone")
     private @Nullable Output<DatabaseInstanceCloneArgs> clone;
 
     /**
-     * @return Configuration for creating a new instance as a clone of another instance.
+     * @return The context needed to create this instance as a clone of another instance. When this field is set during
+     * resource creation, this provider will attempt to clone another instance as indicated in the context. The
+     * configuration is detailed below.
      * 
      */
     public Optional<Output<DatabaseInstanceCloneArgs>> clone_() {
@@ -102,38 +106,60 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Used to block Terraform from deleting a SQL Instance. Defaults to true.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Used to block Terraform from deleting a SQL Instance. Defaults to true.
+     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
 
+    /**
+     * The full path to the encryption key used for the CMEK disk encryption.  Setting
+     * up disk encryption currently requires manual steps outside of this provider.
+     * The provided key must be in the same region as the SQL instance.  In order
+     * to use this feature, a special kind of service account must be created and
+     * granted permission on this key.  This step can currently only be done
+     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+     * 
+     */
     @Import(name="encryptionKeyName")
     private @Nullable Output<String> encryptionKeyName;
 
+    /**
+     * @return The full path to the encryption key used for the CMEK disk encryption.  Setting
+     * up disk encryption currently requires manual steps outside of this provider.
+     * The provided key must be in the same region as the SQL instance.  In order
+     * to use this feature, a special kind of service account must be created and
+     * granted permission on this key.  This step can currently only be done
+     * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+     * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+     * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+     * 
+     */
     public Optional<Output<String>> encryptionKeyName() {
         return Optional.ofNullable(this.encryptionKeyName);
     }
 
     /**
-     * The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-     * output when the resource is configured with a count.
+     * The first IPv4 address of any type assigned.
      * 
      */
     @Import(name="firstIpAddress")
     private @Nullable Output<String> firstIpAddress;
 
     /**
-     * @return The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-     * output when the resource is configured with a count.
+     * @return The first IPv4 address of any type assigned.
      * 
      */
     public Optional<Output<String>> firstIpAddress() {
@@ -197,16 +223,20 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for up to one week.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-     * created. This is done because after a name is used, it cannot be reused for up to one week.
+     * @return The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     public Optional<Output<String>> name() {
@@ -214,16 +244,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-     * access an IP of a specific type without performing filtering in a Terraform config.
+     * The first private (`PRIVATE`) IPv4 address assigned.
      * 
      */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
-     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-     * access an IP of a specific type without performing filtering in a Terraform config.
+     * @return The first private (`PRIVATE`) IPv4 address assigned.
      * 
      */
     public Optional<Output<String>> privateIpAddress() {
@@ -248,16 +276,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-     * access an IP of a specific type without performing filtering in a Terraform config.
+     * The first public (`PRIMARY`) IPv4 address assigned.
      * 
      */
     @Import(name="publicIpAddress")
     private @Nullable Output<String> publicIpAddress;
 
     /**
-     * @return IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-     * access an IP of a specific type without performing filtering in a Terraform config.
+     * @return The first public (`PRIMARY`) IPv4 address assigned.
      * 
      */
     public Optional<Output<String>> publicIpAddress() {
@@ -298,9 +324,23 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.replicaConfiguration);
     }
 
+    /**
+     * The context needed to restore the database to a backup run. This field will
+     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
+     * 
+     */
     @Import(name="restoreBackupContext")
     private @Nullable Output<DatabaseInstanceRestoreBackupContextArgs> restoreBackupContext;
 
+    /**
+     * @return The context needed to restore the database to a backup run. This field will
+     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
+     * 
+     */
     public Optional<Output<DatabaseInstanceRestoreBackupContextArgs>> restoreBackupContext() {
         return Optional.ofNullable(this.restoreBackupContext);
     }
@@ -454,7 +494,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clone Configuration for creating a new instance as a clone of another instance.
+         * @param clone The context needed to create this instance as a clone of another instance. When this field is set during
+         * resource creation, this provider will attempt to clone another instance as indicated in the context. The
+         * configuration is detailed below.
          * 
          * @return builder
          * 
@@ -465,7 +507,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clone Configuration for creating a new instance as a clone of another instance.
+         * @param clone The context needed to create this instance as a clone of another instance. When this field is set during
+         * resource creation, this provider will attempt to clone another instance as indicated in the context. The
+         * configuration is detailed below.
          * 
          * @return builder
          * 
@@ -535,7 +579,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deletionProtection Used to block Terraform from deleting a SQL Instance. Defaults to true.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -546,7 +591,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deletionProtection Used to block Terraform from deleting a SQL Instance. Defaults to true.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -555,18 +601,43 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
             return deletionProtection(Output.of(deletionProtection));
         }
 
+        /**
+         * @param encryptionKeyName The full path to the encryption key used for the CMEK disk encryption.  Setting
+         * up disk encryption currently requires manual steps outside of this provider.
+         * The provided key must be in the same region as the SQL instance.  In order
+         * to use this feature, a special kind of service account must be created and
+         * granted permission on this key.  This step can currently only be done
+         * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+         * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+         * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionKeyName(@Nullable Output<String> encryptionKeyName) {
             $.encryptionKeyName = encryptionKeyName;
             return this;
         }
 
+        /**
+         * @param encryptionKeyName The full path to the encryption key used for the CMEK disk encryption.  Setting
+         * up disk encryption currently requires manual steps outside of this provider.
+         * The provided key must be in the same region as the SQL instance.  In order
+         * to use this feature, a special kind of service account must be created and
+         * granted permission on this key.  This step can currently only be done
+         * manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+         * That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+         * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
         }
 
         /**
-         * @param firstIpAddress The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-         * output when the resource is configured with a count.
+         * @param firstIpAddress The first IPv4 address of any type assigned.
          * 
          * @return builder
          * 
@@ -577,8 +648,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param firstIpAddress The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform
-         * output when the resource is configured with a count.
+         * @param firstIpAddress The first IPv4 address of any type assigned.
          * 
          * @return builder
          * 
@@ -668,8 +738,10 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for up to one week.
+         * @param name The name of the instance. If the name is left
+         * blank, the provider will randomly generate one when the instance is first
+         * created. This is done because after a name is used, it cannot be reused for
+         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 
          * @return builder
          * 
@@ -680,8 +752,10 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the instance. If the name is left blank, Terraform will randomly generate one when the instance is first
-         * created. This is done because after a name is used, it cannot be reused for up to one week.
+         * @param name The name of the instance. If the name is left
+         * blank, the provider will randomly generate one when the instance is first
+         * created. This is done because after a name is used, it cannot be reused for
+         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 
          * @return builder
          * 
@@ -691,8 +765,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIpAddress IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-         * access an IP of a specific type without performing filtering in a Terraform config.
+         * @param privateIpAddress The first private (`PRIVATE`) IPv4 address assigned.
          * 
          * @return builder
          * 
@@ -703,8 +776,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIpAddress IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-         * access an IP of a specific type without performing filtering in a Terraform config.
+         * @param privateIpAddress The first private (`PRIVATE`) IPv4 address assigned.
          * 
          * @return builder
          * 
@@ -737,8 +809,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param publicIpAddress IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-         * access an IP of a specific type without performing filtering in a Terraform config.
+         * @param publicIpAddress The first public (`PRIMARY`) IPv4 address assigned.
          * 
          * @return builder
          * 
@@ -749,8 +820,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param publicIpAddress IPv4 address assigned. This is a workaround for an issue fixed in Terraform 0.12 but also provides a convenient way to
-         * access an IP of a specific type without performing filtering in a Terraform config.
+         * @param publicIpAddress The first public (`PRIMARY`) IPv4 address assigned.
          * 
          * @return builder
          * 
@@ -805,11 +875,29 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
             return replicaConfiguration(Output.of(replicaConfiguration));
         }
 
+        /**
+         * @param restoreBackupContext The context needed to restore the database to a backup run. This field will
+         * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+         * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+         * block during resource creation/update will trigger the restore action after the resource is created/updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restoreBackupContext(@Nullable Output<DatabaseInstanceRestoreBackupContextArgs> restoreBackupContext) {
             $.restoreBackupContext = restoreBackupContext;
             return this;
         }
 
+        /**
+         * @param restoreBackupContext The context needed to restore the database to a backup run. This field will
+         * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+         * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+         * block during resource creation/update will trigger the restore action after the resource is created/updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restoreBackupContext(DatabaseInstanceRestoreBackupContextArgs restoreBackupContext) {
             return restoreBackupContext(Output.of(restoreBackupContext));
         }

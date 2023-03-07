@@ -15,7 +15,67 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * OAuth brand data. Only &#34;Organization Internal&#34; brands can be created
+ * programmatically via API. To convert it into an external brands
+ * please use the GCP Console.
+ * 
+ * &gt; **Note:** Brands can only be created once for a Google Cloud
+ * project and the underlying Google API doesn&#39;t not support DELETE or PATCH methods.
+ * Destroying a provider-managed Brand will remove it from state
+ * but *will not delete it from Google Cloud.*
+ * 
+ * To get more information about Brand, see:
+ * 
+ * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
+ * * How-to Guides
+ *     * [Setting up IAP Brand](https://cloud.google.com/iap/docs/tutorial-gce#set_up_iap)
+ * 
  * ## Example Usage
+ * ### Iap Brand
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.iap.Brand;
+ * import com.pulumi.gcp.iap.BrandArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;tf-test&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var projectService = new Service(&#34;projectService&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;iap.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var projectBrand = new Brand(&#34;projectBrand&#34;, BrandArgs.builder()        
+ *             .supportEmail(&#34;support@example.com&#34;)
+ *             .applicationTitle(&#34;Cloud IAP protected Application&#34;)
+ *             .project(projectService.project())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

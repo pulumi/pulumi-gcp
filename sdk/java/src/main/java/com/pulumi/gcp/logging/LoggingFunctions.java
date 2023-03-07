@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsPlainArgs;
+import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+import com.pulumi.gcp.logging.inputs.GetSinkPlainArgs;
 import com.pulumi.gcp.logging.outputs.GetProjectCmekSettingsResult;
+import com.pulumi.gcp.logging.outputs.GetSinkResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class LoggingFunctions {
@@ -185,5 +188,169 @@ public final class LoggingFunctions {
      */
     public static CompletableFuture<GetProjectCmekSettingsResult> getProjectCmekSettingsPlain(GetProjectCmekSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", TypeShape.of(GetProjectCmekSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a project, folder, organization or billing account logging sink details.
+     * To get more information about Service, see:
+     * 
+     * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+     * 
+     * ## Example Usage
+     * ### Retrieve Project Logging Sink Basic
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
+     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSinkResult> getSink(GetSinkArgs args) {
+        return getSink(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a project, folder, organization or billing account logging sink details.
+     * To get more information about Service, see:
+     * 
+     * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+     * 
+     * ## Example Usage
+     * ### Retrieve Project Logging Sink Basic
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
+     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSinkResult> getSinkPlain(GetSinkPlainArgs args) {
+        return getSinkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a project, folder, organization or billing account logging sink details.
+     * To get more information about Service, see:
+     * 
+     * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+     * 
+     * ## Example Usage
+     * ### Retrieve Project Logging Sink Basic
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
+     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSinkResult> getSink(GetSinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getSink:getSink", TypeShape.of(GetSinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a project, folder, organization or billing account logging sink details.
+     * To get more information about Service, see:
+     * 
+     * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+     * 
+     * ## Example Usage
+     * ### Retrieve Project Logging Sink Basic
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
+     *             .id(&#34;projects/0123456789/sinks/my-sink-name&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSinkResult> getSinkPlain(GetSinkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:logging/getSink:getSink", TypeShape.of(GetSinkResult.class), args, Utilities.withVersion(options));
     }
 }

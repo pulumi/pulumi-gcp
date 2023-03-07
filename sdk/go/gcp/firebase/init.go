@@ -29,8 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseInstance{}
 	case "gcp:firebase/hostingChannel:HostingChannel":
 		r = &HostingChannel{}
+	case "gcp:firebase/hostingRelease:HostingRelease":
+		r = &HostingRelease{}
 	case "gcp:firebase/hostingSite:HostingSite":
 		r = &HostingSite{}
+	case "gcp:firebase/hostingVersion:HostingVersion":
+		r = &HostingVersion{}
 	case "gcp:firebase/project:Project":
 		r = &Project{}
 	case "gcp:firebase/projectLocation:ProjectLocation":
@@ -74,7 +78,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"firebase/hostingRelease",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"firebase/hostingSite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/hostingVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

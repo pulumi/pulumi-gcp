@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Denotes one policy tag in a taxonomy.
+ * 
+ * To get more information about PolicyTag, see:
+ * 
+ * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ * 
  * ## Example Usage
  * ### Data Catalog Taxonomies Policy Tag Basic
  * ```java
@@ -28,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datacatalog.TaxonomyArgs;
  * import com.pulumi.gcp.datacatalog.PolicyTag;
  * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,21 +50,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myTaxonomy = new Taxonomy(&#34;myTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .region(&#34;us&#34;)
  *             .displayName(&#34;taxonomy_display_name&#34;)
  *             .description(&#34;A collection of policy tags&#34;)
  *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var basicPolicyTag = new PolicyTag(&#34;basicPolicyTag&#34;, PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
  *             .displayName(&#34;Low security&#34;)
  *             .description(&#34;A policy tag normally associated with low security items&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -88,30 +90,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myTaxonomy = new Taxonomy(&#34;myTaxonomy&#34;, TaxonomyArgs.builder()        
- *             .region(&#34;us&#34;)
  *             .displayName(&#34;taxonomy_display_name&#34;)
  *             .description(&#34;A collection of policy tags&#34;)
  *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var parentPolicy = new PolicyTag(&#34;parentPolicy&#34;, PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
  *             .displayName(&#34;High&#34;)
  *             .description(&#34;A policy tag category used for high security access&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var childPolicy = new PolicyTag(&#34;childPolicy&#34;, PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
  *             .displayName(&#34;ssn&#34;)
  *             .description(&#34;A hash of the users ssn&#34;)
  *             .parentPolicyTag(parentPolicy.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var childPolicy2 = new PolicyTag(&#34;childPolicy2&#34;, PolicyTagArgs.builder()        
  *             .taxonomy(myTaxonomy.id())
@@ -119,7 +114,6 @@ import javax.annotation.Nullable;
  *             .description(&#34;The users date of birth&#34;)
  *             .parentPolicyTag(parentPolicy.id())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(childPolicy)
  *                 .build());
  * 

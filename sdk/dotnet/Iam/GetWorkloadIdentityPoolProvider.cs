@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Iam
     public static class GetWorkloadIdentityPoolProvider
     {
         /// <summary>
+        /// Get a IAM workload identity provider from Google Cloud by its id.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -38,6 +40,8 @@ namespace Pulumi.Gcp.Iam
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolProviderResult>("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args ?? new GetWorkloadIdentityPoolProviderArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get a IAM workload identity provider from Google Cloud by its id.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

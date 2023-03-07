@@ -2974,6 +2974,227 @@ func (o ProjectSinkExclusionArrayOutput) Index(i pulumi.IntInput) ProjectSinkExc
 	}).(ProjectSinkExclusionOutput)
 }
 
+type GetSinkBigqueryOption struct {
+	// Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+	UsePartitionedTables bool `pulumi:"usePartitionedTables"`
+}
+
+// GetSinkBigqueryOptionInput is an input type that accepts GetSinkBigqueryOptionArgs and GetSinkBigqueryOptionOutput values.
+// You can construct a concrete instance of `GetSinkBigqueryOptionInput` via:
+//
+//	GetSinkBigqueryOptionArgs{...}
+type GetSinkBigqueryOptionInput interface {
+	pulumi.Input
+
+	ToGetSinkBigqueryOptionOutput() GetSinkBigqueryOptionOutput
+	ToGetSinkBigqueryOptionOutputWithContext(context.Context) GetSinkBigqueryOptionOutput
+}
+
+type GetSinkBigqueryOptionArgs struct {
+	// Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+	UsePartitionedTables pulumi.BoolInput `pulumi:"usePartitionedTables"`
+}
+
+func (GetSinkBigqueryOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSinkBigqueryOption)(nil)).Elem()
+}
+
+func (i GetSinkBigqueryOptionArgs) ToGetSinkBigqueryOptionOutput() GetSinkBigqueryOptionOutput {
+	return i.ToGetSinkBigqueryOptionOutputWithContext(context.Background())
+}
+
+func (i GetSinkBigqueryOptionArgs) ToGetSinkBigqueryOptionOutputWithContext(ctx context.Context) GetSinkBigqueryOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSinkBigqueryOptionOutput)
+}
+
+// GetSinkBigqueryOptionArrayInput is an input type that accepts GetSinkBigqueryOptionArray and GetSinkBigqueryOptionArrayOutput values.
+// You can construct a concrete instance of `GetSinkBigqueryOptionArrayInput` via:
+//
+//	GetSinkBigqueryOptionArray{ GetSinkBigqueryOptionArgs{...} }
+type GetSinkBigqueryOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSinkBigqueryOptionArrayOutput() GetSinkBigqueryOptionArrayOutput
+	ToGetSinkBigqueryOptionArrayOutputWithContext(context.Context) GetSinkBigqueryOptionArrayOutput
+}
+
+type GetSinkBigqueryOptionArray []GetSinkBigqueryOptionInput
+
+func (GetSinkBigqueryOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSinkBigqueryOption)(nil)).Elem()
+}
+
+func (i GetSinkBigqueryOptionArray) ToGetSinkBigqueryOptionArrayOutput() GetSinkBigqueryOptionArrayOutput {
+	return i.ToGetSinkBigqueryOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSinkBigqueryOptionArray) ToGetSinkBigqueryOptionArrayOutputWithContext(ctx context.Context) GetSinkBigqueryOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSinkBigqueryOptionArrayOutput)
+}
+
+type GetSinkBigqueryOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSinkBigqueryOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSinkBigqueryOption)(nil)).Elem()
+}
+
+func (o GetSinkBigqueryOptionOutput) ToGetSinkBigqueryOptionOutput() GetSinkBigqueryOptionOutput {
+	return o
+}
+
+func (o GetSinkBigqueryOptionOutput) ToGetSinkBigqueryOptionOutputWithContext(ctx context.Context) GetSinkBigqueryOptionOutput {
+	return o
+}
+
+// Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+func (o GetSinkBigqueryOptionOutput) UsePartitionedTables() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSinkBigqueryOption) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+}
+
+type GetSinkBigqueryOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSinkBigqueryOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSinkBigqueryOption)(nil)).Elem()
+}
+
+func (o GetSinkBigqueryOptionArrayOutput) ToGetSinkBigqueryOptionArrayOutput() GetSinkBigqueryOptionArrayOutput {
+	return o
+}
+
+func (o GetSinkBigqueryOptionArrayOutput) ToGetSinkBigqueryOptionArrayOutputWithContext(ctx context.Context) GetSinkBigqueryOptionArrayOutput {
+	return o
+}
+
+func (o GetSinkBigqueryOptionArrayOutput) Index(i pulumi.IntInput) GetSinkBigqueryOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSinkBigqueryOption {
+		return vs[0].([]GetSinkBigqueryOption)[vs[1].(int)]
+	}).(GetSinkBigqueryOptionOutput)
+}
+
+type GetSinkExclusion struct {
+	// A description of this exclusion.
+	Description string `pulumi:"description"`
+	// Whether this exclusion is disabled and it does not exclude any log entries.
+	Disabled bool `pulumi:"disabled"`
+	// An advanced logs filter that matches the log entries to be excluded.
+	Filter string `pulumi:"filter"`
+	// A client-assigned identifier, such as `load-balancer-exclusion`.
+	Name string `pulumi:"name"`
+}
+
+// GetSinkExclusionInput is an input type that accepts GetSinkExclusionArgs and GetSinkExclusionOutput values.
+// You can construct a concrete instance of `GetSinkExclusionInput` via:
+//
+//	GetSinkExclusionArgs{...}
+type GetSinkExclusionInput interface {
+	pulumi.Input
+
+	ToGetSinkExclusionOutput() GetSinkExclusionOutput
+	ToGetSinkExclusionOutputWithContext(context.Context) GetSinkExclusionOutput
+}
+
+type GetSinkExclusionArgs struct {
+	// A description of this exclusion.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether this exclusion is disabled and it does not exclude any log entries.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// An advanced logs filter that matches the log entries to be excluded.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// A client-assigned identifier, such as `load-balancer-exclusion`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSinkExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSinkExclusion)(nil)).Elem()
+}
+
+func (i GetSinkExclusionArgs) ToGetSinkExclusionOutput() GetSinkExclusionOutput {
+	return i.ToGetSinkExclusionOutputWithContext(context.Background())
+}
+
+func (i GetSinkExclusionArgs) ToGetSinkExclusionOutputWithContext(ctx context.Context) GetSinkExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSinkExclusionOutput)
+}
+
+// GetSinkExclusionArrayInput is an input type that accepts GetSinkExclusionArray and GetSinkExclusionArrayOutput values.
+// You can construct a concrete instance of `GetSinkExclusionArrayInput` via:
+//
+//	GetSinkExclusionArray{ GetSinkExclusionArgs{...} }
+type GetSinkExclusionArrayInput interface {
+	pulumi.Input
+
+	ToGetSinkExclusionArrayOutput() GetSinkExclusionArrayOutput
+	ToGetSinkExclusionArrayOutputWithContext(context.Context) GetSinkExclusionArrayOutput
+}
+
+type GetSinkExclusionArray []GetSinkExclusionInput
+
+func (GetSinkExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSinkExclusion)(nil)).Elem()
+}
+
+func (i GetSinkExclusionArray) ToGetSinkExclusionArrayOutput() GetSinkExclusionArrayOutput {
+	return i.ToGetSinkExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSinkExclusionArray) ToGetSinkExclusionArrayOutputWithContext(ctx context.Context) GetSinkExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSinkExclusionArrayOutput)
+}
+
+type GetSinkExclusionOutput struct{ *pulumi.OutputState }
+
+func (GetSinkExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSinkExclusion)(nil)).Elem()
+}
+
+func (o GetSinkExclusionOutput) ToGetSinkExclusionOutput() GetSinkExclusionOutput {
+	return o
+}
+
+func (o GetSinkExclusionOutput) ToGetSinkExclusionOutputWithContext(ctx context.Context) GetSinkExclusionOutput {
+	return o
+}
+
+// A description of this exclusion.
+func (o GetSinkExclusionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSinkExclusion) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether this exclusion is disabled and it does not exclude any log entries.
+func (o GetSinkExclusionOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSinkExclusion) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// An advanced logs filter that matches the log entries to be excluded.
+func (o GetSinkExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// A client-assigned identifier, such as `load-balancer-exclusion`.
+func (o GetSinkExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSinkExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSinkExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSinkExclusion)(nil)).Elem()
+}
+
+func (o GetSinkExclusionArrayOutput) ToGetSinkExclusionArrayOutput() GetSinkExclusionArrayOutput {
+	return o
+}
+
+func (o GetSinkExclusionArrayOutput) ToGetSinkExclusionArrayOutputWithContext(ctx context.Context) GetSinkExclusionArrayOutput {
+	return o
+}
+
+func (o GetSinkExclusionArrayOutput) Index(i pulumi.IntInput) GetSinkExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSinkExclusion {
+		return vs[0].([]GetSinkExclusion)[vs[1].(int)]
+	}).(GetSinkExclusionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigCmekSettingsInput)(nil)).Elem(), BillingAccountBucketConfigCmekSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigCmekSettingsPtrInput)(nil)).Elem(), BillingAccountBucketConfigCmekSettingsArgs{})
@@ -3011,6 +3232,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkBigqueryOptionsPtrInput)(nil)).Elem(), ProjectSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionInput)(nil)).Elem(), ProjectSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionArrayInput)(nil)).Elem(), ProjectSinkExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkBigqueryOptionInput)(nil)).Elem(), GetSinkBigqueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkBigqueryOptionArrayInput)(nil)).Elem(), GetSinkBigqueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkExclusionInput)(nil)).Elem(), GetSinkExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkExclusionArrayInput)(nil)).Elem(), GetSinkExclusionArray{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigCmekSettingsOutput{})
 	pulumi.RegisterOutputType(BillingAccountBucketConfigCmekSettingsPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkBigqueryOptionsOutput{})
@@ -3047,4 +3272,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkExclusionOutput{})
 	pulumi.RegisterOutputType(ProjectSinkExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetSinkBigqueryOptionOutput{})
+	pulumi.RegisterOutputType(GetSinkBigqueryOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetSinkExclusionOutput{})
+	pulumi.RegisterOutputType(GetSinkExclusionArrayOutput{})
 }

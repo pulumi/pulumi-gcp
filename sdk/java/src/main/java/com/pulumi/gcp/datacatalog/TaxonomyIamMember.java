@@ -16,6 +16,120 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
+ * 
+ * * `gcp.datacatalog.TaxonomyIamPolicy`: Authoritative. Sets the IAM policy for the taxonomy and replaces any existing policy already attached.
+ * * `gcp.datacatalog.TaxonomyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the taxonomy are preserved.
+ * * `gcp.datacatalog.TaxonomyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the taxonomy are preserved.
+ * 
+ * &gt; **Note:** `gcp.datacatalog.TaxonomyIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.TaxonomyIamBinding` and `gcp.datacatalog.TaxonomyIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.datacatalog.TaxonomyIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TaxonomyIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_data\_catalog\_taxonomy\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamPolicy;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new TaxonomyIamPolicy(&#34;policy&#34;, TaxonomyIamPolicyArgs.builder()        
+ *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_data\_catalog\_taxonomy\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamBinding;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new TaxonomyIamBinding(&#34;binding&#34;, TaxonomyIamBindingArgs.builder()        
+ *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_data\_catalog\_taxonomy\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamMember;
+ * import com.pulumi.gcp.datacatalog.TaxonomyIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new TaxonomyIamMember(&#34;member&#34;, TaxonomyIamMemberArgs.builder()        
+ *             .taxonomy(google_data_catalog_taxonomy.basic_taxonomy().name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} * {{project}}/{{region}}/{{taxonomy}} * {{region}}/{{taxonomy}} * {{taxonomy}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

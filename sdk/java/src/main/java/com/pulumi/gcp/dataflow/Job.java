@@ -178,14 +178,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
-     * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of deletion during terraform destroy.
+     * One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      * 
      */
     @Export(name="onDelete", type=String.class, parameters={})
     private Output</* @Nullable */ String> onDelete;
 
     /**
-     * @return One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of deletion during terraform destroy.
+     * @return One of &#34;drain&#34; or &#34;cancel&#34;.  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      * 
      */
     public Output<Optional<String>> onDelete() {
@@ -248,18 +248,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAccountEmail);
     }
     /**
-     * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
+     * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      * 
      */
     @Export(name="skipWaitOnJobTermination", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipWaitOnJobTermination;
 
     /**
-     * @return If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
-     * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
-     * different, e.g. by embedding a release ID or by using a random_id.
+     * @return If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      * 
      */
     public Output<Optional<Boolean>> skipWaitOnJobTermination() {

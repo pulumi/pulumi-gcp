@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Get a IAM workload identity provider from Google Cloud by its id.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,6 +74,8 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly workloadIdentityPoolProviderId: string;
 }
 /**
+ * Get a IAM workload identity provider from Google Cloud by its id.
+ *
  * ## Example Usage
  *
  * ```typescript

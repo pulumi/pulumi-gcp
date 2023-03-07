@@ -259,16 +259,18 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryption);
     }
     /**
-     * When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
-     * contains objects, Terraform will fail that run.
+     * When deleting a bucket, this
+     * boolean option will delete all contained objects. If you try to delete a
+     * bucket that contains objects, the provider will fail that run.
      * 
      */
     @Export(name="forceDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
-     * @return When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that
-     * contains objects, Terraform will fail that run.
+     * @return When deleting a bucket, this
+     * boolean option will delete all contained objects. If you try to delete a
+     * bucket that contains objects, the provider will fail that run.
      * 
      */
     public Output<Optional<Boolean>> forceDestroy() {

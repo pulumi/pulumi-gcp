@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  *     enableStackdriverLogging: true,
  *     enableStackdriverMonitoring: true,
  *     privateInstance: true,
- *     version: "6.6.0",
  *     dataprocServiceAccount: _default.then(_default => _default.email),
  *     labels: {
  *         example_key: "example_value",
@@ -106,7 +105,6 @@ import * as utilities from "../utilities";
  * const eventInstance = new gcp.datafusion.Instance("eventInstance", {
  *     region: "us-central1",
  *     type: "BASIC",
- *     version: "6.7.0",
  *     eventPublishConfig: {
  *         enabled: true,
  *         topic: eventTopic.id,

@@ -18,11 +18,14 @@ import com.pulumi.gcp.sql.inputs.GetDatabaseInstancePlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesPlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabasePlainArgs;
+import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+import com.pulumi.gcp.sql.inputs.GetDatabasesPlainArgs;
 import com.pulumi.gcp.sql.outputs.GetBackupRunResult;
 import com.pulumi.gcp.sql.outputs.GetCaCertsResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseResult;
+import com.pulumi.gcp.sql.outputs.GetDatabasesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SqlFunctions {
@@ -739,5 +742,149 @@ public final class SqlFunctions {
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .instance(google_sql_database_instance.main().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
+        return getDatabases(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .instance(google_sql_database_instance.main().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
+        return getDatabasesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .instance(google_sql_database_instance.main().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .instance(google_sql_database_instance.main().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:sql/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
 }

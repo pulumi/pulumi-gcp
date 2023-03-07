@@ -7,6 +7,17 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This message configures which resources and services to monitor for availability.
+ *
+ * To get more information about UptimeCheckConfig, see:
+ *
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+ *
+ * > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
+ * state as plain-text.
+ *
  * ## Example Usage
  * ### Uptime Check Config Http
  *

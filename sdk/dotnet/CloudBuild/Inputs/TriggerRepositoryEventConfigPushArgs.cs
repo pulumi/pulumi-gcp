@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
         /// </summary>
         [Input("invertRegex")]
         public Input<bool>? InvertRegex { get; set; }

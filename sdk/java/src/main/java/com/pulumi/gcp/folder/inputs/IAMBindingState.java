@@ -17,19 +17,9 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
 
     public static final IAMBindingState Empty = new IAMBindingState();
 
-    /**
-     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="condition")
     private @Nullable Output<IAMBindingConditionArgs> condition;
 
-    /**
-     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<IAMBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -64,9 +54,29 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.folder);
     }
 
+    /**
+     * An array of identities that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * 
+     */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
+    /**
+     * @return An array of identities that will be granted the privilege in the `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * 
+     */
     public Optional<Output<List<String>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -74,7 +84,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
     /**
      * The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `organizations/{{org_id}}/roles/{{role_id}}`.
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
     @Import(name="role")
@@ -83,7 +93,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The role that should be applied. Only one
      * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-     * `organizations/{{org_id}}/roles/{{role_id}}`.
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -118,25 +128,11 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
             $ = new IAMBindingState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(@Nullable Output<IAMBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        /**
-         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(IAMBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
@@ -183,15 +179,51 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
             return folder(Output.of(folder));
         }
 
+        /**
+         * @param members An array of identities that will be granted the privilege in the `role`.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(@Nullable Output<List<String>> members) {
             $.members = members;
             return this;
         }
 
+        /**
+         * @param members An array of identities that will be granted the privilege in the `role`.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
 
+        /**
+         * @param members An array of identities that will be granted the privilege in the `role`.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(String... members) {
             return members(List.of(members));
         }
@@ -199,7 +231,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param role The role that should be applied. Only one
          * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-         * `organizations/{{org_id}}/roles/{{role_id}}`.
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
          * 
@@ -212,7 +244,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param role The role that should be applied. Only one
          * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-         * `organizations/{{org_id}}/roles/{{role_id}}`.
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
          * 

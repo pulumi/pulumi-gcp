@@ -16,6 +16,120 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
+ * 
+ * * `gcp.healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
+ * * `gcp.healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
+ * * `gcp.healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
+ * 
+ * &gt; **Note:** `gcp.healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DicomStoreIamBinding` and `gcp.healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_healthcare\_dicom\_store\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamPolicy;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/editor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var dicomStore = new DicomStoreIamPolicy(&#34;dicomStore&#34;, DicomStoreIamPolicyArgs.builder()        
+ *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_healthcare\_dicom\_store\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamBinding;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dicomStore = new DicomStoreIamBinding(&#34;dicomStore&#34;, DicomStoreIamBindingArgs.builder()        
+ *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .role(&#34;roles/editor&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_healthcare\_dicom\_store\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamMember;
+ * import com.pulumi.gcp.healthcare.DicomStoreIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dicomStore = new DicomStoreIamMember(&#34;dicomStore&#34;, DicomStoreIamMemberArgs.builder()        
+ *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .role(&#34;roles/editor&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.

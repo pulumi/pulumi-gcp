@@ -258,8 +258,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateScheduling> Scheduling { get; private set; } = null!;
 
         /// <summary>
-        /// * `network_interface.alias_ip_range`
-        /// * `network_interface.access_config`
+        /// The scratch disks attached to the instance.
         /// </summary>
         [Output("scratchDisks")]
         public Output<ImmutableArray<Outputs.InstanceFromTemplateScratchDisk>> ScratchDisks { get; private set; } = null!;
@@ -539,8 +538,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceFromTemplateScratchDiskArgs>? _scratchDisks;
 
         /// <summary>
-        /// * `network_interface.alias_ip_range`
-        /// * `network_interface.access_config`
+        /// The scratch disks attached to the instance.
         /// </summary>
         public InputList<Inputs.InstanceFromTemplateScratchDiskArgs> ScratchDisks
         {
@@ -809,8 +807,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs>? _scratchDisks;
 
         /// <summary>
-        /// * `network_interface.alias_ip_range`
-        /// * `network_interface.access_config`
+        /// The scratch disks attached to the instance.
         /// </summary>
         public InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs> ScratchDisks
         {

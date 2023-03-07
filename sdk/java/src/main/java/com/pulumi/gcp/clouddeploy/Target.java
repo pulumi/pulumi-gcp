@@ -13,6 +13,7 @@ import com.pulumi.gcp.clouddeploy.inputs.TargetState;
 import com.pulumi.gcp.clouddeploy.outputs.TargetAnthosCluster;
 import com.pulumi.gcp.clouddeploy.outputs.TargetExecutionConfig;
 import com.pulumi.gcp.clouddeploy.outputs.TargetGke;
+import com.pulumi.gcp.clouddeploy.outputs.TargetMultiTarget;
 import com.pulumi.gcp.clouddeploy.outputs.TargetRun;
 import java.lang.Boolean;
 import java.lang.String;
@@ -25,6 +26,63 @@ import javax.annotation.Nullable;
  * The Cloud Deploy `Target` resource
  * 
  * ## Example Usage
+ * ### Multi_target
+ * tests creating and updating a multi-target
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.Target;
+ * import com.pulumi.gcp.clouddeploy.TargetArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.TargetMultiTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Target(&#34;primary&#34;, TargetArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .description(&#34;multi-target description&#34;)
+ *             .executionConfigs(TargetExecutionConfigArgs.builder()
+ *                 .usages(                
+ *                     &#34;RENDER&#34;,
+ *                     &#34;DEPLOY&#34;)
+ *                 .executionTimeout(&#34;3600s&#34;)
+ *                 .build())
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
+ *             .multiTarget(TargetMultiTargetArgs.builder()
+ *                 .targetIds(                
+ *                     &#34;1&#34;,
+ *                     &#34;2&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .requireApproval(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Run_target
  * tests creating and updating a cloud run target
  * ```java
@@ -270,6 +328,20 @@ public class Target extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * (Beta only) Information specifying a multiTarget.
+     * 
+     */
+    @Export(name="multiTarget", type=TargetMultiTarget.class, parameters={})
+    private Output</* @Nullable */ TargetMultiTarget> multiTarget;
+
+    /**
+     * @return (Beta only) Information specifying a multiTarget.
+     * 
+     */
+    public Output<Optional<TargetMultiTarget>> multiTarget() {
+        return Codegen.optional(this.multiTarget);
     }
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.

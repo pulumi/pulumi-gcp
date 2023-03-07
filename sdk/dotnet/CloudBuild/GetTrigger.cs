@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.CloudBuild
     public sealed class GetTriggerResult
     {
         public readonly ImmutableArray<Outputs.GetTriggerApprovalConfigResult> ApprovalConfigs;
+        public readonly ImmutableArray<Outputs.GetTriggerBitbucketServerTriggerConfigResult> BitbucketServerTriggerConfigs;
         public readonly ImmutableArray<Outputs.GetTriggerBuildResult> Builds;
         public readonly string CreateTime;
         public readonly string Description;
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.CloudBuild
         [OutputConstructor]
         private GetTriggerResult(
             ImmutableArray<Outputs.GetTriggerApprovalConfigResult> approvalConfigs,
+
+            ImmutableArray<Outputs.GetTriggerBitbucketServerTriggerConfigResult> bitbucketServerTriggerConfigs,
 
             ImmutableArray<Outputs.GetTriggerBuildResult> builds,
 
@@ -217,6 +220,7 @@ namespace Pulumi.Gcp.CloudBuild
             ImmutableArray<Outputs.GetTriggerWebhookConfigResult> webhookConfigs)
         {
             ApprovalConfigs = approvalConfigs;
+            BitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
             Builds = builds;
             CreateTime = createTime;
             Description = description;

@@ -238,6 +238,61 @@ class ApiConfigIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
+
+        * `apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
+        * `apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
+        * `apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+
+        > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiConfigIamBinding("binding",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiConfigIamMember("member",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
@@ -279,6 +334,61 @@ class ApiConfigIamMember(pulumi.CustomResource):
                  args: ApiConfigIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for API Gateway ApiConfig. Each of these resources serves a different use case:
+
+        * `apigateway.ApiConfigIamPolicy`: Authoritative. Sets the IAM policy for the apiconfig and replaces any existing policy already attached.
+        * `apigateway.ApiConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the apiconfig are preserved.
+        * `apigateway.ApiConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the apiconfig are preserved.
+
+        > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            policy_data=admin.policy_data,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiConfigIamBinding("binding",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiConfigIamMember("member",
+            api=google_api_gateway_api_config["api_cfg"]["api"],
+            api_config=google_api_gateway_api_config["api_cfg"]["api_config_id"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

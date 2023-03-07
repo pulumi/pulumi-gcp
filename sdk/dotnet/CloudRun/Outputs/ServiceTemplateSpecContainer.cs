@@ -58,6 +58,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerLivenessProbe? LivenessProbe;
         /// <summary>
         /// List of open ports in the container.

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.AzureClusterArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterState;
 import com.pulumi.gcp.container.outputs.AzureClusterAuthorization;
+import com.pulumi.gcp.container.outputs.AzureClusterAzureServicesAuthentication;
 import com.pulumi.gcp.container.outputs.AzureClusterControlPlane;
 import com.pulumi.gcp.container.outputs.AzureClusterFleet;
 import com.pulumi.gcp.container.outputs.AzureClusterLoggingConfig;
@@ -167,18 +168,32 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
         return this.azureRegion;
     }
     /**
+     * Azure authentication configuration for management of Azure resources
+     * 
+     */
+    @Export(name="azureServicesAuthentication", type=AzureClusterAzureServicesAuthentication.class, parameters={})
+    private Output</* @Nullable */ AzureClusterAzureServicesAuthentication> azureServicesAuthentication;
+
+    /**
+     * @return Azure authentication configuration for management of Azure resources
+     * 
+     */
+    public Output<Optional<AzureClusterAzureServicesAuthentication>> azureServicesAuthentication() {
+        return Codegen.optional(this.azureServicesAuthentication);
+    }
+    /**
      * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
     @Export(name="client", type=String.class, parameters={})
-    private Output<String> client;
+    private Output</* @Nullable */ String> client;
 
     /**
      * @return Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
-    public Output<String> client() {
-        return this.client;
+    public Output<Optional<String>> client() {
+        return Codegen.optional(this.client);
     }
     /**
      * Configuration related to the cluster control plane.

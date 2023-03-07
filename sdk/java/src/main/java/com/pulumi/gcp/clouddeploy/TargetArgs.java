@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.TargetAnthosClusterArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
+import com.pulumi.gcp.clouddeploy.inputs.TargetMultiTargetArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetRunArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -128,6 +129,21 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Beta only) Information specifying a multiTarget.
+     * 
+     */
+    @Import(name="multiTarget")
+    private @Nullable Output<TargetMultiTargetArgs> multiTarget;
+
+    /**
+     * @return (Beta only) Information specifying a multiTarget.
+     * 
+     */
+    public Optional<Output<TargetMultiTargetArgs>> multiTarget() {
+        return Optional.ofNullable(this.multiTarget);
+    }
+
+    /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      * 
      */
@@ -197,6 +213,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         this.gke = $.gke;
         this.labels = $.labels;
         this.location = $.location;
+        this.multiTarget = $.multiTarget;
         this.name = $.name;
         this.project = $.project;
         this.requireApproval = $.requireApproval;
@@ -376,6 +393,27 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param multiTarget (Beta only) Information specifying a multiTarget.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiTarget(@Nullable Output<TargetMultiTargetArgs> multiTarget) {
+            $.multiTarget = multiTarget;
+            return this;
+        }
+
+        /**
+         * @param multiTarget (Beta only) Information specifying a multiTarget.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiTarget(TargetMultiTargetArgs multiTarget) {
+            return multiTarget(Output.of(multiTarget));
         }
 
         /**

@@ -10,15 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tags
 {
     /// <summary>
-    /// ## subcategory: "Tags"
-    /// 
-    /// page_title: "Google: gcp.tags.LocationTagBinding"
-    /// description: |-
-    ///   A LocationTagBinding represents a connection between a TagValue and a Regional cloud resources.
-    /// ---
-    /// 
-    /// # google\_tags\_location\_tag\_binding
-    /// 
     /// A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
     /// 
     /// To get more information about TagBinding, see:

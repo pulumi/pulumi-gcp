@@ -10,7 +10,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
+// Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
+// identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
+// Once Firebase has been added to a Google Project it cannot be removed.
+//
+// To get more information about Project, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/)
+//
 // ## Example Usage
+// ### Firebase Project Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("tf-test"),
+//				OrgId:     pulumi.String("123456789"),
+//				Labels: pulumi.StringMap{
+//					"firebase": pulumi.String("enabled"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+//				Project: defaultProject.ProjectId,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -7,6 +7,49 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a group of dissimilar Compute Engine virtual machine instances.
+ * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+ * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+ *
+ * ## Example Usage
+ * ### Empty Instance Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.compute.InstanceGroup("test", {
+ *     description: "Test instance group",
+ *     zone: "us-central1-a",
+ *     network: google_compute_network["default"].id,
+ * });
+ * ```
+ * ### Example Usage - With instances and named ports
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const webservers = new gcp.compute.InstanceGroup("webservers", {
+ *     description: "Test instance group",
+ *     instances: [
+ *         google_compute_instance.test.id,
+ *         google_compute_instance.test2.id,
+ *     ],
+ *     namedPorts: [
+ *         {
+ *             name: "http",
+ *             port: 8080,
+ *         },
+ *         {
+ *             name: "https",
+ *             port: 8443,
+ *         },
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.

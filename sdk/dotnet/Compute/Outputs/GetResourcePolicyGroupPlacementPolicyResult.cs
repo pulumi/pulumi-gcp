@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly int AvailabilityDomainCount;
         public readonly string Collocation;
+        public readonly int MaxDistance;
         public readonly int VmCount;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string collocation,
 
+            int maxDistance,
+
             int vmCount)
         {
             AvailabilityDomainCount = availabilityDomainCount;
             Collocation = collocation;
+            MaxDistance = maxDistance;
             VmCount = vmCount;
         }
     }

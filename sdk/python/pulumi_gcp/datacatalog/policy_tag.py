@@ -226,6 +226,14 @@ class PolicyTag(pulumi.CustomResource):
                  taxonomy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Denotes one policy tag in a taxonomy.
+
+        To get more information about PolicyTag, see:
+
+        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+
         ## Example Usage
         ### Data Catalog Taxonomies Policy Tag Basic
 
@@ -234,16 +242,13 @@ class PolicyTag(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            region="us",
             display_name="taxonomy_display_name",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
             taxonomy=my_taxonomy.id,
             display_name="Low security",
-            description="A policy tag normally associated with low security items",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag normally associated with low security items")
         ```
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
@@ -252,29 +257,24 @@ class PolicyTag(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            region="us",
             display_name="taxonomy_display_name",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
             taxonomy=my_taxonomy.id,
             display_name="High",
-            description="A policy tag category used for high security access",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag category used for high security access")
         child_policy = gcp.datacatalog.PolicyTag("childPolicy",
             taxonomy=my_taxonomy.id,
             display_name="ssn",
             description="A hash of the users ssn",
-            parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent_policy_tag=parent_policy.id)
         child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
             taxonomy=my_taxonomy.id,
             display_name="dob",
             description="The users date of birth",
             parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[child_policy]))
+            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
         ```
 
         ## Import
@@ -306,6 +306,14 @@ class PolicyTag(pulumi.CustomResource):
                  args: PolicyTagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Denotes one policy tag in a taxonomy.
+
+        To get more information about PolicyTag, see:
+
+        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+
         ## Example Usage
         ### Data Catalog Taxonomies Policy Tag Basic
 
@@ -314,16 +322,13 @@ class PolicyTag(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            region="us",
             display_name="taxonomy_display_name",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         basic_policy_tag = gcp.datacatalog.PolicyTag("basicPolicyTag",
             taxonomy=my_taxonomy.id,
             display_name="Low security",
-            description="A policy tag normally associated with low security items",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag normally associated with low security items")
         ```
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
@@ -332,29 +337,24 @@ class PolicyTag(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_taxonomy = gcp.datacatalog.Taxonomy("myTaxonomy",
-            region="us",
             display_name="taxonomy_display_name",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         parent_policy = gcp.datacatalog.PolicyTag("parentPolicy",
             taxonomy=my_taxonomy.id,
             display_name="High",
-            description="A policy tag category used for high security access",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag category used for high security access")
         child_policy = gcp.datacatalog.PolicyTag("childPolicy",
             taxonomy=my_taxonomy.id,
             display_name="ssn",
             description="A hash of the users ssn",
-            parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent_policy_tag=parent_policy.id)
         child_policy2 = gcp.datacatalog.PolicyTag("childPolicy2",
             taxonomy=my_taxonomy.id,
             display_name="dob",
             description="The users date of birth",
             parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[child_policy]))
+            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
         ```
 
         ## Import

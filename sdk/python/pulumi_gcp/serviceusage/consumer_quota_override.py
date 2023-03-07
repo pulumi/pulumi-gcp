@@ -293,6 +293,16 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A consumer override is applied to the consumer on its own authority to limit its own quota usage.
+        Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
+        producer overrides, or the default limit of the service.
+
+        To get more information about ConsumerQuotaOverride, see:
+
+        * How-to Guides
+            * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
+            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+
         ## Example Usage
 
         ## Import
@@ -332,6 +342,16 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
                  args: ConsumerQuotaOverrideArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A consumer override is applied to the consumer on its own authority to limit its own quota usage.
+        Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
+        producer overrides, or the default limit of the service.
+
+        To get more information about ConsumerQuotaOverride, see:
+
+        * How-to Guides
+            * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
+            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+
         ## Example Usage
 
         ## Import

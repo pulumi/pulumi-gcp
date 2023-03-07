@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .bitbucket_server_config import *
 from .get_trigger import *
 from .trigger import *
 from .worker_pool import *

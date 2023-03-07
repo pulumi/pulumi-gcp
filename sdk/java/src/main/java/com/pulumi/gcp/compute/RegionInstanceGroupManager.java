@@ -541,16 +541,18 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.versions;
     }
     /**
-     * Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      * 
      */
     @Export(name="waitForInstances", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForInstances;
 
     /**
-     * @return Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the
-     * operation does not succeed, Terraform will continue trying until it times out.
+     * @return Whether to wait for all instances to be created/updated before
+     * returning. Note that if this is set to true and the operation does not succeed, the provider will
+     * continue trying until it times out.
      * 
      */
     public Output<Optional<Boolean>> waitForInstances() {

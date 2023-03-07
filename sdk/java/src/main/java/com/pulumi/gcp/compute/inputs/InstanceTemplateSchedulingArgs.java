@@ -54,9 +54,17 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.instanceTerminationAction);
     }
 
+    /**
+     * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * 
+     */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration;
 
+    /**
+     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * 
+     */
     public Optional<Output<InstanceTemplateSchedulingMaxRunDurationArgs>> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
@@ -225,11 +233,23 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
             return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
+        /**
+         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(@Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration) {
             $.maxRunDuration = maxRunDuration;
             return this;
         }
 
+        /**
+         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(InstanceTemplateSchedulingMaxRunDurationArgs maxRunDuration) {
             return maxRunDuration(Output.of(maxRunDuration));
         }

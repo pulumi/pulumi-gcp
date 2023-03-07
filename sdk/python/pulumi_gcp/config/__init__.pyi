@@ -132,6 +132,8 @@ dialogflowCustomEndpoint: Optional[str]
 
 dialogflowCxCustomEndpoint: Optional[str]
 
+disableGooglePartnerName: Optional[bool]
+
 dnsCustomEndpoint: Optional[str]
 
 documentAiCustomEndpoint: Optional[str]
@@ -161,6 +163,8 @@ gkeBackupCustomEndpoint: Optional[str]
 gkeHubCustomEndpoint: Optional[str]
 
 gkehubFeatureCustomEndpoint: Optional[str]
+
+googlePartnerName: Optional[str]
 
 healthcareCustomEndpoint: Optional[str]
 

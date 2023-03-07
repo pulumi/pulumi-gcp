@@ -77,16 +77,16 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -568,8 +568,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-         * terraform destroy or terraform apply that would delete the instance will fail.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `=destroy` or `=update` that would delete the instance will fail.
          * 
          * @return builder
          * 
@@ -580,8 +580,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-         * terraform destroy or terraform apply that would delete the instance will fail.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `=destroy` or `=update` that would delete the instance will fail.
          * 
          * @return builder
          * 

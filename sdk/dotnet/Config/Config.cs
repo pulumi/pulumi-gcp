@@ -459,6 +459,13 @@ namespace Pulumi.Gcp
             set => _dialogflowCxCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<bool?> _disableGooglePartnerName = new __Value<bool?>(() => __config.GetBoolean("disableGooglePartnerName"));
+        public static bool? DisableGooglePartnerName
+        {
+            get => _disableGooglePartnerName.Get();
+            set => _disableGooglePartnerName.Set(value);
+        }
+
         private static readonly __Value<string?> _dnsCustomEndpoint = new __Value<string?>(() => __config.Get("dnsCustomEndpoint"));
         public static string? DnsCustomEndpoint
         {
@@ -562,6 +569,13 @@ namespace Pulumi.Gcp
         {
             get => _gkehubFeatureCustomEndpoint.Get();
             set => _gkehubFeatureCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _googlePartnerName = new __Value<string?>(() => __config.Get("googlePartnerName"));
+        public static string? GooglePartnerName
+        {
+            get => _googlePartnerName.Get();
+            set => _googlePartnerName.Set(value);
         }
 
         private static readonly __Value<string?> _healthcareCustomEndpoint = new __Value<string?>(() => __config.Get("healthcareCustomEndpoint"));

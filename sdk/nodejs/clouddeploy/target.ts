@@ -10,6 +10,42 @@ import * as utilities from "../utilities";
  * The Cloud Deploy `Target` resource
  *
  * ## Example Usage
+ * ### Multi_target
+ * tests creating and updating a multi-target
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.clouddeploy.Target("primary", {
+ *     location: "us-west1",
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     description: "multi-target description",
+ *     executionConfigs: [{
+ *         usages: [
+ *             "RENDER",
+ *             "DEPLOY",
+ *         ],
+ *         executionTimeout: "3600s",
+ *     }],
+ *     labels: {
+ *         my_first_label: "example-label-1",
+ *         my_second_label: "example-label-2",
+ *     },
+ *     multiTarget: {
+ *         targetIds: [
+ *             "1",
+ *             "2",
+ *         ],
+ *     },
+ *     project: "my-project-name",
+ *     requireApproval: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Run_target
  * tests creating and updating a cloud run target
  * ```typescript
@@ -149,6 +185,10 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * (Beta only) Information specifying a multiTarget.
+     */
+    public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
+    /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
@@ -199,6 +239,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["gke"] = state ? state.gke : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["multiTarget"] = state ? state.multiTarget : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["requireApproval"] = state ? state.requireApproval : undefined;
@@ -218,6 +259,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["gke"] = args ? args.gke : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiTarget"] = args ? args.multiTarget : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requireApproval"] = args ? args.requireApproval : undefined;
@@ -273,6 +315,10 @@ export interface TargetState {
      * The location for the resource
      */
     location?: pulumi.Input<string>;
+    /**
+     * (Beta only) Information specifying a multiTarget.
+     */
+    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      */
@@ -335,6 +381,10 @@ export interface TargetArgs {
      * The location for the resource
      */
     location: pulumi.Input<string>;
+    /**
+     * (Beta only) Information specifying a multiTarget.
+     */
+    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      */

@@ -29,6 +29,8 @@ class TableIamBindingArgs:
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
         :param pulumi.Input[str] table: The name or relative resource id of the table to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the table belongs. If it
+               is not provided, this provider will use the provider default.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "members", members)
@@ -98,6 +100,10 @@ class TableIamBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the table belongs. If it
+        is not provided, this provider will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -119,6 +125,8 @@ class _TableIamBindingState:
         Input properties used for looking up and filtering TableIamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the tables's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[str] project: The project in which the table belongs. If it
+               is not provided, this provider will use the provider default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -184,6 +192,10 @@ class _TableIamBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the table belongs. If it
+        is not provided, this provider will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -306,6 +318,8 @@ class TableIamBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[str] project: The project in which the table belongs. If it
+               is not provided, this provider will use the provider default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -462,6 +476,8 @@ class TableIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the tables's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance that owns the table.
+        :param pulumi.Input[str] project: The project in which the table belongs. If it
+               is not provided, this provider will use the provider default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -509,6 +525,10 @@ class TableIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The project in which the table belongs. If it
+        is not provided, this provider will use the provider default.
+        """
         return pulumi.get(self, "project")
 
     @property

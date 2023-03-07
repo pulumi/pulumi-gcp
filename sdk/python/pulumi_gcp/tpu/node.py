@@ -523,6 +523,37 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
+        ### TPU Node Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_tensorflow_versions()
+        network = gcp.compute.get_network(name="default")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        tpu = gcp.tpu.Node("tpu",
+            zone="us-central1-b",
+            accelerator_type="v3-8",
+            tensorflow_version=available.versions[0],
+            description="Google Provider test TPU",
+            use_service_networking=True,
+            network=private_service_connection.network,
+            labels={
+                "foo": "bar",
+            },
+            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
+                preemptible=True,
+            ))
+        ```
 
         ## Import
 
@@ -601,6 +632,37 @@ class Node(pulumi.CustomResource):
             accelerator_type="v3-8",
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
+        ```
+        ### TPU Node Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_tensorflow_versions()
+        network = gcp.compute.get_network(name="default")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        tpu = gcp.tpu.Node("tpu",
+            zone="us-central1-b",
+            accelerator_type="v3-8",
+            tensorflow_version=available.versions[0],
+            description="Google Provider test TPU",
+            use_service_networking=True,
+            network=private_service_connection.network,
+            labels={
+                "foo": "bar",
+            },
+            scheduling_config=gcp.tpu.NodeSchedulingConfigArgs(
+                preemptible=True,
+            ))
         ```
 
         ## Import

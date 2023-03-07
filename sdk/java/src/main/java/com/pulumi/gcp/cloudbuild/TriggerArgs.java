@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudbuild;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubArgs;
@@ -46,6 +47,23 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TriggerApprovalConfigArgs>> approvalConfig() {
         return Optional.ofNullable(this.approvalConfig);
+    }
+
+    /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bitbucketServerTriggerConfig")
+    private @Nullable Output<TriggerBitbucketServerTriggerConfigArgs> bitbucketServerTriggerConfig;
+
+    /**
+     * @return BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TriggerBitbucketServerTriggerConfigArgs>> bitbucketServerTriggerConfig() {
+        return Optional.ofNullable(this.bitbucketServerTriggerConfig);
     }
 
     /**
@@ -457,6 +475,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     private TriggerArgs(TriggerArgs $) {
         this.approvalConfig = $.approvalConfig;
+        this.bitbucketServerTriggerConfig = $.bitbucketServerTriggerConfig;
         this.build = $.build;
         this.description = $.description;
         this.disabled = $.disabled;
@@ -523,6 +542,29 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder approvalConfig(TriggerApprovalConfigArgs approvalConfig) {
             return approvalConfig(Output.of(approvalConfig));
+        }
+
+        /**
+         * @param bitbucketServerTriggerConfig BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketServerTriggerConfig(@Nullable Output<TriggerBitbucketServerTriggerConfigArgs> bitbucketServerTriggerConfig) {
+            $.bitbucketServerTriggerConfig = bitbucketServerTriggerConfig;
+            return this;
+        }
+
+        /**
+         * @param bitbucketServerTriggerConfig BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketServerTriggerConfig(TriggerBitbucketServerTriggerConfigArgs bitbucketServerTriggerConfig) {
+            return bitbucketServerTriggerConfig(Output.of(bitbucketServerTriggerConfig));
         }
 
         /**

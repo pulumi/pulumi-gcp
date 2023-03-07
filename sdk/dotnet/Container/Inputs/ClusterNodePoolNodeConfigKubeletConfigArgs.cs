@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("cpuManagerPolicy", required: true)]
         public Input<string> CpuManagerPolicy { get; set; } = null!;
 
+        /// <summary>
+        /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        /// </summary>
+        [Input("podPidsLimit")]
+        public Input<int>? PodPidsLimit { get; set; }
+
         public ClusterNodePoolNodeConfigKubeletConfigArgs()
         {
         }

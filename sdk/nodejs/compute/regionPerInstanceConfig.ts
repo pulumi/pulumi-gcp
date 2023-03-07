@@ -18,6 +18,76 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  *
  * ## Example Usage
+ * ### Stateful Rigm
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
+ *     machineType: "e2-medium",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
+ *     description: "Demo test instance group manager",
+ *     versions: [{
+ *         name: "prod",
+ *         instanceTemplate: igm_basic.selfLink,
+ *     }],
+ *     updatePolicy: {
+ *         type: "OPPORTUNISTIC",
+ *         instanceRedistributionType: "NONE",
+ *         minimalAction: "RESTART",
+ *     },
+ *     baseInstanceName: "rigm",
+ *     region: "us-central1",
+ *     targetSize: 2,
+ * });
+ * const _default = new gcp.compute.Disk("default", {
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ *     image: "debian-11-bullseye-v20220719",
+ *     physicalBlockSizeBytes: 4096,
+ * });
+ * const withDisk = new gcp.compute.RegionPerInstanceConfig("withDisk", {
+ *     region: google_compute_region_instance_group_manager.igm.region,
+ *     regionInstanceGroupManager: rigm.name,
+ *     preservedState: {
+ *         metadata: {
+ *             foo: "bar",
+ *             instance_template: igm_basic.selfLink,
+ *         },
+ *         disks: [{
+ *             deviceName: "my-stateful-disk",
+ *             source: _default.id,
+ *             mode: "READ_ONLY",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -14,6 +14,70 @@ import * as utilities from "../utilities";
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
+ * ### Apigee Environment Group Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "tf-test",
+ *     orgId: "",
+ *     billingAccount: "",
+ * });
+ * const apigee = new gcp.projects.Service("apigee", {
+ *     project: project.projectId,
+ *     service: "apigee.googleapis.com",
+ * });
+ * const compute = new gcp.projects.Service("compute", {
+ *     project: project.projectId,
+ *     service: "compute.googleapis.com",
+ * });
+ * const servicenetworking = new gcp.projects.Service("servicenetworking", {
+ *     project: project.projectId,
+ *     service: "servicenetworking.googleapis.com",
+ * });
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {project: project.projectId}, {
+ *     dependsOn: [compute],
+ * });
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ *     project: project.projectId,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * }, {
+ *     dependsOn: [servicenetworking],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: project.projectId,
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigee,
+ *     ],
+ * });
+ * const apigeeEnvgroup = new gcp.apigee.EnvGroup("apigeeEnvgroup", {
+ *     orgId: apigeeOrg.id,
+ *     hostnames: ["abc.foo.com"],
+ * });
+ * const apigeeEnv = new gcp.apigee.Environment("apigeeEnv", {
+ *     orgId: apigeeOrg.id,
+ *     description: "Apigee Environment",
+ *     displayName: "tf-test",
+ * });
+ * const envGroupAttachment = new gcp.apigee.EnvGroupAttachment("envGroupAttachment", {
+ *     envgroupId: apigeeEnvgroup.id,
+ *     environment: apigeeEnv.name,
+ * });
+ * ```
  *
  * ## Import
  *

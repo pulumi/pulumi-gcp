@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
         /// </summary>
         public readonly string CpuManagerPolicy;
+        /// <summary>
+        /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        /// </summary>
+        public readonly int? PodPidsLimit;
 
         [OutputConstructor]
         private ClusterNodeConfigKubeletConfig(
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? cpuCfsQuotaPeriod,
 
-            string cpuManagerPolicy)
+            string cpuManagerPolicy,
+
+            int? podPidsLimit)
         {
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            PodPidsLimit = podPidsLimit;
         }
     }
 }

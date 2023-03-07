@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.PolicyAlternativeNameServerConfig?> AlternativeNameServerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
 
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.PolicyAlternativeNameServerConfigGetArgs>? AlternativeNameServerConfig { get; set; }
 
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

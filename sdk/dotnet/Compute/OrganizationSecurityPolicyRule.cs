@@ -10,7 +10,73 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// A rule for the OrganizationSecurityPolicy.
+    /// 
+    /// To get more information about OrganizationSecurityPolicyRule, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
+    /// * How-to Guides
+    ///     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+    /// 
     /// ## Example Usage
+    /// ### Organization Security Policy Rule Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policyOrganizationSecurityPolicy = new Gcp.Compute.OrganizationSecurityPolicy("policyOrganizationSecurityPolicy", new()
+    ///     {
+    ///         DisplayName = "tf-test",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", new()
+    ///     {
+    ///         PolicyId = policyOrganizationSecurityPolicy.Id,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         EnableLogging = true,
+    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "192.168.0.0/16",
+    ///                     "10.0.0.0/8",
+    ///                 },
+    ///                 Layer4Configs = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                     {
+    ///                         IpProtocol = "tcp",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "22",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
+    ///                     {
+    ///                         IpProtocol = "icmp",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Priority = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

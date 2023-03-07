@@ -116,18 +116,22 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoCreateNetwork);
     }
     /**
-     * The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-     * See Google Cloud Billing API Access Control for more details.
+     * The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with the provider
+     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+     * for more details.
      * 
      */
     @Export(name="billingAccount", type=String.class, parameters={})
     private Output</* @Nullable */ String> billingAccount;
 
     /**
-     * @return The alphanumeric ID of the billing account this project belongs to. The user or service account performing this
-     * operation with Terraform must have Billing Account Administrator privileges (roles/billing.admin) in the organization.
-     * See Google Cloud Billing API Access Control for more details.
+     * @return The alphanumeric ID of the billing account this project
+     * belongs to. The user or service account performing this operation with the provider
+     * must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+     * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
+     * for more details.
      * 
      */
     public Output<Optional<String>> billingAccount() {
@@ -236,14 +240,16 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+     * If true, the resource can be deleted
+     * without deleting the Project via the Google API.
      * 
      */
     @Export(name="skipDelete", type=Boolean.class, parameters={})
     private Output<Boolean> skipDelete;
 
     /**
-     * @return If true, the Terraform resource can be deleted without deleting the Project via the Google API.
+     * @return If true, the resource can be deleted
+     * without deleting the Project via the Google API.
      * 
      */
     public Output<Boolean> skipDelete() {

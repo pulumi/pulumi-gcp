@@ -450,6 +450,19 @@ class NodeGroup(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+
+        To get more information about NodeGroup, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+        * How-to Guides
+            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ## Example Usage
         ### Node Group Basic
 
@@ -461,8 +474,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
             size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -476,8 +489,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
                 start_time="08:00",
@@ -562,6 +575,19 @@ class NodeGroup(pulumi.CustomResource):
                  args: NodeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+
+        To get more information about NodeGroup, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+        * How-to Guides
+            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+
+        > **Warning:** Due to limitations of the API, this provider cannot update the
+        number of nodes in a node group and changes to node group size either
+        through provider config or through external changes will cause
+        the provider to delete and recreate the node group.
+
         ## Example Usage
         ### Node Group Basic
 
@@ -573,8 +599,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
             size=1,
             node_template=soletenant_tmpl.id)
         ```
@@ -588,8 +614,8 @@ class NodeGroup(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
-            zone="us-central1-f",
-            description="example google_compute_node_group for Terraform Google Provider",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window=gcp.compute.NodeGroupMaintenanceWindowArgs(
                 start_time="08:00",

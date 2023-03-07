@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Adds existing resource policies to a disk. You can only add one policy
+    /// which will be applied to this disk for scheduling snapshot creation.
+    /// 
+    /// &gt; **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
+    /// 
     /// ## Example Usage
     /// ### Region Disk Resource Policy Attachment Basic
     /// 

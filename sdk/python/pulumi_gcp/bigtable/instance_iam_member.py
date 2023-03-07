@@ -27,6 +27,8 @@ class InstanceIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        :param pulumi.Input[str] project: The project in which the instance belongs. If it
+               is not provided, a default will be supplied.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "member", member)
@@ -83,6 +85,10 @@ class InstanceIamMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, a default will be supplied.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -103,6 +109,8 @@ class _InstanceIamMemberState:
         Input properties used for looking up and filtering InstanceIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the instance belongs. If it
+               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -165,6 +173,10 @@ class _InstanceIamMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, a default will be supplied.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -271,6 +283,8 @@ class InstanceIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the instance belongs. If it
+               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -418,6 +432,8 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
+        :param pulumi.Input[str] project: The project in which the instance belongs. If it
+               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -463,6 +479,10 @@ class InstanceIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The project in which the instance belongs. If it
+        is not provided, a default will be supplied.
+        """
         return pulumi.get(self, "project")
 
     @property

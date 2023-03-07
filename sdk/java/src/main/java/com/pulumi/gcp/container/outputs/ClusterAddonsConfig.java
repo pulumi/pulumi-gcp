@@ -75,13 +75,13 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing;
     /**
-     * @return ).
+     * @return .
      * Structure is documented below.
      * 
      */
     private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
     /**
-     * @return ).
+     * @return .
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -168,7 +168,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.httpLoadBalancing);
     }
     /**
-     * @return ).
+     * @return .
      * Structure is documented below.
      * 
      */
@@ -176,7 +176,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.istioConfig);
     }
     /**
-     * @return ).
+     * @return .
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */

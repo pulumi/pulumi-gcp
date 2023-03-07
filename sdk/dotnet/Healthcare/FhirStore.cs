@@ -171,6 +171,50 @@ namespace Pulumi.Gcp.Healthcare
     ///         {
     ///             { "label1", "labelvalue1" },
     ///         },
+    ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Healthcare Fhir Store Notification Configs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
@@ -179,6 +223,9 @@ namespace Pulumi.Gcp.Healthcare
     ///                 SendFullResource = true,
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

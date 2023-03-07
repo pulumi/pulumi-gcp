@@ -25,6 +25,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a table resource in a dataset for Google BigQuery. For more information see
+ * [the official documentation](https://cloud.google.com/bigquery/docs/) and
+ * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+ * 
+ * &gt; **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+ * (and run `pulumi update` to write the field to state) in order to destroy an instance.
+ * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -171,16 +179,16 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.datasetId;
     }
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {

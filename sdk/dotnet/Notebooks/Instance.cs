@@ -66,7 +66,6 @@ namespace Pulumi.Gcp.Notebooks
     ///         Metadata = 
     ///         {
     ///             { "proxy-mode", "service_account" },
-    ///             { "terraform", "true" },
     ///         },
     ///     });
     /// 
@@ -144,10 +143,6 @@ namespace Pulumi.Gcp.Notebooks
     ///         Labels = 
     ///         {
     ///             { "k", "val" },
-    ///         },
-    ///         Metadata = 
-    ///         {
-    ///             { "terraform", "true" },
     ///         },
     ///     });
     /// 

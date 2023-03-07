@@ -384,6 +384,21 @@ class ResourcePolicy(pulumi.CustomResource):
             ),
             region="us-central1")
         ```
+        ### Resource Policy Placement Policy Max Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            region="us-central1",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                vm_count=2,
+                collocation="COLLOCATED",
+                max_distance=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Resource Policy Instance Schedule Policy
 
         ```python
@@ -541,6 +556,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 vm_count=2,
             ),
             region="us-central1")
+        ```
+        ### Resource Policy Placement Policy Max Distance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            region="us-central1",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                vm_count=2,
+                collocation="COLLOCATED",
+                max_distance=2,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Resource Policy Instance Schedule Policy
 

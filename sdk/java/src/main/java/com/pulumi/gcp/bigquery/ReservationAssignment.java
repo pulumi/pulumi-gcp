@@ -17,6 +17,46 @@ import javax.annotation.Nullable;
  * The BigqueryReservation Assignment resource
  * 
  * ## Example Usage
+ * ### Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Reservation;
+ * import com.pulumi.gcp.bigquery.ReservationArgs;
+ * import com.pulumi.gcp.bigquery.ReservationAssignment;
+ * import com.pulumi.gcp.bigquery.ReservationAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new Reservation(&#34;basic&#34;, ReservationArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .slotCapacity(0)
+ *             .ignoreIdleSlots(false)
+ *             .build());
+ * 
+ *         var primary = new ReservationAssignment(&#34;primary&#34;, ReservationAssignmentArgs.builder()        
+ *             .assignee(&#34;projects/my-project-name&#34;)
+ *             .jobType(&#34;PIPELINE&#34;)
+ *             .reservation(basic.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

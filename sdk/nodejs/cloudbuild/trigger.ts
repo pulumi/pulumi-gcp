@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "my-service-account"});
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "tf-test-my-service-account"});
  * const actAs = new gcp.projects.IAMMember("actAs", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",
@@ -249,6 +249,66 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Cloudbuild Trigger Bitbucket Server Push
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bbs_push_trigger = new gcp.cloudbuild.Trigger("bbs-push-trigger", {
+ *     bitbucketServerTriggerConfig: {
+ *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+ *         projectKey: "STAG",
+ *         push: {
+ *             invertRegex: true,
+ *             tag: "^0.1.*",
+ *         },
+ *         repoSlug: "terraform-provider-google",
+ *     },
+ *     filename: "cloudbuild.yaml",
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Bitbucket Server Pull Request
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bbs_pull_request_trigger = new gcp.cloudbuild.Trigger("bbs-pull-request-trigger", {
+ *     bitbucketServerTriggerConfig: {
+ *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+ *         projectKey: "STAG",
+ *         pullRequest: {
+ *             branch: `^master$`,
+ *             commentControl: "COMMENTS_ENABLED",
+ *             invertRegex: false,
+ *         },
+ *         repoSlug: "terraform-provider-google",
+ *     },
+ *     filename: "cloudbuild.yaml",
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Github Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ghe_trigger = new gcp.cloudbuild.Trigger("ghe-trigger", {
+ *     filename: "cloudbuild.yaml",
+ *     github: {
+ *         enterpriseConfigResourceName: "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+ *         name: "terraform-provider-google",
+ *         owner: "hashicorp",
+ *         push: {
+ *             branch: `^main$`,
+ *         },
+ *     },
+ *     location: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -305,6 +365,11 @@ export class Trigger extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly approvalConfig!: pulumi.Output<outputs.cloudbuild.TriggerApprovalConfig>;
+    /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     */
+    public readonly bitbucketServerTriggerConfig!: pulumi.Output<outputs.cloudbuild.TriggerBitbucketServerTriggerConfig | undefined>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.
@@ -457,6 +522,7 @@ export class Trigger extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
             resourceInputs["approvalConfig"] = state ? state.approvalConfig : undefined;
+            resourceInputs["bitbucketServerTriggerConfig"] = state ? state.bitbucketServerTriggerConfig : undefined;
             resourceInputs["build"] = state ? state.build : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -483,6 +549,7 @@ export class Trigger extends pulumi.CustomResource {
         } else {
             const args = argsOrState as TriggerArgs | undefined;
             resourceInputs["approvalConfig"] = args ? args.approvalConfig : undefined;
+            resourceInputs["bitbucketServerTriggerConfig"] = args ? args.bitbucketServerTriggerConfig : undefined;
             resourceInputs["build"] = args ? args.build : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
@@ -523,6 +590,11 @@ export interface TriggerState {
      * Structure is documented below.
      */
     approvalConfig?: pulumi.Input<inputs.cloudbuild.TriggerApprovalConfig>;
+    /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     */
+    bitbucketServerTriggerConfig?: pulumi.Input<inputs.cloudbuild.TriggerBitbucketServerTriggerConfig>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.
@@ -673,6 +745,11 @@ export interface TriggerArgs {
      * Structure is documented below.
      */
     approvalConfig?: pulumi.Input<inputs.cloudbuild.TriggerApprovalConfig>;
+    /**
+     * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+     * Structure is documented below.
+     */
+    bitbucketServerTriggerConfig?: pulumi.Input<inputs.cloudbuild.TriggerBitbucketServerTriggerConfig>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.

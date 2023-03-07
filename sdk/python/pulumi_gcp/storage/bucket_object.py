@@ -37,7 +37,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         :param pulumi.Input[str] content_disposition: [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
@@ -116,7 +116,7 @@ class BucketObjectArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
         return pulumi.get(self, "content")
 
@@ -311,7 +311,7 @@ class _BucketObjectState:
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         :param pulumi.Input[str] content_disposition: [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
@@ -407,7 +407,7 @@ class _BucketObjectState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
         return pulumi.get(self, "content")
 
@@ -686,7 +686,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         :param pulumi.Input[str] content_disposition: [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
@@ -841,7 +841,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the containing bucket.
         :param pulumi.Input[str] cache_control: [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
                directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        :param pulumi.Input[str] content: Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         :param pulumi.Input[str] content_disposition: [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
@@ -913,7 +913,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[Optional[str]]:
         """
-        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive. To view the raw contents of the object, please define an [output](https://www.terraform.io/docs/configuration/outputs.html).
+        Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """
         return pulumi.get(self, "content")
 

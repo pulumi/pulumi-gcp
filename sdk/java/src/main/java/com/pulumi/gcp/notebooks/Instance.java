@@ -102,10 +102,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .location(&#34;us-west1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
- *             .metadata(Map.ofEntries(
- *                 Map.entry(&#34;proxy-mode&#34;, &#34;service_account&#34;),
- *                 Map.entry(&#34;terraform&#34;, &#34;true&#34;)
- *             ))
+ *             .metadata(Map.of(&#34;proxy-mode&#34;, &#34;service_account&#34;))
  *             .build());
  * 
  *     }
@@ -204,7 +201,6 @@ import javax.annotation.Nullable;
  *             .network(myNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -&gt; getSubnetworkResult.id()))
  *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
- *             .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
  *             .build());
  * 
  *     }

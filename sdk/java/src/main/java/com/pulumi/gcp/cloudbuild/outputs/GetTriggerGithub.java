@@ -12,12 +12,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGithub {
+    private String enterpriseConfigResourceName;
     private String name;
     private String owner;
     private List<GetTriggerGithubPullRequest> pullRequests;
     private List<GetTriggerGithubPush> pushes;
 
     private GetTriggerGithub() {}
+    public String enterpriseConfigResourceName() {
+        return this.enterpriseConfigResourceName;
+    }
     public String name() {
         return this.name;
     }
@@ -40,6 +44,7 @@ public final class GetTriggerGithub {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String enterpriseConfigResourceName;
         private String name;
         private String owner;
         private List<GetTriggerGithubPullRequest> pullRequests;
@@ -47,12 +52,18 @@ public final class GetTriggerGithub {
         public Builder() {}
         public Builder(GetTriggerGithub defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enterpriseConfigResourceName = defaults.enterpriseConfigResourceName;
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
     	      this.pullRequests = defaults.pullRequests;
     	      this.pushes = defaults.pushes;
         }
 
+        @CustomType.Setter
+        public Builder enterpriseConfigResourceName(String enterpriseConfigResourceName) {
+            this.enterpriseConfigResourceName = Objects.requireNonNull(enterpriseConfigResourceName);
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -81,6 +92,7 @@ public final class GetTriggerGithub {
         }
         public GetTriggerGithub build() {
             final var o = new GetTriggerGithub();
+            o.enterpriseConfigResourceName = enterpriseConfigResourceName;
             o.name = name;
             o.owner = owner;
             o.pullRequests = pullRequests;

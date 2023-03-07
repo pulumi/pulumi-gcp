@@ -129,14 +129,14 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alternativeNameServerConfig);
     }
     /**
-     * A textual description field. Defaults to &#39;Managed by Terraform&#39;.
+     * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A textual description field. Defaults to &#39;Managed by Terraform&#39;.
+     * @return A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
      * 
      */
     public Output<Optional<String>> description() {

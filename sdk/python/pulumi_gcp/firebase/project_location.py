@@ -107,7 +107,42 @@ class ProjectLocation(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
+        This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
+        locationId. This location must be one of the available GCP resource locations.
+        After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
+        The default GCP resource location for the specified FirebaseProject might already be set because either the
+        GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
+        specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
+        return a 409 error.
+
+        To get more information about ProjectLocation, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
+        ### Firebase Project Location Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            labels={
+                "firebase": "enabled",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        basic = gcp.firebase.ProjectLocation("basic",
+            project=default_firebase / project_project["project"],
+            location_id="us-central",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -135,7 +170,42 @@ class ProjectLocation(pulumi.CustomResource):
                  args: ProjectLocationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
+        This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
+        locationId. This location must be one of the available GCP resource locations.
+        After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
+        The default GCP resource location for the specified FirebaseProject might already be set because either the
+        GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
+        specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
+        return a 409 error.
+
+        To get more information about ProjectLocation, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         ## Example Usage
+        ### Firebase Project Location Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="tf-test",
+            org_id="123456789",
+            labels={
+                "firebase": "enabled",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_firebase_project_project = gcp.firebase.Project("defaultFirebase/projectProject", project=default_project.project_id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        basic = gcp.firebase.ProjectLocation("basic",
+            project=default_firebase / project_project["project"],
+            location_id="us-central",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

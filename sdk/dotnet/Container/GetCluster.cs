@@ -204,6 +204,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigResult> PrivateClusterConfigs;
         public readonly string PrivateIpv6GoogleAccess;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetClusterProtectConfigResult> ProtectConfigs;
         public readonly ImmutableArray<Outputs.GetClusterReleaseChannelResult> ReleaseChannels;
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
@@ -331,6 +332,8 @@ namespace Pulumi.Gcp.Container
 
             string? project,
 
+            ImmutableArray<Outputs.GetClusterProtectConfigResult> protectConfigs,
+
             ImmutableArray<Outputs.GetClusterReleaseChannelResult> releaseChannels,
 
             bool removeDefaultNodePool,
@@ -411,6 +414,7 @@ namespace Pulumi.Gcp.Container
             PrivateClusterConfigs = privateClusterConfigs;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             Project = project;
+            ProtectConfigs = protectConfigs;
             ReleaseChannels = releaseChannels;
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;

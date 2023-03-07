@@ -129,7 +129,7 @@ type ForwardingRule struct {
 	IsMirroringCollector pulumi.BoolPtrOutput `pulumi:"isMirroringCollector"`
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
 	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
@@ -302,7 +302,7 @@ type forwardingRuleState struct {
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
 	// Used internally during label updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
 	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
@@ -447,7 +447,7 @@ type ForwardingRuleState struct {
 	IsMirroringCollector pulumi.BoolPtrInput
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
 	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
@@ -592,7 +592,7 @@ type forwardingRuleArgs struct {
 	// can only be set to true for load balancers that have their
 	// loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
 	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
@@ -725,7 +725,7 @@ type ForwardingRuleArgs struct {
 	// can only be set to true for load balancers that have their
 	// loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolPtrInput
-	// Labels to apply to this rule.
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
 	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
@@ -974,7 +974,7 @@ func (o ForwardingRuleOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// Labels to apply to this rule.
+// Labels to apply to this forwarding rule.  A list of key->value pairs.
 func (o ForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

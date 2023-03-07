@@ -30,6 +30,42 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
+ * ### TPU Node Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.tpu.getTensorflowVersions({});
+ * const network = gcp.compute.getNetwork({
+ *     name: "default",
+ * });
+ * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: network.then(network => network.id),
+ * });
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ *     network: network.then(network => network.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [serviceRange.name],
+ * });
+ * const tpu = new gcp.tpu.Node("tpu", {
+ *     zone: "us-central1-b",
+ *     acceleratorType: "v3-8",
+ *     tensorflowVersion: available.then(available => available.versions?.[0]),
+ *     description: "Google Provider test TPU",
+ *     useServiceNetworking: true,
+ *     network: privateServiceConnection.network,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     schedulingConfig: {
+ *         preemptible: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -15,7 +15,74 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Contains the data that describes an Identity Aware Proxy owned client.
+ * 
+ * &gt; **Note:** Only internal org clients can be created via declarative tools. External clients must be
+ * manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+ * in this tool.
+ * 
+ * To get more information about Client, see:
+ * 
+ * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+ * * How-to Guides
+ *     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+ * 
+ * &gt; **Warning:** All arguments including `secret` will be stored in the raw
+ * state as plain-text.
+ * 
  * ## Example Usage
+ * ### Iap Client
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.iap.Brand;
+ * import com.pulumi.gcp.iap.BrandArgs;
+ * import com.pulumi.gcp.iap.Client;
+ * import com.pulumi.gcp.iap.ClientArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;tf-test&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var projectService = new Service(&#34;projectService&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;iap.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var projectBrand = new Brand(&#34;projectBrand&#34;, BrandArgs.builder()        
+ *             .supportEmail(&#34;support@example.com&#34;)
+ *             .applicationTitle(&#34;Cloud IAP protected Application&#34;)
+ *             .project(projectService.project())
+ *             .build());
+ * 
+ *         var projectClient = new Client(&#34;projectClient&#34;, ClientArgs.builder()        
+ *             .displayName(&#34;Test Client&#34;)
+ *             .brand(projectBrand.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

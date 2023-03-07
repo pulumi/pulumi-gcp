@@ -1580,14 +1580,14 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.labelFingerprint;
     }
     /**
-     * Labels to apply to this rule.
+     * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this rule.
+     * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

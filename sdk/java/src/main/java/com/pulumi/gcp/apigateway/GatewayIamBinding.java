@@ -17,6 +17,135 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
+ * 
+ * * `gcp.apigateway.GatewayIamPolicy`: Authoritative. Sets the IAM policy for the gateway and replaces any existing policy already attached.
+ * * `gcp.apigateway.GatewayIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the gateway are preserved.
+ * * `gcp.apigateway.GatewayIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the gateway are preserved.
+ * 
+ * &gt; **Note:** `gcp.apigateway.GatewayIamPolicy` **cannot** be used in conjunction with `gcp.apigateway.GatewayIamBinding` and `gcp.apigateway.GatewayIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.apigateway.GatewayIamBinding` resources **can be** used in conjunction with `gcp.apigateway.GatewayIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_api\_gateway\_gateway\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.apigateway.GatewayIamPolicy;
+ * import com.pulumi.gcp.apigateway.GatewayIamPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/apigateway.viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new GatewayIamPolicy(&#34;policy&#34;, GatewayIamPolicyArgs.builder()        
+ *             .project(google_api_gateway_gateway.api_gw().project())
+ *             .region(google_api_gateway_gateway.api_gw().region())
+ *             .gateway(google_api_gateway_gateway.api_gw().gateway_id())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_api\_gateway\_gateway\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.apigateway.GatewayIamBinding;
+ * import com.pulumi.gcp.apigateway.GatewayIamBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new GatewayIamBinding(&#34;binding&#34;, GatewayIamBindingArgs.builder()        
+ *             .project(google_api_gateway_gateway.api_gw().project())
+ *             .region(google_api_gateway_gateway.api_gw().region())
+ *             .gateway(google_api_gateway_gateway.api_gw().gateway_id())
+ *             .role(&#34;roles/apigateway.viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_api\_gateway\_gateway\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.apigateway.GatewayIamMember;
+ * import com.pulumi.gcp.apigateway.GatewayIamMemberArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new GatewayIamMember(&#34;member&#34;, GatewayIamMemberArgs.builder()        
+ *             .project(google_api_gateway_gateway.api_gw().project())
+ *             .region(google_api_gateway_gateway.api_gw().region())
+ *             .gateway(google_api_gateway_gateway.api_gw().gateway_id())
+ *             .role(&#34;roles/apigateway.viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{gateway}} * {{project}}/{{region}}/{{gateway}} * {{region}}/{{gateway}} * {{gateway}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

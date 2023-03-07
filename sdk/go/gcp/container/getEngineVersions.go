@@ -72,7 +72,13 @@ type GetEngineVersionsArgs struct {
 	Location *string `pulumi:"location"`
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
-	Project       *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// If provided, the provider will only return versions
+	// that match the string prefix. For example, `1.11.` will match all `1.11` series
+	// releases. Since this is just a string match, it's recommended that you append a
+	// `.` after minor versions to ensure that prefixes such as `1.1` don't match
+	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
+	// for full details on how version strings are formatted.
 	VersionPrefix *string `pulumi:"versionPrefix"`
 }
 
@@ -121,7 +127,13 @@ type GetEngineVersionsOutputArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
-	Project       pulumi.StringPtrInput `pulumi:"project"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// If provided, the provider will only return versions
+	// that match the string prefix. For example, `1.11.` will match all `1.11` series
+	// releases. Since this is just a string match, it's recommended that you append a
+	// `.` after minor versions to ensure that prefixes such as `1.1` don't match
+	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
+	// for full details on how version strings are formatted.
 	VersionPrefix pulumi.StringPtrInput `pulumi:"versionPrefix"`
 }
 

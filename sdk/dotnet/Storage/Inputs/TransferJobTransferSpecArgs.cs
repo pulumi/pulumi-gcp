@@ -61,6 +61,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecPosixDataSourceArgs>? PosixDataSource { get; set; }
 
         /// <summary>
+        /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        /// </summary>
+        [Input("sinkAgentPoolName")]
+        public Input<string>? SinkAgentPoolName { get; set; }
+
+        /// <summary>
+        /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        /// </summary>
+        [Input("sourceAgentPoolName")]
+        public Input<string>? SourceAgentPoolName { get; set; }
+
+        /// <summary>
         /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         [Input("transferOptions")]

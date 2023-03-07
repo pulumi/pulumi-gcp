@@ -46,6 +46,14 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecPosixDataSource? PosixDataSource;
         /// <summary>
+        /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        /// </summary>
+        public readonly string? SinkAgentPoolName;
+        /// <summary>
+        /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        /// </summary>
+        public readonly string? SourceAgentPoolName;
+        /// <summary>
         /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecTransferOptions? TransferOptions;
@@ -68,6 +76,10 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             Outputs.TransferJobTransferSpecPosixDataSource? posixDataSource,
 
+            string? sinkAgentPoolName,
+
+            string? sourceAgentPoolName,
+
             Outputs.TransferJobTransferSpecTransferOptions? transferOptions)
         {
             AwsS3DataSource = awsS3DataSource;
@@ -78,6 +90,8 @@ namespace Pulumi.Gcp.Storage.Outputs
             ObjectConditions = objectConditions;
             PosixDataSink = posixDataSink;
             PosixDataSource = posixDataSource;
+            SinkAgentPoolName = sinkAgentPoolName;
+            SourceAgentPoolName = sourceAgentPoolName;
             TransferOptions = transferOptions;
         }
     }

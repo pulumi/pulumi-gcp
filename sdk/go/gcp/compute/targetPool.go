@@ -57,9 +57,11 @@ type TargetPool struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-	// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-	// dependency on the instances from the target pool.
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use the
+	// interpolation to create a dependency on the instances from the
+	// target pool.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -118,9 +120,11 @@ type targetPoolState struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-	// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-	// dependency on the instances from the target pool.
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use the
+	// interpolation to create a dependency on the instances from the
+	// target pool.
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -151,9 +155,11 @@ type TargetPoolState struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks pulumi.StringPtrInput
-	// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-	// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-	// dependency on the instances from the target pool.
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use the
+	// interpolation to create a dependency on the instances from the
+	// target pool.
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -188,9 +194,11 @@ type targetPoolArgs struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-	// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-	// dependency on the instances from the target pool.
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use the
+	// interpolation to create a dependency on the instances from the
+	// target pool.
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -220,9 +228,11 @@ type TargetPoolArgs struct {
 	// List of zero or one health check name or self_link. Only
 	// legacy `compute.HttpHealthCheck` is supported.
 	HealthChecks pulumi.StringPtrInput
-	// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-	// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-	// dependency on the instances from the target pool.
+	// List of instances in the pool. They can be given as
+	// URLs, or in the form of "zone/name". Note that the instances need not exist
+	// at the time of target pool creation, so there is no need to use the
+	// interpolation to create a dependency on the instances from the
+	// target pool.
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
@@ -349,9 +359,11 @@ func (o TargetPoolOutput) HealthChecks() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.HealthChecks }).(pulumi.StringPtrOutput)
 }
 
-// List of instances in the pool. They can be given as URLs, or in the form of "zone/name". Note that the instances need
-// not exist at the time of target pool creation, so there is no need to use the Terraform interpolators to create a
-// dependency on the instances from the target pool.
+// List of instances in the pool. They can be given as
+// URLs, or in the form of "zone/name". Note that the instances need not exist
+// at the time of target pool creation, so there is no need to use the
+// interpolation to create a dependency on the instances from the
+// target pool.
 func (o TargetPoolOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }

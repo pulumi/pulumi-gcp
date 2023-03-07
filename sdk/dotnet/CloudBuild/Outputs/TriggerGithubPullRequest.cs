@@ -15,10 +15,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     {
         /// <summary>
         /// Regex of branches to match.
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         /// </summary>
         public readonly string Branch;
         /// <summary>
-        /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        /// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
         /// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         /// </summary>
         public readonly string? CommentControl;

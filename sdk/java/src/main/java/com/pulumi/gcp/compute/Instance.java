@@ -136,16 +136,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advancedMachineFeatures);
     }
     /**
-     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
+     * If true, allows this prvider to stop the instance to update its properties.
+     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
     @Export(name="allowStoppingForUpdate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowStoppingForUpdate;
 
     /**
-     * @return If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
-     * stopping the instance without setting this field, the update will fail.
+     * @return If true, allows this prvider to stop the instance to update its properties.
+     * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
     public Output<Optional<Boolean>> allowStoppingForUpdate() {
@@ -242,14 +242,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.currentStatus;
     }
     /**
-     * Whether deletion protection is enabled on this instance.
+     * Enable deletion protection on this instance. Defaults to false.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether deletion protection is enabled on this instance.
+     * @return Enable deletion protection on this instance. Defaults to false.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -302,14 +304,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableDisplay);
     }
     /**
-     * List of the type and count of accelerator cards attached to the instance.
+     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
+     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      * 
      */
     @Export(name="guestAccelerators", type=List.class, parameters={InstanceGuestAccelerator.class})
     private Output<List<InstanceGuestAccelerator>> guestAccelerators;
 
     /**
-     * @return List of the type and count of accelerator cards attached to the instance.
+     * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
+     * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      * 
      */
     public Output<List<InstanceGuestAccelerator>> guestAccelerators() {
@@ -424,14 +428,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.metadataFingerprint;
     }
     /**
-     * Metadata startup scripts made available within the instance.
+     * An alternative to using the
+     * startup-script metadata key, except this one forces the instance to be recreated
+     * (thus re-running the script) if it is changed. This replaces the startup-script
+     * metadata key on the created instance and thus the two mechanisms are not
+     * allowed to be used simultaneously.  Users are free to use either mechanism - the
+     * only distinction is that this separate attribute will cause a recreate on
+     * modification.  On import, `metadata_startup_script` will not be set - if you
+     * choose to specify it you will see a diff immediately after import causing a
+     * destroy/recreate operation. If importing an instance and specifying this value
+     * is desired, you will need to modify your state file.
      * 
      */
     @Export(name="metadataStartupScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> metadataStartupScript;
 
     /**
-     * @return Metadata startup scripts made available within the instance.
+     * @return An alternative to using the
+     * startup-script metadata key, except this one forces the instance to be recreated
+     * (thus re-running the script) if it is changed. This replaces the startup-script
+     * metadata key on the created instance and thus the two mechanisms are not
+     * allowed to be used simultaneously.  Users are free to use either mechanism - the
+     * only distinction is that this separate attribute will cause a recreate on
+     * modification.  On import, `metadata_startup_script` will not be set - if you
+     * choose to specify it you will see a diff immediately after import causing a
+     * destroy/recreate operation. If importing an instance and specifying this value
+     * is desired, you will need to modify your state file.
      * 
      */
     public Output<Optional<String>> metadataStartupScript() {

@@ -23,6 +23,125 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+ * the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+ * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
+ * 
+ * ## Example Usage
+ * ### Using A Separately Managed Node Pool (Recommended)
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.NodePool;
+ * import com.pulumi.gcp.container.NodePoolArgs;
+ * import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;service-account-id&#34;)
+ *             .displayName(&#34;Service Account&#34;)
+ *             .build());
+ * 
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .removeDefaultNodePool(true)
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var primaryPreemptibleNodes = new NodePool(&#34;primaryPreemptibleNodes&#34;, NodePoolArgs.builder()        
+ *             .cluster(primary.id())
+ *             .nodeCount(1)
+ *             .nodeConfig(NodePoolNodeConfigArgs.builder()
+ *                 .preemptible(true)
+ *                 .machineType(&#34;e2-medium&#34;)
+ *                 .serviceAccount(default_.email())
+ *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
+ * import com.pulumi.gcp.container.NodePool;
+ * import com.pulumi.gcp.container.NodePoolArgs;
+ * import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account(&#34;default&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;service-account-id&#34;)
+ *             .displayName(&#34;Service Account&#34;)
+ *             .build());
+ * 
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(3)
+ *             .nodeLocations(&#34;us-central1-c&#34;)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .serviceAccount(default_.email())
+ *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .guestAccelerators(ClusterNodeConfigGuestAcceleratorArgs.builder()
+ *                     .type(&#34;nvidia-tesla-k80&#34;)
+ *                     .count(1)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var np = new NodePool(&#34;np&#34;, NodePoolArgs.builder()        
+ *             .cluster(primary.id())
+ *             .nodeConfig(NodePoolNodeConfigArgs.builder()
+ *                 .machineType(&#34;e2-medium&#34;)
+ *                 .serviceAccount(default_.email())
+ *                 .oauthScopes(&#34;https://www.googleapis.com/auth/cloud-platform&#34;)
+ *                 .build())
+ *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
@@ -69,16 +188,26 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.cluster;
     }
     /**
-     * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      * 
      */
     @Export(name="initialNodeCount", type=Integer.class, parameters={})
     private Output<Integer> initialNodeCount;
 
     /**
-     * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone.
-     * Changing this will force recreation of the resource.
+     * @return The initial number of nodes for the pool. In
+     * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
+     * this will force recreation of the resource. WARNING: Resizing your node pool manually
+     * may change this value in your existing cluster, which will trigger destruction
+     * and recreation on the next provider run (to rectify the discrepancy).  If you don&#39;t
+     * need this value, don&#39;t set it.  If you do need it, you can use a lifecycle block to
+     * ignore subsqeuent changes to this field.
      * 
      */
     public Output<Integer> initialNodeCount() {
@@ -165,14 +294,16 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.maxPodsPerNode;
     }
     /**
-     * The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+     * The name of the node pool. If left blank, the provider will
+     * auto-generate a unique name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the node pool. If left blank, Terraform will auto-generate a unique name.
+     * @return The name of the node pool. If left blank, the provider will
+     * auto-generate a unique name.
      * 
      */
     public Output<String> name() {
@@ -319,22 +450,24 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.upgradeSettings;
     }
     /**
-     * The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-     * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-     * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-     * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-     * versions in a Terraform-compatible way.
+     * The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
-     * @return The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they
-     * will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version
-     * can be specified, it&#39;s recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy
-     * versions are used. See the google_container_engine_versions data source&#39;s version_prefix field to approximate fuzzy
-     * versions in a Terraform-compatible way.
+     * @return The Kubernetes version for the nodes in this pool. Note that if this field
+     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
+     * recommended that you specify explicit versions as the provider will see spurious diffs
+     * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
+     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     public Output<String> version() {

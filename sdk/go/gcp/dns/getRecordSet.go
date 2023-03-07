@@ -68,7 +68,8 @@ type LookupRecordSetArgs struct {
 	Name string `pulumi:"name"`
 	// The ID of the project for the Google Cloud.
 	Project *string `pulumi:"project"`
-	Type    string  `pulumi:"type"`
+	// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+	Type string `pulumi:"type"`
 }
 
 // A collection of values returned by getRecordSet.
@@ -106,7 +107,8 @@ type LookupRecordSetOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project for the Google Cloud.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Type    pulumi.StringInput    `pulumi:"type"`
+	// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (LookupRecordSetOutputArgs) ElementType() reflect.Type {

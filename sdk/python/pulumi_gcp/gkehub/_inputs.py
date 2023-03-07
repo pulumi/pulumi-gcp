@@ -650,6 +650,9 @@ class FeatureMembershipMeshArgs:
         :param pulumi.Input[str] management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
         if control_plane is not None:
+            warnings.warn("""Deprecated in favor of the `management` field""", DeprecationWarning)
+            pulumi.log.warn("""control_plane is deprecated: Deprecated in favor of the `management` field""")
+        if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
         if management is not None:
             pulumi.set(__self__, "management", management)

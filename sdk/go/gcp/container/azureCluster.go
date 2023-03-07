@@ -122,8 +122,10 @@ type AzureCluster struct {
 	Authorization AzureClusterAuthorizationOutput `pulumi:"authorization"`
 	// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
 	AzureRegion pulumi.StringOutput `pulumi:"azureRegion"`
+	// Azure authentication configuration for management of Azure resources
+	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrOutput `pulumi:"azureServicesAuthentication"`
 	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-	Client pulumi.StringOutput `pulumi:"client"`
+	Client pulumi.StringPtrOutput `pulumi:"client"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// Output only. The time at which this cluster was created.
@@ -175,9 +177,6 @@ func NewAzureCluster(ctx *pulumi.Context,
 	if args.AzureRegion == nil {
 		return nil, errors.New("invalid value for required argument 'AzureRegion'")
 	}
-	if args.Client == nil {
-		return nil, errors.New("invalid value for required argument 'Client'")
-	}
 	if args.ControlPlane == nil {
 		return nil, errors.New("invalid value for required argument 'ControlPlane'")
 	}
@@ -221,6 +220,8 @@ type azureClusterState struct {
 	Authorization *AzureClusterAuthorization `pulumi:"authorization"`
 	// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
 	AzureRegion *string `pulumi:"azureRegion"`
+	// Azure authentication configuration for management of Azure resources
+	AzureServicesAuthentication *AzureClusterAzureServicesAuthentication `pulumi:"azureServicesAuthentication"`
 	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client *string `pulumi:"client"`
 	// Configuration related to the cluster control plane.
@@ -268,6 +269,8 @@ type AzureClusterState struct {
 	Authorization AzureClusterAuthorizationPtrInput
 	// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
 	AzureRegion pulumi.StringPtrInput
+	// Azure authentication configuration for management of Azure resources
+	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrInput
 	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
 	Client pulumi.StringPtrInput
 	// Configuration related to the cluster control plane.
@@ -319,8 +322,10 @@ type azureClusterArgs struct {
 	Authorization AzureClusterAuthorization `pulumi:"authorization"`
 	// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
 	AzureRegion string `pulumi:"azureRegion"`
+	// Azure authentication configuration for management of Azure resources
+	AzureServicesAuthentication *AzureClusterAzureServicesAuthentication `pulumi:"azureServicesAuthentication"`
 	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-	Client string `pulumi:"client"`
+	Client *string `pulumi:"client"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlane `pulumi:"controlPlane"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -351,8 +356,10 @@ type AzureClusterArgs struct {
 	Authorization AzureClusterAuthorizationInput
 	// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
 	AzureRegion pulumi.StringInput
+	// Azure authentication configuration for management of Azure resources
+	AzureServicesAuthentication AzureClusterAzureServicesAuthenticationPtrInput
 	// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-	Client pulumi.StringInput
+	Client pulumi.StringPtrInput
 	// Configuration related to the cluster control plane.
 	ControlPlane AzureClusterControlPlaneInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -477,9 +484,16 @@ func (o AzureClusterOutput) AzureRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.AzureRegion }).(pulumi.StringOutput)
 }
 
+// Azure authentication configuration for management of Azure resources
+func (o AzureClusterOutput) AzureServicesAuthentication() AzureClusterAzureServicesAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AzureCluster) AzureClusterAzureServicesAuthenticationPtrOutput {
+		return v.AzureServicesAuthentication
+	}).(AzureClusterAzureServicesAuthenticationPtrOutput)
+}
+
 // Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-func (o AzureClusterOutput) Client() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Client }).(pulumi.StringOutput)
+func (o AzureClusterOutput) Client() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCluster) pulumi.StringPtrOutput { return v.Client }).(pulumi.StringPtrOutput)
 }
 
 // Configuration related to the cluster control plane.

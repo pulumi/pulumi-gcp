@@ -40,6 +40,11 @@ export const getDatabaseInstances: typeof import("./getDatabaseInstances").getDa
 export const getDatabaseInstancesOutput: typeof import("./getDatabaseInstances").getDatabaseInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseInstances","getDatabaseInstancesOutput"], () => require("./getDatabaseInstances"));
 
+export { GetDatabasesArgs, GetDatabasesResult, GetDatabasesOutputArgs } from "./getDatabases";
+export const getDatabases: typeof import("./getDatabases").getDatabases = null as any;
+export const getDatabasesOutput: typeof import("./getDatabases").getDatabasesOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabases","getDatabasesOutput"], () => require("./getDatabases"));
+
 export { SourceRepresentationInstanceArgs, SourceRepresentationInstanceState } from "./sourceRepresentationInstance";
 export type SourceRepresentationInstance = import("./sourceRepresentationInstance").SourceRepresentationInstance;
 export const SourceRepresentationInstance: typeof import("./sourceRepresentationInstance").SourceRepresentationInstance = null as any;

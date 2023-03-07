@@ -11,6 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The hmacKeys resource represents an HMAC key within Cloud Storage. The resource
+// consists of a secret and HMAC key metadata. HMAC keys can be used as credentials
+// for service accounts.
+//
+// To get more information about HmacKey, see:
+//
+// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
+//
+// > **Warning:** All arguments including the `secret` value will be stored in the raw
+// state as plain-text. On import, the `secret` value will not be retrieved.
+//
+// > **Warning:** All arguments including `secret` will be stored in the raw
+// state as plain-text.
+//
 // ## Example Usage
 // ### Storage Hmac Key
 //

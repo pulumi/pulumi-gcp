@@ -1436,8 +1436,6 @@ public final class MonitoringFunctions {
         return Deployment.getInstance().invokeAsync("gcp:monitoring/getNotificationChannel:getNotificationChannel", TypeShape.of(GetNotificationChannelResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1477,8 +1475,6 @@ public final class MonitoringFunctions {
         return getSecretVersion(args, InvokeOptions.Empty);
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1518,8 +1514,6 @@ public final class MonitoringFunctions {
         return getSecretVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1559,8 +1553,6 @@ public final class MonitoringFunctions {
         return Deployment.getInstance().invoke("gcp:monitoring/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get a Secret Manager secret&#39;s version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

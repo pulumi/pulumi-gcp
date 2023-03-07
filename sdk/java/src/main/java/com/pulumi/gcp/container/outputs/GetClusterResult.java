@@ -31,6 +31,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefault;
 import com.pulumi.gcp.container.outputs.GetClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
+import com.pulumi.gcp.container.outputs.GetClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
@@ -108,6 +109,7 @@ public final class GetClusterResult {
     private List<GetClusterPrivateClusterConfig> privateClusterConfigs;
     private String privateIpv6GoogleAccess;
     private @Nullable String project;
+    private List<GetClusterProtectConfig> protectConfigs;
     private List<GetClusterReleaseChannel> releaseChannels;
     private Boolean removeDefaultNodePool;
     private Map<String,String> resourceLabels;
@@ -294,6 +296,9 @@ public final class GetClusterResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetClusterProtectConfig> protectConfigs() {
+        return this.protectConfigs;
+    }
     public List<GetClusterReleaseChannel> releaseChannels() {
         return this.releaseChannels;
     }
@@ -396,6 +401,7 @@ public final class GetClusterResult {
         private List<GetClusterPrivateClusterConfig> privateClusterConfigs;
         private String privateIpv6GoogleAccess;
         private @Nullable String project;
+        private List<GetClusterProtectConfig> protectConfigs;
         private List<GetClusterReleaseChannel> releaseChannels;
         private Boolean removeDefaultNodePool;
         private Map<String,String> resourceLabels;
@@ -467,6 +473,7 @@ public final class GetClusterResult {
     	      this.privateClusterConfigs = defaults.privateClusterConfigs;
     	      this.privateIpv6GoogleAccess = defaults.privateIpv6GoogleAccess;
     	      this.project = defaults.project;
+    	      this.protectConfigs = defaults.protectConfigs;
     	      this.releaseChannels = defaults.releaseChannels;
     	      this.removeDefaultNodePool = defaults.removeDefaultNodePool;
     	      this.resourceLabels = defaults.resourceLabels;
@@ -846,6 +853,14 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder protectConfigs(List<GetClusterProtectConfig> protectConfigs) {
+            this.protectConfigs = Objects.requireNonNull(protectConfigs);
+            return this;
+        }
+        public Builder protectConfigs(GetClusterProtectConfig... protectConfigs) {
+            return protectConfigs(List.of(protectConfigs));
+        }
+        @CustomType.Setter
         public Builder releaseChannels(List<GetClusterReleaseChannel> releaseChannels) {
             this.releaseChannels = Objects.requireNonNull(releaseChannels);
             return this;
@@ -981,6 +996,7 @@ public final class GetClusterResult {
             o.privateClusterConfigs = privateClusterConfigs;
             o.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
             o.project = project;
+            o.protectConfigs = protectConfigs;
             o.releaseChannels = releaseChannels;
             o.removeDefaultNodePool = removeDefaultNodePool;
             o.resourceLabels = resourceLabels;

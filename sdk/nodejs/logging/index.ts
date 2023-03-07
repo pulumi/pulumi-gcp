@@ -40,6 +40,11 @@ export const getProjectCmekSettings: typeof import("./getProjectCmekSettings").g
 export const getProjectCmekSettingsOutput: typeof import("./getProjectCmekSettings").getProjectCmekSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectCmekSettings","getProjectCmekSettingsOutput"], () => require("./getProjectCmekSettings"));
 
+export { GetSinkArgs, GetSinkResult, GetSinkOutputArgs } from "./getSink";
+export const getSink: typeof import("./getSink").getSink = null as any;
+export const getSinkOutput: typeof import("./getSink").getSinkOutput = null as any;
+utilities.lazyLoad(exports, ["getSink","getSinkOutput"], () => require("./getSink"));
+
 export { LogViewArgs, LogViewState } from "./logView";
 export type LogView = import("./logView").LogView;
 export const LogView: typeof import("./logView").LogView = null as any;

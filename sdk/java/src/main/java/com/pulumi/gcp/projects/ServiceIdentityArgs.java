@@ -16,21 +16,6 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
     public static final ServiceIdentityArgs Empty = new ServiceIdentityArgs();
 
     /**
-     * The email address of the Google managed service account.
-     * 
-     */
-    @Import(name="email")
-    private @Nullable Output<String> email;
-
-    /**
-     * @return The email address of the Google managed service account.
-     * 
-     */
-    public Optional<Output<String>> email() {
-        return Optional.ofNullable(this.email);
-    }
-
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -65,7 +50,6 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
     private ServiceIdentityArgs() {}
 
     private ServiceIdentityArgs(ServiceIdentityArgs $) {
-        this.email = $.email;
         this.project = $.project;
         this.service = $.service;
     }
@@ -86,27 +70,6 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(ServiceIdentityArgs defaults) {
             $ = new ServiceIdentityArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param email The email address of the Google managed service account.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder email(@Nullable Output<String> email) {
-            $.email = email;
-            return this;
-        }
-
-        /**
-         * @param email The email address of the Google managed service account.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder email(String email) {
-            return email(Output.of(email));
         }
 
         /**

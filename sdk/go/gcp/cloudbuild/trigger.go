@@ -79,7 +79,7 @@ import (
 //				return err
 //			}
 //			cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("my-service-account"),
+//				AccountId: pulumi.String("tf-test-my-service-account"),
 //			})
 //			if err != nil {
 //				return err
@@ -427,6 +427,115 @@ import (
 //	}
 //
 // ```
+// ### Cloudbuild Trigger Bitbucket Server Push
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "bbs-push-trigger", &cloudbuild.TriggerArgs{
+//				BitbucketServerTriggerConfig: &cloudbuild.TriggerBitbucketServerTriggerConfigArgs{
+//					BitbucketServerConfigResource: pulumi.String("projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig"),
+//					ProjectKey:                    pulumi.String("STAG"),
+//					Push: &cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs{
+//						InvertRegex: pulumi.Bool(true),
+//						Tag:         pulumi.String("^0.1.*"),
+//					},
+//					RepoSlug: pulumi.String("terraform-provider-google"),
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Bitbucket Server Pull Request
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "bbs-pull-request-trigger", &cloudbuild.TriggerArgs{
+//				BitbucketServerTriggerConfig: &cloudbuild.TriggerBitbucketServerTriggerConfigArgs{
+//					BitbucketServerConfigResource: pulumi.String("projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig"),
+//					ProjectKey:                    pulumi.String("STAG"),
+//					PullRequest: &cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs{
+//						Branch:         pulumi.String(fmt.Sprintf("^master$")),
+//						CommentControl: pulumi.String("COMMENTS_ENABLED"),
+//						InvertRegex:    pulumi.Bool(false),
+//					},
+//					RepoSlug: pulumi.String("terraform-provider-google"),
+//				},
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Github Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "ghe-trigger", &cloudbuild.TriggerArgs{
+//				Filename: pulumi.String("cloudbuild.yaml"),
+//				Github: &cloudbuild.TriggerGithubArgs{
+//					EnterpriseConfigResourceName: pulumi.String("projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID"),
+//					Name:                         pulumi.String("terraform-provider-google"),
+//					Owner:                        pulumi.String("hashicorp"),
+//					Push: &cloudbuild.TriggerGithubPushArgs{
+//						Branch: pulumi.String(fmt.Sprintf("^main$")),
+//					},
+//				},
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -463,6 +572,9 @@ type Trigger struct {
 	// Any user with a Cloud Build Approver role for the project can approve a build.
 	// Structure is documented below.
 	ApprovalConfig TriggerApprovalConfigOutput `pulumi:"approvalConfig"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	// Structure is documented below.
+	BitbucketServerTriggerConfig TriggerBitbucketServerTriggerConfigPtrOutput `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrOutput `pulumi:"build"`
@@ -590,6 +702,9 @@ type triggerState struct {
 	// Any user with a Cloud Build Approver role for the project can approve a build.
 	// Structure is documented below.
 	ApprovalConfig *TriggerApprovalConfig `pulumi:"approvalConfig"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	// Structure is documented below.
+	BitbucketServerTriggerConfig *TriggerBitbucketServerTriggerConfig `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
@@ -689,6 +804,9 @@ type TriggerState struct {
 	// Any user with a Cloud Build Approver role for the project can approve a build.
 	// Structure is documented below.
 	ApprovalConfig TriggerApprovalConfigPtrInput
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	// Structure is documented below.
+	BitbucketServerTriggerConfig TriggerBitbucketServerTriggerConfigPtrInput
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrInput
@@ -792,6 +910,9 @@ type triggerArgs struct {
 	// Any user with a Cloud Build Approver role for the project can approve a build.
 	// Structure is documented below.
 	ApprovalConfig *TriggerApprovalConfig `pulumi:"approvalConfig"`
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	// Structure is documented below.
+	BitbucketServerTriggerConfig *TriggerBitbucketServerTriggerConfig `pulumi:"bitbucketServerTriggerConfig"`
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
@@ -888,6 +1009,9 @@ type TriggerArgs struct {
 	// Any user with a Cloud Build Approver role for the project can approve a build.
 	// Structure is documented below.
 	ApprovalConfig TriggerApprovalConfigPtrInput
+	// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+	// Structure is documented below.
+	BitbucketServerTriggerConfig TriggerBitbucketServerTriggerConfigPtrInput
 	// Contents of the build template. Either a filename or build template must be provided.
 	// Structure is documented below.
 	Build TriggerBuildPtrInput
@@ -1070,6 +1194,12 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 // Structure is documented below.
 func (o TriggerOutput) ApprovalConfig() TriggerApprovalConfigOutput {
 	return o.ApplyT(func(v *Trigger) TriggerApprovalConfigOutput { return v.ApprovalConfig }).(TriggerApprovalConfigOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+// Structure is documented below.
+func (o TriggerOutput) BitbucketServerTriggerConfig() TriggerBitbucketServerTriggerConfigPtrOutput {
+	return o.ApplyT(func(v *Trigger) TriggerBitbucketServerTriggerConfigPtrOutput { return v.BitbucketServerTriggerConfig }).(TriggerBitbucketServerTriggerConfigPtrOutput)
 }
 
 // Contents of the build template. Either a filename or build template must be provided.

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
+import com.pulumi.gcp.container.inputs.AzureClusterAzureServicesAuthenticationArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterLoggingConfigArgs;
@@ -67,6 +68,21 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> azureRegion() {
         return Optional.ofNullable(this.azureRegion);
+    }
+
+    /**
+     * Azure authentication configuration for management of Azure resources
+     * 
+     */
+    @Import(name="azureServicesAuthentication")
+    private @Nullable Output<AzureClusterAzureServicesAuthenticationArgs> azureServicesAuthentication;
+
+    /**
+     * @return Azure authentication configuration for management of Azure resources
+     * 
+     */
+    public Optional<Output<AzureClusterAzureServicesAuthenticationArgs>> azureServicesAuthentication() {
+        return Optional.ofNullable(this.azureServicesAuthentication);
     }
 
     /**
@@ -349,6 +365,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
         this.azureRegion = $.azureRegion;
+        this.azureServicesAuthentication = $.azureServicesAuthentication;
         this.client = $.client;
         this.controlPlane = $.controlPlane;
         this.createTime = $.createTime;
@@ -448,6 +465,27 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder azureRegion(String azureRegion) {
             return azureRegion(Output.of(azureRegion));
+        }
+
+        /**
+         * @param azureServicesAuthentication Azure authentication configuration for management of Azure resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureServicesAuthentication(@Nullable Output<AzureClusterAzureServicesAuthenticationArgs> azureServicesAuthentication) {
+            $.azureServicesAuthentication = azureServicesAuthentication;
+            return this;
+        }
+
+        /**
+         * @param azureServicesAuthentication Azure authentication configuration for management of Azure resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureServicesAuthentication(AzureClusterAzureServicesAuthenticationArgs azureServicesAuthentication) {
+            return azureServicesAuthentication(Output.of(azureServicesAuthentication));
         }
 
         /**

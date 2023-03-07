@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
  *     service: _default.then(_default => _default.serviceId),
  *     sloId: "ae-slo",
- *     displayName: "Terraform Test SLO for App Engine",
+ *     displayName: "Test SLO for App Engine",
  *     goal: 0.9,
  *     calendarPeriod: "DAY",
  *     basicSli: {
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * const requestBasedSlo = new gcp.monitoring.Slo("requestBasedSlo", {
  *     service: customsrv.serviceId,
  *     sloId: "consumed-api-slo",
- *     displayName: "Terraform Test SLO with request based SLI (good total ratio)",
+ *     displayName: "Test SLO with request based SLI (good total ratio)",
  *     goal: 0.9,
  *     rollingPeriodDays: 30,
  *     requestBasedSli: {

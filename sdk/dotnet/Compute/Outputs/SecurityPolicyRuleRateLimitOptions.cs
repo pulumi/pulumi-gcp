@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? EnforceOnKey;
         /// <summary>
+        /// ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> EnforceOnKeyConfigs;
+        /// <summary>
         /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>
         public readonly string? EnforceOnKeyName;
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? enforceOnKey,
 
+            ImmutableArray<Outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs,
+
             string? enforceOnKeyName,
 
             string exceedAction,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             BanThreshold = banThreshold;
             ConformAction = conformAction;
             EnforceOnKey = enforceOnKey;
+            EnforceOnKeyConfigs = enforceOnKeyConfigs;
             EnforceOnKeyName = enforceOnKeyName;
             ExceedAction = exceedAction;
             ExceedRedirectOptions = exceedRedirectOptions;

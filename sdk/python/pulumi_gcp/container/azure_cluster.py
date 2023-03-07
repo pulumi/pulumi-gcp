@@ -18,13 +18,14 @@ class AzureClusterArgs:
     def __init__(__self__, *,
                  authorization: pulumi.Input['AzureClusterAuthorizationArgs'],
                  azure_region: pulumi.Input[str],
-                 client: pulumi.Input[str],
                  control_plane: pulumi.Input['AzureClusterControlPlaneArgs'],
                  fleet: pulumi.Input['AzureClusterFleetArgs'],
                  location: pulumi.Input[str],
                  networking: pulumi.Input['AzureClusterNetworkingArgs'],
                  resource_group_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
+                 client: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['AzureClusterLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,13 +34,14 @@ class AzureClusterArgs:
         The set of arguments for constructing a AzureCluster resource.
         :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
@@ -49,7 +51,6 @@ class AzureClusterArgs:
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "azure_region", azure_region)
-        pulumi.set(__self__, "client", client)
         pulumi.set(__self__, "control_plane", control_plane)
         pulumi.set(__self__, "fleet", fleet)
         pulumi.set(__self__, "location", location)
@@ -57,6 +58,10 @@ class AzureClusterArgs:
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if azure_services_authentication is not None:
+            pulumi.set(__self__, "azure_services_authentication", azure_services_authentication)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logging_config is not None:
@@ -89,18 +94,6 @@ class AzureClusterArgs:
     @azure_region.setter
     def azure_region(self, value: pulumi.Input[str]):
         pulumi.set(self, "azure_region", value)
-
-    @property
-    @pulumi.getter
-    def client(self) -> pulumi.Input[str]:
-        """
-        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        """
-        return pulumi.get(self, "client")
-
-    @client.setter
-    def client(self, value: pulumi.Input[str]):
-        pulumi.set(self, "client", value)
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -175,6 +168,30 @@ class AzureClusterArgs:
         pulumi.set(self, "annotations", value)
 
     @property
+    @pulumi.getter(name="azureServicesAuthentication")
+    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]:
+        """
+        Azure authentication configuration for management of Azure resources
+        """
+        return pulumi.get(self, "azure_services_authentication")
+
+    @azure_services_authentication.setter
+    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]):
+        pulumi.set(self, "azure_services_authentication", value)
+
+    @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -231,6 +248,7 @@ class _AzureClusterState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input['AzureClusterAuthorizationArgs']] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
+                 azure_services_authentication: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input['AzureClusterControlPlaneArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -254,6 +272,7 @@ class _AzureClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['AzureClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input['AzureClusterControlPlaneArgs'] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
@@ -281,6 +300,8 @@ class _AzureClusterState:
             pulumi.set(__self__, "authorization", authorization)
         if azure_region is not None:
             pulumi.set(__self__, "azure_region", azure_region)
+        if azure_services_authentication is not None:
+            pulumi.set(__self__, "azure_services_authentication", azure_services_authentication)
         if client is not None:
             pulumi.set(__self__, "client", client)
         if control_plane is not None:
@@ -353,6 +374,18 @@ class _AzureClusterState:
     @azure_region.setter
     def azure_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "azure_region", value)
+
+    @property
+    @pulumi.getter(name="azureServicesAuthentication")
+    def azure_services_authentication(self) -> Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]:
+        """
+        Azure authentication configuration for management of Azure resources
+        """
+        return pulumi.get(self, "azure_services_authentication")
+
+    @azure_services_authentication.setter
+    def azure_services_authentication(self, value: Optional[pulumi.Input['AzureClusterAzureServicesAuthenticationArgs']]):
+        pulumi.set(self, "azure_services_authentication", value)
 
     @property
     @pulumi.getter
@@ -581,6 +614,7 @@ class AzureCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -660,6 +694,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -760,6 +795,7 @@ class AzureCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -786,8 +822,7 @@ class AzureCluster(pulumi.CustomResource):
             if azure_region is None and not opts.urn:
                 raise TypeError("Missing required property 'azure_region'")
             __props__.__dict__["azure_region"] = azure_region
-            if client is None and not opts.urn:
-                raise TypeError("Missing required property 'client'")
+            __props__.__dict__["azure_services_authentication"] = azure_services_authentication
             __props__.__dict__["client"] = client
             if control_plane is None and not opts.urn:
                 raise TypeError("Missing required property 'control_plane'")
@@ -829,6 +864,7 @@ class AzureCluster(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
             azure_region: Optional[pulumi.Input[str]] = None,
+            azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
             client: Optional[pulumi.Input[str]] = None,
             control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -857,6 +893,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
+        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
@@ -885,6 +922,7 @@ class AzureCluster(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["azure_region"] = azure_region
+        __props__.__dict__["azure_services_authentication"] = azure_services_authentication
         __props__.__dict__["client"] = client
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["create_time"] = create_time
@@ -930,8 +968,16 @@ class AzureCluster(pulumi.CustomResource):
         return pulumi.get(self, "azure_region")
 
     @property
+    @pulumi.getter(name="azureServicesAuthentication")
+    def azure_services_authentication(self) -> pulumi.Output[Optional['outputs.AzureClusterAzureServicesAuthentication']]:
+        """
+        Azure authentication configuration for management of Azure resources
+        """
+        return pulumi.get(self, "azure_services_authentication")
+
+    @property
     @pulumi.getter
-    def client(self) -> pulumi.Output[str]:
+    def client(self) -> pulumi.Output[Optional[str]]:
         """
         Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         """

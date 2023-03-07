@@ -12,6 +12,7 @@ from .folder_bucket_config import *
 from .folder_exclusion import *
 from .folder_sink import *
 from .get_project_cmek_settings import *
+from .get_sink import *
 from .log_view import *
 from .metric import *
 from .organization_bucket_config import *

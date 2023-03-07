@@ -25,6 +25,22 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _disks = value;
         }
 
+        [Input("externalIps")]
+        private InputList<Inputs.PerInstanceConfigPreservedStateExternalIpArgs>? _externalIps;
+        public InputList<Inputs.PerInstanceConfigPreservedStateExternalIpArgs> ExternalIps
+        {
+            get => _externalIps ?? (_externalIps = new InputList<Inputs.PerInstanceConfigPreservedStateExternalIpArgs>());
+            set => _externalIps = value;
+        }
+
+        [Input("internalIps")]
+        private InputList<Inputs.PerInstanceConfigPreservedStateInternalIpArgs>? _internalIps;
+        public InputList<Inputs.PerInstanceConfigPreservedStateInternalIpArgs> InternalIps
+        {
+            get => _internalIps ?? (_internalIps = new InputList<Inputs.PerInstanceConfigPreservedStateInternalIpArgs>());
+            set => _internalIps = value;
+        }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 

@@ -20,6 +20,7 @@ __all__ = [
     'TargetAnthosClusterArgs',
     'TargetExecutionConfigArgs',
     'TargetGkeArgs',
+    'TargetMultiTargetArgs',
     'TargetRunArgs',
 ]
 
@@ -404,6 +405,28 @@ class TargetGkeArgs:
     @internal_ip.setter
     def internal_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "internal_ip", value)
+
+
+@pulumi.input_type
+class TargetMultiTargetArgs:
+    def __init__(__self__, *,
+                 target_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ids: Required. The target_ids of this multiTarget.
+        """
+        pulumi.set(__self__, "target_ids", target_ids)
+
+    @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. The target_ids of this multiTarget.
+        """
+        return pulumi.get(self, "target_ids")
+
+    @target_ids.setter
+    def target_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_ids", value)
 
 
 @pulumi.input_type

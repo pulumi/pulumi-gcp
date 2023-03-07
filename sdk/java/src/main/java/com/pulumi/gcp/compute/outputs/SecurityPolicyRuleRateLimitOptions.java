@@ -5,10 +5,12 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsBanThreshold;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsRateLimitThreshold;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +40,11 @@ public final class SecurityPolicyRuleRateLimitOptions {
      * 
      */
     private @Nullable String enforceOnKey;
+    /**
+     * @return ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * 
+     */
+    private @Nullable List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs;
     /**
      * @return Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
      * 
@@ -93,6 +100,13 @@ public final class SecurityPolicyRuleRateLimitOptions {
         return Optional.ofNullable(this.enforceOnKey);
     }
     /**
+     * @return ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * 
+     */
+    public List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs() {
+        return this.enforceOnKeyConfigs == null ? List.of() : this.enforceOnKeyConfigs;
+    }
+    /**
      * @return Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
      * 
      */
@@ -135,6 +149,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
         private @Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold;
         private String conformAction;
         private @Nullable String enforceOnKey;
+        private @Nullable List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs;
         private @Nullable String enforceOnKeyName;
         private String exceedAction;
         private @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
@@ -146,6 +161,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
     	      this.banThreshold = defaults.banThreshold;
     	      this.conformAction = defaults.conformAction;
     	      this.enforceOnKey = defaults.enforceOnKey;
+    	      this.enforceOnKeyConfigs = defaults.enforceOnKeyConfigs;
     	      this.enforceOnKeyName = defaults.enforceOnKeyName;
     	      this.exceedAction = defaults.exceedAction;
     	      this.exceedRedirectOptions = defaults.exceedRedirectOptions;
@@ -173,6 +189,14 @@ public final class SecurityPolicyRuleRateLimitOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder enforceOnKeyConfigs(@Nullable List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs) {
+            this.enforceOnKeyConfigs = enforceOnKeyConfigs;
+            return this;
+        }
+        public Builder enforceOnKeyConfigs(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig... enforceOnKeyConfigs) {
+            return enforceOnKeyConfigs(List.of(enforceOnKeyConfigs));
+        }
+        @CustomType.Setter
         public Builder enforceOnKeyName(@Nullable String enforceOnKeyName) {
             this.enforceOnKeyName = enforceOnKeyName;
             return this;
@@ -198,6 +222,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
             o.banThreshold = banThreshold;
             o.conformAction = conformAction;
             o.enforceOnKey = enforceOnKey;
+            o.enforceOnKeyConfigs = enforceOnKeyConfigs;
             o.enforceOnKeyName = enforceOnKeyName;
             o.exceedAction = exceedAction;
             o.exceedRedirectOptions = exceedRedirectOptions;

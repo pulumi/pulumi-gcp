@@ -10,6 +10,230 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
+    /// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+    /// * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+    /// * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+    /// * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+    /// 
+    /// &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_organization\_iam\_policy
+    /// 
+    /// !&gt; **Warning:** New organizations have several default policies which will,
+    ///    without extreme caution, be **overwritten** by use of this resource.
+    ///    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+    ///    resources. This resource makes it easy to remove your own access to
+    ///    an organization, which will require a call to Google Support to have
+    ///    fixed, and can take multiple days to resolve.
+    /// 
+    ///    In general, this resource should only be used with organizations
+    ///    fully managed by this provider.I f you do use this resource,
+    ///    the best way to be sure that you are not making dangerous changes is to start
+    ///    by **importing** your existing policy, and examining the diff very closely.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     {
+    ///         OrgId = "your-organization-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                     Title = "expires_after_2019_12_31",
+    ///                 },
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Role = "roles/editor",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     {
+    ///         OrgId = "your-organization-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_organization\_iam\_binding
+    /// 
+    /// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         OrgId = "your-organization-id",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     {
+    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         OrgId = "your-organization-id",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_organization\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         Member = "user:jane@example.com",
+    ///         OrgId = "your-organization-id",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     {
+    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             Title = "expires_after_2019_12_31",
+    ///         },
+    ///         Member = "user:jane@example.com",
+    ///         OrgId = "your-organization-id",
+    ///         Role = "roles/editor",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_organization\_iam\_audit\_config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var organization = new Gcp.Organizations.IamAuditConfig("organization", new()
+    ///     {
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@hashicorp.com",
+    ///                 },
+    ///                 LogType = "DATA_READ",
+    ///             },
+    ///         },
+    ///         OrgId = "your-organization-id",
+    ///         Service = "allServices",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
