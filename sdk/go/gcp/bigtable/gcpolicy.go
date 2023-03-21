@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,8 +30,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -68,16 +66,7 @@ import (
 //				Table:          table.Name,
 //				ColumnFamily:   pulumi.String("name"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules: pulumi.String(fmt.Sprintf(`  {
-//	    "rules": [
-//	      {
-//	        "max_age": "168h"
-//	      }
-//	    ]
-//	  }
-//
-// `)),
-//
+//				GcRules:        pulumi.String("  {\n    \"rules\": [\n      {\n        \"max_age\": \"168h\"\n      }\n    ]\n  }\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -95,8 +84,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -109,20 +96,7 @@ import (
 //				Table:          pulumi.Any(google_bigtable_table.Table.Name),
 //				ColumnFamily:   pulumi.String("name"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules: pulumi.String(fmt.Sprintf(`  {
-//	    "mode": "union",
-//	    "rules": [
-//	      {
-//	        "max_age": "168h"
-//	      },
-//	      {
-//	        "max_version": 10
-//	      }
-//	    ]
-//	  }
-//
-// `)),
-//
+//				GcRules:        pulumi.String("  {\n    \"mode\": \"union\",\n    \"rules\": [\n      {\n        \"max_age\": \"168h\"\n      },\n      {\n        \"max_version\": 10\n      }\n    ]\n  }\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -138,8 +112,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -177,28 +149,7 @@ import (
 //				Table:          table.Name,
 //				ColumnFamily:   pulumi.String("cf1"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules: pulumi.String(fmt.Sprintf(`  {
-//	    "mode": "union",
-//	    "rules": [
-//	      {
-//	        "max_age": "10h"
-//	      },
-//	      {
-//	        "mode": "intersection",
-//	        "rules": [
-//	          {
-//	            "max_age": "2h"
-//	          },
-//	          {
-//	            "max_version": 2
-//	          }
-//	        ]
-//	      }
-//	    ]
-//	  }
-//
-// `)),
-//
+//				GcRules:        pulumi.String("  {\n    \"mode\": \"union\",\n    \"rules\": [\n      {\n        \"max_age\": \"10h\"\n      },\n      {\n        \"mode\": \"intersection\",\n        \"rules\": [\n          {\n            \"max_age\": \"2h\"\n          },\n          {\n            \"max_version\": 2\n          }\n        ]\n      }\n    ]\n  }\n"),
 //			})
 //			if err != nil {
 //				return err

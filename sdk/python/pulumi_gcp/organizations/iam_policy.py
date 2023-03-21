@@ -21,7 +21,7 @@ class IAMPolicyArgs:
         :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
                Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
                will not be inferred from the provider.
-        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
+        :param pulumi.Input[str] policy_data: The _organizations_get_iam_policy_ data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
         """
@@ -46,7 +46,7 @@ class IAMPolicyArgs:
     @pulumi.getter(name="policyData")
     def policy_data(self) -> pulumi.Input[str]:
         """
-        The `organizations.get_iam_policy` data source that represents
+        The _organizations_get_iam_policy_ data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
         """
@@ -69,7 +69,7 @@ class _IAMPolicyState:
         :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
                Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
                will not be inferred from the provider.
-        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
+        :param pulumi.Input[str] policy_data: The _organizations_get_iam_policy_ data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
         """
@@ -110,7 +110,7 @@ class _IAMPolicyState:
     @pulumi.getter(name="policyData")
     def policy_data(self) -> Optional[pulumi.Input[str]]:
         """
-        The `organizations.get_iam_policy` data source that represents
+        The _organizations_get_iam_policy_ data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
         """
@@ -313,7 +313,7 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
                Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
                will not be inferred from the provider.
-        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
+        :param pulumi.Input[str] policy_data: The _organizations_get_iam_policy_ data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
         """
@@ -559,7 +559,7 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
                Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
                will not be inferred from the provider.
-        :param pulumi.Input[str] policy_data: The `organizations.get_iam_policy` data source that represents
+        :param pulumi.Input[str] policy_data: The _organizations_get_iam_policy_ data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
         """
@@ -594,7 +594,7 @@ class IAMPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyData")
     def policy_data(self) -> pulumi.Output[str]:
         """
-        The `organizations.get_iam_policy` data source that represents
+        The _organizations_get_iam_policy_ data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
         """

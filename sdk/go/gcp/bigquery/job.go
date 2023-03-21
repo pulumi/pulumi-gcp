@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -230,26 +230,7 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          source_oneDataset.DatasetId,
 //				TableId:            pulumi.String("job_extract_table"),
-//				Schema: pulumi.String(fmt.Sprintf(`[
-//	  {
-//	    "name": "name",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
-//	  },
-//	  {
-//	    "name": "post_abbr",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE"
-//	  },
-//	  {
-//	    "name": "date",
-//	    "type": "DATE",
-//	    "mode": "NULLABLE"
-//	  }
-//
-// ]
-// `)),
-//
+//				Schema:             pulumi.String("[\n  {\n    \"name\": \"name\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\"\n  },\n  {\n    \"name\": \"post_abbr\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\"\n  },\n  {\n    \"name\": \"date\",\n    \"type\": \"DATE\",\n    \"mode\": \"NULLABLE\"\n  }\n]\n"),
 //			})
 //			if err != nil {
 //				return err

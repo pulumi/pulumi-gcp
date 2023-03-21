@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -103,7 +101,7 @@ import (
 //				},
 //				TransitionRoutes: diagflow.CxPageTransitionRouteArray{
 //					&diagflow.CxPageTransitionRouteArgs{
-//						Condition: pulumi.String(fmt.Sprintf("$page.params.status = 'FINAL'")),
+//						Condition: pulumi.String("$page.params.status = 'FINAL'"),
 //						TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
 //							Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{

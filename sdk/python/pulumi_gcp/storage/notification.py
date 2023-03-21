@@ -283,7 +283,7 @@ class Notification(pulumi.CustomResource):
         must exist and have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project.
         This service account is not created automatically when a project is created.
         To ensure the service account exists and obtain its email address for use in granting the correct IAM permission, use the
-        [`storage.get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
+        [_storage_get_project_service_account_](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
         datasource's `email_address` value, and see below for an example of enabling notifications by granting the correct IAM permission.
         See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 
@@ -356,7 +356,7 @@ class Notification(pulumi.CustomResource):
         must exist and have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project.
         This service account is not created automatically when a project is created.
         To ensure the service account exists and obtain its email address for use in granting the correct IAM permission, use the
-        [`storage.get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
+        [_storage_get_project_service_account_](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html)
         datasource's `email_address` value, and see below for an example of enabling notifications by granting the correct IAM permission.
         See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 

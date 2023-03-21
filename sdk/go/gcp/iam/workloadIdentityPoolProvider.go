@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -144,8 +144,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -169,7 +167,7 @@ import (
 //				AttributeMapping: pulumi.StringMap{
 //					"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
 //					"attribute.tid":                   pulumi.String("assertion.tid"),
-//					"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n")),
+//					"attribute.managed_identity_name": pulumi.String("      {\n        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n      }[assertion.oid]\n"),
 //				},
 //				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
 //					AllowedAudiences: pulumi.StringArray{

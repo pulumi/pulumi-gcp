@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -227,17 +227,7 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				TableId:            pulumi.String("example_table"),
 //				DatasetId:          testDataset.DatasetId,
-//				Schema: pulumi.String(fmt.Sprintf(`[
-//	  {
-//	    "name": "data",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "The data"
-//	  }
-//
-// ]
-// `)),
-//
+//				Schema:             pulumi.String("[\n  {\n    \"name\": \"data\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"The data\"\n  }\n]\n"),
 //			})
 //			if err != nil {
 //				return err

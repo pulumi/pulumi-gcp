@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  *     transitionRoutes: [{
- *         condition: `$page.params.status = 'FINAL'`,
+ *         condition: "$page.params.status = 'FINAL'",
  *         triggerFulfillment: {
  *             messages: [{
  *                 text: {

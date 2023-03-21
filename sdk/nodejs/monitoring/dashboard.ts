@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *           "dataSets": [{
  *             "timeSeriesQuery": {
  *               "timeSeriesFilter": {
- *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+ *                 "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
  *                 "aggregation": {
  *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  *           "dataSets": [{
  *             "timeSeriesQuery": {
  *               "timeSeriesFilter": {
- *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+ *                 "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
  *                 "aggregation": {
  *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }

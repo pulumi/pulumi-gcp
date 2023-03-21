@@ -156,13 +156,13 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.Project) {
+	if args.Project == nil {
 		args.Project = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string))
 	}
-	if isZero(args.Region) {
+	if args.Region == nil {
 		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string))
 	}
-	if isZero(args.Zone) {
+	if args.Zone == nil {
 		args.Zone = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string))
 	}
 	var resource Provider
