@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,8 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -46,7 +44,7 @@ import (
 //						Content: pulumi.String("\"example\""),
 //						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
 //							JsonMatcher: pulumi.String("EXACT_MATCH"),
-//							JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
+//							JsonPath:    pulumi.String("$.path"),
 //						},
 //						Matcher: pulumi.String("MATCHES_JSON_PATH"),
 //					},
@@ -83,8 +81,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -99,7 +95,7 @@ import (
 //						Content: pulumi.String("\"example\""),
 //						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
 //							JsonMatcher: pulumi.String("EXACT_MATCH"),
-//							JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
+//							JsonPath:    pulumi.String("$.path"),
 //						},
 //						Matcher: pulumi.String("MATCHES_JSON_PATH"),
 //					},
@@ -147,8 +143,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -162,7 +156,7 @@ import (
 //						Content: pulumi.String("example"),
 //						JsonPathMatcher: &monitoring.UptimeCheckConfigContentMatcherJsonPathMatcherArgs{
 //							JsonMatcher: pulumi.String("REGEX_MATCH"),
-//							JsonPath:    pulumi.String(fmt.Sprintf("$.path")),
+//							JsonPath:    pulumi.String("$.path"),
 //						},
 //						Matcher: pulumi.String("MATCHES_JSON_PATH"),
 //					},

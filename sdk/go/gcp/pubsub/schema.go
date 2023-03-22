@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -37,24 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
-//				Definition: pulumi.String(fmt.Sprintf(`{
-//	  "type" : "record",
-//	  "name" : "Avro",
-//	  "fields" : [
-//	    {
-//	      "name" : "StringField",
-//	      "type" : "string"
-//	    },
-//	    {
-//	      "name" : "IntField",
-//	      "type" : "int"
-//	    }
-//	  ]
-//	}
-//
-// `)),
-//
-//				Type: pulumi.String("AVRO"),
+//				Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n\n"),
+//				Type:       pulumi.String("AVRO"),
 //			})
 //			if err != nil {
 //				return err

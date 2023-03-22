@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -57,23 +55,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("default"),
 //				},
-//				Schema: pulumi.String(fmt.Sprintf(`[
-//	  {
-//	    "name": "permalink",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "The Permalink"
-//	  },
-//	  {
-//	    "name": "state",
-//	    "type": "STRING",
-//	    "mode": "NULLABLE",
-//	    "description": "State where the head office is located"
-//	  }
-//
-// ]
-// `)),
-//
+//				Schema: pulumi.String("[\n  {\n    \"name\": \"permalink\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"The Permalink\"\n  },\n  {\n    \"name\": \"state\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"State where the head office is located\"\n  }\n]\n"),
 //			})
 //			if err != nil {
 //				return err

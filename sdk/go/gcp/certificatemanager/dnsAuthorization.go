@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
 //				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String(fmt.Sprintf("%vrandom_suffix}.hashicorptest.com", "%{")),
+//				Domain:      pulumi.String("%{random_suffix}.hashicorptest.com"),
 //			})
 //			if err != nil {
 //				return err

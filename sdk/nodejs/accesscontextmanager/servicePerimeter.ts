@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  * });
  * const test_access = new gcp.accesscontextmanager.ServicePerimeter("test-access", {
  *     parent: `accessPolicies/${google_access_context_manager_access_policy["test-access"].name}`,
- *     title: `%s`,
+ *     title: "%s",
  *     perimeterType: "PERIMETER_TYPE_REGULAR",
  *     status: {
  *         restrictedServices: [

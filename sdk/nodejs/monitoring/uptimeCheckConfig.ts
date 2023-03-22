@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *         content: "\"example\"",
  *         jsonPathMatcher: {
  *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: `$.path`,
+ *             jsonPath: "$.path",
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *         content: "\"example\"",
  *         jsonPathMatcher: {
  *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: `$.path`,
+ *             jsonPath: "$.path",
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *         content: "example",
  *         jsonPathMatcher: {
  *             jsonMatcher: "REGEX_MATCH",
- *             jsonPath: `$.path`,
+ *             jsonPath: "$.path",
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],

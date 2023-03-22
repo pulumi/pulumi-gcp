@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
  *     description: "The default dnss",
- *     domain: `%{random_suffix}.hashicorptest.com`,
+ *     domain: "%{random_suffix}.hashicorptest.com",
  * });
  * export const recordNameToInsert = {
  *     "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],

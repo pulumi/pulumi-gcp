@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -195,7 +195,7 @@ import (
 //			}
 //			_, err = accesscontextmanager.NewServicePerimeter(ctx, "test-access", &accesscontextmanager.ServicePerimeterArgs{
 //				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", google_access_context_manager_access_policy.TestAccess.Name)),
-//				Title:         pulumi.String(fmt.Sprintf("%vs", "%")),
+//				Title:         pulumi.String("%s"),
 //				PerimeterType: pulumi.String("PERIMETER_TYPE_REGULAR"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
 //					RestrictedServices: pulumi.StringArray{

@@ -130,8 +130,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -145,7 +143,7 @@ import (
 //					Name:  pulumi.String("terraform-provider-google-beta"),
 //					Owner: pulumi.String("hashicorp"),
 //					Push: &cloudbuild.TriggerGithubPushArgs{
-//						Branch: pulumi.String(fmt.Sprintf("^main$")),
+//						Branch: pulumi.String("^main$"),
 //					},
 //				},
 //				IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
@@ -165,8 +163,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
@@ -198,7 +194,7 @@ import (
 //					RepoType: pulumi.String("GITHUB"),
 //				},
 //				Substitutions: pulumi.StringMap{
-//					"_ACTION": pulumi.String(fmt.Sprintf("$(body.message.data.action)")),
+//					"_ACTION": pulumi.String("$(body.message.data.action)"),
 //				},
 //				Filter: pulumi.String("_ACTION.matches('INSERT')"),
 //			})
@@ -469,8 +465,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -483,7 +477,7 @@ import (
 //					BitbucketServerConfigResource: pulumi.String("projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig"),
 //					ProjectKey:                    pulumi.String("STAG"),
 //					PullRequest: &cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs{
-//						Branch:         pulumi.String(fmt.Sprintf("^master$")),
+//						Branch:         pulumi.String("^master$"),
 //						CommentControl: pulumi.String("COMMENTS_ENABLED"),
 //						InvertRegex:    pulumi.Bool(false),
 //					},
@@ -507,8 +501,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -523,7 +515,7 @@ import (
 //					Name:                         pulumi.String("terraform-provider-google"),
 //					Owner:                        pulumi.String("hashicorp"),
 //					Push: &cloudbuild.TriggerGithubPushArgs{
-//						Branch: pulumi.String(fmt.Sprintf("^main$")),
+//						Branch: pulumi.String("^main$"),
 //					},
 //				},
 //				Location: pulumi.String("us-central1"),

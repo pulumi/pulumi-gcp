@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *         name: "terraform-provider-google-beta",
  *         owner: "hashicorp",
  *         push: {
- *             branch: `^main$`,
+ *             branch: "^main$",
  *         },
  *     },
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
@@ -113,7 +113,7 @@ import * as utilities from "../utilities";
  *         repoType: "GITHUB",
  *     },
  *     substitutions: {
- *         _ACTION: `$(body.message.data.action)`,
+ *         _ACTION: "$(body.message.data.action)",
  *     },
  *     filter: "_ACTION.matches('INSERT')",
  * });
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *         bitbucketServerConfigResource: "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
  *         projectKey: "STAG",
  *         pullRequest: {
- *             branch: `^master$`,
+ *             branch: "^master$",
  *             commentControl: "COMMENTS_ENABLED",
  *             invertRegex: false,
  *         },
@@ -303,7 +303,7 @@ import * as utilities from "../utilities";
  *         name: "terraform-provider-google",
  *         owner: "hashicorp",
  *         push: {
- *             branch: `^main$`,
+ *             branch: "^main$",
  *         },
  *     },
  *     location: "us-central1",
