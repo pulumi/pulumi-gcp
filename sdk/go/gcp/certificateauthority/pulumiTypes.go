@@ -11,9 +11,11 @@ import (
 )
 
 type AuthorityAccessUrl struct {
+	// (Output)
 	// The URL where this CertificateAuthority's CA certificate is published. This will only be
 	// set for CAs that have been activated.
 	CaCertificateAccessUrl *string `pulumi:"caCertificateAccessUrl"`
+	// (Output)
 	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
 	// CAs that have been activated.
 	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
@@ -31,9 +33,11 @@ type AuthorityAccessUrlInput interface {
 }
 
 type AuthorityAccessUrlArgs struct {
+	// (Output)
 	// The URL where this CertificateAuthority's CA certificate is published. This will only be
 	// set for CAs that have been activated.
 	CaCertificateAccessUrl pulumi.StringPtrInput `pulumi:"caCertificateAccessUrl"`
+	// (Output)
 	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
 	// CAs that have been activated.
 	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
@@ -90,12 +94,14 @@ func (o AuthorityAccessUrlOutput) ToAuthorityAccessUrlOutputWithContext(ctx cont
 	return o
 }
 
+// (Output)
 // The URL where this CertificateAuthority's CA certificate is published. This will only be
 // set for CAs that have been activated.
 func (o AuthorityAccessUrlOutput) CaCertificateAccessUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityAccessUrl) *string { return v.CaCertificateAccessUrl }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The URL where this CertificateAuthority's CRLs are published. This will only be set for
 // CAs that have been activated.
 func (o AuthorityAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
@@ -929,6 +935,9 @@ type AuthorityConfigX509Config struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage AuthorityConfigX509ConfigKeyUsage `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints *AuthorityConfigX509ConfigNameConstraints `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []AuthorityConfigX509ConfigPolicyId `pulumi:"policyIds"`
@@ -958,6 +967,9 @@ type AuthorityConfigX509ConfigArgs struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage AuthorityConfigX509ConfigKeyUsageInput `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints AuthorityConfigX509ConfigNameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds AuthorityConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
@@ -1066,6 +1078,12 @@ func (o AuthorityConfigX509ConfigOutput) KeyUsage() AuthorityConfigX509ConfigKey
 	return o.ApplyT(func(v AuthorityConfigX509Config) AuthorityConfigX509ConfigKeyUsage { return v.KeyUsage }).(AuthorityConfigX509ConfigKeyUsageOutput)
 }
 
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o AuthorityConfigX509ConfigOutput) NameConstraints() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyT(func(v AuthorityConfigX509Config) *AuthorityConfigX509ConfigNameConstraints { return v.NameConstraints }).(AuthorityConfigX509ConfigNameConstraintsPtrOutput)
+}
+
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o AuthorityConfigX509ConfigOutput) PolicyIds() AuthorityConfigX509ConfigPolicyIdArrayOutput {
@@ -1138,6 +1156,17 @@ func (o AuthorityConfigX509ConfigPtrOutput) KeyUsage() AuthorityConfigX509Config
 		}
 		return &v.KeyUsage
 	}).(AuthorityConfigX509ConfigKeyUsagePtrOutput)
+}
+
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o AuthorityConfigX509ConfigPtrOutput) NameConstraints() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509Config) *AuthorityConfigX509ConfigNameConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.NameConstraints
+	}).(AuthorityConfigX509ConfigNameConstraintsPtrOutput)
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -2349,6 +2378,391 @@ func (o AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
 		return vs[0].([]AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
 	}).(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type AuthorityConfigX509ConfigNameConstraints struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// AuthorityConfigX509ConfigNameConstraintsInput is an input type that accepts AuthorityConfigX509ConfigNameConstraintsArgs and AuthorityConfigX509ConfigNameConstraintsOutput values.
+// You can construct a concrete instance of `AuthorityConfigX509ConfigNameConstraintsInput` via:
+//
+//	AuthorityConfigX509ConfigNameConstraintsArgs{...}
+type AuthorityConfigX509ConfigNameConstraintsInput interface {
+	pulumi.Input
+
+	ToAuthorityConfigX509ConfigNameConstraintsOutput() AuthorityConfigX509ConfigNameConstraintsOutput
+	ToAuthorityConfigX509ConfigNameConstraintsOutputWithContext(context.Context) AuthorityConfigX509ConfigNameConstraintsOutput
+}
+
+type AuthorityConfigX509ConfigNameConstraintsArgs struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (AuthorityConfigX509ConfigNameConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (i AuthorityConfigX509ConfigNameConstraintsArgs) ToAuthorityConfigX509ConfigNameConstraintsOutput() AuthorityConfigX509ConfigNameConstraintsOutput {
+	return i.ToAuthorityConfigX509ConfigNameConstraintsOutputWithContext(context.Background())
+}
+
+func (i AuthorityConfigX509ConfigNameConstraintsArgs) ToAuthorityConfigX509ConfigNameConstraintsOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigNameConstraintsOutput)
+}
+
+func (i AuthorityConfigX509ConfigNameConstraintsArgs) ToAuthorityConfigX509ConfigNameConstraintsPtrOutput() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return i.ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorityConfigX509ConfigNameConstraintsArgs) ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigNameConstraintsOutput).ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx)
+}
+
+// AuthorityConfigX509ConfigNameConstraintsPtrInput is an input type that accepts AuthorityConfigX509ConfigNameConstraintsArgs, AuthorityConfigX509ConfigNameConstraintsPtr and AuthorityConfigX509ConfigNameConstraintsPtrOutput values.
+// You can construct a concrete instance of `AuthorityConfigX509ConfigNameConstraintsPtrInput` via:
+//
+//	        AuthorityConfigX509ConfigNameConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorityConfigX509ConfigNameConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityConfigX509ConfigNameConstraintsPtrOutput() AuthorityConfigX509ConfigNameConstraintsPtrOutput
+	ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Context) AuthorityConfigX509ConfigNameConstraintsPtrOutput
+}
+
+type authorityConfigX509ConfigNameConstraintsPtrType AuthorityConfigX509ConfigNameConstraintsArgs
+
+func AuthorityConfigX509ConfigNameConstraintsPtr(v *AuthorityConfigX509ConfigNameConstraintsArgs) AuthorityConfigX509ConfigNameConstraintsPtrInput {
+	return (*authorityConfigX509ConfigNameConstraintsPtrType)(v)
+}
+
+func (*authorityConfigX509ConfigNameConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (i *authorityConfigX509ConfigNameConstraintsPtrType) ToAuthorityConfigX509ConfigNameConstraintsPtrOutput() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return i.ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityConfigX509ConfigNameConstraintsPtrType) ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityConfigX509ConfigNameConstraintsPtrOutput)
+}
+
+type AuthorityConfigX509ConfigNameConstraintsOutput struct{ *pulumi.OutputState }
+
+func (AuthorityConfigX509ConfigNameConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ToAuthorityConfigX509ConfigNameConstraintsOutput() AuthorityConfigX509ConfigNameConstraintsOutput {
+	return o
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ToAuthorityConfigX509ConfigNameConstraintsOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsOutput {
+	return o
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ToAuthorityConfigX509ConfigNameConstraintsPtrOutput() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityConfigX509ConfigNameConstraints) *AuthorityConfigX509ConfigNameConstraints {
+		return &v
+	}).(AuthorityConfigX509ConfigNameConstraintsPtrOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o AuthorityConfigX509ConfigNameConstraintsOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorityConfigX509ConfigNameConstraints) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
+type AuthorityConfigX509ConfigNameConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorityConfigX509ConfigNameConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ToAuthorityConfigX509ConfigNameConstraintsPtrOutput() AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ToAuthorityConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) AuthorityConfigX509ConfigNameConstraintsPtrOutput {
+	return o
+}
+
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) Elem() AuthorityConfigX509ConfigNameConstraintsOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) AuthorityConfigX509ConfigNameConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityConfigX509ConfigNameConstraints
+		return ret
+	}).(AuthorityConfigX509ConfigNameConstraintsOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Critical
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o AuthorityConfigX509ConfigNameConstraintsPtrOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorityConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedUris
+	}).(pulumi.StringArrayOutput)
 }
 
 type AuthorityConfigX509ConfigPolicyId struct {
@@ -4120,6 +4534,9 @@ type CaPoolIssuancePolicyBaselineValues struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CaPoolIssuancePolicyBaselineValuesKeyUsage `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints *CaPoolIssuancePolicyBaselineValuesNameConstraints `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []CaPoolIssuancePolicyBaselineValuesPolicyId `pulumi:"policyIds"`
@@ -4149,6 +4566,9 @@ type CaPoolIssuancePolicyBaselineValuesArgs struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CaPoolIssuancePolicyBaselineValuesKeyUsageInput `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput `pulumi:"policyIds"`
@@ -4261,6 +4681,14 @@ func (o CaPoolIssuancePolicyBaselineValuesOutput) KeyUsage() CaPoolIssuancePolic
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageOutput)
 }
 
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyBaselineValuesOutput) NameConstraints() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValues) *CaPoolIssuancePolicyBaselineValuesNameConstraints {
+		return v.NameConstraints
+	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
+}
+
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o CaPoolIssuancePolicyBaselineValuesOutput) PolicyIds() CaPoolIssuancePolicyBaselineValuesPolicyIdArrayOutput {
@@ -4335,6 +4763,17 @@ func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) KeyUsage() CaPoolIssuancePo
 		}
 		return &v.KeyUsage
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsagePtrOutput)
+}
+
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) NameConstraints() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValues) *CaPoolIssuancePolicyBaselineValuesNameConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.NameConstraints
+	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -5546,6 +5985,391 @@ func (o CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayOu
 	}).(CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageOutput)
 }
 
+type CaPoolIssuancePolicyBaselineValuesNameConstraints struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// CaPoolIssuancePolicyBaselineValuesNameConstraintsInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs and CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesNameConstraintsInput` via:
+//
+//	CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs{...}
+type CaPoolIssuancePolicyBaselineValuesNameConstraintsInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput
+	ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutputWithContext(context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput
+}
+
+type CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesNameConstraints)(nil)).Elem()
+}
+
+func (i CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput {
+	return i.ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput)
+}
+
+func (i CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return i.ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput).ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(ctx)
+}
+
+// CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput is an input type that accepts CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs, CaPoolIssuancePolicyBaselineValuesNameConstraintsPtr and CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput values.
+// You can construct a concrete instance of `CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput` via:
+//
+//	        CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput
+	ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput
+}
+
+type caPoolIssuancePolicyBaselineValuesNameConstraintsPtrType CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs
+
+func CaPoolIssuancePolicyBaselineValuesNameConstraintsPtr(v *CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput {
+	return (*caPoolIssuancePolicyBaselineValuesNameConstraintsPtrType)(v)
+}
+
+func (*caPoolIssuancePolicyBaselineValuesNameConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolIssuancePolicyBaselineValuesNameConstraints)(nil)).Elem()
+}
+
+func (i *caPoolIssuancePolicyBaselineValuesNameConstraintsPtrType) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return i.ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *caPoolIssuancePolicyBaselineValuesNameConstraintsPtrType) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
+}
+
+type CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesNameConstraints)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o.ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolIssuancePolicyBaselineValuesNameConstraints) *CaPoolIssuancePolicyBaselineValuesNameConstraints {
+		return &v
+	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValuesNameConstraints) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
+type CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolIssuancePolicyBaselineValuesNameConstraints)(nil)).Elem()
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput() CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ToCaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutputWithContext(ctx context.Context) CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput {
+	return o
+}
+
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) Elem() CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) CaPoolIssuancePolicyBaselineValuesNameConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolIssuancePolicyBaselineValuesNameConstraints
+		return ret
+	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Critical
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValuesNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedUris
+	}).(pulumi.StringArrayOutput)
+}
+
 type CaPoolIssuancePolicyBaselineValuesPolicyId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
@@ -6211,31 +7035,38 @@ func (o CaPoolPublishingOptionsPtrOutput) PublishCrl() pulumi.BoolPtrOutput {
 }
 
 type CertificateCertificateDescription struct {
+	// (Output)
 	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 	AiaIssuingCertificateUrls []string `pulumi:"aiaIssuingCertificateUrls"`
+	// (Output)
 	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
 	// Structure is documented below.
 	AuthorityKeyIds []CertificateCertificateDescriptionAuthorityKeyId `pulumi:"authorityKeyIds"`
+	// (Output)
 	// The hash of the x.509 certificate.
 	// Structure is documented below.
 	CertFingerprints []CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprints"`
-	// (Deprecated)
+	// (Output, Deprecated)
 	// Describes some of the technical fields in a certificate.
 	// Structure is documented below.
 	//
 	// Deprecated: Deprecated in favor of `x509_description`.
 	ConfigValues []CertificateCertificateDescriptionConfigValue `pulumi:"configValues"`
+	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 	CrlDistributionPoints []string `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	PublicKeys []CertificateCertificateDescriptionPublicKey `pulumi:"publicKeys"`
+	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
 	// Structure is documented below.
 	SubjectDescriptions []CertificateCertificateDescriptionSubjectDescription `pulumi:"subjectDescriptions"`
+	// (Output)
 	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 	// Structure is documented below.
 	SubjectKeyIds []CertificateCertificateDescriptionSubjectKeyId `pulumi:"subjectKeyIds"`
+	// (Output)
 	// A structured description of the issued X.509 certificate.
 	// Structure is documented below.
 	X509Descriptions []CertificateCertificateDescriptionX509Description `pulumi:"x509Descriptions"`
@@ -6253,31 +7084,38 @@ type CertificateCertificateDescriptionInput interface {
 }
 
 type CertificateCertificateDescriptionArgs struct {
+	// (Output)
 	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
+	// (Output)
 	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
 	// Structure is documented below.
 	AuthorityKeyIds CertificateCertificateDescriptionAuthorityKeyIdArrayInput `pulumi:"authorityKeyIds"`
+	// (Output)
 	// The hash of the x.509 certificate.
 	// Structure is documented below.
 	CertFingerprints CertificateCertificateDescriptionCertFingerprintArrayInput `pulumi:"certFingerprints"`
-	// (Deprecated)
+	// (Output, Deprecated)
 	// Describes some of the technical fields in a certificate.
 	// Structure is documented below.
 	//
 	// Deprecated: Deprecated in favor of `x509_description`.
 	ConfigValues CertificateCertificateDescriptionConfigValueArrayInput `pulumi:"configValues"`
+	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	PublicKeys CertificateCertificateDescriptionPublicKeyArrayInput `pulumi:"publicKeys"`
+	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
 	// Structure is documented below.
 	SubjectDescriptions CertificateCertificateDescriptionSubjectDescriptionArrayInput `pulumi:"subjectDescriptions"`
+	// (Output)
 	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 	// Structure is documented below.
 	SubjectKeyIds CertificateCertificateDescriptionSubjectKeyIdArrayInput `pulumi:"subjectKeyIds"`
+	// (Output)
 	// A structured description of the issued X.509 certificate.
 	// Structure is documented below.
 	X509Descriptions CertificateCertificateDescriptionX509DescriptionArrayInput `pulumi:"x509Descriptions"`
@@ -6334,11 +7172,13 @@ func (o CertificateCertificateDescriptionOutput) ToCertificateCertificateDescrip
 	return o
 }
 
+// (Output)
 // Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 func (o CertificateCertificateDescriptionOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.AiaIssuingCertificateUrls }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) AuthorityKeyIds() CertificateCertificateDescriptionAuthorityKeyIdArrayOutput {
@@ -6347,6 +7187,7 @@ func (o CertificateCertificateDescriptionOutput) AuthorityKeyIds() CertificateCe
 	}).(CertificateCertificateDescriptionAuthorityKeyIdArrayOutput)
 }
 
+// (Output)
 // The hash of the x.509 certificate.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateCertificateDescriptionCertFingerprintArrayOutput {
@@ -6355,7 +7196,7 @@ func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateC
 	}).(CertificateCertificateDescriptionCertFingerprintArrayOutput)
 }
 
-// (Deprecated)
+// (Output, Deprecated)
 // Describes some of the technical fields in a certificate.
 // Structure is documented below.
 //
@@ -6366,6 +7207,7 @@ func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCerti
 	}).(CertificateCertificateDescriptionConfigValueArrayOutput)
 }
 
+// (Output)
 // Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.CrlDistributionPoints }).(pulumi.StringArrayOutput)
@@ -6379,6 +7221,7 @@ func (o CertificateCertificateDescriptionOutput) PublicKeys() CertificateCertifi
 	}).(CertificateCertificateDescriptionPublicKeyArrayOutput)
 }
 
+// (Output)
 // Describes some of the values in a certificate that are related to the subject and lifetime.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) SubjectDescriptions() CertificateCertificateDescriptionSubjectDescriptionArrayOutput {
@@ -6387,6 +7230,7 @@ func (o CertificateCertificateDescriptionOutput) SubjectDescriptions() Certifica
 	}).(CertificateCertificateDescriptionSubjectDescriptionArrayOutput)
 }
 
+// (Output)
 // Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) SubjectKeyIds() CertificateCertificateDescriptionSubjectKeyIdArrayOutput {
@@ -6395,6 +7239,7 @@ func (o CertificateCertificateDescriptionOutput) SubjectKeyIds() CertificateCert
 	}).(CertificateCertificateDescriptionSubjectKeyIdArrayOutput)
 }
 
+// (Output)
 // A structured description of the issued X.509 certificate.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) X509Descriptions() CertificateCertificateDescriptionX509DescriptionArrayOutput {
@@ -6424,6 +7269,7 @@ func (o CertificateCertificateDescriptionArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type CertificateCertificateDescriptionAuthorityKeyId struct {
+	// (Output)
 	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId *string `pulumi:"keyId"`
 }
@@ -6440,6 +7286,7 @@ type CertificateCertificateDescriptionAuthorityKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionAuthorityKeyIdArgs struct {
+	// (Output)
 	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
@@ -6495,6 +7342,7 @@ func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCert
 	return o
 }
 
+// (Output)
 // Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionAuthorityKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
@@ -6521,6 +7369,7 @@ func (o CertificateCertificateDescriptionAuthorityKeyIdArrayOutput) Index(i pulu
 }
 
 type CertificateCertificateDescriptionCertFingerprint struct {
+	// (Output)
 	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 	Sha256Hash *string `pulumi:"sha256Hash"`
 }
@@ -6537,6 +7386,7 @@ type CertificateCertificateDescriptionCertFingerprintInput interface {
 }
 
 type CertificateCertificateDescriptionCertFingerprintArgs struct {
+	// (Output)
 	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 	Sha256Hash pulumi.StringPtrInput `pulumi:"sha256Hash"`
 }
@@ -6592,6 +7442,7 @@ func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCer
 	return o
 }
 
+// (Output)
 // The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 func (o CertificateCertificateDescriptionCertFingerprintOutput) Sha256Hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionCertFingerprint) *string { return v.Sha256Hash }).(pulumi.StringPtrOutput)
@@ -6850,6 +7701,7 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageArrayOutput) Index(i
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage struct {
+	// (Output)
 	// Describes high-level ways in which a key may be used.
 	// Structure is documented below.
 	KeyUsageOptions []CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption `pulumi:"keyUsageOptions"`
@@ -6867,6 +7719,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageInput inter
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs struct {
+	// (Output)
 	// Describes high-level ways in which a key may be used.
 	// Structure is documented below.
 	KeyUsageOptions CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayInput `pulumi:"keyUsageOptions"`
@@ -6923,6 +7776,7 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageOutput) 
 	return o
 }
 
+// (Output)
 // Describes high-level ways in which a key may be used.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageOutput) KeyUsageOptions() CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayOutput {
@@ -7293,6 +8147,7 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArra
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage struct {
+	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
 	// Structure is documented below.
 	ObectIds []CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId `pulumi:"obectIds"`
@@ -7310,6 +8165,7 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs struct {
+	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
 	// Structure is documented below.
 	ObectIds CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayInput `pulumi:"obectIds"`
@@ -7366,6 +8222,7 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 	return o
 }
 
+// (Output)
 // Required. Describes how some of the technical fields in a certificate should be populated.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageOutput) ObectIds() CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayOutput {
@@ -7615,14 +8472,17 @@ func (o CertificateCertificateDescriptionPublicKeyArrayOutput) Index(i pulumi.In
 }
 
 type CertificateCertificateDescriptionSubjectDescription struct {
+	// (Output)
 	// The serial number encoded in lowercase hexadecimal.
 	HexSerialNumber *string `pulumi:"hexSerialNumber"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime *string `pulumi:"lifetime"`
+	// (Output)
 	// The time at which the certificate expires.
 	NotAfterTime *string `pulumi:"notAfterTime"`
+	// (Output)
 	// The time at which the certificate becomes valid.
 	NotBeforeTime *string `pulumi:"notBeforeTime"`
 	// The subject alternative name fields.
@@ -7645,14 +8505,17 @@ type CertificateCertificateDescriptionSubjectDescriptionInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionArgs struct {
+	// (Output)
 	// The serial number encoded in lowercase hexadecimal.
 	HexSerialNumber pulumi.StringPtrInput `pulumi:"hexSerialNumber"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
 	Lifetime pulumi.StringPtrInput `pulumi:"lifetime"`
+	// (Output)
 	// The time at which the certificate expires.
 	NotAfterTime pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	// (Output)
 	// The time at which the certificate becomes valid.
 	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
 	// The subject alternative name fields.
@@ -7714,6 +8577,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificate
 	return o
 }
 
+// (Output)
 // The serial number encoded in lowercase hexadecimal.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) HexSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.HexSerialNumber }).(pulumi.StringPtrOutput)
@@ -7726,11 +8590,13 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) Lifetime() pu
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.Lifetime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time at which the certificate expires.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotAfterTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotAfterTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time at which the certificate becomes valid.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotBeforeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
@@ -7935,6 +8801,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectArrayOutput) I
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltName struct {
+	// (Output)
 	// Contains additional subject alternative name values.
 	// Structure is documented below.
 	CustomSans []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan `pulumi:"customSans"`
@@ -7960,6 +8827,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput inte
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs struct {
+	// (Output)
 	// Contains additional subject alternative name values.
 	// Structure is documented below.
 	CustomSans CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput `pulumi:"customSans"`
@@ -8024,6 +8892,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput)
 	return o
 }
 
+// (Output)
 // Contains additional subject alternative name values.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) CustomSans() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
@@ -8079,7 +8948,10 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOu
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
+	// (Required)
+	// Indicates whether or not the name constraints are marked critical.
 	Critical *bool `pulumi:"critical"`
+	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
 	// Structure is documented below.
 	ObectIds []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId `pulumi:"obectIds"`
@@ -8101,7 +8973,10 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanI
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
+	// (Required)
+	// Indicates whether or not the name constraints are marked critical.
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// (Output)
 	// Required. Describes how some of the technical fields in a certificate should be populated.
 	// Structure is documented below.
 	ObectIds CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput `pulumi:"obectIds"`
@@ -8162,12 +9037,15 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 // Indicates whether or not this extension is critical (i.e., if the client does not know how to
 // handle this extension, the client should consider this to be an error).
+// (Required)
+// Indicates whether or not the name constraints are marked critical.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) *bool {
 		return v.Critical
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Required. Describes how some of the technical fields in a certificate should be populated.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ObectIds() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayOutput {
@@ -8315,6 +9193,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 type CertificateCertificateDescriptionSubjectKeyId struct {
+	// (Output)
 	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId *string `pulumi:"keyId"`
 }
@@ -8331,6 +9210,7 @@ type CertificateCertificateDescriptionSubjectKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectKeyIdArgs struct {
+	// (Output)
 	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
@@ -8386,6 +9266,7 @@ func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertif
 	return o
 }
 
+// (Output)
 // Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o CertificateCertificateDescriptionSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
@@ -8424,6 +9305,9 @@ type CertificateCertificateDescriptionX509Description struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsages []CertificateCertificateDescriptionX509DescriptionKeyUsage `pulumi:"keyUsages"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints []CertificateCertificateDescriptionX509DescriptionNameConstraint `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []CertificateCertificateDescriptionX509DescriptionPolicyId `pulumi:"policyIds"`
@@ -8453,6 +9337,9 @@ type CertificateCertificateDescriptionX509DescriptionArgs struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsages CertificateCertificateDescriptionX509DescriptionKeyUsageArrayInput `pulumi:"keyUsages"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput `pulumi:"policyIds"`
@@ -8537,6 +9424,14 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) KeyUsages() Cert
 	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionKeyUsage {
 		return v.KeyUsages
 	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageArrayOutput)
+}
+
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionX509DescriptionOutput) NameConstraints() CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionNameConstraint {
+		return v.NameConstraints
+	}).(CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput)
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -9462,6 +10357,261 @@ func (o CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedK
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage {
 		return vs[0].([]CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
 	}).(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionNameConstraint struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical *bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// CertificateCertificateDescriptionX509DescriptionNameConstraintInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionNameConstraintArgs and CertificateCertificateDescriptionX509DescriptionNameConstraintOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionNameConstraintInput` via:
+//
+//	CertificateCertificateDescriptionX509DescriptionNameConstraintArgs{...}
+type CertificateCertificateDescriptionX509DescriptionNameConstraintInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintOutput
+	ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionNameConstraintArgs struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (CertificateCertificateDescriptionX509DescriptionNameConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionNameConstraint)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionNameConstraintArgs) ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionNameConstraintArgs) ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionNameConstraintOutput)
+}
+
+// CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput is an input type that accepts CertificateCertificateDescriptionX509DescriptionNameConstraintArray and CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput` via:
+//
+//	CertificateCertificateDescriptionX509DescriptionNameConstraintArray{ CertificateCertificateDescriptionX509DescriptionNameConstraintArgs{...} }
+type CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput
+	ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutputWithContext(context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput
+}
+
+type CertificateCertificateDescriptionX509DescriptionNameConstraintArray []CertificateCertificateDescriptionX509DescriptionNameConstraintInput
+
+func (CertificateCertificateDescriptionX509DescriptionNameConstraintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionNameConstraint)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionNameConstraintArray) ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
+	return i.ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionX509DescriptionNameConstraintArray) ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionNameConstraintOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionNameConstraint)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ToCertificateCertificateDescriptionX509DescriptionNameConstraintOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintOutput {
+	return o
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.ExcludedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.ExcludedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.ExcludedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.PermittedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.PermittedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.PermittedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionX509DescriptionNameConstraint) []string {
+		return v.PermittedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+type CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionX509DescriptionNameConstraint)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput) ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput() CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput) ToCertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionX509DescriptionNameConstraintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionX509DescriptionNameConstraint {
+		return vs[0].([]CertificateCertificateDescriptionX509DescriptionNameConstraint)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionX509DescriptionNameConstraintOutput)
 }
 
 type CertificateCertificateDescriptionX509DescriptionPolicyId struct {
@@ -10551,6 +11701,9 @@ type CertificateConfigX509Config struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CertificateConfigX509ConfigKeyUsage `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints *CertificateConfigX509ConfigNameConstraints `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds []CertificateConfigX509ConfigPolicyId `pulumi:"policyIds"`
@@ -10580,6 +11733,9 @@ type CertificateConfigX509ConfigArgs struct {
 	// Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CertificateConfigX509ConfigKeyUsageInput `pulumi:"keyUsage"`
+	// Describes the X.509 name constraints extension.
+	// Structure is documented below.
+	NameConstraints CertificateConfigX509ConfigNameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	// Structure is documented below.
 	PolicyIds CertificateConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
@@ -10688,6 +11844,14 @@ func (o CertificateConfigX509ConfigOutput) KeyUsage() CertificateConfigX509Confi
 	return o.ApplyT(func(v CertificateConfigX509Config) CertificateConfigX509ConfigKeyUsage { return v.KeyUsage }).(CertificateConfigX509ConfigKeyUsageOutput)
 }
 
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o CertificateConfigX509ConfigOutput) NameConstraints() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyT(func(v CertificateConfigX509Config) *CertificateConfigX509ConfigNameConstraints {
+		return v.NameConstraints
+	}).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
+}
+
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) PolicyIds() CertificateConfigX509ConfigPolicyIdArrayOutput {
@@ -10760,6 +11924,17 @@ func (o CertificateConfigX509ConfigPtrOutput) KeyUsage() CertificateConfigX509Co
 		}
 		return &v.KeyUsage
 	}).(CertificateConfigX509ConfigKeyUsagePtrOutput)
+}
+
+// Describes the X.509 name constraints extension.
+// Structure is documented below.
+func (o CertificateConfigX509ConfigPtrOutput) NameConstraints() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigX509Config) *CertificateConfigX509ConfigNameConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.NameConstraints
+	}).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
 }
 
 // Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -11969,6 +13144,391 @@ func (o CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) I
 	}).(CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput)
 }
 
+type CertificateConfigX509ConfigNameConstraints struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// CertificateConfigX509ConfigNameConstraintsInput is an input type that accepts CertificateConfigX509ConfigNameConstraintsArgs and CertificateConfigX509ConfigNameConstraintsOutput values.
+// You can construct a concrete instance of `CertificateConfigX509ConfigNameConstraintsInput` via:
+//
+//	CertificateConfigX509ConfigNameConstraintsArgs{...}
+type CertificateConfigX509ConfigNameConstraintsInput interface {
+	pulumi.Input
+
+	ToCertificateConfigX509ConfigNameConstraintsOutput() CertificateConfigX509ConfigNameConstraintsOutput
+	ToCertificateConfigX509ConfigNameConstraintsOutputWithContext(context.Context) CertificateConfigX509ConfigNameConstraintsOutput
+}
+
+type CertificateConfigX509ConfigNameConstraintsArgs struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+	// would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. `.example.com`) to indicate
+	// all email addresses in that domain.
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like `.example.com`)
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (CertificateConfigX509ConfigNameConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (i CertificateConfigX509ConfigNameConstraintsArgs) ToCertificateConfigX509ConfigNameConstraintsOutput() CertificateConfigX509ConfigNameConstraintsOutput {
+	return i.ToCertificateConfigX509ConfigNameConstraintsOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigX509ConfigNameConstraintsArgs) ToCertificateConfigX509ConfigNameConstraintsOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigX509ConfigNameConstraintsOutput)
+}
+
+func (i CertificateConfigX509ConfigNameConstraintsArgs) ToCertificateConfigX509ConfigNameConstraintsPtrOutput() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return i.ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigX509ConfigNameConstraintsArgs) ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigX509ConfigNameConstraintsOutput).ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigX509ConfigNameConstraintsPtrInput is an input type that accepts CertificateConfigX509ConfigNameConstraintsArgs, CertificateConfigX509ConfigNameConstraintsPtr and CertificateConfigX509ConfigNameConstraintsPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigX509ConfigNameConstraintsPtrInput` via:
+//
+//	        CertificateConfigX509ConfigNameConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateConfigX509ConfigNameConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigX509ConfigNameConstraintsPtrOutput() CertificateConfigX509ConfigNameConstraintsPtrOutput
+	ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Context) CertificateConfigX509ConfigNameConstraintsPtrOutput
+}
+
+type certificateConfigX509ConfigNameConstraintsPtrType CertificateConfigX509ConfigNameConstraintsArgs
+
+func CertificateConfigX509ConfigNameConstraintsPtr(v *CertificateConfigX509ConfigNameConstraintsArgs) CertificateConfigX509ConfigNameConstraintsPtrInput {
+	return (*certificateConfigX509ConfigNameConstraintsPtrType)(v)
+}
+
+func (*certificateConfigX509ConfigNameConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (i *certificateConfigX509ConfigNameConstraintsPtrType) ToCertificateConfigX509ConfigNameConstraintsPtrOutput() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return i.ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigX509ConfigNameConstraintsPtrType) ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
+}
+
+type CertificateConfigX509ConfigNameConstraintsOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigX509ConfigNameConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ToCertificateConfigX509ConfigNameConstraintsOutput() CertificateConfigX509ConfigNameConstraintsOutput {
+	return o
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ToCertificateConfigX509ConfigNameConstraintsOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsOutput {
+	return o
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ToCertificateConfigX509ConfigNameConstraintsPtrOutput() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigX509ConfigNameConstraints) *CertificateConfigX509ConfigNameConstraints {
+		return &v
+	}).(CertificateConfigX509ConfigNameConstraintsPtrOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateConfigX509ConfigNameConstraintsOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateConfigX509ConfigNameConstraintsOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateConfigX509ConfigNameConstraintsOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigX509ConfigNameConstraints) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
+type CertificateConfigX509ConfigNameConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigX509ConfigNameConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigX509ConfigNameConstraints)(nil)).Elem()
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ToCertificateConfigX509ConfigNameConstraintsPtrOutput() CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ToCertificateConfigX509ConfigNameConstraintsPtrOutputWithContext(ctx context.Context) CertificateConfigX509ConfigNameConstraintsPtrOutput {
+	return o
+}
+
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) Elem() CertificateConfigX509ConfigNameConstraintsOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) CertificateConfigX509ConfigNameConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigX509ConfigNameConstraints
+		return ret
+	}).(CertificateConfigX509ConfigNameConstraintsOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Critical
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, `example.com`, `www.example.com`, `www.sub.example.com`
+// would satisfy `example.com` while `example1.com` does not.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. `.example.com`) to indicate
+// all email addresses in that domain.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like `.example.com`)
+func (o CertificateConfigX509ConfigNameConstraintsPtrOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigX509ConfigNameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedUris
+	}).(pulumi.StringArrayOutput)
+}
+
 type CertificateConfigX509ConfigPolicyId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
@@ -12067,8 +13627,10 @@ func (o CertificateConfigX509ConfigPolicyIdArrayOutput) Index(i pulumi.IntInput)
 }
 
 type CertificateRevocationDetail struct {
+	// (Output)
 	// Indicates why a Certificate was revoked.
 	RevocationState *string `pulumi:"revocationState"`
+	// (Output)
 	// The time at which this Certificate was revoked.
 	RevocationTime *string `pulumi:"revocationTime"`
 }
@@ -12085,8 +13647,10 @@ type CertificateRevocationDetailInput interface {
 }
 
 type CertificateRevocationDetailArgs struct {
+	// (Output)
 	// Indicates why a Certificate was revoked.
 	RevocationState pulumi.StringPtrInput `pulumi:"revocationState"`
+	// (Output)
 	// The time at which this Certificate was revoked.
 	RevocationTime pulumi.StringPtrInput `pulumi:"revocationTime"`
 }
@@ -12142,11 +13706,13 @@ func (o CertificateRevocationDetailOutput) ToCertificateRevocationDetailOutputWi
 	return o
 }
 
+// (Output)
 // Indicates why a Certificate was revoked.
 func (o CertificateRevocationDetailOutput) RevocationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationState }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time at which this Certificate was revoked.
 func (o CertificateRevocationDetailOutput) RevocationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationTime }).(pulumi.StringPtrOutput)
@@ -15147,6 +16713,7 @@ type GetAuthorityConfigX509Config struct {
 	AiaOcspServers       []string                                          `pulumi:"aiaOcspServers"`
 	CaOptions            []GetAuthorityConfigX509ConfigCaOption            `pulumi:"caOptions"`
 	KeyUsages            []GetAuthorityConfigX509ConfigKeyUsage            `pulumi:"keyUsages"`
+	NameConstraints      []GetAuthorityConfigX509ConfigNameConstraint      `pulumi:"nameConstraints"`
 	PolicyIds            []GetAuthorityConfigX509ConfigPolicyId            `pulumi:"policyIds"`
 }
 
@@ -15166,6 +16733,7 @@ type GetAuthorityConfigX509ConfigArgs struct {
 	AiaOcspServers       pulumi.StringArrayInput                                   `pulumi:"aiaOcspServers"`
 	CaOptions            GetAuthorityConfigX509ConfigCaOptionArrayInput            `pulumi:"caOptions"`
 	KeyUsages            GetAuthorityConfigX509ConfigKeyUsageArrayInput            `pulumi:"keyUsages"`
+	NameConstraints      GetAuthorityConfigX509ConfigNameConstraintArrayInput      `pulumi:"nameConstraints"`
 	PolicyIds            GetAuthorityConfigX509ConfigPolicyIdArrayInput            `pulumi:"policyIds"`
 }
 
@@ -15236,6 +16804,12 @@ func (o GetAuthorityConfigX509ConfigOutput) CaOptions() GetAuthorityConfigX509Co
 
 func (o GetAuthorityConfigX509ConfigOutput) KeyUsages() GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigKeyUsage { return v.KeyUsages }).(GetAuthorityConfigX509ConfigKeyUsageArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigOutput) NameConstraints() GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigNameConstraint {
+		return v.NameConstraints
+	}).(GetAuthorityConfigX509ConfigNameConstraintArrayOutput)
 }
 
 func (o GetAuthorityConfigX509ConfigOutput) PolicyIds() GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
@@ -16048,6 +17622,148 @@ func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) 
 	}).(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput)
 }
 
+type GetAuthorityConfigX509ConfigNameConstraint struct {
+	Critical                bool     `pulumi:"critical"`
+	ExcludedDnsNames        []string `pulumi:"excludedDnsNames"`
+	ExcludedEmailAddresses  []string `pulumi:"excludedEmailAddresses"`
+	ExcludedIpRanges        []string `pulumi:"excludedIpRanges"`
+	ExcludedUris            []string `pulumi:"excludedUris"`
+	PermittedDnsNames       []string `pulumi:"permittedDnsNames"`
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	PermittedIpRanges       []string `pulumi:"permittedIpRanges"`
+	PermittedUris           []string `pulumi:"permittedUris"`
+}
+
+// GetAuthorityConfigX509ConfigNameConstraintInput is an input type that accepts GetAuthorityConfigX509ConfigNameConstraintArgs and GetAuthorityConfigX509ConfigNameConstraintOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigNameConstraintInput` via:
+//
+//	GetAuthorityConfigX509ConfigNameConstraintArgs{...}
+type GetAuthorityConfigX509ConfigNameConstraintInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigNameConstraintOutput() GetAuthorityConfigX509ConfigNameConstraintOutput
+	ToGetAuthorityConfigX509ConfigNameConstraintOutputWithContext(context.Context) GetAuthorityConfigX509ConfigNameConstraintOutput
+}
+
+type GetAuthorityConfigX509ConfigNameConstraintArgs struct {
+	Critical                pulumi.BoolInput        `pulumi:"critical"`
+	ExcludedDnsNames        pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	ExcludedEmailAddresses  pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	ExcludedIpRanges        pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	ExcludedUris            pulumi.StringArrayInput `pulumi:"excludedUris"`
+	PermittedDnsNames       pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	PermittedIpRanges       pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	PermittedUris           pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (GetAuthorityConfigX509ConfigNameConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigNameConstraint)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigNameConstraintArgs) ToGetAuthorityConfigX509ConfigNameConstraintOutput() GetAuthorityConfigX509ConfigNameConstraintOutput {
+	return i.ToGetAuthorityConfigX509ConfigNameConstraintOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigNameConstraintArgs) ToGetAuthorityConfigX509ConfigNameConstraintOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigNameConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigNameConstraintOutput)
+}
+
+// GetAuthorityConfigX509ConfigNameConstraintArrayInput is an input type that accepts GetAuthorityConfigX509ConfigNameConstraintArray and GetAuthorityConfigX509ConfigNameConstraintArrayOutput values.
+// You can construct a concrete instance of `GetAuthorityConfigX509ConfigNameConstraintArrayInput` via:
+//
+//	GetAuthorityConfigX509ConfigNameConstraintArray{ GetAuthorityConfigX509ConfigNameConstraintArgs{...} }
+type GetAuthorityConfigX509ConfigNameConstraintArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthorityConfigX509ConfigNameConstraintArrayOutput() GetAuthorityConfigX509ConfigNameConstraintArrayOutput
+	ToGetAuthorityConfigX509ConfigNameConstraintArrayOutputWithContext(context.Context) GetAuthorityConfigX509ConfigNameConstraintArrayOutput
+}
+
+type GetAuthorityConfigX509ConfigNameConstraintArray []GetAuthorityConfigX509ConfigNameConstraintInput
+
+func (GetAuthorityConfigX509ConfigNameConstraintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigNameConstraint)(nil)).Elem()
+}
+
+func (i GetAuthorityConfigX509ConfigNameConstraintArray) ToGetAuthorityConfigX509ConfigNameConstraintArrayOutput() GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
+	return i.ToGetAuthorityConfigX509ConfigNameConstraintArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthorityConfigX509ConfigNameConstraintArray) ToGetAuthorityConfigX509ConfigNameConstraintArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthorityConfigX509ConfigNameConstraintArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigNameConstraintOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigNameConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthorityConfigX509ConfigNameConstraint)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ToGetAuthorityConfigX509ConfigNameConstraintOutput() GetAuthorityConfigX509ConfigNameConstraintOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ToGetAuthorityConfigX509ConfigNameConstraintOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigNameConstraintOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
+type GetAuthorityConfigX509ConfigNameConstraintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthorityConfigX509ConfigNameConstraintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthorityConfigX509ConfigNameConstraint)(nil)).Elem()
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintArrayOutput) ToGetAuthorityConfigX509ConfigNameConstraintArrayOutput() GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintArrayOutput) ToGetAuthorityConfigX509ConfigNameConstraintArrayOutputWithContext(ctx context.Context) GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
+	return o
+}
+
+func (o GetAuthorityConfigX509ConfigNameConstraintArrayOutput) Index(i pulumi.IntInput) GetAuthorityConfigX509ConfigNameConstraintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthorityConfigX509ConfigNameConstraint {
+		return vs[0].([]GetAuthorityConfigX509ConfigNameConstraint)[vs[1].(int)]
+	}).(GetAuthorityConfigX509ConfigNameConstraintOutput)
+}
+
 type GetAuthorityConfigX509ConfigPolicyId struct {
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
@@ -16464,6 +18180,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigNameConstraintsInput)(nil)).Elem(), AuthorityConfigX509ConfigNameConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigNameConstraintsPtrInput)(nil)).Elem(), AuthorityConfigX509ConfigNameConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPolicyIdInput)(nil)).Elem(), AuthorityConfigX509ConfigPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), AuthorityConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityKeySpecInput)(nil)).Elem(), AuthorityKeySpecArgs{})
@@ -16501,6 +18219,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesNameConstraintsInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesPolicyIdInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput)(nil)).Elem(), CaPoolIssuancePolicyBaselineValuesPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIssuancePolicyIdentityConstraintsInput)(nil)).Elem(), CaPoolIssuancePolicyIdentityConstraintsArgs{})
@@ -16559,6 +18279,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionNameConstraintInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionNameConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionNameConstraintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyIdInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput)(nil)).Elem(), CertificateCertificateDescriptionX509DescriptionPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigInput)(nil)).Elem(), CertificateConfigArgs{})
@@ -16586,6 +18308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrInput)(nil)).Elem(), CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigNameConstraintsInput)(nil)).Elem(), CertificateConfigX509ConfigNameConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigNameConstraintsPtrInput)(nil)).Elem(), CertificateConfigX509ConfigNameConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigPolicyIdInput)(nil)).Elem(), CertificateConfigX509ConfigPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), CertificateConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateRevocationDetailInput)(nil)).Elem(), CertificateRevocationDetailArgs{})
@@ -16645,6 +18369,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigNameConstraintInput)(nil)).Elem(), GetAuthorityConfigX509ConfigNameConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigNameConstraintArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigNameConstraintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyIdInput)(nil)).Elem(), GetAuthorityConfigX509ConfigPolicyIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityConfigX509ConfigPolicyIdArrayInput)(nil)).Elem(), GetAuthorityConfigX509ConfigPolicyIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorityKeySpecInput)(nil)).Elem(), GetAuthorityKeySpecArgs{})
@@ -16678,6 +18404,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(AuthorityConfigX509ConfigNameConstraintsOutput{})
+	pulumi.RegisterOutputType(AuthorityConfigX509ConfigNameConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPolicyIdOutput{})
 	pulumi.RegisterOutputType(AuthorityConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecOutput{})
@@ -16715,6 +18443,8 @@ func init() {
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesNameConstraintsOutput{})
+	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesPolicyIdOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyBaselineValuesPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CaPoolIssuancePolicyIdentityConstraintsOutput{})
@@ -16773,6 +18503,8 @@ func init() {
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrayOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionNameConstraintOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionNameConstraintArrayOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionPolicyIdOutput{})
 	pulumi.RegisterOutputType(CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateConfigOutput{})
@@ -16800,6 +18532,8 @@ func init() {
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigKeyUsageExtendedKeyUsagePtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateConfigX509ConfigNameConstraintsOutput{})
+	pulumi.RegisterOutputType(CertificateConfigX509ConfigNameConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigPolicyIdOutput{})
 	pulumi.RegisterOutputType(CertificateConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(CertificateRevocationDetailOutput{})
@@ -16859,6 +18593,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigNameConstraintOutput{})
+	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigNameConstraintArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigPolicyIdOutput{})
 	pulumi.RegisterOutputType(GetAuthorityConfigX509ConfigPolicyIdArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorityKeySpecOutput{})

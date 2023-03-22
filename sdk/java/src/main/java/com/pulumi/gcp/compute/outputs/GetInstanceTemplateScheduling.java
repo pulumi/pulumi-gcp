@@ -26,6 +26,7 @@ public final class GetInstanceTemplateScheduling {
      * 
      */
     private String instanceTerminationAction;
+    private String maintenanceInterval;
     private List<GetInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
     private Integer minNodeCpus;
     /**
@@ -72,6 +73,9 @@ public final class GetInstanceTemplateScheduling {
      */
     public String instanceTerminationAction() {
         return this.instanceTerminationAction;
+    }
+    public String maintenanceInterval() {
+        return this.maintenanceInterval;
     }
     public List<GetInstanceTemplateSchedulingMaxRunDuration> maxRunDurations() {
         return this.maxRunDurations;
@@ -126,6 +130,7 @@ public final class GetInstanceTemplateScheduling {
     public static final class Builder {
         private Boolean automaticRestart;
         private String instanceTerminationAction;
+        private String maintenanceInterval;
         private List<GetInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
         private Integer minNodeCpus;
         private List<GetInstanceTemplateSchedulingNodeAffinity> nodeAffinities;
@@ -137,6 +142,7 @@ public final class GetInstanceTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDurations = defaults.maxRunDurations;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
@@ -153,6 +159,11 @@ public final class GetInstanceTemplateScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceInterval(String maintenanceInterval) {
+            this.maintenanceInterval = Objects.requireNonNull(maintenanceInterval);
             return this;
         }
         @CustomType.Setter
@@ -195,6 +206,7 @@ public final class GetInstanceTemplateScheduling {
             final var o = new GetInstanceTemplateScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.maintenanceInterval = maintenanceInterval;
             o.maxRunDurations = maxRunDurations;
             o.minNodeCpus = minNodeCpus;
             o.nodeAffinities = nodeAffinities;

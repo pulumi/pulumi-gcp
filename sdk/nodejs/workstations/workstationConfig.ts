@@ -250,8 +250,8 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {
- *     accountId: "cloud-workstations-kms",
- *     displayName: "Service Account for Cloud Workstations",
+ *     accountId: "my-account",
+ *     displayName: "Service Account",
  * }, {
  *     provider: google_beta,
  * });
@@ -293,10 +293,6 @@ import * as utilities from "../utilities";
  *
  * ```sh
  *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
  * ```
  */
 export class WorkstationConfig extends pulumi.CustomResource {

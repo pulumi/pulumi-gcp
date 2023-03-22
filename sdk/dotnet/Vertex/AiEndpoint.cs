@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Output)
         /// Output only. Timestamp when the DeployedModel was created.
         /// </summary>
         [Output("createTime")]
@@ -301,6 +302,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Output only. Timestamp when the DeployedModel was created.
         /// </summary>
         [Input("createTime")]

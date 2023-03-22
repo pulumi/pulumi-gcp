@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Kms.Inputs
         public Input<Inputs.CryptoKeyVersionAttestationCertChainsArgs>? CertChains { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The attestation data provided by the HSM when the key operation was performed.
         /// </summary>
         [Input("content")]
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Kms.Inputs
         public Input<Inputs.CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The format of the attestation data.
         /// </summary>
         [Input("format")]

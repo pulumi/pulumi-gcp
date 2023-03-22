@@ -56,7 +56,8 @@ class AttestorAttestationAuthorityNote(dict):
                An attestation by this attestor is stored as a Container Analysis
                ATTESTATION_AUTHORITY Occurrence that names a container image
                and that links to this Note.
-        :param str delegation_service_account_email: This field will contain the service account email address that
+        :param str delegation_service_account_email: (Output)
+               This field will contain the service account email address that
                this Attestor will use as the principal when querying Container
                Analysis. Attestor administrators must grant this service account
                the IAM role needed to read attestations from the noteReference in
@@ -98,6 +99,7 @@ class AttestorAttestationAuthorityNote(dict):
     @pulumi.getter(name="delegationServiceAccountEmail")
     def delegation_service_account_email(self) -> Optional[str]:
         """
+        (Output)
         This field will contain the service account email address that
         this Attestor will use as the principal when querying Container
         Analysis. Attestor administrators must grant this service account

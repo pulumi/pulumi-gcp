@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAndroidAppResult {
@@ -44,7 +46,7 @@ public final class GetAndroidAppResult {
      * 
      */
     private String packageName;
-    private String project;
+    private @Nullable String project;
     /**
      * @return The SHA1 certificate hashes for the AndroidApp.
      * 
@@ -105,8 +107,8 @@ public final class GetAndroidAppResult {
     public String packageName() {
         return this.packageName;
     }
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
     /**
      * @return The SHA1 certificate hashes for the AndroidApp.
@@ -139,7 +141,7 @@ public final class GetAndroidAppResult {
         private String id;
         private String name;
         private String packageName;
-        private String project;
+        private @Nullable String project;
         private List<String> sha1Hashes;
         private List<String> sha256Hashes;
         public Builder() {}
@@ -193,8 +195,8 @@ public final class GetAndroidAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+        public Builder project(@Nullable String project) {
+            this.project = project;
             return this;
         }
         @CustomType.Setter

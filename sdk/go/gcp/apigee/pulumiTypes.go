@@ -393,6 +393,7 @@ func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) Enabled() pulumi.
 type AddonsConfigAddonsConfigApiSecurityConfig struct {
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// (Output)
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	ExpiresAt *string `pulumi:"expiresAt"`
 }
@@ -411,6 +412,7 @@ type AddonsConfigAddonsConfigApiSecurityConfigInput interface {
 type AddonsConfigAddonsConfigApiSecurityConfigArgs struct {
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// (Output)
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
 }
@@ -497,6 +499,7 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) Enabled() pulumi.BoolPt
 	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigApiSecurityConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
@@ -536,6 +539,7 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Enabled() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigApiSecurityConfig) *string {
@@ -549,6 +553,7 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ExpiresAt() pulumi.S
 type AddonsConfigAddonsConfigConnectorsPlatformConfig struct {
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// (Output)
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	ExpiresAt *string `pulumi:"expiresAt"`
 }
@@ -567,6 +572,7 @@ type AddonsConfigAddonsConfigConnectorsPlatformConfigInput interface {
 type AddonsConfigAddonsConfigConnectorsPlatformConfigArgs struct {
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// (Output)
 	// Flag that specifies whether the Advanced API Ops add-on is enabled.
 	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
 }
@@ -653,6 +659,7 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) Enabled() pulumi
 	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigConnectorsPlatformConfig) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
@@ -692,6 +699,7 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Enabled() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AddonsConfigAddonsConfigConnectorsPlatformConfig) *string {
@@ -1303,6 +1311,7 @@ func (o EnvironmentIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type EnvironmentNodeConfig struct {
+	// (Output)
 	// The current total number of gateway nodes that each environment currently has across
 	// all instances.
 	CurrentAggregateNodeCount *string `pulumi:"currentAggregateNodeCount"`
@@ -1328,6 +1337,7 @@ type EnvironmentNodeConfigInput interface {
 }
 
 type EnvironmentNodeConfigArgs struct {
+	// (Output)
 	// The current total number of gateway nodes that each environment currently has across
 	// all instances.
 	CurrentAggregateNodeCount pulumi.StringPtrInput `pulumi:"currentAggregateNodeCount"`
@@ -1418,6 +1428,7 @@ func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigPtrOutputWithContext
 	}).(EnvironmentNodeConfigPtrOutput)
 }
 
+// (Output)
 // The current total number of gateway nodes that each environment currently has across
 // all instances.
 func (o EnvironmentNodeConfigOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {
@@ -1462,6 +1473,7 @@ func (o EnvironmentNodeConfigPtrOutput) Elem() EnvironmentNodeConfigOutput {
 	}).(EnvironmentNodeConfigOutput)
 }
 
+// (Output)
 // The current total number of gateway nodes that each environment currently has across
 // all instances.
 func (o EnvironmentNodeConfigPtrOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {
@@ -1744,6 +1756,121 @@ func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Orga
 	}).(OrganizationPropertiesPropertyOutput)
 }
 
+type SharedflowMetaData struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType *string `pulumi:"subType"`
+}
+
+// SharedflowMetaDataInput is an input type that accepts SharedflowMetaDataArgs and SharedflowMetaDataOutput values.
+// You can construct a concrete instance of `SharedflowMetaDataInput` via:
+//
+//	SharedflowMetaDataArgs{...}
+type SharedflowMetaDataInput interface {
+	pulumi.Input
+
+	ToSharedflowMetaDataOutput() SharedflowMetaDataOutput
+	ToSharedflowMetaDataOutputWithContext(context.Context) SharedflowMetaDataOutput
+}
+
+type SharedflowMetaDataArgs struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType pulumi.StringPtrInput `pulumi:"subType"`
+}
+
+func (SharedflowMetaDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedflowMetaData)(nil)).Elem()
+}
+
+func (i SharedflowMetaDataArgs) ToSharedflowMetaDataOutput() SharedflowMetaDataOutput {
+	return i.ToSharedflowMetaDataOutputWithContext(context.Background())
+}
+
+func (i SharedflowMetaDataArgs) ToSharedflowMetaDataOutputWithContext(ctx context.Context) SharedflowMetaDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedflowMetaDataOutput)
+}
+
+// SharedflowMetaDataArrayInput is an input type that accepts SharedflowMetaDataArray and SharedflowMetaDataArrayOutput values.
+// You can construct a concrete instance of `SharedflowMetaDataArrayInput` via:
+//
+//	SharedflowMetaDataArray{ SharedflowMetaDataArgs{...} }
+type SharedflowMetaDataArrayInput interface {
+	pulumi.Input
+
+	ToSharedflowMetaDataArrayOutput() SharedflowMetaDataArrayOutput
+	ToSharedflowMetaDataArrayOutputWithContext(context.Context) SharedflowMetaDataArrayOutput
+}
+
+type SharedflowMetaDataArray []SharedflowMetaDataInput
+
+func (SharedflowMetaDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedflowMetaData)(nil)).Elem()
+}
+
+func (i SharedflowMetaDataArray) ToSharedflowMetaDataArrayOutput() SharedflowMetaDataArrayOutput {
+	return i.ToSharedflowMetaDataArrayOutputWithContext(context.Background())
+}
+
+func (i SharedflowMetaDataArray) ToSharedflowMetaDataArrayOutputWithContext(ctx context.Context) SharedflowMetaDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedflowMetaDataArrayOutput)
+}
+
+type SharedflowMetaDataOutput struct{ *pulumi.OutputState }
+
+func (SharedflowMetaDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedflowMetaData)(nil)).Elem()
+}
+
+func (o SharedflowMetaDataOutput) ToSharedflowMetaDataOutput() SharedflowMetaDataOutput {
+	return o
+}
+
+func (o SharedflowMetaDataOutput) ToSharedflowMetaDataOutputWithContext(ctx context.Context) SharedflowMetaDataOutput {
+	return o
+}
+
+// Time at which the API proxy was created, in milliseconds since epoch.
+func (o SharedflowMetaDataOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedflowMetaData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+func (o SharedflowMetaDataOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedflowMetaData) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The type of entity described
+func (o SharedflowMetaDataOutput) SubType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedflowMetaData) *string { return v.SubType }).(pulumi.StringPtrOutput)
+}
+
+type SharedflowMetaDataArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedflowMetaDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedflowMetaData)(nil)).Elem()
+}
+
+func (o SharedflowMetaDataArrayOutput) ToSharedflowMetaDataArrayOutput() SharedflowMetaDataArrayOutput {
+	return o
+}
+
+func (o SharedflowMetaDataArrayOutput) ToSharedflowMetaDataArrayOutputWithContext(ctx context.Context) SharedflowMetaDataArrayOutput {
+	return o
+}
+
+func (o SharedflowMetaDataArrayOutput) Index(i pulumi.IntInput) SharedflowMetaDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedflowMetaData {
+		return vs[0].([]SharedflowMetaData)[vs[1].(int)]
+	}).(SharedflowMetaDataOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
@@ -1767,6 +1894,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataInput)(nil)).Elem(), SharedflowMetaDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataArrayInput)(nil)).Elem(), SharedflowMetaDataArray{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput{})
@@ -1789,4 +1918,6 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(SharedflowMetaDataOutput{})
+	pulumi.RegisterOutputType(SharedflowMetaDataArrayOutput{})
 }

@@ -7401,6 +7401,7 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction(
 }
 
 type ServicePerimetersServicePerimeter struct {
+	// (Output)
 	// Time the AccessPolicy was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the ServicePerimeter and its use. Does not affect
@@ -7440,6 +7441,7 @@ type ServicePerimetersServicePerimeter struct {
 	Status *ServicePerimetersServicePerimeterStatus `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title string `pulumi:"title"`
+	// (Output)
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
@@ -7466,6 +7468,7 @@ type ServicePerimetersServicePerimeterInput interface {
 }
 
 type ServicePerimetersServicePerimeterArgs struct {
+	// (Output)
 	// Time the AccessPolicy was created in UTC.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Description of the ServicePerimeter and its use. Does not affect
@@ -7505,6 +7508,7 @@ type ServicePerimetersServicePerimeterArgs struct {
 	Status ServicePerimetersServicePerimeterStatusPtrInput `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringInput `pulumi:"title"`
+	// (Output)
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 	// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
@@ -7570,6 +7574,7 @@ func (o ServicePerimetersServicePerimeterOutput) ToServicePerimetersServicePerim
 	return o
 }
 
+// (Output)
 // Time the AccessPolicy was created in UTC.
 func (o ServicePerimetersServicePerimeterOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
@@ -7630,6 +7635,7 @@ func (o ServicePerimetersServicePerimeterOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeter) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Time the AccessPolicy was updated in UTC.
 func (o ServicePerimetersServicePerimeterOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)

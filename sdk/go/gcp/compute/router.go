@@ -139,9 +139,8 @@ type Router struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted
-	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN
+	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrOutput `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -200,9 +199,8 @@ type routerState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted
-	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN
+	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -230,9 +228,8 @@ type RouterState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Field to indicate if a router is dedicated to use with encrypted
-	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN
+	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -262,9 +259,8 @@ type routerArgs struct {
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted
-	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN
+	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -289,9 +285,8 @@ type RouterArgs struct {
 	Bgp RouterBgpPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Field to indicate if a router is dedicated to use with encrypted
-	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN
+	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -412,9 +407,8 @@ func (o RouterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field to indicate if a router is dedicated to use with encrypted
-// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-// Not currently available publicly.
+// Indicates if a router is dedicated for use with encrypted VLAN
+// attachments (interconnectAttachments).
 func (o RouterOutput) EncryptedInterconnectRouter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Router) pulumi.BoolPtrOutput { return v.EncryptedInterconnectRouter }).(pulumi.BoolPtrOutput)
 }

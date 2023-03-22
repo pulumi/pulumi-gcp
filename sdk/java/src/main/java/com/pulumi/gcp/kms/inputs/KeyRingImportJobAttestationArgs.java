@@ -16,6 +16,7 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
     public static final KeyRingImportJobAttestationArgs Empty = new KeyRingImportJobAttestationArgs();
 
     /**
+     * (Output)
      * The attestation data provided by the HSM when the key operation was performed.
      * A base64-encoded string.
      * 
@@ -24,7 +25,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
     private @Nullable Output<String> content;
 
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * A base64-encoded string.
      * 
      */
@@ -33,6 +35,7 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * The format of the attestation data.
      * 
      */
@@ -40,7 +43,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
     private @Nullable Output<String> format;
 
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     public Optional<Output<String>> format() {
@@ -73,7 +77,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * @param content (Output)
+         * The attestation data provided by the HSM when the key operation was performed.
          * A base64-encoded string.
          * 
          * @return builder
@@ -85,7 +90,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * @param content (Output)
+         * The attestation data provided by the HSM when the key operation was performed.
          * A base64-encoded string.
          * 
          * @return builder
@@ -96,7 +102,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param format The format of the attestation data.
+         * @param format (Output)
+         * The format of the attestation data.
          * 
          * @return builder
          * 
@@ -107,7 +114,8 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param format The format of the attestation data.
+         * @param format (Output)
+         * The format of the attestation data.
          * 
          * @return builder
          * 

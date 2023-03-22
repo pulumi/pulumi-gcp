@@ -34,6 +34,7 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The display name of this field
      * 
      */
@@ -41,7 +42,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name of this field
+     * @return (Output)
+     * The display name of this field
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -94,6 +96,7 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
      * a more important field. The value can be negative. Multiple fields can have the same order, and field orders
      * within a tag do not have to be sequential.
@@ -103,7 +106,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> order;
 
     /**
-     * @return The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+     * @return (Output)
+     * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
      * a more important field. The value can be negative. Multiple fields can have the same order, and field orders
      * within a tag do not have to be sequential.
      * 
@@ -195,7 +199,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of this field
+         * @param displayName (Output)
+         * The display name of this field
          * 
          * @return builder
          * 
@@ -206,7 +211,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of this field
+         * @param displayName (Output)
+         * The display name of this field
          * 
          * @return builder
          * 
@@ -279,7 +285,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+         * @param order (Output)
+         * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
          * a more important field. The value can be negative. Multiple fields can have the same order, and field orders
          * within a tag do not have to be sequential.
          * 
@@ -292,7 +299,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+         * @param order (Output)
+         * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
          * a more important field. The value can be negative. Multiple fields can have the same order, and field orders
          * within a tag do not have to be sequential.
          * 

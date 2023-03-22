@@ -23,7 +23,8 @@ public final class BackendServiceIap {
      */
     private String oauth2ClientSecret;
     /**
-     * @return OAuth2 Client Secret SHA-256 for IAP
+     * @return (Output)
+     * OAuth2 Client Secret SHA-256 for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -46,7 +47,8 @@ public final class BackendServiceIap {
         return this.oauth2ClientSecret;
     }
     /**
-     * @return OAuth2 Client Secret SHA-256 for IAP
+     * @return (Output)
+     * OAuth2 Client Secret SHA-256 for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */

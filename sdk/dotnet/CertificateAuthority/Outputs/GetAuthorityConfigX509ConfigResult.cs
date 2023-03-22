@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<string> AiaOcspServers;
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigCaOptionResult> CaOptions;
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigKeyUsageResult> KeyUsages;
+        public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigNameConstraintResult> NameConstraints;
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigPolicyIdResult> PolicyIds;
 
         [OutputConstructor]
@@ -29,12 +30,15 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             ImmutableArray<Outputs.GetAuthorityConfigX509ConfigKeyUsageResult> keyUsages,
 
+            ImmutableArray<Outputs.GetAuthorityConfigX509ConfigNameConstraintResult> nameConstraints,
+
             ImmutableArray<Outputs.GetAuthorityConfigX509ConfigPolicyIdResult> policyIds)
         {
             AdditionalExtensions = additionalExtensions;
             AiaOcspServers = aiaOcspServers;
             CaOptions = caOptions;
             KeyUsages = keyUsages;
+            NameConstraints = nameConstraints;
             PolicyIds = policyIds;
         }
     }

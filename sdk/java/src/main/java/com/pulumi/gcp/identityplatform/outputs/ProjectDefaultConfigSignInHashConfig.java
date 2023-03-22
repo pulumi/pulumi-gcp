@@ -13,62 +13,72 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectDefaultConfigSignInHashConfig {
     /**
-     * @return Different password hash algorithms used in Identity Toolkit.
+     * @return (Output)
+     * Different password hash algorithms used in Identity Toolkit.
      * 
      */
     private @Nullable String algorithm;
     /**
-     * @return Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+     * @return (Output)
+     * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
      * 
      */
     private @Nullable Integer memoryCost;
     /**
-     * @return How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+     * @return (Output)
+     * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
      * 
      */
     private @Nullable Integer rounds;
     /**
-     * @return Non-printable character to be inserted between the salt and plain text password in base64.
+     * @return (Output)
+     * Non-printable character to be inserted between the salt and plain text password in base64.
      * 
      */
     private @Nullable String saltSeparator;
     /**
-     * @return Signer key in base64.
+     * @return (Output)
+     * Signer key in base64.
      * 
      */
     private @Nullable String signerKey;
 
     private ProjectDefaultConfigSignInHashConfig() {}
     /**
-     * @return Different password hash algorithms used in Identity Toolkit.
+     * @return (Output)
+     * Different password hash algorithms used in Identity Toolkit.
      * 
      */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
     /**
-     * @return Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+     * @return (Output)
+     * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
      * 
      */
     public Optional<Integer> memoryCost() {
         return Optional.ofNullable(this.memoryCost);
     }
     /**
-     * @return How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+     * @return (Output)
+     * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
      * 
      */
     public Optional<Integer> rounds() {
         return Optional.ofNullable(this.rounds);
     }
     /**
-     * @return Non-printable character to be inserted between the salt and plain text password in base64.
+     * @return (Output)
+     * Non-printable character to be inserted between the salt and plain text password in base64.
      * 
      */
     public Optional<String> saltSeparator() {
         return Optional.ofNullable(this.saltSeparator);
     }
     /**
-     * @return Signer key in base64.
+     * @return (Output)
+     * Signer key in base64.
      * 
      */
     public Optional<String> signerKey() {

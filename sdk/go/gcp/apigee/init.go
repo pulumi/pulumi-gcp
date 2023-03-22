@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvGroup{}
 	case "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
 		r = &EnvGroupAttachment{}
+	case "gcp:apigee/envKeystore:EnvKeystore":
+		r = &EnvKeystore{}
+	case "gcp:apigee/envReferences:EnvReferences":
+		r = &EnvReferences{}
 	case "gcp:apigee/environment:Environment":
 		r = &Environment{}
 	case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
@@ -37,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvironmentIamMember{}
 	case "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy":
 		r = &EnvironmentIamPolicy{}
+	case "gcp:apigee/flowhook:Flowhook":
+		r = &Flowhook{}
 	case "gcp:apigee/instance:Instance":
 		r = &Instance{}
 	case "gcp:apigee/instanceAttachment:InstanceAttachment":
@@ -45,6 +51,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
 		r = &Organization{}
+	case "gcp:apigee/sharedflow:Sharedflow":
+		r = &Sharedflow{}
+	case "gcp:apigee/sharedflowDeployment:SharedflowDeployment":
+		r = &SharedflowDeployment{}
 	case "gcp:apigee/syncAuthorization:SyncAuthorization":
 		r = &SyncAuthorization{}
 	default:
@@ -82,6 +92,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"apigee/envKeystore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/envReferences",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"apigee/environment",
 		&module{version},
 	)
@@ -102,6 +122,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"apigee/flowhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"apigee/instance",
 		&module{version},
 	)
@@ -118,6 +143,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/sharedflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/sharedflowDeployment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

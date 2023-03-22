@@ -588,7 +588,7 @@ class Stream(pulumi.CustomResource):
                 gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
                     path="mydata",
                     file_rotation_mb=200,
-                    file_rotation_interval="900s",
+                    file_rotation_interval="60s",
                     json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
                         schema_file_format="NO_SCHEMA_FILE",
                         compression="GZIP",
@@ -1052,7 +1052,7 @@ class Stream(pulumi.CustomResource):
                 gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
                     path="mydata",
                     file_rotation_mb=200,
-                    file_rotation_interval="900s",
+                    file_rotation_interval="60s",
                     json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
                         schema_file_format="NO_SCHEMA_FILE",
                         compression="GZIP",

@@ -18,6 +18,7 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
     public static final CxPageEventHandlerTriggerFulfillmentMessageTextArgs Empty = new CxPageEventHandlerTriggerFulfillmentMessageTextArgs();
 
     /**
+     * (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
@@ -25,7 +26,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
     private @Nullable Output<Boolean> allowPlaybackInterruption;
 
     /**
-     * @return Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * @return (Output)
+     * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
     public Optional<Output<Boolean>> allowPlaybackInterruption() {
@@ -73,7 +75,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
         }
 
         /**
-         * @param allowPlaybackInterruption Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+         * @param allowPlaybackInterruption (Output)
+         * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
          * @return builder
          * 
@@ -84,7 +87,8 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTextArgs extends c
         }
 
         /**
-         * @param allowPlaybackInterruption Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+         * @param allowPlaybackInterruption (Output)
+         * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
          * @return builder
          * 

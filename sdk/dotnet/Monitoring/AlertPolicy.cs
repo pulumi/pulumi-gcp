@@ -179,6 +179,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -443,6 +444,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

@@ -57,6 +57,7 @@ public final class HaVpnGatewayVpnInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Output)
      * The external IP address for this VPN gateway interface.
      * 
      */
@@ -64,7 +65,8 @@ public final class HaVpnGatewayVpnInterfaceArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The external IP address for this VPN gateway interface.
+     * @return (Output)
+     * The external IP address for this VPN gateway interface.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -150,7 +152,8 @@ public final class HaVpnGatewayVpnInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipAddress The external IP address for this VPN gateway interface.
+         * @param ipAddress (Output)
+         * The external IP address for this VPN gateway interface.
          * 
          * @return builder
          * 
@@ -161,7 +164,8 @@ public final class HaVpnGatewayVpnInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipAddress The external IP address for this VPN gateway interface.
+         * @param ipAddress (Output)
+         * The external IP address for this VPN gateway interface.
          * 
          * @return builder
          * 

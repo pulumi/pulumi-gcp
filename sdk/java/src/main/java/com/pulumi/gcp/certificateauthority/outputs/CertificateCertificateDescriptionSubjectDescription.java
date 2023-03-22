@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescription {
     /**
-     * @return The serial number encoded in lowercase hexadecimal.
+     * @return (Output)
+     * The serial number encoded in lowercase hexadecimal.
      * 
      */
     private @Nullable String hexSerialNumber;
@@ -27,12 +28,14 @@ public final class CertificateCertificateDescriptionSubjectDescription {
      */
     private @Nullable String lifetime;
     /**
-     * @return The time at which the certificate expires.
+     * @return (Output)
+     * The time at which the certificate expires.
      * 
      */
     private @Nullable String notAfterTime;
     /**
-     * @return The time at which the certificate becomes valid.
+     * @return (Output)
+     * The time at which the certificate becomes valid.
      * 
      */
     private @Nullable String notBeforeTime;
@@ -51,7 +54,8 @@ public final class CertificateCertificateDescriptionSubjectDescription {
 
     private CertificateCertificateDescriptionSubjectDescription() {}
     /**
-     * @return The serial number encoded in lowercase hexadecimal.
+     * @return (Output)
+     * The serial number encoded in lowercase hexadecimal.
      * 
      */
     public Optional<String> hexSerialNumber() {
@@ -67,14 +71,16 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         return Optional.ofNullable(this.lifetime);
     }
     /**
-     * @return The time at which the certificate expires.
+     * @return (Output)
+     * The time at which the certificate expires.
      * 
      */
     public Optional<String> notAfterTime() {
         return Optional.ofNullable(this.notAfterTime);
     }
     /**
-     * @return The time at which the certificate becomes valid.
+     * @return (Output)
+     * The time at which the certificate becomes valid.
      * 
      */
     public Optional<String> notBeforeTime() {

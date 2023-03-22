@@ -3607,7 +3607,8 @@ class BackendServiceIap(dict):
         :param str oauth2_client_id: OAuth2 Client ID for IAP
         :param str oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str oauth2_client_secret_sha256: OAuth2 Client Secret SHA-256 for IAP
+        :param str oauth2_client_secret_sha256: (Output)
+               OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -3636,6 +3637,7 @@ class BackendServiceIap(dict):
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> Optional[str]:
         """
+        (Output)
         OAuth2 Client Secret SHA-256 for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -4230,7 +4232,8 @@ class DiskDiskEncryptionKey(dict):
                customer-supplied encryption key to either encrypt or decrypt
                this resource. You can provide either the rawKey or the rsaEncryptedKey.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4290,6 +4293,7 @@ class DiskDiskEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4388,7 +4392,8 @@ class DiskSourceImageEncryptionKey(dict):
                If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4434,6 +4439,7 @@ class DiskSourceImageEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4478,7 +4484,8 @@ class DiskSourceSnapshotEncryptionKey(dict):
                If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4524,6 +4531,7 @@ class DiskSourceSnapshotEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4977,7 +4985,8 @@ class HaVpnGatewayVpnInterface(dict):
                traffic for this VPN Gateway interface will go through the
                specified interconnect attachment resource.
                Not currently available publicly.
-        :param str ip_address: The external IP address for this VPN gateway interface.
+        :param str ip_address: (Output)
+               The external IP address for this VPN gateway interface.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -5011,6 +5020,7 @@ class HaVpnGatewayVpnInterface(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
         """
+        (Output)
         The external IP address for this VPN gateway interface.
         """
         return pulumi.get(self, "ip_address")
@@ -7337,6 +7347,8 @@ class InstanceFromMachineImageScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
         elif key == "maxRunDuration":
             suggest = "max_run_duration"
         elif key == "minNodeCpus":
@@ -7362,6 +7374,7 @@ class InstanceFromMachineImageScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceFromMachineImageSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromMachineImageSchedulingNodeAffinity']] = None,
@@ -7372,6 +7385,8 @@ class InstanceFromMachineImageScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -7394,6 +7409,11 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -8244,6 +8264,8 @@ class InstanceFromTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
         elif key == "maxRunDuration":
             suggest = "max_run_duration"
         elif key == "minNodeCpus":
@@ -8269,6 +8291,7 @@ class InstanceFromTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceFromTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceFromTemplateSchedulingNodeAffinity']] = None,
@@ -8279,6 +8302,8 @@ class InstanceFromTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -8301,6 +8326,11 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -8684,6 +8714,7 @@ class InstanceGroupManagerStatefulExternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        :param str interface_name: , The network interface name of the external Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8701,6 +8732,9 @@ class InstanceGroupManagerStatefulExternalIp(dict):
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
+        """
+        , The network interface name of the external Ip.
+        """
         return pulumi.get(self, "interface_name")
 
 
@@ -8730,6 +8764,7 @@ class InstanceGroupManagerStatefulInternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        :param str interface_name: , The network interface name of the internal Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8747,6 +8782,9 @@ class InstanceGroupManagerStatefulInternalIp(dict):
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
+        """
+        , The network interface name of the internal Ip.
+        """
         return pulumi.get(self, "interface_name")
 
 
@@ -9239,7 +9277,7 @@ class InstanceGuestAccelerator(dict):
                  type: str):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
-        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -9256,7 +9294,7 @@ class InstanceGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         return pulumi.get(self, "type")
 
@@ -9895,6 +9933,8 @@ class InstanceScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
         elif key == "maxRunDuration":
             suggest = "max_run_duration"
         elif key == "minNodeCpus":
@@ -9920,6 +9960,7 @@ class InstanceScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceSchedulingNodeAffinity']] = None,
@@ -9952,6 +9993,8 @@ class InstanceScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -9982,6 +10025,11 @@ class InstanceScheduling(dict):
         Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -10803,7 +10851,8 @@ class InstanceTemplateGuestAccelerator(dict):
                  type: str):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
-        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str type: The type of GCE disk, can be either `"SCRATCH"` or
+               `"PERSISTENT"`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -10820,7 +10869,8 @@ class InstanceTemplateGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
         """
         return pulumi.get(self, "type")
 
@@ -11355,6 +11405,8 @@ class InstanceTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
         elif key == "maxRunDuration":
             suggest = "max_run_duration"
         elif key == "minNodeCpus":
@@ -11380,6 +11432,7 @@ class InstanceTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
                  node_affinities: Optional[Sequence['outputs.InstanceTemplateSchedulingNodeAffinity']] = None,
@@ -11392,6 +11445,7 @@ class InstanceTemplateScheduling(dict):
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11411,6 +11465,8 @@ class InstanceTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -11443,10 +11499,16 @@ class InstanceTemplateScheduling(dict):
         return pulumi.get(self, "instance_termination_action")
 
     @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[str]:
+        return pulumi.get(self, "maintenance_interval")
+
+    @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional['outputs.InstanceTemplateSchedulingMaxRunDuration']:
         """
         Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
 
@@ -11685,7 +11747,8 @@ class InterconnectAttachmentPrivateInterconnectInfo(dict):
     def __init__(__self__, *,
                  tag8021q: Optional[int] = None):
         """
-        :param int tag8021q: 802.1q encapsulation tag to be used for traffic between
+        :param int tag8021q: (Output)
+               802.1q encapsulation tag to be used for traffic between
                Google and the customer, going to and from this network and region.
         """
         if tag8021q is not None:
@@ -11695,6 +11758,7 @@ class InterconnectAttachmentPrivateInterconnectInfo(dict):
     @pulumi.getter
     def tag8021q(self) -> Optional[int]:
         """
+        (Output)
         802.1q encapsulation tag to be used for traffic between
         Google and the customer, going to and from this network and region.
         """
@@ -11817,7 +11881,8 @@ class MachineImageMachineImageEncryptionKey(dict):
                If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the
                customer-supplied encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -11859,6 +11924,7 @@ class MachineImageMachineImageEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the
         customer-supplied encryption key that protects this resource.
         """
@@ -12326,7 +12392,8 @@ class NodeTemplateNodeTypeFlexibility(dict):
                  memory: Optional[str] = None):
         """
         :param str cpus: Number of virtual CPUs to use.
-        :param str local_ssd: Use local SSD
+        :param str local_ssd: (Output)
+               Use local SSD
         :param str memory: Physical memory available to the node, defined in MB.
         """
         if cpus is not None:
@@ -12348,6 +12415,7 @@ class NodeTemplateNodeTypeFlexibility(dict):
     @pulumi.getter(name="localSsd")
     def local_ssd(self) -> Optional[str]:
         """
+        (Output)
         Use local SSD
         """
         return pulumi.get(self, "local_ssd")
@@ -15187,7 +15255,8 @@ class RegionBackendServiceIap(dict):
         :param str oauth2_client_id: OAuth2 Client ID for IAP
         :param str oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str oauth2_client_secret_sha256: OAuth2 Client Secret SHA-256 for IAP
+        :param str oauth2_client_secret_sha256: (Output)
+               OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -15216,6 +15285,7 @@ class RegionBackendServiceIap(dict):
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> Optional[str]:
         """
+        (Output)
         OAuth2 Client Secret SHA-256 for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -15628,7 +15698,8 @@ class RegionDiskDiskEncryptionKey(dict):
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -15660,6 +15731,7 @@ class RegionDiskDiskEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -15749,7 +15821,8 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
         :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -15780,6 +15853,7 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -16968,6 +17042,7 @@ class RegionInstanceGroupManagerStatefulExternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        :param str interface_name: , The network interface name of the external Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -16985,6 +17060,9 @@ class RegionInstanceGroupManagerStatefulExternalIp(dict):
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
+        """
+        , The network interface name of the external Ip.
+        """
         return pulumi.get(self, "interface_name")
 
 
@@ -17014,6 +17092,7 @@ class RegionInstanceGroupManagerStatefulInternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        :param str interface_name: , The network interface name of the internal Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17031,6 +17110,9 @@ class RegionInstanceGroupManagerStatefulInternalIp(dict):
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
+        """
+        , The network interface name of the internal Ip.
+        """
         return pulumi.get(self, "interface_name")
 
 
@@ -23427,7 +23509,8 @@ class ReservationSpecificReservation(dict):
         :param int count: The number of resources that are allocated.
         :param 'ReservationSpecificReservationInstancePropertiesArgs' instance_properties: The instance properties for the reservation.
                Structure is documented below.
-        :param int in_use_count: How many instances are in use.
+        :param int in_use_count: (Output)
+               How many instances are in use.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "instance_properties", instance_properties)
@@ -23455,6 +23538,7 @@ class ReservationSpecificReservation(dict):
     @pulumi.getter(name="inUseCount")
     def in_use_count(self) -> Optional[int]:
         """
+        (Output)
         How many instances are in use.
         """
         return pulumi.get(self, "in_use_count")
@@ -24393,11 +24477,15 @@ class RouterBgp(dict):
                ranges will be advertised in addition to any specified groups.
                Leave this field blank to advertise no custom IP ranges.
                Structure is documented below.
-        :param int keepalive_interval: The interval in seconds between BGP keepalive messages that are sent to the peer.
-               Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-               maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-               BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
-               the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        :param int keepalive_interval: The interval in seconds between BGP keepalive messages that are sent
+               to the peer. Hold time is three times the interval at which keepalive
+               messages are sent, and the hold time is the maximum number of seconds
+               allowed to elapse between successive keepalive messages that BGP
+               receives from a peer.
+               BGP will use the smaller of either the local hold time value or the
+               peer's hold time value as the hold time for the BGP connection
+               between the two peers. If set, this value must be between 20 and 60.
+               The default is 20.
         """
         pulumi.set(__self__, "asn", asn)
         if advertise_mode is not None:
@@ -24460,11 +24548,15 @@ class RouterBgp(dict):
     @pulumi.getter(name="keepaliveInterval")
     def keepalive_interval(self) -> Optional[int]:
         """
-        The interval in seconds between BGP keepalive messages that are sent to the peer.
-        Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-        maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-        BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
-        the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        The interval in seconds between BGP keepalive messages that are sent
+        to the peer. Hold time is three times the interval at which keepalive
+        messages are sent, and the hold time is the maximum number of seconds
+        allowed to elapse between successive keepalive messages that BGP
+        receives from a peer.
+        BGP will use the smaller of either the local hold time value or the
+        peer's hold time value as the hold time for the BGP connection
+        between the two peers. If set, this value must be between 20 and 60.
+        The default is 20.
         """
         return pulumi.get(self, "keepalive_interval")
 
@@ -26649,8 +26741,10 @@ class ServiceAttachmentConnectedEndpoint(dict):
                  endpoint: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str endpoint: The URL of the consumer forwarding rule.
-        :param str status: The status of the connection from the consumer forwarding rule to
+        :param str endpoint: (Output)
+               The URL of the consumer forwarding rule.
+        :param str status: (Output)
+               The status of the connection from the consumer forwarding rule to
                this service attachment.
         """
         if endpoint is not None:
@@ -26662,6 +26756,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
         """
+        (Output)
         The URL of the consumer forwarding rule.
         """
         return pulumi.get(self, "endpoint")
@@ -26670,6 +26765,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
+        (Output)
         The status of the connection from the consumer forwarding rule to
         this service attachment.
         """
@@ -26815,7 +26911,8 @@ class SnapshotSnapshotEncryptionKey(dict):
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param str sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -26858,6 +26955,7 @@ class SnapshotSnapshotEncryptionKey(dict):
     @pulumi.getter
     def sha256(self) -> Optional[str]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -35946,6 +36044,7 @@ class GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 maintenance_interval: str,
                  max_run_durations: Sequence['outputs.GetInstanceSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceSchedulingNodeAffinityResult'],
@@ -35964,6 +36063,7 @@ class GetInstanceSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
@@ -35987,6 +36087,11 @@ class GetInstanceSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maxRunDurations")
@@ -36871,6 +36976,7 @@ class GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 maintenance_interval: str,
                  max_run_durations: Sequence['outputs.GetInstanceTemplateSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.GetInstanceTemplateSchedulingNodeAffinityResult'],
@@ -36896,6 +37002,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
@@ -36920,6 +37027,11 @@ class GetInstanceTemplateSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maxRunDurations")

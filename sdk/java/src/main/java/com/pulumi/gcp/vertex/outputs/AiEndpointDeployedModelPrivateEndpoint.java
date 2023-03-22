@@ -12,50 +12,58 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiEndpointDeployedModelPrivateEndpoint {
     /**
-     * @return Output only. Http(s) path to send explain requests.
+     * @return (Output)
+     * Output only. Http(s) path to send explain requests.
      * 
      */
     private @Nullable String explainHttpUri;
     /**
-     * @return Output only. Http(s) path to send health check requests.
+     * @return (Output)
+     * Output only. Http(s) path to send health check requests.
      * 
      */
     private @Nullable String healthHttpUri;
     /**
-     * @return Output only. Http(s) path to send prediction requests.
+     * @return (Output)
+     * Output only. Http(s) path to send prediction requests.
      * 
      */
     private @Nullable String predictHttpUri;
     /**
-     * @return Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+     * @return (Output)
+     * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
      * 
      */
     private @Nullable String serviceAttachment;
 
     private AiEndpointDeployedModelPrivateEndpoint() {}
     /**
-     * @return Output only. Http(s) path to send explain requests.
+     * @return (Output)
+     * Output only. Http(s) path to send explain requests.
      * 
      */
     public Optional<String> explainHttpUri() {
         return Optional.ofNullable(this.explainHttpUri);
     }
     /**
-     * @return Output only. Http(s) path to send health check requests.
+     * @return (Output)
+     * Output only. Http(s) path to send health check requests.
      * 
      */
     public Optional<String> healthHttpUri() {
         return Optional.ofNullable(this.healthHttpUri);
     }
     /**
-     * @return Output only. Http(s) path to send prediction requests.
+     * @return (Output)
+     * Output only. Http(s) path to send prediction requests.
      * 
      */
     public Optional<String> predictHttpUri() {
         return Optional.ofNullable(this.predictHttpUri);
     }
     /**
-     * @return Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+     * @return (Output)
+     * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
      * 
      */
     public Optional<String> serviceAttachment() {

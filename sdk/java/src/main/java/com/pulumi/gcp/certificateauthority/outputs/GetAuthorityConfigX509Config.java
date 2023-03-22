@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigCaOption;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigNameConstraint;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigPolicyId;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,7 @@ public final class GetAuthorityConfigX509Config {
     private List<String> aiaOcspServers;
     private List<GetAuthorityConfigX509ConfigCaOption> caOptions;
     private List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
+    private List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints;
     private List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
 
     private GetAuthorityConfigX509Config() {}
@@ -32,6 +34,9 @@ public final class GetAuthorityConfigX509Config {
     }
     public List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages() {
         return this.keyUsages;
+    }
+    public List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints() {
+        return this.nameConstraints;
     }
     public List<GetAuthorityConfigX509ConfigPolicyId> policyIds() {
         return this.policyIds;
@@ -50,6 +55,7 @@ public final class GetAuthorityConfigX509Config {
         private List<String> aiaOcspServers;
         private List<GetAuthorityConfigX509ConfigCaOption> caOptions;
         private List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
+        private List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints;
         private List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
         public Builder() {}
         public Builder(GetAuthorityConfigX509Config defaults) {
@@ -58,6 +64,7 @@ public final class GetAuthorityConfigX509Config {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsages = defaults.keyUsages;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -94,6 +101,14 @@ public final class GetAuthorityConfigX509Config {
             return keyUsages(List.of(keyUsages));
         }
         @CustomType.Setter
+        public Builder nameConstraints(List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints) {
+            this.nameConstraints = Objects.requireNonNull(nameConstraints);
+            return this;
+        }
+        public Builder nameConstraints(GetAuthorityConfigX509ConfigNameConstraint... nameConstraints) {
+            return nameConstraints(List.of(nameConstraints));
+        }
+        @CustomType.Setter
         public Builder policyIds(List<GetAuthorityConfigX509ConfigPolicyId> policyIds) {
             this.policyIds = Objects.requireNonNull(policyIds);
             return this;
@@ -107,6 +122,7 @@ public final class GetAuthorityConfigX509Config {
             o.aiaOcspServers = aiaOcspServers;
             o.caOptions = caOptions;
             o.keyUsages = keyUsages;
+            o.nameConstraints = nameConstraints;
             o.policyIds = policyIds;
             return o;
         }

@@ -13,6 +13,13 @@ __all__ = [
     'RepositoryIamBindingConditionArgs',
     'RepositoryIamMemberConditionArgs',
     'RepositoryMavenConfigArgs',
+    'RepositoryRemoteRepositoryConfigArgs',
+    'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
+    'RepositoryVirtualRepositoryConfigArgs',
+    'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
 ]
 
 @pulumi.input_type
@@ -136,5 +143,292 @@ class RepositoryMavenConfigArgs:
     @version_policy.setter
     def version_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version_policy", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
+                 maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
+                 npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
+                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None):
+        """
+        :param pulumi.Input[str] description: The description of the remote source.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repository: Specific settings for a Docker remote repository.
+               Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repository: Specific settings for a Maven remote repository.
+               Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repository: Specific settings for an Npm remote repository.
+               Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if docker_repository is not None:
+            pulumi.set(__self__, "docker_repository", docker_repository)
+        if maven_repository is not None:
+            pulumi.set(__self__, "maven_repository", maven_repository)
+        if npm_repository is not None:
+            pulumi.set(__self__, "npm_repository", npm_repository)
+        if python_repository is not None:
+            pulumi.set(__self__, "python_repository", python_repository)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the remote source.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]:
+        """
+        Specific settings for a Docker remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @docker_repository.setter
+    def docker_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]):
+        pulumi.set(self, "docker_repository", value)
+
+    @property
+    @pulumi.getter(name="mavenRepository")
+    def maven_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]:
+        """
+        Specific settings for a Maven remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_repository")
+
+    @maven_repository.setter
+    def maven_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]):
+        pulumi.set(self, "maven_repository", value)
+
+    @property
+    @pulumi.getter(name="npmRepository")
+    def npm_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]:
+        """
+        Specific settings for an Npm remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "npm_repository")
+
+    @npm_repository.setter
+    def npm_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]):
+        pulumi.set(self, "npm_repository", value)
+
+    @property
+    @pulumi.getter(name="pythonRepository")
+    def python_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]:
+        """
+        Specific settings for a Python remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_repository")
+
+    @python_repository.setter
+    def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
+        pulumi.set(self, "python_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_repository: Address of the remote repository.
+               Default value is `DOCKER_HUB`.
+               Possible values are `DOCKER_HUB`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Address of the remote repository.
+        Default value is `DOCKER_HUB`.
+        Possible values are `DOCKER_HUB`.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_repository: Address of the remote repository.
+               Default value is `MAVEN_CENTRAL`.
+               Possible values are `MAVEN_CENTRAL`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Address of the remote repository.
+        Default value is `MAVEN_CENTRAL`.
+        Possible values are `MAVEN_CENTRAL`.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_repository: Address of the remote repository.
+               Default value is `NPMJS`.
+               Possible values are `NPMJS`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Address of the remote repository.
+        Default value is `NPMJS`.
+        Possible values are `NPMJS`.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_repository: Address of the remote repository.
+               Default value is `PYPI`.
+               Possible values are `PYPI`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Address of the remote repository.
+        Default value is `PYPI`.
+        Possible values are `PYPI`.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryVirtualRepositoryConfigArgs:
+    def __init__(__self__, *,
+                 upstream_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
+               Repository. Upstream policies cannot be set on a standard repository.
+               Structure is documented below.
+        """
+        if upstream_policies is not None:
+            pulumi.set(__self__, "upstream_policies", upstream_policies)
+
+    @property
+    @pulumi.getter(name="upstreamPolicies")
+    def upstream_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]:
+        """
+        Policies that configure the upstream artifacts distributed by the Virtual
+        Repository. Upstream policies cannot be set on a standard repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upstream_policies")
+
+    @upstream_policies.setter
+    def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]):
+        pulumi.set(self, "upstream_policies", value)
+
+
+@pulumi.input_type
+class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 repository: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The user-provided ID of the upstream policy.
+        :param pulumi.Input[int] priority: Entries with a greater priority value take precedence in the pull order.
+        :param pulumi.Input[str] repository: A reference to the repository resource, for example:
+               "projects/p1/locations/us-central1/repository/repo1".
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-provided ID of the upstream policy.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Entries with a greater priority value take precedence in the pull order.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to the repository resource, for example:
+        "projects/p1/locations/us-central1/repository/repo1".
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
 
 

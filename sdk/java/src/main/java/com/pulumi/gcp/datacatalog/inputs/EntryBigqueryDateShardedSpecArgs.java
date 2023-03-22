@@ -17,6 +17,7 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     public static final EntryBigqueryDateShardedSpecArgs Empty = new EntryBigqueryDateShardedSpecArgs();
 
     /**
+     * (Output)
      * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
      * 
@@ -25,7 +26,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     private @Nullable Output<String> dataset;
 
     /**
-     * @return The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+     * @return (Output)
+     * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
      * 
      */
@@ -34,6 +36,7 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     }
 
     /**
+     * (Output)
      * Total number of shards.
      * 
      */
@@ -41,7 +44,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     private @Nullable Output<Integer> shardCount;
 
     /**
-     * @return Total number of shards.
+     * @return (Output)
+     * Total number of shards.
      * 
      */
     public Optional<Output<Integer>> shardCount() {
@@ -49,6 +53,7 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     }
 
     /**
+     * (Output)
      * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
      * for example, for shard MyTable20180101, the tablePrefix is MyTable.
      * 
@@ -57,7 +62,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
     private @Nullable Output<String> tablePrefix;
 
     /**
-     * @return The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+     * @return (Output)
+     * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
      * for example, for shard MyTable20180101, the tablePrefix is MyTable.
      * 
      */
@@ -92,7 +98,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dataset The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+         * @param dataset (Output)
+         * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
          * 
          * @return builder
@@ -104,7 +111,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dataset The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+         * @param dataset (Output)
+         * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
          * 
          * @return builder
@@ -115,7 +123,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param shardCount Total number of shards.
+         * @param shardCount (Output)
+         * Total number of shards.
          * 
          * @return builder
          * 
@@ -126,7 +135,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param shardCount Total number of shards.
+         * @param shardCount (Output)
+         * Total number of shards.
          * 
          * @return builder
          * 
@@ -136,7 +146,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tablePrefix The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+         * @param tablePrefix (Output)
+         * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
          * for example, for shard MyTable20180101, the tablePrefix is MyTable.
          * 
          * @return builder
@@ -148,7 +159,8 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tablePrefix The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+         * @param tablePrefix (Output)
+         * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
          * for example, for shard MyTable20180101, the tablePrefix is MyTable.
          * 
          * @return builder

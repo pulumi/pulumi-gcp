@@ -16,6 +16,7 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
     public static final AiIndexDeployedIndexArgs Empty = new AiIndexDeployedIndexArgs();
 
     /**
+     * (Output)
      * The ID of the DeployedIndex in the above IndexEndpoint.
      * 
      */
@@ -23,7 +24,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> deployedIndexId;
 
     /**
-     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * @return (Output)
+     * The ID of the DeployedIndex in the above IndexEndpoint.
      * 
      */
     public Optional<Output<String>> deployedIndexId() {
@@ -31,6 +33,7 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * A resource name of the IndexEndpoint.
      * 
      */
@@ -38,7 +41,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> indexEndpoint;
 
     /**
-     * @return A resource name of the IndexEndpoint.
+     * @return (Output)
+     * A resource name of the IndexEndpoint.
      * 
      */
     public Optional<Output<String>> indexEndpoint() {
@@ -71,7 +75,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deployedIndexId The ID of the DeployedIndex in the above IndexEndpoint.
+         * @param deployedIndexId (Output)
+         * The ID of the DeployedIndex in the above IndexEndpoint.
          * 
          * @return builder
          * 
@@ -82,7 +87,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deployedIndexId The ID of the DeployedIndex in the above IndexEndpoint.
+         * @param deployedIndexId (Output)
+         * The ID of the DeployedIndex in the above IndexEndpoint.
          * 
          * @return builder
          * 
@@ -92,7 +98,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param indexEndpoint A resource name of the IndexEndpoint.
+         * @param indexEndpoint (Output)
+         * A resource name of the IndexEndpoint.
          * 
          * @return builder
          * 
@@ -103,7 +110,8 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param indexEndpoint A resource name of the IndexEndpoint.
+         * @param indexEndpoint (Output)
+         * A resource name of the IndexEndpoint.
          * 
          * @return builder
          * 

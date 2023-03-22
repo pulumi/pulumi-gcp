@@ -64,6 +64,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Output)
      * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
      * 
      */
@@ -71,7 +72,8 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> serviceAccountId;
 
     /**
-     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * @return (Output)
+     * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
      * 
      */
     public Optional<Output<String>> serviceAccountId() {
@@ -189,7 +191,8 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccountId When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+         * @param serviceAccountId (Output)
+         * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
          * 
          * @return builder
          * 
@@ -200,7 +203,8 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccountId When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+         * @param serviceAccountId (Output)
+         * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
          * 
          * @return builder
          * 

@@ -220,7 +220,11 @@ class InstanceIamPolicy(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ))
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
         ```
         ### Data Fusion Instance Cmek
 
@@ -362,7 +366,11 @@ class InstanceIamPolicy(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ))
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
         ```
         ### Data Fusion Instance Cmek
 

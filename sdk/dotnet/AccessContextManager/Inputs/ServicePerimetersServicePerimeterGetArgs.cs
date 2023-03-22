@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     public sealed class ServicePerimetersServicePerimeterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Time the AccessPolicy was created in UTC.
         /// </summary>
         [Input("createTime")]
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string> Title { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Time the AccessPolicy was updated in UTC.
         /// </summary>
         [Input("updateTime")]

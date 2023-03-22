@@ -11,6 +11,7 @@ import (
 )
 
 type InstanceMaintenancePolicy struct {
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -19,6 +20,7 @@ type InstanceMaintenancePolicy struct {
 	// Create/Update methods return INVALID_ARGUMENT if the
 	// length is greater than 512.
 	Description *string `pulumi:"description"`
+	// (Output)
 	// Output only. The time when the policy was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -42,6 +44,7 @@ type InstanceMaintenancePolicyInput interface {
 }
 
 type InstanceMaintenancePolicyArgs struct {
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -50,6 +53,7 @@ type InstanceMaintenancePolicyArgs struct {
 	// Create/Update methods return INVALID_ARGUMENT if the
 	// length is greater than 512.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
 	// Output only. The time when the policy was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -138,6 +142,7 @@ func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutputWit
 	}).(InstanceMaintenancePolicyPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits
@@ -152,6 +157,7 @@ func (o InstanceMaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was updated.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -193,6 +199,7 @@ func (o InstanceMaintenancePolicyPtrOutput) Elem() InstanceMaintenancePolicyOutp
 	}).(InstanceMaintenancePolicyOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits
@@ -217,6 +224,7 @@ func (o InstanceMaintenancePolicyPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was updated.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -481,10 +489,12 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds
 }
 
 type InstanceMaintenanceSchedule struct {
+	// (Output)
 	// Output only. The end time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	EndTime *string `pulumi:"endTime"`
+	// (Output)
 	// Output only. The deadline that the maintenance schedule start time
 	// can not go beyond, including reschedule.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -507,10 +517,12 @@ type InstanceMaintenanceScheduleInput interface {
 }
 
 type InstanceMaintenanceScheduleArgs struct {
+	// (Output)
 	// Output only. The end time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
 	// Output only. The deadline that the maintenance schedule start time
 	// can not go beyond, including reschedule.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -572,6 +584,7 @@ func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceScheduleOutputWi
 	return o
 }
 
+// (Output)
 // Output only. The end time of any upcoming scheduled maintenance for this instance.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -579,6 +592,7 @@ func (o InstanceMaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The deadline that the maintenance schedule start time
 // can not go beyond, including reschedule.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -614,14 +628,19 @@ func (o InstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) Instanc
 }
 
 type InstanceMemcacheNode struct {
+	// (Output)
 	// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
 	Host *string `pulumi:"host"`
+	// (Output)
 	// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
 	NodeId *string `pulumi:"nodeId"`
+	// (Output)
 	// The port number of the Memcached server on this node.
 	Port *int `pulumi:"port"`
+	// (Output)
 	// Current state of the Memcached node.
 	State *string `pulumi:"state"`
+	// (Output)
 	// Location (GCP Zone) for the Memcached node.
 	Zone *string `pulumi:"zone"`
 }
@@ -638,14 +657,19 @@ type InstanceMemcacheNodeInput interface {
 }
 
 type InstanceMemcacheNodeArgs struct {
+	// (Output)
 	// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
 	Host pulumi.StringPtrInput `pulumi:"host"`
+	// (Output)
 	// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// (Output)
 	// The port number of the Memcached server on this node.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// (Output)
 	// Current state of the Memcached node.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// Location (GCP Zone) for the Memcached node.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -701,26 +725,31 @@ func (o InstanceMemcacheNodeOutput) ToInstanceMemcacheNodeOutputWithContext(ctx 
 	return o
 }
 
+// (Output)
 // Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
 func (o InstanceMemcacheNodeOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
 func (o InstanceMemcacheNodeOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The port number of the Memcached server on this node.
 func (o InstanceMemcacheNodeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheNode) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Current state of the Memcached node.
 func (o InstanceMemcacheNodeOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Location (GCP Zone) for the Memcached node.
 func (o InstanceMemcacheNodeOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheNode) *string { return v.Zone }).(pulumi.StringPtrOutput)
@@ -747,6 +776,7 @@ func (o InstanceMemcacheNodeArrayOutput) Index(i pulumi.IntInput) InstanceMemcac
 }
 
 type InstanceMemcacheParameters struct {
+	// (Output)
 	// This is a unique ID associated with this set of parameters.
 	Id *string `pulumi:"id"`
 	// User-defined set of parameters to use in the memcache process.
@@ -765,6 +795,7 @@ type InstanceMemcacheParametersInput interface {
 }
 
 type InstanceMemcacheParametersArgs struct {
+	// (Output)
 	// This is a unique ID associated with this set of parameters.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// User-defined set of parameters to use in the memcache process.
@@ -848,6 +879,7 @@ func (o InstanceMemcacheParametersOutput) ToInstanceMemcacheParametersPtrOutputW
 	}).(InstanceMemcacheParametersPtrOutput)
 }
 
+// (Output)
 // This is a unique ID associated with this set of parameters.
 func (o InstanceMemcacheParametersOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMemcacheParameters) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -882,6 +914,7 @@ func (o InstanceMemcacheParametersPtrOutput) Elem() InstanceMemcacheParametersOu
 	}).(InstanceMemcacheParametersOutput)
 }
 
+// (Output)
 // This is a unique ID associated with this set of parameters.
 func (o InstanceMemcacheParametersPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMemcacheParameters) *string {

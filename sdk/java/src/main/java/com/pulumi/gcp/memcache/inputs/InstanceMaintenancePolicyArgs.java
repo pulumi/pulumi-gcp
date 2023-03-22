@@ -18,6 +18,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
     public static final InstanceMaintenancePolicyArgs Empty = new InstanceMaintenancePolicyArgs();
 
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
@@ -27,7 +28,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
      * 
@@ -56,6 +58,7 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (Output)
      * Output only. The time when the policy was updated.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -65,7 +68,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. The time when the policy was updated.
+     * @return (Output)
+     * Output only. The time when the policy was updated.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -123,7 +127,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime Output only. The time when the policy was created.
+         * @param createTime (Output)
+         * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits
          * 
@@ -136,7 +141,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime Output only. The time when the policy was created.
+         * @param createTime (Output)
+         * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits
          * 
@@ -173,7 +179,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime Output only. The time when the policy was updated.
+         * @param updateTime (Output)
+         * Output only. The time when the policy was updated.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -186,7 +193,8 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime Output only. The time when the policy was updated.
+         * @param updateTime (Output)
+         * Output only. The time when the policy was updated.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 

@@ -167,21 +167,29 @@ func (o JobBinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 }
 
 type JobCondition struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason *string `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason *string `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason *string `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity *string `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
+	// (Output)
 	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type *string `pulumi:"type"`
 }
@@ -198,21 +206,29 @@ type JobConditionInput interface {
 }
 
 type JobConditionArgs struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -268,42 +284,50 @@ func (o JobConditionOutput) ToJobConditionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// (Output)
 // A reason for the execution condition.
 func (o JobConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Last time the condition transitioned from one status to another.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o JobConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A common (service-level) reason for this condition.
 func (o JobConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A reason for the revision condition.
 func (o JobConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // How to interpret failures of this condition, one of Error, Warning, Info
 func (o JobConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // State of the condition.
 func (o JobConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -656,9 +680,11 @@ func (o JobIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type JobLatestCreatedExecution struct {
+	// (Output)
 	// Completion timestamp of the execution.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime *string `pulumi:"completionTime"`
+	// (Output)
 	// Creation timestamp of the execution.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
@@ -678,9 +704,11 @@ type JobLatestCreatedExecutionInput interface {
 }
 
 type JobLatestCreatedExecutionArgs struct {
+	// (Output)
 	// Completion timestamp of the execution.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
+	// (Output)
 	// Creation timestamp of the execution.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
@@ -739,12 +767,14 @@ func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutputWithCo
 	return o
 }
 
+// (Output)
 // Completion timestamp of the execution.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobLatestCreatedExecutionOutput) CompletionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLatestCreatedExecution) *string { return v.CompletionTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Creation timestamp of the execution.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobLatestCreatedExecutionOutput) CreateTime() pulumi.StringPtrOutput {
@@ -4279,21 +4309,29 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 }
 
 type JobTerminalCondition struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason *string `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason *string `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason *string `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity *string `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
+	// (Output)
 	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type *string `pulumi:"type"`
 }
@@ -4310,21 +4348,29 @@ type JobTerminalConditionInput interface {
 }
 
 type JobTerminalConditionArgs struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -4380,42 +4426,50 @@ func (o JobTerminalConditionOutput) ToJobTerminalConditionOutputWithContext(ctx 
 	return o
 }
 
+// (Output)
 // A reason for the execution condition.
 func (o JobTerminalConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Last time the condition transitioned from one status to another.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobTerminalConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o JobTerminalConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A common (service-level) reason for this condition.
 func (o JobTerminalConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A reason for the revision condition.
 func (o JobTerminalConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // How to interpret failures of this condition, one of Error, Warning, Info
 func (o JobTerminalConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // State of the condition.
 func (o JobTerminalConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobTerminalConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -4598,19 +4652,26 @@ func (o ServiceBinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 }
 
 type ServiceCondition struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason *string `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason *string `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason *string `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity *string `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
@@ -4630,19 +4691,26 @@ type ServiceConditionInput interface {
 }
 
 type ServiceConditionArgs struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
@@ -4701,37 +4769,44 @@ func (o ServiceConditionOutput) ToServiceConditionOutputWithContext(ctx context.
 	return o
 }
 
+// (Output)
 // A reason for the execution condition.
 func (o ServiceConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Last time the condition transitioned from one status to another.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ServiceConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o ServiceConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A common (service-level) reason for this condition.
 func (o ServiceConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A reason for the revision condition.
 func (o ServiceConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // How to interpret failures of this condition, one of Error, Warning, Info
 func (o ServiceConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // State of the condition.
 func (o ServiceConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -9007,19 +9082,26 @@ func (o ServiceTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 }
 
 type ServiceTerminalCondition struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason *string `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason *string `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason *string `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity *string `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
@@ -9039,19 +9121,26 @@ type ServiceTerminalConditionInput interface {
 }
 
 type ServiceTerminalConditionArgs struct {
+	// (Output)
 	// A reason for the execution condition.
 	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// (Output)
 	// Last time the condition transitioned from one status to another.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
 	// A common (service-level) reason for this condition.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
 	// A reason for the revision condition.
 	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// (Output)
 	// How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
@@ -9110,37 +9199,44 @@ func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutputWithCont
 	return o
 }
 
+// (Output)
 // A reason for the execution condition.
 func (o ServiceTerminalConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Last time the condition transitioned from one status to another.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ServiceTerminalConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o ServiceTerminalConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A common (service-level) reason for this condition.
 func (o ServiceTerminalConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A reason for the revision condition.
 func (o ServiceTerminalConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // How to interpret failures of this condition, one of Error, Warning, Info
 func (o ServiceTerminalConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // State of the condition.
 func (o ServiceTerminalConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -9311,6 +9407,7 @@ type ServiceTrafficStatus struct {
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
+	// (Output)
 	// Displays the target URI.
 	Uri *string `pulumi:"uri"`
 }
@@ -9338,6 +9435,7 @@ type ServiceTrafficStatusArgs struct {
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
@@ -9416,6 +9514,7 @@ func (o ServiceTrafficStatusOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Displays the target URI.
 func (o ServiceTrafficStatusOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Uri }).(pulumi.StringPtrOutput)

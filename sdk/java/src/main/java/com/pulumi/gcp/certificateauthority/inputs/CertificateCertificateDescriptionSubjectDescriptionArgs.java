@@ -19,6 +19,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     public static final CertificateCertificateDescriptionSubjectDescriptionArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionArgs();
 
     /**
+     * (Output)
      * The serial number encoded in lowercase hexadecimal.
      * 
      */
@@ -26,7 +27,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     private @Nullable Output<String> hexSerialNumber;
 
     /**
-     * @return The serial number encoded in lowercase hexadecimal.
+     * @return (Output)
+     * The serial number encoded in lowercase hexadecimal.
      * 
      */
     public Optional<Output<String>> hexSerialNumber() {
@@ -53,6 +55,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     }
 
     /**
+     * (Output)
      * The time at which the certificate expires.
      * 
      */
@@ -60,7 +63,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     private @Nullable Output<String> notAfterTime;
 
     /**
-     * @return The time at which the certificate expires.
+     * @return (Output)
+     * The time at which the certificate expires.
      * 
      */
     public Optional<Output<String>> notAfterTime() {
@@ -68,6 +72,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     }
 
     /**
+     * (Output)
      * The time at which the certificate becomes valid.
      * 
      */
@@ -75,7 +80,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
     private @Nullable Output<String> notBeforeTime;
 
     /**
-     * @return The time at which the certificate becomes valid.
+     * @return (Output)
+     * The time at which the certificate becomes valid.
      * 
      */
     public Optional<Output<String>> notBeforeTime() {
@@ -146,7 +152,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param hexSerialNumber The serial number encoded in lowercase hexadecimal.
+         * @param hexSerialNumber (Output)
+         * The serial number encoded in lowercase hexadecimal.
          * 
          * @return builder
          * 
@@ -157,7 +164,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param hexSerialNumber The serial number encoded in lowercase hexadecimal.
+         * @param hexSerialNumber (Output)
+         * The serial number encoded in lowercase hexadecimal.
          * 
          * @return builder
          * 
@@ -192,7 +200,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param notAfterTime The time at which the certificate expires.
+         * @param notAfterTime (Output)
+         * The time at which the certificate expires.
          * 
          * @return builder
          * 
@@ -203,7 +212,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param notAfterTime The time at which the certificate expires.
+         * @param notAfterTime (Output)
+         * The time at which the certificate expires.
          * 
          * @return builder
          * 
@@ -213,7 +223,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param notBeforeTime The time at which the certificate becomes valid.
+         * @param notBeforeTime (Output)
+         * The time at which the certificate becomes valid.
          * 
          * @return builder
          * 
@@ -224,7 +235,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         }
 
         /**
-         * @param notBeforeTime The time at which the certificate becomes valid.
+         * @param notBeforeTime (Output)
+         * The time at which the certificate becomes valid.
          * 
          * @return builder
          * 

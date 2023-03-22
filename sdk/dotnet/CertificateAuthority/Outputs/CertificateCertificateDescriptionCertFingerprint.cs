@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionCertFingerprint
     {
         /// <summary>
+        /// (Output)
         /// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         /// </summary>
         public readonly string? Sha256Hash;

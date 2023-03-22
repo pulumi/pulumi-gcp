@@ -35,6 +35,7 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * The proxy endpoint that is used to access the runtime.
      * 
      */
@@ -42,7 +43,8 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> proxyUri;
 
     /**
-     * @return The proxy endpoint that is used to access the runtime.
+     * @return (Output)
+     * The proxy endpoint that is used to access the runtime.
      * 
      */
     public Optional<Output<String>> proxyUri() {
@@ -118,7 +120,8 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the runtime.
+         * @param proxyUri (Output)
+         * The proxy endpoint that is used to access the runtime.
          * 
          * @return builder
          * 
@@ -129,7 +132,8 @@ public final class RuntimeAccessConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the runtime.
+         * @param proxyUri (Output)
+         * The proxy endpoint that is used to access the runtime.
          * 
          * @return builder
          * 

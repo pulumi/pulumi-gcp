@@ -51,6 +51,60 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKey],
  * });
  * ```
+ * ### Artifact Registry Repository Virtual
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo_upstream = new gcp.artifactregistry.Repository("my-repo-upstream", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository-upstream",
+ *     description: "example docker repository (upstream source)",
+ *     format: "DOCKER",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example virtual docker repository",
+ *     format: "DOCKER",
+ *     mode: "VIRTUAL_REPOSITORY",
+ *     virtualRepositoryConfig: {
+ *         upstreamPolicies: [{
+ *             id: "my-repository-upstream",
+ *             repository: my_repo_upstream.id,
+ *             priority: 1,
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [],
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example remote docker repository",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "docker hub",
+ *         dockerRepository: {
+ *             publicRepository: "DOCKER_HUB",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -142,6 +196,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
+     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     */
+    public readonly mode!: pulumi.Output<string | undefined>;
+    /**
      * The name of the repository, for example:
      * "projects/p1/locations/us-central1/repositories/repo1"
      */
@@ -152,6 +211,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Configuration specific for a Remote Repository.
+     */
+    public readonly remoteRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
+    /**
      * The last part of the repository name, for example:
      * "repo1"
      */
@@ -160,6 +223,10 @@ export class Repository extends pulumi.CustomResource {
      * The time when the repository was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    public readonly virtualRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -181,10 +248,13 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["mavenConfig"] = state ? state.mavenConfig : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["remoteRepositoryConfig"] = state ? state.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["virtualRepositoryConfig"] = state ? state.virtualRepositoryConfig : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
             if ((!args || args.format === undefined) && !opts.urn) {
@@ -199,8 +269,11 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mavenConfig"] = args ? args.mavenConfig : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remoteRepositoryConfig"] = args ? args.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -256,6 +329,11 @@ export interface RepositoryState {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
+     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     */
+    mode?: pulumi.Input<string>;
+    /**
      * The name of the repository, for example:
      * "projects/p1/locations/us-central1/repositories/repo1"
      */
@@ -266,6 +344,10 @@ export interface RepositoryState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Configuration specific for a Remote Repository.
+     */
+    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
+    /**
      * The last part of the repository name, for example:
      * "repo1"
      */
@@ -274,6 +356,10 @@ export interface RepositoryState {
      * The time when the repository was last updated.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
 }
 
 /**
@@ -318,13 +404,26 @@ export interface RepositoryArgs {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
+     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     */
+    mode?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
+     * Configuration specific for a Remote Repository.
+     */
+    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
+    /**
      * The last part of the repository name, for example:
      * "repo1"
      */
     repositoryId: pulumi.Input<string>;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
 }

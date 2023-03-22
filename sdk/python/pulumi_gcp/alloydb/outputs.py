@@ -28,14 +28,14 @@ class ClusterAutomatedBackupPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "weeklySchedule":
-            suggest = "weekly_schedule"
-        elif key == "backupWindow":
+        if key == "backupWindow":
             suggest = "backup_window"
         elif key == "quantityBasedRetention":
             suggest = "quantity_based_retention"
         elif key == "timeBasedRetention":
             suggest = "time_based_retention"
+        elif key == "weeklySchedule":
+            suggest = "weekly_schedule"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterAutomatedBackupPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -49,16 +49,14 @@ class ClusterAutomatedBackupPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 weekly_schedule: 'outputs.ClusterAutomatedBackupPolicyWeeklySchedule',
                  backup_window: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  location: Optional[str] = None,
                  quantity_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention'] = None,
-                 time_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyTimeBasedRetention'] = None):
+                 time_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyTimeBasedRetention'] = None,
+                 weekly_schedule: Optional['outputs.ClusterAutomatedBackupPolicyWeeklySchedule'] = None):
         """
-        :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArgs' weekly_schedule: Weekly schedule for the Backup.
-               Structure is documented below.
         :param str backup_window: The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -69,8 +67,9 @@ class ClusterAutomatedBackupPolicy(dict):
                Structure is documented below.
         :param 'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs' time_based_retention: Time-based Backup retention policy.
                Structure is documented below.
+        :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArgs' weekly_schedule: Weekly schedule for the Backup.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "weekly_schedule", weekly_schedule)
         if backup_window is not None:
             pulumi.set(__self__, "backup_window", backup_window)
         if enabled is not None:
@@ -83,15 +82,8 @@ class ClusterAutomatedBackupPolicy(dict):
             pulumi.set(__self__, "quantity_based_retention", quantity_based_retention)
         if time_based_retention is not None:
             pulumi.set(__self__, "time_based_retention", time_based_retention)
-
-    @property
-    @pulumi.getter(name="weeklySchedule")
-    def weekly_schedule(self) -> 'outputs.ClusterAutomatedBackupPolicyWeeklySchedule':
-        """
-        Weekly schedule for the Backup.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "weekly_schedule")
+        if weekly_schedule is not None:
+            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
 
     @property
     @pulumi.getter(name="backupWindow")
@@ -144,6 +136,15 @@ class ClusterAutomatedBackupPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "time_based_retention")
+
+    @property
+    @pulumi.getter(name="weeklySchedule")
+    def weekly_schedule(self) -> Optional['outputs.ClusterAutomatedBackupPolicyWeeklySchedule']:
+        """
+        Weekly schedule for the Backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_schedule")
 
 
 @pulumi.output_type

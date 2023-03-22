@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class DnsAuthorizationDnsResourceRecord
     {
         /// <summary>
+        /// (Output)
         /// Data of the DNS Resource Record.
         /// </summary>
         public readonly string? Data;
@@ -24,6 +25,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// (Output)
         /// Type of the DNS Resource Record.
         /// </summary>
         public readonly string? Type;

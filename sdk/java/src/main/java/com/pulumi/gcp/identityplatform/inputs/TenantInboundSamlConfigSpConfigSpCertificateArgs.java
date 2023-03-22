@@ -17,6 +17,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
 
     /**
      * The x509 certificate
+     * (Output)
      * The x509 certificate
      * 
      */
@@ -25,6 +26,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
 
     /**
      * @return The x509 certificate
+     * (Output)
      * The x509 certificate
      * 
      */
@@ -58,6 +60,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
 
         /**
          * @param x509Certificate The x509 certificate
+         * (Output)
          * The x509 certificate
          * 
          * @return builder
@@ -70,6 +73,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
 
         /**
          * @param x509Certificate The x509 certificate
+         * (Output)
          * The x509 certificate
          * 
          * @return builder

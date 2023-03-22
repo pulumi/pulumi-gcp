@@ -31,6 +31,7 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
@@ -39,7 +40,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> state;
 
     /**
-     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return (Output)
+     * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
@@ -48,6 +50,7 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * Output only. Name of the subscription.
      * 
      */
@@ -55,7 +58,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> subscription;
 
     /**
-     * @return Output only. Name of the subscription.
+     * @return (Output)
+     * Output only. Name of the subscription.
      * 
      */
     public Optional<Output<String>> subscription() {
@@ -126,7 +130,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state (Output)
+         * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder
@@ -138,7 +143,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state (Output)
+         * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder
@@ -149,7 +155,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subscription Output only. Name of the subscription.
+         * @param subscription (Output)
+         * Output only. Name of the subscription.
          * 
          * @return builder
          * 
@@ -160,7 +167,8 @@ public final class TriggerPubsubConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subscription Output only. Name of the subscription.
+         * @param subscription (Output)
+         * Output only. Name of the subscription.
          * 
          * @return builder
          * 

@@ -158,6 +158,7 @@ type AlertPolicy struct {
 	Documentation AlertPolicyDocumentationPtrOutput `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// (Output)
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -254,6 +255,7 @@ type alertPolicyState struct {
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
+	// (Output)
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -313,6 +315,7 @@ type AlertPolicyState struct {
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput
+	// (Output)
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -578,6 +581,7 @@ func (o AlertPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // The unique resource name for this condition.
 // Its syntax is:
 // projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string>? DataType { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column length.
         /// </summary>
         [Input("length")]
@@ -44,6 +45,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<int>? OrdinalPosition { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column precision.
         /// </summary>
         [Input("precision")]
@@ -56,6 +58,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<bool>? PrimaryKey { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column scale.
         /// </summary>
         [Input("scale")]

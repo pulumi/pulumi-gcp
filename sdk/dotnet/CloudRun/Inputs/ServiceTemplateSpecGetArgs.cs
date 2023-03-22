@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? ServiceAccountName { get; set; }
 
         /// <summary>
-        /// (Deprecated)
+        /// (Output, Deprecated)
         /// ServingState holds a value describing the state the resources
         /// are in for this Revision.
         /// It is expected

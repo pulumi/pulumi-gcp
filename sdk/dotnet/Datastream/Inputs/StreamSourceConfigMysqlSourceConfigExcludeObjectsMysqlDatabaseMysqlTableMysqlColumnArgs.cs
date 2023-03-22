@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string>? DataType { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column length.
         /// </summary>
         [Input("length")]

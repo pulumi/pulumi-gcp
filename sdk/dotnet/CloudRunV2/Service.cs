@@ -540,6 +540,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Displays the target URI.
         /// </summary>
         [Output("uri")]
@@ -896,6 +897,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Uid { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Displays the target URI.
         /// </summary>
         [Input("uri")]

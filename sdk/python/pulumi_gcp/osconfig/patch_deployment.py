@@ -212,7 +212,8 @@ class _PatchDeploymentState:
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input['PatchDeploymentInstanceFilterArgs'] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[str] last_execute_time: The time the last patch job ran successfully.
+        :param pulumi.Input[str] last_execute_time: (Output)
+               The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project.
                The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
@@ -317,6 +318,7 @@ class _PatchDeploymentState:
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -1065,7 +1067,8 @@ class PatchDeployment(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[str] last_execute_time: The time the last patch job ran successfully.
+        :param pulumi.Input[str] last_execute_time: (Output)
+               The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project.
                The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
@@ -1146,6 +1149,7 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> pulumi.Output[str]:
         """
+        (Output)
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """

@@ -187,7 +187,8 @@ class _JobState:
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param pulumi.Input[str] job_type: The type of the job.
+        :param pulumi.Input[str] job_type: (Output)
+               The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
@@ -275,6 +276,7 @@ class _JobState:
     @pulumi.getter(name="jobType")
     def job_type(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The type of the job.
         """
         return pulumi.get(self, "job_type")
@@ -872,7 +874,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param pulumi.Input[str] job_type: The type of the job.
+        :param pulumi.Input[str] job_type: (Output)
+               The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
@@ -937,6 +940,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="jobType")
     def job_type(self) -> pulumi.Output[str]:
         """
+        (Output)
         The type of the job.
         """
         return pulumi.get(self, "job_type")

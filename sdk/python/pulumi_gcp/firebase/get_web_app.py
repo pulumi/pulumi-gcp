@@ -87,7 +87,7 @@ class GetWebAppResult:
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
 
@@ -107,15 +107,19 @@ class AwaitableGetWebAppResult(GetWebAppResult):
 
 
 def get_web_app(app_id: Optional[str] = None,
+                project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAppResult:
     """
     A Google Cloud Firebase web application instance
 
 
     :param str app_id: The app_ip of name of the Firebase webApp.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['appId'] = app_id
+    __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getWebApp:getWebApp', __args__, opts=opts, typ=GetWebAppResult).value
 
@@ -131,11 +135,14 @@ def get_web_app(app_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_web_app)
 def get_web_app_output(app_id: Optional[pulumi.Input[str]] = None,
+                       project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppResult]:
     """
     A Google Cloud Firebase web application instance
 
 
     :param str app_id: The app_ip of name of the Firebase webApp.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     ...

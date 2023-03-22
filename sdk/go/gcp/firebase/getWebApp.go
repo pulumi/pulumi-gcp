@@ -24,6 +24,9 @@ func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.In
 type LookupWebAppArgs struct {
 	// The appIp of name of the Firebase webApp.
 	AppId string `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getWebApp.
@@ -38,8 +41,8 @@ type LookupWebAppResult struct {
 	Id string `pulumi:"id"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/webApps/appId
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    string  `pulumi:"name"`
+	Project *string `pulumi:"project"`
 }
 
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
@@ -59,6 +62,9 @@ func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts .
 type LookupWebAppOutputArgs struct {
 	// The appIp of name of the Firebase webApp.
 	AppId pulumi.StringInput `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupWebAppOutputArgs) ElementType() reflect.Type {
@@ -109,8 +115,8 @@ func (o LookupWebAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupWebAppResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWebAppResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupWebAppResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 func init() {

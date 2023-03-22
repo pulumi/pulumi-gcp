@@ -31,6 +31,7 @@ public final class NodeTemplateNodeTypeFlexibilityArgs extends com.pulumi.resour
     }
 
     /**
+     * (Output)
      * Use local SSD
      * 
      */
@@ -38,7 +39,8 @@ public final class NodeTemplateNodeTypeFlexibilityArgs extends com.pulumi.resour
     private @Nullable Output<String> localSsd;
 
     /**
-     * @return Use local SSD
+     * @return (Output)
+     * Use local SSD
      * 
      */
     public Optional<Output<String>> localSsd() {
@@ -108,7 +110,8 @@ public final class NodeTemplateNodeTypeFlexibilityArgs extends com.pulumi.resour
         }
 
         /**
-         * @param localSsd Use local SSD
+         * @param localSsd (Output)
+         * Use local SSD
          * 
          * @return builder
          * 
@@ -119,7 +122,8 @@ public final class NodeTemplateNodeTypeFlexibilityArgs extends com.pulumi.resour
         }
 
         /**
-         * @param localSsd Use local SSD
+         * @param localSsd (Output)
+         * Use local SSD
          * 
          * @return builder
          * 

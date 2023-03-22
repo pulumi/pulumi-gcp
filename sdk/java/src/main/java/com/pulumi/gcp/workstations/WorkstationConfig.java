@@ -425,8 +425,8 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;cloud-workstations-kms&#34;)
- *             .displayName(&#34;Service Account for Cloud Workstations&#34;)
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Service Account&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -472,10 +472,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
- * ```
- * 
- * ```sh
- *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
  * ```
  * 
  */

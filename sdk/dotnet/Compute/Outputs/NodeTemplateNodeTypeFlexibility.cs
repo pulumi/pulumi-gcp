@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Cpus;
         /// <summary>
+        /// (Output)
         /// Use local SSD
         /// </summary>
         public readonly string? LocalSsd;

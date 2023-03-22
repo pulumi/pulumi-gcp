@@ -16,6 +16,7 @@ public final class QueueAppEngineRoutingOverrideArgs extends com.pulumi.resource
     public static final QueueAppEngineRoutingOverrideArgs Empty = new QueueAppEngineRoutingOverrideArgs();
 
     /**
+     * (Output)
      * The host that the task is sent to.
      * 
      */
@@ -23,7 +24,8 @@ public final class QueueAppEngineRoutingOverrideArgs extends com.pulumi.resource
     private @Nullable Output<String> host;
 
     /**
-     * @return The host that the task is sent to.
+     * @return (Output)
+     * The host that the task is sent to.
      * 
      */
     public Optional<Output<String>> host() {
@@ -109,7 +111,8 @@ public final class QueueAppEngineRoutingOverrideArgs extends com.pulumi.resource
         }
 
         /**
-         * @param host The host that the task is sent to.
+         * @param host (Output)
+         * The host that the task is sent to.
          * 
          * @return builder
          * 
@@ -120,7 +123,8 @@ public final class QueueAppEngineRoutingOverrideArgs extends com.pulumi.resource
         }
 
         /**
-         * @param host The host that the task is sent to.
+         * @param host (Output)
+         * The host that the task is sent to.
          * 
          * @return builder
          * 

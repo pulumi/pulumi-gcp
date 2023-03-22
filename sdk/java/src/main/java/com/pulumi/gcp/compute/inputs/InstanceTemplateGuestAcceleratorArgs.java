@@ -30,14 +30,16 @@ public final class InstanceTemplateGuestAcceleratorArgs extends com.pulumi.resou
     }
 
     /**
-     * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+     * `&#34;PERSISTENT&#34;`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+     * `&#34;PERSISTENT&#34;`.
      * 
      */
     public Output<String> type() {
@@ -91,7 +93,8 @@ public final class InstanceTemplateGuestAcceleratorArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * @param type The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+         * `&#34;PERSISTENT&#34;`.
          * 
          * @return builder
          * 
@@ -102,7 +105,8 @@ public final class InstanceTemplateGuestAcceleratorArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * @param type The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+         * `&#34;PERSISTENT&#34;`.
          * 
          * @return builder
          * 

@@ -168,7 +168,8 @@ class InboundSamlConfigSpConfig(dict):
                  sp_entity_id: Optional[str] = None):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param Sequence['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
+               The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param str sp_entity_id: Unique identifier for all SAML entities.
         """
@@ -191,6 +192,7 @@ class InboundSamlConfigSpConfig(dict):
     @pulumi.getter(name="spCertificates")
     def sp_certificates(self) -> Optional[Sequence['outputs.InboundSamlConfigSpConfigSpCertificate']]:
         """
+        (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
         """
@@ -228,6 +230,7 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The IdP's x509 certificate.
+               (Output)
                The x509 certificate
         """
         if x509_certificate is not None:
@@ -238,6 +241,7 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
     def x509_certificate(self) -> Optional[str]:
         """
         The IdP's x509 certificate.
+        (Output)
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
@@ -278,7 +282,8 @@ class ProjectDefaultConfigSignIn(dict):
                Structure is documented below.
         :param 'ProjectDefaultConfigSignInEmailArgs' email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param Sequence['ProjectDefaultConfigSignInHashConfigArgs'] hash_configs: Output only. Hash config information.
+        :param Sequence['ProjectDefaultConfigSignInHashConfigArgs'] hash_configs: (Output)
+               Output only. Hash config information.
                Structure is documented below.
         :param 'ProjectDefaultConfigSignInPhoneNumberArgs' phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
@@ -324,6 +329,7 @@ class ProjectDefaultConfigSignIn(dict):
     @pulumi.getter(name="hashConfigs")
     def hash_configs(self) -> Optional[Sequence['outputs.ProjectDefaultConfigSignInHashConfig']]:
         """
+        (Output)
         Output only. Hash config information.
         Structure is documented below.
         """
@@ -439,11 +445,16 @@ class ProjectDefaultConfigSignInHashConfig(dict):
                  salt_separator: Optional[str] = None,
                  signer_key: Optional[str] = None):
         """
-        :param str algorithm: Different password hash algorithms used in Identity Toolkit.
-        :param int memory_cost: Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-        :param int rounds: How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-        :param str salt_separator: Non-printable character to be inserted between the salt and plain text password in base64.
-        :param str signer_key: Signer key in base64.
+        :param str algorithm: (Output)
+               Different password hash algorithms used in Identity Toolkit.
+        :param int memory_cost: (Output)
+               Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        :param int rounds: (Output)
+               How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        :param str salt_separator: (Output)
+               Non-printable character to be inserted between the salt and plain text password in base64.
+        :param str signer_key: (Output)
+               Signer key in base64.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -460,6 +471,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
     @pulumi.getter
     def algorithm(self) -> Optional[str]:
         """
+        (Output)
         Different password hash algorithms used in Identity Toolkit.
         """
         return pulumi.get(self, "algorithm")
@@ -468,6 +480,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
     @pulumi.getter(name="memoryCost")
     def memory_cost(self) -> Optional[int]:
         """
+        (Output)
         Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         """
         return pulumi.get(self, "memory_cost")
@@ -476,6 +489,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
     @pulumi.getter
     def rounds(self) -> Optional[int]:
         """
+        (Output)
         How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         """
         return pulumi.get(self, "rounds")
@@ -484,6 +498,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
     @pulumi.getter(name="saltSeparator")
     def salt_separator(self) -> Optional[str]:
         """
+        (Output)
         Non-printable character to be inserted between the salt and plain text password in base64.
         """
         return pulumi.get(self, "salt_separator")
@@ -492,6 +507,7 @@ class ProjectDefaultConfigSignInHashConfig(dict):
     @pulumi.getter(name="signerKey")
     def signer_key(self) -> Optional[str]:
         """
+        (Output)
         Signer key in base64.
         """
         return pulumi.get(self, "signer_key")
@@ -688,7 +704,8 @@ class TenantInboundSamlConfigSpConfig(dict):
         """
         :param str callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param str sp_entity_id: Unique identifier for all SAML entities.
-        :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
+               The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
@@ -716,6 +733,7 @@ class TenantInboundSamlConfigSpConfig(dict):
     @pulumi.getter(name="spCertificates")
     def sp_certificates(self) -> Optional[Sequence['outputs.TenantInboundSamlConfigSpConfigSpCertificate']]:
         """
+        (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
         """
@@ -745,6 +763,7 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The x509 certificate
+               (Output)
                The x509 certificate
         """
         if x509_certificate is not None:
@@ -755,6 +774,7 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
     def x509_certificate(self) -> Optional[str]:
         """
         The x509 certificate
+        (Output)
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")

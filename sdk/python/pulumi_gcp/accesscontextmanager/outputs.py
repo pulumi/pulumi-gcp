@@ -3063,7 +3063,8 @@ class ServicePerimetersServicePerimeter(dict):
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
         :param str title: Human readable title. Must be unique within the Policy.
-        :param str create_time: Time the AccessPolicy was created in UTC.
+        :param str create_time: (Output)
+               Time the AccessPolicy was created in UTC.
         :param str description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
         :param str perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -3091,7 +3092,8 @@ class ServicePerimetersServicePerimeter(dict):
                restricted services and access levels that determine
                perimeter content and boundaries.
                Structure is documented below.
-        :param str update_time: Time the AccessPolicy was updated in UTC.
+        :param str update_time: (Output)
+               Time the AccessPolicy was updated in UTC.
         :param bool use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
                for all Service Perimeters, and that spec is identical to the status for those
                Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -3141,6 +3143,7 @@ class ServicePerimetersServicePerimeter(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         """
+        (Output)
         Time the AccessPolicy was created in UTC.
         """
         return pulumi.get(self, "create_time")
@@ -3204,6 +3207,7 @@ class ServicePerimetersServicePerimeter(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
         """
+        (Output)
         Time the AccessPolicy was updated in UTC.
         """
         return pulumi.get(self, "update_time")

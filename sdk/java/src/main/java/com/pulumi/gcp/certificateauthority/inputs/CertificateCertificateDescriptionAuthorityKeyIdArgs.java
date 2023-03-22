@@ -16,6 +16,7 @@ public final class CertificateCertificateDescriptionAuthorityKeyIdArgs extends c
     public static final CertificateCertificateDescriptionAuthorityKeyIdArgs Empty = new CertificateCertificateDescriptionAuthorityKeyIdArgs();
 
     /**
+     * (Output)
      * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
      * 
      */
@@ -23,7 +24,8 @@ public final class CertificateCertificateDescriptionAuthorityKeyIdArgs extends c
     private @Nullable Output<String> keyId;
 
     /**
-     * @return Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+     * @return (Output)
+     * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
      * 
      */
     public Optional<Output<String>> keyId() {
@@ -55,7 +57,8 @@ public final class CertificateCertificateDescriptionAuthorityKeyIdArgs extends c
         }
 
         /**
-         * @param keyId Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+         * @param keyId (Output)
+         * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class CertificateCertificateDescriptionAuthorityKeyIdArgs extends c
         }
 
         /**
-         * @param keyId Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+         * @param keyId (Output)
+         * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
          * 
          * @return builder
          * 

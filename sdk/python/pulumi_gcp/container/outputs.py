@@ -360,7 +360,8 @@ class AttachedClusterFleet(dict):
         """
         :param str project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param str membership: The name of the managed Hub Membership resource associated to this
+        :param str membership: (Output)
+               The name of the managed Hub Membership resource associated to this
                cluster. Membership names are formatted as
                projects/<project-number>/locations/global/membership/<cluster-id>.
         """
@@ -381,6 +382,7 @@ class AttachedClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[str]:
         """
+        (Output)
         The name of the managed Hub Membership resource associated to this
         cluster. Membership names are formatted as
         projects/<project-number>/locations/global/membership/<cluster-id>.

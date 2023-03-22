@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string? ServiceAccountName;
         /// <summary>
-        /// (Deprecated)
+        /// (Output, Deprecated)
         /// ServingState holds a value describing the state the resources
         /// are in for this Revision.
         /// It is expected

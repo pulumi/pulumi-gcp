@@ -169,12 +169,14 @@ func (o AppConnectionApplicationEndpointPtrOutput) Port() pulumi.IntPtrOutput {
 type AppConnectionGateway struct {
 	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
 	AppGateway string `pulumi:"appGateway"`
+	// (Output)
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort *int `pulumi:"ingressPort"`
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
 	// for a list of possible values.
 	Type *string `pulumi:"type"`
+	// (Output)
 	// Server-defined URI for this resource.
 	Uri *string `pulumi:"uri"`
 }
@@ -193,12 +195,14 @@ type AppConnectionGatewayInput interface {
 type AppConnectionGatewayArgs struct {
 	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
 	AppGateway pulumi.StringInput `pulumi:"appGateway"`
+	// (Output)
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort pulumi.IntPtrInput `pulumi:"ingressPort"`
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
 	// for a list of possible values.
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// (Output)
 	// Server-defined URI for this resource.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
@@ -285,6 +289,7 @@ func (o AppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v AppConnectionGateway) string { return v.AppGateway }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 func (o AppConnectionGatewayOutput) IngressPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppConnectionGateway) *int { return v.IngressPort }).(pulumi.IntPtrOutput)
@@ -297,6 +302,7 @@ func (o AppConnectionGatewayOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConnectionGateway) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Server-defined URI for this resource.
 func (o AppConnectionGatewayOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConnectionGateway) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -336,6 +342,7 @@ func (o AppConnectionGatewayPtrOutput) AppGateway() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 func (o AppConnectionGatewayPtrOutput) IngressPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConnectionGateway) *int {
@@ -358,6 +365,7 @@ func (o AppConnectionGatewayPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Server-defined URI for this resource.
 func (o AppConnectionGatewayPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnectionGateway) *string {

@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMaintenancePolicy {
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -28,7 +29,8 @@ public final class InstanceMaintenancePolicy {
      */
     private @Nullable String description;
     /**
-     * @return Output only. The time when the policy was last updated.
+     * @return (Output)
+     * Output only. The time when the policy was last updated.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -45,7 +47,8 @@ public final class InstanceMaintenancePolicy {
 
     private InstanceMaintenancePolicy() {}
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -63,7 +66,8 @@ public final class InstanceMaintenancePolicy {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Output only. The time when the policy was last updated.
+     * @return (Output)
+     * Output only. The time when the policy was last updated.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 

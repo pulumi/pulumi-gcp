@@ -83,6 +83,7 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Displays the target URI.
      * 
      */
@@ -90,7 +91,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> uri;
 
     /**
-     * @return Displays the target URI.
+     * @return (Output)
+     * Displays the target URI.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -216,7 +218,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri Displays the target URI.
+         * @param uri (Output)
+         * Displays the target URI.
          * 
          * @return builder
          * 
@@ -227,7 +230,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri Displays the target URI.
+         * @param uri (Output)
+         * Displays the target URI.
          * 
          * @return builder
          * 

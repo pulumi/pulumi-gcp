@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class QueueAppEngineRoutingOverride {
     /**
-     * @return The host that the task is sent to.
+     * @return (Output)
+     * The host that the task is sent to.
      * 
      */
     private @Nullable String host;
@@ -37,7 +38,8 @@ public final class QueueAppEngineRoutingOverride {
 
     private QueueAppEngineRoutingOverride() {}
     /**
-     * @return The host that the task is sent to.
+     * @return (Output)
+     * The host that the task is sent to.
      * 
      */
     public Optional<String> host() {

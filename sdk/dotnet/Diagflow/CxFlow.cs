@@ -180,7 +180,9 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> LanguageCode { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The unique identifier of this transition route.
+        /// (Output)
         /// The unique identifier of this event handler.
         /// </summary>
         [Output("name")]
@@ -403,7 +405,9 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The unique identifier of this transition route.
+        /// (Output)
         /// The unique identifier of this event handler.
         /// </summary>
         [Input("name")]

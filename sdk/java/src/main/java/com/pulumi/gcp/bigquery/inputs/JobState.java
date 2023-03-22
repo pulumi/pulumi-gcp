@@ -83,6 +83,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The type of the job.
      * 
      */
@@ -90,7 +91,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> jobType;
 
     /**
-     * @return The type of the job.
+     * @return (Output)
+     * The type of the job.
      * 
      */
     public Optional<Output<String>> jobType() {
@@ -326,7 +328,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobType The type of the job.
+         * @param jobType (Output)
+         * The type of the job.
          * 
          * @return builder
          * 
@@ -337,7 +340,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobType The type of the job.
+         * @param jobType (Output)
+         * The type of the job.
          * 
          * @return builder
          * 

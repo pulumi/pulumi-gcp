@@ -57,6 +57,10 @@ import * as utilities from "../utilities";
  *         network: "default",
  *         ipAllocation: pulumi.all([privateIpAlloc.address, privateIpAlloc.prefixLength]).apply(([address, prefixLength]) => `${address}/${prefixLength}`),
  *     },
+ *     accelerators: [{
+ *         acceleratorType: "CDC",
+ *         state: "ENABLED",
+ *     }],
  * });
  * ```
  * ### Data Fusion Instance Cmek
@@ -173,6 +177,13 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     */
+    public readonly accelerators!: pulumi.Output<outputs.datafusion.InstanceAccelerator[] | undefined>;
+    /**
      * Endpoint on which the REST APIs is accessible.
      */
     public /*out*/ readonly apiEndpoint!: pulumi.Output<string>;
@@ -235,7 +246,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly options!: pulumi.Output<{[key: string]: string}>;
     /**
      * P4 service account for the customer project.
      */
@@ -266,13 +277,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -323,6 +329,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["accelerators"] = state ? state.accelerators : undefined;
             resourceInputs["apiEndpoint"] = state ? state.apiEndpoint : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["cryptoKeyConfig"] = state ? state.cryptoKeyConfig : undefined;
@@ -356,6 +363,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
             resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -394,6 +402,13 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     */
+    accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.InstanceAccelerator>[]>;
     /**
      * Endpoint on which the REST APIs is accessible.
      */
@@ -488,13 +503,8 @@ export interface InstanceState {
      */
     serviceEndpoint?: pulumi.Input<string>;
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      */
     state?: pulumi.Input<string>;
     /**
@@ -537,6 +547,13 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     */
+    accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.InstanceAccelerator>[]>;
     /**
      * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
      * Structure is documented below.

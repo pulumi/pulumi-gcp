@@ -21,6 +21,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     public static final AiEndpointDeployedModelArgs Empty = new AiEndpointDeployedModelArgs();
 
     /**
+     * (Output)
      * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
      * Structure is documented below.
      * 
@@ -29,7 +30,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<AiEndpointDeployedModelAutomaticResourceArgs>> automaticResources;
 
     /**
-     * @return A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+     * @return (Output)
+     * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
      * Structure is documented below.
      * 
      */
@@ -38,6 +40,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      * 
      */
@@ -45,7 +48,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when the DeployedModel was created.
+     * @return (Output)
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -53,6 +57,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
      * Structure is documented below.
      * 
@@ -61,7 +66,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<AiEndpointDeployedModelDedicatedResourceArgs>> dedicatedResources;
 
     /**
-     * @return A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+     * @return (Output)
+     * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
      * Structure is documented below.
      * 
      */
@@ -85,6 +91,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
      * 
      */
@@ -92,7 +99,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<Boolean> enableAccessLogging;
 
     /**
-     * @return These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+     * @return (Output)
+     * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
      * 
      */
     public Optional<Output<Boolean>> enableAccessLogging() {
@@ -100,6 +108,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
      * 
      */
@@ -107,7 +116,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<Boolean> enableContainerLogging;
 
     /**
-     * @return If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+     * @return (Output)
+     * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
      * 
      */
     public Optional<Output<Boolean>> enableContainerLogging() {
@@ -115,6 +125,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
@@ -122,7 +133,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> id;
 
     /**
-     * @return The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+     * @return (Output)
+     * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
     public Optional<Output<String>> id() {
@@ -130,6 +142,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
      * 
      */
@@ -137,7 +150,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> model;
 
     /**
-     * @return The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+     * @return (Output)
+     * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
      * 
      */
     public Optional<Output<String>> model() {
@@ -145,6 +159,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * Output only. The version ID of the model that is deployed.
      * 
      */
@@ -152,7 +167,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> modelVersionId;
 
     /**
-     * @return Output only. The version ID of the model that is deployed.
+     * @return (Output)
+     * Output only. The version ID of the model that is deployed.
      * 
      */
     public Optional<Output<String>> modelVersionId() {
@@ -160,6 +176,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
      * Structure is documented below.
      * 
@@ -168,7 +185,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<List<AiEndpointDeployedModelPrivateEndpointArgs>> privateEndpoints;
 
     /**
-     * @return Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+     * @return (Output)
+     * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
      * Structure is documented below.
      * 
      */
@@ -177,6 +195,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
      * 
      */
@@ -184,7 +203,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+     * @return (Output)
+     * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -192,6 +212,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
      * 
      */
@@ -199,7 +220,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> sharedResources;
 
     /**
-     * @return The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+     * @return (Output)
+     * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
      * 
      */
     public Optional<Output<String>> sharedResources() {
@@ -242,7 +264,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * @param automaticResources (Output)
+         * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -254,7 +277,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * @param automaticResources (Output)
+         * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -265,7 +289,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * @param automaticResources (Output)
+         * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -276,7 +301,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * @param createTime (Output)
+         * Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 
@@ -287,7 +313,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * @param createTime (Output)
+         * Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 
@@ -297,7 +324,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * @param dedicatedResources (Output)
+         * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -309,7 +337,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * @param dedicatedResources (Output)
+         * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -320,7 +349,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * @param dedicatedResources (Output)
+         * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -352,7 +382,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableAccessLogging These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+         * @param enableAccessLogging (Output)
+         * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
          * 
          * @return builder
          * 
@@ -363,7 +394,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableAccessLogging These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+         * @param enableAccessLogging (Output)
+         * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
          * 
          * @return builder
          * 
@@ -373,7 +405,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableContainerLogging If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+         * @param enableContainerLogging (Output)
+         * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
          * 
          * @return builder
          * 
@@ -384,7 +417,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableContainerLogging If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+         * @param enableContainerLogging (Output)
+         * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
          * 
          * @return builder
          * 
@@ -394,7 +428,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+         * @param id (Output)
+         * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
          * 
          * @return builder
          * 
@@ -405,7 +440,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+         * @param id (Output)
+         * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
          * 
          * @return builder
          * 
@@ -415,7 +451,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param model The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+         * @param model (Output)
+         * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
          * 
          * @return builder
          * 
@@ -426,7 +463,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param model The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+         * @param model (Output)
+         * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
          * 
          * @return builder
          * 
@@ -436,7 +474,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param modelVersionId Output only. The version ID of the model that is deployed.
+         * @param modelVersionId (Output)
+         * Output only. The version ID of the model that is deployed.
          * 
          * @return builder
          * 
@@ -447,7 +486,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param modelVersionId Output only. The version ID of the model that is deployed.
+         * @param modelVersionId (Output)
+         * Output only. The version ID of the model that is deployed.
          * 
          * @return builder
          * 
@@ -457,7 +497,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * @param privateEndpoints (Output)
+         * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
          * Structure is documented below.
          * 
          * @return builder
@@ -469,7 +510,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * @param privateEndpoints (Output)
+         * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
          * Structure is documented below.
          * 
          * @return builder
@@ -480,7 +522,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * @param privateEndpoints (Output)
+         * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
          * Structure is documented below.
          * 
          * @return builder
@@ -491,7 +534,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceAccount The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+         * @param serviceAccount (Output)
+         * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
          * 
          * @return builder
          * 
@@ -502,7 +546,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceAccount The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+         * @param serviceAccount (Output)
+         * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
          * 
          * @return builder
          * 
@@ -512,7 +557,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sharedResources The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+         * @param sharedResources (Output)
+         * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
          * 
          * @return builder
          * 
@@ -523,7 +569,8 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sharedResources The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+         * @param sharedResources (Output)
+         * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
          * 
          * @return builder
          * 

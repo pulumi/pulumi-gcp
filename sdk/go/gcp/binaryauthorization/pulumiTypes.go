@@ -11,6 +11,7 @@ import (
 )
 
 type AttestorAttestationAuthorityNote struct {
+	// (Output)
 	// This field will contain the service account email address that
 	// this Attestor will use as the principal when querying Container
 	// Analysis. Attestor administrators must grant this service account
@@ -52,6 +53,7 @@ type AttestorAttestationAuthorityNoteInput interface {
 }
 
 type AttestorAttestationAuthorityNoteArgs struct {
+	// (Output)
 	// This field will contain the service account email address that
 	// this Attestor will use as the principal when querying Container
 	// Analysis. Attestor administrators must grant this service account
@@ -158,6 +160,7 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 	}).(AttestorAttestationAuthorityNotePtrOutput)
 }
 
+// (Output)
 // This field will contain the service account email address that
 // this Attestor will use as the principal when querying Container
 // Analysis. Attestor administrators must grant this service account
@@ -220,6 +223,7 @@ func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAut
 	}).(AttestorAttestationAuthorityNoteOutput)
 }
 
+// (Output)
 // This field will contain the service account email address that
 // this Attestor will use as the principal when querying Container
 // Analysis. Attestor administrators must grant this service account

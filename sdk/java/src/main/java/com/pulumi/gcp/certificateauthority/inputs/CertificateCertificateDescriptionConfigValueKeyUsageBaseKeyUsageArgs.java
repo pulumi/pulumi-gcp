@@ -17,6 +17,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
     public static final CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs Empty = new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs();
 
     /**
+     * (Output)
      * Describes high-level ways in which a key may be used.
      * Structure is documented below.
      * 
@@ -25,7 +26,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>> keyUsageOptions;
 
     /**
-     * @return Describes high-level ways in which a key may be used.
+     * @return (Output)
+     * Describes high-level ways in which a key may be used.
      * Structure is documented below.
      * 
      */
@@ -58,7 +60,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
         }
 
         /**
-         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * @param keyUsageOptions (Output)
+         * Describes high-level ways in which a key may be used.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +73,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
         }
 
         /**
-         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * @param keyUsageOptions (Output)
+         * Describes high-level ways in which a key may be used.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +85,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
         }
 
         /**
-         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * @param keyUsageOptions (Output)
+         * Describes high-level ways in which a key may be used.
          * Structure is documented below.
          * 
          * @return builder

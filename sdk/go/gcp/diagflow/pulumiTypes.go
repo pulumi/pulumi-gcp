@@ -459,6 +459,7 @@ func (o CxEnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) CxEnviro
 type CxFlowEventHandler struct {
 	// The name of the event to handle.
 	Event *string `pulumi:"event"`
+	// (Output)
 	// The unique identifier of this event handler.
 	Name *string `pulumi:"name"`
 	// The target flow to transition to.
@@ -486,6 +487,7 @@ type CxFlowEventHandlerInput interface {
 type CxFlowEventHandlerArgs struct {
 	// The name of the event to handle.
 	Event pulumi.StringPtrInput `pulumi:"event"`
+	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The target flow to transition to.
@@ -555,6 +557,7 @@ func (o CxFlowEventHandlerOutput) Event() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.Event }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The unique identifier of this event handler.
 func (o CxFlowEventHandlerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandler) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -901,6 +904,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.I
 }
 
 type CxFlowEventHandlerTriggerFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -919,6 +923,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessageTextInput interface {
 }
 
 type CxFlowEventHandlerTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -1002,6 +1007,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHand
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
@@ -1036,6 +1042,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowE
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) *bool {
@@ -1266,6 +1273,7 @@ type CxFlowTransitionRoute struct {
 	// The unique identifier of an Intent.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
 	Intent *string `pulumi:"intent"`
+	// (Output)
 	// The unique identifier of this transition route.
 	Name *string `pulumi:"name"`
 	// The target flow to transition to.
@@ -1297,6 +1305,7 @@ type CxFlowTransitionRouteArgs struct {
 	// The unique identifier of an Intent.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
 	Intent pulumi.StringPtrInput `pulumi:"intent"`
+	// (Output)
 	// The unique identifier of this transition route.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The target flow to transition to.
@@ -1373,6 +1382,7 @@ func (o CxFlowTransitionRouteOutput) Intent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.Intent }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The unique identifier of this transition route.
 func (o CxFlowTransitionRouteOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRoute) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1719,6 +1729,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulum
 }
 
 type CxFlowTransitionRouteTriggerFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -1737,6 +1748,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageTextInput interface {
 }
 
 type CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -1820,6 +1832,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransi
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
@@ -1854,6 +1867,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxFl
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) *bool {
@@ -2005,6 +2019,7 @@ func (o CxIntentParameterArrayOutput) Index(i pulumi.IntInput) CxIntentParameter
 }
 
 type CxIntentTrainingPhrase struct {
+	// (Output)
 	// The unique identifier of the training phrase.
 	Id *string `pulumi:"id"`
 	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
@@ -2032,6 +2047,7 @@ type CxIntentTrainingPhraseInput interface {
 }
 
 type CxIntentTrainingPhraseArgs struct {
+	// (Output)
 	// The unique identifier of the training phrase.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
@@ -2098,6 +2114,7 @@ func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutputWithContext(
 	return o
 }
 
+// (Output)
 // The unique identifier of the training phrase.
 func (o CxIntentTrainingPhraseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxIntentTrainingPhrase) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2545,6 +2562,7 @@ func (o CxPageEntryFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPag
 }
 
 type CxPageEntryFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -2563,6 +2581,7 @@ type CxPageEntryFulfillmentMessageTextInput interface {
 }
 
 type CxPageEntryFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -2646,6 +2665,7 @@ func (o CxPageEntryFulfillmentMessageTextOutput) ToCxPageEntryFulfillmentMessage
 	}).(CxPageEntryFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageEntryFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
@@ -2680,6 +2700,7 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) Elem() CxPageEntryFulfillmen
 	}).(CxPageEntryFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageText) *bool {
@@ -2703,6 +2724,7 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOu
 type CxPageEventHandler struct {
 	// The name of the event to handle.
 	Event *string `pulumi:"event"`
+	// (Output)
 	// The unique identifier of this event handler.
 	Name *string `pulumi:"name"`
 	// The target flow to transition to.
@@ -2730,6 +2752,7 @@ type CxPageEventHandlerInput interface {
 type CxPageEventHandlerArgs struct {
 	// The name of the event to handle.
 	Event pulumi.StringPtrInput `pulumi:"event"`
+	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The target flow to transition to.
@@ -2799,6 +2822,7 @@ func (o CxPageEventHandlerOutput) Event() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandler) *string { return v.Event }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The unique identifier of this event handler.
 func (o CxPageEventHandlerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandler) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3145,6 +3169,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.I
 }
 
 type CxPageEventHandlerTriggerFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -3163,6 +3188,7 @@ type CxPageEventHandlerTriggerFulfillmentMessageTextInput interface {
 }
 
 type CxPageEventHandlerTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -3246,6 +3272,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageEventHand
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
@@ -3280,6 +3307,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageE
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageText) *bool {
@@ -4041,6 +4069,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutpu
 }
 
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -4059,6 +4088,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextInput int
 }
 
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -4142,6 +4172,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *bool {
@@ -4178,6 +4209,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *bool {
@@ -4205,6 +4237,7 @@ type CxPageTransitionRoute struct {
 	// The unique identifier of an Intent.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
 	Intent *string `pulumi:"intent"`
+	// (Output)
 	// The unique identifier of this transition route.
 	Name *string `pulumi:"name"`
 	// The target flow to transition to.
@@ -4236,6 +4269,7 @@ type CxPageTransitionRouteArgs struct {
 	// The unique identifier of an Intent.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
 	Intent pulumi.StringPtrInput `pulumi:"intent"`
+	// (Output)
 	// The unique identifier of this transition route.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The target flow to transition to.
@@ -4312,6 +4346,7 @@ func (o CxPageTransitionRouteOutput) Intent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRoute) *string { return v.Intent }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The unique identifier of this transition route.
 func (o CxPageTransitionRouteOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRoute) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4658,6 +4693,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulum
 }
 
 type CxPageTransitionRouteTriggerFulfillmentMessageText struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -4676,6 +4712,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessageTextInput interface {
 }
 
 type CxPageTransitionRouteTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// A collection of text responses.
@@ -4759,6 +4796,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxPageTransi
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
@@ -4793,6 +4831,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxPa
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
+// (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageText) *bool {

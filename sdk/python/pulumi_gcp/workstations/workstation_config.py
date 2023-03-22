@@ -735,8 +735,8 @@ class WorkstationConfig(pulumi.CustomResource):
             rotation_period="100000s",
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_account = gcp.service_account.Account("defaultAccount",
-            account_id="cloud-workstations-kms",
-            display_name="Service Account for Cloud Workstations",
+            account_id="my-account",
+            display_name="Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
             workstation_config_id="workstation-config",
@@ -774,10 +774,6 @@ class WorkstationConfig(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1016,8 +1012,8 @@ class WorkstationConfig(pulumi.CustomResource):
             rotation_period="100000s",
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_account = gcp.service_account.Account("defaultAccount",
-            account_id="cloud-workstations-kms",
-            display_name="Service Account for Cloud Workstations",
+            account_id="my-account",
+            display_name="Service Account",
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
             workstation_config_id="workstation-config",
@@ -1055,10 +1051,6 @@ class WorkstationConfig(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
         ```
 
         :param str resource_name: The name of the resource.

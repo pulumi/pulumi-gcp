@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class AuthorityAccessUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The URL where this CertificateAuthority's CA certificate is published. This will only be
         /// set for CAs that have been activated.
         /// </summary>
@@ -23,6 +24,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<string>? _crlAccessUrls;
 
         /// <summary>
+        /// (Output)
         /// The URL where this CertificateAuthority's CRLs are published. This will only be set for
         /// CAs that have been activated.
         /// </summary>

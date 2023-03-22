@@ -21,6 +21,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     /**
      * Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
+     * (Required)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     @Import(name="critical")
@@ -29,6 +31,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
+     * (Required)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     public Optional<Output<Boolean>> critical() {
@@ -36,6 +40,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     }
 
     /**
+     * (Output)
      * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
@@ -44,7 +49,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>> obectIds;
 
     /**
-     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * @return (Output)
+     * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
@@ -96,6 +102,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         /**
          * @param critical Indicates whether or not this extension is critical (i.e., if the client does not know how to
          * handle this extension, the client should consider this to be an error).
+         * (Required)
+         * Indicates whether or not the name constraints are marked critical.
          * 
          * @return builder
          * 
@@ -108,6 +116,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         /**
          * @param critical Indicates whether or not this extension is critical (i.e., if the client does not know how to
          * handle this extension, the client should consider this to be an error).
+         * (Required)
+         * Indicates whether or not the name constraints are marked critical.
          * 
          * @return builder
          * 
@@ -117,7 +127,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -129,7 +140,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -140,7 +152,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder

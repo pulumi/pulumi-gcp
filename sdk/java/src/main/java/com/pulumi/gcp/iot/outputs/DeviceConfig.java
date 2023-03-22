@@ -17,18 +17,21 @@ public final class DeviceConfig {
      */
     private @Nullable String binaryData;
     /**
-     * @return The time at which this configuration version was updated in Cloud IoT Core.
+     * @return (Output)
+     * The time at which this configuration version was updated in Cloud IoT Core.
      * 
      */
     private @Nullable String cloudUpdateTime;
     /**
-     * @return The time at which Cloud IoT Core received the acknowledgment from the device,
+     * @return (Output)
+     * The time at which Cloud IoT Core received the acknowledgment from the device,
      * indicating that the device has received this configuration version.
      * 
      */
     private @Nullable String deviceAckTime;
     /**
-     * @return The version of this update.
+     * @return (Output)
+     * The version of this update.
      * 
      */
     private @Nullable String version;
@@ -42,14 +45,16 @@ public final class DeviceConfig {
         return Optional.ofNullable(this.binaryData);
     }
     /**
-     * @return The time at which this configuration version was updated in Cloud IoT Core.
+     * @return (Output)
+     * The time at which this configuration version was updated in Cloud IoT Core.
      * 
      */
     public Optional<String> cloudUpdateTime() {
         return Optional.ofNullable(this.cloudUpdateTime);
     }
     /**
-     * @return The time at which Cloud IoT Core received the acknowledgment from the device,
+     * @return (Output)
+     * The time at which Cloud IoT Core received the acknowledgment from the device,
      * indicating that the device has received this configuration version.
      * 
      */
@@ -57,7 +62,8 @@ public final class DeviceConfig {
         return Optional.ofNullable(this.deviceAckTime);
     }
     /**
-     * @return The version of this update.
+     * @return (Output)
+     * The version of this update.
      * 
      */
     public Optional<String> version() {

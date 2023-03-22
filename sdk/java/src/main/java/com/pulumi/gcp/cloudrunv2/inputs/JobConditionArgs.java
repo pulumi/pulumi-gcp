@@ -16,6 +16,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobConditionArgs Empty = new JobConditionArgs();
 
     /**
+     * (Output)
      * A reason for the execution condition.
      * 
      */
@@ -23,7 +24,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> executionReason;
 
     /**
-     * @return A reason for the execution condition.
+     * @return (Output)
+     * A reason for the execution condition.
      * 
      */
     public Optional<Output<String>> executionReason() {
@@ -31,6 +33,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Last time the condition transitioned from one status to another.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -39,7 +42,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> lastTransitionTime;
 
     /**
-     * @return Last time the condition transitioned from one status to another.
+     * @return (Output)
+     * Last time the condition transitioned from one status to another.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -48,6 +52,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Human readable message indicating details about the current status.
      * 
      */
@@ -55,7 +60,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> message;
 
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<Output<String>> message() {
@@ -63,6 +69,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * A common (service-level) reason for this condition.
      * 
      */
@@ -70,7 +77,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> reason;
 
     /**
-     * @return A common (service-level) reason for this condition.
+     * @return (Output)
+     * A common (service-level) reason for this condition.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -78,6 +86,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * A reason for the revision condition.
      * 
      */
@@ -85,7 +94,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> revisionReason;
 
     /**
-     * @return A reason for the revision condition.
+     * @return (Output)
+     * A reason for the revision condition.
      * 
      */
     public Optional<Output<String>> revisionReason() {
@@ -93,6 +103,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * How to interpret failures of this condition, one of Error, Warning, Info
      * 
      */
@@ -100,7 +111,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> severity;
 
     /**
-     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * @return (Output)
+     * How to interpret failures of this condition, one of Error, Warning, Info
      * 
      */
     public Optional<Output<String>> severity() {
@@ -108,6 +120,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * State of the condition.
      * 
      */
@@ -115,7 +128,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the condition.
+     * @return (Output)
+     * State of the condition.
      * 
      */
     public Optional<Output<String>> state() {
@@ -123,6 +137,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
@@ -130,7 +145,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * @return (Output)
+     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
     public Optional<Output<String>> type() {
@@ -169,7 +185,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param executionReason A reason for the execution condition.
+         * @param executionReason (Output)
+         * A reason for the execution condition.
          * 
          * @return builder
          * 
@@ -180,7 +197,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param executionReason A reason for the execution condition.
+         * @param executionReason (Output)
+         * A reason for the execution condition.
          * 
          * @return builder
          * 
@@ -190,7 +208,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * @param lastTransitionTime (Output)
+         * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -202,7 +221,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * @param lastTransitionTime (Output)
+         * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -213,7 +233,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -224,7 +245,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -234,7 +256,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reason A common (service-level) reason for this condition.
+         * @param reason (Output)
+         * A common (service-level) reason for this condition.
          * 
          * @return builder
          * 
@@ -245,7 +268,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reason A common (service-level) reason for this condition.
+         * @param reason (Output)
+         * A common (service-level) reason for this condition.
          * 
          * @return builder
          * 
@@ -255,7 +279,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revisionReason A reason for the revision condition.
+         * @param revisionReason (Output)
+         * A reason for the revision condition.
          * 
          * @return builder
          * 
@@ -266,7 +291,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revisionReason A reason for the revision condition.
+         * @param revisionReason (Output)
+         * A reason for the revision condition.
          * 
          * @return builder
          * 
@@ -276,7 +302,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * @param severity (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
          * 
          * @return builder
          * 
@@ -287,7 +314,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * @param severity (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
          * 
          * @return builder
          * 
@@ -297,7 +325,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the condition.
+         * @param state (Output)
+         * State of the condition.
          * 
          * @return builder
          * 
@@ -308,7 +337,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the condition.
+         * @param state (Output)
+         * State of the condition.
          * 
          * @return builder
          * 
@@ -318,7 +348,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * @param type (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
          * 
          * @return builder
          * 
@@ -329,7 +360,8 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * @param type (Output)
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
          * 
          * @return builder
          * 

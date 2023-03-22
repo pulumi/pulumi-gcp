@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigNameConstraints;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigPolicyId;
 import java.lang.String;
 import java.util.List;
@@ -40,6 +41,12 @@ public final class CertificateConfigX509Config {
      * 
      */
     private CertificateConfigX509ConfigKeyUsage keyUsage;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CertificateConfigX509ConfigNameConstraints nameConstraints;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
@@ -81,6 +88,14 @@ public final class CertificateConfigX509Config {
         return this.keyUsage;
     }
     /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CertificateConfigX509ConfigNameConstraints> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+    /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -102,6 +117,7 @@ public final class CertificateConfigX509Config {
         private @Nullable List<String> aiaOcspServers;
         private @Nullable CertificateConfigX509ConfigCaOptions caOptions;
         private CertificateConfigX509ConfigKeyUsage keyUsage;
+        private @Nullable CertificateConfigX509ConfigNameConstraints nameConstraints;
         private @Nullable List<CertificateConfigX509ConfigPolicyId> policyIds;
         public Builder() {}
         public Builder(CertificateConfigX509Config defaults) {
@@ -110,6 +126,7 @@ public final class CertificateConfigX509Config {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsage = defaults.keyUsage;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -140,6 +157,11 @@ public final class CertificateConfigX509Config {
             return this;
         }
         @CustomType.Setter
+        public Builder nameConstraints(@Nullable CertificateConfigX509ConfigNameConstraints nameConstraints) {
+            this.nameConstraints = nameConstraints;
+            return this;
+        }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateConfigX509ConfigPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
@@ -153,6 +175,7 @@ public final class CertificateConfigX509Config {
             o.aiaOcspServers = aiaOcspServers;
             o.caOptions = caOptions;
             o.keyUsage = keyUsage;
+            o.nameConstraints = nameConstraints;
             o.policyIds = policyIds;
             return o;
         }

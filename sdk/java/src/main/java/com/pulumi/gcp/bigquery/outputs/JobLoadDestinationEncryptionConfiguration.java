@@ -18,7 +18,8 @@ public final class JobLoadDestinationEncryptionConfiguration {
      */
     private String kmsKeyName;
     /**
-     * @return Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+     * @return (Output)
+     * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
      * 
      */
     private @Nullable String kmsKeyVersion;
@@ -33,7 +34,8 @@ public final class JobLoadDestinationEncryptionConfiguration {
         return this.kmsKeyName;
     }
     /**
-     * @return Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+     * @return (Output)
+     * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
      * 
      */
     public Optional<String> kmsKeyVersion() {

@@ -182,7 +182,8 @@ class ConnectionAwsAccessRole(dict):
                  identity: Optional[str] = None):
         """
         :param str iam_role_id: The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
-        :param str identity: A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        :param str identity: (Output)
+               A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         """
         pulumi.set(__self__, "iam_role_id", iam_role_id)
         if identity is not None:
@@ -200,6 +201,7 @@ class ConnectionAwsAccessRole(dict):
     @pulumi.getter
     def identity(self) -> Optional[str]:
         """
+        (Output)
         A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         """
         return pulumi.get(self, "identity")
@@ -242,12 +244,17 @@ class ConnectionAzure(dict):
                  redirect_uri: Optional[str] = None):
         """
         :param str customer_tenant_id: The id of customer's directory that host the data.
-        :param str application: The name of the Azure Active Directory Application.
-        :param str client_id: The client id of the Azure Active Directory Application.
+        :param str application: (Output)
+               The name of the Azure Active Directory Application.
+        :param str client_id: (Output)
+               The client id of the Azure Active Directory Application.
         :param str federated_application_client_id: The Azure Application (client) ID where the federated credentials will be hosted.
-        :param str identity: A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
-        :param str object_id: The object id of the Azure Active Directory Application.
-        :param str redirect_uri: The URL user will be redirected to after granting consent during connection setup.
+        :param str identity: (Output)
+               A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+        :param str object_id: (Output)
+               The object id of the Azure Active Directory Application.
+        :param str redirect_uri: (Output)
+               The URL user will be redirected to after granting consent during connection setup.
         """
         pulumi.set(__self__, "customer_tenant_id", customer_tenant_id)
         if application is not None:
@@ -275,6 +282,7 @@ class ConnectionAzure(dict):
     @pulumi.getter
     def application(self) -> Optional[str]:
         """
+        (Output)
         The name of the Azure Active Directory Application.
         """
         return pulumi.get(self, "application")
@@ -283,6 +291,7 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
+        (Output)
         The client id of the Azure Active Directory Application.
         """
         return pulumi.get(self, "client_id")
@@ -299,6 +308,7 @@ class ConnectionAzure(dict):
     @pulumi.getter
     def identity(self) -> Optional[str]:
         """
+        (Output)
         A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
         """
         return pulumi.get(self, "identity")
@@ -307,6 +317,7 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
+        (Output)
         The object id of the Azure Active Directory Application.
         """
         return pulumi.get(self, "object_id")
@@ -315,6 +326,7 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> Optional[str]:
         """
+        (Output)
         The URL user will be redirected to after granting consent during connection setup.
         """
         return pulumi.get(self, "redirect_uri")
@@ -342,7 +354,8 @@ class ConnectionCloudResource(dict):
     def __init__(__self__, *,
                  service_account_id: Optional[str] = None):
         """
-        :param str service_account_id: The account ID of the service created for the purpose of this connection.
+        :param str service_account_id: (Output)
+               The account ID of the service created for the purpose of this connection.
         """
         if service_account_id is not None:
             pulumi.set(__self__, "service_account_id", service_account_id)
@@ -351,6 +364,7 @@ class ConnectionCloudResource(dict):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> Optional[str]:
         """
+        (Output)
         The account ID of the service created for the purpose of this connection.
         """
         return pulumi.get(self, "service_account_id")
@@ -451,7 +465,8 @@ class ConnectionCloudSql(dict):
         :param str instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param str type: Type of the Cloud SQL database.
                Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
-        :param str service_account_id: When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+        :param str service_account_id: (Output)
+               When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         """
         pulumi.set(__self__, "credential", credential)
         pulumi.set(__self__, "database", database)
@@ -498,6 +513,7 @@ class ConnectionCloudSql(dict):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> Optional[str]:
         """
+        (Output)
         When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         """
         return pulumi.get(self, "service_account_id")
@@ -1553,7 +1569,8 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: (Output)
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -1572,6 +1589,7 @@ class JobCopyDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
+        (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -2417,7 +2435,8 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: (Output)
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -2436,6 +2455,7 @@ class JobLoadDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
+        (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -2978,7 +2998,8 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: (Output)
+               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -2997,6 +3018,7 @@ class JobQueryDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
+        (Output)
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -3211,13 +3233,16 @@ class JobStatus(dict):
                  errors: Optional[Sequence['outputs.JobStatusError']] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['JobStatusErrorResultArgs'] error_results: Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        :param Sequence['JobStatusErrorResultArgs'] error_results: (Output)
+               Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
                Structure is documented below.
-        :param Sequence['JobStatusErrorArgs'] errors: The first errors encountered during the running of the job. The final message
+        :param Sequence['JobStatusErrorArgs'] errors: (Output)
+               The first errors encountered during the running of the job. The final message
                includes the number of errors that caused the process to stop. Errors here do
                not necessarily mean that the job has not completed or was unsuccessful.
                Structure is documented below.
-        :param str state: Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+        :param str state: (Output)
+               Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
         """
         if error_results is not None:
             pulumi.set(__self__, "error_results", error_results)
@@ -3230,6 +3255,7 @@ class JobStatus(dict):
     @pulumi.getter(name="errorResults")
     def error_results(self) -> Optional[Sequence['outputs.JobStatusErrorResult']]:
         """
+        (Output)
         Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
         Structure is documented below.
         """
@@ -3239,6 +3265,7 @@ class JobStatus(dict):
     @pulumi.getter
     def errors(self) -> Optional[Sequence['outputs.JobStatusError']]:
         """
+        (Output)
         The first errors encountered during the running of the job. The final message
         includes the number of errors that caused the process to stop. Errors here do
         not necessarily mean that the job has not completed or was unsuccessful.
@@ -3250,6 +3277,7 @@ class JobStatus(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
+        (Output)
         Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
         """
         return pulumi.get(self, "state")

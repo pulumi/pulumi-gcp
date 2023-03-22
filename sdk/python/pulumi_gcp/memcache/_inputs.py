@@ -31,13 +31,15 @@ class InstanceMaintenancePolicyArgs:
                Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
                is expected to be one.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param pulumi.Input[str] description: Optional. Description of what this policy is for.
                Create/Update methods return INVALID_ARGUMENT if the
                length is greater than 512.
-        :param pulumi.Input[str] update_time: Output only. The time when the policy was updated.
+        :param pulumi.Input[str] update_time: (Output)
+               Output only. The time when the policy was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         """
@@ -68,6 +70,7 @@ class InstanceMaintenancePolicyArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits
@@ -96,6 +99,7 @@ class InstanceMaintenancePolicyArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time when the policy was updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -265,10 +269,12 @@ class InstanceMaintenanceScheduleArgs:
                  schedule_deadline_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] end_time: Output only. The end time of any upcoming scheduled maintenance for this instance.
+        :param pulumi.Input[str] end_time: (Output)
+               Output only. The end time of any upcoming scheduled maintenance for this instance.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param pulumi.Input[str] schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
+        :param pulumi.Input[str] schedule_deadline_time: (Output)
+               Output only. The deadline that the maintenance schedule start time
                can not go beyond, including reschedule.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
@@ -286,6 +292,7 @@ class InstanceMaintenanceScheduleArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The end time of any upcoming scheduled maintenance for this instance.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -300,6 +307,7 @@ class InstanceMaintenanceScheduleArgs:
     @pulumi.getter(name="scheduleDeadlineTime")
     def schedule_deadline_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The deadline that the maintenance schedule start time
         can not go beyond, including reschedule.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -334,11 +342,16 @@ class InstanceMemcacheNodeArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
-        :param pulumi.Input[str] node_id: Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
-        :param pulumi.Input[int] port: The port number of the Memcached server on this node.
-        :param pulumi.Input[str] state: Current state of the Memcached node.
-        :param pulumi.Input[str] zone: Location (GCP Zone) for the Memcached node.
+        :param pulumi.Input[str] host: (Output)
+               Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        :param pulumi.Input[str] node_id: (Output)
+               Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        :param pulumi.Input[int] port: (Output)
+               The port number of the Memcached server on this node.
+        :param pulumi.Input[str] state: (Output)
+               Current state of the Memcached node.
+        :param pulumi.Input[str] zone: (Output)
+               Location (GCP Zone) for the Memcached node.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -355,6 +368,7 @@ class InstanceMemcacheNodeArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
         """
         return pulumi.get(self, "host")
@@ -367,6 +381,7 @@ class InstanceMemcacheNodeArgs:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
         """
         return pulumi.get(self, "node_id")
@@ -379,6 +394,7 @@ class InstanceMemcacheNodeArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The port number of the Memcached server on this node.
         """
         return pulumi.get(self, "port")
@@ -391,6 +407,7 @@ class InstanceMemcacheNodeArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Current state of the Memcached node.
         """
         return pulumi.get(self, "state")
@@ -403,6 +420,7 @@ class InstanceMemcacheNodeArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Location (GCP Zone) for the Memcached node.
         """
         return pulumi.get(self, "zone")
@@ -418,7 +436,8 @@ class InstanceMemcacheParametersArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] id: This is a unique ID associated with this set of parameters.
+        :param pulumi.Input[str] id: (Output)
+               This is a unique ID associated with this set of parameters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: User-defined set of parameters to use in the memcache process.
         """
         if id is not None:
@@ -430,6 +449,7 @@ class InstanceMemcacheParametersArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         This is a unique ID associated with this set of parameters.
         """
         return pulumi.get(self, "id")

@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttachedClusterFleet {
     /**
-     * @return The name of the managed Hub Membership resource associated to this
+     * @return (Output)
+     * The name of the managed Hub Membership resource associated to this
      * cluster. Membership names are formatted as
      * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
@@ -27,7 +28,8 @@ public final class AttachedClusterFleet {
 
     private AttachedClusterFleet() {}
     /**
-     * @return The name of the managed Hub Membership resource associated to this
+     * @return (Output)
+     * The name of the managed Hub Membership resource associated to this
      * cluster. Membership names are formatted as
      * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 

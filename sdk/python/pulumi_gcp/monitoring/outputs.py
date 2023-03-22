@@ -192,7 +192,8 @@ class AlertPolicyCondition(dict):
         :param 'AlertPolicyConditionConditionThresholdArgs' condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
-        :param str name: The unique resource name for this condition.
+        :param str name: (Output)
+               The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -266,6 +267,7 @@ class AlertPolicyCondition(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
+        (Output)
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -1683,8 +1685,10 @@ class AlertPolicyCreationRecord(dict):
                  mutate_time: Optional[str] = None,
                  mutated_by: Optional[str] = None):
         """
-        :param str mutate_time: When the change occurred.
-        :param str mutated_by: The email address of the user making the change.
+        :param str mutate_time: (Output)
+               When the change occurred.
+        :param str mutated_by: (Output)
+               The email address of the user making the change.
         """
         if mutate_time is not None:
             pulumi.set(__self__, "mutate_time", mutate_time)
@@ -1695,6 +1699,7 @@ class AlertPolicyCreationRecord(dict):
     @pulumi.getter(name="mutateTime")
     def mutate_time(self) -> Optional[str]:
         """
+        (Output)
         When the change occurred.
         """
         return pulumi.get(self, "mutate_time")
@@ -1703,6 +1708,7 @@ class AlertPolicyCreationRecord(dict):
     @pulumi.getter(name="mutatedBy")
     def mutated_by(self) -> Optional[str]:
         """
+        (Output)
         The email address of the user making the change.
         """
         return pulumi.get(self, "mutated_by")

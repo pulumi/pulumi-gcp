@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionBuildConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
         /// </summary>

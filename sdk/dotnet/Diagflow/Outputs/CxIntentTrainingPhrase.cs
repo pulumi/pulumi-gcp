@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxIntentTrainingPhrase
     {
         /// <summary>
+        /// (Output)
         /// The unique identifier of the training phrase.
         /// </summary>
         public readonly string? Id;

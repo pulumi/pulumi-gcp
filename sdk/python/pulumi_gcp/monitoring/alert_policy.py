@@ -255,7 +255,8 @@ class _AlertPolicyState:
                limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[str] name: The unique resource name for this condition.
+        :param pulumi.Input[str] name: (Output)
+               The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -405,6 +406,7 @@ class _AlertPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -772,7 +774,8 @@ class AlertPolicy(pulumi.CustomResource):
                limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[str] name: The unique resource name for this condition.
+        :param pulumi.Input[str] name: (Output)
+               The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -888,6 +891,7 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        (Output)
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

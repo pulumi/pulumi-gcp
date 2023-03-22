@@ -18,15 +18,18 @@ namespace Pulumi.Gcp.Iot.Outputs
         /// </summary>
         public readonly string? BinaryData;
         /// <summary>
+        /// (Output)
         /// The time at which this configuration version was updated in Cloud IoT Core.
         /// </summary>
         public readonly string? CloudUpdateTime;
         /// <summary>
+        /// (Output)
         /// The time at which Cloud IoT Core received the acknowledgment from the device,
         /// indicating that the device has received this configuration version.
         /// </summary>
         public readonly string? DeviceAckTime;
         /// <summary>
+        /// (Output)
         /// The version of this update.
         /// </summary>
         public readonly string? Version;

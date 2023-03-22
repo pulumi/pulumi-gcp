@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<Outputs.DomainMappingSpec> Spec { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
         [Output("statuses")]
@@ -248,6 +249,7 @@ namespace Pulumi.Gcp.CloudRun
         private InputList<Inputs.DomainMappingStatusGetArgs>? _statuses;
 
         /// <summary>
+        /// (Output)
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
         public InputList<Inputs.DomainMappingStatusGetArgs> Statuses

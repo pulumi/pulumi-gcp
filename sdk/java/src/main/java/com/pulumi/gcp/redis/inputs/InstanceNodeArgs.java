@@ -16,6 +16,7 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceNodeArgs Empty = new InstanceNodeArgs();
 
     /**
+     * (Output)
      * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
@@ -23,7 +24,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> id;
 
     /**
-     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+     * @return (Output)
+     * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     public Optional<Output<String>> id() {
@@ -31,6 +33,7 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Location of the node.
      * 
      */
@@ -38,7 +41,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return Location of the node.
+     * @return (Output)
+     * Location of the node.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -71,7 +75,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+         * @param id (Output)
+         * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
          * 
          * @return builder
          * 
@@ -82,7 +87,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+         * @param id (Output)
+         * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
          * 
          * @return builder
          * 
@@ -92,7 +98,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Location of the node.
+         * @param zone (Output)
+         * Location of the node.
          * 
          * @return builder
          * 
@@ -103,7 +110,8 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Location of the node.
+         * @param zone (Output)
+         * Location of the node.
          * 
          * @return builder
          * 

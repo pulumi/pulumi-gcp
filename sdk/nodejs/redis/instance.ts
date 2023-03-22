@@ -241,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -530,6 +531,7 @@ export interface InstanceState {
      */
     connectMode?: pulumi.Input<string>;
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits.

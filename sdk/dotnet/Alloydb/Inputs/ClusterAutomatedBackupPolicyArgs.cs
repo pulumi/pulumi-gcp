@@ -62,8 +62,8 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         /// Weekly schedule for the Backup.
         /// Structure is documented below.
         /// </summary>
-        [Input("weeklySchedule", required: true)]
-        public Input<Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs> WeeklySchedule { get; set; } = null!;
+        [Input("weeklySchedule")]
+        public Input<Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs>? WeeklySchedule { get; set; }
 
         public ClusterAutomatedBackupPolicyArgs()
         {

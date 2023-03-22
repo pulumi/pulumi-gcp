@@ -19,6 +19,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobStatusArgs Empty = new JobStatusArgs();
 
     /**
+     * (Output)
      * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
      * Structure is documented below.
      * 
@@ -27,7 +28,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<JobStatusErrorResultArgs>> errorResults;
 
     /**
-     * @return Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+     * @return (Output)
+     * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
      * Structure is documented below.
      * 
      */
@@ -36,6 +38,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The first errors encountered during the running of the job. The final message
      * includes the number of errors that caused the process to stop. Errors here do
      * not necessarily mean that the job has not completed or was unsuccessful.
@@ -46,7 +49,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<JobStatusErrorArgs>> errors;
 
     /**
-     * @return The first errors encountered during the running of the job. The final message
+     * @return (Output)
+     * The first errors encountered during the running of the job. The final message
      * includes the number of errors that caused the process to stop. Errors here do
      * not necessarily mean that the job has not completed or was unsuccessful.
      * Structure is documented below.
@@ -57,6 +61,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
      * 
      */
@@ -64,7 +69,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> state;
 
     /**
-     * @return Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+     * @return (Output)
+     * Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -98,7 +104,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * @param errorResults (Output)
+         * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
          * Structure is documented below.
          * 
          * @return builder
@@ -110,7 +117,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * @param errorResults (Output)
+         * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
          * Structure is documented below.
          * 
          * @return builder
@@ -121,7 +129,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * @param errorResults (Output)
+         * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
          * Structure is documented below.
          * 
          * @return builder
@@ -132,7 +141,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errors The first errors encountered during the running of the job. The final message
+         * @param errors (Output)
+         * The first errors encountered during the running of the job. The final message
          * includes the number of errors that caused the process to stop. Errors here do
          * not necessarily mean that the job has not completed or was unsuccessful.
          * Structure is documented below.
@@ -146,7 +156,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errors The first errors encountered during the running of the job. The final message
+         * @param errors (Output)
+         * The first errors encountered during the running of the job. The final message
          * includes the number of errors that caused the process to stop. Errors here do
          * not necessarily mean that the job has not completed or was unsuccessful.
          * Structure is documented below.
@@ -159,7 +170,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errors The first errors encountered during the running of the job. The final message
+         * @param errors (Output)
+         * The first errors encountered during the running of the job. The final message
          * includes the number of errors that caused the process to stop. Errors here do
          * not necessarily mean that the job has not completed or was unsuccessful.
          * Structure is documented below.
@@ -172,7 +184,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+         * @param state (Output)
+         * Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
          * 
          * @return builder
          * 
@@ -183,7 +196,8 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+         * @param state (Output)
+         * Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
          * 
          * @return builder
          * 

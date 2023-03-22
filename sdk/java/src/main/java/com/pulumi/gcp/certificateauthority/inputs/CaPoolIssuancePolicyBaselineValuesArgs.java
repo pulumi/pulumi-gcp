@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
+import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesPolicyIdArgs;
 import java.lang.String;
 import java.util.List;
@@ -89,6 +90,23 @@ public final class CaPoolIssuancePolicyBaselineValuesArgs extends com.pulumi.res
     }
 
     /**
+     * Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nameConstraints")
+    private @Nullable Output<CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs> nameConstraints;
+
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs>> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+
+    /**
      * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -112,6 +130,7 @@ public final class CaPoolIssuancePolicyBaselineValuesArgs extends com.pulumi.res
         this.aiaOcspServers = $.aiaOcspServers;
         this.caOptions = $.caOptions;
         this.keyUsage = $.keyUsage;
+        this.nameConstraints = $.nameConstraints;
         this.policyIds = $.policyIds;
     }
 
@@ -245,6 +264,29 @@ public final class CaPoolIssuancePolicyBaselineValuesArgs extends com.pulumi.res
          */
         public Builder keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs keyUsage) {
             return keyUsage(Output.of(keyUsage));
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(@Nullable Output<CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs> nameConstraints) {
+            $.nameConstraints = nameConstraints;
+            return this;
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs nameConstraints) {
+            return nameConstraints(Output.of(nameConstraints));
         }
 
         /**

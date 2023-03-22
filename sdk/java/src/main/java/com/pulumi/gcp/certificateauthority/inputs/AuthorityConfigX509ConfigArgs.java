@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigAdditionalExtensionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigNameConstraintsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigPolicyIdArgs;
 import java.lang.String;
 import java.util.List;
@@ -89,6 +90,23 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nameConstraints")
+    private @Nullable Output<AuthorityConfigX509ConfigNameConstraintsArgs> nameConstraints;
+
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AuthorityConfigX509ConfigNameConstraintsArgs>> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+
+    /**
      * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -112,6 +130,7 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
         this.aiaOcspServers = $.aiaOcspServers;
         this.caOptions = $.caOptions;
         this.keyUsage = $.keyUsage;
+        this.nameConstraints = $.nameConstraints;
         this.policyIds = $.policyIds;
     }
 
@@ -245,6 +264,29 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
          */
         public Builder keyUsage(AuthorityConfigX509ConfigKeyUsageArgs keyUsage) {
             return keyUsage(Output.of(keyUsage));
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(@Nullable Output<AuthorityConfigX509ConfigNameConstraintsArgs> nameConstraints) {
+            $.nameConstraints = nameConstraints;
+            return this;
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(AuthorityConfigX509ConfigNameConstraintsArgs nameConstraints) {
+            return nameConstraints(Output.of(nameConstraints));
         }
 
         /**

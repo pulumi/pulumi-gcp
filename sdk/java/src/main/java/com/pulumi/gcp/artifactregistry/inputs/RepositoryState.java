@@ -6,6 +6,8 @@ package com.pulumi.gcp.artifactregistry.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -149,6 +151,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * The name of the repository, for example:
      * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
      * 
@@ -183,6 +202,21 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration specific for a Remote Repository.
+     * 
+     */
+    @Import(name="remoteRepositoryConfig")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigArgs> remoteRepositoryConfig;
+
+    /**
+     * @return Configuration specific for a Remote Repository.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigArgs>> remoteRepositoryConfig() {
+        return Optional.ofNullable(this.remoteRepositoryConfig);
+    }
+
+    /**
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
@@ -214,6 +248,21 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Configuration specific for a Virtual Repository.
+     * 
+     */
+    @Import(name="virtualRepositoryConfig")
+    private @Nullable Output<RepositoryVirtualRepositoryConfigArgs> virtualRepositoryConfig;
+
+    /**
+     * @return Configuration specific for a Virtual Repository.
+     * 
+     */
+    public Optional<Output<RepositoryVirtualRepositoryConfigArgs>> virtualRepositoryConfig() {
+        return Optional.ofNullable(this.virtualRepositoryConfig);
+    }
+
     private RepositoryState() {}
 
     private RepositoryState(RepositoryState $) {
@@ -224,10 +273,13 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.location = $.location;
         this.mavenConfig = $.mavenConfig;
+        this.mode = $.mode;
         this.name = $.name;
         this.project = $.project;
+        this.remoteRepositoryConfig = $.remoteRepositoryConfig;
         this.repositoryId = $.repositoryId;
         this.updateTime = $.updateTime;
+        this.virtualRepositoryConfig = $.virtualRepositoryConfig;
     }
 
     public static Builder builder() {
@@ -422,6 +474,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mode The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+         * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+         * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
+        }
+
+        /**
          * @param name The name of the repository, for example:
          * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
          * 
@@ -468,6 +543,27 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param remoteRepositoryConfig Configuration specific for a Remote Repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteRepositoryConfig(@Nullable Output<RepositoryRemoteRepositoryConfigArgs> remoteRepositoryConfig) {
+            $.remoteRepositoryConfig = remoteRepositoryConfig;
+            return this;
+        }
+
+        /**
+         * @param remoteRepositoryConfig Configuration specific for a Remote Repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs remoteRepositoryConfig) {
+            return remoteRepositoryConfig(Output.of(remoteRepositoryConfig));
+        }
+
+        /**
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
          * 
@@ -509,6 +605,27 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param virtualRepositoryConfig Configuration specific for a Virtual Repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualRepositoryConfig(@Nullable Output<RepositoryVirtualRepositoryConfigArgs> virtualRepositoryConfig) {
+            $.virtualRepositoryConfig = virtualRepositoryConfig;
+            return this;
+        }
+
+        /**
+         * @param virtualRepositoryConfig Configuration specific for a Virtual Repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualRepositoryConfig(RepositoryVirtualRepositoryConfigArgs virtualRepositoryConfig) {
+            return virtualRepositoryConfig(Output.of(virtualRepositoryConfig));
         }
 
         public RepositoryState build() {

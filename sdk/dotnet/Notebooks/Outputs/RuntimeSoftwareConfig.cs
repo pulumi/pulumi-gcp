@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly string? PostStartupScriptBehavior;
         /// <summary>
+        /// (Output)
         /// Bool indicating whether an newer image is available in an image family.
         /// </summary>
         public readonly bool? Upgradeable;

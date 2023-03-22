@@ -16,6 +16,7 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
     public static final CertificateCertificateDescriptionCertFingerprintArgs Empty = new CertificateCertificateDescriptionCertFingerprintArgs();
 
     /**
+     * (Output)
      * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
      * 
      */
@@ -23,7 +24,8 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
     private @Nullable Output<String> sha256Hash;
 
     /**
-     * @return The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+     * @return (Output)
+     * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
      * 
      */
     public Optional<Output<String>> sha256Hash() {
@@ -55,7 +57,8 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
         }
 
         /**
-         * @param sha256Hash The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+         * @param sha256Hash (Output)
+         * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
         }
 
         /**
-         * @param sha256Hash The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+         * @param sha256Hash (Output)
+         * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
          * 
          * @return builder
          * 

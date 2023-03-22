@@ -101,6 +101,12 @@ import (
 //						return fmt.Sprintf("%v/%v", address, prefixLength), nil
 //					}).(pulumi.StringOutput),
 //				},
+//				Accelerators: datafusion.InstanceAcceleratorArray{
+//					&datafusion.InstanceAcceleratorArgs{
+//						AcceleratorType: pulumi.String("CDC"),
+//						State:           pulumi.String("ENABLED"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

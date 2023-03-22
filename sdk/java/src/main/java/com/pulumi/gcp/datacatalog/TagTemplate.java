@@ -162,6 +162,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDelete);
     }
     /**
+     * (Output)
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
@@ -169,7 +170,8 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return (Output)
+     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     public Output<String> name() {

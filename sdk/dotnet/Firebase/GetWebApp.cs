@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.Firebase
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetWebAppArgs()
         {
         }
@@ -46,6 +53,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetWebAppInvokeArgs()
         {
@@ -74,7 +88,7 @@ namespace Pulumi.Gcp.Firebase
         /// projects/projectId/webApps/appId
         /// </summary>
         public readonly string Name;
-        public readonly string Project;
+        public readonly string? Project;
 
         [OutputConstructor]
         private GetWebAppResult(
@@ -90,7 +104,7 @@ namespace Pulumi.Gcp.Firebase
 
             string name,
 
-            string project)
+            string? project)
         {
             AppId = appId;
             AppUrls = appUrls;

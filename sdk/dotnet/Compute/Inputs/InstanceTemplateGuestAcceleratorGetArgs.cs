@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
-        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// The type of GCE disk, can be either `"SCRATCH"` or
+        /// `"PERSISTENT"`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

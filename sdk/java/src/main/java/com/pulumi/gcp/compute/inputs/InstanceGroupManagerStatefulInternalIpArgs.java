@@ -30,9 +30,17 @@ public final class InstanceGroupManagerStatefulInternalIpArgs extends com.pulumi
         return Optional.ofNullable(this.deleteRule);
     }
 
+    /**
+     * , The network interface name of the internal Ip.
+     * 
+     */
     @Import(name="interfaceName")
     private @Nullable Output<String> interfaceName;
 
+    /**
+     * @return , The network interface name of the internal Ip.
+     * 
+     */
     public Optional<Output<String>> interfaceName() {
         return Optional.ofNullable(this.interfaceName);
     }
@@ -83,11 +91,23 @@ public final class InstanceGroupManagerStatefulInternalIpArgs extends com.pulumi
             return deleteRule(Output.of(deleteRule));
         }
 
+        /**
+         * @param interfaceName , The network interface name of the internal Ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaceName(@Nullable Output<String> interfaceName) {
             $.interfaceName = interfaceName;
             return this;
         }
 
+        /**
+         * @param interfaceName , The network interface name of the internal Ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaceName(String interfaceName) {
             return interfaceName(Output.of(interfaceName));
         }

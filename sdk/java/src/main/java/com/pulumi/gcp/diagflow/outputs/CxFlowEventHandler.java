@@ -18,7 +18,8 @@ public final class CxFlowEventHandler {
      */
     private @Nullable String event;
     /**
-     * @return The unique identifier of this event handler.
+     * @return (Output)
+     * The unique identifier of this event handler.
      * 
      */
     private @Nullable String name;
@@ -50,7 +51,8 @@ public final class CxFlowEventHandler {
         return Optional.ofNullable(this.event);
     }
     /**
-     * @return The unique identifier of this event handler.
+     * @return (Output)
+     * The unique identifier of this event handler.
      * 
      */
     public Optional<String> name() {

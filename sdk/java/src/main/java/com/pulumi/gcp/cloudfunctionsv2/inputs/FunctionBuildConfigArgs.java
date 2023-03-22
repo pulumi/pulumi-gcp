@@ -18,6 +18,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     public static final FunctionBuildConfigArgs Empty = new FunctionBuildConfigArgs();
 
     /**
+     * (Output)
      * The Cloud Build name of the latest successful
      * deployment of the function.
      * 
@@ -26,7 +27,8 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> build;
 
     /**
-     * @return The Cloud Build name of the latest successful
+     * @return (Output)
+     * The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */
@@ -167,7 +169,8 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param build The Cloud Build name of the latest successful
+         * @param build (Output)
+         * The Cloud Build name of the latest successful
          * deployment of the function.
          * 
          * @return builder
@@ -179,7 +182,8 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param build The Cloud Build name of the latest successful
+         * @param build (Output)
+         * The Cloud Build name of the latest successful
          * deployment of the function.
          * 
          * @return builder

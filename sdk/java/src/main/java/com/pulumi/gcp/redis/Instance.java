@@ -439,6 +439,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectMode);
     }
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -448,7 +449,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> createTime;
 
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 

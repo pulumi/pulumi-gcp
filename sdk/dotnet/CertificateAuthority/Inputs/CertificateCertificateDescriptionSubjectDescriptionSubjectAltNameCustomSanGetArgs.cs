@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// <summary>
         /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
         /// handle this extension, the client should consider this to be an error).
+        /// (Required)
+        /// Indicates whether or not the name constraints are marked critical.
         /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
@@ -23,6 +25,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs>? _obectIds;
 
         /// <summary>
+        /// (Output)
         /// Required. Describes how some of the technical fields in a certificate should be populated.
         /// Structure is documented below.
         /// </summary>

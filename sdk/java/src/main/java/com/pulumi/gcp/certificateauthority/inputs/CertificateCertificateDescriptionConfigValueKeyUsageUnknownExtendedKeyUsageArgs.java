@@ -17,6 +17,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
     public static final CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs Empty = new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs();
 
     /**
+     * (Output)
      * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
@@ -25,7 +26,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>> obectIds;
 
     /**
-     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * @return (Output)
+     * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
@@ -58,7 +60,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +73,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +85,8 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
         }
 
         /**
-         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * @param obectIds (Output)
+         * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          * 
          * @return builder

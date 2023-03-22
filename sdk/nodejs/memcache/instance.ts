@@ -113,6 +113,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits
@@ -261,6 +262,7 @@ export interface InstanceState {
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits

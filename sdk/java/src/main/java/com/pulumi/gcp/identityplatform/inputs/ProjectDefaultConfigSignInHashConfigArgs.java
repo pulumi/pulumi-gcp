@@ -17,6 +17,7 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     public static final ProjectDefaultConfigSignInHashConfigArgs Empty = new ProjectDefaultConfigSignInHashConfigArgs();
 
     /**
+     * (Output)
      * Different password hash algorithms used in Identity Toolkit.
      * 
      */
@@ -24,7 +25,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     private @Nullable Output<String> algorithm;
 
     /**
-     * @return Different password hash algorithms used in Identity Toolkit.
+     * @return (Output)
+     * Different password hash algorithms used in Identity Toolkit.
      * 
      */
     public Optional<Output<String>> algorithm() {
@@ -32,6 +34,7 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     }
 
     /**
+     * (Output)
      * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
      * 
      */
@@ -39,7 +42,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     private @Nullable Output<Integer> memoryCost;
 
     /**
-     * @return Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+     * @return (Output)
+     * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
      * 
      */
     public Optional<Output<Integer>> memoryCost() {
@@ -47,6 +51,7 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     }
 
     /**
+     * (Output)
      * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
      * 
      */
@@ -54,7 +59,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     private @Nullable Output<Integer> rounds;
 
     /**
-     * @return How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+     * @return (Output)
+     * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
      * 
      */
     public Optional<Output<Integer>> rounds() {
@@ -62,6 +68,7 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     }
 
     /**
+     * (Output)
      * Non-printable character to be inserted between the salt and plain text password in base64.
      * 
      */
@@ -69,7 +76,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     private @Nullable Output<String> saltSeparator;
 
     /**
-     * @return Non-printable character to be inserted between the salt and plain text password in base64.
+     * @return (Output)
+     * Non-printable character to be inserted between the salt and plain text password in base64.
      * 
      */
     public Optional<Output<String>> saltSeparator() {
@@ -77,6 +85,7 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     }
 
     /**
+     * (Output)
      * Signer key in base64.
      * 
      */
@@ -84,7 +93,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
     private @Nullable Output<String> signerKey;
 
     /**
-     * @return Signer key in base64.
+     * @return (Output)
+     * Signer key in base64.
      * 
      */
     public Optional<Output<String>> signerKey() {
@@ -120,7 +130,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param algorithm Different password hash algorithms used in Identity Toolkit.
+         * @param algorithm (Output)
+         * Different password hash algorithms used in Identity Toolkit.
          * 
          * @return builder
          * 
@@ -131,7 +142,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param algorithm Different password hash algorithms used in Identity Toolkit.
+         * @param algorithm (Output)
+         * Different password hash algorithms used in Identity Toolkit.
          * 
          * @return builder
          * 
@@ -141,7 +153,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param memoryCost Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+         * @param memoryCost (Output)
+         * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
          * 
          * @return builder
          * 
@@ -152,7 +165,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param memoryCost Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+         * @param memoryCost (Output)
+         * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
          * 
          * @return builder
          * 
@@ -162,7 +176,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param rounds How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+         * @param rounds (Output)
+         * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
          * 
          * @return builder
          * 
@@ -173,7 +188,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param rounds How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+         * @param rounds (Output)
+         * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
          * 
          * @return builder
          * 
@@ -183,7 +199,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param saltSeparator Non-printable character to be inserted between the salt and plain text password in base64.
+         * @param saltSeparator (Output)
+         * Non-printable character to be inserted between the salt and plain text password in base64.
          * 
          * @return builder
          * 
@@ -194,7 +211,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param saltSeparator Non-printable character to be inserted between the salt and plain text password in base64.
+         * @param saltSeparator (Output)
+         * Non-printable character to be inserted between the salt and plain text password in base64.
          * 
          * @return builder
          * 
@@ -204,7 +222,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param signerKey Signer key in base64.
+         * @param signerKey (Output)
+         * Signer key in base64.
          * 
          * @return builder
          * 
@@ -215,7 +234,8 @@ public final class ProjectDefaultConfigSignInHashConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param signerKey Signer key in base64.
+         * @param signerKey (Output)
+         * Signer key in base64.
          * 
          * @return builder
          * 

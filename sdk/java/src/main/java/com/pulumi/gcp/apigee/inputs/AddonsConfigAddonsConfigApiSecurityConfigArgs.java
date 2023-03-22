@@ -32,6 +32,7 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
     }
 
     /**
+     * (Output)
      * Flag that specifies whether the Advanced API Ops add-on is enabled.
      * 
      */
@@ -39,7 +40,8 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return (Output)
+     * Flag that specifies whether the Advanced API Ops add-on is enabled.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -93,7 +95,8 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
         }
 
         /**
-         * @param expiresAt Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param expiresAt (Output)
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
          * 
          * @return builder
          * 
@@ -104,7 +107,8 @@ public final class AddonsConfigAddonsConfigApiSecurityConfigArgs extends com.pul
         }
 
         /**
-         * @param expiresAt Flag that specifies whether the Advanced API Ops add-on is enabled.
+         * @param expiresAt (Output)
+         * Flag that specifies whether the Advanced API Ops add-on is enabled.
          * 
          * @return builder
          * 

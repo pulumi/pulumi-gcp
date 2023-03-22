@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Data for this record. Values vary by record type, as defined in RFC 1035
         /// (section 5) and RFC 1034 (section 3.6.1).
         /// </summary>

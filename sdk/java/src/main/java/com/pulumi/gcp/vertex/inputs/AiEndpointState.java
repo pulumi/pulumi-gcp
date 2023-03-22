@@ -20,6 +20,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     public static final AiEndpointState Empty = new AiEndpointState();
 
     /**
+     * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      * 
      */
@@ -27,7 +28,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when the DeployedModel was created.
+     * @return (Output)
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -257,7 +259,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * @param createTime (Output)
+         * Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 
@@ -268,7 +271,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * @param createTime (Output)
+         * Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 

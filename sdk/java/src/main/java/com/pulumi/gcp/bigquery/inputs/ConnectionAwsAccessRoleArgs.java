@@ -31,6 +31,7 @@ public final class ConnectionAwsAccessRoleArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * (Output)
      * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
      * 
      */
@@ -38,7 +39,8 @@ public final class ConnectionAwsAccessRoleArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> identity;
 
     /**
-     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
+     * @return (Output)
+     * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
      * 
      */
     public Optional<Output<String>> identity() {
@@ -92,7 +94,8 @@ public final class ConnectionAwsAccessRoleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identity A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
+         * @param identity (Output)
+         * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class ConnectionAwsAccessRoleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identity A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
+         * @param identity (Output)
+         * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
          * 
          * @return builder
          * 

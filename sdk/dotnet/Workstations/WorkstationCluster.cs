@@ -131,10 +131,6 @@ namespace Pulumi.Gcp.Workstations
     /// ```sh
     ///  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
-    /// ```
     /// </summary>
     [GcpResourceType("gcp:workstations/workstationCluster:WorkstationCluster")]
     public partial class WorkstationCluster : global::Pulumi.CustomResource

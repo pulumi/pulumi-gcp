@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputMap<string>? _systemMetrics;
 
         /// <summary>
+        /// (Output)
         /// Contains runtime daemon metrics, such as OS and kernels and
         /// sessions stats.
         /// </summary>

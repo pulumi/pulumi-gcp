@@ -311,6 +311,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
+     * (Output)
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
@@ -437,6 +438,7 @@ export interface PatchDeploymentState {
      */
     instanceFilter?: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
+     * (Output)
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */

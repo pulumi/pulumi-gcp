@@ -267,19 +267,18 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values:
+        /// The purpose of this resource, which can be one of the following values.
         /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        /// ranges, internal load balancers, and similar resources.
+        /// ranges, load balancers, and similar resources.
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
-        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-        /// Interconnect configuration. These addresses are regional resources.
-        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-        /// to configure Private Service Connect. Only global internal addresses
-        /// can use this purpose.
-        /// This should only be set when using an Internal address.
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+        /// are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+        /// configuration. These addresses are regional resources.
+        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+        /// configure Private Service Connect. Only global internal addresses can use
+        /// this purpose.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -434,19 +433,18 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values:
+        /// The purpose of this resource, which can be one of the following values.
         /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        /// ranges, internal load balancers, and similar resources.
+        /// ranges, load balancers, and similar resources.
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
-        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-        /// Interconnect configuration. These addresses are regional resources.
-        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-        /// to configure Private Service Connect. Only global internal addresses
-        /// can use this purpose.
-        /// This should only be set when using an Internal address.
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+        /// are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+        /// configuration. These addresses are regional resources.
+        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+        /// configure Private Service Connect. Only global internal addresses can use
+        /// this purpose.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -563,19 +561,18 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values:
+        /// The purpose of this resource, which can be one of the following values.
         /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        /// ranges, internal load balancers, and similar resources.
+        /// ranges, load balancers, and similar resources.
         /// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
         /// internal load balancers.
         /// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-        /// * IPSEC_INTERCONNECT for addresses created from a private IP range
-        /// that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-        /// Interconnect configuration. These addresses are regional resources.
-        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-        /// to configure Private Service Connect. Only global internal addresses
-        /// can use this purpose.
-        /// This should only be set when using an Internal address.
+        /// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+        /// are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+        /// configuration. These addresses are regional resources.
+        /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+        /// configure Private Service Connect. Only global internal addresses can use
+        /// this purpose.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

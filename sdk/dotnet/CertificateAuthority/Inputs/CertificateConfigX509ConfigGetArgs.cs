@@ -52,6 +52,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         [Input("keyUsage", required: true)]
         public Input<Inputs.CertificateConfigX509ConfigKeyUsageGetArgs> KeyUsage { get; set; } = null!;
 
+        /// <summary>
+        /// Describes the X.509 name constraints extension.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nameConstraints")]
+        public Input<Inputs.CertificateConfigX509ConfigNameConstraintsGetArgs>? NameConstraints { get; set; }
+
         [Input("policyIds")]
         private InputList<Inputs.CertificateConfigX509ConfigPolicyIdGetArgs>? _policyIds;
 

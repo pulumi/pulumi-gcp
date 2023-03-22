@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class InstanceFromMachineImageScheduling {
     private @Nullable Boolean automaticRestart;
     private @Nullable String instanceTerminationAction;
+    private @Nullable String maintenanceInterval;
     private @Nullable InstanceFromMachineImageSchedulingMaxRunDuration maxRunDuration;
     private @Nullable Integer minNodeCpus;
     private @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities;
@@ -31,6 +32,9 @@ public final class InstanceFromMachineImageScheduling {
     }
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+    public Optional<String> maintenanceInterval() {
+        return Optional.ofNullable(this.maintenanceInterval);
     }
     public Optional<InstanceFromMachineImageSchedulingMaxRunDuration> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
@@ -62,6 +66,7 @@ public final class InstanceFromMachineImageScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
+        private @Nullable String maintenanceInterval;
         private @Nullable InstanceFromMachineImageSchedulingMaxRunDuration maxRunDuration;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities;
@@ -73,6 +78,7 @@ public final class InstanceFromMachineImageScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
@@ -89,6 +95,11 @@ public final class InstanceFromMachineImageScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceInterval(@Nullable String maintenanceInterval) {
+            this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         @CustomType.Setter
@@ -128,6 +139,7 @@ public final class InstanceFromMachineImageScheduling {
             final var o = new InstanceFromMachineImageScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.maintenanceInterval = maintenanceInterval;
             o.maxRunDuration = maxRunDuration;
             o.minNodeCpus = minNodeCpus;
             o.nodeAffinities = nodeAffinities;

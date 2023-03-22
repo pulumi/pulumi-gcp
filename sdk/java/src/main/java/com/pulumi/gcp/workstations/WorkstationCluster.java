@@ -160,10 +160,6 @@ import javax.annotation.Nullable;
  *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
  * ```
  * 
- * ```sh
- *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
- * ```
- * 
  */
 @ResourceType(type="gcp:workstations/workstationCluster:WorkstationCluster")
 public class WorkstationCluster extends com.pulumi.resources.CustomResource {

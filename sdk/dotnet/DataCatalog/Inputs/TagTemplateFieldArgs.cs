@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<bool>? IsRequired { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Input("name")]

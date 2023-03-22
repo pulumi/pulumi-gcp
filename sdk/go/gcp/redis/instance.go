@@ -346,6 +346,7 @@ type Instance struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -510,6 +511,7 @@ type instanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -639,6 +641,7 @@ type InstanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -1062,6 +1065,7 @@ func (o InstanceOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.

@@ -37,6 +37,7 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
     }
 
     /**
+     * (Output)
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -45,7 +46,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
     private @Nullable Output<String> lastExecuteTime;
 
     /**
-     * @return The time the last patch job ran successfully.
+     * @return (Output)
+     * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -71,6 +73,7 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
     }
 
     /**
+     * (Output)
      * The time the next patch job is scheduled to run.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -79,7 +82,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
     private @Nullable Output<String> nextExecuteTime;
 
     /**
-     * @return The time the next patch job is scheduled to run.
+     * @return (Output)
+     * The time the next patch job is scheduled to run.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -212,7 +216,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param lastExecuteTime The time the last patch job ran successfully.
+         * @param lastExecuteTime (Output)
+         * The time the last patch job ran successfully.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -224,7 +229,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param lastExecuteTime The time the last patch job ran successfully.
+         * @param lastExecuteTime (Output)
+         * The time the last patch job ran successfully.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -258,7 +264,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nextExecuteTime The time the next patch job is scheduled to run.
+         * @param nextExecuteTime (Output)
+         * The time the next patch job is scheduled to run.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -270,7 +277,8 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nextExecuteTime The time the next patch job is scheduled to run.
+         * @param nextExecuteTime (Output)
+         * The time the next patch job is scheduled to run.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder

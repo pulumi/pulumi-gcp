@@ -13,11 +13,14 @@ import (
 type DeviceConfig struct {
 	// The device state data.
 	BinaryData *string `pulumi:"binaryData"`
+	// (Output)
 	// The time at which this configuration version was updated in Cloud IoT Core.
 	CloudUpdateTime *string `pulumi:"cloudUpdateTime"`
+	// (Output)
 	// The time at which Cloud IoT Core received the acknowledgment from the device,
 	// indicating that the device has received this configuration version.
 	DeviceAckTime *string `pulumi:"deviceAckTime"`
+	// (Output)
 	// The version of this update.
 	Version *string `pulumi:"version"`
 }
@@ -36,11 +39,14 @@ type DeviceConfigInput interface {
 type DeviceConfigArgs struct {
 	// The device state data.
 	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
+	// (Output)
 	// The time at which this configuration version was updated in Cloud IoT Core.
 	CloudUpdateTime pulumi.StringPtrInput `pulumi:"cloudUpdateTime"`
+	// (Output)
 	// The time at which Cloud IoT Core received the acknowledgment from the device,
 	// indicating that the device has received this configuration version.
 	DeviceAckTime pulumi.StringPtrInput `pulumi:"deviceAckTime"`
+	// (Output)
 	// The version of this update.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -101,17 +107,20 @@ func (o DeviceConfigOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time at which this configuration version was updated in Cloud IoT Core.
 func (o DeviceConfigOutput) CloudUpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.CloudUpdateTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time at which Cloud IoT Core received the acknowledgment from the device,
 // indicating that the device has received this configuration version.
 func (o DeviceConfigOutput) DeviceAckTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.DeviceAckTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The version of this update.
 func (o DeviceConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -318,8 +327,10 @@ type DeviceGatewayConfig struct {
 	// Default value is `NON_GATEWAY`.
 	// Possible values are `GATEWAY` and `NON_GATEWAY`.
 	GatewayType *string `pulumi:"gatewayType"`
+	// (Output)
 	// The ID of the gateway the device accessed most recently.
 	LastAccessedGatewayId *string `pulumi:"lastAccessedGatewayId"`
+	// (Output)
 	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 	LastAccessedGatewayTime *string `pulumi:"lastAccessedGatewayTime"`
 }
@@ -343,8 +354,10 @@ type DeviceGatewayConfigArgs struct {
 	// Default value is `NON_GATEWAY`.
 	// Possible values are `GATEWAY` and `NON_GATEWAY`.
 	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
+	// (Output)
 	// The ID of the gateway the device accessed most recently.
 	LastAccessedGatewayId pulumi.StringPtrInput `pulumi:"lastAccessedGatewayId"`
+	// (Output)
 	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 	LastAccessedGatewayTime pulumi.StringPtrInput `pulumi:"lastAccessedGatewayTime"`
 }
@@ -439,11 +452,13 @@ func (o DeviceGatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The ID of the gateway the device accessed most recently.
 func (o DeviceGatewayConfigOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayId }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 func (o DeviceGatewayConfigOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayTime }).(pulumi.StringPtrOutput)
@@ -496,6 +511,7 @@ func (o DeviceGatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The ID of the gateway the device accessed most recently.
 func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
@@ -506,6 +522,7 @@ func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {

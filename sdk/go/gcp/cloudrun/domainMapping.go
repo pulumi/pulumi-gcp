@@ -107,6 +107,7 @@ type DomainMapping struct {
 	// The spec for this DomainMapping.
 	// Structure is documented below.
 	Spec DomainMappingSpecOutput `pulumi:"spec"`
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses DomainMappingStatusArrayOutput `pulumi:"statuses"`
 }
@@ -162,6 +163,7 @@ type domainMappingState struct {
 	// The spec for this DomainMapping.
 	// Structure is documented below.
 	Spec *DomainMappingSpec `pulumi:"spec"`
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses []DomainMappingStatus `pulumi:"statuses"`
 }
@@ -180,6 +182,7 @@ type DomainMappingState struct {
 	// The spec for this DomainMapping.
 	// Structure is documented below.
 	Spec DomainMappingSpecPtrInput
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses DomainMappingStatusArrayInput
 }
@@ -336,6 +339,7 @@ func (o DomainMappingOutput) Spec() DomainMappingSpecOutput {
 	return o.ApplyT(func(v *DomainMapping) DomainMappingSpecOutput { return v.Spec }).(DomainMappingSpecOutput)
 }
 
+// (Output)
 // Status of the condition, one of True, False, Unknown.
 func (o DomainMappingOutput) Statuses() DomainMappingStatusArrayOutput {
 	return o.ApplyT(func(v *DomainMapping) DomainMappingStatusArrayOutput { return v.Statuses }).(DomainMappingStatusArrayOutput)

@@ -391,6 +391,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
         [Output("statuses")]
@@ -592,6 +593,7 @@ namespace Pulumi.Gcp.CloudRun
         private InputList<Inputs.ServiceStatusGetArgs>? _statuses;
 
         /// <summary>
+        /// (Output)
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
         public InputList<Inputs.ServiceStatusGetArgs> Statuses

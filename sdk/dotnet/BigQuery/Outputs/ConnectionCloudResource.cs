@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class ConnectionCloudResource
     {
         /// <summary>
+        /// (Output)
         /// The account ID of the service created for the purpose of this connection.
         /// </summary>
         public readonly string? ServiceAccountId;

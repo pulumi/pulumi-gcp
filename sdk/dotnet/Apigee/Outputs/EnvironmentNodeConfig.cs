@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Apigee.Outputs
     public sealed class EnvironmentNodeConfig
     {
         /// <summary>
+        /// (Output)
         /// The current total number of gateway nodes that each environment currently has across
         /// all instances.
         /// </summary>

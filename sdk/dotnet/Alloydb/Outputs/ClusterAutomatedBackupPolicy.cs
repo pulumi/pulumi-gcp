@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// Weekly schedule for the Backup.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.ClusterAutomatedBackupPolicyWeeklySchedule WeeklySchedule;
+        public readonly Outputs.ClusterAutomatedBackupPolicyWeeklySchedule? WeeklySchedule;
 
         [OutputConstructor]
         private ClusterAutomatedBackupPolicy(
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
             Outputs.ClusterAutomatedBackupPolicyTimeBasedRetention? timeBasedRetention,
 
-            Outputs.ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule)
+            Outputs.ClusterAutomatedBackupPolicyWeeklySchedule? weeklySchedule)
         {
             BackupWindow = backupWindow;
             Enabled = enabled;

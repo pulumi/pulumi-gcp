@@ -16,7 +16,7 @@ public final class InstanceGuestAccelerator {
      */
     private Integer count;
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     private String type;
@@ -30,7 +30,7 @@ public final class InstanceGuestAccelerator {
         return this.count;
     }
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     public String type() {

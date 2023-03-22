@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectKeyId {
     /**
-     * @return Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+     * @return (Output)
+     * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
      * 
      */
     private @Nullable String keyId;
 
     private CertificateCertificateDescriptionSubjectKeyId() {}
     /**
-     * @return Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+     * @return (Output)
+     * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
      * 
      */
     public Optional<String> keyId() {

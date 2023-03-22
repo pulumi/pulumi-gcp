@@ -274,6 +274,33 @@ import (
 //								ServerAuth: pulumi.Bool(false),
 //							},
 //						},
+//						NameConstraints: &certificateauthority.AuthorityConfigX509ConfigNameConstraintsArgs{
+//							Critical: pulumi.Bool(true),
+//							PermittedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.example.com"),
+//							},
+//							ExcludedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.deny.example.com"),
+//							},
+//							PermittedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/8"),
+//							},
+//							ExcludedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.1.1.0/24"),
+//							},
+//							PermittedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//							PermittedUris: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedUris: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//						},
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

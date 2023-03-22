@@ -16,6 +16,7 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
     public static final CertificateRevocationDetailArgs Empty = new CertificateRevocationDetailArgs();
 
     /**
+     * (Output)
      * Indicates why a Certificate was revoked.
      * 
      */
@@ -23,7 +24,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
     private @Nullable Output<String> revocationState;
 
     /**
-     * @return Indicates why a Certificate was revoked.
+     * @return (Output)
+     * Indicates why a Certificate was revoked.
      * 
      */
     public Optional<Output<String>> revocationState() {
@@ -31,6 +33,7 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * The time at which this Certificate was revoked.
      * 
      */
@@ -38,7 +41,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
     private @Nullable Output<String> revocationTime;
 
     /**
-     * @return The time at which this Certificate was revoked.
+     * @return (Output)
+     * The time at which this Certificate was revoked.
      * 
      */
     public Optional<Output<String>> revocationTime() {
@@ -71,7 +75,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param revocationState Indicates why a Certificate was revoked.
+         * @param revocationState (Output)
+         * Indicates why a Certificate was revoked.
          * 
          * @return builder
          * 
@@ -82,7 +87,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param revocationState Indicates why a Certificate was revoked.
+         * @param revocationState (Output)
+         * Indicates why a Certificate was revoked.
          * 
          * @return builder
          * 
@@ -92,7 +98,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param revocationTime The time at which this Certificate was revoked.
+         * @param revocationTime (Output)
+         * The time at which this Certificate was revoked.
          * 
          * @return builder
          * 
@@ -103,7 +110,8 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param revocationTime The time at which this Certificate was revoked.
+         * @param revocationTime (Output)
+         * The time at which this Certificate was revoked.
          * 
          * @return builder
          * 

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { WorkstationArgs, WorkstationState } from "./workstation";
+export type Workstation = import("./workstation").Workstation;
+export const Workstation: typeof import("./workstation").Workstation = null as any;
+utilities.lazyLoad(exports, ["Workstation"], () => require("./workstation"));
+
 export { WorkstationClusterArgs, WorkstationClusterState } from "./workstationCluster";
 export type WorkstationCluster = import("./workstationCluster").WorkstationCluster;
 export const WorkstationCluster: typeof import("./workstationCluster").WorkstationCluster = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:workstations/workstation:Workstation":
+                return new Workstation(name, <any>undefined, { urn })
             case "gcp:workstations/workstationCluster:WorkstationCluster":
                 return new WorkstationCluster(name, <any>undefined, { urn })
             case "gcp:workstations/workstationConfig:WorkstationConfig":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstation", _module)
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstationCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfig", _module)

@@ -568,10 +568,13 @@ class Certificate(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            certificate_authority_id="my-certificate-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
-            pool="",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -603,11 +606,11 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
-            lifetime="860s",
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
+            lifetime="86000s",
             config=gcp.certificateauthority.CertificateConfigArgs(
                 subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
@@ -627,7 +630,7 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
+                        is_ca=True,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
@@ -637,6 +640,17 @@ class Certificate(pulumi.CustomResource):
                         extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
                             server_auth=False,
                         ),
+                    ),
+                    name_constraints=gcp.certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs(
+                        critical=True,
+                        permitted_dns_names=["*.example.com"],
+                        excluded_dns_names=["*.deny.example.com"],
+                        permitted_ip_ranges=["10.0.0.0/8"],
+                        excluded_ip_ranges=["10.1.1.0/24"],
+                        permitted_email_addresses=[".example.com"],
+                        excluded_email_addresses=[".deny.example.com"],
+                        permitted_uris=[".example.com"],
+                        excluded_uris=[".deny.example.com"],
                     ),
                 ),
                 public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
@@ -651,7 +665,10 @@ class Certificate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        template = gcp.certificateauthority.CertificateTemplate("template",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        default_certificate_template = gcp.certificateauthority.CertificateTemplate("defaultCertificateTemplate",
             location="us-central1",
             description="An updated sample certificate template",
             identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
@@ -723,10 +740,10 @@ class Certificate(pulumi.CustomResource):
                     ],
                 )],
             ))
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            pool="",
-            certificate_authority_id="my-certificate-authority",
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
             location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -758,13 +775,13 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
             lifetime="860s",
             pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            certificate_template=template.id)
+            certificate_template=default_certificate_template.id)
         ```
         ### Privateca Certificate Csr
 
@@ -772,10 +789,13 @@ class Certificate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            pool="",
-            certificate_authority_id="my-certificate-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -807,10 +827,10 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
             lifetime="860s",
             pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
         ```
@@ -821,10 +841,13 @@ class Certificate(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        authority = gcp.certificateauthority.Authority("authority",
-            pool="",
-            certificate_authority_id="my-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -858,9 +881,9 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
+            pool=default_ca_pool.name,
             lifetime="860s",
             config=gcp.certificateauthority.CertificateConfigArgs(
                 subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
@@ -893,7 +916,7 @@ class Certificate(pulumi.CustomResource):
                     key=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/rsa_public.pem"),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[authority]))
+            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
         ## Import
@@ -957,10 +980,13 @@ class Certificate(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            certificate_authority_id="my-certificate-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
-            pool="",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -992,11 +1018,11 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
-            lifetime="860s",
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
+            lifetime="86000s",
             config=gcp.certificateauthority.CertificateConfigArgs(
                 subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
@@ -1016,7 +1042,7 @@ class Certificate(pulumi.CustomResource):
                 ),
                 x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
                     ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
+                        is_ca=True,
                     ),
                     key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
                         base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
@@ -1026,6 +1052,17 @@ class Certificate(pulumi.CustomResource):
                         extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
                             server_auth=False,
                         ),
+                    ),
+                    name_constraints=gcp.certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs(
+                        critical=True,
+                        permitted_dns_names=["*.example.com"],
+                        excluded_dns_names=["*.deny.example.com"],
+                        permitted_ip_ranges=["10.0.0.0/8"],
+                        excluded_ip_ranges=["10.1.1.0/24"],
+                        permitted_email_addresses=[".example.com"],
+                        excluded_email_addresses=[".deny.example.com"],
+                        permitted_uris=[".example.com"],
+                        excluded_uris=[".deny.example.com"],
                     ),
                 ),
                 public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
@@ -1040,7 +1077,10 @@ class Certificate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        template = gcp.certificateauthority.CertificateTemplate("template",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        default_certificate_template = gcp.certificateauthority.CertificateTemplate("defaultCertificateTemplate",
             location="us-central1",
             description="An updated sample certificate template",
             identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
@@ -1112,10 +1152,10 @@ class Certificate(pulumi.CustomResource):
                     ],
                 )],
             ))
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            pool="",
-            certificate_authority_id="my-certificate-authority",
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
             location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1147,13 +1187,13 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
             lifetime="860s",
             pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
-            certificate_template=template.id)
+            certificate_template=default_certificate_template.id)
         ```
         ### Privateca Certificate Csr
 
@@ -1161,10 +1201,13 @@ class Certificate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_ca = gcp.certificateauthority.Authority("test-ca",
-            pool="",
-            certificate_authority_id="my-certificate-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1196,10 +1239,10 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
-            certificate_authority=test_ca.certificate_authority_id,
+            pool=default_ca_pool.name,
+            certificate_authority=default_authority.certificate_authority_id,
             lifetime="860s",
             pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"))
         ```
@@ -1210,10 +1253,13 @@ class Certificate(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        authority = gcp.certificateauthority.Authority("authority",
-            pool="",
-            certificate_authority_id="my-authority",
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
             location="us-central1",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            location="us-central1",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1247,9 +1293,9 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        default = gcp.certificateauthority.Certificate("default",
-            pool="",
+        default_certificate = gcp.certificateauthority.Certificate("defaultCertificate",
             location="us-central1",
+            pool=default_ca_pool.name,
             lifetime="860s",
             config=gcp.certificateauthority.CertificateConfigArgs(
                 subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
@@ -1282,7 +1328,7 @@ class Certificate(pulumi.CustomResource):
                     key=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/rsa_public.pem"),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[authority]))
+            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
         ## Import

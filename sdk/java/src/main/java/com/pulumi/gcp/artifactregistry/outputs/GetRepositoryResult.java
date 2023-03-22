@@ -5,6 +5,8 @@ package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfig;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +28,13 @@ public final class GetRepositoryResult {
     private Map<String,String> labels;
     private String location;
     private List<GetRepositoryMavenConfig> mavenConfigs;
+    private String mode;
     private String name;
     private @Nullable String project;
+    private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
     private String repositoryId;
     private String updateTime;
+    private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
 
     private GetRepositoryResult() {}
     public String createTime() {
@@ -60,17 +65,26 @@ public final class GetRepositoryResult {
     public List<GetRepositoryMavenConfig> mavenConfigs() {
         return this.mavenConfigs;
     }
+    public String mode() {
+        return this.mode;
+    }
     public String name() {
         return this.name;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs() {
+        return this.remoteRepositoryConfigs;
+    }
     public String repositoryId() {
         return this.repositoryId;
     }
     public String updateTime() {
         return this.updateTime;
+    }
+    public List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs() {
+        return this.virtualRepositoryConfigs;
     }
 
     public static Builder builder() {
@@ -90,10 +104,13 @@ public final class GetRepositoryResult {
         private Map<String,String> labels;
         private String location;
         private List<GetRepositoryMavenConfig> mavenConfigs;
+        private String mode;
         private String name;
         private @Nullable String project;
+        private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
         private String repositoryId;
         private String updateTime;
+        private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
         public Builder() {}
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -105,10 +122,13 @@ public final class GetRepositoryResult {
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.mavenConfigs = defaults.mavenConfigs;
+    	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.remoteRepositoryConfigs = defaults.remoteRepositoryConfigs;
     	      this.repositoryId = defaults.repositoryId;
     	      this.updateTime = defaults.updateTime;
+    	      this.virtualRepositoryConfigs = defaults.virtualRepositoryConfigs;
         }
 
         @CustomType.Setter
@@ -155,6 +175,11 @@ public final class GetRepositoryResult {
             return mavenConfigs(List.of(mavenConfigs));
         }
         @CustomType.Setter
+        public Builder mode(String mode) {
+            this.mode = Objects.requireNonNull(mode);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -163,6 +188,14 @@ public final class GetRepositoryResult {
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
+        }
+        @CustomType.Setter
+        public Builder remoteRepositoryConfigs(List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs) {
+            this.remoteRepositoryConfigs = Objects.requireNonNull(remoteRepositoryConfigs);
+            return this;
+        }
+        public Builder remoteRepositoryConfigs(GetRepositoryRemoteRepositoryConfig... remoteRepositoryConfigs) {
+            return remoteRepositoryConfigs(List.of(remoteRepositoryConfigs));
         }
         @CustomType.Setter
         public Builder repositoryId(String repositoryId) {
@@ -174,6 +207,14 @@ public final class GetRepositoryResult {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
+        public Builder virtualRepositoryConfigs(List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs) {
+            this.virtualRepositoryConfigs = Objects.requireNonNull(virtualRepositoryConfigs);
+            return this;
+        }
+        public Builder virtualRepositoryConfigs(GetRepositoryVirtualRepositoryConfig... virtualRepositoryConfigs) {
+            return virtualRepositoryConfigs(List.of(virtualRepositoryConfigs));
+        }
         public GetRepositoryResult build() {
             final var o = new GetRepositoryResult();
             o.createTime = createTime;
@@ -184,10 +225,13 @@ public final class GetRepositoryResult {
             o.labels = labels;
             o.location = location;
             o.mavenConfigs = mavenConfigs;
+            o.mode = mode;
             o.name = name;
             o.project = project;
+            o.remoteRepositoryConfigs = remoteRepositoryConfigs;
             o.repositoryId = repositoryId;
             o.updateTime = updateTime;
+            o.virtualRepositoryConfigs = virtualRepositoryConfigs;
             return o;
         }
     }

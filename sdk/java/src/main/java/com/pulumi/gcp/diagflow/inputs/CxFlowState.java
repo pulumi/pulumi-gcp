@@ -98,7 +98,9 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The unique identifier of this transition route.
+     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -106,7 +108,9 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of this transition route.
+     * @return (Output)
+     * The unique identifier of this transition route.
+     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -347,7 +351,9 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of this transition route.
+         * @param name (Output)
+         * The unique identifier of this transition route.
+         * (Output)
          * The unique identifier of this event handler.
          * 
          * @return builder
@@ -359,7 +365,9 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of this transition route.
+         * @param name (Output)
+         * The unique identifier of this transition route.
+         * (Output)
          * The unique identifier of this event handler.
          * 
          * @return builder

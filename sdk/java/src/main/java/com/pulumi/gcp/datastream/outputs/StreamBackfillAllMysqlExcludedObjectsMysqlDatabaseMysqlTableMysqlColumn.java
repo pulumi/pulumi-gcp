@@ -30,7 +30,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
      */
     private @Nullable String dataType;
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     private @Nullable Integer length;
@@ -74,7 +75,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         return Optional.ofNullable(this.dataType);
     }
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Integer> length() {

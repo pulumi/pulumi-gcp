@@ -64,6 +64,19 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _keyUsages = value;
         }
 
+        [Input("nameConstraints")]
+        private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionNameConstraintGetArgs>? _nameConstraints;
+
+        /// <summary>
+        /// Describes the X.509 name constraints extension.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CertificateCertificateDescriptionX509DescriptionNameConstraintGetArgs> NameConstraints
+        {
+            get => _nameConstraints ?? (_nameConstraints = new InputList<Inputs.CertificateCertificateDescriptionX509DescriptionNameConstraintGetArgs>());
+            set => _nameConstraints = value;
+        }
+
         [Input("policyIds")]
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionPolicyIdGetArgs>? _policyIds;
 

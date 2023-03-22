@@ -76,7 +76,7 @@ export class Cluster extends pulumi.CustomResource {
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
      * Structure is documented below.
      */
-    public readonly automatedBackupPolicy!: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy | undefined>;
+    public readonly automatedBackupPolicy!: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy>;
     /**
      * Cluster created from backup.
      * Structure is documented below.

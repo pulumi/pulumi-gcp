@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class EntryBigqueryTableSpecViewSpec
     {
         /// <summary>
+        /// (Output)
         /// The query that defines the table view.
         /// </summary>
         public readonly string? ViewQuery;

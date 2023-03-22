@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

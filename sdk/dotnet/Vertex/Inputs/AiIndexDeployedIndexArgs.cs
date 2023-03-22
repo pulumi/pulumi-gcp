@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiIndexDeployedIndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The ID of the DeployedIndex in the above IndexEndpoint.
         /// </summary>
         [Input("deployedIndexId")]
         public Input<string>? DeployedIndexId { get; set; }
 
         /// <summary>
+        /// (Output)
         /// A resource name of the IndexEndpoint.
         /// </summary>
         [Input("indexEndpoint")]

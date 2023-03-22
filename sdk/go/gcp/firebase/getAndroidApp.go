@@ -23,6 +23,9 @@ func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...p
 type LookupAndroidAppArgs struct {
 	// The appId of name of the Firebase androidApp.
 	AppId string `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getAndroidApp.
@@ -42,8 +45,8 @@ type LookupAndroidAppResult struct {
 	// projects/projectId/androidApps/appId
 	Name string `pulumi:"name"`
 	// The canonical package name of the Android app as would appear in the Google Play Developer Console.
-	PackageName string `pulumi:"packageName"`
-	Project     string `pulumi:"project"`
+	PackageName string  `pulumi:"packageName"`
+	Project     *string `pulumi:"project"`
 	// The SHA1 certificate hashes for the AndroidApp.
 	Sha1Hashes []string `pulumi:"sha1Hashes"`
 	// The SHA256 certificate hashes for the AndroidApp.
@@ -67,6 +70,9 @@ func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs
 type LookupAndroidAppOutputArgs struct {
 	// The appId of name of the Firebase androidApp.
 	AppId pulumi.StringInput `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupAndroidAppOutputArgs) ElementType() reflect.Type {
@@ -125,8 +131,8 @@ func (o LookupAndroidAppResultOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.PackageName }).(pulumi.StringOutput)
 }
 
-func (o LookupAndroidAppResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupAndroidAppResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // The SHA1 certificate hashes for the AndroidApp.

@@ -31,11 +31,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new()
+    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
     ///     {
-    ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
-    ///         Pool = "",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -82,12 +88,12 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
     ///     {
-    ///         Pool = "",
     ///         Location = "us-central1",
-    ///         CertificateAuthority = test_ca.CertificateAuthorityId,
-    ///         Lifetime = "860s",
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
+    ///         Lifetime = "86000s",
     ///         Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigArgs
@@ -122,7 +128,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             {
     ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigCaOptionsArgs
     ///                 {
-    ///                     IsCa = false,
+    ///                     IsCa = true,
     ///                 },
     ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageArgs
     ///                 {
@@ -134,6 +140,42 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs
     ///                     {
     ///                         ServerAuth = false,
+    ///                     },
+    ///                 },
+    ///                 NameConstraints = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigNameConstraintsArgs
+    ///                 {
+    ///                     Critical = true,
+    ///                     PermittedDnsNames = new[]
+    ///                     {
+    ///                         "*.example.com",
+    ///                     },
+    ///                     ExcludedDnsNames = new[]
+    ///                     {
+    ///                         "*.deny.example.com",
+    ///                     },
+    ///                     PermittedIpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/8",
+    ///                     },
+    ///                     ExcludedIpRanges = new[]
+    ///                     {
+    ///                         "10.1.1.0/24",
+    ///                     },
+    ///                     PermittedEmailAddresses = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedEmailAddresses = new[]
+    ///                     {
+    ///                         ".deny.example.com",
+    ///                     },
+    ///                     PermittedUris = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedUris = new[]
+    ///                     {
+    ///                         ".deny.example.com",
     ///                     },
     ///                 },
     ///             },
@@ -157,7 +199,13 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var template = new Gcp.CertificateAuthority.CertificateTemplate("template", new()
+    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultCertificateTemplate = new Gcp.CertificateAuthority.CertificateTemplate("defaultCertificateTemplate", new()
     ///     {
     ///         Location = "us-central1",
     ///         Description = "An updated sample certificate template",
@@ -267,11 +315,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         },
     ///     });
     /// 
-    ///     var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new()
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
     ///     {
-    ///         Pool = "",
-    ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -318,14 +366,14 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
     ///     {
-    ///         Pool = "",
     ///         Location = "us-central1",
-    ///         CertificateAuthority = test_ca.CertificateAuthorityId,
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
     ///         Lifetime = "860s",
     ///         PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
-    ///         CertificateTemplate = template.Id,
+    ///         CertificateTemplate = defaultCertificateTemplate.Id,
     ///     });
     /// 
     /// });
@@ -340,11 +388,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new()
+    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
     ///     {
-    ///         Pool = "",
-    ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -391,11 +445,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
     ///     {
-    ///         Pool = "",
     ///         Location = "us-central1",
-    ///         CertificateAuthority = test_ca.CertificateAuthorityId,
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthority = defaultAuthority.CertificateAuthorityId,
     ///         Lifetime = "860s",
     ///         PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
     ///     });
@@ -417,11 +471,17 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var authority = new Gcp.CertificateAuthority.Authority("authority", new()
+    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
     ///     {
-    ///         Pool = "",
-    ///         CertificateAuthorityId = "my-authority",
     ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthorityId = "my-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -470,10 +530,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
+    ///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("defaultCertificate", new()
     ///     {
-    ///         Pool = "",
     ///         Location = "us-central1",
+    ///         Pool = defaultCaPool.Name,
     ///         Lifetime = "860s",
     ///         Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigArgs
     ///         {
@@ -519,7 +579,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///     {
     ///         DependsOn = new[]
     ///         {
-    ///             authority,
+    ///             defaultAuthority,
     ///         },
     ///     });
     /// 

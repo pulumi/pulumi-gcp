@@ -335,6 +335,7 @@ type AlertPolicyCondition struct {
 	// display name for multiple conditions in the same
 	// policy.
 	DisplayName string `pulumi:"displayName"`
+	// (Output)
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -377,6 +378,7 @@ type AlertPolicyConditionArgs struct {
 	// display name for multiple conditions in the same
 	// policy.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// (Output)
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -475,6 +477,7 @@ func (o AlertPolicyConditionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// (Output)
 // The unique resource name for this condition.
 // Its syntax is:
 // projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -3478,8 +3481,10 @@ func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Percent() pulumi
 }
 
 type AlertPolicyCreationRecord struct {
+	// (Output)
 	// When the change occurred.
 	MutateTime *string `pulumi:"mutateTime"`
+	// (Output)
 	// The email address of the user making the change.
 	MutatedBy *string `pulumi:"mutatedBy"`
 }
@@ -3496,8 +3501,10 @@ type AlertPolicyCreationRecordInput interface {
 }
 
 type AlertPolicyCreationRecordArgs struct {
+	// (Output)
 	// When the change occurred.
 	MutateTime pulumi.StringPtrInput `pulumi:"mutateTime"`
+	// (Output)
 	// The email address of the user making the change.
 	MutatedBy pulumi.StringPtrInput `pulumi:"mutatedBy"`
 }
@@ -3553,11 +3560,13 @@ func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordOutputWithCo
 	return o
 }
 
+// (Output)
 // When the change occurred.
 func (o AlertPolicyCreationRecordOutput) MutateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The email address of the user making the change.
 func (o AlertPolicyCreationRecordOutput) MutatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)

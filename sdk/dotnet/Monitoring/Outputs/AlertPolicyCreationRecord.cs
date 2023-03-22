@@ -14,10 +14,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class AlertPolicyCreationRecord
     {
         /// <summary>
+        /// (Output)
         /// When the change occurred.
         /// </summary>
         public readonly string? MutateTime;
         /// <summary>
+        /// (Output)
         /// The email address of the user making the change.
         /// </summary>
         public readonly string? MutatedBy;

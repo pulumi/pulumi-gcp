@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectDescription
     {
         /// <summary>
+        /// (Output)
         /// The serial number encoded in lowercase hexadecimal.
         /// </summary>
         public readonly string? HexSerialNumber;
@@ -24,10 +25,12 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly string? Lifetime;
         /// <summary>
+        /// (Output)
         /// The time at which the certificate expires.
         /// </summary>
         public readonly string? NotAfterTime;
         /// <summary>
+        /// (Output)
         /// The time at which the certificate becomes valid.
         /// </summary>
         public readonly string? NotBeforeTime;

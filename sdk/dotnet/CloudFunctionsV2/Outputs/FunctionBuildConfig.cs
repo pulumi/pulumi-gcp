@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class FunctionBuildConfig
     {
         /// <summary>
+        /// (Output)
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
         /// </summary>

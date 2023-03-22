@@ -318,6 +318,7 @@ type Job struct {
 	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringPtrOutput `pulumi:"jobTimeoutMs"`
+	// (Output)
 	// The type of the job.
 	JobType pulumi.StringOutput `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
@@ -378,6 +379,7 @@ type jobState struct {
 	JobId *string `pulumi:"jobId"`
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs *string `pulumi:"jobTimeoutMs"`
+	// (Output)
 	// The type of the job.
 	JobType *string `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
@@ -407,6 +409,7 @@ type JobState struct {
 	JobId pulumi.StringPtrInput
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringPtrInput
+	// (Output)
 	// The type of the job.
 	JobType pulumi.StringPtrInput
 	// The labels associated with this job. You can use these to organize and group your jobs.
@@ -583,6 +586,7 @@ func (o JobOutput) JobTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.JobTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The type of the job.
 func (o JobOutput) JobType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobType }).(pulumi.StringOutput)

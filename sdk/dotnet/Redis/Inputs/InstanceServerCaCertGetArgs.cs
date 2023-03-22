@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.Redis.Inputs
     public sealed class InstanceServerCaCertGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The certificate data in PEM format.
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
@@ -27,18 +29,21 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The time when the certificate expires.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Serial number, as extracted from the certificate.
         /// </summary>
         [Input("serialNumber")]
         public Input<string>? SerialNumber { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Sha1 Fingerprint of the certificate.
         /// </summary>
         [Input("sha1Fingerprint")]

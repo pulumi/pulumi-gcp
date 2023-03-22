@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanGetArgs>? _customSans;
 
         /// <summary>
+        /// (Output)
         /// Contains additional subject alternative name values.
         /// Structure is documented below.
         /// </summary>

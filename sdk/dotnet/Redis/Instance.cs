@@ -304,6 +304,7 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> ConnectMode { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
@@ -825,6 +826,7 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.

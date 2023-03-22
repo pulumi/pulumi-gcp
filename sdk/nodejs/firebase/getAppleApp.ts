@@ -9,6 +9,7 @@ export function getAppleApp(args: GetAppleAppArgs, opts?: pulumi.InvokeOptions):
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleApp:getAppleApp", {
         "appId": args.appId,
+        "project": args.project,
     }, opts);
 }
 
@@ -20,6 +21,11 @@ export interface GetAppleAppArgs {
      * The appId of name of the Firebase iosApp.
      */
     appId: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: string;
 }
 
 /**
@@ -53,7 +59,7 @@ export interface GetAppleAppResult {
      * projects/projectId/iosApps/appId
      */
     readonly name: string;
-    readonly project: string;
+    readonly project?: string;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
@@ -71,4 +77,9 @@ export interface GetAppleAppOutputArgs {
      * The appId of name of the Firebase iosApp.
      */
     appId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
 }

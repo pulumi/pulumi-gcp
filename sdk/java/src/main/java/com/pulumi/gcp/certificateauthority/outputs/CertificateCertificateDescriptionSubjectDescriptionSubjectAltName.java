@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
     /**
-     * @return Contains additional subject alternative name values.
+     * @return (Output)
+     * Contains additional subject alternative name values.
      * Structure is documented below.
      * 
      */
@@ -41,7 +42,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     private CertificateCertificateDescriptionSubjectDescriptionSubjectAltName() {}
     /**
-     * @return Contains additional subject alternative name values.
+     * @return (Output)
+     * Contains additional subject alternative name values.
      * Structure is documented below.
      * 
      */

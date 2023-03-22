@@ -16,38 +16,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkstationConfigCondition {
     /**
-     * @return The status code, which should be an enum value of google.rpc.Code.
+     * @return (Output)
+     * The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     private @Nullable Integer code;
     /**
-     * @return A list of messages that carry the error details.
+     * @return (Output)
+     * A list of messages that carry the error details.
      * 
      */
     private @Nullable List<Map<String,Object>> details;
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     private @Nullable String message;
 
     private WorkstationConfigCondition() {}
     /**
-     * @return The status code, which should be an enum value of google.rpc.Code.
+     * @return (Output)
+     * The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     public Optional<Integer> code() {
         return Optional.ofNullable(this.code);
     }
     /**
-     * @return A list of messages that carry the error details.
+     * @return (Output)
+     * A list of messages that carry the error details.
      * 
      */
     public List<Map<String,Object>> details() {
         return this.details == null ? List.of() : this.details;
     }
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<String> message() {

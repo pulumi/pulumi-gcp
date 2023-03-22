@@ -498,7 +498,8 @@ class RuntimeAccessConfig(dict):
         :param str access_type: The type of access mode this instance. For valid values, see
                `https://cloud.google.com/vertex-ai/docs/workbench/reference/
                rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-        :param str proxy_uri: The proxy endpoint that is used to access the runtime.
+        :param str proxy_uri: (Output)
+               The proxy endpoint that is used to access the runtime.
         :param str runtime_owner: The owner of this runtime after creation. Format: `alias@example.com`.
                Currently supports one owner only.
         """
@@ -523,6 +524,7 @@ class RuntimeAccessConfig(dict):
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> Optional[str]:
         """
+        (Output)
         The proxy endpoint that is used to access the runtime.
         """
         return pulumi.get(self, "proxy_uri")
@@ -613,7 +615,8 @@ class RuntimeMetric(dict):
     def __init__(__self__, *,
                  system_metrics: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] system_metrics: Contains runtime daemon metrics, such as OS and kernels and
+        :param Mapping[str, str] system_metrics: (Output)
+               Contains runtime daemon metrics, such as OS and kernels and
                sessions stats.
         """
         if system_metrics is not None:
@@ -623,6 +626,7 @@ class RuntimeMetric(dict):
     @pulumi.getter(name="systemMetrics")
     def system_metrics(self) -> Optional[Mapping[str, str]]:
         """
+        (Output)
         Contains runtime daemon metrics, such as OS and kernels and
         sessions stats.
         """
@@ -691,7 +695,8 @@ class RuntimeSoftwareConfig(dict):
                Cloud Storage path (gs://path-to-file/file-name).
         :param str post_startup_script_behavior: Behavior for the post startup script.
                Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
-        :param bool upgradeable: Bool indicating whether an newer image is available in an image family.
+        :param bool upgradeable: (Output)
+               Bool indicating whether an newer image is available in an image family.
         """
         if custom_gpu_driver_path is not None:
             pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -798,6 +803,7 @@ class RuntimeSoftwareConfig(dict):
     @pulumi.getter
     def upgradeable(self) -> Optional[bool]:
         """
+        (Output)
         Bool indicating whether an newer image is available in an image family.
         """
         return pulumi.get(self, "upgradeable")
@@ -863,8 +869,10 @@ class RuntimeVirtualMachine(dict):
                  instance_name: Optional[str] = None,
                  virtual_machine_config: Optional['outputs.RuntimeVirtualMachineVirtualMachineConfig'] = None):
         """
-        :param str instance_id: The unique identifier of the Managed Compute Engine instance.
-        :param str instance_name: The user-friendly name of the Managed Compute Engine instance.
+        :param str instance_id: (Output)
+               The unique identifier of the Managed Compute Engine instance.
+        :param str instance_name: (Output)
+               The user-friendly name of the Managed Compute Engine instance.
         :param 'RuntimeVirtualMachineVirtualMachineConfigArgs' virtual_machine_config: Virtual Machine configuration settings.
                Structure is documented below.
         """
@@ -879,6 +887,7 @@ class RuntimeVirtualMachine(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
         """
+        (Output)
         The unique identifier of the Managed Compute Engine instance.
         """
         return pulumi.get(self, "instance_id")
@@ -887,6 +896,7 @@ class RuntimeVirtualMachine(dict):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[str]:
         """
+        (Output)
         The user-friendly name of the Managed Compute Engine instance.
         """
         return pulumi.get(self, "instance_name")
@@ -965,7 +975,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                Structure is documented below.
         :param 'RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs' encryption_config: Encryption settings for virtual machine data disk.
                Structure is documented below.
-        :param Mapping[str, str] guest_attributes: The Compute Engine guest attributes. (see [Project and instance
+        :param Mapping[str, str] guest_attributes: (Output)
+               The Compute Engine guest attributes. (see [Project and instance
                guest attributes](https://cloud.google.com/compute/docs/
                storing-retrieving-metadata#guest_attributes)).
         :param bool internal_ip_only: If true, runtime will only have internal IP addresses. By default,
@@ -1014,7 +1025,8 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         :param Sequence[str] tags: The Compute Engine tags to add to runtime (see [Tagging instances]
                (https://cloud.google.com/compute/docs/
                label-or-tag-resources#tags)).
-        :param str zone: The zone where the virtual machine is located.
+        :param str zone: (Output)
+               The zone where the virtual machine is located.
         """
         pulumi.set(__self__, "data_disk", data_disk)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -1095,6 +1107,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
     @pulumi.getter(name="guestAttributes")
     def guest_attributes(self) -> Optional[Mapping[str, str]]:
         """
+        (Output)
         The Compute Engine guest attributes. (see [Project and instance
         guest attributes](https://cloud.google.com/compute/docs/
         storing-retrieving-metadata#guest_attributes)).
@@ -1214,6 +1227,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
     @pulumi.getter
     def zone(self) -> Optional[str]:
         """
+        (Output)
         The zone where the virtual machine is located.
         """
         return pulumi.get(self, "zone")
@@ -1342,13 +1356,16 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
                  source: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param bool auto_delete: Optional. Specifies whether the disk will be auto-deleted
+        :param bool auto_delete: (Output)
+               Optional. Specifies whether the disk will be auto-deleted
                when the instance is deleted (but not when the disk is
                detached from the instance).
-        :param bool boot: Optional. Indicates that this is a boot disk. The virtual
+        :param bool boot: (Output)
+               Optional. Indicates that this is a boot disk. The virtual
                machine will use the first partition of the disk for its
                root filesystem.
-        :param str device_name: Optional. Specifies a unique device name of your choice
+        :param str device_name: (Output)
+               Optional. Specifies a unique device name of your choice
                that is reflected into the /dev/disk/by-id/google-* tree
                of a Linux operating system running within the instance.
                This name can be used to reference the device for mounting,
@@ -1357,12 +1374,14 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
                to apply to this disk, in the form persistent-disk-x, where
                x is a number assigned by Google Compute Engine. This field
                is only applicable for persistent disks.
-        :param Sequence[str] guest_os_features: Indicates a list of features to enable on the guest operating
+        :param Sequence[str] guest_os_features: (Output)
+               Indicates a list of features to enable on the guest operating
                system. Applicable only for bootable images. To see a list of
                available features, read `https://cloud.google.com/compute/docs/
                images/create-delete-deprecate-private-images#guest-os-features`
                options. ``
-        :param int index: Output only. A zero-based index to this disk, where 0 is
+        :param int index: (Output)
+               Output only. A zero-based index to this disk, where 0 is
                reserved for the boot disk. If you have many disks attached
                to an instance, each disk would have a unique index number.
         :param 'RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs' initialize_params: Input only. Specifies the parameters for a new disk that will
@@ -1378,9 +1397,11 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
                to attach a persistent disk in any other format than SCSI. Local SSDs
                can use either NVME or SCSI. For performance characteristics of SCSI
                over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-        :param str kind: Type of the resource. Always compute#attachedDisk for attached
+        :param str kind: (Output)
+               Type of the resource. Always compute#attachedDisk for attached
                disks.
-        :param Sequence[str] licenses: Output only. Any valid publicly visible licenses.
+        :param Sequence[str] licenses: (Output)
+               Output only. Any valid publicly visible licenses.
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If not specified, the default is to attach
                the disk in READ_WRITE mode.
@@ -1418,6 +1439,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> Optional[bool]:
         """
+        (Output)
         Optional. Specifies whether the disk will be auto-deleted
         when the instance is deleted (but not when the disk is
         detached from the instance).
@@ -1428,6 +1450,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter
     def boot(self) -> Optional[bool]:
         """
+        (Output)
         Optional. Indicates that this is a boot disk. The virtual
         machine will use the first partition of the disk for its
         root filesystem.
@@ -1438,6 +1461,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
         """
+        (Output)
         Optional. Specifies a unique device name of your choice
         that is reflected into the /dev/disk/by-id/google-* tree
         of a Linux operating system running within the instance.
@@ -1454,6 +1478,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[Sequence[str]]:
         """
+        (Output)
         Indicates a list of features to enable on the guest operating
         system. Applicable only for bootable images. To see a list of
         available features, read `https://cloud.google.com/compute/docs/
@@ -1466,6 +1491,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter
     def index(self) -> Optional[int]:
         """
+        (Output)
         Output only. A zero-based index to this disk, where 0 is
         reserved for the boot disk. If you have many disks attached
         to an instance, each disk would have a unique index number.
@@ -1503,6 +1529,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter
     def kind(self) -> Optional[str]:
         """
+        (Output)
         Type of the resource. Always compute#attachedDisk for attached
         disks.
         """
@@ -1512,6 +1539,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk(dict):
     @pulumi.getter
     def licenses(self) -> Optional[Sequence[str]]:
         """
+        (Output)
         Output only. Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")

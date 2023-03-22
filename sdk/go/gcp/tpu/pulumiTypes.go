@@ -11,8 +11,10 @@ import (
 )
 
 type NodeNetworkEndpoint struct {
+	// (Output)
 	// The IP address of this network endpoint.
 	IpAddress *string `pulumi:"ipAddress"`
+	// (Output)
 	// The port of this network endpoint.
 	Port *int `pulumi:"port"`
 }
@@ -29,8 +31,10 @@ type NodeNetworkEndpointInput interface {
 }
 
 type NodeNetworkEndpointArgs struct {
+	// (Output)
 	// The IP address of this network endpoint.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output)
 	// The port of this network endpoint.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
@@ -86,11 +90,13 @@ func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutputWithContext(ctx co
 	return o
 }
 
+// (Output)
 // The IP address of this network endpoint.
 func (o NodeNetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The port of this network endpoint.
 func (o NodeNetworkEndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeNetworkEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)

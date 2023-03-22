@@ -124,6 +124,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiEndpoint:AiEndpoint")
 public class AiEndpoint extends com.pulumi.resources.CustomResource {
     /**
+     * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      * 
      */
@@ -131,7 +132,8 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
     private Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when the DeployedModel was created.
+     * @return (Output)
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     public Output<String> createTime() {

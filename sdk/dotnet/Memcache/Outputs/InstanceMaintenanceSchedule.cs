@@ -14,12 +14,14 @@ namespace Pulumi.Gcp.Memcache.Outputs
     public sealed class InstanceMaintenanceSchedule
     {
         /// <summary>
+        /// (Output)
         /// Output only. The end time of any upcoming scheduled maintenance for this instance.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
+        /// (Output)
         /// Output only. The deadline that the maintenance schedule start time
         /// can not go beyond, including reschedule.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond

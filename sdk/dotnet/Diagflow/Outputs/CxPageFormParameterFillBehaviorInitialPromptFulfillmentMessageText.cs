@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText
     {
         /// <summary>
+        /// (Output)
         /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         /// </summary>
         public readonly bool? AllowPlaybackInterruption;

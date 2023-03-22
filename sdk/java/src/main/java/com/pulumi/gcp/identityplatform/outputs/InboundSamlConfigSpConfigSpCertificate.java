@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class InboundSamlConfigSpConfigSpCertificate {
     /**
      * @return The IdP&#39;s x509 certificate.
+     * (Output)
      * The x509 certificate
      * 
      */
@@ -21,6 +22,7 @@ public final class InboundSamlConfigSpConfigSpCertificate {
     private InboundSamlConfigSpConfigSpCertificate() {}
     /**
      * @return The IdP&#39;s x509 certificate.
+     * (Output)
      * The x509 certificate
      * 
      */

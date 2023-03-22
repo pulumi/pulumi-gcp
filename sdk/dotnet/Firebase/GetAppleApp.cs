@@ -27,6 +27,13 @@ namespace Pulumi.Gcp.Firebase
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetAppleAppArgs()
         {
         }
@@ -40,6 +47,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetAppleAppInvokeArgs()
         {
@@ -78,7 +92,7 @@ namespace Pulumi.Gcp.Firebase
         /// projects/projectId/iosApps/appId
         /// </summary>
         public readonly string Name;
-        public readonly string Project;
+        public readonly string? Project;
         /// <summary>
         /// The Apple Developer Team ID associated with the App in the App Store.
         /// </summary>
@@ -100,7 +114,7 @@ namespace Pulumi.Gcp.Firebase
 
             string name,
 
-            string project,
+            string? project,
 
             string teamId)
         {

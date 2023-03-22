@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
+        /// (Output)
         /// Output only. Stores timing information for pushing all artifact objects.
         /// Structure is documented below.
         /// </summary>

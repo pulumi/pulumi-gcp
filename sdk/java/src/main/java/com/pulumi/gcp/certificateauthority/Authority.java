@@ -251,6 +251,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigNameConstraintsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -309,6 +310,17 @@ import javax.annotation.Nullable;
  *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
  *                             .serverAuth(false)
  *                             .build())
+ *                         .build())
+ *                     .nameConstraints(AuthorityConfigX509ConfigNameConstraintsArgs.builder()
+ *                         .critical(true)
+ *                         .permittedDnsNames(&#34;*.example.com&#34;)
+ *                         .excludedDnsNames(&#34;*.deny.example.com&#34;)
+ *                         .permittedIpRanges(&#34;10.0.0.0/8&#34;)
+ *                         .excludedIpRanges(&#34;10.1.1.0/24&#34;)
+ *                         .permittedEmailAddresses(&#34;.example.com&#34;)
+ *                         .excludedEmailAddresses(&#34;.deny.example.com&#34;)
+ *                         .permittedUris(&#34;.example.com&#34;)
+ *                         .excludedUris(&#34;.deny.example.com&#34;)
  *                         .build())
  *                     .build())
  *                 .build())

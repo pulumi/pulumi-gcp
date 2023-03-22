@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Displays the target URI.
         /// </summary>
         [Input("uri")]

@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Apigee.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// (Output)
         /// Flag that specifies whether the Advanced API Ops add-on is enabled.
         /// </summary>
         public readonly string? ExpiresAt;

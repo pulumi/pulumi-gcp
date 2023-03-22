@@ -13932,6 +13932,7 @@ func (o MetastoreServiceNetworkConfigPtrOutput) Consumers() MetastoreServiceNetw
 }
 
 type MetastoreServiceNetworkConfigConsumer struct {
+	// (Output)
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
@@ -13953,6 +13954,7 @@ type MetastoreServiceNetworkConfigConsumerInput interface {
 }
 
 type MetastoreServiceNetworkConfigConsumerArgs struct {
+	// (Output)
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringPtrInput `pulumi:"endpointUri"`
 	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
@@ -14013,6 +14015,7 @@ func (o MetastoreServiceNetworkConfigConsumerOutput) ToMetastoreServiceNetworkCo
 	return o
 }
 
+// (Output)
 // The URI of the endpoint used to access the metastore service.
 func (o MetastoreServiceNetworkConfigConsumerOutput) EndpointUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreServiceNetworkConfigConsumer) *string { return v.EndpointUri }).(pulumi.StringPtrOutput)

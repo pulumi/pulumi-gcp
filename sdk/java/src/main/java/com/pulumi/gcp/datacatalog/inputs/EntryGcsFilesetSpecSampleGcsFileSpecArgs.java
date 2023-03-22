@@ -17,6 +17,7 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
     public static final EntryGcsFilesetSpecSampleGcsFileSpecArgs Empty = new EntryGcsFilesetSpecSampleGcsFileSpecArgs();
 
     /**
+     * (Output)
      * The full file path
      * 
      */
@@ -24,7 +25,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
     private @Nullable Output<String> filePath;
 
     /**
-     * @return The full file path
+     * @return (Output)
+     * The full file path
      * 
      */
     public Optional<Output<String>> filePath() {
@@ -32,6 +34,7 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
     }
 
     /**
+     * (Output)
      * The size of the file, in bytes.
      * 
      */
@@ -39,7 +42,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
     private @Nullable Output<Integer> sizeBytes;
 
     /**
-     * @return The size of the file, in bytes.
+     * @return (Output)
+     * The size of the file, in bytes.
      * 
      */
     public Optional<Output<Integer>> sizeBytes() {
@@ -72,7 +76,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
         }
 
         /**
-         * @param filePath The full file path
+         * @param filePath (Output)
+         * The full file path
          * 
          * @return builder
          * 
@@ -83,7 +88,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
         }
 
         /**
-         * @param filePath The full file path
+         * @param filePath (Output)
+         * The full file path
          * 
          * @return builder
          * 
@@ -93,7 +99,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
         }
 
         /**
-         * @param sizeBytes The size of the file, in bytes.
+         * @param sizeBytes (Output)
+         * The size of the file, in bytes.
          * 
          * @return builder
          * 
@@ -104,7 +111,8 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpecArgs extends com.pulumi.r
         }
 
         /**
-         * @param sizeBytes The size of the file, in bytes.
+         * @param sizeBytes (Output)
+         * The size of the file, in bytes.
          * 
          * @return builder
          * 

@@ -284,6 +284,42 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         ServerAuth = false,
     ///                     },
     ///                 },
+    ///                 NameConstraints = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigNameConstraintsArgs
+    ///                 {
+    ///                     Critical = true,
+    ///                     PermittedDnsNames = new[]
+    ///                     {
+    ///                         "*.example.com",
+    ///                     },
+    ///                     ExcludedDnsNames = new[]
+    ///                     {
+    ///                         "*.deny.example.com",
+    ///                     },
+    ///                     PermittedIpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/8",
+    ///                     },
+    ///                     ExcludedIpRanges = new[]
+    ///                     {
+    ///                         "10.1.1.0/24",
+    ///                     },
+    ///                     PermittedEmailAddresses = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedEmailAddresses = new[]
+    ///                     {
+    ///                         ".deny.example.com",
+    ///                     },
+    ///                     PermittedUris = new[]
+    ///                     {
+    ///                         ".example.com",
+    ///                     },
+    ///                     ExcludedUris = new[]
+    ///                     {
+    ///                         ".deny.example.com",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

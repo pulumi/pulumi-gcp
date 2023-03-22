@@ -123,16 +123,16 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
      * Structure is documented below.
      * 
      */
-    @Import(name="weeklySchedule", required=true)
-    private Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs> weeklySchedule;
+    @Import(name="weeklySchedule")
+    private @Nullable Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs> weeklySchedule;
 
     /**
      * @return Weekly schedule for the Backup.
      * Structure is documented below.
      * 
      */
-    public Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs> weeklySchedule() {
-        return this.weeklySchedule;
+    public Optional<Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs>> weeklySchedule() {
+        return Optional.ofNullable(this.weeklySchedule);
     }
 
     private ClusterAutomatedBackupPolicyArgs() {}
@@ -306,7 +306,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder weeklySchedule(Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs> weeklySchedule) {
+        public Builder weeklySchedule(@Nullable Output<ClusterAutomatedBackupPolicyWeeklyScheduleArgs> weeklySchedule) {
             $.weeklySchedule = weeklySchedule;
             return this;
         }
@@ -323,7 +323,6 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         public ClusterAutomatedBackupPolicyArgs build() {
-            $.weeklySchedule = Objects.requireNonNull($.weeklySchedule, "expected parameter 'weeklySchedule' to be non-null");
             return $;
         }
     }

@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? DataType;
         /// <summary>
+        /// (Output)
         /// Column length.
         /// </summary>
         public readonly int? Length;

@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
     public sealed class EntryGcsFilesetSpecSampleGcsFileSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The full file path
         /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The size of the file, in bytes.
         /// </summary>
         [Input("sizeBytes")]

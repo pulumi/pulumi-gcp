@@ -11,6 +11,7 @@ import (
 )
 
 type FunctionBuildConfig struct {
+	// (Output)
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build *string `pulumi:"build"`
@@ -46,6 +47,7 @@ type FunctionBuildConfigInput interface {
 }
 
 type FunctionBuildConfigArgs struct {
+	// (Output)
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build pulumi.StringPtrInput `pulumi:"build"`
@@ -146,6 +148,7 @@ func (o FunctionBuildConfigOutput) ToFunctionBuildConfigPtrOutputWithContext(ctx
 	}).(FunctionBuildConfigPtrOutput)
 }
 
+// (Output)
 // The Cloud Build name of the latest successful
 // deployment of the function.
 func (o FunctionBuildConfigOutput) Build() pulumi.StringPtrOutput {
@@ -212,6 +215,7 @@ func (o FunctionBuildConfigPtrOutput) Elem() FunctionBuildConfigOutput {
 	}).(FunctionBuildConfigOutput)
 }
 
+// (Output)
 // The Cloud Build name of the latest successful
 // deployment of the function.
 func (o FunctionBuildConfigPtrOutput) Build() pulumi.StringPtrOutput {
@@ -906,6 +910,7 @@ type FunctionEventTrigger struct {
 	RetryPolicy *string `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// (Output)
 	// Output only. The resource name of the Eventarc trigger.
 	Trigger *string `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
@@ -941,6 +946,7 @@ type FunctionEventTriggerArgs struct {
 	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// (Output)
 	// Output only. The resource name of the Eventarc trigger.
 	Trigger pulumi.StringPtrInput `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
@@ -1056,6 +1062,7 @@ func (o FunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.Trigger }).(pulumi.StringPtrOutput)
@@ -1147,6 +1154,7 @@ func (o FunctionEventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerPtrOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
@@ -1643,6 +1651,7 @@ type FunctionServiceConfig struct {
 	AvailableMemory *string `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// (Output)
 	// URIs of the Service deployed
 	GcfUri *string `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
@@ -1671,6 +1680,7 @@ type FunctionServiceConfig struct {
 	// can be terminated if the function is not completed at the end of the
 	// timeout period. Defaults to 60 seconds.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// (Output)
 	// URI of the Service deployed.
 	Uri *string `pulumi:"uri"`
 	// The Serverless VPC Access connector that this cloud function can connect to.
@@ -1702,6 +1712,7 @@ type FunctionServiceConfigArgs struct {
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// (Output)
 	// URIs of the Service deployed
 	GcfUri pulumi.StringPtrInput `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
@@ -1730,6 +1741,7 @@ type FunctionServiceConfigArgs struct {
 	// can be terminated if the function is not completed at the end of the
 	// timeout period. Defaults to 60 seconds.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+	// (Output)
 	// URI of the Service deployed.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// The Serverless VPC Access connector that this cloud function can connect to.
@@ -1838,6 +1850,7 @@ func (o FunctionServiceConfigOutput) EnvironmentVariables() pulumi.StringMapOutp
 	return o.ApplyT(func(v FunctionServiceConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
+// (Output)
 // URIs of the Service deployed
 func (o FunctionServiceConfigOutput) GcfUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.GcfUri }).(pulumi.StringPtrOutput)
@@ -1898,6 +1911,7 @@ func (o FunctionServiceConfigOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // URI of the Service deployed.
 func (o FunctionServiceConfigOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -1980,6 +1994,7 @@ func (o FunctionServiceConfigPtrOutput) EnvironmentVariables() pulumi.StringMapO
 	}).(pulumi.StringMapOutput)
 }
 
+// (Output)
 // URIs of the Service deployed
 func (o FunctionServiceConfigPtrOutput) GcfUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
@@ -2088,6 +2103,7 @@ func (o FunctionServiceConfigPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // URI of the Service deployed.
 func (o FunctionServiceConfigPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {

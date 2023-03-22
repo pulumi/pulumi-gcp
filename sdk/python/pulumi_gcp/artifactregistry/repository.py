@@ -23,7 +23,10 @@ class RepositoryArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 mode: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
+                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
@@ -47,8 +50,12 @@ class RepositoryArgs:
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "repository_id", repository_id)
@@ -62,8 +69,14 @@ class RepositoryArgs:
             pulumi.set(__self__, "location", location)
         if maven_config is not None:
             pulumi.set(__self__, "maven_config", maven_config)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_repository_config is not None:
+            pulumi.set(__self__, "remote_repository_config", remote_repository_config)
+        if virtual_repository_config is not None:
+            pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
 
     @property
     @pulumi.getter
@@ -165,6 +178,19 @@ class RepositoryArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -175,6 +201,30 @@ class RepositoryArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="remoteRepositoryConfig")
+    def remote_repository_config(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]:
+        """
+        Configuration specific for a Remote Repository.
+        """
+        return pulumi.get(self, "remote_repository_config")
+
+    @remote_repository_config.setter
+    def remote_repository_config(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]):
+        pulumi.set(self, "remote_repository_config", value)
+
+    @property
+    @pulumi.getter(name="virtualRepositoryConfig")
+    def virtual_repository_config(self) -> Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]:
+        """
+        Configuration specific for a Virtual Repository.
+        """
+        return pulumi.get(self, "virtual_repository_config")
+
+    @virtual_repository_config.setter
+    def virtual_repository_config(self, value: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]):
+        pulumi.set(self, "virtual_repository_config", value)
 
 
 @pulumi.input_type
@@ -187,10 +237,13 @@ class _RepositoryState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maven_config: Optional[pulumi.Input['RepositoryMavenConfigArgs']] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[str] create_time: The time when the repository was created.
@@ -213,13 +266,17 @@ class _RepositoryState:
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] name: The name of the repository, for example:
                "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
+        :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -235,14 +292,20 @@ class _RepositoryState:
             pulumi.set(__self__, "location", location)
         if maven_config is not None:
             pulumi.set(__self__, "maven_config", maven_config)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_repository_config is not None:
+            pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if repository_id is not None:
             pulumi.set(__self__, "repository_id", repository_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if virtual_repository_config is not None:
+            pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
 
     @property
     @pulumi.getter(name="createTime")
@@ -343,6 +406,19 @@ class _RepositoryState:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the repository, for example:
@@ -366,6 +442,18 @@ class _RepositoryState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="remoteRepositoryConfig")
+    def remote_repository_config(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]:
+        """
+        Configuration specific for a Remote Repository.
+        """
+        return pulumi.get(self, "remote_repository_config")
+
+    @remote_repository_config.setter
+    def remote_repository_config(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]):
+        pulumi.set(self, "remote_repository_config", value)
 
     @property
     @pulumi.getter(name="repositoryId")
@@ -392,6 +480,18 @@ class _RepositoryState:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+    @property
+    @pulumi.getter(name="virtualRepositoryConfig")
+    def virtual_repository_config(self) -> Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]:
+        """
+        Configuration specific for a Virtual Repository.
+        """
+        return pulumi.get(self, "virtual_repository_config")
+
+    @virtual_repository_config.setter
+    def virtual_repository_config(self, value: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]):
+        pulumi.set(self, "virtual_repository_config", value)
+
 
 class Repository(pulumi.CustomResource):
     @overload
@@ -404,8 +504,11 @@ class Repository(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None,
                  __props__=None):
         """
         A repository for storing artifacts
@@ -447,6 +550,54 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             kms_key_name="kms-key",
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+        ```
+        ### Artifact Registry Repository Virtual
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
+            location="us-central1",
+            repository_id="my-repository-upstream",
+            description="example docker repository (upstream source)",
+            format="DOCKER",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example virtual docker repository",
+            format="DOCKER",
+            mode="VIRTUAL_REPOSITORY",
+            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
+                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                    id="my-repository-upstream",
+                    repository=my_repo_upstream.id,
+                    priority=1,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[]))
+        ```
+        ### Artifact Registry Repository Remote
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example remote docker repository",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="docker hub",
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    public_repository="DOCKER_HUB",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -490,10 +641,14 @@ class Repository(pulumi.CustomResource):
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
+        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         ...
     @overload
@@ -542,6 +697,54 @@ class Repository(pulumi.CustomResource):
             kms_key_name="kms-key",
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
+        ### Artifact Registry Repository Virtual
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
+            location="us-central1",
+            repository_id="my-repository-upstream",
+            description="example docker repository (upstream source)",
+            format="DOCKER",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example virtual docker repository",
+            format="DOCKER",
+            mode="VIRTUAL_REPOSITORY",
+            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
+                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                    id="my-repository-upstream",
+                    repository=my_repo_upstream.id,
+                    priority=1,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[]))
+        ```
+        ### Artifact Registry Repository Remote
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example remote docker repository",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="docker hub",
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    public_repository="DOCKER_HUB",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -584,8 +787,11 @@ class Repository(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -603,10 +809,13 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["maven_config"] = maven_config
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["project"] = project
+            __props__.__dict__["remote_repository_config"] = remote_repository_config
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
+            __props__.__dict__["virtual_repository_config"] = virtual_repository_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -627,10 +836,13 @@ class Repository(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             maven_config: Optional[pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
-            update_time: Optional[pulumi.Input[str]] = None) -> 'Repository':
+            update_time: Optional[pulumi.Input[str]] = None,
+            virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -658,13 +870,17 @@ class Repository(pulumi.CustomResource):
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] name: The name of the repository, for example:
                "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
+        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -677,10 +893,13 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["maven_config"] = maven_config
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["remote_repository_config"] = remote_repository_config
         __props__.__dict__["repository_id"] = repository_id
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["virtual_repository_config"] = virtual_repository_config
         return Repository(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -754,6 +973,15 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the repository, for example:
@@ -771,6 +999,14 @@ class Repository(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="remoteRepositoryConfig")
+    def remote_repository_config(self) -> pulumi.Output[Optional['outputs.RepositoryRemoteRepositoryConfig']]:
+        """
+        Configuration specific for a Remote Repository.
+        """
+        return pulumi.get(self, "remote_repository_config")
+
+    @property
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Output[str]:
         """
@@ -786,4 +1022,12 @@ class Repository(pulumi.CustomResource):
         The time when the repository was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="virtualRepositoryConfig")
+    def virtual_repository_config(self) -> pulumi.Output[Optional['outputs.RepositoryVirtualRepositoryConfig']]:
+        """
+        Configuration specific for a Virtual Repository.
+        """
+        return pulumi.get(self, "virtual_repository_config")
 

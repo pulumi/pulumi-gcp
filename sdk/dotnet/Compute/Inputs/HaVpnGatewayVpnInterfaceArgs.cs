@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? InterconnectAttachment { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The external IP address for this VPN gateway interface.
         /// </summary>
         [Input("ipAddress")]

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// </summary>
         public readonly Outputs.CryptoKeyVersionAttestationCertChains? CertChains;
         /// <summary>
+        /// (Output)
         /// The attestation data provided by the HSM when the key operation was performed.
         /// </summary>
         public readonly string? Content;
@@ -28,6 +29,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// </summary>
         public readonly Outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions? ExternalProtectionLevelOptions;
         /// <summary>
+        /// (Output)
         /// The format of the attestation data.
         /// </summary>
         public readonly string? Format;

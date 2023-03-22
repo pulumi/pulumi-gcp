@@ -271,6 +271,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
+     * (Output)
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -283,7 +284,8 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The unique resource name for this condition.
+     * @return (Output)
+     * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
      * [CONDITION_ID] is assigned by Stackdriver Monitoring when

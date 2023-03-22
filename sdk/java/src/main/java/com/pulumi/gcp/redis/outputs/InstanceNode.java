@@ -12,26 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNode {
     /**
-     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+     * @return (Output)
+     * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     private @Nullable String id;
     /**
-     * @return Location of the node.
+     * @return (Output)
+     * Location of the node.
      * 
      */
     private @Nullable String zone;
 
     private InstanceNode() {}
     /**
-     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+     * @return (Output)
+     * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Location of the node.
+     * @return (Output)
+     * Location of the node.
      * 
      */
     public Optional<String> zone() {

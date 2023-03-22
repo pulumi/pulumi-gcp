@@ -53,10 +53,13 @@ class DeviceConfig(dict):
                  version: Optional[str] = None):
         """
         :param str binary_data: The device state data.
-        :param str cloud_update_time: The time at which this configuration version was updated in Cloud IoT Core.
-        :param str device_ack_time: The time at which Cloud IoT Core received the acknowledgment from the device,
+        :param str cloud_update_time: (Output)
+               The time at which this configuration version was updated in Cloud IoT Core.
+        :param str device_ack_time: (Output)
+               The time at which Cloud IoT Core received the acknowledgment from the device,
                indicating that the device has received this configuration version.
-        :param str version: The version of this update.
+        :param str version: (Output)
+               The version of this update.
         """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
@@ -79,6 +82,7 @@ class DeviceConfig(dict):
     @pulumi.getter(name="cloudUpdateTime")
     def cloud_update_time(self) -> Optional[str]:
         """
+        (Output)
         The time at which this configuration version was updated in Cloud IoT Core.
         """
         return pulumi.get(self, "cloud_update_time")
@@ -87,6 +91,7 @@ class DeviceConfig(dict):
     @pulumi.getter(name="deviceAckTime")
     def device_ack_time(self) -> Optional[str]:
         """
+        (Output)
         The time at which Cloud IoT Core received the acknowledgment from the device,
         indicating that the device has received this configuration version.
         """
@@ -96,6 +101,7 @@ class DeviceConfig(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
+        (Output)
         The version of this update.
         """
         return pulumi.get(self, "version")
@@ -219,8 +225,10 @@ class DeviceGatewayConfig(dict):
         :param str gateway_type: Indicates whether the device is a gateway.
                Default value is `NON_GATEWAY`.
                Possible values are `GATEWAY` and `NON_GATEWAY`.
-        :param str last_accessed_gateway_id: The ID of the gateway the device accessed most recently.
-        :param str last_accessed_gateway_time: The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+        :param str last_accessed_gateway_id: (Output)
+               The ID of the gateway the device accessed most recently.
+        :param str last_accessed_gateway_time: (Output)
+               The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         if gateway_auth_method is not None:
             pulumi.set(__self__, "gateway_auth_method", gateway_auth_method)
@@ -254,6 +262,7 @@ class DeviceGatewayConfig(dict):
     @pulumi.getter(name="lastAccessedGatewayId")
     def last_accessed_gateway_id(self) -> Optional[str]:
         """
+        (Output)
         The ID of the gateway the device accessed most recently.
         """
         return pulumi.get(self, "last_accessed_gateway_id")
@@ -262,6 +271,7 @@ class DeviceGatewayConfig(dict):
     @pulumi.getter(name="lastAccessedGatewayTime")
     def last_accessed_gateway_time(self) -> Optional[str]:
         """
+        (Output)
         The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         return pulumi.get(self, "last_accessed_gateway_time")

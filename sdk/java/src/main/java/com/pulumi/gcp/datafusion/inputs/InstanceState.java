@@ -5,11 +5,13 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +21,27 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    @Import(name="accelerators")
+    private @Nullable Output<List<InstanceAcceleratorArgs>> accelerators;
+
+    /**
+     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    public Optional<Output<List<InstanceAcceleratorArgs>>> accelerators() {
+        return Optional.ofNullable(this.accelerators);
+    }
 
     /**
      * Endpoint on which the REST APIs is accessible.
@@ -358,26 +381,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * @return The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -497,6 +510,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.accelerators = $.accelerators;
         this.apiEndpoint = $.apiEndpoint;
         this.createTime = $.createTime;
         this.cryptoKeyConfig = $.cryptoKeyConfig;
@@ -543,6 +557,46 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(@Nullable Output<List<InstanceAcceleratorArgs>> accelerators) {
+            $.accelerators = accelerators;
+            return this;
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(List<InstanceAcceleratorArgs> accelerators) {
+            return accelerators(Output.of(accelerators));
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(InstanceAcceleratorArgs... accelerators) {
+            return accelerators(List.of(accelerators));
         }
 
         /**
@@ -1009,13 +1063,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance.
-         * - CREATING: Instance is being created
-         * - RUNNING: Instance is running and ready for requests
-         * - FAILED: Instance creation failed
-         * - DELETING: Instance is being deleted
-         * - UPGRADING: Instance is being upgraded
-         * - RESTARTING: Instance is being restarted
+         * @param state The type of an accelator for a CDF instance.
+         * Possible values are `ENABLED` and `DISABLED`.
          * 
          * @return builder
          * 
@@ -1026,13 +1075,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance.
-         * - CREATING: Instance is being created
-         * - RUNNING: Instance is running and ready for requests
-         * - FAILED: Instance creation failed
-         * - DELETING: Instance is being deleted
-         * - UPGRADING: Instance is being upgraded
-         * - RESTARTING: Instance is being restarted
+         * @param state The type of an accelator for a CDF instance.
+         * Possible values are `ENABLED` and `DISABLED`.
          * 
          * @return builder
          * 

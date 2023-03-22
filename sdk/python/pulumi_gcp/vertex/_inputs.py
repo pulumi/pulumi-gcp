@@ -83,21 +83,32 @@ class AiEndpointDeployedModelArgs:
                  service_account: Optional[pulumi.Input[str]] = None,
                  shared_resources: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]] automatic_resources: A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]] automatic_resources: (Output)
+               A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when the DeployedModel was created.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]] dedicated_resources: A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]] dedicated_resources: (Output)
+               A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[bool] enable_access_logging: These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
-        :param pulumi.Input[bool] enable_container_logging: If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
-        :param pulumi.Input[str] id: The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
-        :param pulumi.Input[str] model: The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
-        :param pulumi.Input[str] model_version_id: Output only. The version ID of the model that is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]] private_endpoints: Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+        :param pulumi.Input[bool] enable_access_logging: (Output)
+               These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+        :param pulumi.Input[bool] enable_container_logging: (Output)
+               If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+        :param pulumi.Input[str] id: (Output)
+               The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+        :param pulumi.Input[str] model: (Output)
+               The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
+        :param pulumi.Input[str] model_version_id: (Output)
+               Output only. The version ID of the model that is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]] private_endpoints: (Output)
+               Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
                Structure is documented below.
-        :param pulumi.Input[str] service_account: The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
-        :param pulumi.Input[str] shared_resources: The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+        :param pulumi.Input[str] service_account: (Output)
+               The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+        :param pulumi.Input[str] shared_resources: (Output)
+               The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
         """
         if automatic_resources is not None:
             pulumi.set(__self__, "automatic_resources", automatic_resources)
@@ -128,6 +139,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="automaticResources")
     def automatic_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]:
         """
+        (Output)
         A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
         Structure is documented below.
         """
@@ -141,6 +153,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")
@@ -153,6 +166,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="dedicatedResources")
     def dedicated_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]:
         """
+        (Output)
         A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
         Structure is documented below.
         """
@@ -178,6 +192,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="enableAccessLogging")
     def enable_access_logging(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Output)
         These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
         """
         return pulumi.get(self, "enable_access_logging")
@@ -190,6 +205,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="enableContainerLogging")
     def enable_container_logging(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Output)
         If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
         """
         return pulumi.get(self, "enable_container_logging")
@@ -202,6 +218,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
         """
         return pulumi.get(self, "id")
@@ -214,6 +231,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
         """
         return pulumi.get(self, "model")
@@ -226,6 +244,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="modelVersionId")
     def model_version_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The version ID of the model that is deployed.
         """
         return pulumi.get(self, "model_version_id")
@@ -238,6 +257,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="privateEndpoints")
     def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]:
         """
+        (Output)
         Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
         Structure is documented below.
         """
@@ -251,6 +271,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
         """
         return pulumi.get(self, "service_account")
@@ -263,6 +284,7 @@ class AiEndpointDeployedModelArgs:
     @pulumi.getter(name="sharedResources")
     def shared_resources(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
         """
         return pulumi.get(self, "shared_resources")
@@ -278,8 +300,10 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
                  max_replica_count: Optional[pulumi.Input[int]] = None,
                  min_replica_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
-        :param pulumi.Input[int] min_replica_count: The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        :param pulumi.Input[int] max_replica_count: (Output)
+               The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        :param pulumi.Input[int] min_replica_count: (Output)
+               The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
         if max_replica_count is not None:
             pulumi.set(__self__, "max_replica_count", max_replica_count)
@@ -290,6 +314,7 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
     @pulumi.getter(name="maxReplicaCount")
     def max_replica_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
         """
         return pulumi.get(self, "max_replica_count")
@@ -302,6 +327,7 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
     @pulumi.getter(name="minReplicaCount")
     def min_replica_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
         return pulumi.get(self, "min_replica_count")
@@ -319,12 +345,16 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
                  max_replica_count: Optional[pulumi.Input[int]] = None,
                  min_replica_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: (Output)
+               The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]] machine_specs: The specification of a single machine used by the prediction.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]] machine_specs: (Output)
+               The specification of a single machine used by the prediction.
                Structure is documented below.
-        :param pulumi.Input[int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
-        :param pulumi.Input[int] min_replica_count: The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        :param pulumi.Input[int] max_replica_count: (Output)
+               The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        :param pulumi.Input[int] min_replica_count: (Output)
+               The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
         if autoscaling_metric_specs is not None:
             pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
@@ -339,6 +369,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
     @pulumi.getter(name="autoscalingMetricSpecs")
     def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]:
         """
+        (Output)
         The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
         Structure is documented below.
         """
@@ -352,6 +383,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
     @pulumi.getter(name="machineSpecs")
     def machine_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]:
         """
+        (Output)
         The specification of a single machine used by the prediction.
         Structure is documented below.
         """
@@ -365,6 +397,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
     @pulumi.getter(name="maxReplicaCount")
     def max_replica_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
         """
         return pulumi.get(self, "max_replica_count")
@@ -377,6 +410,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
     @pulumi.getter(name="minReplicaCount")
     def min_replica_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
         """
         return pulumi.get(self, "min_replica_count")
@@ -392,8 +426,10 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
                  metric_name: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] metric_name: The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
-        :param pulumi.Input[int] target: The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        :param pulumi.Input[str] metric_name: (Output)
+               The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        :param pulumi.Input[int] target: (Output)
+               The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
@@ -404,6 +440,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
         """
         return pulumi.get(self, "metric_name")
@@ -416,6 +453,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         return pulumi.get(self, "target")
@@ -432,9 +470,12 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] accelerator_count: The number of accelerators to attach to the machine.
-        :param pulumi.Input[str] accelerator_type: The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
-        :param pulumi.Input[str] machine_type: The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+        :param pulumi.Input[int] accelerator_count: (Output)
+               The number of accelerators to attach to the machine.
+        :param pulumi.Input[str] accelerator_type: (Output)
+               The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        :param pulumi.Input[str] machine_type: (Output)
+               The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -447,6 +488,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     @pulumi.getter(name="acceleratorCount")
     def accelerator_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The number of accelerators to attach to the machine.
         """
         return pulumi.get(self, "accelerator_count")
@@ -459,6 +501,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
         """
         return pulumi.get(self, "accelerator_type")
@@ -471,6 +514,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
         """
         return pulumi.get(self, "machine_type")
@@ -488,10 +532,14 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
                  predict_http_uri: Optional[pulumi.Input[str]] = None,
                  service_attachment: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] explain_http_uri: Output only. Http(s) path to send explain requests.
-        :param pulumi.Input[str] health_http_uri: Output only. Http(s) path to send health check requests.
-        :param pulumi.Input[str] predict_http_uri: Output only. Http(s) path to send prediction requests.
-        :param pulumi.Input[str] service_attachment: Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+        :param pulumi.Input[str] explain_http_uri: (Output)
+               Output only. Http(s) path to send explain requests.
+        :param pulumi.Input[str] health_http_uri: (Output)
+               Output only. Http(s) path to send health check requests.
+        :param pulumi.Input[str] predict_http_uri: (Output)
+               Output only. Http(s) path to send prediction requests.
+        :param pulumi.Input[str] service_attachment: (Output)
+               Output only. The name of the service attachment resource. Populated if private service connect is enabled.
         """
         if explain_http_uri is not None:
             pulumi.set(__self__, "explain_http_uri", explain_http_uri)
@@ -506,6 +554,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
     @pulumi.getter(name="explainHttpUri")
     def explain_http_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Http(s) path to send explain requests.
         """
         return pulumi.get(self, "explain_http_uri")
@@ -518,6 +567,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
     @pulumi.getter(name="healthHttpUri")
     def health_http_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Http(s) path to send health check requests.
         """
         return pulumi.get(self, "health_http_uri")
@@ -530,6 +580,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
     @pulumi.getter(name="predictHttpUri")
     def predict_http_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Http(s) path to send prediction requests.
         """
         return pulumi.get(self, "predict_http_uri")
@@ -542,6 +593,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
     @pulumi.getter(name="serviceAttachment")
     def service_attachment(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The name of the service attachment resource. Populated if private service connect is enabled.
         """
         return pulumi.get(self, "service_attachment")
@@ -1081,8 +1133,10 @@ class AiIndexDeployedIndexArgs:
                  deployed_index_id: Optional[pulumi.Input[str]] = None,
                  index_endpoint: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] deployed_index_id: The ID of the DeployedIndex in the above IndexEndpoint.
-        :param pulumi.Input[str] index_endpoint: A resource name of the IndexEndpoint.
+        :param pulumi.Input[str] deployed_index_id: (Output)
+               The ID of the DeployedIndex in the above IndexEndpoint.
+        :param pulumi.Input[str] index_endpoint: (Output)
+               A resource name of the IndexEndpoint.
         """
         if deployed_index_id is not None:
             pulumi.set(__self__, "deployed_index_id", deployed_index_id)
@@ -1093,6 +1147,7 @@ class AiIndexDeployedIndexArgs:
     @pulumi.getter(name="deployedIndexId")
     def deployed_index_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The ID of the DeployedIndex in the above IndexEndpoint.
         """
         return pulumi.get(self, "deployed_index_id")
@@ -1105,6 +1160,7 @@ class AiIndexDeployedIndexArgs:
     @pulumi.getter(name="indexEndpoint")
     def index_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A resource name of the IndexEndpoint.
         """
         return pulumi.get(self, "index_endpoint")
@@ -1120,8 +1176,10 @@ class AiIndexIndexStatArgs:
                  shards_count: Optional[pulumi.Input[int]] = None,
                  vectors_count: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] shards_count: The number of shards in the Index.
-        :param pulumi.Input[str] vectors_count: The number of vectors in the Index.
+        :param pulumi.Input[int] shards_count: (Output)
+               The number of shards in the Index.
+        :param pulumi.Input[str] vectors_count: (Output)
+               The number of vectors in the Index.
         """
         if shards_count is not None:
             pulumi.set(__self__, "shards_count", shards_count)
@@ -1132,6 +1190,7 @@ class AiIndexIndexStatArgs:
     @pulumi.getter(name="shardsCount")
     def shards_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The number of shards in the Index.
         """
         return pulumi.get(self, "shards_count")
@@ -1144,6 +1203,7 @@ class AiIndexIndexStatArgs:
     @pulumi.getter(name="vectorsCount")
     def vectors_count(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The number of vectors in the Index.
         """
         return pulumi.get(self, "vectors_count")
@@ -1450,7 +1510,8 @@ class AiMetadataStoreStateArgs:
     def __init__(__self__, *,
                  disk_utilization_bytes: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] disk_utilization_bytes: The disk utilization of the MetadataStore in bytes.
+        :param pulumi.Input[str] disk_utilization_bytes: (Output)
+               The disk utilization of the MetadataStore in bytes.
         """
         if disk_utilization_bytes is not None:
             pulumi.set(__self__, "disk_utilization_bytes", disk_utilization_bytes)
@@ -1459,6 +1520,7 @@ class AiMetadataStoreStateArgs:
     @pulumi.getter(name="diskUtilizationBytes")
     def disk_utilization_bytes(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The disk utilization of the MetadataStore in bytes.
         """
         return pulumi.get(self, "disk_utilization_bytes")

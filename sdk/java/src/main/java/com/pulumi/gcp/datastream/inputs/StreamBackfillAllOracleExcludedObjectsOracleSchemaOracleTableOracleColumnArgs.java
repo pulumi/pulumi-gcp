@@ -50,6 +50,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Column encoding.
      * 
      */
@@ -57,7 +58,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<String> encoding;
 
     /**
-     * @return Column encoding.
+     * @return (Output)
+     * Column encoding.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -65,6 +67,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Column length.
      * 
      */
@@ -72,7 +75,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Integer> length;
 
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Output<Integer>> length() {
@@ -80,6 +84,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -87,7 +92,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Boolean> nullable;
 
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return (Output)
+     * Whether or not the column can accept a null value.
      * 
      */
     public Optional<Output<Boolean>> nullable() {
@@ -95,6 +101,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * The ordinal position of the column in the table.
      * 
      */
@@ -102,7 +109,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Integer> ordinalPosition;
 
     /**
-     * @return The ordinal position of the column in the table.
+     * @return (Output)
+     * The ordinal position of the column in the table.
      * 
      */
     public Optional<Output<Integer>> ordinalPosition() {
@@ -110,6 +118,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Column precision.
      * 
      */
@@ -117,7 +126,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Integer> precision;
 
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     public Optional<Output<Integer>> precision() {
@@ -125,6 +135,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -132,7 +143,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Boolean> primaryKey;
 
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return (Output)
+     * Whether or not the column represents a primary key.
      * 
      */
     public Optional<Output<Boolean>> primaryKey() {
@@ -140,6 +152,7 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
 
     /**
+     * (Output)
      * Column scale.
      * 
      */
@@ -147,7 +160,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     private @Nullable Output<Integer> scale;
 
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     public Optional<Output<Integer>> scale() {
@@ -231,7 +245,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param encoding Column encoding.
+         * @param encoding (Output)
+         * Column encoding.
          * 
          * @return builder
          * 
@@ -242,7 +257,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param encoding Column encoding.
+         * @param encoding (Output)
+         * Column encoding.
          * 
          * @return builder
          * 
@@ -252,7 +268,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 
@@ -263,7 +280,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 
@@ -273,7 +291,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable (Output)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -284,7 +303,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable (Output)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -294,7 +314,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition (Output)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -305,7 +326,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition (Output)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -315,7 +337,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param precision Column precision.
+         * @param precision (Output)
+         * Column precision.
          * 
          * @return builder
          * 
@@ -326,7 +349,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param precision Column precision.
+         * @param precision (Output)
+         * Column precision.
          * 
          * @return builder
          * 
@@ -336,7 +360,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey (Output)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 
@@ -347,7 +372,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey (Output)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 
@@ -357,7 +383,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param scale Column scale.
+         * @param scale (Output)
+         * Column scale.
          * 
          * @return builder
          * 
@@ -368,7 +395,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
         }
 
         /**
-         * @param scale Column scale.
+         * @param scale (Output)
+         * Column scale.
          * 
          * @return builder
          * 

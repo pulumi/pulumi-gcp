@@ -169,7 +169,8 @@ class _AiEndpointState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. Timestamp when the DeployedModel was created.
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
@@ -217,6 +218,7 @@ class _AiEndpointState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")
@@ -607,7 +609,8 @@ class AiEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. Timestamp when the DeployedModel was created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
@@ -647,6 +650,7 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
+        (Output)
         Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")

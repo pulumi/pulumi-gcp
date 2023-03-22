@@ -32,6 +32,7 @@ public final class CxPageEventHandlerArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -39,7 +40,8 @@ public final class CxPageEventHandlerArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of this event handler.
+     * @return (Output)
+     * The unique identifier of this event handler.
      * 
      */
     public Optional<Output<String>> name() {
@@ -147,7 +149,8 @@ public final class CxPageEventHandlerArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The unique identifier of this event handler.
+         * @param name (Output)
+         * The unique identifier of this event handler.
          * 
          * @return builder
          * 
@@ -158,7 +161,8 @@ public final class CxPageEventHandlerArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The unique identifier of this event handler.
+         * @param name (Output)
+         * The unique identifier of this event handler.
          * 
          * @return builder
          * 

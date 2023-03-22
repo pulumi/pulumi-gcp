@@ -17,6 +17,7 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     public static final AiEndpointDeployedModelDedicatedResourceMachineSpecArgs Empty = new AiEndpointDeployedModelDedicatedResourceMachineSpecArgs();
 
     /**
+     * (Output)
      * The number of accelerators to attach to the machine.
      * 
      */
@@ -24,7 +25,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     private @Nullable Output<Integer> acceleratorCount;
 
     /**
-     * @return The number of accelerators to attach to the machine.
+     * @return (Output)
+     * The number of accelerators to attach to the machine.
      * 
      */
     public Optional<Output<Integer>> acceleratorCount() {
@@ -32,6 +34,7 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     }
 
     /**
+     * (Output)
      * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
      * 
      */
@@ -39,7 +42,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     private @Nullable Output<String> acceleratorType;
 
     /**
-     * @return The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+     * @return (Output)
+     * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
      * 
      */
     public Optional<Output<String>> acceleratorType() {
@@ -47,6 +51,7 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     }
 
     /**
+     * (Output)
      * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
      * 
      */
@@ -54,7 +59,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+     * @return (Output)
+     * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -88,7 +94,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param acceleratorCount The number of accelerators to attach to the machine.
+         * @param acceleratorCount (Output)
+         * The number of accelerators to attach to the machine.
          * 
          * @return builder
          * 
@@ -99,7 +106,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param acceleratorCount The number of accelerators to attach to the machine.
+         * @param acceleratorCount (Output)
+         * The number of accelerators to attach to the machine.
          * 
          * @return builder
          * 
@@ -109,7 +117,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param acceleratorType The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+         * @param acceleratorType (Output)
+         * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
          * 
          * @return builder
          * 
@@ -120,7 +129,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param acceleratorType The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+         * @param acceleratorType (Output)
+         * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
          * 
          * @return builder
          * 
@@ -130,7 +140,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param machineType The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+         * @param machineType (Output)
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
          * 
          * @return builder
          * 
@@ -141,7 +152,8 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs exten
         }
 
         /**
-         * @param machineType The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+         * @param machineType (Output)
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
          * 
          * @return builder
          * 

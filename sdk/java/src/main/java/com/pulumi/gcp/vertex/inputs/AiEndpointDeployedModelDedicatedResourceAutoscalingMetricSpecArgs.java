@@ -17,6 +17,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
     public static final AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs Empty = new AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs();
 
     /**
+     * (Output)
      * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
      * 
      */
@@ -24,7 +25,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
     private @Nullable Output<String> metricName;
 
     /**
-     * @return The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+     * @return (Output)
+     * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
      * 
      */
     public Optional<Output<String>> metricName() {
@@ -32,6 +34,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
     }
 
     /**
+     * (Output)
      * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
      * 
      */
@@ -39,7 +42,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
     private @Nullable Output<Integer> target;
 
     /**
-     * @return The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+     * @return (Output)
+     * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
      * 
      */
     public Optional<Output<Integer>> target() {
@@ -72,7 +76,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
         }
 
         /**
-         * @param metricName The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         * @param metricName (Output)
+         * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
          * 
          * @return builder
          * 
@@ -83,7 +88,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
         }
 
         /**
-         * @param metricName The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         * @param metricName (Output)
+         * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
          * 
          * @return builder
          * 
@@ -93,7 +99,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
         }
 
         /**
-         * @param target The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         * @param target (Output)
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          * 
          * @return builder
          * 
@@ -104,7 +111,8 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
         }
 
         /**
-         * @param target The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         * @param target (Output)
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          * 
          * @return builder
          * 

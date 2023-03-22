@@ -17,11 +17,14 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
+     * (Required)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     private @Nullable Boolean critical;
     /**
-     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * @return (Output)
+     * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
@@ -36,13 +39,16 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
+     * (Required)
+     * Indicates whether or not the name constraints are marked critical.
      * 
      */
     public Optional<Boolean> critical() {
         return Optional.ofNullable(this.critical);
     }
     /**
-     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * @return (Output)
+     * Required. Describes how some of the technical fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */

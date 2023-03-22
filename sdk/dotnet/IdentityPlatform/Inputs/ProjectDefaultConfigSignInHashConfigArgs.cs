@@ -13,30 +13,35 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     public sealed class ProjectDefaultConfigSignInHashConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Different password hash algorithms used in Identity Toolkit.
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         /// </summary>
         [Input("memoryCost")]
         public Input<int>? MemoryCost { get; set; }
 
         /// <summary>
+        /// (Output)
         /// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         /// </summary>
         [Input("rounds")]
         public Input<int>? Rounds { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Non-printable character to be inserted between the salt and plain text password in base64.
         /// </summary>
         [Input("saltSeparator")]
         public Input<string>? SaltSeparator { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Signer key in base64.
         /// </summary>
         [Input("signerKey")]

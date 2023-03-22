@@ -35,6 +35,7 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * The attestation data provided by the HSM when the key operation was performed.
      * 
      */
@@ -42,7 +43,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
     private @Nullable Output<String> content;
 
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * 
      */
     public Optional<Output<String>> content() {
@@ -67,6 +69,7 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * The format of the attestation data.
      * 
      */
@@ -74,7 +77,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
     private @Nullable Output<String> format;
 
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     public Optional<Output<String>> format() {
@@ -132,7 +136,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * @param content (Output)
+         * The attestation data provided by the HSM when the key operation was performed.
          * 
          * @return builder
          * 
@@ -143,7 +148,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * @param content (Output)
+         * The attestation data provided by the HSM when the key operation was performed.
          * 
          * @return builder
          * 
@@ -176,7 +182,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param format The format of the attestation data.
+         * @param format (Output)
+         * The format of the attestation data.
          * 
          * @return builder
          * 
@@ -187,7 +194,8 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param format The format of the attestation data.
+         * @param format (Output)
+         * The format of the attestation data.
          * 
          * @return builder
          * 

@@ -164,6 +164,7 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -176,7 +177,8 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique resource name for this condition.
+     * @return (Output)
+     * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
      * [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -500,7 +502,8 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique resource name for this condition.
+         * @param name (Output)
+         * The unique resource name for this condition.
          * Its syntax is:
          * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
          * [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -516,7 +519,8 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique resource name for this condition.
+         * @param name (Output)
+         * The unique resource name for this condition.
          * Its syntax is:
          * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
          * [CONDITION_ID] is assigned by Stackdriver Monitoring when

@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.Kms.Outputs
     public sealed class KeyRingImportJobAttestation
     {
         /// <summary>
+        /// (Output)
         /// The attestation data provided by the HSM when the key operation was performed.
         /// A base64-encoded string.
         /// </summary>
         public readonly string? Content;
         /// <summary>
+        /// (Output)
         /// The format of the attestation data.
         /// </summary>
         public readonly string? Format;

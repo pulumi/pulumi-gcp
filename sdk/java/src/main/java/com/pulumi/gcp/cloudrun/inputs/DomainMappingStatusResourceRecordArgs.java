@@ -31,6 +31,7 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Data for this record. Values vary by record type, as defined in RFC 1035
      * (section 5) and RFC 1034 (section 3.6.1).
      * 
@@ -39,7 +40,8 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
     private @Nullable Output<String> rrdata;
 
     /**
-     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * @return (Output)
+     * Data for this record. Values vary by record type, as defined in RFC 1035
      * (section 5) and RFC 1034 (section 3.6.1).
      * 
      */
@@ -112,7 +114,8 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035
+         * @param rrdata (Output)
+         * Data for this record. Values vary by record type, as defined in RFC 1035
          * (section 5) and RFC 1034 (section 3.6.1).
          * 
          * @return builder
@@ -124,7 +127,8 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035
+         * @param rrdata (Output)
+         * Data for this record. Values vary by record type, as defined in RFC 1035
          * (section 5) and RFC 1034 (section 3.6.1).
          * 
          * @return builder

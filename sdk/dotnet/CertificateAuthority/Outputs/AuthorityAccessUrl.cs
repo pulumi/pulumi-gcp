@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class AuthorityAccessUrl
     {
         /// <summary>
+        /// (Output)
         /// The URL where this CertificateAuthority's CA certificate is published. This will only be
         /// set for CAs that have been activated.
         /// </summary>
         public readonly string? CaCertificateAccessUrl;
         /// <summary>
+        /// (Output)
         /// The URL where this CertificateAuthority's CRLs are published. This will only be set for
         /// CAs that have been activated.
         /// </summary>

@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -56,6 +58,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigNameConstraintsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -70,10 +73,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_ca = new Authority(&#34;test-ca&#34;, AuthorityArgs.builder()        
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .pool(&#34;&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthorityId(&#34;my-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -107,11 +115,11 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .pool(&#34;&#34;)
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .certificateAuthority(test_ca.certificateAuthorityId())
- *             .lifetime(&#34;860s&#34;)
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
+ *             .lifetime(&#34;86000s&#34;)
  *             .config(CertificateConfigArgs.builder()
  *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
  *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
@@ -131,7 +139,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
  *                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
- *                         .isCa(false)
+ *                         .isCa(true)
  *                         .build())
  *                     .keyUsage(CertificateConfigX509ConfigKeyUsageArgs.builder()
  *                         .baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
@@ -141,6 +149,17 @@ import javax.annotation.Nullable;
  *                         .extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
  *                             .serverAuth(false)
  *                             .build())
+ *                         .build())
+ *                     .nameConstraints(CertificateConfigX509ConfigNameConstraintsArgs.builder()
+ *                         .critical(true)
+ *                         .permittedDnsNames(&#34;*.example.com&#34;)
+ *                         .excludedDnsNames(&#34;*.deny.example.com&#34;)
+ *                         .permittedIpRanges(&#34;10.0.0.0/8&#34;)
+ *                         .excludedIpRanges(&#34;10.1.1.0/24&#34;)
+ *                         .permittedEmailAddresses(&#34;.example.com&#34;)
+ *                         .excludedEmailAddresses(&#34;.deny.example.com&#34;)
+ *                         .permittedUris(&#34;.example.com&#34;)
+ *                         .excludedUris(&#34;.deny.example.com&#34;)
  *                         .build())
  *                     .build())
  *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
@@ -160,6 +179,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.CertificateTemplate;
  * import com.pulumi.gcp.certificateauthority.CertificateTemplateArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
@@ -197,7 +218,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var template = new CertificateTemplate(&#34;template&#34;, CertificateTemplateArgs.builder()        
+ *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var defaultCertificateTemplate = new CertificateTemplate(&#34;defaultCertificateTemplate&#34;, CertificateTemplateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;An updated sample certificate template&#34;)
  *             .identityConstraints(CertificateTemplateIdentityConstraintsArgs.builder()
@@ -267,10 +293,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var test_ca = new Authority(&#34;test-ca&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthorityId(&#34;my-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -304,13 +330,13 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .pool(&#34;&#34;)
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .certificateAuthority(test_ca.certificateAuthorityId())
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
  *             .lifetime(&#34;860s&#34;)
  *             .pemCsr(Files.readString(Paths.get(&#34;test-fixtures/rsa_csr.pem&#34;)))
- *             .certificateTemplate(template.id())
+ *             .certificateTemplate(defaultCertificateTemplate.id())
  *             .build());
  * 
  *     }
@@ -323,6 +349,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -350,10 +378,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_ca = new Authority(&#34;test-ca&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;&#34;)
- *             .certificateAuthorityId(&#34;my-certificate-authority&#34;)
+ *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthorityId(&#34;my-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -387,10 +420,10 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .pool(&#34;&#34;)
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .certificateAuthority(test_ca.certificateAuthorityId())
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthority(defaultAuthority.certificateAuthorityId())
  *             .lifetime(&#34;860s&#34;)
  *             .pemCsr(Files.readString(Paths.get(&#34;test-fixtures/rsa_csr.pem&#34;)))
  *             .build());
@@ -405,6 +438,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -442,10 +477,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var authority = new Authority(&#34;authority&#34;, AuthorityArgs.builder()        
- *             .pool(&#34;&#34;)
- *             .certificateAuthorityId(&#34;my-authority&#34;)
+ *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthorityId(&#34;my-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -481,9 +521,9 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .pool(&#34;&#34;)
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .pool(defaultCaPool.name())
  *             .lifetime(&#34;860s&#34;)
  *             .config(CertificateConfigArgs.builder()
  *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
@@ -517,7 +557,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(authority)
+ *                 .dependsOn(defaultAuthority)
  *                 .build());
  * 
  *     }

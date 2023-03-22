@@ -18,7 +18,8 @@ public final class AddonsConfigAddonsConfigApiSecurityConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return (Output)
+     * Flag that specifies whether the Advanced API Ops add-on is enabled.
      * 
      */
     private @Nullable String expiresAt;
@@ -32,7 +33,8 @@ public final class AddonsConfigAddonsConfigApiSecurityConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Flag that specifies whether the Advanced API Ops add-on is enabled.
+     * @return (Output)
+     * Flag that specifies whether the Advanced API Ops add-on is enabled.
      * 
      */
     public Optional<String> expiresAt() {

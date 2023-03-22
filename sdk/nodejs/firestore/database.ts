@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Cloud Firestore Database. Currently only one database is allowed per
+ * cloud project; this database must have a `databaseId` of '(default)'.
+ *
+ * To get more information about Database, see:
+ *
+ * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
+ *
  * ## Example Usage
  *
  * ## Import

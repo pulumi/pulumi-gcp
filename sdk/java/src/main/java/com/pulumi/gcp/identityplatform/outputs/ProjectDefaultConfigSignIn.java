@@ -34,7 +34,8 @@ public final class ProjectDefaultConfigSignIn {
      */
     private @Nullable ProjectDefaultConfigSignInEmail email;
     /**
-     * @return Output only. Hash config information.
+     * @return (Output)
+     * Output only. Hash config information.
      * Structure is documented below.
      * 
      */
@@ -71,7 +72,8 @@ public final class ProjectDefaultConfigSignIn {
         return Optional.ofNullable(this.email);
     }
     /**
-     * @return Output only. Hash config information.
+     * @return (Output)
+     * Output only. Hash config information.
      * Structure is documented below.
      * 
      */

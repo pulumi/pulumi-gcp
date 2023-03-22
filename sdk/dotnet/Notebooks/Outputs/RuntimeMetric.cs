@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
     public sealed class RuntimeMetric
     {
         /// <summary>
+        /// (Output)
         /// Contains runtime daemon metrics, such as OS and kernels and
         /// sessions stats.
         /// </summary>

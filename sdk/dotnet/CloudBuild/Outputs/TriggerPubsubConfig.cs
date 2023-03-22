@@ -18,11 +18,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? ServiceAccountEmail;
         /// <summary>
+        /// (Output)
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>
         public readonly string? State;
         /// <summary>
+        /// (Output)
         /// Output only. Name of the subscription.
         /// </summary>
         public readonly string? Subscription;

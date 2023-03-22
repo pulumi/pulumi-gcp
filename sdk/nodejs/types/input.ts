@@ -916,6 +916,7 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeter {
         /**
+         * (Output)
          * Time the AccessPolicy was created in UTC.
          */
         createTime?: pulumi.Input<string>;
@@ -969,6 +970,7 @@ export namespace accesscontextmanager {
          */
         title: pulumi.Input<string>;
         /**
+         * (Output)
          * Time the AccessPolicy was updated in UTC.
          */
         updateTime?: pulumi.Input<string>;
@@ -1537,7 +1539,7 @@ export namespace alloydb {
          * Weekly schedule for the Backup.
          * Structure is documented below.
          */
-        weeklySchedule: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyWeeklySchedule>;
+        weeklySchedule?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyWeeklySchedule>;
     }
 
     export interface ClusterAutomatedBackupPolicyQuantityBasedRetention {
@@ -1799,6 +1801,7 @@ export namespace apigee {
          */
         enabled?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Flag that specifies whether the Advanced API Ops add-on is enabled.
          */
         expiresAt?: pulumi.Input<string>;
@@ -1810,6 +1813,7 @@ export namespace apigee {
          */
         enabled?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Flag that specifies whether the Advanced API Ops add-on is enabled.
          */
         expiresAt?: pulumi.Input<string>;
@@ -1843,6 +1847,7 @@ export namespace apigee {
 
     export interface EnvironmentNodeConfig {
         /**
+         * (Output)
          * The current total number of gateway nodes that each environment currently has across
          * all instances.
          */
@@ -1878,6 +1883,21 @@ export namespace apigee {
          * Value of the property.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface SharedflowMetaData {
+        /**
+         * Time at which the API proxy was created, in milliseconds since epoch.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * Time at which the API proxy was most recently modified, in milliseconds since epoch.
+         */
+        lastModifiedAt?: pulumi.Input<string>;
+        /**
+         * The type of entity described
+         */
+        subType?: pulumi.Input<string>;
     }
 }
 
@@ -1962,6 +1982,7 @@ export namespace appengine {
          */
         certificateId?: pulumi.Input<string>;
         /**
+         * (Output)
          * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
          * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
          * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -2723,6 +2744,94 @@ export namespace artifactregistry {
          */
         versionPolicy?: pulumi.Input<string>;
     }
+
+    export interface RepositoryRemoteRepositoryConfig {
+        /**
+         * The description of the remote source.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Specific settings for a Docker remote repository.
+         * Structure is documented below.
+         */
+        dockerRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepository>;
+        /**
+         * Specific settings for a Maven remote repository.
+         * Structure is documented below.
+         */
+        mavenRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepository>;
+        /**
+         * Specific settings for an Npm remote repository.
+         * Structure is documented below.
+         */
+        npmRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepository>;
+        /**
+         * Specific settings for a Python remote repository.
+         * Structure is documented below.
+         */
+        pythonRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepository>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigDockerRepository {
+        /**
+         * Address of the remote repository.
+         * Default value is `DOCKER_HUB`.
+         * Possible values are `DOCKER_HUB`.
+         */
+        publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigMavenRepository {
+        /**
+         * Address of the remote repository.
+         * Default value is `MAVEN_CENTRAL`.
+         * Possible values are `MAVEN_CENTRAL`.
+         */
+        publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigNpmRepository {
+        /**
+         * Address of the remote repository.
+         * Default value is `NPMJS`.
+         * Possible values are `NPMJS`.
+         */
+        publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigPythonRepository {
+        /**
+         * Address of the remote repository.
+         * Default value is `PYPI`.
+         * Possible values are `PYPI`.
+         */
+        publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryVirtualRepositoryConfig {
+        /**
+         * Policies that configure the upstream artifacts distributed by the Virtual
+         * Repository. Upstream policies cannot be set on a standard repository.
+         * Structure is documented below.
+         */
+        upstreamPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicy>[]>;
+    }
+
+    export interface RepositoryVirtualRepositoryConfigUpstreamPolicy {
+        /**
+         * The user-provided ID of the upstream policy.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Entries with a greater priority value take precedence in the pull order.
+         */
+        priority?: pulumi.Input<number>;
+        /**
+         * A reference to the repository resource, for example:
+         * "projects/p1/locations/us-central1/repository/repo1".
+         */
+        repository?: pulumi.Input<string>;
+    }
 }
 
 export namespace assuredworkloads {
@@ -2778,6 +2887,7 @@ export namespace beyondcorp {
          */
         appGateway: pulumi.Input<string>;
         /**
+         * (Output)
          * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
          */
         ingressPort?: pulumi.Input<number>;
@@ -2788,6 +2898,7 @@ export namespace beyondcorp {
          */
         type?: pulumi.Input<string>;
         /**
+         * (Output)
          * Server-defined URI for this resource.
          */
         uri?: pulumi.Input<string>;
@@ -2848,6 +2959,7 @@ export namespace bigquery {
          */
         iamRoleId: pulumi.Input<string>;
         /**
+         * (Output)
          * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
          */
         identity?: pulumi.Input<string>;
@@ -2855,10 +2967,12 @@ export namespace bigquery {
 
     export interface ConnectionAzure {
         /**
+         * (Output)
          * The name of the Azure Active Directory Application.
          */
         application?: pulumi.Input<string>;
         /**
+         * (Output)
          * The client id of the Azure Active Directory Application.
          */
         clientId?: pulumi.Input<string>;
@@ -2871,14 +2985,17 @@ export namespace bigquery {
          */
         federatedApplicationClientId?: pulumi.Input<string>;
         /**
+         * (Output)
          * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
          */
         identity?: pulumi.Input<string>;
         /**
+         * (Output)
          * The object id of the Azure Active Directory Application.
          */
         objectId?: pulumi.Input<string>;
         /**
+         * (Output)
          * The URL user will be redirected to after granting consent during connection setup.
          */
         redirectUri?: pulumi.Input<string>;
@@ -2886,6 +3003,7 @@ export namespace bigquery {
 
     export interface ConnectionCloudResource {
         /**
+         * (Output)
          * The account ID of the service created for the purpose of this connection.
          */
         serviceAccountId?: pulumi.Input<string>;
@@ -2921,6 +3039,7 @@ export namespace bigquery {
          */
         instanceId: pulumi.Input<string>;
         /**
+         * (Output)
          * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
          */
         serviceAccountId?: pulumi.Input<string>;
@@ -3226,6 +3345,7 @@ export namespace bigquery {
          */
         kmsKeyName: pulumi.Input<string>;
         /**
+         * (Output)
          * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
          */
         kmsKeyVersion?: pulumi.Input<string>;
@@ -3485,6 +3605,7 @@ export namespace bigquery {
          */
         kmsKeyName: pulumi.Input<string>;
         /**
+         * (Output)
          * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
          */
         kmsKeyVersion?: pulumi.Input<string>;
@@ -3651,6 +3772,7 @@ export namespace bigquery {
          */
         kmsKeyName: pulumi.Input<string>;
         /**
+         * (Output)
          * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
          */
         kmsKeyVersion?: pulumi.Input<string>;
@@ -3703,11 +3825,13 @@ export namespace bigquery {
 
     export interface JobStatus {
         /**
+         * (Output)
          * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
          * Structure is documented below.
          */
         errorResults?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatusErrorResult>[]>;
         /**
+         * (Output)
          * The first errors encountered during the running of the job. The final message
          * includes the number of errors that caused the process to stop. Errors here do
          * not necessarily mean that the job has not completed or was unsuccessful.
@@ -3715,6 +3839,7 @@ export namespace bigquery {
          */
         errors?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatusError>[]>;
         /**
+         * (Output)
          * Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
          */
         state?: pulumi.Input<string>;
@@ -4117,7 +4242,7 @@ export namespace bigquerydatapolicy {
     export interface DataPolicyDataMaskingPolicy {
         /**
          * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-         * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+         * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
          */
         predefinedExpression: pulumi.Input<string>;
     }
@@ -4447,6 +4572,7 @@ export namespace billing {
 export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNote {
         /**
+         * (Output)
          * This field will contain the service account email address that
          * this Attestor will use as the principal when querying Container
          * Analysis. Attestor administrators must grant this service account
@@ -4612,11 +4738,13 @@ export namespace binaryauthorization {
 export namespace certificateauthority {
     export interface AuthorityAccessUrl {
         /**
+         * (Output)
          * The URL where this CertificateAuthority's CA certificate is published. This will only be
          * set for CAs that have been activated.
          */
         caCertificateAccessUrl?: pulumi.Input<string>;
         /**
+         * (Output)
          * The URL where this CertificateAuthority's CRLs are published. This will only be set for
          * CAs that have been activated.
          */
@@ -4724,6 +4852,11 @@ export namespace certificateauthority {
          * Structure is documented below.
          */
         keyUsage: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigKeyUsage>;
+        /**
+         * Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         */
+        nameConstraints?: pulumi.Input<inputs.certificateauthority.AuthorityConfigX509ConfigNameConstraints>;
         /**
          * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
@@ -4868,6 +5001,69 @@ export namespace certificateauthority {
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          */
         objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface AuthorityConfigX509ConfigNameConstraints {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        excludedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        excludedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        excludedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        excludedUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        permittedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        permittedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        permittedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        permittedUris?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AuthorityConfigX509ConfigPolicyId {
@@ -5044,6 +5240,11 @@ export namespace certificateauthority {
          */
         keyUsage: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsage>;
         /**
+         * Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         */
+        nameConstraints?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesNameConstraints>;
+        /**
          * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
          */
@@ -5188,6 +5389,69 @@ export namespace certificateauthority {
         objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
 
+    export interface CaPoolIssuancePolicyBaselineValuesNameConstraints {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        excludedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        excludedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        excludedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        excludedUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        permittedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        permittedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        permittedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        permittedUris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface CaPoolIssuancePolicyBaselineValuesPolicyId {
         /**
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -5252,21 +5516,24 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescription {
         /**
+         * (Output)
          * Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
          */
         aiaIssuingCertificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
          * Structure is documented below.
          */
         authorityKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId>[]>;
         /**
+         * (Output)
          * The hash of the x.509 certificate.
          * Structure is documented below.
          */
         certFingerprints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint>[]>;
         /**
-         * (Deprecated)
+         * (Output, Deprecated)
          * Describes some of the technical fields in a certificate.
          * Structure is documented below.
          *
@@ -5274,6 +5541,7 @@ export namespace certificateauthority {
          */
         configValues?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValue>[]>;
         /**
+         * (Output)
          * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
          */
         crlDistributionPoints?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5283,16 +5551,19 @@ export namespace certificateauthority {
          */
         publicKeys?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionPublicKey>[]>;
         /**
+         * (Output)
          * Describes some of the values in a certificate that are related to the subject and lifetime.
          * Structure is documented below.
          */
         subjectDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription>[]>;
         /**
+         * (Output)
          * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
          * Structure is documented below.
          */
         subjectKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId>[]>;
         /**
+         * (Output)
          * A structured description of the issued X.509 certificate.
          * Structure is documented below.
          */
@@ -5301,6 +5572,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionAuthorityKeyId {
         /**
+         * (Output)
          * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
          */
         keyId?: pulumi.Input<string>;
@@ -5308,6 +5580,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionCertFingerprint {
         /**
+         * (Output)
          * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
          */
         sha256Hash?: pulumi.Input<string>;
@@ -5341,6 +5614,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
         /**
+         * (Output)
          * Describes high-level ways in which a key may be used.
          * Structure is documented below.
          */
@@ -5415,6 +5689,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
         /**
+         * (Output)
          * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          */
@@ -5446,6 +5721,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectDescription {
         /**
+         * (Output)
          * The serial number encoded in lowercase hexadecimal.
          */
         hexSerialNumber?: pulumi.Input<string>;
@@ -5456,10 +5732,12 @@ export namespace certificateauthority {
          */
         lifetime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time at which the certificate expires.
          */
         notAfterTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time at which the certificate becomes valid.
          */
         notBeforeTime?: pulumi.Input<string>;
@@ -5512,6 +5790,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
         /**
+         * (Output)
          * Contains additional subject alternative name values.
          * Structure is documented below.
          */
@@ -5538,9 +5817,12 @@ export namespace certificateauthority {
         /**
          * Indicates whether or not this extension is critical (i.e., if the client does not know how to
          * handle this extension, the client should consider this to be an error).
+         * (Required)
+         * Indicates whether or not the name constraints are marked critical.
          */
         critical?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Required. Describes how some of the technical fields in a certificate should be populated.
          * Structure is documented below.
          */
@@ -5564,6 +5846,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
         /**
+         * (Output)
          * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
          */
         keyId?: pulumi.Input<string>;
@@ -5590,6 +5873,11 @@ export namespace certificateauthority {
          * Structure is documented below.
          */
         keyUsages?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionKeyUsage>[]>;
+        /**
+         * Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         */
+        nameConstraints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionNameConstraint>[]>;
         /**
          * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
@@ -5724,6 +6012,69 @@ export namespace certificateauthority {
         objectIdPaths?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
+    export interface CertificateCertificateDescriptionX509DescriptionNameConstraint {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
+        critical?: pulumi.Input<boolean>;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        excludedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        excludedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        excludedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        excludedUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        permittedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        permittedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        permittedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        permittedUris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface CertificateCertificateDescriptionX509DescriptionPolicyId {
         /**
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -5849,6 +6200,11 @@ export namespace certificateauthority {
          * Structure is documented below.
          */
         keyUsage: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigKeyUsage>;
+        /**
+         * Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         */
+        nameConstraints?: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigNameConstraints>;
         /**
          * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
@@ -5994,6 +6350,69 @@ export namespace certificateauthority {
         objectIdPaths: pulumi.Input<pulumi.Input<number>[]>;
     }
 
+    export interface CertificateConfigX509ConfigNameConstraints {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
+        critical: pulumi.Input<boolean>;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        excludedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        excludedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        excludedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        excludedUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, `example.com`, `www.example.com`, `www.sub.example.com`
+         * would satisfy `example.com` while `example1.com` does not.
+         */
+        permittedDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. `.example.com`) to indicate
+         * all email addresses in that domain.
+         */
+        permittedEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
+        permittedIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like `.example.com`)
+         */
+        permittedUris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface CertificateConfigX509ConfigPolicyId {
         /**
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
@@ -6003,10 +6422,12 @@ export namespace certificateauthority {
 
     export interface CertificateRevocationDetail {
         /**
+         * (Output)
          * Indicates why a Certificate was revoked.
          */
         revocationState?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time at which this Certificate was revoked.
          */
         revocationTime?: pulumi.Input<string>;
@@ -6250,6 +6671,7 @@ export namespace certificateauthority {
 export namespace certificatemanager {
     export interface CertificateManaged {
         /**
+         * (Output)
          * Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
@@ -6265,11 +6687,13 @@ export namespace certificatemanager {
          */
         domains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * Information about issues with provisioning this Managed Certificate.
          * Structure is documented below.
          */
         provisioningIssues?: pulumi.Input<pulumi.Input<inputs.certificatemanager.CertificateManagedProvisioningIssue>[]>;
         /**
+         * (Output)
          * State of the domain for managed certificate issuance.
          */
         state?: pulumi.Input<string>;
@@ -6277,24 +6701,30 @@ export namespace certificatemanager {
 
     export interface CertificateManagedAuthorizationAttemptInfo {
         /**
+         * (Output)
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failureReason` field.
          */
         details?: pulumi.Input<string>;
         /**
+         * (Output)
          * Domain name of the authorization attempt.
          */
         domain?: pulumi.Input<string>;
         /**
+         * (Output)
          * Reason for failure of the authorization attempt for the domain.
          */
         failureReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * A state of this Managed Certificate.
+         * (Output)
          * State of the domain for managed certificate issuance.
          */
         state?: pulumi.Input<string>;
@@ -6302,15 +6732,18 @@ export namespace certificatemanager {
 
     export interface CertificateManagedProvisioningIssue {
         /**
+         * (Output)
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failureReason` field.
          */
         details?: pulumi.Input<string>;
         /**
+         * (Output)
          * Reason for provisioning failures.
          */
         reason?: pulumi.Input<string>;
@@ -6380,6 +6813,7 @@ export namespace certificatemanager {
 
     export interface DnsAuthorizationDnsResourceRecord {
         /**
+         * (Output)
          * Data of the DNS Resource Record.
          */
         data?: pulumi.Input<string>;
@@ -6390,6 +6824,7 @@ export namespace certificatemanager {
          */
         name?: pulumi.Input<string>;
         /**
+         * (Output)
          * Type of the DNS Resource Record.
          */
         type?: pulumi.Input<string>;
@@ -6703,6 +7138,7 @@ export namespace cloudbuild {
          */
         paths?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          */
@@ -7131,11 +7567,13 @@ export namespace cloudbuild {
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
+         * (Output)
          * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          */
         state?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Name of the subscription.
          */
         subscription?: pulumi.Input<string>;
@@ -7259,6 +7697,7 @@ export namespace cloudbuild {
          */
         secret: pulumi.Input<string>;
         /**
+         * (Output)
          * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          */
@@ -7591,6 +8030,7 @@ export namespace cloudfunctions {
 export namespace cloudfunctionsv2 {
     export interface FunctionBuildConfig {
         /**
+         * (Output)
          * The Cloud Build name of the latest successful
          * deployment of the function.
          */
@@ -7715,6 +8155,7 @@ export namespace cloudfunctionsv2 {
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The resource name of the Eventarc trigger.
          */
         trigger?: pulumi.Input<string>;
@@ -7781,6 +8222,7 @@ export namespace cloudfunctionsv2 {
          */
         environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * (Output)
          * URIs of the Service deployed
          */
         gcfUri?: pulumi.Input<string>;
@@ -7829,6 +8271,7 @@ export namespace cloudfunctionsv2 {
          */
         timeoutSeconds?: pulumi.Input<number>;
         /**
+         * (Output)
          * URI of the Service deployed.
          */
         uri?: pulumi.Input<string>;
@@ -7980,6 +8423,7 @@ export namespace cloudrun {
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * (Output)
          * A sequence number representing a specific generation of the desired state.
          */
         generation?: pulumi.Input<number>;
@@ -7996,6 +8440,7 @@ export namespace cloudrun {
          */
         namespace: pulumi.Input<string>;
         /**
+         * (Output)
          * An opaque value that represents the internal version of this object that
          * can be used by clients to determine when objects have changed. May be used
          * for optimistic concurrency, change detection, and the watch operation on a
@@ -8006,10 +8451,12 @@ export namespace cloudrun {
          */
         resourceVersion?: pulumi.Input<string>;
         /**
+         * (Output)
          * SelfLink is a URL representing this object.
          */
         selfLink?: pulumi.Input<string>;
         /**
+         * (Output)
          * UID is a unique id generated by the server on successful creation of a resource and is not
          * allowed to change on PUT operations.
          * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
@@ -8040,16 +8487,19 @@ export namespace cloudrun {
 
     export interface DomainMappingStatus {
         /**
+         * (Output)
          * Array of observed DomainMappingConditions, indicating the current state
          * of the DomainMapping.
          * Structure is documented below.
          */
         conditions?: pulumi.Input<pulumi.Input<inputs.cloudrun.DomainMappingStatusCondition>[]>;
         /**
+         * (Output)
          * The name of the route that the mapping currently points to.
          */
         mappedRouteName?: pulumi.Input<string>;
         /**
+         * (Output)
          * ObservedGeneration is the 'Generation' of the DomainMapping that
          * was last processed by the controller.
          */
@@ -8065,14 +8515,17 @@ export namespace cloudrun {
 
     export interface DomainMappingStatusCondition {
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * One-word CamelCase reason for the condition's current status.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Status of the condition, one of True, False, Unknown.
          */
         status?: pulumi.Input<string>;
@@ -8089,6 +8542,7 @@ export namespace cloudrun {
          */
         name?: pulumi.Input<string>;
         /**
+         * (Output)
          * Data for this record. Values vary by record type, as defined in RFC 1035
          * (section 5) and RFC 1034 (section 3.6.1).
          */
@@ -8126,6 +8580,7 @@ export namespace cloudrun {
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * (Output)
          * A sequence number representing a specific generation of the desired state.
          */
         generation?: pulumi.Input<number>;
@@ -8142,6 +8597,7 @@ export namespace cloudrun {
          */
         namespace?: pulumi.Input<string>;
         /**
+         * (Output)
          * An opaque value that represents the internal version of this object that
          * can be used by clients to determine when objects have changed. May be used
          * for optimistic concurrency, change detection, and the watch operation on a
@@ -8152,10 +8608,12 @@ export namespace cloudrun {
          */
         resourceVersion?: pulumi.Input<string>;
         /**
+         * (Output)
          * SelfLink is a URL representing this object.
          */
         selfLink?: pulumi.Input<string>;
         /**
+         * (Output)
          * UID is a unique id generated by the server on successful creation of a resource and is not
          * allowed to change on PUT operations.
          * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
@@ -8165,23 +8623,27 @@ export namespace cloudrun {
 
     export interface ServiceStatus {
         /**
+         * (Output)
          * Array of observed Service Conditions, indicating the current ready state of the service.
          * Structure is documented below.
          */
         conditions?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatusCondition>[]>;
         /**
+         * (Output)
          * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
          * from this Service's Configuration. It might not be ready yet, for that use
          * LatestReadyRevisionName.
          */
         latestCreatedRevisionName?: pulumi.Input<string>;
         /**
+         * (Output)
          * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
          * stamped out from this Service's Configuration that has had its "Ready" condition become
          * "True".
          */
         latestReadyRevisionName?: pulumi.Input<string>;
         /**
+         * (Output)
          * ObservedGeneration is the 'Generation' of the Route that was last processed by the
          * controller.
          * Clients polling for completed reconciliation should poll until observedGeneration =
@@ -8189,6 +8651,7 @@ export namespace cloudrun {
          */
         observedGeneration?: pulumi.Input<number>;
         /**
+         * (Output)
          * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -8198,18 +8661,22 @@ export namespace cloudrun {
 
     export interface ServiceStatusCondition {
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * One-word CamelCase reason for the condition's current status.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Status of the condition, one of True, False, Unknown.
          */
         status?: pulumi.Input<string>;
         /**
+         * (Output)
          * Type of domain mapping condition.
          */
         type?: pulumi.Input<string>;
@@ -8248,6 +8715,7 @@ export namespace cloudrun {
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * (Output)
          * A sequence number representing a specific generation of the desired state.
          */
         generation?: pulumi.Input<number>;
@@ -8271,6 +8739,7 @@ export namespace cloudrun {
          */
         namespace?: pulumi.Input<string>;
         /**
+         * (Output)
          * An opaque value that represents the internal version of this object that
          * can be used by clients to determine when objects have changed. May be used
          * for optimistic concurrency, change detection, and the watch operation on a
@@ -8281,10 +8750,12 @@ export namespace cloudrun {
          */
         resourceVersion?: pulumi.Input<string>;
         /**
+         * (Output)
          * SelfLink is a URL representing this object.
          */
         selfLink?: pulumi.Input<string>;
         /**
+         * (Output)
          * UID is a unique id generated by the server on successful creation of a resource and is not
          * allowed to change on PUT operations.
          * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
@@ -8315,7 +8786,7 @@ export namespace cloudrun {
          */
         serviceAccountName?: pulumi.Input<string>;
         /**
-         * (Deprecated)
+         * (Output, Deprecated)
          * ServingState holds a value describing the state the resources
          * are in for this Revision.
          * It is expected
@@ -8813,6 +9284,7 @@ export namespace cloudrun {
          */
         tag?: pulumi.Input<string>;
         /**
+         * (Output)
          * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -8835,35 +9307,43 @@ export namespace cloudrunv2 {
 
     export interface JobCondition {
         /**
+         * (Output)
          * A reason for the execution condition.
          */
         executionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         lastTransitionTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * A common (service-level) reason for this condition.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * A reason for the revision condition.
          */
         revisionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * How to interpret failures of this condition, one of Error, Warning, Info
          */
         severity?: pulumi.Input<string>;
         /**
+         * (Output)
          * State of the condition.
          */
         state?: pulumi.Input<string>;
         /**
+         * (Output)
          * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
          */
         type?: pulumi.Input<string>;
@@ -8883,11 +9363,13 @@ export namespace cloudrunv2 {
 
     export interface JobLatestCreatedExecution {
         /**
+         * (Output)
          * Completion timestamp of the execution.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         completionTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Creation timestamp of the execution.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
@@ -9271,35 +9753,43 @@ export namespace cloudrunv2 {
 
     export interface JobTerminalCondition {
         /**
+         * (Output)
          * A reason for the execution condition.
          */
         executionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         lastTransitionTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * A common (service-level) reason for this condition.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * A reason for the revision condition.
          */
         revisionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * How to interpret failures of this condition, one of Error, Warning, Info
          */
         severity?: pulumi.Input<string>;
         /**
+         * (Output)
          * State of the condition.
          */
         state?: pulumi.Input<string>;
         /**
+         * (Output)
          * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
          */
         type?: pulumi.Input<string>;
@@ -9318,31 +9808,38 @@ export namespace cloudrunv2 {
 
     export interface ServiceCondition {
         /**
+         * (Output)
          * A reason for the execution condition.
          */
         executionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         lastTransitionTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * A common (service-level) reason for this condition.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * A reason for the revision condition.
          */
         revisionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * How to interpret failures of this condition, one of Error, Warning, Info
          */
         severity?: pulumi.Input<string>;
         /**
+         * (Output)
          * State of the condition.
          */
         state?: pulumi.Input<string>;
@@ -9781,31 +10278,38 @@ export namespace cloudrunv2 {
 
     export interface ServiceTerminalCondition {
         /**
+         * (Output)
          * A reason for the execution condition.
          */
         executionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         lastTransitionTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
         /**
+         * (Output)
          * A common (service-level) reason for this condition.
          */
         reason?: pulumi.Input<string>;
         /**
+         * (Output)
          * A reason for the revision condition.
          */
         revisionReason?: pulumi.Input<string>;
         /**
+         * (Output)
          * How to interpret failures of this condition, one of Error, Warning, Info
          */
         severity?: pulumi.Input<string>;
         /**
+         * (Output)
          * State of the condition.
          */
         state?: pulumi.Input<string>;
@@ -9857,6 +10361,7 @@ export namespace cloudrunv2 {
          */
         type?: pulumi.Input<string>;
         /**
+         * (Output)
          * Displays the target URI.
          */
         uri?: pulumi.Input<string>;
@@ -10033,6 +10538,7 @@ export namespace cloudscheduler {
 export namespace cloudtasks {
     export interface QueueAppEngineRoutingOverride {
         /**
+         * (Output)
          * The host that the task is sent to.
          */
         host?: pulumi.Input<string>;
@@ -10067,6 +10573,7 @@ export namespace cloudtasks {
 
     export interface QueueRateLimits {
         /**
+         * (Output)
          * The max burst size.
          * Max burst size limits how fast tasks in queue are processed when many tasks are
          * in the queue and the rate is high. This field allows the queue to have a high
@@ -11267,6 +11774,7 @@ export namespace compute {
          */
         oauth2ClientSecret: pulumi.Input<string>;
         /**
+         * (Output)
          * OAuth2 Client Secret SHA-256 for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
@@ -11479,6 +11987,7 @@ export namespace compute {
          */
         rsaEncryptedKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -11517,6 +12026,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -11543,6 +12053,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -11698,6 +12209,7 @@ export namespace compute {
          */
         interconnectAttachment?: pulumi.Input<string>;
         /**
+         * (Output)
          * The external IP address for this VPN gateway interface.
          */
         ipAddress?: pulumi.Input<string>;
@@ -12336,6 +12848,7 @@ export namespace compute {
     export interface InstanceFromMachineImageScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         instanceTerminationAction?: pulumi.Input<string>;
+        maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingNodeAffinity>[]>;
@@ -12466,6 +12979,7 @@ export namespace compute {
     export interface InstanceFromTemplateScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         instanceTerminationAction?: pulumi.Input<string>;
+        maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingNodeAffinity>[]>;
@@ -12558,6 +13072,9 @@ export namespace compute {
          * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
+        /**
+         * , The network interface name of the external Ip.
+         */
         interfaceName?: pulumi.Input<string>;
     }
 
@@ -12566,6 +13083,9 @@ export namespace compute {
          * , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
+        /**
+         * , The network interface name of the internal Ip.
+         */
         interfaceName?: pulumi.Input<string>;
     }
 
@@ -12702,7 +13222,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
          */
         type: pulumi.Input<string>;
     }
@@ -12899,6 +13419,7 @@ export namespace compute {
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceSchedulingMaxRunDuration>;
         /**
          * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -13167,7 +13688,8 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * The type of GCE disk, can be either `"SCRATCH"` or
+         * `"PERSISTENT"`.
          */
         type: pulumi.Input<string>;
     }
@@ -13321,8 +13843,10 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        maintenanceInterval?: pulumi.Input<string>;
         /**
          * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
@@ -13417,6 +13941,7 @@ export namespace compute {
 
     export interface InterconnectAttachmentPrivateInterconnectInfo {
         /**
+         * (Output)
          * 802.1q encapsulation tag to be used for traffic between
          * Google and the customer, going to and from this network and region.
          */
@@ -13469,6 +13994,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the
          * customer-supplied encryption key that protects this resource.
          */
@@ -13603,6 +14129,7 @@ export namespace compute {
          */
         cpus?: pulumi.Input<string>;
         /**
+         * (Output)
          * Use local SSD
          */
         localSsd?: pulumi.Input<string>;
@@ -14533,6 +15060,7 @@ export namespace compute {
          */
         oauth2ClientSecret: pulumi.Input<string>;
         /**
+         * (Output)
          * OAuth2 Client Secret SHA-256 for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
@@ -14676,6 +15204,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -14705,6 +15234,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -15103,6 +15633,9 @@ export namespace compute {
          * , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
+        /**
+         * , The network interface name of the external Ip.
+         */
         interfaceName?: pulumi.Input<string>;
     }
 
@@ -15111,6 +15644,9 @@ export namespace compute {
          * , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
          */
         deleteRule?: pulumi.Input<string>;
+        /**
+         * , The network interface name of the internal Ip.
+         */
         interfaceName?: pulumi.Input<string>;
     }
 
@@ -17018,6 +17554,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
+         * (Output)
          * How many instances are in use.
          */
         inUseCount?: pulumi.Input<number>;
@@ -17297,11 +17834,15 @@ export namespace compute {
          */
         asn: pulumi.Input<number>;
         /**
-         * The interval in seconds between BGP keepalive messages that are sent to the peer.
-         * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-         * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-         * BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
-         * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+         * The interval in seconds between BGP keepalive messages that are sent
+         * to the peer. Hold time is three times the interval at which keepalive
+         * messages are sent, and the hold time is the maximum number of seconds
+         * allowed to elapse between successive keepalive messages that BGP
+         * receives from a peer.
+         * BGP will use the smaller of either the local hold time value or the
+         * peer's hold time value as the hold time for the BGP connection
+         * between the two peers. If set, this value must be between 20 and 60.
+         * The default is 20.
          */
         keepaliveInterval?: pulumi.Input<number>;
     }
@@ -17859,10 +18400,12 @@ export namespace compute {
 
     export interface ServiceAttachmentConnectedEndpoint {
         /**
+         * (Output)
          * The URL of the consumer forwarding rule.
          */
         endpoint?: pulumi.Input<string>;
         /**
+         * (Output)
          * The status of the connection from the consumer forwarding rule to
          * this service attachment.
          */
@@ -17910,6 +18453,7 @@ export namespace compute {
          */
         rawKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          */
@@ -19996,6 +20540,7 @@ export namespace container {
 
     export interface AttachedClusterFleet {
         /**
+         * (Output)
          * The name of the managed Hub Membership resource associated to this
          * cluster. Membership names are formatted as
          * projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -22522,15 +23067,18 @@ export namespace containeranalysis {
 export namespace datacatalog {
     export interface EntryBigqueryDateShardedSpec {
         /**
+         * (Output)
          * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
          */
         dataset?: pulumi.Input<string>;
         /**
+         * (Output)
          * Total number of shards.
          */
         shardCount?: pulumi.Input<number>;
         /**
+         * (Output)
          * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
          * for example, for shard MyTable20180101, the tablePrefix is MyTable.
          */
@@ -22539,15 +23087,18 @@ export namespace datacatalog {
 
     export interface EntryBigqueryTableSpec {
         /**
+         * (Output)
          * The table source type.
          */
         tableSourceType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
          * Structure is documented below.
          */
         tableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpecTableSpec>[]>;
         /**
+         * (Output)
          * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
          * Structure is documented below.
          */
@@ -22556,6 +23107,7 @@ export namespace datacatalog {
 
     export interface EntryBigqueryTableSpecTableSpec {
         /**
+         * (Output)
          * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
          * Data Catalog resource name of the date sharded grouped entry, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
@@ -22566,6 +23118,7 @@ export namespace datacatalog {
 
     export interface EntryBigqueryTableSpecViewSpec {
         /**
+         * (Output)
          * The query that defines the table view.
          */
         viewQuery?: pulumi.Input<string>;
@@ -22587,6 +23140,7 @@ export namespace datacatalog {
          */
         filePatterns: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          */
@@ -22595,10 +23149,12 @@ export namespace datacatalog {
 
     export interface EntryGcsFilesetSpecSampleGcsFileSpec {
         /**
+         * (Output)
          * The full file path
          */
         filePath?: pulumi.Input<string>;
         /**
+         * (Output)
          * The size of the file, in bytes.
          */
         sizeBytes?: pulumi.Input<number>;
@@ -22634,6 +23190,7 @@ export namespace datacatalog {
          */
         boolValue?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The display name of this field
          */
         displayName?: pulumi.Input<string>;
@@ -22650,6 +23207,7 @@ export namespace datacatalog {
          */
         fieldName: pulumi.Input<string>;
         /**
+         * (Output)
          * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
          * a more important field. The value can be negative. Multiple fields can have the same order, and field orders
          * within a tag do not have to be sequential.
@@ -22683,6 +23241,7 @@ export namespace datacatalog {
          */
         isRequired?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
          */
         name?: pulumi.Input<string>;
@@ -22769,6 +23328,7 @@ export namespace dataform {
          */
         defaultBranch: pulumi.Input<string>;
         /**
+         * (Output)
          * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
          */
         tokenStatus?: pulumi.Input<string>;
@@ -22780,6 +23340,19 @@ export namespace dataform {
 }
 
 export namespace datafusion {
+    export interface InstanceAccelerator {
+        /**
+         * The type of an accelator for a CDF instance.
+         * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+         */
+        acceleratorType: pulumi.Input<string>;
+        /**
+         * The type of an accelator for a CDF instance.
+         * Possible values are `ENABLED` and `DISABLED`.
+         */
+        state: pulumi.Input<string>;
+    }
+
     export interface InstanceCryptoKeyConfig {
         /**
          * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
@@ -26800,6 +27373,7 @@ export namespace dataproc {
 
     export interface MetastoreServiceNetworkConfigConsumer {
         /**
+         * (Output)
          * The URI of the endpoint used to access the metastore service.
          */
         endpointUri?: pulumi.Input<string>;
@@ -27912,6 +28486,7 @@ export namespace datastream {
          */
         caCertificate?: pulumi.Input<string>;
         /**
+         * (Output)
          * Indicates whether the clientKey field is set.
          */
         caCertificateSet?: pulumi.Input<boolean>;
@@ -27924,6 +28499,7 @@ export namespace datastream {
          */
         clientCertificate?: pulumi.Input<string>;
         /**
+         * (Output)
          * Indicates whether the clientCertificate field is set.
          */
         clientCertificateSet?: pulumi.Input<boolean>;
@@ -27935,6 +28511,7 @@ export namespace datastream {
          */
         clientKey?: pulumi.Input<string>;
         /**
+         * (Output)
          * Indicates whether the clientKey field is set.
          */
         clientKeySet?: pulumi.Input<boolean>;
@@ -28087,6 +28664,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28147,30 +28725,37 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column encoding.
          */
         encoding?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column can accept a null value.
          */
         nullable?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The ordinal position of the column in the table.
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column represents a primary key.
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28219,6 +28804,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28231,6 +28817,7 @@ export namespace datastream {
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
@@ -28239,6 +28826,7 @@ export namespace datastream {
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28447,6 +29035,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28511,6 +29100,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28605,30 +29195,37 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column encoding.
          */
         encoding?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column can accept a null value.
          */
         nullable?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The ordinal position of the column in the table.
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column represents a primary key.
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28677,30 +29274,37 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column encoding.
          */
         encoding?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column can accept a null value.
          */
         nullable?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The ordinal position of the column in the table.
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
         /**
+         * (Output)
          * Whether or not the column represents a primary key.
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28780,6 +29384,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28792,6 +29397,7 @@ export namespace datastream {
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
@@ -28800,6 +29406,7 @@ export namespace datastream {
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28848,6 +29455,7 @@ export namespace datastream {
          */
         dataType?: pulumi.Input<string>;
         /**
+         * (Output)
          * Column length.
          */
         length?: pulumi.Input<number>;
@@ -28860,6 +29468,7 @@ export namespace datastream {
          */
         ordinalPosition?: pulumi.Input<number>;
         /**
+         * (Output)
          * Column precision.
          */
         precision?: pulumi.Input<number>;
@@ -28868,6 +29477,7 @@ export namespace datastream {
          */
         primaryKey?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Column scale.
          */
         scale?: pulumi.Input<number>;
@@ -28963,6 +29573,7 @@ export namespace diagflow {
          */
         event?: pulumi.Input<string>;
         /**
+         * (Output)
          * The unique identifier of this event handler.
          */
         name?: pulumi.Input<string>;
@@ -29013,6 +29624,7 @@ export namespace diagflow {
 
     export interface CxFlowEventHandlerTriggerFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -29056,6 +29668,7 @@ export namespace diagflow {
          */
         intent?: pulumi.Input<string>;
         /**
+         * (Output)
          * The unique identifier of this transition route.
          */
         name?: pulumi.Input<string>;
@@ -29106,6 +29719,7 @@ export namespace diagflow {
 
     export interface CxFlowTransitionRouteTriggerFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -29138,6 +29752,7 @@ export namespace diagflow {
 
     export interface CxIntentTrainingPhrase {
         /**
+         * (Output)
          * The unique identifier of the training phrase.
          */
         id?: pulumi.Input<string>;
@@ -29199,6 +29814,7 @@ export namespace diagflow {
 
     export interface CxPageEntryFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -29214,6 +29830,7 @@ export namespace diagflow {
          */
         event?: pulumi.Input<string>;
         /**
+         * (Output)
          * The unique identifier of this event handler.
          */
         name?: pulumi.Input<string>;
@@ -29264,6 +29881,7 @@ export namespace diagflow {
 
     export interface CxPageEventHandlerTriggerFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -29350,6 +29968,7 @@ export namespace diagflow {
 
     export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -29371,6 +29990,7 @@ export namespace diagflow {
          */
         intent?: pulumi.Input<string>;
         /**
+         * (Output)
          * The unique identifier of this transition route.
          */
         name?: pulumi.Input<string>;
@@ -29421,6 +30041,7 @@ export namespace diagflow {
 
     export interface CxPageTransitionRouteTriggerFulfillmentMessageText {
         /**
+         * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
@@ -30224,6 +30845,7 @@ export namespace filestore {
          */
         nfsExportOptions?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceFileSharesNfsExportOption>[]>;
         /**
+         * (Output)
          * The resource name of the backup, in the format
          * projects/{projectId}/locations/{locationId}/backups/{backupId},
          * that this file share has been restored from.
@@ -30276,6 +30898,7 @@ export namespace filestore {
          */
         connectMode?: pulumi.Input<string>;
         /**
+         * (Output)
          * A list of IPv4 or IPv6 addresses.
          */
         ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
@@ -31694,6 +32317,7 @@ export namespace identityplatform {
          */
         callbackUri?: pulumi.Input<string>;
         /**
+         * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          */
@@ -31707,6 +32331,7 @@ export namespace identityplatform {
     export interface InboundSamlConfigSpConfigSpCertificate {
         /**
          * The IdP's x509 certificate.
+         * (Output)
          * The x509 certificate
          */
         x509Certificate?: pulumi.Input<string>;
@@ -31728,6 +32353,7 @@ export namespace identityplatform {
          */
         email?: pulumi.Input<inputs.identityplatform.ProjectDefaultConfigSignInEmail>;
         /**
+         * (Output)
          * Output only. Hash config information.
          * Structure is documented below.
          */
@@ -31761,22 +32387,27 @@ export namespace identityplatform {
 
     export interface ProjectDefaultConfigSignInHashConfig {
         /**
+         * (Output)
          * Different password hash algorithms used in Identity Toolkit.
          */
         algorithm?: pulumi.Input<string>;
         /**
+         * (Output)
          * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
          */
         memoryCost?: pulumi.Input<number>;
         /**
+         * (Output)
          * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
          */
         rounds?: pulumi.Input<number>;
         /**
+         * (Output)
          * Non-printable character to be inserted between the salt and plain text password in base64.
          */
         saltSeparator?: pulumi.Input<string>;
         /**
+         * (Output)
          * Signer key in base64.
          */
         signerKey?: pulumi.Input<string>;
@@ -31826,6 +32457,7 @@ export namespace identityplatform {
          */
         callbackUri: pulumi.Input<string>;
         /**
+         * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          */
@@ -31839,6 +32471,7 @@ export namespace identityplatform {
     export interface TenantInboundSamlConfigSpConfigSpCertificate {
         /**
          * The x509 certificate
+         * (Output)
          * The x509 certificate
          */
         x509Certificate?: pulumi.Input<string>;
@@ -31852,15 +32485,18 @@ export namespace iot {
          */
         binaryData?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time at which this configuration version was updated in Cloud IoT Core.
          */
         cloudUpdateTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time at which Cloud IoT Core received the acknowledgment from the device,
          * indicating that the device has received this configuration version.
          */
         deviceAckTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The version of this update.
          */
         version?: pulumi.Input<string>;
@@ -31903,10 +32539,12 @@ export namespace iot {
          */
         gatewayType?: pulumi.Input<string>;
         /**
+         * (Output)
          * The ID of the gateway the device accessed most recently.
          */
         lastAccessedGatewayId?: pulumi.Input<string>;
         /**
+         * (Output)
          * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
          */
         lastAccessedGatewayTime?: pulumi.Input<string>;
@@ -32011,6 +32649,7 @@ export namespace kms {
          */
         certChains?: pulumi.Input<inputs.kms.CryptoKeyVersionAttestationCertChains>;
         /**
+         * (Output)
          * The attestation data provided by the HSM when the key operation was performed.
          */
         content?: pulumi.Input<string>;
@@ -32020,6 +32659,7 @@ export namespace kms {
          */
         externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionAttestationExternalProtectionLevelOptions>;
         /**
+         * (Output)
          * The format of the attestation data.
          */
         format?: pulumi.Input<string>;
@@ -32095,11 +32735,13 @@ export namespace kms {
 
     export interface KeyRingImportJobAttestation {
         /**
+         * (Output)
          * The attestation data provided by the HSM when the key operation was performed.
          * A base64-encoded string.
          */
         content?: pulumi.Input<string>;
         /**
+         * (Output)
          * The format of the attestation data.
          */
         format?: pulumi.Input<string>;
@@ -32107,6 +32749,7 @@ export namespace kms {
 
     export interface KeyRingImportJobPublicKey {
         /**
+         * (Output)
          * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
          * for General Considerations and Textual Encoding of Subject Public Key Info.
          */
@@ -32433,6 +33076,7 @@ export namespace logging {
 export namespace memcache {
     export interface InstanceMaintenancePolicy {
         /**
+         * (Output)
          * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits
@@ -32445,6 +33089,7 @@ export namespace memcache {
          */
         description?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The time when the policy was updated.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -32509,12 +33154,14 @@ export namespace memcache {
 
     export interface InstanceMaintenanceSchedule {
         /**
+         * (Output)
          * Output only. The end time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
          */
         endTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The deadline that the maintenance schedule start time
          * can not go beyond, including reschedule.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -32530,22 +33177,27 @@ export namespace memcache {
 
     export interface InstanceMemcacheNode {
         /**
+         * (Output)
          * Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
          */
         host?: pulumi.Input<string>;
         /**
+         * (Output)
          * Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
          */
         nodeId?: pulumi.Input<string>;
         /**
+         * (Output)
          * The port number of the Memcached server on this node.
          */
         port?: pulumi.Input<number>;
         /**
+         * (Output)
          * Current state of the Memcached node.
          */
         state?: pulumi.Input<string>;
         /**
+         * (Output)
          * Location (GCP Zone) for the Memcached node.
          */
         zone?: pulumi.Input<string>;
@@ -32553,6 +33205,7 @@ export namespace memcache {
 
     export interface InstanceMemcacheParameters {
         /**
+         * (Output)
          * This is a unique ID associated with this set of parameters.
          */
         id?: pulumi.Input<string>;
@@ -32637,6 +33290,7 @@ export namespace monitoring {
          */
         displayName: pulumi.Input<string>;
         /**
+         * (Output)
          * The unique resource name for this condition.
          * Its syntax is:
          * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -33201,10 +33855,12 @@ export namespace monitoring {
 
     export interface AlertPolicyCreationRecord {
         /**
+         * (Output)
          * When the change occurred.
          */
         mutateTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The email address of the user making the change.
          */
         mutatedBy?: pulumi.Input<string>;
@@ -34824,6 +35480,7 @@ export namespace notebooks {
          */
         accessType?: pulumi.Input<string>;
         /**
+         * (Output)
          * The proxy endpoint that is used to access the runtime.
          */
         proxyUri?: pulumi.Input<string>;
@@ -34848,6 +35505,7 @@ export namespace notebooks {
 
     export interface RuntimeMetric {
         /**
+         * (Output)
          * Contains runtime daemon metrics, such as OS and kernels and
          * sessions stats.
          */
@@ -34900,6 +35558,7 @@ export namespace notebooks {
          */
         postStartupScriptBehavior?: pulumi.Input<string>;
         /**
+         * (Output)
          * Bool indicating whether an newer image is available in an image family.
          */
         upgradeable?: pulumi.Input<boolean>;
@@ -34919,10 +35578,12 @@ export namespace notebooks {
 
     export interface RuntimeVirtualMachine {
         /**
+         * (Output)
          * The unique identifier of the Managed Compute Engine instance.
          */
         instanceId?: pulumi.Input<string>;
         /**
+         * (Output)
          * The user-friendly name of the Managed Compute Engine instance.
          */
         instanceName?: pulumi.Input<string>;
@@ -34955,6 +35616,7 @@ export namespace notebooks {
          */
         encryptionConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig>;
         /**
+         * (Output)
          * The Compute Engine guest attributes. (see [Project and instance
          * guest attributes](https://cloud.google.com/compute/docs/
          * storing-retrieving-metadata#guest_attributes)).
@@ -35038,6 +35700,7 @@ export namespace notebooks {
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * The zone where the virtual machine is located.
          */
         zone?: pulumi.Input<string>;
@@ -35070,18 +35733,21 @@ export namespace notebooks {
 
     export interface RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         /**
+         * (Output)
          * Optional. Specifies whether the disk will be auto-deleted
          * when the instance is deleted (but not when the disk is
          * detached from the instance).
          */
         autoDelete?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Optional. Indicates that this is a boot disk. The virtual
          * machine will use the first partition of the disk for its
          * root filesystem.
          */
         boot?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Optional. Specifies a unique device name of your choice
          * that is reflected into the /dev/disk/by-id/google-* tree
          * of a Linux operating system running within the instance.
@@ -35094,6 +35760,7 @@ export namespace notebooks {
          */
         deviceName?: pulumi.Input<string>;
         /**
+         * (Output)
          * Indicates a list of features to enable on the guest operating
          * system. Applicable only for bootable images. To see a list of
          * available features, read `https://cloud.google.com/compute/docs/
@@ -35102,6 +35769,7 @@ export namespace notebooks {
          */
         guestOsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * (Output)
          * Output only. A zero-based index to this disk, where 0 is
          * reserved for the boot disk. If you have many disks attached
          * to an instance, each disk would have a unique index number.
@@ -35127,11 +35795,13 @@ export namespace notebooks {
          */
         interface?: pulumi.Input<string>;
         /**
+         * (Output)
          * Type of the resource. Always compute#attachedDisk for attached
          * disks.
          */
         kind?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Any valid publicly visible licenses.
          */
         licenses?: pulumi.Input<pulumi.Input<string>[]>;
@@ -37136,6 +37806,7 @@ export namespace osconfig {
          */
         endTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time the last patch job ran successfully.
          * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
          */
@@ -37146,6 +37817,7 @@ export namespace osconfig {
          */
         monthly?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringScheduleMonthly>;
         /**
+         * (Output)
          * The time the next patch job is scheduled to run.
          * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
          */
@@ -37754,6 +38426,7 @@ export namespace recaptcha {
 export namespace redis {
     export interface InstanceMaintenancePolicy {
         /**
+         * (Output)
          * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -37766,6 +38439,7 @@ export namespace redis {
          */
         description?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The time when the policy was last updated.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -37795,6 +38469,7 @@ export namespace redis {
          */
         day: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Duration of the maintenance window.
          * The current window is fixed at 1 hour.
          * A duration in seconds with up to nine fractional digits,
@@ -37831,12 +38506,14 @@ export namespace redis {
 
     export interface InstanceMaintenanceSchedule {
         /**
+         * (Output)
          * Output only. The end time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
          */
         endTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The deadline that the maintenance schedule start time
          * can not go beyond, including reschedule.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -37844,6 +38521,7 @@ export namespace redis {
          */
         scheduleDeadlineTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The start time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -37853,10 +38531,12 @@ export namespace redis {
 
     export interface InstanceNode {
         /**
+         * (Output)
          * Node identifying string. e.g. 'node-0', 'node-1'
          */
         id?: pulumi.Input<string>;
         /**
+         * (Output)
          * Location of the node.
          */
         zone?: pulumi.Input<string>;
@@ -37871,6 +38551,7 @@ export namespace redis {
          */
         persistenceMode?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The next time that a snapshot attempt is scheduled to occur.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
          * to nine fractional digits.
@@ -37899,24 +38580,29 @@ export namespace redis {
 
     export interface InstanceServerCaCert {
         /**
+         * (Output)
          * The certificate data in PEM format.
          */
         cert?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
          */
         createTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * The time when the certificate expires.
          */
         expireTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * Serial number, as extracted from the certificate.
          */
         serialNumber?: pulumi.Input<string>;
         /**
+         * (Output)
          * Sha1 Fingerprint of the certificate.
          */
         sha1Fingerprint?: pulumi.Input<string>;
@@ -39159,10 +39845,12 @@ export namespace tags {
 export namespace tpu {
     export interface NodeNetworkEndpoint {
         /**
+         * (Output)
          * The IP address of this network endpoint.
          */
         ipAddress?: pulumi.Input<string>;
         /**
+         * (Output)
          * The port of this network endpoint.
          */
         port?: pulumi.Input<number>;
@@ -39187,15 +39875,18 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModel {
         /**
+         * (Output)
          * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
          * Structure is documented below.
          */
         automaticResources?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelAutomaticResource>[]>;
         /**
+         * (Output)
          * Output only. Timestamp when the DeployedModel was created.
          */
         createTime?: pulumi.Input<string>;
         /**
+         * (Output)
          * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
          * Structure is documented below.
          */
@@ -39205,35 +39896,43 @@ export namespace vertex {
          */
         displayName?: pulumi.Input<string>;
         /**
+         * (Output)
          * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
          */
         enableAccessLogging?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
          */
         enableContainerLogging?: pulumi.Input<boolean>;
         /**
+         * (Output)
          * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
          */
         id?: pulumi.Input<string>;
         /**
+         * (Output)
          * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
          */
         model?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The version ID of the model that is deployed.
          */
         modelVersionId?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
          * Structure is documented below.
          */
         privateEndpoints?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelPrivateEndpoint>[]>;
         /**
+         * (Output)
          * The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
          */
         serviceAccount?: pulumi.Input<string>;
         /**
+         * (Output)
          * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
          */
         sharedResources?: pulumi.Input<string>;
@@ -39241,10 +39940,12 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModelAutomaticResource {
         /**
+         * (Output)
          * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
          */
         maxReplicaCount?: pulumi.Input<number>;
         /**
+         * (Output)
          * The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
          */
         minReplicaCount?: pulumi.Input<number>;
@@ -39252,20 +39953,24 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModelDedicatedResource {
         /**
+         * (Output)
          * The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
          * Structure is documented below.
          */
         autoscalingMetricSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec>[]>;
         /**
+         * (Output)
          * The specification of a single machine used by the prediction.
          * Structure is documented below.
          */
         machineSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelDedicatedResourceMachineSpec>[]>;
         /**
+         * (Output)
          * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
          */
         maxReplicaCount?: pulumi.Input<number>;
         /**
+         * (Output)
          * The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
          */
         minReplicaCount?: pulumi.Input<number>;
@@ -39273,10 +39978,12 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
         /**
+         * (Output)
          * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
          */
         metricName?: pulumi.Input<string>;
         /**
+         * (Output)
          * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          */
         target?: pulumi.Input<number>;
@@ -39284,14 +39991,17 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModelDedicatedResourceMachineSpec {
         /**
+         * (Output)
          * The number of accelerators to attach to the machine.
          */
         acceleratorCount?: pulumi.Input<number>;
         /**
+         * (Output)
          * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
          */
         acceleratorType?: pulumi.Input<string>;
         /**
+         * (Output)
          * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
          */
         machineType?: pulumi.Input<string>;
@@ -39299,18 +40009,22 @@ export namespace vertex {
 
     export interface AiEndpointDeployedModelPrivateEndpoint {
         /**
+         * (Output)
          * Output only. Http(s) path to send explain requests.
          */
         explainHttpUri?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Http(s) path to send health check requests.
          */
         healthHttpUri?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. Http(s) path to send prediction requests.
          */
         predictHttpUri?: pulumi.Input<string>;
         /**
+         * (Output)
          * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
          */
         serviceAttachment?: pulumi.Input<string>;
@@ -39453,10 +40167,12 @@ export namespace vertex {
 
     export interface AiIndexDeployedIndex {
         /**
+         * (Output)
          * The ID of the DeployedIndex in the above IndexEndpoint.
          */
         deployedIndexId?: pulumi.Input<string>;
         /**
+         * (Output)
          * A resource name of the IndexEndpoint.
          */
         indexEndpoint?: pulumi.Input<string>;
@@ -39464,10 +40180,12 @@ export namespace vertex {
 
     export interface AiIndexIndexStat {
         /**
+         * (Output)
          * The number of shards in the Index.
          */
         shardsCount?: pulumi.Input<number>;
         /**
+         * (Output)
          * The number of vectors in the Index.
          */
         vectorsCount?: pulumi.Input<string>;
@@ -39567,6 +40285,7 @@ export namespace vertex {
 
     export interface AiMetadataStoreState {
         /**
+         * (Output)
          * The disk utilization of the MetadataStore in bytes.
          */
         diskUtilizationBytes?: pulumi.Input<string>;
@@ -39599,14 +40318,17 @@ export namespace vpcaccess {
 export namespace workstations {
     export interface WorkstationClusterCondition {
         /**
+         * (Output)
          * The status code, which should be an enum value of google.rpc.Code.
          */
         code?: pulumi.Input<number>;
         /**
+         * (Output)
          * A list of messages that carry the error details.
          */
         details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
@@ -39614,6 +40336,7 @@ export namespace workstations {
 
     export interface WorkstationClusterPrivateClusterConfig {
         /**
+         * (Output)
          * Hostname for the workstation cluster.
          * This field will be populated only when private endpoint is enabled.
          * To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
@@ -39624,6 +40347,7 @@ export namespace workstations {
          */
         enablePrivateEndpoint: pulumi.Input<boolean>;
         /**
+         * (Output)
          * Service attachment URI for the workstation cluster.
          * The service attachemnt is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -39633,14 +40357,17 @@ export namespace workstations {
 
     export interface WorkstationConfigCondition {
         /**
+         * (Output)
          * The status code, which should be an enum value of google.rpc.Code.
          */
         code?: pulumi.Input<number>;
         /**
+         * (Output)
          * A list of messages that carry the error details.
          */
         details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
         /**
+         * (Output)
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;

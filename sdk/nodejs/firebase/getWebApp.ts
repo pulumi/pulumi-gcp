@@ -12,6 +12,7 @@ export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebApp:getWebApp", {
         "appId": args.appId,
+        "project": args.project,
     }, opts);
 }
 
@@ -23,6 +24,11 @@ export interface GetWebAppArgs {
      * The appIp of name of the Firebase webApp.
      */
     appId: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: string;
 }
 
 /**
@@ -46,7 +52,7 @@ export interface GetWebAppResult {
      * projects/projectId/webApps/appId
      */
     readonly name: string;
-    readonly project: string;
+    readonly project?: string;
 }
 /**
  * A Google Cloud Firebase web application instance
@@ -63,4 +69,9 @@ export interface GetWebAppOutputArgs {
      * The appIp of name of the Firebase webApp.
      */
     appId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
 }

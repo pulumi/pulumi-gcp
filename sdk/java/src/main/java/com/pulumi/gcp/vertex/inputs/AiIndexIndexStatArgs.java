@@ -17,6 +17,7 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
     public static final AiIndexIndexStatArgs Empty = new AiIndexIndexStatArgs();
 
     /**
+     * (Output)
      * The number of shards in the Index.
      * 
      */
@@ -24,7 +25,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Integer> shardsCount;
 
     /**
-     * @return The number of shards in the Index.
+     * @return (Output)
+     * The number of shards in the Index.
      * 
      */
     public Optional<Output<Integer>> shardsCount() {
@@ -32,6 +34,7 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * The number of vectors in the Index.
      * 
      */
@@ -39,7 +42,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> vectorsCount;
 
     /**
-     * @return The number of vectors in the Index.
+     * @return (Output)
+     * The number of vectors in the Index.
      * 
      */
     public Optional<Output<String>> vectorsCount() {
@@ -72,7 +76,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param shardsCount The number of shards in the Index.
+         * @param shardsCount (Output)
+         * The number of shards in the Index.
          * 
          * @return builder
          * 
@@ -83,7 +88,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param shardsCount The number of shards in the Index.
+         * @param shardsCount (Output)
+         * The number of shards in the Index.
          * 
          * @return builder
          * 
@@ -93,7 +99,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vectorsCount The number of vectors in the Index.
+         * @param vectorsCount (Output)
+         * The number of vectors in the Index.
          * 
          * @return builder
          * 
@@ -104,7 +111,8 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vectorsCount The number of vectors in the Index.
+         * @param vectorsCount (Output)
+         * The number of vectors in the Index.
          * 
          * @return builder
          * 

@@ -140,10 +140,12 @@ class CryptoKeyVersionAttestationArgs:
         """
         :param pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs'] cert_chains: The certificate chains needed to validate the attestation
                Structure is documented below.
-        :param pulumi.Input[str] content: The attestation data provided by the HSM when the key operation was performed.
+        :param pulumi.Input[str] content: (Output)
+               The attestation data provided by the HSM when the key operation was performed.
         :param pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
-        :param pulumi.Input[str] format: The format of the attestation data.
+        :param pulumi.Input[str] format: (Output)
+               The format of the attestation data.
         """
         if cert_chains is not None:
             pulumi.set(__self__, "cert_chains", cert_chains)
@@ -171,6 +173,7 @@ class CryptoKeyVersionAttestationArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The attestation data provided by the HSM when the key operation was performed.
         """
         return pulumi.get(self, "content")
@@ -196,6 +199,7 @@ class CryptoKeyVersionAttestationArgs:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The format of the attestation data.
         """
         return pulumi.get(self, "format")
@@ -451,9 +455,11 @@ class KeyRingImportJobAttestationArgs:
                  content: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] content: The attestation data provided by the HSM when the key operation was performed.
+        :param pulumi.Input[str] content: (Output)
+               The attestation data provided by the HSM when the key operation was performed.
                A base64-encoded string.
-        :param pulumi.Input[str] format: The format of the attestation data.
+        :param pulumi.Input[str] format: (Output)
+               The format of the attestation data.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -464,6 +470,7 @@ class KeyRingImportJobAttestationArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The attestation data provided by the HSM when the key operation was performed.
         A base64-encoded string.
         """
@@ -477,6 +484,7 @@ class KeyRingImportJobAttestationArgs:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The format of the attestation data.
         """
         return pulumi.get(self, "format")
@@ -491,7 +499,8 @@ class KeyRingImportJobPublicKeyArgs:
     def __init__(__self__, *,
                  pem: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+        :param pulumi.Input[str] pem: (Output)
+               The public key, encoded in PEM format. For more information, see the RFC 7468 sections
                for General Considerations and Textual Encoding of Subject Public Key Info.
         """
         if pem is not None:
@@ -501,6 +510,7 @@ class KeyRingImportJobPublicKeyArgs:
     @pulumi.getter
     def pem(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The public key, encoded in PEM format. For more information, see the RFC 7468 sections
         for General Considerations and Textual Encoding of Subject Public Key Info.
         """

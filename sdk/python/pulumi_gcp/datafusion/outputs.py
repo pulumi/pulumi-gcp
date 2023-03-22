@@ -10,10 +10,61 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceAccelerator',
     'InstanceCryptoKeyConfig',
     'InstanceEventPublishConfig',
     'InstanceNetworkConfig',
 ]
+
+@pulumi.output_type
+class InstanceAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAccelerator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_type: str,
+                 state: str):
+        """
+        :param str accelerator_type: The type of an accelator for a CDF instance.
+               Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        :param str state: The type of an accelator for a CDF instance.
+               Possible values are `ENABLED` and `DISABLED`.
+        """
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> str:
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are `ENABLED` and `DISABLED`.
+        """
+        return pulumi.get(self, "state")
+
 
 @pulumi.output_type
 class InstanceCryptoKeyConfig(dict):

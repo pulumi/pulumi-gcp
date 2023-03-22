@@ -17,6 +17,7 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     public static final InstanceMemcacheNodeArgs Empty = new InstanceMemcacheNodeArgs();
 
     /**
+     * (Output)
      * Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
      * 
      */
@@ -24,7 +25,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> host;
 
     /**
-     * @return Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+     * @return (Output)
+     * Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
      * 
      */
     public Optional<Output<String>> host() {
@@ -32,6 +34,7 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
      * 
      */
@@ -39,7 +42,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+     * @return (Output)
+     * Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -47,6 +51,7 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * The port number of the Memcached server on this node.
      * 
      */
@@ -54,7 +59,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number of the Memcached server on this node.
+     * @return (Output)
+     * The port number of the Memcached server on this node.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -62,6 +68,7 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Current state of the Memcached node.
      * 
      */
@@ -69,7 +76,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> state;
 
     /**
-     * @return Current state of the Memcached node.
+     * @return (Output)
+     * Current state of the Memcached node.
      * 
      */
     public Optional<Output<String>> state() {
@@ -77,6 +85,7 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Location (GCP Zone) for the Memcached node.
      * 
      */
@@ -84,7 +93,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> zone;
 
     /**
-     * @return Location (GCP Zone) for the Memcached node.
+     * @return (Output)
+     * Location (GCP Zone) for the Memcached node.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -120,7 +130,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param host Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+         * @param host (Output)
+         * Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
          * 
          * @return builder
          * 
@@ -131,7 +142,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param host Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+         * @param host (Output)
+         * Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
          * 
          * @return builder
          * 
@@ -141,7 +153,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeId Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+         * @param nodeId (Output)
+         * Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
          * 
          * @return builder
          * 
@@ -152,7 +165,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param nodeId Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+         * @param nodeId (Output)
+         * Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
          * 
          * @return builder
          * 
@@ -162,7 +176,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param port The port number of the Memcached server on this node.
+         * @param port (Output)
+         * The port number of the Memcached server on this node.
          * 
          * @return builder
          * 
@@ -173,7 +188,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param port The port number of the Memcached server on this node.
+         * @param port (Output)
+         * The port number of the Memcached server on this node.
          * 
          * @return builder
          * 
@@ -183,7 +199,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Current state of the Memcached node.
+         * @param state (Output)
+         * Current state of the Memcached node.
          * 
          * @return builder
          * 
@@ -194,7 +211,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Current state of the Memcached node.
+         * @param state (Output)
+         * Current state of the Memcached node.
          * 
          * @return builder
          * 
@@ -204,7 +222,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zone Location (GCP Zone) for the Memcached node.
+         * @param zone (Output)
+         * Location (GCP Zone) for the Memcached node.
          * 
          * @return builder
          * 
@@ -215,7 +234,8 @@ public final class InstanceMemcacheNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zone Location (GCP Zone) for the Memcached node.
+         * @param zone (Output)
+         * Location (GCP Zone) for the Memcached node.
          * 
          * @return builder
          * 

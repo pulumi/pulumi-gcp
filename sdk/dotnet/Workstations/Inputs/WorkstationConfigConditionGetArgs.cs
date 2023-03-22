@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
     public sealed class WorkstationConfigConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The status code, which should be an enum value of google.rpc.Code.
         /// </summary>
         [Input("code")]
@@ -22,6 +23,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
         private InputList<ImmutableDictionary<string, object>>? _details;
 
         /// <summary>
+        /// (Output)
         /// A list of messages that carry the error details.
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> Details
@@ -31,6 +33,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
         }
 
         /// <summary>
+        /// (Output)
         /// Human readable message indicating details about the current status.
         /// </summary>
         [Input("message")]

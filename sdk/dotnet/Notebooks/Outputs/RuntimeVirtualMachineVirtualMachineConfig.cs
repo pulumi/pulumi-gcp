@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly Outputs.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig? EncryptionConfig;
         /// <summary>
+        /// (Output)
         /// The Compute Engine guest attributes. (see [Project and instance
         /// guest attributes](https://cloud.google.com/compute/docs/
         /// storing-retrieving-metadata#guest_attributes)).
@@ -117,6 +118,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// (Output)
         /// The zone where the virtual machine is located.
         /// </summary>
         public readonly string? Zone;

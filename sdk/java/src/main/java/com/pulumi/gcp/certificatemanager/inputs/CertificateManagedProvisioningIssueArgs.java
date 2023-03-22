@@ -16,9 +16,11 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
     public static final CertificateManagedProvisioningIssueArgs Empty = new CertificateManagedProvisioningIssueArgs();
 
     /**
+     * (Output)
      * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -28,9 +30,11 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
     private @Nullable Output<String> details;
 
     /**
-     * @return Human readable explanation about the issue. Provided to help address
+     * @return (Output)
+     * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -41,6 +45,7 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
     }
 
     /**
+     * (Output)
      * Reason for provisioning failures.
      * 
      */
@@ -48,7 +53,8 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
     private @Nullable Output<String> reason;
 
     /**
-     * @return Reason for provisioning failures.
+     * @return (Output)
+     * Reason for provisioning failures.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -81,9 +87,11 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
         }
 
         /**
-         * @param details Human readable explanation about the issue. Provided to help address
+         * @param details (Output)
+         * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -97,9 +105,11 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
         }
 
         /**
-         * @param details Human readable explanation about the issue. Provided to help address
+         * @param details (Output)
+         * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -112,7 +122,8 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
         }
 
         /**
-         * @param reason Reason for provisioning failures.
+         * @param reason (Output)
+         * Reason for provisioning failures.
          * 
          * @return builder
          * 
@@ -123,7 +134,8 @@ public final class CertificateManagedProvisioningIssueArgs extends com.pulumi.re
         }
 
         /**
-         * @param reason Reason for provisioning failures.
+         * @param reason (Output)
+         * Reason for provisioning failures.
          * 
          * @return builder
          * 

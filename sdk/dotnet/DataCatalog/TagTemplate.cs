@@ -123,6 +123,7 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Output("name")]
@@ -279,6 +280,7 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Input("name")]

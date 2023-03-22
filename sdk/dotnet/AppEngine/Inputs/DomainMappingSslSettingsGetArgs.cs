@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? CertificateId { get; set; }
 
         /// <summary>
+        /// (Output)
         /// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
         /// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
         /// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this

@@ -73,6 +73,84 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Virtual
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo_upstream = new Gcp.ArtifactRegistry.Repository("my-repo-upstream", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository-upstream",
+    ///         Description = "example docker repository (upstream source)",
+    ///         Format = "DOCKER",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example virtual docker repository",
+    ///         Format = "DOCKER",
+    ///         Mode = "VIRTUAL_REPOSITORY",
+    ///         VirtualRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryVirtualRepositoryConfigArgs
+    ///         {
+    ///             UpstreamPolicies = new[]
+    ///             {
+    ///                 new Gcp.ArtifactRegistry.Inputs.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs
+    ///                 {
+    ///                     Id = "my-repository-upstream",
+    ///                     Repository = my_repo_upstream.Id,
+    ///                     Priority = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[] {},
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example remote docker repository",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "docker hub",
+    ///             DockerRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs
+    ///             {
+    ///                 PublicRepository = "DOCKER_HUB",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -153,6 +231,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<Outputs.RepositoryMavenConfig?> MavenConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// </summary>
+        [Output("mode")]
+        public Output<string?> Mode { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the repository, for example:
         /// "projects/p1/locations/us-central1/repositories/repo1"
         /// </summary>
@@ -167,6 +252,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        [Output("remoteRepositoryConfig")]
+        public Output<Outputs.RepositoryRemoteRepositoryConfig?> RemoteRepositoryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
         /// </summary>
@@ -178,6 +269,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        [Output("virtualRepositoryConfig")]
+        public Output<Outputs.RepositoryVirtualRepositoryConfig?> VirtualRepositoryConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -281,6 +378,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<Inputs.RepositoryMavenConfigArgs>? MavenConfig { get; set; }
 
         /// <summary>
+        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -288,11 +392,23 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        [Input("remoteRepositoryConfig")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigArgs>? RemoteRepositoryConfig { get; set; }
+
+        /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
+
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        [Input("virtualRepositoryConfig")]
+        public Input<Inputs.RepositoryVirtualRepositoryConfigArgs>? VirtualRepositoryConfig { get; set; }
 
         public RepositoryArgs()
         {
@@ -364,6 +480,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<Inputs.RepositoryMavenConfigGetArgs>? MavenConfig { get; set; }
 
         /// <summary>
+        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
+        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// The name of the repository, for example:
         /// "projects/p1/locations/us-central1/repositories/repo1"
         /// </summary>
@@ -378,6 +501,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        [Input("remoteRepositoryConfig")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigGetArgs>? RemoteRepositoryConfig { get; set; }
+
+        /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
         /// </summary>
@@ -389,6 +518,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        [Input("virtualRepositoryConfig")]
+        public Input<Inputs.RepositoryVirtualRepositoryConfigGetArgs>? VirtualRepositoryConfig { get; set; }
 
         public RepositoryState()
         {

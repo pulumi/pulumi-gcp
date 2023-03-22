@@ -16,6 +16,7 @@ public final class KeyRingImportJobPublicKeyArgs extends com.pulumi.resources.Re
     public static final KeyRingImportJobPublicKeyArgs Empty = new KeyRingImportJobPublicKeyArgs();
 
     /**
+     * (Output)
      * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
      * for General Considerations and Textual Encoding of Subject Public Key Info.
      * 
@@ -24,7 +25,8 @@ public final class KeyRingImportJobPublicKeyArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> pem;
 
     /**
-     * @return The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+     * @return (Output)
+     * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
      * for General Considerations and Textual Encoding of Subject Public Key Info.
      * 
      */
@@ -57,7 +59,8 @@ public final class KeyRingImportJobPublicKeyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pem The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+         * @param pem (Output)
+         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
          * for General Considerations and Textual Encoding of Subject Public Key Info.
          * 
          * @return builder
@@ -69,7 +72,8 @@ public final class KeyRingImportJobPublicKeyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param pem The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+         * @param pem (Output)
+         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
          * for General Considerations and Textual Encoding of Subject Public Key Info.
          * 
          * @return builder

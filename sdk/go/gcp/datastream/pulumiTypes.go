@@ -731,6 +731,7 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// server's certificate.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	CaCertificate *string `pulumi:"caCertificate"`
+	// (Output)
 	// Indicates whether the clientKey field is set.
 	CaCertificateSet *bool `pulumi:"caCertificateSet"`
 	// PEM-encoded certificate that will be used by the replica to
@@ -739,6 +740,7 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientCertificate *string `pulumi:"clientCertificate"`
+	// (Output)
 	// Indicates whether the clientCertificate field is set.
 	ClientCertificateSet *bool `pulumi:"clientCertificateSet"`
 	// PEM-encoded private key associated with the Client Certificate.
@@ -746,6 +748,7 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// 'ca_certificate' fields are mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientKey *string `pulumi:"clientKey"`
+	// (Output)
 	// Indicates whether the clientKey field is set.
 	ClientKeySet *bool `pulumi:"clientKeySet"`
 }
@@ -766,6 +769,7 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// server's certificate.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
+	// (Output)
 	// Indicates whether the clientKey field is set.
 	CaCertificateSet pulumi.BoolPtrInput `pulumi:"caCertificateSet"`
 	// PEM-encoded certificate that will be used by the replica to
@@ -774,6 +778,7 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// (Output)
 	// Indicates whether the clientCertificate field is set.
 	ClientCertificateSet pulumi.BoolPtrInput `pulumi:"clientCertificateSet"`
 	// PEM-encoded private key associated with the Client Certificate.
@@ -781,6 +786,7 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// 'ca_certificate' fields are mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// (Output)
 	// Indicates whether the clientKey field is set.
 	ClientKeySet pulumi.BoolPtrInput `pulumi:"clientKeySet"`
 }
@@ -869,6 +875,7 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) CaCertificate() pulumi.Str
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) CaCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.CaCertificateSet }).(pulumi.BoolPtrOutput)
@@ -883,6 +890,7 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientCertificate() pulumi
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientCertificate field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.ClientCertificateSet }).(pulumi.BoolPtrOutput)
@@ -896,6 +904,7 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientKey() pulumi.StringP
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientKeySet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.ClientKeySet }).(pulumi.BoolPtrOutput)
@@ -937,6 +946,7 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) CaCertificate() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) CaCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -961,6 +971,7 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientCertificate() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientCertificate field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -984,6 +995,7 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientKeySet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -2412,6 +2424,7 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn str
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -2441,6 +2454,7 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -2524,6 +2538,7 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
@@ -2941,18 +2956,25 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn s
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -2974,18 +2996,25 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnAr
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -3056,6 +3085,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column encoding.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -3063,6 +3093,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -3070,6 +3101,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -3077,6 +3109,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // The ordinal position of the column in the table.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -3084,6 +3117,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -3091,6 +3125,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -3098,6 +3133,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
@@ -3496,16 +3532,19 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePo
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -3527,16 +3566,19 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePo
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -3607,6 +3649,7 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -3628,6 +3671,7 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -3642,6 +3686,7 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -5933,6 +5978,7 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -5962,6 +6008,7 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -6045,6 +6092,7 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -6468,6 +6516,7 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -6497,6 +6546,7 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -6580,6 +6630,7 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -7375,18 +7426,25 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOr
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -7408,18 +7466,25 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOr
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -7490,6 +7555,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column encoding.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -7497,6 +7563,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -7504,6 +7571,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -7511,6 +7579,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -7518,6 +7587,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -7525,6 +7595,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -7532,6 +7603,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -7932,18 +8004,25 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOr
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -7965,18 +8044,25 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOr
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -8047,6 +8133,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column encoding.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -8054,6 +8141,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -8061,6 +8149,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -8068,6 +8157,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -8075,6 +8165,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -8082,6 +8173,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -8089,6 +8181,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -8844,16 +8937,19 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -8875,16 +8971,19 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -8955,6 +9054,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -8976,6 +9076,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -8990,6 +9091,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9390,16 +9492,19 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
 }
@@ -9421,16 +9526,19 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
@@ -9501,6 +9609,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Column length.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9522,6 +9631,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Column precision.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9536,6 +9646,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Column scale.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {

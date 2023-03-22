@@ -31,6 +31,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
@@ -39,7 +40,8 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> state;
 
     /**
-     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return (Output)
+     * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
@@ -94,7 +96,8 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state (Output)
+         * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder
@@ -106,7 +109,8 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state (Output)
+         * Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder

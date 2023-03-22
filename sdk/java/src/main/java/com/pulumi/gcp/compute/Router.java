@@ -183,18 +183,16 @@ public class Router extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      * 
      */
     @Export(name="encryptedInterconnectRouter", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> encryptedInterconnectRouter;
 
     /**
-     * @return Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * @return Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      * 
      */
     public Output<Optional<Boolean>> encryptedInterconnectRouter() {

@@ -67,10 +67,13 @@ export interface GetRepositoryResult {
     readonly labels: {[key: string]: string};
     readonly location: string;
     readonly mavenConfigs: outputs.artifactregistry.GetRepositoryMavenConfig[];
+    readonly mode: string;
     readonly name: string;
     readonly project?: string;
+    readonly remoteRepositoryConfigs: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfig[];
     readonly repositoryId: string;
     readonly updateTime: string;
+    readonly virtualRepositoryConfigs: outputs.artifactregistry.GetRepositoryVirtualRepositoryConfig[];
 }
 /**
  * Get information about a Google Artifact Registry Repository. For more information see

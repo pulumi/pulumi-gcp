@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicePerimetersServicePerimeter {
     /**
-     * @return Time the AccessPolicy was created in UTC.
+     * @return (Output)
+     * Time the AccessPolicy was created in UTC.
      * 
      */
     private @Nullable String createTime;
@@ -75,7 +76,8 @@ public final class ServicePerimetersServicePerimeter {
      */
     private String title;
     /**
-     * @return Time the AccessPolicy was updated in UTC.
+     * @return (Output)
+     * Time the AccessPolicy was updated in UTC.
      * 
      */
     private @Nullable String updateTime;
@@ -95,7 +97,8 @@ public final class ServicePerimetersServicePerimeter {
 
     private ServicePerimetersServicePerimeter() {}
     /**
-     * @return Time the AccessPolicy was created in UTC.
+     * @return (Output)
+     * Time the AccessPolicy was created in UTC.
      * 
      */
     public Optional<String> createTime() {
@@ -169,7 +172,8 @@ public final class ServicePerimetersServicePerimeter {
         return this.title;
     }
     /**
-     * @return Time the AccessPolicy was updated in UTC.
+     * @return (Output)
+     * Time the AccessPolicy was updated in UTC.
      * 
      */
     public Optional<String> updateTime() {

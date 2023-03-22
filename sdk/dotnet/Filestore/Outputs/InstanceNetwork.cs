@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// </summary>
         public readonly string? ConnectMode;
         /// <summary>
+        /// (Output)
         /// A list of IPv4 or IPv6 addresses.
         /// </summary>
         public readonly ImmutableArray<string> IpAddresses;

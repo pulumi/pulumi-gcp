@@ -261,6 +261,7 @@ func (o AttachedClusterErrorArrayOutput) Index(i pulumi.IntInput) AttachedCluste
 }
 
 type AttachedClusterFleet struct {
+	// (Output)
 	// The name of the managed Hub Membership resource associated to this
 	// cluster. Membership names are formatted as
 	// projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -282,6 +283,7 @@ type AttachedClusterFleetInput interface {
 }
 
 type AttachedClusterFleetArgs struct {
+	// (Output)
 	// The name of the managed Hub Membership resource associated to this
 	// cluster. Membership names are formatted as
 	// projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -368,6 +370,7 @@ func (o AttachedClusterFleetOutput) ToAttachedClusterFleetPtrOutputWithContext(c
 	}).(AttachedClusterFleetPtrOutput)
 }
 
+// (Output)
 // The name of the managed Hub Membership resource associated to this
 // cluster. Membership names are formatted as
 // projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -405,6 +408,7 @@ func (o AttachedClusterFleetPtrOutput) Elem() AttachedClusterFleetOutput {
 	}).(AttachedClusterFleetOutput)
 }
 
+// (Output)
 // The name of the managed Hub Membership resource associated to this
 // cluster. Membership names are formatted as
 // projects/<project-number>/locations/global/membership/<cluster-id>.

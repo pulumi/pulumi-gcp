@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxFlowTransitionRouteTriggerFulfillmentMessageText {
     /**
-     * @return Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * @return (Output)
+     * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
     private @Nullable Boolean allowPlaybackInterruption;
@@ -26,7 +27,8 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageText {
 
     private CxFlowTransitionRouteTriggerFulfillmentMessageText() {}
     /**
-     * @return Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * @return (Output)
+     * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
     public Optional<Boolean> allowPlaybackInterruption() {

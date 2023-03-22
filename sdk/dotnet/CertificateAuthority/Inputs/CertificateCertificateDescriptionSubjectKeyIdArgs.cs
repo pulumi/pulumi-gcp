@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CertificateCertificateDescriptionSubjectKeyIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         /// </summary>
         [Input("keyId")]

@@ -616,7 +616,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
-    def automated_backup_policy(self) -> pulumi.Output[Optional['outputs.ClusterAutomatedBackupPolicy']]:
+    def automated_backup_policy(self) -> pulumi.Output['outputs.ClusterAutomatedBackupPolicy']:
         """
         The automated backup policy for this cluster.
         If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.

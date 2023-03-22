@@ -77,6 +77,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Output)
      * The URI of the endpoint used to access the metastore service.
      * 
      */
@@ -84,7 +85,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> endpointUri;
 
     /**
-     * @return The URI of the endpoint used to access the metastore service.
+     * @return (Output)
+     * The URI of the endpoint used to access the metastore service.
      * 
      */
     public Optional<Output<String>> endpointUri() {
@@ -490,7 +492,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointUri The URI of the endpoint used to access the metastore service.
+         * @param endpointUri (Output)
+         * The URI of the endpoint used to access the metastore service.
          * 
          * @return builder
          * 
@@ -501,7 +504,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointUri The URI of the endpoint used to access the metastore service.
+         * @param endpointUri (Output)
+         * The URI of the endpoint used to access the metastore service.
          * 
          * @return builder
          * 

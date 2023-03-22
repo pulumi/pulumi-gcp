@@ -5,11 +5,13 @@ package com.pulumi.gcp.datafusion;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +21,27 @@ import javax.annotation.Nullable;
 public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceArgs Empty = new InstanceArgs();
+
+    /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    @Import(name="accelerators")
+    private @Nullable Output<List<InstanceAcceleratorArgs>> accelerators;
+
+    /**
+     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    public Optional<Output<List<InstanceAcceleratorArgs>>> accelerators() {
+        return Optional.ofNullable(this.accelerators);
+    }
 
     /**
      * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -327,6 +350,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.accelerators = $.accelerators;
         this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.dataprocServiceAccount = $.dataprocServiceAccount;
         this.description = $.description;
@@ -363,6 +387,46 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(@Nullable Output<List<InstanceAcceleratorArgs>> accelerators) {
+            $.accelerators = accelerators;
+            return this;
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(List<InstanceAcceleratorArgs> accelerators) {
+            return accelerators(Output.of(accelerators));
+        }
+
+        /**
+         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+         * created with the Options field. Users will need to either manually update their state file to include these diffed
+         * options, or include the field in a [lifecycle ignore changes
+         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(InstanceAcceleratorArgs... accelerators) {
+            return accelerators(List.of(accelerators));
         }
 
         /**

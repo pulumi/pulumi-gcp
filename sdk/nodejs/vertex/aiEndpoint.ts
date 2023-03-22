@@ -103,6 +103,7 @@ export class AiEndpoint extends pulumi.CustomResource {
     }
 
     /**
+     * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -216,6 +217,7 @@ export class AiEndpoint extends pulumi.CustomResource {
  */
 export interface AiEndpointState {
     /**
+     * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      */
     createTime?: pulumi.Input<string>;

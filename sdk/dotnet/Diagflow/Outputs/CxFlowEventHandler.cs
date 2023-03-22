@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? Event;
         /// <summary>
+        /// (Output)
         /// The unique identifier of this event handler.
         /// </summary>
         public readonly string? Name;

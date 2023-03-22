@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
@@ -143,6 +144,33 @@ import javax.annotation.Nullable;
  *                             .serverAuth(true)
  *                             .timeStamping(true)
  *                             .build())
+ *                         .build())
+ *                     .nameConstraints(CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs.builder()
+ *                         .critical(true)
+ *                         .excludedDnsNames(                        
+ *                             &#34;*.deny.example1.com&#34;,
+ *                             &#34;*.deny.example2.com&#34;)
+ *                         .excludedEmailAddresses(                        
+ *                             &#34;.deny.example1.com&#34;,
+ *                             &#34;.deny.example2.com&#34;)
+ *                         .excludedIpRanges(                        
+ *                             &#34;10.1.1.0/24&#34;,
+ *                             &#34;11.1.1.0/24&#34;)
+ *                         .excludedUris(                        
+ *                             &#34;.deny.example1.com&#34;,
+ *                             &#34;.deny.example2.com&#34;)
+ *                         .permittedDnsNames(                        
+ *                             &#34;*.example1.com&#34;,
+ *                             &#34;*.example2.com&#34;)
+ *                         .permittedEmailAddresses(                        
+ *                             &#34;.example1.com&#34;,
+ *                             &#34;.example2.com&#34;)
+ *                         .permittedIpRanges(                        
+ *                             &#34;10.0.0.0/8&#34;,
+ *                             &#34;11.0.0.0/8&#34;)
+ *                         .permittedUris(                        
+ *                             &#34;.example1.com&#34;,
+ *                             &#34;.example2.com&#34;)
  *                         .build())
  *                     .policyIds(                    
  *                         CaPoolIssuancePolicyBaselineValuesPolicyIdArgs.builder()

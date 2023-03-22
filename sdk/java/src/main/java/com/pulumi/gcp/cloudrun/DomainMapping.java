@@ -180,6 +180,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
         return this.spec;
     }
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      * 
      */
@@ -187,7 +188,8 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     private Output<List<DomainMappingStatus>> statuses;
 
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     public Output<List<DomainMappingStatus>> statuses() {

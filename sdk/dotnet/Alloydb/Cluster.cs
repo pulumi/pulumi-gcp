@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Structure is documented below.
         /// </summary>
         [Output("automatedBackupPolicy")]
-        public Output<Outputs.ClusterAutomatedBackupPolicy?> AutomatedBackupPolicy { get; private set; } = null!;
+        public Output<Outputs.ClusterAutomatedBackupPolicy> AutomatedBackupPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Cluster created from backup.

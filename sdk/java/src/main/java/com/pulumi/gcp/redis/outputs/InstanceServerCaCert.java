@@ -12,43 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceServerCaCert {
     /**
-     * @return The certificate data in PEM format.
+     * @return (Output)
+     * The certificate data in PEM format.
      * 
      */
     private @Nullable String cert;
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
      */
     private @Nullable String createTime;
     /**
-     * @return The time when the certificate expires.
+     * @return (Output)
+     * The time when the certificate expires.
      * 
      */
     private @Nullable String expireTime;
     /**
-     * @return Serial number, as extracted from the certificate.
+     * @return (Output)
+     * Serial number, as extracted from the certificate.
      * 
      */
     private @Nullable String serialNumber;
     /**
-     * @return Sha1 Fingerprint of the certificate.
+     * @return (Output)
+     * Sha1 Fingerprint of the certificate.
      * 
      */
     private @Nullable String sha1Fingerprint;
 
     private InstanceServerCaCert() {}
     /**
-     * @return The certificate data in PEM format.
+     * @return (Output)
+     * The certificate data in PEM format.
      * 
      */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -57,21 +64,24 @@ public final class InstanceServerCaCert {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return The time when the certificate expires.
+     * @return (Output)
+     * The time when the certificate expires.
      * 
      */
     public Optional<String> expireTime() {
         return Optional.ofNullable(this.expireTime);
     }
     /**
-     * @return Serial number, as extracted from the certificate.
+     * @return (Output)
+     * Serial number, as extracted from the certificate.
      * 
      */
     public Optional<String> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
     }
     /**
-     * @return Sha1 Fingerprint of the certificate.
+     * @return (Output)
+     * Sha1 Fingerprint of the certificate.
      * 
      */
     public Optional<String> sha1Fingerprint() {

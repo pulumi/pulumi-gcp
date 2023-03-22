@@ -50,15 +50,18 @@ class CertificateManaged(dict):
                  provisioning_issues: Optional[Sequence['outputs.CertificateManagedProvisioningIssue']] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['CertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: Detailed state of the latest authorization attempt for each domain
+        :param Sequence['CertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: (Output)
+               Detailed state of the latest authorization attempt for each domain
                specified for this Managed Certificate.
                Structure is documented below.
         :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization
         :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
-        :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: Information about issues with provisioning this Managed Certificate.
+        :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: (Output)
+               Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
-        :param str state: State of the domain for managed certificate issuance.
+        :param str state: (Output)
+               State of the domain for managed certificate issuance.
         """
         if authorization_attempt_infos is not None:
             pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
@@ -75,6 +78,7 @@ class CertificateManaged(dict):
     @pulumi.getter(name="authorizationAttemptInfos")
     def authorization_attempt_infos(self) -> Optional[Sequence['outputs.CertificateManagedAuthorizationAttemptInfo']]:
         """
+        (Output)
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
@@ -102,6 +106,7 @@ class CertificateManaged(dict):
     @pulumi.getter(name="provisioningIssues")
     def provisioning_issues(self) -> Optional[Sequence['outputs.CertificateManagedProvisioningIssue']]:
         """
+        (Output)
         Information about issues with provisioning this Managed Certificate.
         Structure is documented below.
         """
@@ -111,6 +116,7 @@ class CertificateManaged(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
+        (Output)
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
@@ -141,15 +147,21 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
                  failure_reason: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str details: Human readable explanation about the issue. Provided to help address
+        :param str details: (Output)
+               Human readable explanation about the issue. Provided to help address
                the configuration issues.
                Not guaranteed to be stable. For programmatic access use `reason` field.
+               (Output)
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
                Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param str domain: Domain name of the authorization attempt.
-        :param str failure_reason: Reason for failure of the authorization attempt for the domain.
-        :param str state: A state of this Managed Certificate.
+        :param str domain: (Output)
+               Domain name of the authorization attempt.
+        :param str failure_reason: (Output)
+               Reason for failure of the authorization attempt for the domain.
+        :param str state: (Output)
+               A state of this Managed Certificate.
+               (Output)
                State of the domain for managed certificate issuance.
         """
         if details is not None:
@@ -165,9 +177,11 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
+        (Output)
         Human readable explanation about the issue. Provided to help address
         the configuration issues.
         Not guaranteed to be stable. For programmatic access use `reason` field.
+        (Output)
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
         Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -178,6 +192,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
+        (Output)
         Domain name of the authorization attempt.
         """
         return pulumi.get(self, "domain")
@@ -186,6 +201,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter(name="failureReason")
     def failure_reason(self) -> Optional[str]:
         """
+        (Output)
         Reason for failure of the authorization attempt for the domain.
         """
         return pulumi.get(self, "failure_reason")
@@ -194,7 +210,9 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
+        (Output)
         A state of this Managed Certificate.
+        (Output)
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
@@ -206,13 +224,16 @@ class CertificateManagedProvisioningIssue(dict):
                  details: Optional[str] = None,
                  reason: Optional[str] = None):
         """
-        :param str details: Human readable explanation about the issue. Provided to help address
+        :param str details: (Output)
+               Human readable explanation about the issue. Provided to help address
                the configuration issues.
                Not guaranteed to be stable. For programmatic access use `reason` field.
+               (Output)
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
                Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param str reason: Reason for provisioning failures.
+        :param str reason: (Output)
+               Reason for provisioning failures.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -223,9 +244,11 @@ class CertificateManagedProvisioningIssue(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
+        (Output)
         Human readable explanation about the issue. Provided to help address
         the configuration issues.
         Not guaranteed to be stable. For programmatic access use `reason` field.
+        (Output)
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
         Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -236,6 +259,7 @@ class CertificateManagedProvisioningIssue(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
+        (Output)
         Reason for provisioning failures.
         """
         return pulumi.get(self, "reason")
@@ -464,11 +488,13 @@ class DnsAuthorizationDnsResourceRecord(dict):
                  name: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str data: Data of the DNS Resource Record.
+        :param str data: (Output)
+               Data of the DNS Resource Record.
         :param str name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-        :param str type: Type of the DNS Resource Record.
+        :param str type: (Output)
+               Type of the DNS Resource Record.
         """
         if data is not None:
             pulumi.set(__self__, "data", data)
@@ -481,6 +507,7 @@ class DnsAuthorizationDnsResourceRecord(dict):
     @pulumi.getter
     def data(self) -> Optional[str]:
         """
+        (Output)
         Data of the DNS Resource Record.
         """
         return pulumi.get(self, "data")
@@ -499,6 +526,7 @@ class DnsAuthorizationDnsResourceRecord(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
+        (Output)
         Type of the DNS Resource Record.
         """
         return pulumi.get(self, "type")

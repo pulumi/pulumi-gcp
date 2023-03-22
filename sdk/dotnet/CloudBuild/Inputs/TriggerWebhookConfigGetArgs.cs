@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string> Secret { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>

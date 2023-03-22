@@ -16,6 +16,7 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
     public static final InterconnectAttachmentPrivateInterconnectInfoArgs Empty = new InterconnectAttachmentPrivateInterconnectInfoArgs();
 
     /**
+     * (Output)
      * 802.1q encapsulation tag to be used for traffic between
      * Google and the customer, going to and from this network and region.
      * 
@@ -24,7 +25,8 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
     private @Nullable Output<Integer> tag8021q;
 
     /**
-     * @return 802.1q encapsulation tag to be used for traffic between
+     * @return (Output)
+     * 802.1q encapsulation tag to be used for traffic between
      * Google and the customer, going to and from this network and region.
      * 
      */
@@ -57,7 +59,8 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
         }
 
         /**
-         * @param tag8021q 802.1q encapsulation tag to be used for traffic between
+         * @param tag8021q (Output)
+         * 802.1q encapsulation tag to be used for traffic between
          * Google and the customer, going to and from this network and region.
          * 
          * @return builder
@@ -69,7 +72,8 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
         }
 
         /**
-         * @param tag8021q 802.1q encapsulation tag to be used for traffic between
+         * @param tag8021q (Output)
+         * 802.1q encapsulation tag to be used for traffic between
          * Google and the customer, going to and from this network and region.
          * 
          * @return builder

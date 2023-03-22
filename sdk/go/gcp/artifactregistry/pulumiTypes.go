@@ -504,6 +504,1088 @@ func (o RepositoryMavenConfigPtrOutput) VersionPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryRemoteRepositoryConfig struct {
+	// The description of the remote source.
+	Description *string `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	// Structure is documented below.
+	DockerRepository *RepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepository"`
+	// Specific settings for a Maven remote repository.
+	// Structure is documented below.
+	MavenRepository *RepositoryRemoteRepositoryConfigMavenRepository `pulumi:"mavenRepository"`
+	// Specific settings for an Npm remote repository.
+	// Structure is documented below.
+	NpmRepository *RepositoryRemoteRepositoryConfigNpmRepository `pulumi:"npmRepository"`
+	// Specific settings for a Python remote repository.
+	// Structure is documented below.
+	PythonRepository *RepositoryRemoteRepositoryConfigPythonRepository `pulumi:"pythonRepository"`
+}
+
+// RepositoryRemoteRepositoryConfigInput is an input type that accepts RepositoryRemoteRepositoryConfigArgs and RepositoryRemoteRepositoryConfigOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigInput` via:
+//
+//	RepositoryRemoteRepositoryConfigArgs{...}
+type RepositoryRemoteRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigOutput() RepositoryRemoteRepositoryConfigOutput
+	ToRepositoryRemoteRepositoryConfigOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigOutput
+}
+
+type RepositoryRemoteRepositoryConfigArgs struct {
+	// The description of the remote source.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	// Structure is documented below.
+	DockerRepository RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput `pulumi:"dockerRepository"`
+	// Specific settings for a Maven remote repository.
+	// Structure is documented below.
+	MavenRepository RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput `pulumi:"mavenRepository"`
+	// Specific settings for an Npm remote repository.
+	// Structure is documented below.
+	NpmRepository RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput `pulumi:"npmRepository"`
+	// Specific settings for a Python remote repository.
+	// Structure is documented below.
+	PythonRepository RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput `pulumi:"pythonRepository"`
+}
+
+func (RepositoryRemoteRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfigOutput() RepositoryRemoteRepositoryConfigOutput {
+	return i.ToRepositoryRemoteRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfigOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigArgs) ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigOutput).ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigArgs, RepositoryRemoteRepositoryConfigPtr and RepositoryRemoteRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput
+	ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigPtrType RepositoryRemoteRepositoryConfigArgs
+
+func RepositoryRemoteRepositoryConfigPtr(v *RepositoryRemoteRepositoryConfigArgs) RepositoryRemoteRepositoryConfigPtrInput {
+	return (*repositoryRemoteRepositoryConfigPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigPtrType) ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigPtrType) ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigOutput) ToRepositoryRemoteRepositoryConfigOutput() RepositoryRemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigOutput) ToRepositoryRemoteRepositoryConfigOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigOutput) ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigOutput) ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfig {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigPtrOutput)
+}
+
+// The description of the remote source.
+func (o RepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specific settings for a Docker remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) DockerRepository() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigDockerRepository {
+		return v.DockerRepository
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
+}
+
+// Specific settings for a Maven remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) MavenRepository() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigMavenRepository {
+		return v.MavenRepository
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
+}
+
+// Specific settings for an Npm remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) NpmRepository() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigNpmRepository {
+		return v.NpmRepository
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
+}
+
+// Specific settings for a Python remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) PythonRepository() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigPythonRepository {
+		return v.PythonRepository
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigPtrOutput) ToRepositoryRemoteRepositoryConfigPtrOutput() RepositoryRemoteRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPtrOutput) ToRepositoryRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPtrOutput) Elem() RepositoryRemoteRepositoryConfigOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) RepositoryRemoteRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfig
+		return ret
+	}).(RepositoryRemoteRepositoryConfigOutput)
+}
+
+// The description of the remote source.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specific settings for a Docker remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) DockerRepository() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigDockerRepository {
+		if v == nil {
+			return nil
+		}
+		return v.DockerRepository
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
+}
+
+// Specific settings for a Maven remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) MavenRepository() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigMavenRepository {
+		if v == nil {
+			return nil
+		}
+		return v.MavenRepository
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
+}
+
+// Specific settings for an Npm remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) NpmRepository() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigNpmRepository {
+		if v == nil {
+			return nil
+		}
+		return v.NpmRepository
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
+}
+
+// Specific settings for a Python remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) PythonRepository() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigPythonRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PythonRepository
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepository struct {
+	// Address of the remote repository.
+	// Default value is `DOCKER_HUB`.
+	// Possible values are `DOCKER_HUB`.
+	PublicRepository *string `pulumi:"publicRepository"`
+}
+
+// RepositoryRemoteRepositoryConfigDockerRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigDockerRepositoryArgs and RepositoryRemoteRepositoryConfigDockerRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigDockerRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigDockerRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
+	// Address of the remote repository.
+	// Default value is `DOCKER_HUB`.
+	// Possible values are `DOCKER_HUB`.
+	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
+}
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput).ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigDockerRepositoryArgs, RepositoryRemoteRepositoryConfigDockerRepositoryPtr and RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigDockerRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigDockerRepositoryPtrType RepositoryRemoteRepositoryConfigDockerRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigDockerRepositoryPtr(v *RepositoryRemoteRepositoryConfigDockerRepositoryArgs) RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigDockerRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigDockerRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigDockerRepositoryPtrType) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigDockerRepositoryPtrType) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigDockerRepository) *RepositoryRemoteRepositoryConfigDockerRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
+}
+
+// Address of the remote repository.
+// Default value is `DOCKER_HUB`.
+// Possible values are `DOCKER_HUB`.
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) RepositoryRemoteRepositoryConfigDockerRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigDockerRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput)
+}
+
+// Address of the remote repository.
+// Default value is `DOCKER_HUB`.
+// Possible values are `DOCKER_HUB`.
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepository struct {
+	// Address of the remote repository.
+	// Default value is `MAVEN_CENTRAL`.
+	// Possible values are `MAVEN_CENTRAL`.
+	PublicRepository *string `pulumi:"publicRepository"`
+}
+
+// RepositoryRemoteRepositoryConfigMavenRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigMavenRepositoryArgs and RepositoryRemoteRepositoryConfigMavenRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigMavenRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigMavenRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
+	// Address of the remote repository.
+	// Default value is `MAVEN_CENTRAL`.
+	// Possible values are `MAVEN_CENTRAL`.
+	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
+}
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput).ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigMavenRepositoryArgs, RepositoryRemoteRepositoryConfigMavenRepositoryPtr and RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigMavenRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigMavenRepositoryPtrType RepositoryRemoteRepositoryConfigMavenRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigMavenRepositoryPtr(v *RepositoryRemoteRepositoryConfigMavenRepositoryArgs) RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigMavenRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigMavenRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigMavenRepositoryPtrType) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigMavenRepositoryPtrType) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigMavenRepository) *RepositoryRemoteRepositoryConfigMavenRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
+}
+
+// Address of the remote repository.
+// Default value is `MAVEN_CENTRAL`.
+// Possible values are `MAVEN_CENTRAL`.
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) RepositoryRemoteRepositoryConfigMavenRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigMavenRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput)
+}
+
+// Address of the remote repository.
+// Default value is `MAVEN_CENTRAL`.
+// Possible values are `MAVEN_CENTRAL`.
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepository struct {
+	// Address of the remote repository.
+	// Default value is `NPMJS`.
+	// Possible values are `NPMJS`.
+	PublicRepository *string `pulumi:"publicRepository"`
+}
+
+// RepositoryRemoteRepositoryConfigNpmRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigNpmRepositoryArgs and RepositoryRemoteRepositoryConfigNpmRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNpmRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigNpmRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
+	// Address of the remote repository.
+	// Default value is `NPMJS`.
+	// Possible values are `NPMJS`.
+	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
+}
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput).ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigNpmRepositoryArgs, RepositoryRemoteRepositoryConfigNpmRepositoryPtr and RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigNpmRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigNpmRepositoryPtrType RepositoryRemoteRepositoryConfigNpmRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigNpmRepositoryPtr(v *RepositoryRemoteRepositoryConfigNpmRepositoryArgs) RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigNpmRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigNpmRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigNpmRepositoryPtrType) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigNpmRepositoryPtrType) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigNpmRepository) *RepositoryRemoteRepositoryConfigNpmRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
+}
+
+// Address of the remote repository.
+// Default value is `NPMJS`.
+// Possible values are `NPMJS`.
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) RepositoryRemoteRepositoryConfigNpmRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigNpmRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput)
+}
+
+// Address of the remote repository.
+// Default value is `NPMJS`.
+// Possible values are `NPMJS`.
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepository struct {
+	// Address of the remote repository.
+	// Default value is `PYPI`.
+	// Possible values are `PYPI`.
+	PublicRepository *string `pulumi:"publicRepository"`
+}
+
+// RepositoryRemoteRepositoryConfigPythonRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigPythonRepositoryArgs and RepositoryRemoteRepositoryConfigPythonRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigPythonRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigPythonRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
+	// Address of the remote repository.
+	// Default value is `PYPI`.
+	// Possible values are `PYPI`.
+	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
+}
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput).ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigPythonRepositoryArgs, RepositoryRemoteRepositoryConfigPythonRepositoryPtr and RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigPythonRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigPythonRepositoryPtrType RepositoryRemoteRepositoryConfigPythonRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigPythonRepositoryPtr(v *RepositoryRemoteRepositoryConfigPythonRepositoryArgs) RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigPythonRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigPythonRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigPythonRepositoryPtrType) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigPythonRepositoryPtrType) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigPythonRepository) *RepositoryRemoteRepositoryConfigPythonRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
+}
+
+// Address of the remote repository.
+// Default value is `PYPI`.
+// Possible values are `PYPI`.
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) RepositoryRemoteRepositoryConfigPythonRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigPythonRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput)
+}
+
+// Address of the remote repository.
+// Default value is `PYPI`.
+// Possible values are `PYPI`.
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryVirtualRepositoryConfig struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual
+	// Repository. Upstream policies cannot be set on a standard repository.
+	// Structure is documented below.
+	UpstreamPolicies []RepositoryVirtualRepositoryConfigUpstreamPolicy `pulumi:"upstreamPolicies"`
+}
+
+// RepositoryVirtualRepositoryConfigInput is an input type that accepts RepositoryVirtualRepositoryConfigArgs and RepositoryVirtualRepositoryConfigOutput values.
+// You can construct a concrete instance of `RepositoryVirtualRepositoryConfigInput` via:
+//
+//	RepositoryVirtualRepositoryConfigArgs{...}
+type RepositoryVirtualRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryVirtualRepositoryConfigOutput() RepositoryVirtualRepositoryConfigOutput
+	ToRepositoryVirtualRepositoryConfigOutputWithContext(context.Context) RepositoryVirtualRepositoryConfigOutput
+}
+
+type RepositoryVirtualRepositoryConfigArgs struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual
+	// Repository. Upstream policies cannot be set on a standard repository.
+	// Structure is documented below.
+	UpstreamPolicies RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput `pulumi:"upstreamPolicies"`
+}
+
+func (RepositoryVirtualRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConfigOutput() RepositoryVirtualRepositoryConfigOutput {
+	return i.ToRepositoryVirtualRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConfigOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigOutput)
+}
+
+func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput {
+	return i.ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryVirtualRepositoryConfigArgs) ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigOutput).ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryVirtualRepositoryConfigPtrInput is an input type that accepts RepositoryVirtualRepositoryConfigArgs, RepositoryVirtualRepositoryConfigPtr and RepositoryVirtualRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryVirtualRepositoryConfigPtrInput` via:
+//
+//	        RepositoryVirtualRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryVirtualRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput
+	ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(context.Context) RepositoryVirtualRepositoryConfigPtrOutput
+}
+
+type repositoryVirtualRepositoryConfigPtrType RepositoryVirtualRepositoryConfigArgs
+
+func RepositoryVirtualRepositoryConfigPtr(v *RepositoryVirtualRepositoryConfigArgs) RepositoryVirtualRepositoryConfigPtrInput {
+	return (*repositoryVirtualRepositoryConfigPtrType)(v)
+}
+
+func (*repositoryVirtualRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i *repositoryVirtualRepositoryConfigPtrType) ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput {
+	return i.ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryVirtualRepositoryConfigPtrType) ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigPtrOutput)
+}
+
+type RepositoryVirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVirtualRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryVirtualRepositoryConfigOutput) ToRepositoryVirtualRepositoryConfigOutput() RepositoryVirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigOutput) ToRepositoryVirtualRepositoryConfigOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigOutput) ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput {
+	return o.ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryVirtualRepositoryConfigOutput) ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryVirtualRepositoryConfig) *RepositoryVirtualRepositoryConfig {
+		return &v
+	}).(RepositoryVirtualRepositoryConfigPtrOutput)
+}
+
+// Policies that configure the upstream artifacts distributed by the Virtual
+// Repository. Upstream policies cannot be set on a standard repository.
+// Structure is documented below.
+func (o RepositoryVirtualRepositoryConfigOutput) UpstreamPolicies() RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o.ApplyT(func(v RepositoryVirtualRepositoryConfig) []RepositoryVirtualRepositoryConfigUpstreamPolicy {
+		return v.UpstreamPolicies
+	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
+}
+
+type RepositoryVirtualRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVirtualRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o RepositoryVirtualRepositoryConfigPtrOutput) ToRepositoryVirtualRepositoryConfigPtrOutput() RepositoryVirtualRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigPtrOutput) ToRepositoryVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigPtrOutput) Elem() RepositoryVirtualRepositoryConfigOutput {
+	return o.ApplyT(func(v *RepositoryVirtualRepositoryConfig) RepositoryVirtualRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryVirtualRepositoryConfig
+		return ret
+	}).(RepositoryVirtualRepositoryConfigOutput)
+}
+
+// Policies that configure the upstream artifacts distributed by the Virtual
+// Repository. Upstream policies cannot be set on a standard repository.
+// Structure is documented below.
+func (o RepositoryVirtualRepositoryConfigPtrOutput) UpstreamPolicies() RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o.ApplyT(func(v *RepositoryVirtualRepositoryConfig) []RepositoryVirtualRepositoryConfigUpstreamPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamPolicies
+	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
+}
+
+type RepositoryVirtualRepositoryConfigUpstreamPolicy struct {
+	// The user-provided ID of the upstream policy.
+	Id *string `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority *int `pulumi:"priority"`
+	// A reference to the repository resource, for example:
+	// "projects/p1/locations/us-central1/repository/repo1".
+	Repository *string `pulumi:"repository"`
+}
+
+// RepositoryVirtualRepositoryConfigUpstreamPolicyInput is an input type that accepts RepositoryVirtualRepositoryConfigUpstreamPolicyArgs and RepositoryVirtualRepositoryConfigUpstreamPolicyOutput values.
+// You can construct a concrete instance of `RepositoryVirtualRepositoryConfigUpstreamPolicyInput` via:
+//
+//	RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{...}
+type RepositoryVirtualRepositoryConfigUpstreamPolicyInput interface {
+	pulumi.Input
+
+	ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyOutput
+	ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput
+}
+
+type RepositoryVirtualRepositoryConfigUpstreamPolicyArgs struct {
+	// The user-provided ID of the upstream policy.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// A reference to the repository resource, for example:
+	// "projects/p1/locations/us-central1/repository/repo1".
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (RepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return i.ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(context.Background())
+}
+
+func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
+}
+
+// RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput is an input type that accepts RepositoryVirtualRepositoryConfigUpstreamPolicyArray and RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput values.
+// You can construct a concrete instance of `RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput` via:
+//
+//	RepositoryVirtualRepositoryConfigUpstreamPolicyArray{ RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{...} }
+type RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput
+	ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput
+}
+
+type RepositoryVirtualRepositoryConfigUpstreamPolicyArray []RepositoryVirtualRepositoryConfigUpstreamPolicyInput
+
+func (RepositoryVirtualRepositoryConfigUpstreamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return i.ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
+}
+
+type RepositoryVirtualRepositoryConfigUpstreamPolicyOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return o
+}
+
+// The user-provided ID of the upstream policy.
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryVirtualRepositoryConfigUpstreamPolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Entries with a greater priority value take precedence in the pull order.
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RepositoryVirtualRepositoryConfigUpstreamPolicy) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// A reference to the repository resource, for example:
+// "projects/p1/locations/us-central1/repository/repo1".
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryVirtualRepositoryConfigUpstreamPolicy) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryVirtualRepositoryConfigUpstreamPolicy {
+		return vs[0].([]RepositoryVirtualRepositoryConfigUpstreamPolicy)[vs[1].(int)]
+	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
+}
+
 type GetRepositoryMavenConfig struct {
 	AllowSnapshotOverwrites bool   `pulumi:"allowSnapshotOverwrites"`
 	VersionPolicy           string `pulumi:"versionPolicy"`
@@ -604,6 +1686,710 @@ func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetReposit
 	}).(GetRepositoryMavenConfigOutput)
 }
 
+type GetRepositoryRemoteRepositoryConfig struct {
+	Description        string                                                `pulumi:"description"`
+	DockerRepositories []GetRepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepositories"`
+	MavenRepositories  []GetRepositoryRemoteRepositoryConfigMavenRepository  `pulumi:"mavenRepositories"`
+	NpmRepositories    []GetRepositoryRemoteRepositoryConfigNpmRepository    `pulumi:"npmRepositories"`
+	PythonRepositories []GetRepositoryRemoteRepositoryConfigPythonRepository `pulumi:"pythonRepositories"`
+}
+
+// GetRepositoryRemoteRepositoryConfigInput is an input type that accepts GetRepositoryRemoteRepositoryConfigArgs and GetRepositoryRemoteRepositoryConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigArgs{...}
+type GetRepositoryRemoteRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigOutput() GetRepositoryRemoteRepositoryConfigOutput
+	ToGetRepositoryRemoteRepositoryConfigOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigArgs struct {
+	Description        pulumi.StringInput                                            `pulumi:"description"`
+	DockerRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput `pulumi:"dockerRepositories"`
+	MavenRepositories  GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput  `pulumi:"mavenRepositories"`
+	NpmRepositories    GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput    `pulumi:"npmRepositories"`
+	PythonRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput `pulumi:"pythonRepositories"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigArgs) ToGetRepositoryRemoteRepositoryConfigOutput() GetRepositoryRemoteRepositoryConfigOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigArgs) ToGetRepositoryRemoteRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigArray and GetRepositoryRemoteRepositoryConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigArray{ GetRepositoryRemoteRepositoryConfigArgs{...} }
+type GetRepositoryRemoteRepositoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigArrayOutput() GetRepositoryRemoteRepositoryConfigArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigArray []GetRepositoryRemoteRepositoryConfigInput
+
+func (GetRepositoryRemoteRepositoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigArray) ToGetRepositoryRemoteRepositoryConfigArrayOutput() GetRepositoryRemoteRepositoryConfigArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigArray) ToGetRepositoryRemoteRepositoryConfigArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) ToGetRepositoryRemoteRepositoryConfigOutput() GetRepositoryRemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) ToGetRepositoryRemoteRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) DockerRepositories() GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigDockerRepository {
+		return v.DockerRepositories
+	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) MavenRepositories() GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigMavenRepository {
+		return v.MavenRepositories
+	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) NpmRepositories() GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigNpmRepository {
+		return v.NpmRepositories
+	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) PythonRepositories() GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigPythonRepository {
+		return v.PythonRepositories
+	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigArrayOutput) ToGetRepositoryRemoteRepositoryConfigArrayOutput() GetRepositoryRemoteRepositoryConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigArrayOutput) ToGetRepositoryRemoteRepositoryConfigArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfig {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfig)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// GetRepositoryRemoteRepositoryConfigDockerRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs and GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigDockerRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
+	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigDockerRepositoryArray and GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigDockerRepositoryArray{ GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryArray []GetRepositoryRemoteRepositoryConfigDockerRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArray) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryArray) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigDockerRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigDockerRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigDockerRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepository struct {
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// GetRepositoryRemoteRepositoryConfigMavenRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs and GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigMavenRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
+	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigMavenRepositoryArray and GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigMavenRepositoryArray{ GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryArray []GetRepositoryRemoteRepositoryConfigMavenRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArray) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryArray) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigMavenRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigMavenRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigMavenRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// GetRepositoryRemoteRepositoryConfigNpmRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs and GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNpmRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
+	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNpmRepositoryArray and GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNpmRepositoryArray{ GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryArray []GetRepositoryRemoteRepositoryConfigNpmRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArray) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryArray) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNpmRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigNpmRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigNpmRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepository struct {
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// GetRepositoryRemoteRepositoryConfigPythonRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs and GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigPythonRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
+	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigPythonRepositoryArray and GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigPythonRepositoryArray{ GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryArray []GetRepositoryRemoteRepositoryConfigPythonRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArray) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryArray) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigPythonRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigPythonRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigPythonRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfig struct {
+	UpstreamPolicies []GetRepositoryVirtualRepositoryConfigUpstreamPolicy `pulumi:"upstreamPolicies"`
+}
+
+// GetRepositoryVirtualRepositoryConfigInput is an input type that accepts GetRepositoryVirtualRepositoryConfigArgs and GetRepositoryVirtualRepositoryConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigInput` via:
+//
+//	GetRepositoryVirtualRepositoryConfigArgs{...}
+type GetRepositoryVirtualRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVirtualRepositoryConfigOutput() GetRepositoryVirtualRepositoryConfigOutput
+	ToGetRepositoryVirtualRepositoryConfigOutputWithContext(context.Context) GetRepositoryVirtualRepositoryConfigOutput
+}
+
+type GetRepositoryVirtualRepositoryConfigArgs struct {
+	UpstreamPolicies GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput `pulumi:"upstreamPolicies"`
+}
+
+func (GetRepositoryVirtualRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryVirtualRepositoryConfigArgs) ToGetRepositoryVirtualRepositoryConfigOutput() GetRepositoryVirtualRepositoryConfigOutput {
+	return i.ToGetRepositoryVirtualRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVirtualRepositoryConfigArgs) ToGetRepositoryVirtualRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigOutput)
+}
+
+// GetRepositoryVirtualRepositoryConfigArrayInput is an input type that accepts GetRepositoryVirtualRepositoryConfigArray and GetRepositoryVirtualRepositoryConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigArrayInput` via:
+//
+//	GetRepositoryVirtualRepositoryConfigArray{ GetRepositoryVirtualRepositoryConfigArgs{...} }
+type GetRepositoryVirtualRepositoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVirtualRepositoryConfigArrayOutput() GetRepositoryVirtualRepositoryConfigArrayOutput
+	ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(context.Context) GetRepositoryVirtualRepositoryConfigArrayOutput
+}
+
+type GetRepositoryVirtualRepositoryConfigArray []GetRepositoryVirtualRepositoryConfigInput
+
+func (GetRepositoryVirtualRepositoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryVirtualRepositoryConfigArray) ToGetRepositoryVirtualRepositoryConfigArrayOutput() GetRepositoryVirtualRepositoryConfigArrayOutput {
+	return i.ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVirtualRepositoryConfigArray) ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigArrayOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVirtualRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryVirtualRepositoryConfigOutput) ToGetRepositoryVirtualRepositoryConfigOutput() GetRepositoryVirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigOutput) ToGetRepositoryVirtualRepositoryConfigOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigOutput) UpstreamPolicies() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfig) []GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
+		return v.UpstreamPolicies
+	}).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVirtualRepositoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryVirtualRepositoryConfigArrayOutput) ToGetRepositoryVirtualRepositoryConfigArrayOutput() GetRepositoryVirtualRepositoryConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigArrayOutput) ToGetRepositoryVirtualRepositoryConfigArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryVirtualRepositoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryVirtualRepositoryConfig {
+		return vs[0].([]GetRepositoryVirtualRepositoryConfig)[vs[1].(int)]
+	}).(GetRepositoryVirtualRepositoryConfigOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicy struct {
+	Id         string `pulumi:"id"`
+	Priority   int    `pulumi:"priority"`
+	Repository string `pulumi:"repository"`
+}
+
+// GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput is an input type that accepts GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs and GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput values.
+// You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput` via:
+//
+//	GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{...}
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput
+	ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput
+}
+
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs struct {
+	Id         pulumi.StringInput `pulumi:"id"`
+	Priority   pulumi.IntInput    `pulumi:"priority"`
+	Repository pulumi.StringInput `pulumi:"repository"`
+}
+
+func (GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return i.ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
+}
+
+// GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput is an input type that accepts GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray and GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput` via:
+//
+//	GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{ GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{...} }
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput
+	ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput
+}
+
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray []GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput
+
+func (GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return i.ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVirtualRepositoryConfigUpstreamPolicy)(nil)).Elem()
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) ToGetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulumi.IntInput) GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
+		return vs[0].([]GetRepositoryVirtualRepositoryConfigUpstreamPolicy)[vs[1].(int)]
+	}).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
@@ -611,14 +2397,70 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigPtrInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigPtrInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigInput)(nil)).Elem(), GetRepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigArrayInput)(nil)).Elem(), GetRepositoryMavenConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
+	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 }
