@@ -29,7 +29,7 @@ type ClusterAutomatedBackupPolicy struct {
 	TimeBasedRetention *ClusterAutomatedBackupPolicyTimeBasedRetention `pulumi:"timeBasedRetention"`
 	// Weekly schedule for the Backup.
 	// Structure is documented below.
-	WeeklySchedule ClusterAutomatedBackupPolicyWeeklySchedule `pulumi:"weeklySchedule"`
+	WeeklySchedule *ClusterAutomatedBackupPolicyWeeklySchedule `pulumi:"weeklySchedule"`
 }
 
 // ClusterAutomatedBackupPolicyInput is an input type that accepts ClusterAutomatedBackupPolicyArgs and ClusterAutomatedBackupPolicyOutput values.
@@ -62,7 +62,7 @@ type ClusterAutomatedBackupPolicyArgs struct {
 	TimeBasedRetention ClusterAutomatedBackupPolicyTimeBasedRetentionPtrInput `pulumi:"timeBasedRetention"`
 	// Weekly schedule for the Backup.
 	// Structure is documented below.
-	WeeklySchedule ClusterAutomatedBackupPolicyWeeklyScheduleInput `pulumi:"weeklySchedule"`
+	WeeklySchedule ClusterAutomatedBackupPolicyWeeklySchedulePtrInput `pulumi:"weeklySchedule"`
 }
 
 func (ClusterAutomatedBackupPolicyArgs) ElementType() reflect.Type {
@@ -182,10 +182,10 @@ func (o ClusterAutomatedBackupPolicyOutput) TimeBasedRetention() ClusterAutomate
 
 // Weekly schedule for the Backup.
 // Structure is documented below.
-func (o ClusterAutomatedBackupPolicyOutput) WeeklySchedule() ClusterAutomatedBackupPolicyWeeklyScheduleOutput {
-	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) ClusterAutomatedBackupPolicyWeeklySchedule {
+func (o ClusterAutomatedBackupPolicyOutput) WeeklySchedule() ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyWeeklySchedule {
 		return v.WeeklySchedule
-	}).(ClusterAutomatedBackupPolicyWeeklyScheduleOutput)
+	}).(ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput)
 }
 
 type ClusterAutomatedBackupPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -283,7 +283,7 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) WeeklySchedule() ClusterAutomated
 		if v == nil {
 			return nil
 		}
-		return &v.WeeklySchedule
+		return v.WeeklySchedule
 	}).(ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput)
 }
 

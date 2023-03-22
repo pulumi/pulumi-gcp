@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiMetadataStoreStateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The disk utilization of the MetadataStore in bytes.
         /// </summary>
         [Input("diskUtilizationBytes")]

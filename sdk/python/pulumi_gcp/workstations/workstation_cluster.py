@@ -523,10 +523,6 @@ class WorkstationCluster(pulumi.CustomResource):
          $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
         ```
 
-        ```sh
-         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -623,10 +619,6 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ```sh
          $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
         ```
 
         :param str resource_name: The name of the resource.

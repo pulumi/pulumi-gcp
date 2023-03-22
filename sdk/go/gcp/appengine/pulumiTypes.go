@@ -709,6 +709,7 @@ type DomainMappingSslSettings struct {
 	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
 	// Example: 12345.
 	CertificateId *string `pulumi:"certificateId"`
+	// (Output)
 	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -740,6 +741,7 @@ type DomainMappingSslSettingsArgs struct {
 	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
 	// Example: 12345.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	// (Output)
 	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -839,6 +841,7 @@ func (o DomainMappingSslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 // managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 // provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -894,6 +897,7 @@ func (o DomainMappingSslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 // managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 // provisioning process completes, the `certificateId` field will reflect the new managed certificate and this

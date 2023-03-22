@@ -17,6 +17,7 @@ public final class InstanceMemcacheParametersArgs extends com.pulumi.resources.R
     public static final InstanceMemcacheParametersArgs Empty = new InstanceMemcacheParametersArgs();
 
     /**
+     * (Output)
      * This is a unique ID associated with this set of parameters.
      * 
      */
@@ -24,7 +25,8 @@ public final class InstanceMemcacheParametersArgs extends com.pulumi.resources.R
     private @Nullable Output<String> id;
 
     /**
-     * @return This is a unique ID associated with this set of parameters.
+     * @return (Output)
+     * This is a unique ID associated with this set of parameters.
      * 
      */
     public Optional<Output<String>> id() {
@@ -72,7 +74,8 @@ public final class InstanceMemcacheParametersArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id This is a unique ID associated with this set of parameters.
+         * @param id (Output)
+         * This is a unique ID associated with this set of parameters.
          * 
          * @return builder
          * 
@@ -83,7 +86,8 @@ public final class InstanceMemcacheParametersArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id This is a unique ID associated with this set of parameters.
+         * @param id (Output)
+         * This is a unique ID associated with this set of parameters.
          * 
          * @return builder
          * 

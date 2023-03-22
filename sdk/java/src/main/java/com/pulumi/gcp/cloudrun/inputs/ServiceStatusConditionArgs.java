@@ -16,6 +16,7 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     public static final ServiceStatusConditionArgs Empty = new ServiceStatusConditionArgs();
 
     /**
+     * (Output)
      * Human readable message indicating details about the current status.
      * 
      */
@@ -23,7 +24,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> message;
 
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<Output<String>> message() {
@@ -31,6 +33,7 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
@@ -38,7 +41,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> reason;
 
     /**
-     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * @return (Output)
+     * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -46,6 +50,7 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      * 
      */
@@ -53,7 +58,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     public Optional<Output<String>> status() {
@@ -61,6 +67,7 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * Type of domain mapping condition.
      * 
      */
@@ -68,7 +75,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of domain mapping condition.
+     * @return (Output)
+     * Type of domain mapping condition.
      * 
      */
     public Optional<Output<String>> type() {
@@ -103,7 +111,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -114,7 +123,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -124,7 +134,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * @param reason (Output)
+         * One-word CamelCase reason for the condition&#39;s current status.
          * 
          * @return builder
          * 
@@ -135,7 +146,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * @param reason (Output)
+         * One-word CamelCase reason for the condition&#39;s current status.
          * 
          * @return builder
          * 
@@ -145,7 +157,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status Status of the condition, one of True, False, Unknown.
+         * @param status (Output)
+         * Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 
@@ -156,7 +169,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status Status of the condition, one of True, False, Unknown.
+         * @param status (Output)
+         * Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 
@@ -166,7 +180,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of domain mapping condition.
+         * @param type (Output)
+         * Type of domain mapping condition.
          * 
          * @return builder
          * 
@@ -177,7 +192,8 @@ public final class ServiceStatusConditionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of domain mapping condition.
+         * @param type (Output)
+         * Type of domain mapping condition.
          * 
          * @return builder
          * 

@@ -182,18 +182,18 @@ type InterconnectAttachment struct {
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain pulumi.StringOutput `pulumi:"edgeAvailabilityDomain"`
 	// Indicates the user-supplied encryption option of this interconnect
-	// attachment:
-	// NONE is the default value, which means that the attachment carries
-	// unencrypted traffic. VMs can send traffic to, or receive traffic
-	// from, this type of attachment.
-	// IPSEC indicates that the attachment carries only traffic encrypted by
-	// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-	// traffic to, or receive traffic from, such an attachment. To use
-	// IPsec-encrypted Cloud Interconnect create the attachment using this
-	// option.
-	// Not currently available publicly.
-	// Default value is `NONE`.
-	// Possible values are `NONE` and `IPSEC`.
+	// attachment. Can only be specified at attachment creation for PARTNER or
+	// DEDICATED attachments.
+	// * NONE - This is the default value, which means that the VLAN attachment
+	//   carries unencrypted traffic. VMs are able to send traffic to, or receive
+	//   traffic from, such a VLAN attachment.
+	// * IPSEC - The VLAN attachment carries only encrypted traffic that is
+	//   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+	//   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+	//   attachment must be created with this option.
+	//   Default value is `NONE`.
+	//   Possible values are `NONE` and `IPSEC`.
 	Encryption pulumi.StringPtrOutput `pulumi:"encryption"`
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -202,21 +202,20 @@ type InterconnectAttachment struct {
 	// traffic will traverse through. Required if type is DEDICATED, must not
 	// be set if type is PARTNER.
 	Interconnect pulumi.StringPtrOutput `pulumi:"interconnect"`
-	// URL of addresses that have been reserved for the interconnect
-	// attachment, Used only for interconnect attachment that has the
-	// encryption option as IPSEC.
-	// The addresses must be RFC 1918 IP address ranges. When creating HA
-	// VPN gateway over the interconnect attachment, if the attachment is
-	// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-	// address will be allocated from the IP address range specified
-	// here.
+	// URL of addresses that have been reserved for the interconnect attachment,
+	// Used only for interconnect attachment that has the encryption option as
+	// IPSEC.
+	// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+	// gateway over the interconnect attachment, if the attachment is configured
+	// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+	// allocated from the IP address range specified here.
 	// For example, if the HA VPN gateway's interface 0 is paired to this
-	// interconnect attachment, then an RFC 1918 IP address for the VPN
-	// gateway interface 0 will be allocated from the IP address specified
-	// for this interconnect attachment.
+	// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+	// interface 0 will be allocated from the IP address specified for this
+	// interconnect attachment.
 	// If this field is not specified for interconnect attachment that has
-	// encryption option as IPSEC, later on when creating HA VPN gateway on
-	// this interconnect attachment, the HA VPN gateway's IP address will be
+	// encryption option as IPSEC, later on when creating HA VPN gateway on this
+	// interconnect attachment, the HA VPN gateway's IP address will be
 	// allocated from regional external IP address pool.
 	IpsecInternalAddresses pulumi.StringArrayOutput `pulumi:"ipsecInternalAddresses"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -332,18 +331,18 @@ type interconnectAttachmentState struct {
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain *string `pulumi:"edgeAvailabilityDomain"`
 	// Indicates the user-supplied encryption option of this interconnect
-	// attachment:
-	// NONE is the default value, which means that the attachment carries
-	// unencrypted traffic. VMs can send traffic to, or receive traffic
-	// from, this type of attachment.
-	// IPSEC indicates that the attachment carries only traffic encrypted by
-	// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-	// traffic to, or receive traffic from, such an attachment. To use
-	// IPsec-encrypted Cloud Interconnect create the attachment using this
-	// option.
-	// Not currently available publicly.
-	// Default value is `NONE`.
-	// Possible values are `NONE` and `IPSEC`.
+	// attachment. Can only be specified at attachment creation for PARTNER or
+	// DEDICATED attachments.
+	// * NONE - This is the default value, which means that the VLAN attachment
+	//   carries unencrypted traffic. VMs are able to send traffic to, or receive
+	//   traffic from, such a VLAN attachment.
+	// * IPSEC - The VLAN attachment carries only encrypted traffic that is
+	//   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+	//   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+	//   attachment must be created with this option.
+	//   Default value is `NONE`.
+	//   Possible values are `NONE` and `IPSEC`.
 	Encryption *string `pulumi:"encryption"`
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -352,21 +351,20 @@ type interconnectAttachmentState struct {
 	// traffic will traverse through. Required if type is DEDICATED, must not
 	// be set if type is PARTNER.
 	Interconnect *string `pulumi:"interconnect"`
-	// URL of addresses that have been reserved for the interconnect
-	// attachment, Used only for interconnect attachment that has the
-	// encryption option as IPSEC.
-	// The addresses must be RFC 1918 IP address ranges. When creating HA
-	// VPN gateway over the interconnect attachment, if the attachment is
-	// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-	// address will be allocated from the IP address range specified
-	// here.
+	// URL of addresses that have been reserved for the interconnect attachment,
+	// Used only for interconnect attachment that has the encryption option as
+	// IPSEC.
+	// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+	// gateway over the interconnect attachment, if the attachment is configured
+	// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+	// allocated from the IP address range specified here.
 	// For example, if the HA VPN gateway's interface 0 is paired to this
-	// interconnect attachment, then an RFC 1918 IP address for the VPN
-	// gateway interface 0 will be allocated from the IP address specified
-	// for this interconnect attachment.
+	// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+	// interface 0 will be allocated from the IP address specified for this
+	// interconnect attachment.
 	// If this field is not specified for interconnect attachment that has
-	// encryption option as IPSEC, later on when creating HA VPN gateway on
-	// this interconnect attachment, the HA VPN gateway's IP address will be
+	// encryption option as IPSEC, later on when creating HA VPN gateway on this
+	// interconnect attachment, the HA VPN gateway's IP address will be
 	// allocated from regional external IP address pool.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -451,18 +449,18 @@ type InterconnectAttachmentState struct {
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain pulumi.StringPtrInput
 	// Indicates the user-supplied encryption option of this interconnect
-	// attachment:
-	// NONE is the default value, which means that the attachment carries
-	// unencrypted traffic. VMs can send traffic to, or receive traffic
-	// from, this type of attachment.
-	// IPSEC indicates that the attachment carries only traffic encrypted by
-	// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-	// traffic to, or receive traffic from, such an attachment. To use
-	// IPsec-encrypted Cloud Interconnect create the attachment using this
-	// option.
-	// Not currently available publicly.
-	// Default value is `NONE`.
-	// Possible values are `NONE` and `IPSEC`.
+	// attachment. Can only be specified at attachment creation for PARTNER or
+	// DEDICATED attachments.
+	// * NONE - This is the default value, which means that the VLAN attachment
+	//   carries unencrypted traffic. VMs are able to send traffic to, or receive
+	//   traffic from, such a VLAN attachment.
+	// * IPSEC - The VLAN attachment carries only encrypted traffic that is
+	//   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+	//   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+	//   attachment must be created with this option.
+	//   Default value is `NONE`.
+	//   Possible values are `NONE` and `IPSEC`.
 	Encryption pulumi.StringPtrInput
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -471,21 +469,20 @@ type InterconnectAttachmentState struct {
 	// traffic will traverse through. Required if type is DEDICATED, must not
 	// be set if type is PARTNER.
 	Interconnect pulumi.StringPtrInput
-	// URL of addresses that have been reserved for the interconnect
-	// attachment, Used only for interconnect attachment that has the
-	// encryption option as IPSEC.
-	// The addresses must be RFC 1918 IP address ranges. When creating HA
-	// VPN gateway over the interconnect attachment, if the attachment is
-	// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-	// address will be allocated from the IP address range specified
-	// here.
+	// URL of addresses that have been reserved for the interconnect attachment,
+	// Used only for interconnect attachment that has the encryption option as
+	// IPSEC.
+	// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+	// gateway over the interconnect attachment, if the attachment is configured
+	// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+	// allocated from the IP address range specified here.
 	// For example, if the HA VPN gateway's interface 0 is paired to this
-	// interconnect attachment, then an RFC 1918 IP address for the VPN
-	// gateway interface 0 will be allocated from the IP address specified
-	// for this interconnect attachment.
+	// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+	// interface 0 will be allocated from the IP address specified for this
+	// interconnect attachment.
 	// If this field is not specified for interconnect attachment that has
-	// encryption option as IPSEC, later on when creating HA VPN gateway on
-	// this interconnect attachment, the HA VPN gateway's IP address will be
+	// encryption option as IPSEC, later on when creating HA VPN gateway on this
+	// interconnect attachment, the HA VPN gateway's IP address will be
 	// allocated from regional external IP address pool.
 	IpsecInternalAddresses pulumi.StringArrayInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -566,38 +563,37 @@ type interconnectAttachmentArgs struct {
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain *string `pulumi:"edgeAvailabilityDomain"`
 	// Indicates the user-supplied encryption option of this interconnect
-	// attachment:
-	// NONE is the default value, which means that the attachment carries
-	// unencrypted traffic. VMs can send traffic to, or receive traffic
-	// from, this type of attachment.
-	// IPSEC indicates that the attachment carries only traffic encrypted by
-	// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-	// traffic to, or receive traffic from, such an attachment. To use
-	// IPsec-encrypted Cloud Interconnect create the attachment using this
-	// option.
-	// Not currently available publicly.
-	// Default value is `NONE`.
-	// Possible values are `NONE` and `IPSEC`.
+	// attachment. Can only be specified at attachment creation for PARTNER or
+	// DEDICATED attachments.
+	// * NONE - This is the default value, which means that the VLAN attachment
+	//   carries unencrypted traffic. VMs are able to send traffic to, or receive
+	//   traffic from, such a VLAN attachment.
+	// * IPSEC - The VLAN attachment carries only encrypted traffic that is
+	//   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+	//   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+	//   attachment must be created with this option.
+	//   Default value is `NONE`.
+	//   Possible values are `NONE` and `IPSEC`.
 	Encryption *string `pulumi:"encryption"`
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
 	// be set if type is PARTNER.
 	Interconnect *string `pulumi:"interconnect"`
-	// URL of addresses that have been reserved for the interconnect
-	// attachment, Used only for interconnect attachment that has the
-	// encryption option as IPSEC.
-	// The addresses must be RFC 1918 IP address ranges. When creating HA
-	// VPN gateway over the interconnect attachment, if the attachment is
-	// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-	// address will be allocated from the IP address range specified
-	// here.
+	// URL of addresses that have been reserved for the interconnect attachment,
+	// Used only for interconnect attachment that has the encryption option as
+	// IPSEC.
+	// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+	// gateway over the interconnect attachment, if the attachment is configured
+	// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+	// allocated from the IP address range specified here.
 	// For example, if the HA VPN gateway's interface 0 is paired to this
-	// interconnect attachment, then an RFC 1918 IP address for the VPN
-	// gateway interface 0 will be allocated from the IP address specified
-	// for this interconnect attachment.
+	// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+	// interface 0 will be allocated from the IP address specified for this
+	// interconnect attachment.
 	// If this field is not specified for interconnect attachment that has
-	// encryption option as IPSEC, later on when creating HA VPN gateway on
-	// this interconnect attachment, the HA VPN gateway's IP address will be
+	// encryption option as IPSEC, later on when creating HA VPN gateway on this
+	// interconnect attachment, the HA VPN gateway's IP address will be
 	// allocated from regional external IP address pool.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -659,38 +655,37 @@ type InterconnectAttachmentArgs struct {
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain pulumi.StringPtrInput
 	// Indicates the user-supplied encryption option of this interconnect
-	// attachment:
-	// NONE is the default value, which means that the attachment carries
-	// unencrypted traffic. VMs can send traffic to, or receive traffic
-	// from, this type of attachment.
-	// IPSEC indicates that the attachment carries only traffic encrypted by
-	// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-	// traffic to, or receive traffic from, such an attachment. To use
-	// IPsec-encrypted Cloud Interconnect create the attachment using this
-	// option.
-	// Not currently available publicly.
-	// Default value is `NONE`.
-	// Possible values are `NONE` and `IPSEC`.
+	// attachment. Can only be specified at attachment creation for PARTNER or
+	// DEDICATED attachments.
+	// * NONE - This is the default value, which means that the VLAN attachment
+	//   carries unencrypted traffic. VMs are able to send traffic to, or receive
+	//   traffic from, such a VLAN attachment.
+	// * IPSEC - The VLAN attachment carries only encrypted traffic that is
+	//   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+	//   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+	//   attachment must be created with this option.
+	//   Default value is `NONE`.
+	//   Possible values are `NONE` and `IPSEC`.
 	Encryption pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
 	// be set if type is PARTNER.
 	Interconnect pulumi.StringPtrInput
-	// URL of addresses that have been reserved for the interconnect
-	// attachment, Used only for interconnect attachment that has the
-	// encryption option as IPSEC.
-	// The addresses must be RFC 1918 IP address ranges. When creating HA
-	// VPN gateway over the interconnect attachment, if the attachment is
-	// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-	// address will be allocated from the IP address range specified
-	// here.
+	// URL of addresses that have been reserved for the interconnect attachment,
+	// Used only for interconnect attachment that has the encryption option as
+	// IPSEC.
+	// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+	// gateway over the interconnect attachment, if the attachment is configured
+	// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+	// allocated from the IP address range specified here.
 	// For example, if the HA VPN gateway's interface 0 is paired to this
-	// interconnect attachment, then an RFC 1918 IP address for the VPN
-	// gateway interface 0 will be allocated from the IP address specified
-	// for this interconnect attachment.
+	// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+	// interface 0 will be allocated from the IP address specified for this
+	// interconnect attachment.
 	// If this field is not specified for interconnect attachment that has
-	// encryption option as IPSEC, later on when creating HA VPN gateway on
-	// this interconnect attachment, the HA VPN gateway's IP address will be
+	// encryption option as IPSEC, later on when creating HA VPN gateway on this
+	// interconnect attachment, the HA VPN gateway's IP address will be
 	// allocated from regional external IP address pool.
 	IpsecInternalAddresses pulumi.StringArrayInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -869,18 +864,18 @@ func (o InterconnectAttachmentOutput) EdgeAvailabilityDomain() pulumi.StringOutp
 }
 
 // Indicates the user-supplied encryption option of this interconnect
-// attachment:
-// NONE is the default value, which means that the attachment carries
-// unencrypted traffic. VMs can send traffic to, or receive traffic
-// from, this type of attachment.
-// IPSEC indicates that the attachment carries only traffic encrypted by
-// an IPsec device such as an HA VPN gateway. VMs cannot directly send
-// traffic to, or receive traffic from, such an attachment. To use
-// IPsec-encrypted Cloud Interconnect create the attachment using this
-// option.
-// Not currently available publicly.
-// Default value is `NONE`.
-// Possible values are `NONE` and `IPSEC`.
+// attachment. Can only be specified at attachment creation for PARTNER or
+// DEDICATED attachments.
+//   - NONE - This is the default value, which means that the VLAN attachment
+//     carries unencrypted traffic. VMs are able to send traffic to, or receive
+//     traffic from, such a VLAN attachment.
+//   - IPSEC - The VLAN attachment carries only encrypted traffic that is
+//     encrypted by an IPsec device, such as an HA VPN gateway or third-party
+//     IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+//     such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+//     attachment must be created with this option.
+//     Default value is `NONE`.
+//     Possible values are `NONE` and `IPSEC`.
 func (o InterconnectAttachmentOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -898,21 +893,20 @@ func (o InterconnectAttachmentOutput) Interconnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.Interconnect }).(pulumi.StringPtrOutput)
 }
 
-// URL of addresses that have been reserved for the interconnect
-// attachment, Used only for interconnect attachment that has the
-// encryption option as IPSEC.
-// The addresses must be RFC 1918 IP address ranges. When creating HA
-// VPN gateway over the interconnect attachment, if the attachment is
-// configured to use an RFC 1918 IP address, then the VPN gateway's IP
-// address will be allocated from the IP address range specified
-// here.
+// URL of addresses that have been reserved for the interconnect attachment,
+// Used only for interconnect attachment that has the encryption option as
+// IPSEC.
+// The addresses must be RFC 1918 IP address ranges. When creating HA VPN
+// gateway over the interconnect attachment, if the attachment is configured
+// to use an RFC 1918 IP address, then the VPN gateway's IP address will be
+// allocated from the IP address range specified here.
 // For example, if the HA VPN gateway's interface 0 is paired to this
-// interconnect attachment, then an RFC 1918 IP address for the VPN
-// gateway interface 0 will be allocated from the IP address specified
-// for this interconnect attachment.
+// interconnect attachment, then an RFC 1918 IP address for the VPN gateway
+// interface 0 will be allocated from the IP address specified for this
+// interconnect attachment.
 // If this field is not specified for interconnect attachment that has
-// encryption option as IPSEC, later on when creating HA VPN gateway on
-// this interconnect attachment, the HA VPN gateway's IP address will be
+// encryption option as IPSEC, later on when creating HA VPN gateway on this
+// interconnect attachment, the HA VPN gateway's IP address will be
 // allocated from regional external IP address pool.
 func (o InterconnectAttachmentOutput) IpsecInternalAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringArrayOutput { return v.IpsecInternalAddresses }).(pulumi.StringArrayOutput)

@@ -101,6 +101,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Output only. The resource name of the Eventarc trigger.
      * 
      */
@@ -108,7 +109,8 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> trigger;
 
     /**
-     * @return Output only. The resource name of the Eventarc trigger.
+     * @return (Output)
+     * Output only. The resource name of the Eventarc trigger.
      * 
      */
     public Optional<Output<String>> trigger() {
@@ -291,7 +293,8 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trigger Output only. The resource name of the Eventarc trigger.
+         * @param trigger (Output)
+         * Output only. The resource name of the Eventarc trigger.
          * 
          * @return builder
          * 
@@ -302,7 +305,8 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trigger Output only. The resource name of the Eventarc trigger.
+         * @param trigger (Output)
+         * Output only. The resource name of the Eventarc trigger.
          * 
          * @return builder
          * 

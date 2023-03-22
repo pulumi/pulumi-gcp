@@ -123,7 +123,8 @@ class _DomainMappingState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: (Output)
+               Status of the condition, one of True, False, Unknown.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -205,6 +206,7 @@ class _DomainMappingState:
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]]]:
         """
+        (Output)
         Status of the condition, one of True, False, Unknown.
         """
         return pulumi.get(self, "statuses")
@@ -422,7 +424,8 @@ class DomainMapping(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]] statuses: Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]]] statuses: (Output)
+               Status of the condition, one of True, False, Unknown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,6 +486,7 @@ class DomainMapping(pulumi.CustomResource):
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence['outputs.DomainMappingStatus']]:
         """
+        (Output)
         Status of the condition, one of True, False, Unknown.
         """
         return pulumi.get(self, "statuses")

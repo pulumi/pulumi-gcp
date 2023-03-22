@@ -16,6 +16,7 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
     public static final DnsAuthorizationDnsResourceRecordArgs Empty = new DnsAuthorizationDnsResourceRecordArgs();
 
     /**
+     * (Output)
      * Data of the DNS Resource Record.
      * 
      */
@@ -23,7 +24,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
     private @Nullable Output<String> data;
 
     /**
-     * @return Data of the DNS Resource Record.
+     * @return (Output)
+     * Data of the DNS Resource Record.
      * 
      */
     public Optional<Output<String>> data() {
@@ -50,6 +52,7 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Type of the DNS Resource Record.
      * 
      */
@@ -57,7 +60,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the DNS Resource Record.
+     * @return (Output)
+     * Type of the DNS Resource Record.
      * 
      */
     public Optional<Output<String>> type() {
@@ -91,7 +95,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param data Data of the DNS Resource Record.
+         * @param data (Output)
+         * Data of the DNS Resource Record.
          * 
          * @return builder
          * 
@@ -102,7 +107,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param data Data of the DNS Resource Record.
+         * @param data (Output)
+         * Data of the DNS Resource Record.
          * 
          * @return builder
          * 
@@ -137,7 +143,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Type of the DNS Resource Record.
+         * @param type (Output)
+         * Type of the DNS Resource Record.
          * 
          * @return builder
          * 
@@ -148,7 +155,8 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Type of the DNS Resource Record.
+         * @param type (Output)
+         * Type of the DNS Resource Record.
          * 
          * @return builder
          * 

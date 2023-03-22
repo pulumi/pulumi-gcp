@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
         /// </summary>
         public readonly Outputs.ProjectDefaultConfigSignInEmail? Email;
         /// <summary>
+        /// (Output)
         /// Output only. Hash config information.
         /// Structure is documented below.
         /// </summary>

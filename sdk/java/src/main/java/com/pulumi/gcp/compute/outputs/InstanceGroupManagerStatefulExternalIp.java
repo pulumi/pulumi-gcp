@@ -16,6 +16,10 @@ public final class InstanceGroupManagerStatefulExternalIp {
      * 
      */
     private @Nullable String deleteRule;
+    /**
+     * @return , The network interface name of the external Ip.
+     * 
+     */
     private @Nullable String interfaceName;
 
     private InstanceGroupManagerStatefulExternalIp() {}
@@ -26,6 +30,10 @@ public final class InstanceGroupManagerStatefulExternalIp {
     public Optional<String> deleteRule() {
         return Optional.ofNullable(this.deleteRule);
     }
+    /**
+     * @return , The network interface name of the external Ip.
+     * 
+     */
     public Optional<String> interfaceName() {
         return Optional.ofNullable(this.interfaceName);
     }

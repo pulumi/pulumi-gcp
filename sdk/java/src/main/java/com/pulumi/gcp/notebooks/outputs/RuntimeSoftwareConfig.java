@@ -69,7 +69,8 @@ public final class RuntimeSoftwareConfig {
      */
     private @Nullable String postStartupScriptBehavior;
     /**
-     * @return Bool indicating whether an newer image is available in an image family.
+     * @return (Output)
+     * Bool indicating whether an newer image is available in an image family.
      * 
      */
     private @Nullable Boolean upgradeable;
@@ -147,7 +148,8 @@ public final class RuntimeSoftwareConfig {
         return Optional.ofNullable(this.postStartupScriptBehavior);
     }
     /**
-     * @return Bool indicating whether an newer image is available in an image family.
+     * @return (Output)
+     * Bool indicating whether an newer image is available in an image family.
      * 
      */
     public Optional<Boolean> upgradeable() {

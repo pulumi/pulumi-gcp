@@ -15,6 +15,7 @@ type RepositoryGitRemoteSettings struct {
 	AuthenticationTokenSecretVersion string `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch string `pulumi:"defaultBranch"`
+	// (Output)
 	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 	TokenStatus *string `pulumi:"tokenStatus"`
 	// The Git remote's URL.
@@ -37,6 +38,7 @@ type RepositoryGitRemoteSettingsArgs struct {
 	AuthenticationTokenSecretVersion pulumi.StringInput `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// (Output)
 	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 	TokenStatus pulumi.StringPtrInput `pulumi:"tokenStatus"`
 	// The Git remote's URL.
@@ -130,6 +132,7 @@ func (o RepositoryGitRemoteSettingsOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryGitRemoteSettings) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 func (o RepositoryGitRemoteSettingsOutput) TokenStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryGitRemoteSettings) *string { return v.TokenStatus }).(pulumi.StringPtrOutput)
@@ -184,6 +187,7 @@ func (o RepositoryGitRemoteSettingsPtrOutput) DefaultBranch() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 func (o RepositoryGitRemoteSettingsPtrOutput) TokenStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryGitRemoteSettings) *string {

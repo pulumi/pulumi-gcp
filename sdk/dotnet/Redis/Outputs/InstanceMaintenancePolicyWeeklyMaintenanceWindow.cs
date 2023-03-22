@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Redis.Outputs
         /// </summary>
         public readonly string Day;
         /// <summary>
+        /// (Output)
         /// Output only. Duration of the maintenance window.
         /// The current window is fixed at 1 hour.
         /// A duration in seconds with up to nine fractional digits,

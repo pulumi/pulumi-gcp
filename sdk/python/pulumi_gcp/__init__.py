@@ -367,6 +367,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "accesscontextmanager/authorizedOrgsDesc",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc": "AuthorizedOrgsDesc"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "accesscontextmanager/gcpUserAccessBinding",
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
@@ -575,6 +583,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/envKeystore",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/envKeystore:EnvKeystore": "EnvKeystore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/envReferences",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/envReferences:EnvReferences": "EnvReferences"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/environment",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -607,6 +631,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/flowhook",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/flowhook:Flowhook": "Flowhook"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/instance",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -635,6 +667,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/sharedflow",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/sharedflow:Sharedflow": "Sharedflow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/sharedflowDeployment",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/sharedflowDeployment:SharedflowDeployment": "SharedflowDeployment"
   }
  },
  {
@@ -779,6 +827,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
    "gcp:bigquery/appProfile:AppProfile": "AppProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/capacityCommitment",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/capacityCommitment:CapacityCommitment": "CapacityCommitment"
   }
  },
  {
@@ -5811,6 +5867,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.workflows",
   "classes": {
    "gcp:workflows/workflow:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstation",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstation:Workstation": "Workstation"
   }
  },
  {

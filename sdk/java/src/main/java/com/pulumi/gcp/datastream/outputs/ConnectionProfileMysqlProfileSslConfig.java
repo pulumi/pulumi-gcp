@@ -20,7 +20,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
      */
     private @Nullable String caCertificate;
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     private @Nullable Boolean caCertificateSet;
@@ -34,7 +35,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
      */
     private @Nullable String clientCertificate;
     /**
-     * @return Indicates whether the clientCertificate field is set.
+     * @return (Output)
+     * Indicates whether the clientCertificate field is set.
      * 
      */
     private @Nullable Boolean clientCertificateSet;
@@ -47,7 +49,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
      */
     private @Nullable String clientKey;
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     private @Nullable Boolean clientKeySet;
@@ -63,7 +66,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
         return Optional.ofNullable(this.caCertificate);
     }
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     public Optional<Boolean> caCertificateSet() {
@@ -81,7 +85,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
         return Optional.ofNullable(this.clientCertificate);
     }
     /**
-     * @return Indicates whether the clientCertificate field is set.
+     * @return (Output)
+     * Indicates whether the clientCertificate field is set.
      * 
      */
     public Optional<Boolean> clientCertificateSet() {
@@ -98,7 +103,8 @@ public final class ConnectionProfileMysqlProfileSslConfig {
         return Optional.ofNullable(this.clientKey);
     }
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     public Optional<Boolean> clientKeySet() {

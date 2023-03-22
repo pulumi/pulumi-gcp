@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigNameConstraints;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigPolicyId;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -39,6 +41,12 @@ public final class AuthorityConfigX509Config {
      * 
      */
     private AuthorityConfigX509ConfigKeyUsage keyUsage;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AuthorityConfigX509ConfigNameConstraints nameConstraints;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
@@ -80,6 +88,14 @@ public final class AuthorityConfigX509Config {
         return this.keyUsage;
     }
     /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AuthorityConfigX509ConfigNameConstraints> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+    /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -101,6 +117,7 @@ public final class AuthorityConfigX509Config {
         private @Nullable List<String> aiaOcspServers;
         private AuthorityConfigX509ConfigCaOptions caOptions;
         private AuthorityConfigX509ConfigKeyUsage keyUsage;
+        private @Nullable AuthorityConfigX509ConfigNameConstraints nameConstraints;
         private @Nullable List<AuthorityConfigX509ConfigPolicyId> policyIds;
         public Builder() {}
         public Builder(AuthorityConfigX509Config defaults) {
@@ -109,6 +126,7 @@ public final class AuthorityConfigX509Config {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsage = defaults.keyUsage;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -139,6 +157,11 @@ public final class AuthorityConfigX509Config {
             return this;
         }
         @CustomType.Setter
+        public Builder nameConstraints(@Nullable AuthorityConfigX509ConfigNameConstraints nameConstraints) {
+            this.nameConstraints = nameConstraints;
+            return this;
+        }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<AuthorityConfigX509ConfigPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
@@ -152,6 +175,7 @@ public final class AuthorityConfigX509Config {
             o.aiaOcspServers = aiaOcspServers;
             o.caOptions = caOptions;
             o.keyUsage = keyUsage;
+            o.nameConstraints = nameConstraints;
             o.policyIds = policyIds;
             return o;
         }

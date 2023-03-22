@@ -42,7 +42,8 @@ public final class DiskDiskEncryptionKey {
      */
     private @Nullable String rsaEncryptedKey;
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return (Output)
+     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
@@ -88,7 +89,8 @@ public final class DiskDiskEncryptionKey {
         return Optional.ofNullable(this.rsaEncryptedKey);
     }
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return (Output)
+     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */

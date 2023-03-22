@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datafusion.Instance;
  * import com.pulumi.gcp.datafusion.InstanceArgs;
  * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -109,6 +110,10 @@ import javax.annotation.Nullable;
  *                     var prefixLength = values.t2;
  *                     return String.format(&#34;%s/%s&#34;, address,prefixLength);
  *                 }))
+ *                 .build())
+ *             .accelerators(InstanceAcceleratorArgs.builder()
+ *                 .acceleratorType(&#34;CDC&#34;)
+ *                 .state(&#34;ENABLED&#34;)
  *                 .build())
  *             .build());
  * 

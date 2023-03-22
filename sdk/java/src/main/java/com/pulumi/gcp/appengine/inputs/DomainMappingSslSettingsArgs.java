@@ -41,6 +41,7 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Output)
      * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
      * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
      * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -52,7 +53,8 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> pendingManagedCertificateId;
 
     /**
-     * @return ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+     * @return (Output)
+     * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
      * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
      * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
      * field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
@@ -140,7 +142,8 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pendingManagedCertificateId ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+         * @param pendingManagedCertificateId (Output)
+         * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
          * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
          * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
          * field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
@@ -155,7 +158,8 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param pendingManagedCertificateId ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+         * @param pendingManagedCertificateId (Output)
+         * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
          * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
          * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
          * field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the

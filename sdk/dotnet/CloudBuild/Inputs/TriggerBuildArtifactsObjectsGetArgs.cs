@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         private InputList<Inputs.TriggerBuildArtifactsObjectsTimingGetArgs>? _timings;
 
         /// <summary>
+        /// (Output)
         /// Output only. Stores timing information for pushing all artifact objects.
         /// Structure is documented below.
         /// </summary>

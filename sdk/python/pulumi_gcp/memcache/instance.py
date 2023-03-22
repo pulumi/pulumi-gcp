@@ -255,7 +255,8 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
@@ -337,6 +338,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits
@@ -817,7 +819,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
@@ -883,6 +886,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
+        (Output)
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits

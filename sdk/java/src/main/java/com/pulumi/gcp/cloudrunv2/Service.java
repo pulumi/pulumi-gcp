@@ -761,6 +761,7 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
+     * (Output)
      * Displays the target URI.
      * 
      */
@@ -768,7 +769,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     private Output<String> uri;
 
     /**
-     * @return Displays the target URI.
+     * @return (Output)
+     * Displays the target URI.
      * 
      */
     public Output<String> uri() {

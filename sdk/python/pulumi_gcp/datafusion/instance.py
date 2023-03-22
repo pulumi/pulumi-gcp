@@ -17,6 +17,7 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
                  crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,10 @@ class InstanceArgs:
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+               created with the Options field. Users will need to either manually update their state file to include these diffed
+               options, or include the field in a [lifecycle ignore changes
+               block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
         :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
@@ -73,6 +78,8 @@ class InstanceArgs:
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         pulumi.set(__self__, "type", type)
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if crypto_key_config is not None:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
@@ -129,6 +136,21 @@ class InstanceArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
+        """
+        List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        created with the Options field. Users will need to either manually update their state file to include these diffed
+        options, or include the field in a [lifecycle ignore changes
+        block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="cryptoKeyConfig")
@@ -345,6 +367,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]] = None,
                  api_endpoint: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
@@ -375,6 +398,10 @@ class _InstanceState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+               created with the Options field. Users will need to either manually update their state file to include these diffed
+               options, or include the field in a [lifecycle ignore changes
+               block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
         :param pulumi.Input[str] api_endpoint: Endpoint on which the REST APIs is accessible.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -403,13 +430,8 @@ class _InstanceState:
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
-               - CREATING: Instance is being created
-               - RUNNING: Instance is running and ready for requests
-               - FAILED: Instance creation failed
-               - DELETING: Instance is being deleted
-               - UPGRADING: Instance is being upgraded
-               - RESTARTING: Instance is being restarted
+        :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
+               Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -427,6 +449,8 @@ class _InstanceState:
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if api_endpoint is not None:
             pulumi.set(__self__, "api_endpoint", api_endpoint)
         if create_time is not None:
@@ -486,6 +510,21 @@ class _InstanceState:
             pulumi.set(__self__, "version", version)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]:
+        """
+        List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        created with the Options field. Users will need to either manually update their state file to include these diffed
+        options, or include the field in a [lifecycle ignore changes
+        block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="apiEndpoint")
@@ -750,13 +789,8 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of this Data Fusion instance.
-        - CREATING: Instance is being created
-        - RUNNING: Instance is running and ready for requests
-        - FAILED: Instance creation failed
-        - DELETING: Instance is being deleted
-        - UPGRADING: Instance is being upgraded
-        - RESTARTING: Instance is being restarted
+        The type of an accelator for a CDF instance.
+        Possible values are `ENABLED` and `DISABLED`.
         """
         return pulumi.get(self, "state")
 
@@ -852,6 +886,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -919,7 +954,11 @@ class Instance(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ))
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
         ```
         ### Data Fusion Instance Cmek
 
@@ -1002,6 +1041,10 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+               created with the Options field. Users will need to either manually update their state file to include these diffed
+               options, or include the field in a [lifecycle ignore changes
+               block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
         :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
@@ -1092,7 +1135,11 @@ class Instance(pulumi.CustomResource):
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ))
+            ),
+            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+                accelerator_type="CDC",
+                state="ENABLED",
+            )])
         ```
         ### Data Fusion Instance Cmek
 
@@ -1188,6 +1235,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1215,6 +1263,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
@@ -1255,6 +1304,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]]] = None,
             api_endpoint: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
@@ -1290,6 +1340,10 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+               created with the Options field. Users will need to either manually update their state file to include these diffed
+               options, or include the field in a [lifecycle ignore changes
+               block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
         :param pulumi.Input[str] api_endpoint: Endpoint on which the REST APIs is accessible.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -1318,13 +1372,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
-               - CREATING: Instance is being created
-               - RUNNING: Instance is running and ready for requests
-               - FAILED: Instance creation failed
-               - DELETING: Instance is being deleted
-               - UPGRADING: Instance is being upgraded
-               - RESTARTING: Instance is being restarted
+        :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
+               Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -1346,6 +1395,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["accelerators"] = accelerators
         __props__.__dict__["api_endpoint"] = api_endpoint
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_config"] = crypto_key_config
@@ -1375,6 +1425,17 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceAccelerator']]]:
+        """
+        List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        created with the Options field. Users will need to either manually update their state file to include these diffed
+        options, or include the field in a [lifecycle ignore changes
+        block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        """
+        return pulumi.get(self, "accelerators")
 
     @property
     @pulumi.getter(name="apiEndpoint")
@@ -1494,7 +1555,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def options(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
@@ -1555,13 +1616,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of this Data Fusion instance.
-        - CREATING: Instance is being created
-        - RUNNING: Instance is running and ready for requests
-        - FAILED: Instance creation failed
-        - DELETING: Instance is being deleted
-        - UPGRADING: Instance is being upgraded
-        - RESTARTING: Instance is being restarted
+        The type of an accelator for a CDF instance.
+        Possible values are `ENABLED` and `DISABLED`.
         """
         return pulumi.get(self, "state")
 

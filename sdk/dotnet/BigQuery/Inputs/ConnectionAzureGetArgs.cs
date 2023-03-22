@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionAzureGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The name of the Azure Active Directory Application.
         /// </summary>
         [Input("application")]
         public Input<string>? Application { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The client id of the Azure Active Directory Application.
         /// </summary>
         [Input("clientId")]
@@ -37,18 +39,21 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? FederatedApplicationClientId { get; set; }
 
         /// <summary>
+        /// (Output)
         /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The object id of the Azure Active Directory Application.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The URL user will be redirected to after granting consent during connection setup.
         /// </summary>
         [Input("redirectUri")]

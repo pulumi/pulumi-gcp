@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionCertFingerprint {
     /**
-     * @return The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+     * @return (Output)
+     * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
      * 
      */
     private @Nullable String sha256Hash;
 
     private CertificateCertificateDescriptionCertFingerprint() {}
     /**
-     * @return The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+     * @return (Output)
+     * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
      * 
      */
     public Optional<String> sha256Hash() {

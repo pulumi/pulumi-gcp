@@ -314,6 +314,7 @@ func (o ConnectionAwsPtrOutput) AccessRole() ConnectionAwsAccessRolePtrOutput {
 type ConnectionAwsAccessRole struct {
 	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
 	IamRoleId string `pulumi:"iamRoleId"`
+	// (Output)
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 	Identity *string `pulumi:"identity"`
 }
@@ -332,6 +333,7 @@ type ConnectionAwsAccessRoleInput interface {
 type ConnectionAwsAccessRoleArgs struct {
 	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
 	IamRoleId pulumi.StringInput `pulumi:"iamRoleId"`
+	// (Output)
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
 }
@@ -418,6 +420,7 @@ func (o ConnectionAwsAccessRoleOutput) IamRoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAwsAccessRole) string { return v.IamRoleId }).(pulumi.StringOutput)
 }
 
+// (Output)
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 func (o ConnectionAwsAccessRoleOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAwsAccessRole) *string { return v.Identity }).(pulumi.StringPtrOutput)
@@ -457,6 +460,7 @@ func (o ConnectionAwsAccessRolePtrOutput) IamRoleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 func (o ConnectionAwsAccessRolePtrOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAwsAccessRole) *string {
@@ -468,18 +472,23 @@ func (o ConnectionAwsAccessRolePtrOutput) Identity() pulumi.StringPtrOutput {
 }
 
 type ConnectionAzure struct {
+	// (Output)
 	// The name of the Azure Active Directory Application.
 	Application *string `pulumi:"application"`
+	// (Output)
 	// The client id of the Azure Active Directory Application.
 	ClientId *string `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId string `pulumi:"customerTenantId"`
 	// The Azure Application (client) ID where the federated credentials will be hosted.
 	FederatedApplicationClientId *string `pulumi:"federatedApplicationClientId"`
+	// (Output)
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
 	Identity *string `pulumi:"identity"`
+	// (Output)
 	// The object id of the Azure Active Directory Application.
 	ObjectId *string `pulumi:"objectId"`
+	// (Output)
 	// The URL user will be redirected to after granting consent during connection setup.
 	RedirectUri *string `pulumi:"redirectUri"`
 }
@@ -496,18 +505,23 @@ type ConnectionAzureInput interface {
 }
 
 type ConnectionAzureArgs struct {
+	// (Output)
 	// The name of the Azure Active Directory Application.
 	Application pulumi.StringPtrInput `pulumi:"application"`
+	// (Output)
 	// The client id of the Azure Active Directory Application.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId pulumi.StringInput `pulumi:"customerTenantId"`
 	// The Azure Application (client) ID where the federated credentials will be hosted.
 	FederatedApplicationClientId pulumi.StringPtrInput `pulumi:"federatedApplicationClientId"`
+	// (Output)
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// (Output)
 	// The object id of the Azure Active Directory Application.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// (Output)
 	// The URL user will be redirected to after granting consent during connection setup.
 	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
 }
@@ -589,11 +603,13 @@ func (o ConnectionAzureOutput) ToConnectionAzurePtrOutputWithContext(ctx context
 	}).(ConnectionAzurePtrOutput)
 }
 
+// (Output)
 // The name of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) Application() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.Application }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The client id of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -609,16 +625,19 @@ func (o ConnectionAzureOutput) FederatedApplicationClientId() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.FederatedApplicationClientId }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
 func (o ConnectionAzureOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.Identity }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The object id of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The URL user will be redirected to after granting consent during connection setup.
 func (o ConnectionAzureOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
@@ -648,6 +667,7 @@ func (o ConnectionAzurePtrOutput) Elem() ConnectionAzureOutput {
 	}).(ConnectionAzureOutput)
 }
 
+// (Output)
 // The name of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) Application() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -658,6 +678,7 @@ func (o ConnectionAzurePtrOutput) Application() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The client id of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -688,6 +709,7 @@ func (o ConnectionAzurePtrOutput) FederatedApplicationClientId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -698,6 +720,7 @@ func (o ConnectionAzurePtrOutput) Identity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The object id of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -708,6 +731,7 @@ func (o ConnectionAzurePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The URL user will be redirected to after granting consent during connection setup.
 func (o ConnectionAzurePtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -719,6 +743,7 @@ func (o ConnectionAzurePtrOutput) RedirectUri() pulumi.StringPtrOutput {
 }
 
 type ConnectionCloudResource struct {
+	// (Output)
 	// The account ID of the service created for the purpose of this connection.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
@@ -735,6 +760,7 @@ type ConnectionCloudResourceInput interface {
 }
 
 type ConnectionCloudResourceArgs struct {
+	// (Output)
 	// The account ID of the service created for the purpose of this connection.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
@@ -816,6 +842,7 @@ func (o ConnectionCloudResourceOutput) ToConnectionCloudResourcePtrOutputWithCon
 	}).(ConnectionCloudResourcePtrOutput)
 }
 
+// (Output)
 // The account ID of the service created for the purpose of this connection.
 func (o ConnectionCloudResourceOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudResource) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
@@ -845,6 +872,7 @@ func (o ConnectionCloudResourcePtrOutput) Elem() ConnectionCloudResourceOutput {
 	}).(ConnectionCloudResourceOutput)
 }
 
+// (Output)
 // The account ID of the service created for the purpose of this connection.
 func (o ConnectionCloudResourcePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudResource) *string {
@@ -1038,6 +1066,7 @@ type ConnectionCloudSql struct {
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId string `pulumi:"instanceId"`
+	// (Output)
 	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
@@ -1064,6 +1093,7 @@ type ConnectionCloudSqlArgs struct {
 	Database pulumi.StringInput `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// (Output)
 	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
@@ -1164,6 +1194,7 @@ func (o ConnectionCloudSqlOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// (Output)
 // When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 func (o ConnectionCloudSqlOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
@@ -1230,6 +1261,7 @@ func (o ConnectionCloudSqlPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 func (o ConnectionCloudSqlPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *string {
@@ -4551,6 +4583,7 @@ type JobCopyDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -4570,6 +4603,7 @@ type JobCopyDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -4657,6 +4691,7 @@ func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -4697,6 +4732,7 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) *string {
@@ -6396,6 +6432,7 @@ type JobLoadDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -6415,6 +6452,7 @@ type JobLoadDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -6502,6 +6540,7 @@ func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -6542,6 +6581,7 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) *string {
@@ -7673,6 +7713,7 @@ type JobQueryDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -7692,6 +7733,7 @@ type JobQueryDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// (Output)
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -7779,6 +7821,7 @@ func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.St
 	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -7819,6 +7862,7 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) *string {
@@ -8301,14 +8345,17 @@ func (o JobQueryUserDefinedFunctionResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type JobStatus struct {
+	// (Output)
 	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 	// Structure is documented below.
 	ErrorResults []JobStatusErrorResult `pulumi:"errorResults"`
+	// (Output)
 	// The first errors encountered during the running of the job. The final message
 	// includes the number of errors that caused the process to stop. Errors here do
 	// not necessarily mean that the job has not completed or was unsuccessful.
 	// Structure is documented below.
 	Errors []JobStatusError `pulumi:"errors"`
+	// (Output)
 	// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
 	State *string `pulumi:"state"`
 }
@@ -8325,14 +8372,17 @@ type JobStatusInput interface {
 }
 
 type JobStatusArgs struct {
+	// (Output)
 	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 	// Structure is documented below.
 	ErrorResults JobStatusErrorResultArrayInput `pulumi:"errorResults"`
+	// (Output)
 	// The first errors encountered during the running of the job. The final message
 	// includes the number of errors that caused the process to stop. Errors here do
 	// not necessarily mean that the job has not completed or was unsuccessful.
 	// Structure is documented below.
 	Errors JobStatusErrorArrayInput `pulumi:"errors"`
+	// (Output)
 	// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
@@ -8388,12 +8438,14 @@ func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobSt
 	return o
 }
 
+// (Output)
 // Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
 // Structure is documented below.
 func (o JobStatusOutput) ErrorResults() JobStatusErrorResultArrayOutput {
 	return o.ApplyT(func(v JobStatus) []JobStatusErrorResult { return v.ErrorResults }).(JobStatusErrorResultArrayOutput)
 }
 
+// (Output)
 // The first errors encountered during the running of the job. The final message
 // includes the number of errors that caused the process to stop. Errors here do
 // not necessarily mean that the job has not completed or was unsuccessful.
@@ -8402,6 +8454,7 @@ func (o JobStatusOutput) Errors() JobStatusErrorArrayOutput {
 	return o.ApplyT(func(v JobStatus) []JobStatusError { return v.Errors }).(JobStatusErrorArrayOutput)
 }
 
+// (Output)
 // Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
 func (o JobStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)

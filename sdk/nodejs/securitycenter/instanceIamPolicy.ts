@@ -55,6 +55,10 @@ import * as utilities from "../utilities";
  *         network: "default",
  *         ipAllocation: pulumi.all([privateIpAlloc.address, privateIpAlloc.prefixLength]).apply(([address, prefixLength]) => `${address}/${prefixLength}`),
  *     },
+ *     accelerators: [{
+ *         acceleratorType: "CDC",
+ *         state: "ENABLED",
+ *     }],
  * });
  * ```
  * ### Data Fusion Instance Cmek

@@ -32,6 +32,7 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
     }
 
     /**
+     * (Output)
      * How many instances are in use.
      * 
      */
@@ -39,7 +40,8 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
     private @Nullable Output<Integer> inUseCount;
 
     /**
-     * @return How many instances are in use.
+     * @return (Output)
+     * How many instances are in use.
      * 
      */
     public Optional<Output<Integer>> inUseCount() {
@@ -111,7 +113,8 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param inUseCount How many instances are in use.
+         * @param inUseCount (Output)
+         * How many instances are in use.
          * 
          * @return builder
          * 
@@ -122,7 +125,8 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param inUseCount How many instances are in use.
+         * @param inUseCount (Output)
+         * How many instances are in use.
          * 
          * @return builder
          * 

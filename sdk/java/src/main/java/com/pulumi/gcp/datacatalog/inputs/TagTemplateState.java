@@ -74,6 +74,7 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
@@ -81,7 +82,8 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return (Output)
+     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     public Optional<Output<String>> name() {
@@ -250,7 +252,8 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name (Output)
+         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
          * 
          * @return builder
          * 
@@ -261,7 +264,8 @@ public final class TagTemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name (Output)
+         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
          * 
          * @return builder
          * 

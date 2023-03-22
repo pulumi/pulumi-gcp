@@ -20,7 +20,8 @@ public final class CryptoKeyVersionAttestation {
      */
     private @Nullable CryptoKeyVersionAttestationCertChains certChains;
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * 
      */
     private @Nullable String content;
@@ -31,7 +32,8 @@ public final class CryptoKeyVersionAttestation {
      */
     private @Nullable CryptoKeyVersionAttestationExternalProtectionLevelOptions externalProtectionLevelOptions;
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     private @Nullable String format;
@@ -46,7 +48,8 @@ public final class CryptoKeyVersionAttestation {
         return Optional.ofNullable(this.certChains);
     }
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * 
      */
     public Optional<String> content() {
@@ -61,7 +64,8 @@ public final class CryptoKeyVersionAttestation {
         return Optional.ofNullable(this.externalProtectionLevelOptions);
     }
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     public Optional<String> format() {

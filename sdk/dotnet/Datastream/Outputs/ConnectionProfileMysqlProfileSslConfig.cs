@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? CaCertificate;
         /// <summary>
+        /// (Output)
         /// Indicates whether the clientKey field is set.
         /// </summary>
         public readonly bool? CaCertificateSet;
@@ -32,6 +33,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? ClientCertificate;
         /// <summary>
+        /// (Output)
         /// Indicates whether the clientCertificate field is set.
         /// </summary>
         public readonly bool? ClientCertificateSet;
@@ -43,6 +45,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
+        /// (Output)
         /// Indicates whether the clientKey field is set.
         /// </summary>
         public readonly bool? ClientKeySet;

@@ -81,6 +81,14 @@ namespace Pulumi.Gcp.DataFusion
     ///                 return $"{address}/{prefixLength}";
     ///             }),
     ///         },
+    ///         Accelerators = new[]
+    ///         {
+    ///             new Gcp.DataFusion.Inputs.InstanceAcceleratorArgs
+    ///             {
+    ///                 AcceleratorType = "CDC",
+    ///                 State = "ENABLED",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -219,6 +227,15 @@ namespace Pulumi.Gcp.DataFusion
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        /// created with the Options field. Users will need to either manually update their state file to include these diffed
+        /// options, or include the field in a [lifecycle ignore changes
+        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// </summary>
+        [Output("accelerators")]
+        public Output<ImmutableArray<Outputs.InstanceAccelerator>> Accelerators { get; private set; } = null!;
+
+        /// <summary>
         /// Endpoint on which the REST APIs is accessible.
         /// </summary>
         [Output("apiEndpoint")]
@@ -310,7 +327,7 @@ namespace Pulumi.Gcp.DataFusion
         /// Map of additional options used to configure the behavior of Data Fusion instance.
         /// </summary>
         [Output("options")]
-        public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Options { get; private set; } = null!;
 
         /// <summary>
         /// P4 service account for the customer project.
@@ -352,13 +369,8 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> ServiceEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of this Data Fusion instance.
-        /// - CREATING: Instance is being created
-        /// - RUNNING: Instance is running and ready for requests
-        /// - FAILED: Instance creation failed
-        /// - DELETING: Instance is being deleted
-        /// - UPGRADING: Instance is being upgraded
-        /// - RESTARTING: Instance is being restarted
+        /// The type of an accelator for a CDF instance.
+        /// Possible values are `ENABLED` and `DISABLED`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -455,6 +467,21 @@ namespace Pulumi.Gcp.DataFusion
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.InstanceAcceleratorArgs>? _accelerators;
+
+        /// <summary>
+        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        /// created with the Options field. Users will need to either manually update their state file to include these diffed
+        /// options, or include the field in a [lifecycle ignore changes
+        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// </summary>
+        public InputList<Inputs.InstanceAcceleratorArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.InstanceAcceleratorArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         /// Structure is documented below.
@@ -600,6 +627,21 @@ namespace Pulumi.Gcp.DataFusion
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.InstanceAcceleratorGetArgs>? _accelerators;
+
+        /// <summary>
+        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+        /// created with the Options field. Users will need to either manually update their state file to include these diffed
+        /// options, or include the field in a [lifecycle ignore changes
+        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// </summary>
+        public InputList<Inputs.InstanceAcceleratorGetArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.InstanceAcceleratorGetArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// Endpoint on which the REST APIs is accessible.
         /// </summary>
@@ -746,13 +788,8 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? ServiceEndpoint { get; set; }
 
         /// <summary>
-        /// The current state of this Data Fusion instance.
-        /// - CREATING: Instance is being created
-        /// - RUNNING: Instance is running and ready for requests
-        /// - FAILED: Instance creation failed
-        /// - DELETING: Instance is being deleted
-        /// - UPGRADING: Instance is being upgraded
-        /// - RESTARTING: Instance is being restarted
+        /// The type of an accelator for a CDF instance.
+        /// Possible values are `ENABLED` and `DISABLED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -16,6 +16,7 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     public static final DomainMappingStatusConditionArgs Empty = new DomainMappingStatusConditionArgs();
 
     /**
+     * (Output)
      * Human readable message indicating details about the current status.
      * 
      */
@@ -23,7 +24,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     private @Nullable Output<String> message;
 
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<Output<String>> message() {
@@ -31,6 +33,7 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * (Output)
      * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
@@ -38,7 +41,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     private @Nullable Output<String> reason;
 
     /**
-     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * @return (Output)
+     * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -46,6 +50,7 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      * 
      */
@@ -53,7 +58,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     public Optional<Output<String>> status() {
@@ -105,7 +111,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -116,7 +123,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -126,7 +134,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * @param reason (Output)
+         * One-word CamelCase reason for the condition&#39;s current status.
          * 
          * @return builder
          * 
@@ -137,7 +146,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * @param reason (Output)
+         * One-word CamelCase reason for the condition&#39;s current status.
          * 
          * @return builder
          * 
@@ -147,7 +157,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status Status of the condition, one of True, False, Unknown.
+         * @param status (Output)
+         * Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 
@@ -158,7 +169,8 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status Status of the condition, one of True, False, Unknown.
+         * @param status (Output)
+         * Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 

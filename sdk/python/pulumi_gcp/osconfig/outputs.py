@@ -5822,11 +5822,13 @@ class PatchDeploymentRecurringSchedule(dict):
                Structure is documented below.
         :param str end_time: The end time at which a recurring patch deployment schedule is no longer active.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param str last_execute_time: The time the last patch job ran successfully.
+        :param str last_execute_time: (Output)
+               The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param 'PatchDeploymentRecurringScheduleMonthlyArgs' monthly: Schedule with monthly executions.
                Structure is documented below.
-        :param str next_execute_time: The time the next patch job is scheduled to run.
+        :param str next_execute_time: (Output)
+               The time the next patch job is scheduled to run.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param str start_time: The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -5880,6 +5882,7 @@ class PatchDeploymentRecurringSchedule(dict):
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> Optional[str]:
         """
+        (Output)
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -5898,6 +5901,7 @@ class PatchDeploymentRecurringSchedule(dict):
     @pulumi.getter(name="nextExecuteTime")
     def next_execute_time(self) -> Optional[str]:
         """
+        (Output)
         The time the next patch job is scheduled to run.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """

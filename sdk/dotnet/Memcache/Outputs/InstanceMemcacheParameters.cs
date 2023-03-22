@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Memcache.Outputs
     public sealed class InstanceMemcacheParameters
     {
         /// <summary>
+        /// (Output)
         /// This is a unique ID associated with this set of parameters.
         /// </summary>
         public readonly string? Id;

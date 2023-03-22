@@ -348,6 +348,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "access_context_manager_access_policy_iam.html.markdown",
 				},
 			},
+			"google_access_context_manager_authorized_orgs_desc": {
+				Tok: gcpResource(gcpAccessContextManager, "AuthorizedOrgsDesc"),
+			},
 
 			// Alloydb
 			"google_alloydb_backup":   {Tok: gcpResource(gcpAlloydb, "Backup")},
@@ -516,6 +519,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "bigquery_connection_iam.html.markdown",
 				},
+			},
+			"google_bigquery_capacity_commitment": {
+				Tok: gcpResource(gcpBigQuery, "CapacityCommitment"),
 			},
 
 			// BigTable
@@ -2639,6 +2645,21 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"google_apigee_env_keystore": {
+				Tok: gcpResource(gcpApigee, "EnvKeystore"),
+			},
+			"google_apigee_env_references": {
+				Tok: gcpResource(gcpApigee, "EnvReferences"),
+			},
+			"google_apigee_flowhook": {
+				Tok: gcpResource(gcpApigee, "Flowhook"),
+			},
+			"google_apigee_sharedflow": {
+				Tok: gcpResource(gcpApigee, "Sharedflow"),
+			},
+			"google_apigee_sharedflow_deployment": {
+				Tok: gcpResource(gcpApigee, "SharedflowDeployment"),
+			},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -2760,6 +2781,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Workstations
 			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
 			"google_workstations_workstation_config":  {Tok: gcpResource(gcpWorkstations, "WorkstationConfig")},
+			"google_workstations_workstation":         {Tok: gcpResource(gcpWorkstations, "Workstation")},
 
 			//eventarc
 			"google_eventarc_channel": {

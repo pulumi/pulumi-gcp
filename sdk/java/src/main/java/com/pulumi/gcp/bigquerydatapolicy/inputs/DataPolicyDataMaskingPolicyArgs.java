@@ -15,7 +15,7 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
 
     /**
      * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-     * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+     * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
      * 
      */
     @Import(name="predefinedExpression", required=true)
@@ -23,7 +23,7 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
 
     /**
      * @return The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-     * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+     * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
      * 
      */
     public Output<String> predefinedExpression() {
@@ -56,7 +56,7 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
 
         /**
          * @param predefinedExpression The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-         * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+         * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
          * 
          * @return builder
          * 
@@ -68,7 +68,7 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
 
         /**
          * @param predefinedExpression The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-         * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+         * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
          * 
          * @return builder
          * 

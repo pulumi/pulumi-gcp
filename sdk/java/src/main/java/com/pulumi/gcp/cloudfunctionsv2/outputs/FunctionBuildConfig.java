@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FunctionBuildConfig {
     /**
-     * @return The Cloud Build name of the latest successful
+     * @return (Output)
+     * The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */
@@ -58,7 +59,8 @@ public final class FunctionBuildConfig {
 
     private FunctionBuildConfig() {}
     /**
-     * @return The Cloud Build name of the latest successful
+     * @return (Output)
+     * The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */

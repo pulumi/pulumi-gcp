@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .workstation import *
 from .workstation_cluster import *
 from .workstation_config import *
 from ._inputs import *

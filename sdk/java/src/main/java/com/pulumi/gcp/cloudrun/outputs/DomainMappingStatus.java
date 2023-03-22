@@ -16,19 +16,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainMappingStatus {
     /**
-     * @return Array of observed DomainMappingConditions, indicating the current state
+     * @return (Output)
+     * Array of observed DomainMappingConditions, indicating the current state
      * of the DomainMapping.
      * Structure is documented below.
      * 
      */
     private @Nullable List<DomainMappingStatusCondition> conditions;
     /**
-     * @return The name of the route that the mapping currently points to.
+     * @return (Output)
+     * The name of the route that the mapping currently points to.
      * 
      */
     private @Nullable String mappedRouteName;
     /**
-     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * @return (Output)
+     * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
      * was last processed by the controller.
      * 
      */
@@ -44,7 +47,8 @@ public final class DomainMappingStatus {
 
     private DomainMappingStatus() {}
     /**
-     * @return Array of observed DomainMappingConditions, indicating the current state
+     * @return (Output)
+     * Array of observed DomainMappingConditions, indicating the current state
      * of the DomainMapping.
      * Structure is documented below.
      * 
@@ -53,14 +57,16 @@ public final class DomainMappingStatus {
         return this.conditions == null ? List.of() : this.conditions;
     }
     /**
-     * @return The name of the route that the mapping currently points to.
+     * @return (Output)
+     * The name of the route that the mapping currently points to.
      * 
      */
     public Optional<String> mappedRouteName() {
         return Optional.ofNullable(this.mappedRouteName);
     }
     /**
-     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * @return (Output)
+     * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
      * was last processed by the controller.
      * 
      */

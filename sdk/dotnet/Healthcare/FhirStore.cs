@@ -65,22 +65,6 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var bigqueryEditor = new Gcp.Projects.IAMMember("bigqueryEditor", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.dataEditor",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-healthcare.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var bigqueryJobUser = new Gcp.Projects.IAMMember("bigqueryJobUser", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.jobUser",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-healthcare.iam.gserviceaccount.com",
-    ///     });
-    /// 
     ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
     ///     {
     ///         Location = "us-central1",
@@ -129,13 +113,6 @@ namespace Pulumi.Gcp.Healthcare
     ///                     },
     ///                 },
     ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             bigqueryEditor,
-    ///             bigqueryJobUser,
     ///         },
     ///     });
     /// 

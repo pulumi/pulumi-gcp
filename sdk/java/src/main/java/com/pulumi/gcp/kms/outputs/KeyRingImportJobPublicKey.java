@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KeyRingImportJobPublicKey {
     /**
-     * @return The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+     * @return (Output)
+     * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
      * for General Considerations and Textual Encoding of Subject Public Key Info.
      * 
      */
@@ -20,7 +21,8 @@ public final class KeyRingImportJobPublicKey {
 
     private KeyRingImportJobPublicKey() {}
     /**
-     * @return The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+     * @return (Output)
+     * The public key, encoded in PEM format. For more information, see the RFC 7468 sections
      * for General Considerations and Textual Encoding of Subject Public Key Info.
      * 
      */

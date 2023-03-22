@@ -124,6 +124,7 @@ import (
 type AiEndpoint struct {
 	pulumi.CustomResourceState
 
+	// (Output)
 	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
@@ -190,6 +191,7 @@ func GetAiEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiEndpoint resources.
 type aiEndpointState struct {
+	// (Output)
 	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
@@ -222,6 +224,7 @@ type aiEndpointState struct {
 }
 
 type AiEndpointState struct {
+	// (Output)
 	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime pulumi.StringPtrInput
 	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
@@ -387,6 +390,7 @@ func (o AiEndpointOutput) ToAiEndpointOutputWithContext(ctx context.Context) AiE
 	return o
 }
 
+// (Output)
 // Output only. Timestamp when the DeployedModel was created.
 func (o AiEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)

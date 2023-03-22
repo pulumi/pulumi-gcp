@@ -16,6 +16,7 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
     public static final EntryBigqueryTableSpecTableSpecArgs Empty = new EntryBigqueryTableSpecTableSpecArgs();
 
     /**
+     * (Output)
      * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
      * Data Catalog resource name of the date sharded grouped entry, for example,
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
@@ -26,7 +27,8 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
     private @Nullable Output<String> groupedEntry;
 
     /**
-     * @return If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+     * @return (Output)
+     * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
      * Data Catalog resource name of the date sharded grouped entry, for example,
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
      * Otherwise, groupedEntry is empty.
@@ -61,7 +63,8 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param groupedEntry If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+         * @param groupedEntry (Output)
+         * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
          * Data Catalog resource name of the date sharded grouped entry, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
          * Otherwise, groupedEntry is empty.
@@ -75,7 +78,8 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param groupedEntry If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+         * @param groupedEntry (Output)
+         * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
          * Data Catalog resource name of the date sharded grouped entry, for example,
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
          * Otherwise, groupedEntry is empty.

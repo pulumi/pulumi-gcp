@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionX509DescriptionCaOptionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionX509DescriptionKeyUsageArgs;
+import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionX509DescriptionNameConstraintArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateCertificateDescriptionX509DescriptionPolicyIdArgs;
 import java.lang.String;
 import java.util.List;
@@ -89,6 +90,23 @@ public final class CertificateCertificateDescriptionX509DescriptionArgs extends 
     }
 
     /**
+     * Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nameConstraints")
+    private @Nullable Output<List<CertificateCertificateDescriptionX509DescriptionNameConstraintArgs>> nameConstraints;
+
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CertificateCertificateDescriptionX509DescriptionNameConstraintArgs>>> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+
+    /**
      * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -112,6 +130,7 @@ public final class CertificateCertificateDescriptionX509DescriptionArgs extends 
         this.aiaOcspServers = $.aiaOcspServers;
         this.caOptions = $.caOptions;
         this.keyUsages = $.keyUsages;
+        this.nameConstraints = $.nameConstraints;
         this.policyIds = $.policyIds;
     }
 
@@ -267,6 +286,40 @@ public final class CertificateCertificateDescriptionX509DescriptionArgs extends 
          */
         public Builder keyUsages(CertificateCertificateDescriptionX509DescriptionKeyUsageArgs... keyUsages) {
             return keyUsages(List.of(keyUsages));
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(@Nullable Output<List<CertificateCertificateDescriptionX509DescriptionNameConstraintArgs>> nameConstraints) {
+            $.nameConstraints = nameConstraints;
+            return this;
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(List<CertificateCertificateDescriptionX509DescriptionNameConstraintArgs> nameConstraints) {
+            return nameConstraints(Output.of(nameConstraints));
+        }
+
+        /**
+         * @param nameConstraints Describes the X.509 name constraints extension.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameConstraints(CertificateCertificateDescriptionX509DescriptionNameConstraintArgs... nameConstraints) {
+            return nameConstraints(List.of(nameConstraints));
         }
 
         /**

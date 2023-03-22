@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        [Input("maintenanceInterval")]
+        public Input<string>? MaintenanceInterval { get; set; }
+
         [Input("maxRunDuration")]
         public Input<Inputs.InstanceSchedulingMaxRunDurationArgs>? MaxRunDuration { get; set; }
 

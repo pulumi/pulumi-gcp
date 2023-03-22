@@ -67,6 +67,7 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
     }
 
     /**
+     * (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -75,7 +76,8 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
     private @Nullable Output<String> sha256;
 
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return (Output)
+     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
@@ -180,7 +182,8 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 (Output)
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder
@@ -192,7 +195,8 @@ public final class SnapshotSnapshotEncryptionKeyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 (Output)
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder

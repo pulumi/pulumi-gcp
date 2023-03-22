@@ -153,7 +153,8 @@ class AlertPolicyConditionArgs:
         :param pulumi.Input['AlertPolicyConditionConditionThresholdArgs'] condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
-        :param pulumi.Input[str] name: The unique resource name for this condition.
+        :param pulumi.Input[str] name: (Output)
+               The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -247,6 +248,7 @@ class AlertPolicyConditionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -1671,8 +1673,10 @@ class AlertPolicyCreationRecordArgs:
                  mutate_time: Optional[pulumi.Input[str]] = None,
                  mutated_by: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] mutate_time: When the change occurred.
-        :param pulumi.Input[str] mutated_by: The email address of the user making the change.
+        :param pulumi.Input[str] mutate_time: (Output)
+               When the change occurred.
+        :param pulumi.Input[str] mutated_by: (Output)
+               The email address of the user making the change.
         """
         if mutate_time is not None:
             pulumi.set(__self__, "mutate_time", mutate_time)
@@ -1683,6 +1687,7 @@ class AlertPolicyCreationRecordArgs:
     @pulumi.getter(name="mutateTime")
     def mutate_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         When the change occurred.
         """
         return pulumi.get(self, "mutate_time")
@@ -1695,6 +1700,7 @@ class AlertPolicyCreationRecordArgs:
     @pulumi.getter(name="mutatedBy")
     def mutated_by(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The email address of the user making the change.
         """
         return pulumi.get(self, "mutated_by")

@@ -121,6 +121,7 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
+     * (Output)
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -201,6 +202,7 @@ export interface TagTemplateState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
+     * (Output)
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      */
     name?: pulumi.Input<string>;

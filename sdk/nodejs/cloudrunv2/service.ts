@@ -377,6 +377,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
+     * (Output)
      * Displays the target URI.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
@@ -566,6 +567,7 @@ export interface ServiceState {
      */
     uid?: pulumi.Input<string>;
     /**
+     * (Output)
      * Displays the target URI.
      */
     uri?: pulumi.Input<string>;

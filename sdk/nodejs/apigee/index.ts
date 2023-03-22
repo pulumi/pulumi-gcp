@@ -25,6 +25,16 @@ export type EnvGroupAttachment = import("./envGroupAttachment").EnvGroupAttachme
 export const EnvGroupAttachment: typeof import("./envGroupAttachment").EnvGroupAttachment = null as any;
 utilities.lazyLoad(exports, ["EnvGroupAttachment"], () => require("./envGroupAttachment"));
 
+export { EnvKeystoreArgs, EnvKeystoreState } from "./envKeystore";
+export type EnvKeystore = import("./envKeystore").EnvKeystore;
+export const EnvKeystore: typeof import("./envKeystore").EnvKeystore = null as any;
+utilities.lazyLoad(exports, ["EnvKeystore"], () => require("./envKeystore"));
+
+export { EnvReferencesArgs, EnvReferencesState } from "./envReferences";
+export type EnvReferences = import("./envReferences").EnvReferences;
+export const EnvReferences: typeof import("./envReferences").EnvReferences = null as any;
+utilities.lazyLoad(exports, ["EnvReferences"], () => require("./envReferences"));
+
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
@@ -44,6 +54,11 @@ export { EnvironmentIamPolicyArgs, EnvironmentIamPolicyState } from "./environme
 export type EnvironmentIamPolicy = import("./environmentIamPolicy").EnvironmentIamPolicy;
 export const EnvironmentIamPolicy: typeof import("./environmentIamPolicy").EnvironmentIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EnvironmentIamPolicy"], () => require("./environmentIamPolicy"));
+
+export { FlowhookArgs, FlowhookState } from "./flowhook";
+export type Flowhook = import("./flowhook").Flowhook;
+export const Flowhook: typeof import("./flowhook").Flowhook = null as any;
+utilities.lazyLoad(exports, ["Flowhook"], () => require("./flowhook"));
 
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
@@ -65,6 +80,16 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { SharedflowArgs, SharedflowState } from "./sharedflow";
+export type Sharedflow = import("./sharedflow").Sharedflow;
+export const Sharedflow: typeof import("./sharedflow").Sharedflow = null as any;
+utilities.lazyLoad(exports, ["Sharedflow"], () => require("./sharedflow"));
+
+export { SharedflowDeploymentArgs, SharedflowDeploymentState } from "./sharedflowDeployment";
+export type SharedflowDeployment = import("./sharedflowDeployment").SharedflowDeployment;
+export const SharedflowDeployment: typeof import("./sharedflowDeployment").SharedflowDeployment = null as any;
+utilities.lazyLoad(exports, ["SharedflowDeployment"], () => require("./sharedflowDeployment"));
+
 export { SyncAuthorizationArgs, SyncAuthorizationState } from "./syncAuthorization";
 export type SyncAuthorization = import("./syncAuthorization").SyncAuthorization;
 export const SyncAuthorization: typeof import("./syncAuthorization").SyncAuthorization = null as any;
@@ -83,6 +108,10 @@ const _module = {
                 return new EnvGroup(name, <any>undefined, { urn })
             case "gcp:apigee/envGroupAttachment:EnvGroupAttachment":
                 return new EnvGroupAttachment(name, <any>undefined, { urn })
+            case "gcp:apigee/envKeystore:EnvKeystore":
+                return new EnvKeystore(name, <any>undefined, { urn })
+            case "gcp:apigee/envReferences:EnvReferences":
+                return new EnvReferences(name, <any>undefined, { urn })
             case "gcp:apigee/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
@@ -91,6 +120,8 @@ const _module = {
                 return new EnvironmentIamMember(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy":
                 return new EnvironmentIamPolicy(name, <any>undefined, { urn })
+            case "gcp:apigee/flowhook:Flowhook":
+                return new Flowhook(name, <any>undefined, { urn })
             case "gcp:apigee/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:apigee/instanceAttachment:InstanceAttachment":
@@ -99,6 +130,10 @@ const _module = {
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "gcp:apigee/sharedflow:Sharedflow":
+                return new Sharedflow(name, <any>undefined, { urn })
+            case "gcp:apigee/sharedflowDeployment:SharedflowDeployment":
+                return new SharedflowDeployment(name, <any>undefined, { urn })
             case "gcp:apigee/syncAuthorization:SyncAuthorization":
                 return new SyncAuthorization(name, <any>undefined, { urn })
             default:
@@ -110,12 +145,17 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/addonsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroupAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/envKeystore", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/envReferences", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/flowhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflowDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/syncAuthorization", _module)

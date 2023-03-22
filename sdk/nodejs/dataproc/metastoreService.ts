@@ -150,6 +150,7 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
+     * (Output)
      * The URI of the endpoint used to access the metastore service.
      */
     public /*out*/ readonly endpointUri!: pulumi.Output<string>;
@@ -323,6 +324,7 @@ export interface MetastoreServiceState {
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
     /**
+     * (Output)
      * The URI of the endpoint used to access the metastore service.
      */
     endpointUri?: pulumi.Input<string>;

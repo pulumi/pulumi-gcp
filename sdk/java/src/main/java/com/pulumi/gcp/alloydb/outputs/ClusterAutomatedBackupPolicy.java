@@ -55,7 +55,7 @@ public final class ClusterAutomatedBackupPolicy {
      * Structure is documented below.
      * 
      */
-    private ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule;
+    private @Nullable ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule;
 
     private ClusterAutomatedBackupPolicy() {}
     /**
@@ -109,8 +109,8 @@ public final class ClusterAutomatedBackupPolicy {
      * Structure is documented below.
      * 
      */
-    public ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule() {
-        return this.weeklySchedule;
+    public Optional<ClusterAutomatedBackupPolicyWeeklySchedule> weeklySchedule() {
+        return Optional.ofNullable(this.weeklySchedule);
     }
 
     public static Builder builder() {
@@ -128,7 +128,7 @@ public final class ClusterAutomatedBackupPolicy {
         private @Nullable String location;
         private @Nullable ClusterAutomatedBackupPolicyQuantityBasedRetention quantityBasedRetention;
         private @Nullable ClusterAutomatedBackupPolicyTimeBasedRetention timeBasedRetention;
-        private ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule;
+        private @Nullable ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule;
         public Builder() {}
         public Builder(ClusterAutomatedBackupPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -172,8 +172,8 @@ public final class ClusterAutomatedBackupPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder weeklySchedule(ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule) {
-            this.weeklySchedule = Objects.requireNonNull(weeklySchedule);
+        public Builder weeklySchedule(@Nullable ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule) {
+            this.weeklySchedule = weeklySchedule;
             return this;
         }
         public ClusterAutomatedBackupPolicy build() {

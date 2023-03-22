@@ -31,6 +31,7 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The time at which this configuration version was updated in Cloud IoT Core.
      * 
      */
@@ -38,7 +39,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> cloudUpdateTime;
 
     /**
-     * @return The time at which this configuration version was updated in Cloud IoT Core.
+     * @return (Output)
+     * The time at which this configuration version was updated in Cloud IoT Core.
      * 
      */
     public Optional<Output<String>> cloudUpdateTime() {
@@ -46,6 +48,7 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The time at which Cloud IoT Core received the acknowledgment from the device,
      * indicating that the device has received this configuration version.
      * 
@@ -54,7 +57,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> deviceAckTime;
 
     /**
-     * @return The time at which Cloud IoT Core received the acknowledgment from the device,
+     * @return (Output)
+     * The time at which Cloud IoT Core received the acknowledgment from the device,
      * indicating that the device has received this configuration version.
      * 
      */
@@ -63,6 +67,7 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * The version of this update.
      * 
      */
@@ -70,7 +75,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> version;
 
     /**
-     * @return The version of this update.
+     * @return (Output)
+     * The version of this update.
      * 
      */
     public Optional<Output<String>> version() {
@@ -126,7 +132,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudUpdateTime The time at which this configuration version was updated in Cloud IoT Core.
+         * @param cloudUpdateTime (Output)
+         * The time at which this configuration version was updated in Cloud IoT Core.
          * 
          * @return builder
          * 
@@ -137,7 +144,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudUpdateTime The time at which this configuration version was updated in Cloud IoT Core.
+         * @param cloudUpdateTime (Output)
+         * The time at which this configuration version was updated in Cloud IoT Core.
          * 
          * @return builder
          * 
@@ -147,7 +155,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceAckTime The time at which Cloud IoT Core received the acknowledgment from the device,
+         * @param deviceAckTime (Output)
+         * The time at which Cloud IoT Core received the acknowledgment from the device,
          * indicating that the device has received this configuration version.
          * 
          * @return builder
@@ -159,7 +168,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceAckTime The time at which Cloud IoT Core received the acknowledgment from the device,
+         * @param deviceAckTime (Output)
+         * The time at which Cloud IoT Core received the acknowledgment from the device,
          * indicating that the device has received this configuration version.
          * 
          * @return builder
@@ -170,7 +180,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version The version of this update.
+         * @param version (Output)
+         * The version of this update.
          * 
          * @return builder
          * 
@@ -181,7 +192,8 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version The version of this update.
+         * @param version (Output)
+         * The version of this update.
          * 
          * @return builder
          * 

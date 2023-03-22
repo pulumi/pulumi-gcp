@@ -159,7 +159,7 @@ import * as utilities from "../utilities";
  *         gcsDestinationConfig: {
  *             path: "mydata",
  *             fileRotationMb: 200,
- *             fileRotationInterval: "900s",
+ *             fileRotationInterval: "60s",
  *             jsonFileFormat: {
  *                 schemaFileFormat: "NO_SCHEMA_FILE",
  *                 compression: "GZIP",

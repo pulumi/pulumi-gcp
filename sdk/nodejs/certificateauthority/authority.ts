@@ -200,6 +200,17 @@ import * as utilities from "../utilities";
  *                     serverAuth: false,
  *                 },
  *             },
+ *             nameConstraints: {
+ *                 critical: true,
+ *                 permittedDnsNames: ["*.example.com"],
+ *                 excludedDnsNames: ["*.deny.example.com"],
+ *                 permittedIpRanges: ["10.0.0.0/8"],
+ *                 excludedIpRanges: ["10.1.1.0/24"],
+ *                 permittedEmailAddresses: [".example.com"],
+ *                 excludedEmailAddresses: [".deny.example.com"],
+ *                 permittedUris: [".example.com"],
+ *                 excludedUris: [".deny.example.com"],
+ *             },
  *         },
  *     },
  * }, {

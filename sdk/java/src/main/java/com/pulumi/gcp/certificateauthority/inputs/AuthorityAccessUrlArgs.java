@@ -17,6 +17,7 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
     public static final AuthorityAccessUrlArgs Empty = new AuthorityAccessUrlArgs();
 
     /**
+     * (Output)
      * The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
      * set for CAs that have been activated.
      * 
@@ -25,7 +26,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> caCertificateAccessUrl;
 
     /**
-     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * @return (Output)
+     * The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
      * set for CAs that have been activated.
      * 
      */
@@ -34,6 +36,7 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Output)
      * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
      * CAs that have been activated.
      * 
@@ -42,7 +45,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<String>> crlAccessUrls;
 
     /**
-     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * @return (Output)
+     * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
      * CAs that have been activated.
      * 
      */
@@ -76,7 +80,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caCertificateAccessUrl The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+         * @param caCertificateAccessUrl (Output)
+         * The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
          * set for CAs that have been activated.
          * 
          * @return builder
@@ -88,7 +93,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caCertificateAccessUrl The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+         * @param caCertificateAccessUrl (Output)
+         * The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
          * set for CAs that have been activated.
          * 
          * @return builder
@@ -99,7 +105,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * @param crlAccessUrls (Output)
+         * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
          * CAs that have been activated.
          * 
          * @return builder
@@ -111,7 +118,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * @param crlAccessUrls (Output)
+         * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
          * CAs that have been activated.
          * 
          * @return builder
@@ -122,7 +130,8 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * @param crlAccessUrls (Output)
+         * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
          * CAs that have been activated.
          * 
          * @return builder

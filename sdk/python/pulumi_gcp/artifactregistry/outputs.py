@@ -8,12 +8,27 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryMavenConfig',
+    'RepositoryRemoteRepositoryConfig',
+    'RepositoryRemoteRepositoryConfigDockerRepository',
+    'RepositoryRemoteRepositoryConfigMavenRepository',
+    'RepositoryRemoteRepositoryConfigNpmRepository',
+    'RepositoryRemoteRepositoryConfigPythonRepository',
+    'RepositoryVirtualRepositoryConfig',
+    'RepositoryVirtualRepositoryConfigUpstreamPolicy',
     'GetRepositoryMavenConfigResult',
+    'GetRepositoryRemoteRepositoryConfigResult',
+    'GetRepositoryRemoteRepositoryConfigDockerRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigMavenRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigNpmRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigPythonRepositoryResult',
+    'GetRepositoryVirtualRepositoryConfigResult',
+    'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
 ]
 
 @pulumi.output_type
@@ -127,6 +142,349 @@ class RepositoryMavenConfig(dict):
 
 
 @pulumi.output_type
+class RepositoryRemoteRepositoryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerRepository":
+            suggest = "docker_repository"
+        elif key == "mavenRepository":
+            suggest = "maven_repository"
+        elif key == "npmRepository":
+            suggest = "npm_repository"
+        elif key == "pythonRepository":
+            suggest = "python_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
+                 maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
+                 npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
+                 python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None):
+        """
+        :param str description: The description of the remote source.
+        :param 'RepositoryRemoteRepositoryConfigDockerRepositoryArgs' docker_repository: Specific settings for a Docker remote repository.
+               Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigMavenRepositoryArgs' maven_repository: Specific settings for a Maven remote repository.
+               Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigNpmRepositoryArgs' npm_repository: Specific settings for an Npm remote repository.
+               Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if docker_repository is not None:
+            pulumi.set(__self__, "docker_repository", docker_repository)
+        if maven_repository is not None:
+            pulumi.set(__self__, "maven_repository", maven_repository)
+        if npm_repository is not None:
+            pulumi.set(__self__, "npm_repository", npm_repository)
+        if python_repository is not None:
+            pulumi.set(__self__, "python_repository", python_repository)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the remote source.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository']:
+        """
+        Specific settings for a Docker remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @property
+    @pulumi.getter(name="mavenRepository")
+    def maven_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository']:
+        """
+        Specific settings for a Maven remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_repository")
+
+    @property
+    @pulumi.getter(name="npmRepository")
+    def npm_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository']:
+        """
+        Specific settings for an Npm remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "npm_repository")
+
+    @property
+    @pulumi.getter(name="pythonRepository")
+    def python_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository']:
+        """
+        Specific settings for a Python remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigDockerRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigDockerRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigDockerRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigDockerRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional[str] = None):
+        """
+        :param str public_repository: Address of the remote repository.
+               Default value is `DOCKER_HUB`.
+               Possible values are `DOCKER_HUB`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[str]:
+        """
+        Address of the remote repository.
+        Default value is `DOCKER_HUB`.
+        Possible values are `DOCKER_HUB`.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigMavenRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigMavenRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigMavenRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigMavenRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional[str] = None):
+        """
+        :param str public_repository: Address of the remote repository.
+               Default value is `MAVEN_CENTRAL`.
+               Possible values are `MAVEN_CENTRAL`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[str]:
+        """
+        Address of the remote repository.
+        Default value is `MAVEN_CENTRAL`.
+        Possible values are `MAVEN_CENTRAL`.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigNpmRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigNpmRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigNpmRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigNpmRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional[str] = None):
+        """
+        :param str public_repository: Address of the remote repository.
+               Default value is `NPMJS`.
+               Possible values are `NPMJS`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[str]:
+        """
+        Address of the remote repository.
+        Default value is `NPMJS`.
+        Possible values are `NPMJS`.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigPythonRepository(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigPythonRepository. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigPythonRepository.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigPythonRepository.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: Optional[str] = None):
+        """
+        :param str public_repository: Address of the remote repository.
+               Default value is `PYPI`.
+               Possible values are `PYPI`.
+        """
+        if public_repository is not None:
+            pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[str]:
+        """
+        Address of the remote repository.
+        Default value is `PYPI`.
+        Possible values are `PYPI`.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryVirtualRepositoryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "upstreamPolicies":
+            suggest = "upstream_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryVirtualRepositoryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryVirtualRepositoryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryVirtualRepositoryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 upstream_policies: Optional[Sequence['outputs.RepositoryVirtualRepositoryConfigUpstreamPolicy']] = None):
+        """
+        :param Sequence['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs'] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
+               Repository. Upstream policies cannot be set on a standard repository.
+               Structure is documented below.
+        """
+        if upstream_policies is not None:
+            pulumi.set(__self__, "upstream_policies", upstream_policies)
+
+    @property
+    @pulumi.getter(name="upstreamPolicies")
+    def upstream_policies(self) -> Optional[Sequence['outputs.RepositoryVirtualRepositoryConfigUpstreamPolicy']]:
+        """
+        Policies that configure the upstream artifacts distributed by the Virtual
+        Repository. Upstream policies cannot be set on a standard repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upstream_policies")
+
+
+@pulumi.output_type
+class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 priority: Optional[int] = None,
+                 repository: Optional[str] = None):
+        """
+        :param str id: The user-provided ID of the upstream policy.
+        :param int priority: Entries with a greater priority value take precedence in the pull order.
+        :param str repository: A reference to the repository resource, for example:
+               "projects/p1/locations/us-central1/repository/repo1".
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The user-provided ID of the upstream policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        Entries with a greater priority value take precedence in the pull order.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        """
+        A reference to the repository resource, for example:
+        "projects/p1/locations/us-central1/repository/repo1".
+        """
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
 class GetRepositoryMavenConfigResult(dict):
     def __init__(__self__, *,
                  allow_snapshot_overwrites: bool,
@@ -143,5 +501,131 @@ class GetRepositoryMavenConfigResult(dict):
     @pulumi.getter(name="versionPolicy")
     def version_policy(self) -> str:
         return pulumi.get(self, "version_policy")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 docker_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult'],
+                 maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
+                 npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
+                 python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "docker_repositories", docker_repositories)
+        pulumi.set(__self__, "maven_repositories", maven_repositories)
+        pulumi.set(__self__, "npm_repositories", npm_repositories)
+        pulumi.set(__self__, "python_repositories", python_repositories)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRepositories")
+    def docker_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult']:
+        return pulumi.get(self, "docker_repositories")
+
+    @property
+    @pulumi.getter(name="mavenRepositories")
+    def maven_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult']:
+        return pulumi.get(self, "maven_repositories")
+
+    @property
+    @pulumi.getter(name="npmRepositories")
+    def npm_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult']:
+        return pulumi.get(self, "npm_repositories")
+
+    @property
+    @pulumi.getter(name="pythonRepositories")
+    def python_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']:
+        return pulumi.get(self, "python_repositories")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repository: str):
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repository: str):
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repository: str):
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
+    def __init__(__self__, *,
+                 public_repository: str):
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryVirtualRepositoryConfigResult(dict):
+    def __init__(__self__, *,
+                 upstream_policies: Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']):
+        pulumi.set(__self__, "upstream_policies", upstream_policies)
+
+    @property
+    @pulumi.getter(name="upstreamPolicies")
+    def upstream_policies(self) -> Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']:
+        return pulumi.get(self, "upstream_policies")
+
+
+@pulumi.output_type
+class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 priority: int,
+                 repository: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
 
 

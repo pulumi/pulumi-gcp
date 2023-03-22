@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
+        /// (Output)
         /// Displays the target URI.
         /// </summary>
         public readonly string? Uri;

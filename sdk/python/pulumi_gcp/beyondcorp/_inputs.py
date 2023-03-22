@@ -63,11 +63,13 @@ class AppConnectionGatewayArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] app_gateway: AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-        :param pulumi.Input[int] ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        :param pulumi.Input[int] ingress_port: (Output)
+               Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
-        :param pulumi.Input[str] uri: Server-defined URI for this resource.
+        :param pulumi.Input[str] uri: (Output)
+               Server-defined URI for this resource.
         """
         pulumi.set(__self__, "app_gateway", app_gateway)
         if ingress_port is not None:
@@ -93,6 +95,7 @@ class AppConnectionGatewayArgs:
     @pulumi.getter(name="ingressPort")
     def ingress_port(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         """
         return pulumi.get(self, "ingress_port")
@@ -119,6 +122,7 @@ class AppConnectionGatewayArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Server-defined URI for this resource.
         """
         return pulumi.get(self, "uri")

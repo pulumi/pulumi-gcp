@@ -25,12 +25,14 @@ public final class DeviceGatewayConfig {
      */
     private @Nullable String gatewayType;
     /**
-     * @return The ID of the gateway the device accessed most recently.
+     * @return (Output)
+     * The ID of the gateway the device accessed most recently.
      * 
      */
     private @Nullable String lastAccessedGatewayId;
     /**
-     * @return The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+     * @return (Output)
+     * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
      * 
      */
     private @Nullable String lastAccessedGatewayTime;
@@ -54,14 +56,16 @@ public final class DeviceGatewayConfig {
         return Optional.ofNullable(this.gatewayType);
     }
     /**
-     * @return The ID of the gateway the device accessed most recently.
+     * @return (Output)
+     * The ID of the gateway the device accessed most recently.
      * 
      */
     public Optional<String> lastAccessedGatewayId() {
         return Optional.ofNullable(this.lastAccessedGatewayId);
     }
     /**
-     * @return The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+     * @return (Output)
+     * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
      * 
      */
     public Optional<String> lastAccessedGatewayTime() {

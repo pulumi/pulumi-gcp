@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? DataType;
         /// <summary>
+        /// (Output)
         /// Column length.
         /// </summary>
         public readonly int? Length;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly int? OrdinalPosition;
         /// <summary>
+        /// (Output)
         /// Column precision.
         /// </summary>
         public readonly int? Precision;
@@ -43,6 +45,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly bool? PrimaryKey;
         /// <summary>
+        /// (Output)
         /// Column scale.
         /// </summary>
         public readonly int? Scale;

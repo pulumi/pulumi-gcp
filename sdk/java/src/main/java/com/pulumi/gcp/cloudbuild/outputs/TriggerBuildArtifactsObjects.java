@@ -26,7 +26,8 @@ public final class TriggerBuildArtifactsObjects {
      */
     private @Nullable List<String> paths;
     /**
-     * @return Output only. Stores timing information for pushing all artifact objects.
+     * @return (Output)
+     * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
      */
@@ -50,7 +51,8 @@ public final class TriggerBuildArtifactsObjects {
         return this.paths == null ? List.of() : this.paths;
     }
     /**
-     * @return Output only. Stores timing information for pushing all artifact objects.
+     * @return (Output)
+     * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
      */

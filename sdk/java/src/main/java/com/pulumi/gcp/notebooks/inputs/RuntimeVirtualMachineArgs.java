@@ -17,6 +17,7 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
     public static final RuntimeVirtualMachineArgs Empty = new RuntimeVirtualMachineArgs();
 
     /**
+     * (Output)
      * The unique identifier of the Managed Compute Engine instance.
      * 
      */
@@ -24,7 +25,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The unique identifier of the Managed Compute Engine instance.
+     * @return (Output)
+     * The unique identifier of the Managed Compute Engine instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -32,6 +34,7 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * The user-friendly name of the Managed Compute Engine instance.
      * 
      */
@@ -39,7 +42,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The user-friendly name of the Managed Compute Engine instance.
+     * @return (Output)
+     * The user-friendly name of the Managed Compute Engine instance.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -90,7 +94,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceId The unique identifier of the Managed Compute Engine instance.
+         * @param instanceId (Output)
+         * The unique identifier of the Managed Compute Engine instance.
          * 
          * @return builder
          * 
@@ -101,7 +106,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceId The unique identifier of the Managed Compute Engine instance.
+         * @param instanceId (Output)
+         * The unique identifier of the Managed Compute Engine instance.
          * 
          * @return builder
          * 
@@ -111,7 +117,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceName The user-friendly name of the Managed Compute Engine instance.
+         * @param instanceName (Output)
+         * The user-friendly name of the Managed Compute Engine instance.
          * 
          * @return builder
          * 
@@ -122,7 +129,8 @@ public final class RuntimeVirtualMachineArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param instanceName The user-friendly name of the Managed Compute Engine instance.
+         * @param instanceName (Output)
+         * The user-friendly name of the Managed Compute Engine instance.
          * 
          * @return builder
          * 

@@ -12,17 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainMappingStatusCondition {
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     private @Nullable String message;
     /**
-     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * @return (Output)
+     * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
     private @Nullable String reason;
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     private @Nullable String status;
@@ -35,21 +38,24 @@ public final class DomainMappingStatusCondition {
 
     private DomainMappingStatusCondition() {}
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * @return (Output)
+     * One-word CamelCase reason for the condition&#39;s current status.
      * 
      */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     public Optional<String> status() {

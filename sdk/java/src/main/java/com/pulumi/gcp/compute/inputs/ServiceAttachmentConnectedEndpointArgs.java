@@ -16,6 +16,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     public static final ServiceAttachmentConnectedEndpointArgs Empty = new ServiceAttachmentConnectedEndpointArgs();
 
     /**
+     * (Output)
      * The URL of the consumer forwarding rule.
      * 
      */
@@ -23,7 +24,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The URL of the consumer forwarding rule.
+     * @return (Output)
+     * The URL of the consumer forwarding rule.
      * 
      */
     public Optional<Output<String>> endpoint() {
@@ -31,6 +33,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     }
 
     /**
+     * (Output)
      * The status of the connection from the consumer forwarding rule to
      * this service attachment.
      * 
@@ -39,7 +42,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the connection from the consumer forwarding rule to
+     * @return (Output)
+     * The status of the connection from the consumer forwarding rule to
      * this service attachment.
      * 
      */
@@ -73,7 +77,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoint The URL of the consumer forwarding rule.
+         * @param endpoint (Output)
+         * The URL of the consumer forwarding rule.
          * 
          * @return builder
          * 
@@ -84,7 +89,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param endpoint The URL of the consumer forwarding rule.
+         * @param endpoint (Output)
+         * The URL of the consumer forwarding rule.
          * 
          * @return builder
          * 
@@ -94,7 +100,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param status The status of the connection from the consumer forwarding rule to
+         * @param status (Output)
+         * The status of the connection from the consumer forwarding rule to
          * this service attachment.
          * 
          * @return builder
@@ -106,7 +113,8 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param status The status of the connection from the consumer forwarding rule to
+         * @param status (Output)
+         * The status of the connection from the consumer forwarding rule to
          * this service attachment.
          * 
          * @return builder

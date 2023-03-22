@@ -397,6 +397,7 @@ type Service struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses ServiceStatusArrayOutput `pulumi:"statuses"`
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
@@ -471,6 +472,7 @@ type serviceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses []ServiceStatus `pulumi:"statuses"`
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
@@ -514,6 +516,7 @@ type ServiceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Output)
 	// Status of the condition, one of True, False, Unknown.
 	Statuses ServiceStatusArrayInput
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
@@ -745,6 +748,7 @@ func (o ServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Status of the condition, one of True, False, Unknown.
 func (o ServiceOutput) Statuses() ServiceStatusArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceStatusArrayOutput { return v.Statuses }).(ServiceStatusArrayOutput)

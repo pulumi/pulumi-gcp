@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> NfsExportOptions;
         /// <summary>
+        /// (Output)
         /// The resource name of the backup, in the format
         /// projects/{projectId}/locations/{locationId}/backups/{backupId},
         /// that this file share has been restored from.

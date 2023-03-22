@@ -16,21 +16,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
     /**
-     * @return Optional. Specifies whether the disk will be auto-deleted
+     * @return (Output)
+     * Optional. Specifies whether the disk will be auto-deleted
      * when the instance is deleted (but not when the disk is
      * detached from the instance).
      * 
      */
     private @Nullable Boolean autoDelete;
     /**
-     * @return Optional. Indicates that this is a boot disk. The virtual
+     * @return (Output)
+     * Optional. Indicates that this is a boot disk. The virtual
      * machine will use the first partition of the disk for its
      * root filesystem.
      * 
      */
     private @Nullable Boolean boot;
     /**
-     * @return Optional. Specifies a unique device name of your choice
+     * @return (Output)
+     * Optional. Specifies a unique device name of your choice
      * that is reflected into the /dev/disk/by-id/google-* tree
      * of a Linux operating system running within the instance.
      * This name can be used to reference the device for mounting,
@@ -43,7 +46,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      */
     private @Nullable String deviceName;
     /**
-     * @return Indicates a list of features to enable on the guest operating
+     * @return (Output)
+     * Indicates a list of features to enable on the guest operating
      * system. Applicable only for bootable images. To see a list of
      * available features, read `https://cloud.google.com/compute/docs/
      * images/create-delete-deprecate-private-images#guest-os-features`
@@ -52,7 +56,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      */
     private @Nullable List<String> guestOsFeatures;
     /**
-     * @return Output only. A zero-based index to this disk, where 0 is
+     * @return (Output)
+     * Output only. A zero-based index to this disk, where 0 is
      * reserved for the boot disk. If you have many disks attached
      * to an instance, each disk would have a unique index number.
      * 
@@ -80,13 +85,15 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
      */
     private @Nullable String interface_;
     /**
-     * @return Type of the resource. Always compute#attachedDisk for attached
+     * @return (Output)
+     * Type of the resource. Always compute#attachedDisk for attached
      * disks.
      * 
      */
     private @Nullable String kind;
     /**
-     * @return Output only. Any valid publicly visible licenses.
+     * @return (Output)
+     * Output only. Any valid publicly visible licenses.
      * 
      */
     private @Nullable List<String> licenses;
@@ -112,7 +119,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
 
     private RuntimeVirtualMachineVirtualMachineConfigDataDisk() {}
     /**
-     * @return Optional. Specifies whether the disk will be auto-deleted
+     * @return (Output)
+     * Optional. Specifies whether the disk will be auto-deleted
      * when the instance is deleted (but not when the disk is
      * detached from the instance).
      * 
@@ -121,7 +129,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return Optional.ofNullable(this.autoDelete);
     }
     /**
-     * @return Optional. Indicates that this is a boot disk. The virtual
+     * @return (Output)
+     * Optional. Indicates that this is a boot disk. The virtual
      * machine will use the first partition of the disk for its
      * root filesystem.
      * 
@@ -130,7 +139,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return Optional.ofNullable(this.boot);
     }
     /**
-     * @return Optional. Specifies a unique device name of your choice
+     * @return (Output)
+     * Optional. Specifies a unique device name of your choice
      * that is reflected into the /dev/disk/by-id/google-* tree
      * of a Linux operating system running within the instance.
      * This name can be used to reference the device for mounting,
@@ -145,7 +155,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return Optional.ofNullable(this.deviceName);
     }
     /**
-     * @return Indicates a list of features to enable on the guest operating
+     * @return (Output)
+     * Indicates a list of features to enable on the guest operating
      * system. Applicable only for bootable images. To see a list of
      * available features, read `https://cloud.google.com/compute/docs/
      * images/create-delete-deprecate-private-images#guest-os-features`
@@ -156,7 +167,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return this.guestOsFeatures == null ? List.of() : this.guestOsFeatures;
     }
     /**
-     * @return Output only. A zero-based index to this disk, where 0 is
+     * @return (Output)
+     * Output only. A zero-based index to this disk, where 0 is
      * reserved for the boot disk. If you have many disks attached
      * to an instance, each disk would have a unique index number.
      * 
@@ -190,7 +202,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return Optional.ofNullable(this.interface_);
     }
     /**
-     * @return Type of the resource. Always compute#attachedDisk for attached
+     * @return (Output)
+     * Type of the resource. Always compute#attachedDisk for attached
      * disks.
      * 
      */
@@ -198,7 +211,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         return Optional.ofNullable(this.kind);
     }
     /**
-     * @return Output only. Any valid publicly visible licenses.
+     * @return (Output)
+     * Output only. Any valid publicly visible licenses.
      * 
      */
     public List<String> licenses() {

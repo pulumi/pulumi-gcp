@@ -27,7 +27,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      */
     private String day;
     /**
-     * @return Output only. Duration of the maintenance window.
+     * @return (Output)
+     * Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -59,7 +60,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
         return this.day;
     }
     /**
-     * @return Output only. Duration of the maintenance window.
+     * @return (Output)
+     * Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.

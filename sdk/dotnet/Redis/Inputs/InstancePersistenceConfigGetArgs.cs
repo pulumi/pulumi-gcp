@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string>? PersistenceMode { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Output only. The next time that a snapshot attempt is scheduled to occur.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
         /// to nine fractional digits.

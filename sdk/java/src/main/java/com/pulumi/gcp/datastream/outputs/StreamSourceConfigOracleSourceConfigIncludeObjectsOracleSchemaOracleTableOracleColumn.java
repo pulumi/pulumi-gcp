@@ -25,37 +25,44 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
      */
     private @Nullable String dataType;
     /**
-     * @return Column encoding.
+     * @return (Output)
+     * Column encoding.
      * 
      */
     private @Nullable String encoding;
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     private @Nullable Integer length;
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return (Output)
+     * Whether or not the column can accept a null value.
      * 
      */
     private @Nullable Boolean nullable;
     /**
-     * @return The ordinal position of the column in the table.
+     * @return (Output)
+     * The ordinal position of the column in the table.
      * 
      */
     private @Nullable Integer ordinalPosition;
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     private @Nullable Integer precision;
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return (Output)
+     * Whether or not the column represents a primary key.
      * 
      */
     private @Nullable Boolean primaryKey;
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     private @Nullable Integer scale;
@@ -77,49 +84,56 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
         return Optional.ofNullable(this.dataType);
     }
     /**
-     * @return Column encoding.
+     * @return (Output)
+     * Column encoding.
      * 
      */
     public Optional<String> encoding() {
         return Optional.ofNullable(this.encoding);
     }
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Integer> length() {
         return Optional.ofNullable(this.length);
     }
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return (Output)
+     * Whether or not the column can accept a null value.
      * 
      */
     public Optional<Boolean> nullable() {
         return Optional.ofNullable(this.nullable);
     }
     /**
-     * @return The ordinal position of the column in the table.
+     * @return (Output)
+     * The ordinal position of the column in the table.
      * 
      */
     public Optional<Integer> ordinalPosition() {
         return Optional.ofNullable(this.ordinalPosition);
     }
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     public Optional<Integer> precision() {
         return Optional.ofNullable(this.precision);
     }
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return (Output)
+     * Whether or not the column represents a primary key.
      * 
      */
     public Optional<Boolean> primaryKey() {
         return Optional.ofNullable(this.primaryKey);
     }
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     public Optional<Integer> scale() {

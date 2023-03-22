@@ -145,12 +145,6 @@ import (
 //	$ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
-//
-// ```
 type WorkstationCluster struct {
 	pulumi.CustomResourceState
 

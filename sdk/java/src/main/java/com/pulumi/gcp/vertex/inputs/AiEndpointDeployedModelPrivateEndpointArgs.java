@@ -16,6 +16,7 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     public static final AiEndpointDeployedModelPrivateEndpointArgs Empty = new AiEndpointDeployedModelPrivateEndpointArgs();
 
     /**
+     * (Output)
      * Output only. Http(s) path to send explain requests.
      * 
      */
@@ -23,7 +24,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     private @Nullable Output<String> explainHttpUri;
 
     /**
-     * @return Output only. Http(s) path to send explain requests.
+     * @return (Output)
+     * Output only. Http(s) path to send explain requests.
      * 
      */
     public Optional<Output<String>> explainHttpUri() {
@@ -31,6 +33,7 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Output only. Http(s) path to send health check requests.
      * 
      */
@@ -38,7 +41,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     private @Nullable Output<String> healthHttpUri;
 
     /**
-     * @return Output only. Http(s) path to send health check requests.
+     * @return (Output)
+     * Output only. Http(s) path to send health check requests.
      * 
      */
     public Optional<Output<String>> healthHttpUri() {
@@ -46,6 +50,7 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Output only. Http(s) path to send prediction requests.
      * 
      */
@@ -53,7 +58,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     private @Nullable Output<String> predictHttpUri;
 
     /**
-     * @return Output only. Http(s) path to send prediction requests.
+     * @return (Output)
+     * Output only. Http(s) path to send prediction requests.
      * 
      */
     public Optional<Output<String>> predictHttpUri() {
@@ -61,6 +67,7 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
      * 
      */
@@ -68,7 +75,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
     private @Nullable Output<String> serviceAttachment;
 
     /**
-     * @return Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+     * @return (Output)
+     * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
      * 
      */
     public Optional<Output<String>> serviceAttachment() {
@@ -103,7 +111,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param explainHttpUri Output only. Http(s) path to send explain requests.
+         * @param explainHttpUri (Output)
+         * Output only. Http(s) path to send explain requests.
          * 
          * @return builder
          * 
@@ -114,7 +123,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param explainHttpUri Output only. Http(s) path to send explain requests.
+         * @param explainHttpUri (Output)
+         * Output only. Http(s) path to send explain requests.
          * 
          * @return builder
          * 
@@ -124,7 +134,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param healthHttpUri Output only. Http(s) path to send health check requests.
+         * @param healthHttpUri (Output)
+         * Output only. Http(s) path to send health check requests.
          * 
          * @return builder
          * 
@@ -135,7 +146,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param healthHttpUri Output only. Http(s) path to send health check requests.
+         * @param healthHttpUri (Output)
+         * Output only. Http(s) path to send health check requests.
          * 
          * @return builder
          * 
@@ -145,7 +157,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param predictHttpUri Output only. Http(s) path to send prediction requests.
+         * @param predictHttpUri (Output)
+         * Output only. Http(s) path to send prediction requests.
          * 
          * @return builder
          * 
@@ -156,7 +169,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param predictHttpUri Output only. Http(s) path to send prediction requests.
+         * @param predictHttpUri (Output)
+         * Output only. Http(s) path to send prediction requests.
          * 
          * @return builder
          * 
@@ -166,7 +180,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param serviceAttachment Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+         * @param serviceAttachment (Output)
+         * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
          * 
          * @return builder
          * 
@@ -177,7 +192,8 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
         }
 
         /**
-         * @param serviceAttachment Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+         * @param serviceAttachment (Output)
+         * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
          * 
          * @return builder
          * 

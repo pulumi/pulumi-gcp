@@ -23,6 +23,9 @@ func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulum
 type LookupAppleAppArgs struct {
 	// The appId of name of the Firebase iosApp.
 	AppId string `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getAppleApp.
@@ -41,8 +44,8 @@ type LookupAppleAppResult struct {
 	Id string `pulumi:"id"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/iosApps/appId
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    string  `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// The Apple Developer Team ID associated with the App in the App Store.
 	TeamId string `pulumi:"teamId"`
 }
@@ -64,6 +67,9 @@ func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, op
 type LookupAppleAppOutputArgs struct {
 	// The appId of name of the Firebase iosApp.
 	AppId pulumi.StringInput `pulumi:"appId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupAppleAppOutputArgs) ElementType() reflect.Type {
@@ -121,8 +127,8 @@ func (o LookupAppleAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupAppleAppResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppleAppResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupAppleAppResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppleAppResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // The Apple Developer Team ID associated with the App in the App Store.

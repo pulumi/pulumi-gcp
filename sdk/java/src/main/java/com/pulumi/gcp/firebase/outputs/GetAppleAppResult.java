@@ -6,6 +6,8 @@ package com.pulumi.gcp.firebase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppleAppResult {
@@ -42,7 +44,7 @@ public final class GetAppleAppResult {
      * 
      */
     private String name;
-    private String project;
+    private @Nullable String project;
     /**
      * @return The Apple Developer Team ID associated with the App in the App Store.
      * 
@@ -97,8 +99,8 @@ public final class GetAppleAppResult {
     public String name() {
         return this.name;
     }
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
     /**
      * @return The Apple Developer Team ID associated with the App in the App Store.
@@ -124,7 +126,7 @@ public final class GetAppleAppResult {
         private String displayName;
         private String id;
         private String name;
-        private String project;
+        private @Nullable String project;
         private String teamId;
         public Builder() {}
         public Builder(GetAppleAppResult defaults) {
@@ -176,8 +178,8 @@ public final class GetAppleAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+        public Builder project(@Nullable String project) {
+            this.project = project;
             return this;
         }
         @CustomType.Setter

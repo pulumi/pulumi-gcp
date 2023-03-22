@@ -14,24 +14,29 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class InstanceServerCaCert
     {
         /// <summary>
+        /// (Output)
         /// The certificate data in PEM format.
         /// </summary>
         public readonly string? Cert;
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>
+        /// (Output)
         /// The time when the certificate expires.
         /// </summary>
         public readonly string? ExpireTime;
         /// <summary>
+        /// (Output)
         /// Serial number, as extracted from the certificate.
         /// </summary>
         public readonly string? SerialNumber;
         /// <summary>
+        /// (Output)
         /// Sha1 Fingerprint of the certificate.
         /// </summary>
         public readonly string? Sha1Fingerprint;

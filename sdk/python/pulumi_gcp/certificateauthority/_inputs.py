@@ -23,6 +23,7 @@ __all__ = [
     'AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs',
     'AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs',
     'AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs',
+    'AuthorityConfigX509ConfigNameConstraintsArgs',
     'AuthorityConfigX509ConfigPolicyIdArgs',
     'AuthorityKeySpecArgs',
     'AuthoritySubordinateConfigArgs',
@@ -42,6 +43,7 @@ __all__ = [
     'CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs',
     'CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs',
     'CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs',
+    'CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs',
     'CaPoolIssuancePolicyBaselineValuesPolicyIdArgs',
     'CaPoolIssuancePolicyIdentityConstraintsArgs',
     'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs',
@@ -71,6 +73,7 @@ __all__ = [
     'CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs',
     'CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs',
     'CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs',
+    'CertificateCertificateDescriptionX509DescriptionNameConstraintArgs',
     'CertificateCertificateDescriptionX509DescriptionPolicyIdArgs',
     'CertificateConfigArgs',
     'CertificateConfigPublicKeyArgs',
@@ -85,6 +88,7 @@ __all__ = [
     'CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs',
     'CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs',
     'CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs',
+    'CertificateConfigX509ConfigNameConstraintsArgs',
     'CertificateConfigX509ConfigPolicyIdArgs',
     'CertificateRevocationDetailArgs',
     'CertificateTemplateIamBindingConditionArgs',
@@ -110,9 +114,11 @@ class AuthorityAccessUrlArgs:
                  ca_certificate_access_url: Optional[pulumi.Input[str]] = None,
                  crl_access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] ca_certificate_access_url: The URL where this CertificateAuthority's CA certificate is published. This will only be
+        :param pulumi.Input[str] ca_certificate_access_url: (Output)
+               The URL where this CertificateAuthority's CA certificate is published. This will only be
                set for CAs that have been activated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_access_urls: The URL where this CertificateAuthority's CRLs are published. This will only be set for
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_access_urls: (Output)
+               The URL where this CertificateAuthority's CRLs are published. This will only be set for
                CAs that have been activated.
         """
         if ca_certificate_access_url is not None:
@@ -124,6 +130,7 @@ class AuthorityAccessUrlArgs:
     @pulumi.getter(name="caCertificateAccessUrl")
     def ca_certificate_access_url(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The URL where this CertificateAuthority's CA certificate is published. This will only be
         set for CAs that have been activated.
         """
@@ -137,6 +144,7 @@ class AuthorityAccessUrlArgs:
     @pulumi.getter(name="crlAccessUrls")
     def crl_access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Output)
         The URL where this CertificateAuthority's CRLs are published. This will only be set for
         CAs that have been activated.
         """
@@ -441,6 +449,7 @@ class AuthorityConfigX509ConfigArgs:
                  key_usage: pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs'],
                  additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name_constraints: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
@@ -451,6 +460,8 @@ class AuthorityConfigX509ConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
+        :param pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
@@ -460,6 +471,8 @@ class AuthorityConfigX509ConfigArgs:
             pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
             pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -514,6 +527,19 @@ class AuthorityConfigX509ConfigArgs:
     @aia_ocsp_servers.setter
     def aia_ocsp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "aia_ocsp_servers", value)
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']]:
+        """
+        Describes the X.509 name constraints extension.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "name_constraints")
+
+    @name_constraints.setter
+    def name_constraints(self, value: Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']]):
+        pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
@@ -1023,6 +1049,204 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
+class AuthorityConfigX509ConfigNameConstraintsArgs:
+    def __init__(__self__, *,
+                 critical: pulumi.Input[bool],
+                 excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] critical: Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        """
+        pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @excluded_dns_names.setter
+    def excluded_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_dns_names", value)
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @excluded_email_addresses.setter
+    def excluded_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @excluded_ip_ranges.setter
+    def excluded_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @excluded_uris.setter
+    def excluded_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_uris", value)
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @permitted_dns_names.setter
+    def permitted_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_dns_names", value)
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @permitted_email_addresses.setter
+    def permitted_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @permitted_ip_ranges.setter
+    def permitted_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
+
+    @permitted_uris.setter
+    def permitted_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_uris", value)
+
+
+@pulumi.input_type
 class AuthorityConfigX509ConfigPolicyIdArgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
@@ -1528,6 +1752,7 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
                  key_usage: pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageArgs'],
                  additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
@@ -1538,6 +1763,8 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
+        :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
@@ -1547,6 +1774,8 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
             pulumi.set(__self__, "additional_extensions", additional_extensions)
         if aia_ocsp_servers is not None:
             pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -1601,6 +1830,19 @@ class CaPoolIssuancePolicyBaselineValuesArgs:
     @aia_ocsp_servers.setter
     def aia_ocsp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "aia_ocsp_servers", value)
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']]:
+        """
+        Describes the X.509 name constraints extension.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "name_constraints")
+
+    @name_constraints.setter
+    def name_constraints(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']]):
+        pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
@@ -2109,6 +2351,204 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
+class CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs:
+    def __init__(__self__, *,
+                 critical: pulumi.Input[bool],
+                 excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] critical: Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        """
+        pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @excluded_dns_names.setter
+    def excluded_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_dns_names", value)
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @excluded_email_addresses.setter
+    def excluded_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @excluded_ip_ranges.setter
+    def excluded_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @excluded_uris.setter
+    def excluded_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_uris", value)
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @permitted_dns_names.setter
+    def permitted_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_dns_names", value)
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @permitted_email_addresses.setter
+    def permitted_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @permitted_ip_ranges.setter
+    def permitted_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
+
+    @permitted_uris.setter
+    def permitted_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_uris", value)
+
+
+@pulumi.input_type
 class CaPoolIssuancePolicyBaselineValuesPolicyIdArgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
@@ -2323,22 +2763,29 @@ class CertificateCertificateDescriptionArgs:
                  subject_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]] = None,
                  x509_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_issuing_certificate_urls: Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]] authority_key_ids: Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_issuing_certificate_urls: (Output)
+               Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]] authority_key_ids: (Output)
+               Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]] cert_fingerprints: The hash of the x.509 certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]] cert_fingerprints: (Output)
+               The hash of the x.509 certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueArgs']]] config_values: (Deprecated)
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueArgs']]] config_values: (Output, Deprecated)
                Describes some of the technical fields in a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_distribution_points: Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_distribution_points: (Output)
+               Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: A PublicKey describes a public key.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]] subject_descriptions: Describes some of the values in a certificate that are related to the subject and lifetime.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]] subject_descriptions: (Output)
+               Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]] subject_key_ids: Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]] subject_key_ids: (Output)
+               Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]] x509_descriptions: A structured description of the issued X.509 certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]] x509_descriptions: (Output)
+               A structured description of the issued X.509 certificate.
                Structure is documented below.
         """
         if aia_issuing_certificate_urls is not None:
@@ -2367,6 +2814,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="aiaIssuingCertificateUrls")
     def aia_issuing_certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Output)
         Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
         """
         return pulumi.get(self, "aia_issuing_certificate_urls")
@@ -2379,6 +2827,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="authorityKeyIds")
     def authority_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]]]:
         """
+        (Output)
         Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
         Structure is documented below.
         """
@@ -2392,6 +2841,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="certFingerprints")
     def cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]]]:
         """
+        (Output)
         The hash of the x.509 certificate.
         Structure is documented below.
         """
@@ -2405,7 +2855,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="configValues")
     def config_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueArgs']]]]:
         """
-        (Deprecated)
+        (Output, Deprecated)
         Describes some of the technical fields in a certificate.
         Structure is documented below.
         """
@@ -2419,6 +2869,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="crlDistributionPoints")
     def crl_distribution_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Output)
         Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         """
         return pulumi.get(self, "crl_distribution_points")
@@ -2444,6 +2895,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="subjectDescriptions")
     def subject_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]]:
         """
+        (Output)
         Describes some of the values in a certificate that are related to the subject and lifetime.
         Structure is documented below.
         """
@@ -2457,6 +2909,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="subjectKeyIds")
     def subject_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]]:
         """
+        (Output)
         Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
         Structure is documented below.
         """
@@ -2470,6 +2923,7 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="x509Descriptions")
     def x509_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]:
         """
+        (Output)
         A structured description of the issued X.509 certificate.
         Structure is documented below.
         """
@@ -2485,7 +2939,8 @@ class CertificateCertificateDescriptionAuthorityKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        :param pulumi.Input[str] key_id: (Output)
+               Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -2494,6 +2949,7 @@ class CertificateCertificateDescriptionAuthorityKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
         return pulumi.get(self, "key_id")
@@ -2508,7 +2964,8 @@ class CertificateCertificateDescriptionCertFingerprintArgs:
     def __init__(__self__, *,
                  sha256_hash: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] sha256_hash: The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        :param pulumi.Input[str] sha256_hash: (Output)
+               The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         """
         if sha256_hash is not None:
             pulumi.set(__self__, "sha256_hash", sha256_hash)
@@ -2517,6 +2974,7 @@ class CertificateCertificateDescriptionCertFingerprintArgs:
     @pulumi.getter(name="sha256Hash")
     def sha256_hash(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         """
         return pulumi.get(self, "sha256_hash")
@@ -2617,7 +3075,8 @@ class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs:
     def __init__(__self__, *,
                  key_usage_options: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs']]] key_usage_options: Describes high-level ways in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs']]] key_usage_options: (Output)
+               Describes high-level ways in which a key may be used.
                Structure is documented below.
         """
         if key_usage_options is not None:
@@ -2627,6 +3086,7 @@ class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs:
     @pulumi.getter(name="keyUsageOptions")
     def key_usage_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs']]]]:
         """
+        (Output)
         Describes high-level ways in which a key may be used.
         Structure is documented below.
         """
@@ -2896,7 +3356,8 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
     def __init__(__self__, *,
                  obect_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs']]] obect_ids: Required. Describes how some of the technical fields in a certificate should be populated.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs']]] obect_ids: (Output)
+               Required. Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         """
         if obect_ids is not None:
@@ -2906,6 +3367,7 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
     @pulumi.getter(name="obectIds")
     def obect_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs']]]]:
         """
+        (Output)
         Required. Describes how some of the technical fields in a certificate should be populated.
         Structure is documented below.
         """
@@ -2998,12 +3460,15 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
                  subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]] = None,
                  subjects: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]] = None):
         """
-        :param pulumi.Input[str] hex_serial_number: The serial number encoded in lowercase hexadecimal.
+        :param pulumi.Input[str] hex_serial_number: (Output)
+               The serial number encoded in lowercase hexadecimal.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] not_after_time: The time at which the certificate expires.
-        :param pulumi.Input[str] not_before_time: The time at which the certificate becomes valid.
+        :param pulumi.Input[str] not_after_time: (Output)
+               The time at which the certificate expires.
+        :param pulumi.Input[str] not_before_time: (Output)
+               The time at which the certificate becomes valid.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]] subject_alt_names: The subject alternative name fields.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]] subjects: Contains distinguished name fields such as the location and organization.
@@ -3026,6 +3491,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
     @pulumi.getter(name="hexSerialNumber")
     def hex_serial_number(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The serial number encoded in lowercase hexadecimal.
         """
         return pulumi.get(self, "hex_serial_number")
@@ -3052,6 +3518,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
     @pulumi.getter(name="notAfterTime")
     def not_after_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The time at which the certificate expires.
         """
         return pulumi.get(self, "not_after_time")
@@ -3064,6 +3531,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
     @pulumi.getter(name="notBeforeTime")
     def not_before_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The time at which the certificate becomes valid.
         """
         return pulumi.get(self, "not_before_time")
@@ -3243,7 +3711,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]] custom_sans: Contains additional subject alternative name values.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]] custom_sans: (Output)
+               Contains additional subject alternative name values.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
@@ -3265,6 +3734,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
     @pulumi.getter(name="customSans")
     def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]]:
         """
+        (Output)
         Contains additional subject alternative name values.
         Structure is documented below.
         """
@@ -3332,7 +3802,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]] obect_ids: Required. Describes how some of the technical fields in a certificate should be populated.
+               (Required)
+               Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]] obect_ids: (Output)
+               Required. Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         :param pulumi.Input[str] value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -3349,6 +3822,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         Indicates whether or not this extension is critical (i.e., if the client does not know how to
         handle this extension, the client should consider this to be an error).
+        (Required)
+        Indicates whether or not the name constraints are marked critical.
         """
         return pulumi.get(self, "critical")
 
@@ -3360,6 +3835,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     @pulumi.getter(name="obectIds")
     def obect_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]]:
         """
+        (Output)
         Required. Describes how some of the technical fields in a certificate should be populated.
         Structure is documented below.
         """
@@ -3418,7 +3894,8 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        :param pulumi.Input[str] key_id: (Output)
+               Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -3427,6 +3904,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
         """
         return pulumi.get(self, "key_id")
@@ -3443,6 +3921,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ca_options: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]] = None,
                  key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]] = None,
+                 name_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
@@ -3452,6 +3931,8 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]] key_usages: Indicates the intended use for keys that correspond to a certificate.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
@@ -3464,6 +3945,8 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
             pulumi.set(__self__, "ca_options", ca_options)
         if key_usages is not None:
             pulumi.set(__self__, "key_usages", key_usages)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -3518,6 +4001,19 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @key_usages.setter
     def key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]):
         pulumi.set(self, "key_usages", value)
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]:
+        """
+        Describes the X.509 name constraints extension.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "name_constraints")
+
+    @name_constraints.setter
+    def name_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]):
+        pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
@@ -3995,6 +4491,205 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
 
 
 @pulumi.input_type
+class CertificateCertificateDescriptionX509DescriptionNameConstraintArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input[bool]] = None,
+                 excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] critical: Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @excluded_dns_names.setter
+    def excluded_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_dns_names", value)
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @excluded_email_addresses.setter
+    def excluded_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @excluded_ip_ranges.setter
+    def excluded_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @excluded_uris.setter
+    def excluded_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_uris", value)
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @permitted_dns_names.setter
+    def permitted_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_dns_names", value)
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @permitted_email_addresses.setter
+    def permitted_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @permitted_ip_ranges.setter
+    def permitted_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
+
+    @permitted_uris.setter
+    def permitted_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_uris", value)
+
+
+@pulumi.input_type
 class CertificateCertificateDescriptionX509DescriptionPolicyIdArgs:
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
@@ -4368,6 +5063,7 @@ class CertificateConfigX509ConfigArgs:
                  additional_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]] = None,
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ca_options: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']] = None,
+                 name_constraints: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
@@ -4377,6 +5073,8 @@ class CertificateConfigX509ConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
         :param pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
+               Structure is documented below.
+        :param pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
@@ -4388,6 +5086,8 @@ class CertificateConfigX509ConfigArgs:
             pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         if ca_options is not None:
             pulumi.set(__self__, "ca_options", ca_options)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -4442,6 +5142,19 @@ class CertificateConfigX509ConfigArgs:
     @ca_options.setter
     def ca_options(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']]):
         pulumi.set(self, "ca_options", value)
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']]:
+        """
+        Describes the X.509 name constraints extension.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "name_constraints")
+
+    @name_constraints.setter
+    def name_constraints(self, value: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']]):
+        pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")
@@ -4950,6 +5663,204 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs:
 
 
 @pulumi.input_type
+class CertificateConfigX509ConfigNameConstraintsArgs:
+    def __init__(__self__, *,
+                 critical: pulumi.Input[bool],
+                 excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] critical: Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, `example.com`, `www.example.com`, `www.sub.example.com`
+               would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. `.example.com`) to indicate
+               all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like `.example.com`)
+        """
+        pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @excluded_dns_names.setter
+    def excluded_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_dns_names", value)
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @excluded_email_addresses.setter
+    def excluded_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @excluded_ip_ranges.setter
+    def excluded_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @excluded_uris.setter
+    def excluded_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_uris", value)
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, `example.com`, `www.example.com`, `www.sub.example.com`
+        would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @permitted_dns_names.setter
+    def permitted_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_dns_names", value)
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. `.example.com`) to indicate
+        all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @permitted_email_addresses.setter
+    def permitted_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @permitted_ip_ranges.setter
+    def permitted_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
+
+    @permitted_uris.setter
+    def permitted_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_uris", value)
+
+
+@pulumi.input_type
 class CertificateConfigX509ConfigPolicyIdArgs:
     def __init__(__self__, *,
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
@@ -4977,8 +5888,10 @@ class CertificateRevocationDetailArgs:
                  revocation_state: Optional[pulumi.Input[str]] = None,
                  revocation_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] revocation_state: Indicates why a Certificate was revoked.
-        :param pulumi.Input[str] revocation_time: The time at which this Certificate was revoked.
+        :param pulumi.Input[str] revocation_state: (Output)
+               Indicates why a Certificate was revoked.
+        :param pulumi.Input[str] revocation_time: (Output)
+               The time at which this Certificate was revoked.
         """
         if revocation_state is not None:
             pulumi.set(__self__, "revocation_state", revocation_state)
@@ -4989,6 +5902,7 @@ class CertificateRevocationDetailArgs:
     @pulumi.getter(name="revocationState")
     def revocation_state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Indicates why a Certificate was revoked.
         """
         return pulumi.get(self, "revocation_state")
@@ -5001,6 +5915,7 @@ class CertificateRevocationDetailArgs:
     @pulumi.getter(name="revocationTime")
     def revocation_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The time at which this Certificate was revoked.
         """
         return pulumi.get(self, "revocation_time")

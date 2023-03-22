@@ -11,6 +11,7 @@ import (
 )
 
 type InstanceMaintenancePolicy struct {
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -19,6 +20,7 @@ type InstanceMaintenancePolicy struct {
 	// Create/Update methods return INVALID_ARGUMENT if the
 	// length is greater than 512.
 	Description *string `pulumi:"description"`
+	// (Output)
 	// Output only. The time when the policy was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -42,6 +44,7 @@ type InstanceMaintenancePolicyInput interface {
 }
 
 type InstanceMaintenancePolicyArgs struct {
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -50,6 +53,7 @@ type InstanceMaintenancePolicyArgs struct {
 	// Create/Update methods return INVALID_ARGUMENT if the
 	// length is greater than 512.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
 	// Output only. The time when the policy was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -138,6 +142,7 @@ func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutputWit
 	}).(InstanceMaintenancePolicyPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -152,6 +157,7 @@ func (o InstanceMaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was last updated.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -193,6 +199,7 @@ func (o InstanceMaintenancePolicyPtrOutput) Elem() InstanceMaintenancePolicyOutp
 	}).(InstanceMaintenancePolicyOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -217,6 +224,7 @@ func (o InstanceMaintenancePolicyPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was last updated.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -254,6 +262,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
 	// - SUNDAY: Sunday
 	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day string `pulumi:"day"`
+	// (Output)
 	// Output only. Duration of the maintenance window.
 	// The current window is fixed at 1 hour.
 	// A duration in seconds with up to nine fractional digits,
@@ -287,6 +296,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
 	// - SUNDAY: Sunday
 	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	Day pulumi.StringInput `pulumi:"day"`
+	// (Output)
 	// Output only. Duration of the maintenance window.
 	// The current window is fixed at 1 hour.
 	// A duration in seconds with up to nine fractional digits,
@@ -362,6 +372,7 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.Str
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Output only. Duration of the maintenance window.
 // The current window is fixed at 1 hour.
 // A duration in seconds with up to nine fractional digits,
@@ -484,15 +495,18 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds
 }
 
 type InstanceMaintenanceSchedule struct {
+	// (Output)
 	// Output only. The end time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	EndTime *string `pulumi:"endTime"`
+	// (Output)
 	// Output only. The deadline that the maintenance schedule start time
 	// can not go beyond, including reschedule.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
+	// (Output)
 	// Output only. The start time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -511,15 +525,18 @@ type InstanceMaintenanceScheduleInput interface {
 }
 
 type InstanceMaintenanceScheduleArgs struct {
+	// (Output)
 	// Output only. The end time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
 	// Output only. The deadline that the maintenance schedule start time
 	// can not go beyond, including reschedule.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
+	// (Output)
 	// Output only. The start time of any upcoming scheduled maintenance for this instance.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
@@ -603,6 +620,7 @@ func (o InstanceMaintenanceScheduleOutput) ToInstanceMaintenanceSchedulePtrOutpu
 	}).(InstanceMaintenanceSchedulePtrOutput)
 }
 
+// (Output)
 // Output only. The end time of any upcoming scheduled maintenance for this instance.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -610,6 +628,7 @@ func (o InstanceMaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The deadline that the maintenance schedule start time
 // can not go beyond, including reschedule.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -618,6 +637,7 @@ func (o InstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringP
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The start time of any upcoming scheduled maintenance for this instance.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -649,6 +669,7 @@ func (o InstanceMaintenanceSchedulePtrOutput) Elem() InstanceMaintenanceSchedule
 	}).(InstanceMaintenanceScheduleOutput)
 }
 
+// (Output)
 // Output only. The end time of any upcoming scheduled maintenance for this instance.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -661,6 +682,7 @@ func (o InstanceMaintenanceSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The deadline that the maintenance schedule start time
 // can not go beyond, including reschedule.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -674,6 +696,7 @@ func (o InstanceMaintenanceSchedulePtrOutput) ScheduleDeadlineTime() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The start time of any upcoming scheduled maintenance for this instance.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -687,8 +710,10 @@ func (o InstanceMaintenanceSchedulePtrOutput) StartTime() pulumi.StringPtrOutput
 }
 
 type InstanceNode struct {
+	// (Output)
 	// Node identifying string. e.g. 'node-0', 'node-1'
 	Id *string `pulumi:"id"`
+	// (Output)
 	// Location of the node.
 	Zone *string `pulumi:"zone"`
 }
@@ -705,8 +730,10 @@ type InstanceNodeInput interface {
 }
 
 type InstanceNodeArgs struct {
+	// (Output)
 	// Node identifying string. e.g. 'node-0', 'node-1'
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// (Output)
 	// Location of the node.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -762,11 +789,13 @@ func (o InstanceNodeOutput) ToInstanceNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
+// (Output)
 // Node identifying string. e.g. 'node-0', 'node-1'
 func (o InstanceNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Location of the node.
 func (o InstanceNodeOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Zone }).(pulumi.StringPtrOutput)
@@ -798,6 +827,7 @@ type InstancePersistenceConfig struct {
 	// - RDB: RDB based Persistence is enabled.
 	//   Possible values are `DISABLED` and `RDB`.
 	PersistenceMode *string `pulumi:"persistenceMode"`
+	// (Output)
 	// Output only. The next time that a snapshot attempt is scheduled to occur.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits.
@@ -836,6 +866,7 @@ type InstancePersistenceConfigArgs struct {
 	// - RDB: RDB based Persistence is enabled.
 	//   Possible values are `DISABLED` and `RDB`.
 	PersistenceMode pulumi.StringPtrInput `pulumi:"persistenceMode"`
+	// (Output)
 	// Output only. The next time that a snapshot attempt is scheduled to occur.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits.
@@ -942,6 +973,7 @@ func (o InstancePersistenceConfigOutput) PersistenceMode() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.PersistenceMode }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The next time that a snapshot attempt is scheduled to occur.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 // to nine fractional digits.
@@ -1007,6 +1039,7 @@ func (o InstancePersistenceConfigPtrOutput) PersistenceMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The next time that a snapshot attempt is scheduled to occur.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 // to nine fractional digits.
@@ -1051,16 +1084,21 @@ func (o InstancePersistenceConfigPtrOutput) RdbSnapshotStartTime() pulumi.String
 }
 
 type InstanceServerCaCert struct {
+	// (Output)
 	// The certificate data in PEM format.
 	Cert *string `pulumi:"cert"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// (Output)
 	// The time when the certificate expires.
 	ExpireTime *string `pulumi:"expireTime"`
+	// (Output)
 	// Serial number, as extracted from the certificate.
 	SerialNumber *string `pulumi:"serialNumber"`
+	// (Output)
 	// Sha1 Fingerprint of the certificate.
 	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
 }
@@ -1077,16 +1115,21 @@ type InstanceServerCaCertInput interface {
 }
 
 type InstanceServerCaCertArgs struct {
+	// (Output)
 	// The certificate data in PEM format.
 	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
 	// The time when the certificate expires.
 	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// (Output)
 	// Serial number, as extracted from the certificate.
 	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
+	// (Output)
 	// Sha1 Fingerprint of the certificate.
 	Sha1Fingerprint pulumi.StringPtrInput `pulumi:"sha1Fingerprint"`
 }
@@ -1142,11 +1185,13 @@ func (o InstanceServerCaCertOutput) ToInstanceServerCaCertOutputWithContext(ctx 
 	return o
 }
 
+// (Output)
 // The certificate data in PEM format.
 func (o InstanceServerCaCertOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -1154,16 +1199,19 @@ func (o InstanceServerCaCertOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time when the certificate expires.
 func (o InstanceServerCaCertOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Serial number, as extracted from the certificate.
 func (o InstanceServerCaCertOutput) SerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Sha1 Fingerprint of the certificate.
 func (o InstanceServerCaCertOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)

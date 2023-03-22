@@ -227,7 +227,7 @@ import (
 //					GcsDestinationConfig: &datastream.StreamDestinationConfigGcsDestinationConfigArgs{
 //						Path:                 pulumi.String("mydata"),
 //						FileRotationMb:       pulumi.Int(200),
-//						FileRotationInterval: pulumi.String("900s"),
+//						FileRotationInterval: pulumi.String("60s"),
 //						JsonFileFormat: &datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{
 //							SchemaFileFormat: pulumi.String("NO_SCHEMA_FILE"),
 //							Compression:      pulumi.String("GZIP"),

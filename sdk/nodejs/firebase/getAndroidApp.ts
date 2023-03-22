@@ -9,6 +9,7 @@ export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAndroidApp:getAndroidApp", {
         "appId": args.appId,
+        "project": args.project,
     }, opts);
 }
 
@@ -20,6 +21,11 @@ export interface GetAndroidAppArgs {
      * The appId of name of the Firebase androidApp.
      */
     appId: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: string;
 }
 
 /**
@@ -54,7 +60,7 @@ export interface GetAndroidAppResult {
      * The canonical package name of the Android app as would appear in the Google Play Developer Console.
      */
     readonly packageName: string;
-    readonly project: string;
+    readonly project?: string;
     /**
      * The SHA1 certificate hashes for the AndroidApp.
      */
@@ -76,4 +82,9 @@ export interface GetAndroidAppOutputArgs {
      * The appId of name of the Firebase androidApp.
      */
     appId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
+    project?: pulumi.Input<string>;
 }

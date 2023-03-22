@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName
     {
         /// <summary>
+        /// (Output)
         /// Contains additional subject alternative name values.
         /// Structure is documented below.
         /// </summary>

@@ -46,17 +46,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({});
- * const bigqueryEditor = new gcp.projects.IAMMember("bigqueryEditor", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.dataEditor",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-healthcare.iam.gserviceaccount.com`),
- * });
- * const bigqueryJobUser = new gcp.projects.IAMMember("bigqueryJobUser", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.jobUser",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-healthcare.iam.gserviceaccount.com`),
- * });
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const bqDataset = new gcp.bigquery.Dataset("bqDataset", {
  *     datasetId: "bq_example_dataset",
@@ -84,11 +73,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     }],
- * }, {
- *     dependsOn: [
- *         bigqueryEditor,
- *         bigqueryJobUser,
- *     ],
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
  * ```

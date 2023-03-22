@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         private InputList<Inputs.ServiceStatusConditionGetArgs>? _conditions;
 
         /// <summary>
+        /// (Output)
         /// Array of observed Service Conditions, indicating the current ready state of the service.
         /// Structure is documented below.
         /// </summary>
@@ -26,6 +27,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         }
 
         /// <summary>
+        /// (Output)
         /// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
         /// from this Service's Configuration. It might not be ready yet, for that use
         /// LatestReadyRevisionName.
@@ -34,6 +36,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? LatestCreatedRevisionName { get; set; }
 
         /// <summary>
+        /// (Output)
         /// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
         /// stamped out from this Service's Configuration that has had its "Ready" condition become
         /// "True".
@@ -42,6 +45,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? LatestReadyRevisionName { get; set; }
 
         /// <summary>
+        /// (Output)
         /// ObservedGeneration is the 'Generation' of the Route that was last processed by the
         /// controller.
         /// Clients polling for completed reconciliation should poll until observedGeneration =
@@ -51,6 +55,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<int>? ObservedGeneration { get; set; }
 
         /// <summary>
+        /// (Output)
         /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
         /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
         /// but may not contain anything else (e.g. basic auth, url path, etc.)

@@ -25,7 +25,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
      */
     private @Nullable String dataType;
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     private @Nullable Integer length;
@@ -40,7 +41,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
      */
     private @Nullable Integer ordinalPosition;
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     private @Nullable Integer precision;
@@ -50,7 +52,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
      */
     private @Nullable Boolean primaryKey;
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     private @Nullable Integer scale;
@@ -72,7 +75,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         return Optional.ofNullable(this.dataType);
     }
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Integer> length() {
@@ -93,7 +97,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         return Optional.ofNullable(this.ordinalPosition);
     }
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     public Optional<Integer> precision() {
@@ -107,7 +112,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         return Optional.ofNullable(this.primaryKey);
     }
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     public Optional<Integer> scale() {

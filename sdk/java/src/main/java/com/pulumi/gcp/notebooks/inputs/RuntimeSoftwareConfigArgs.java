@@ -171,6 +171,7 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * Bool indicating whether an newer image is available in an image family.
      * 
      */
@@ -178,7 +179,8 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<Boolean> upgradeable;
 
     /**
-     * @return Bool indicating whether an newer image is available in an image family.
+     * @return (Output)
+     * Bool indicating whether an newer image is available in an image family.
      * 
      */
     public Optional<Output<Boolean>> upgradeable() {
@@ -435,7 +437,8 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upgradeable Bool indicating whether an newer image is available in an image family.
+         * @param upgradeable (Output)
+         * Bool indicating whether an newer image is available in an image family.
          * 
          * @return builder
          * 
@@ -446,7 +449,8 @@ public final class RuntimeSoftwareConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upgradeable Bool indicating whether an newer image is available in an image family.
+         * @param upgradeable (Output)
+         * Bool indicating whether an newer image is available in an image family.
          * 
          * @return builder
          * 

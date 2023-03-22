@@ -26,42 +26,49 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string>? DataType { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column encoding.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column length.
         /// </summary>
         [Input("length")]
         public Input<int>? Length { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Whether or not the column can accept a null value.
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The ordinal position of the column in the table.
         /// </summary>
         [Input("ordinalPosition")]
         public Input<int>? OrdinalPosition { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column precision.
         /// </summary>
         [Input("precision")]
         public Input<int>? Precision { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Whether or not the column represents a primary key.
         /// </summary>
         [Input("primaryKey")]
         public Input<bool>? PrimaryKey { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Column scale.
         /// </summary>
         [Input("scale")]

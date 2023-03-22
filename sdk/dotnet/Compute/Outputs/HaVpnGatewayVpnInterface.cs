@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? InterconnectAttachment;
         /// <summary>
+        /// (Output)
         /// The external IP address for this VPN gateway interface.
         /// </summary>
         public readonly string? IpAddress;

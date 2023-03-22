@@ -50,6 +50,7 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * (Output)
      * Column length.
      * 
      */
@@ -57,7 +58,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Integer> length;
 
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Output<Integer>> length() {
@@ -95,6 +97,7 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * (Output)
      * Column precision.
      * 
      */
@@ -102,7 +105,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Integer> precision;
 
     /**
-     * @return Column precision.
+     * @return (Output)
+     * Column precision.
      * 
      */
     public Optional<Output<Integer>> precision() {
@@ -125,6 +129,7 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * (Output)
      * Column scale.
      * 
      */
@@ -132,7 +137,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Integer> scale;
 
     /**
-     * @return Column scale.
+     * @return (Output)
+     * Column scale.
      * 
      */
     public Optional<Output<Integer>> scale() {
@@ -215,7 +221,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 
@@ -226,7 +233,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 
@@ -278,7 +286,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param precision Column precision.
+         * @param precision (Output)
+         * Column precision.
          * 
          * @return builder
          * 
@@ -289,7 +298,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param precision Column precision.
+         * @param precision (Output)
+         * Column precision.
          * 
          * @return builder
          * 
@@ -320,7 +330,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param scale Column scale.
+         * @param scale (Output)
+         * Column scale.
          * 
          * @return builder
          * 
@@ -331,7 +342,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param scale Column scale.
+         * @param scale (Output)
+         * Column scale.
          * 
          * @return builder
          * 

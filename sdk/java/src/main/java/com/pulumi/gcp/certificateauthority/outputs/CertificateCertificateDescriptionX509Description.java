@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionX509DescriptionAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionX509DescriptionCaOption;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionX509DescriptionKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionX509DescriptionNameConstraint;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionX509DescriptionPolicyId;
 import java.lang.String;
 import java.util.List;
@@ -39,6 +40,12 @@ public final class CertificateCertificateDescriptionX509Description {
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
@@ -80,6 +87,14 @@ public final class CertificateCertificateDescriptionX509Description {
         return this.keyUsages == null ? List.of() : this.keyUsages;
     }
     /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints() {
+        return this.nameConstraints == null ? List.of() : this.nameConstraints;
+    }
+    /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -101,6 +116,7 @@ public final class CertificateCertificateDescriptionX509Description {
         private @Nullable List<String> aiaOcspServers;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
+        private @Nullable List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds;
         public Builder() {}
         public Builder(CertificateCertificateDescriptionX509Description defaults) {
@@ -109,6 +125,7 @@ public final class CertificateCertificateDescriptionX509Description {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsages = defaults.keyUsages;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -145,6 +162,14 @@ public final class CertificateCertificateDescriptionX509Description {
             return keyUsages(List.of(keyUsages));
         }
         @CustomType.Setter
+        public Builder nameConstraints(@Nullable List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints) {
+            this.nameConstraints = nameConstraints;
+            return this;
+        }
+        public Builder nameConstraints(CertificateCertificateDescriptionX509DescriptionNameConstraint... nameConstraints) {
+            return nameConstraints(List.of(nameConstraints));
+        }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
@@ -158,6 +183,7 @@ public final class CertificateCertificateDescriptionX509Description {
             o.aiaOcspServers = aiaOcspServers;
             o.caOptions = caOptions;
             o.keyUsages = keyUsages;
+            o.nameConstraints = nameConstraints;
             o.policyIds = policyIds;
             return o;
         }

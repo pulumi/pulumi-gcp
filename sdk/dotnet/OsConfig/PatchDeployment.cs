@@ -405,6 +405,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.PatchDeploymentInstanceFilter> InstanceFilter { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The time the last patch job ran successfully.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -619,6 +620,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.PatchDeploymentInstanceFilterGetArgs>? InstanceFilter { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The time the last patch job ran successfully.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>

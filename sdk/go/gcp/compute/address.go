@@ -276,19 +276,18 @@ type Address struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-	//   ranges, internal load balancers, and similar resources.
+	//   ranges, load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT for addresses created from a private IP range
-	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-	//   Interconnect configuration. These addresses are regional resources.
-	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-	//   to configure Private Service Connect. Only global internal addresses
-	//   can use this purpose.
-	//   This should only be set when using an Internal address.
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+	//   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+	//   configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+	//   configure Private Service Connect. Only global internal addresses can use
+	//   this purpose.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -370,19 +369,18 @@ type addressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-	//   ranges, internal load balancers, and similar resources.
+	//   ranges, load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT for addresses created from a private IP range
-	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-	//   Interconnect configuration. These addresses are regional resources.
-	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-	//   to configure Private Service Connect. Only global internal addresses
-	//   can use this purpose.
-	//   This should only be set when using an Internal address.
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+	//   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+	//   configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+	//   configure Private Service Connect. Only global internal addresses can use
+	//   this purpose.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -436,19 +434,18 @@ type AddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-	//   ranges, internal load balancers, and similar resources.
+	//   ranges, load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT for addresses created from a private IP range
-	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-	//   Interconnect configuration. These addresses are regional resources.
-	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-	//   to configure Private Service Connect. Only global internal addresses
-	//   can use this purpose.
-	//   This should only be set when using an Internal address.
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+	//   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+	//   configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+	//   configure Private Service Connect. Only global internal addresses can use
+	//   this purpose.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -502,19 +499,18 @@ type addressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-	//   ranges, internal load balancers, and similar resources.
+	//   ranges, load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT for addresses created from a private IP range
-	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-	//   Interconnect configuration. These addresses are regional resources.
-	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-	//   to configure Private Service Connect. Only global internal addresses
-	//   can use this purpose.
-	//   This should only be set when using an Internal address.
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+	//   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+	//   configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+	//   configure Private Service Connect. Only global internal addresses can use
+	//   this purpose.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -561,19 +557,18 @@ type AddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values:
+	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-	//   ranges, internal load balancers, and similar resources.
+	//   ranges, load balancers, and similar resources.
 	// * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 	//   internal load balancers.
 	// * VPC_PEERING for addresses that are reserved for VPC peer networks.
-	// * IPSEC_INTERCONNECT for addresses created from a private IP range
-	//   that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-	//   Interconnect configuration. These addresses are regional resources.
-	// * PRIVATE_SERVICE_CONNECT for a private network address that is used
-	//   to configure Private Service Connect. Only global internal addresses
-	//   can use this purpose.
-	//   This should only be set when using an Internal address.
+	// * IPSEC_INTERCONNECT for addresses created from a private IP range that
+	//   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+	//   configuration. These addresses are regional resources.
+	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
+	//   configure Private Service Connect. Only global internal addresses can use
+	//   this purpose.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -742,19 +737,18 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The purpose of this resource, which can be one of the following values:
+// The purpose of this resource, which can be one of the following values.
 //   - GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-//     ranges, internal load balancers, and similar resources.
+//     ranges, load balancers, and similar resources.
 //   - SHARED_LOADBALANCER_VIP for an address that can be used by multiple
 //     internal load balancers.
 //   - VPC_PEERING for addresses that are reserved for VPC peer networks.
-//   - IPSEC_INTERCONNECT for addresses created from a private IP range
-//     that are reserved for a VLAN attachment in an IPsec-encrypted Cloud
-//     Interconnect configuration. These addresses are regional resources.
-//   - PRIVATE_SERVICE_CONNECT for a private network address that is used
-//     to configure Private Service Connect. Only global internal addresses
-//     can use this purpose.
-//     This should only be set when using an Internal address.
+//   - IPSEC_INTERCONNECT for addresses created from a private IP range that
+//     are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+//     configuration. These addresses are regional resources.
+//   - PRIVATE_SERVICE_CONNECT for a private network address that is used to
+//     configure Private Service Connect. Only global internal addresses can use
+//     this purpose.
 func (o AddressOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }

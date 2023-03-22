@@ -81,6 +81,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? PostStartupScriptBehavior { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Bool indicating whether an newer image is available in an image family.
         /// </summary>
         [Input("upgradeable")]

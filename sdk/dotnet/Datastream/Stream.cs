@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Datastream
     ///             {
     ///                 Path = "mydata",
     ///                 FileRotationMb = 200,
-    ///                 FileRotationInterval = "900s",
+    ///                 FileRotationInterval = "60s",
     ///                 JsonFileFormat = new Gcp.Datastream.Inputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
     ///                 {
     ///                     SchemaFileFormat = "NO_SCHEMA_FILE",

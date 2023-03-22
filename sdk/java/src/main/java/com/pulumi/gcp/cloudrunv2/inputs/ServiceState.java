@@ -402,6 +402,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * Displays the target URI.
      * 
      */
@@ -409,7 +410,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> uri;
 
     /**
-     * @return Displays the target URI.
+     * @return (Output)
+     * Displays the target URI.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -1023,7 +1025,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri Displays the target URI.
+         * @param uri (Output)
+         * Displays the target URI.
          * 
          * @return builder
          * 
@@ -1034,7 +1037,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri Displays the target URI.
+         * @param uri (Output)
+         * Displays the target URI.
          * 
          * @return builder
          * 

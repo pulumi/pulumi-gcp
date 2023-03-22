@@ -310,6 +310,7 @@ func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntI
 type InboundSamlConfigSpConfig struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri *string `pulumi:"callbackUri"`
+	// (Output)
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	SpCertificates []InboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
@@ -331,6 +332,7 @@ type InboundSamlConfigSpConfigInput interface {
 type InboundSamlConfigSpConfigArgs struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri pulumi.StringPtrInput `pulumi:"callbackUri"`
+	// (Output)
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	SpCertificates InboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
@@ -420,6 +422,7 @@ func (o InboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
@@ -465,6 +468,7 @@ func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
@@ -488,6 +492,7 @@ func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput 
 
 type InboundSamlConfigSpConfigSpCertificate struct {
 	// The IdP's x509 certificate.
+	// (Output)
 	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
@@ -505,6 +510,7 @@ type InboundSamlConfigSpConfigSpCertificateInput interface {
 
 type InboundSamlConfigSpConfigSpCertificateArgs struct {
 	// The IdP's x509 certificate.
+	// (Output)
 	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
@@ -561,6 +567,7 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 }
 
 // The IdP's x509 certificate.
+// (Output)
 // The x509 certificate
 func (o InboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
@@ -595,6 +602,7 @@ type ProjectDefaultConfigSignIn struct {
 	// Configuration options related to authenticating a user by their email address.
 	// Structure is documented below.
 	Email *ProjectDefaultConfigSignInEmail `pulumi:"email"`
+	// (Output)
 	// Output only. Hash config information.
 	// Structure is documented below.
 	HashConfigs []ProjectDefaultConfigSignInHashConfig `pulumi:"hashConfigs"`
@@ -623,6 +631,7 @@ type ProjectDefaultConfigSignInArgs struct {
 	// Configuration options related to authenticating a user by their email address.
 	// Structure is documented below.
 	Email ProjectDefaultConfigSignInEmailPtrInput `pulumi:"email"`
+	// (Output)
 	// Output only. Hash config information.
 	// Structure is documented below.
 	HashConfigs ProjectDefaultConfigSignInHashConfigArrayInput `pulumi:"hashConfigs"`
@@ -725,6 +734,7 @@ func (o ProjectDefaultConfigSignInOutput) Email() ProjectDefaultConfigSignInEmai
 	return o.ApplyT(func(v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInEmail { return v.Email }).(ProjectDefaultConfigSignInEmailPtrOutput)
 }
 
+// (Output)
 // Output only. Hash config information.
 // Structure is documented below.
 func (o ProjectDefaultConfigSignInOutput) HashConfigs() ProjectDefaultConfigSignInHashConfigArrayOutput {
@@ -793,6 +803,7 @@ func (o ProjectDefaultConfigSignInPtrOutput) Email() ProjectDefaultConfigSignInE
 	}).(ProjectDefaultConfigSignInEmailPtrOutput)
 }
 
+// (Output)
 // Output only. Hash config information.
 // Structure is documented below.
 func (o ProjectDefaultConfigSignInPtrOutput) HashConfigs() ProjectDefaultConfigSignInHashConfigArrayOutput {
@@ -1117,14 +1128,19 @@ func (o ProjectDefaultConfigSignInEmailPtrOutput) PasswordRequired() pulumi.Bool
 }
 
 type ProjectDefaultConfigSignInHashConfig struct {
+	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm *string `pulumi:"algorithm"`
+	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost *int `pulumi:"memoryCost"`
+	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds *int `pulumi:"rounds"`
+	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator *string `pulumi:"saltSeparator"`
+	// (Output)
 	// Signer key in base64.
 	SignerKey *string `pulumi:"signerKey"`
 }
@@ -1141,14 +1157,19 @@ type ProjectDefaultConfigSignInHashConfigInput interface {
 }
 
 type ProjectDefaultConfigSignInHashConfigArgs struct {
+	// (Output)
 	// Different password hash algorithms used in Identity Toolkit.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// (Output)
 	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 	MemoryCost pulumi.IntPtrInput `pulumi:"memoryCost"`
+	// (Output)
 	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 	Rounds pulumi.IntPtrInput `pulumi:"rounds"`
+	// (Output)
 	// Non-printable character to be inserted between the salt and plain text password in base64.
 	SaltSeparator pulumi.StringPtrInput `pulumi:"saltSeparator"`
+	// (Output)
 	// Signer key in base64.
 	SignerKey pulumi.StringPtrInput `pulumi:"signerKey"`
 }
@@ -1204,26 +1225,31 @@ func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignIn
 	return o
 }
 
+// (Output)
 // Different password hash algorithms used in Identity Toolkit.
 func (o ProjectDefaultConfigSignInHashConfigOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
 func (o ProjectDefaultConfigSignInHashConfigOutput) MemoryCost() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.MemoryCost }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
 func (o ProjectDefaultConfigSignInHashConfigOutput) Rounds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.Rounds }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // Non-printable character to be inserted between the salt and plain text password in base64.
 func (o ProjectDefaultConfigSignInHashConfigOutput) SaltSeparator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SaltSeparator }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Signer key in base64.
 func (o ProjectDefaultConfigSignInHashConfigOutput) SignerKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SignerKey }).(pulumi.StringPtrOutput)
@@ -1705,6 +1731,7 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulum
 type TenantInboundSamlConfigSpConfig struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri string `pulumi:"callbackUri"`
+	// (Output)
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	SpCertificates []TenantInboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
@@ -1726,6 +1753,7 @@ type TenantInboundSamlConfigSpConfigInput interface {
 type TenantInboundSamlConfigSpConfigArgs struct {
 	// Callback URI where responses from IDP are handled. Must start with `https://`.
 	CallbackUri pulumi.StringInput `pulumi:"callbackUri"`
+	// (Output)
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	SpCertificates TenantInboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
@@ -1815,6 +1843,7 @@ func (o TenantInboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringOutput
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
 }
 
+// (Output)
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
@@ -1862,6 +1891,7 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
@@ -1885,6 +1915,7 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrO
 
 type TenantInboundSamlConfigSpConfigSpCertificate struct {
 	// The x509 certificate
+	// (Output)
 	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
@@ -1902,6 +1933,7 @@ type TenantInboundSamlConfigSpConfigSpCertificateInput interface {
 
 type TenantInboundSamlConfigSpConfigSpCertificateArgs struct {
 	// The x509 certificate
+	// (Output)
 	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
@@ -1958,6 +1990,7 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlC
 }
 
 // The x509 certificate
+// (Output)
 // The x509 certificate
 func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)

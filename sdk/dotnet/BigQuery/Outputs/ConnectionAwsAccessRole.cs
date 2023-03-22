@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string IamRoleId;
         /// <summary>
+        /// (Output)
         /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         /// </summary>
         public readonly string? Identity;

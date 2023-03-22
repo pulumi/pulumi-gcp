@@ -36,6 +36,7 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Indicates whether the clientKey field is set.
      * 
      */
@@ -43,7 +44,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     private @Nullable Output<Boolean> caCertificateSet;
 
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     public Optional<Output<Boolean>> caCertificateSet() {
@@ -74,6 +76,7 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Indicates whether the clientCertificate field is set.
      * 
      */
@@ -81,7 +84,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     private @Nullable Output<Boolean> clientCertificateSet;
 
     /**
-     * @return Indicates whether the clientCertificate field is set.
+     * @return (Output)
+     * Indicates whether the clientCertificate field is set.
      * 
      */
     public Optional<Output<Boolean>> clientCertificateSet() {
@@ -110,6 +114,7 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Indicates whether the clientKey field is set.
      * 
      */
@@ -117,7 +122,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
     private @Nullable Output<Boolean> clientKeySet;
 
     /**
-     * @return Indicates whether the clientKey field is set.
+     * @return (Output)
+     * Indicates whether the clientKey field is set.
      * 
      */
     public Optional<Output<Boolean>> clientKeySet() {
@@ -179,7 +185,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param caCertificateSet Indicates whether the clientKey field is set.
+         * @param caCertificateSet (Output)
+         * Indicates whether the clientKey field is set.
          * 
          * @return builder
          * 
@@ -190,7 +197,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param caCertificateSet Indicates whether the clientKey field is set.
+         * @param caCertificateSet (Output)
+         * Indicates whether the clientKey field is set.
          * 
          * @return builder
          * 
@@ -229,7 +237,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clientCertificateSet Indicates whether the clientCertificate field is set.
+         * @param clientCertificateSet (Output)
+         * Indicates whether the clientCertificate field is set.
          * 
          * @return builder
          * 
@@ -240,7 +249,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clientCertificateSet Indicates whether the clientCertificate field is set.
+         * @param clientCertificateSet (Output)
+         * Indicates whether the clientCertificate field is set.
          * 
          * @return builder
          * 
@@ -277,7 +287,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clientKeySet Indicates whether the clientKey field is set.
+         * @param clientKeySet (Output)
+         * Indicates whether the clientKey field is set.
          * 
          * @return builder
          * 
@@ -288,7 +299,8 @@ public final class ConnectionProfileMysqlProfileSslConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clientKeySet Indicates whether the clientKey field is set.
+         * @param clientKeySet (Output)
+         * Indicates whether the clientKey field is set.
          * 
          * @return builder
          * 

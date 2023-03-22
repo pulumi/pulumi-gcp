@@ -12,12 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceAttachmentConnectedEndpoint {
     /**
-     * @return The URL of the consumer forwarding rule.
+     * @return (Output)
+     * The URL of the consumer forwarding rule.
      * 
      */
     private @Nullable String endpoint;
     /**
-     * @return The status of the connection from the consumer forwarding rule to
+     * @return (Output)
+     * The status of the connection from the consumer forwarding rule to
      * this service attachment.
      * 
      */
@@ -25,14 +27,16 @@ public final class ServiceAttachmentConnectedEndpoint {
 
     private ServiceAttachmentConnectedEndpoint() {}
     /**
-     * @return The URL of the consumer forwarding rule.
+     * @return (Output)
+     * The URL of the consumer forwarding rule.
      * 
      */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
     /**
-     * @return The status of the connection from the consumer forwarding rule to
+     * @return (Output)
+     * The status of the connection from the consumer forwarding rule to
      * this service attachment.
      * 
      */

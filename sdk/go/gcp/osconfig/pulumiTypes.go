@@ -16184,12 +16184,14 @@ type PatchDeploymentRecurringSchedule struct {
 	// The end time at which a recurring patch deployment schedule is no longer active.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	EndTime *string `pulumi:"endTime"`
+	// (Output)
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Schedule with monthly executions.
 	// Structure is documented below.
 	Monthly *PatchDeploymentRecurringScheduleMonthly `pulumi:"monthly"`
+	// (Output)
 	// The time the next patch job is scheduled to run.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	NextExecuteTime *string `pulumi:"nextExecuteTime"`
@@ -16223,12 +16225,14 @@ type PatchDeploymentRecurringScheduleArgs struct {
 	// The end time at which a recurring patch deployment schedule is no longer active.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput `pulumi:"lastExecuteTime"`
 	// Schedule with monthly executions.
 	// Structure is documented below.
 	Monthly PatchDeploymentRecurringScheduleMonthlyPtrInput `pulumi:"monthly"`
+	// (Output)
 	// The time the next patch job is scheduled to run.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	NextExecuteTime pulumi.StringPtrInput `pulumi:"nextExecuteTime"`
@@ -16330,6 +16334,7 @@ func (o PatchDeploymentRecurringScheduleOutput) EndTime() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringScheduleOutput) LastExecuteTime() pulumi.StringPtrOutput {
@@ -16342,6 +16347,7 @@ func (o PatchDeploymentRecurringScheduleOutput) Monthly() PatchDeploymentRecurri
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleMonthly { return v.Monthly }).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
 
+// (Output)
 // The time the next patch job is scheduled to run.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringScheduleOutput) NextExecuteTime() pulumi.StringPtrOutput {
@@ -16408,6 +16414,7 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringSchedulePtrOutput) LastExecuteTime() pulumi.StringPtrOutput {
@@ -16430,6 +16437,7 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) Monthly() PatchDeploymentRecu
 	}).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
 
+// (Output)
 // The time the next patch job is scheduled to run.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringSchedulePtrOutput) NextExecuteTime() pulumi.StringPtrOutput {

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<bool>? BoolValue { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The display name of this field
         /// </summary>
         [Input("displayName")]
@@ -43,6 +44,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<string> FieldName { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
         /// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
         /// within a tag do not have to be sequential.

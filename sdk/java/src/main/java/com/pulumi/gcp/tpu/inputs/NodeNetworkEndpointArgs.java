@@ -17,6 +17,7 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
     public static final NodeNetworkEndpointArgs Empty = new NodeNetworkEndpointArgs();
 
     /**
+     * (Output)
      * The IP address of this network endpoint.
      * 
      */
@@ -24,7 +25,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of this network endpoint.
+     * @return (Output)
+     * The IP address of this network endpoint.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -32,6 +34,7 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * The port of this network endpoint.
      * 
      */
@@ -39,7 +42,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port of this network endpoint.
+     * @return (Output)
+     * The port of this network endpoint.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -72,7 +76,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipAddress The IP address of this network endpoint.
+         * @param ipAddress (Output)
+         * The IP address of this network endpoint.
          * 
          * @return builder
          * 
@@ -83,7 +88,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipAddress The IP address of this network endpoint.
+         * @param ipAddress (Output)
+         * The IP address of this network endpoint.
          * 
          * @return builder
          * 
@@ -93,7 +99,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param port The port of this network endpoint.
+         * @param port (Output)
+         * The port of this network endpoint.
          * 
          * @return builder
          * 
@@ -104,7 +111,8 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param port The port of this network endpoint.
+         * @param port (Output)
+         * The port of this network endpoint.
          * 
          * @return builder
          * 

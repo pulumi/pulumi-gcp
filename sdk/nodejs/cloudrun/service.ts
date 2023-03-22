@@ -290,6 +290,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.ServiceStatus[]>;
@@ -391,6 +392,7 @@ export interface ServiceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceStatus>[]>;

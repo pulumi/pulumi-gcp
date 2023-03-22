@@ -14,18 +14,21 @@ namespace Pulumi.Gcp.Notebooks.Outputs
     public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDisk
     {
         /// <summary>
+        /// (Output)
         /// Optional. Specifies whether the disk will be auto-deleted
         /// when the instance is deleted (but not when the disk is
         /// detached from the instance).
         /// </summary>
         public readonly bool? AutoDelete;
         /// <summary>
+        /// (Output)
         /// Optional. Indicates that this is a boot disk. The virtual
         /// machine will use the first partition of the disk for its
         /// root filesystem.
         /// </summary>
         public readonly bool? Boot;
         /// <summary>
+        /// (Output)
         /// Optional. Specifies a unique device name of your choice
         /// that is reflected into the /dev/disk/by-id/google-* tree
         /// of a Linux operating system running within the instance.
@@ -38,6 +41,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
+        /// (Output)
         /// Indicates a list of features to enable on the guest operating
         /// system. Applicable only for bootable images. To see a list of
         /// available features, read `https://cloud.google.com/compute/docs/
@@ -46,6 +50,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> GuestOsFeatures;
         /// <summary>
+        /// (Output)
         /// Output only. A zero-based index to this disk, where 0 is
         /// reserved for the boot disk. If you have many disks attached
         /// to an instance, each disk would have a unique index number.
@@ -71,11 +76,13 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly string? Interface;
         /// <summary>
+        /// (Output)
         /// Type of the resource. Always compute#attachedDisk for attached
         /// disks.
         /// </summary>
         public readonly string? Kind;
         /// <summary>
+        /// (Output)
         /// Output only. Any valid publicly visible licenses.
         /// </summary>
         public readonly ImmutableArray<string> Licenses;

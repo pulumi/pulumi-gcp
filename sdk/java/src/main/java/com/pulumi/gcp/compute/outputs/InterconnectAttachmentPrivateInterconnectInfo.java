@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectAttachmentPrivateInterconnectInfo {
     /**
-     * @return 802.1q encapsulation tag to be used for traffic between
+     * @return (Output)
+     * 802.1q encapsulation tag to be used for traffic between
      * Google and the customer, going to and from this network and region.
      * 
      */
@@ -20,7 +21,8 @@ public final class InterconnectAttachmentPrivateInterconnectInfo {
 
     private InterconnectAttachmentPrivateInterconnectInfo() {}
     /**
-     * @return 802.1q encapsulation tag to be used for traffic between
+     * @return (Output)
+     * 802.1q encapsulation tag to be used for traffic between
      * Google and the customer, going to and from this network and region.
      * 
      */

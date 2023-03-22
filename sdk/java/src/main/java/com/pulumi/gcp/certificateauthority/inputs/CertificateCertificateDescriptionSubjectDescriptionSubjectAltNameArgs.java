@@ -18,6 +18,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static final CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs();
 
     /**
+     * (Output)
      * Contains additional subject alternative name values.
      * Structure is documented below.
      * 
@@ -26,7 +27,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>> customSans;
 
     /**
-     * @return Contains additional subject alternative name values.
+     * @return (Output)
+     * Contains additional subject alternative name values.
      * Structure is documented below.
      * 
      */
@@ -123,7 +125,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param customSans Contains additional subject alternative name values.
+         * @param customSans (Output)
+         * Contains additional subject alternative name values.
          * Structure is documented below.
          * 
          * @return builder
@@ -135,7 +138,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param customSans Contains additional subject alternative name values.
+         * @param customSans (Output)
+         * Contains additional subject alternative name values.
          * Structure is documented below.
          * 
          * @return builder
@@ -146,7 +150,8 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
 
         /**
-         * @param customSans Contains additional subject alternative name values.
+         * @param customSans (Output)
+         * Contains additional subject alternative name values.
          * Structure is documented below.
          * 
          * @return builder

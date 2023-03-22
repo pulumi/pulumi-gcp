@@ -12,20 +12,23 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KeyRingImportJobAttestation {
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * A base64-encoded string.
      * 
      */
     private @Nullable String content;
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     private @Nullable String format;
 
     private KeyRingImportJobAttestation() {}
     /**
-     * @return The attestation data provided by the HSM when the key operation was performed.
+     * @return (Output)
+     * The attestation data provided by the HSM when the key operation was performed.
      * A base64-encoded string.
      * 
      */
@@ -33,7 +36,8 @@ public final class KeyRingImportJobAttestation {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return The format of the attestation data.
+     * @return (Output)
+     * The format of the attestation data.
      * 
      */
     public Optional<String> format() {

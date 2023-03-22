@@ -326,7 +326,8 @@ class DomainMappingSslSettingsArgs:
                or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
                authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
                Example: 12345.
-        :param pulumi.Input[str] pending_managed_certificate_id: ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+        :param pulumi.Input[str] pending_managed_certificate_id: (Output)
+               ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
                managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
                provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
                field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
@@ -373,6 +374,7 @@ class DomainMappingSslSettingsArgs:
     @pulumi.getter(name="pendingManagedCertificateId")
     def pending_managed_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
         managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
         provisioning process completes, the `certificateId` field will reflect the new managed certificate and this

@@ -126,6 +126,7 @@ type Instance struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -211,6 +212,7 @@ type instanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -262,6 +264,7 @@ type InstanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
+	// (Output)
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -481,6 +484,7 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits

@@ -10,10 +10,52 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceAcceleratorArgs',
     'InstanceCryptoKeyConfigArgs',
     'InstanceEventPublishConfigArgs',
     'InstanceNetworkConfigArgs',
 ]
+
+@pulumi.input_type
+class InstanceAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_type: pulumi.Input[str],
+                 state: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] accelerator_type: The type of an accelator for a CDF instance.
+               Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
+               Possible values are `ENABLED` and `DISABLED`.
+        """
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> pulumi.Input[str]:
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[str]:
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are `ENABLED` and `DISABLED`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[str]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.input_type
 class InstanceCryptoKeyConfigArgs:

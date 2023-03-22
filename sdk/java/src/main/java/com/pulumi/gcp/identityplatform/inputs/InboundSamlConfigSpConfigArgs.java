@@ -33,6 +33,7 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (Output)
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
@@ -41,7 +42,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<List<InboundSamlConfigSpConfigSpCertificateArgs>> spCertificates;
 
     /**
-     * @return The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+     * @return (Output)
+     * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
      */
@@ -112,7 +114,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param spCertificates The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * @param spCertificates (Output)
+         * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          * 
          * @return builder
@@ -124,7 +127,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param spCertificates The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * @param spCertificates (Output)
+         * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          * 
          * @return builder
@@ -135,7 +139,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param spCertificates The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+         * @param spCertificates (Output)
+         * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          * 
          * @return builder

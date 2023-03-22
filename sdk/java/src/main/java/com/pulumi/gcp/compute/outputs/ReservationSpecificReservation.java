@@ -18,7 +18,8 @@ public final class ReservationSpecificReservation {
      */
     private Integer count;
     /**
-     * @return How many instances are in use.
+     * @return (Output)
+     * How many instances are in use.
      * 
      */
     private @Nullable Integer inUseCount;
@@ -38,7 +39,8 @@ public final class ReservationSpecificReservation {
         return this.count;
     }
     /**
-     * @return How many instances are in use.
+     * @return (Output)
+     * How many instances are in use.
      * 
      */
     public Optional<Integer> inUseCount() {

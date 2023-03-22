@@ -20,6 +20,7 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     public static final WorkstationConfigConditionArgs Empty = new WorkstationConfigConditionArgs();
 
     /**
+     * (Output)
      * The status code, which should be an enum value of google.rpc.Code.
      * 
      */
@@ -27,7 +28,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     private @Nullable Output<Integer> code;
 
     /**
-     * @return The status code, which should be an enum value of google.rpc.Code.
+     * @return (Output)
+     * The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     public Optional<Output<Integer>> code() {
@@ -35,6 +37,7 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     }
 
     /**
+     * (Output)
      * A list of messages that carry the error details.
      * 
      */
@@ -42,7 +45,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     private @Nullable Output<List<Map<String,Object>>> details;
 
     /**
-     * @return A list of messages that carry the error details.
+     * @return (Output)
+     * A list of messages that carry the error details.
      * 
      */
     public Optional<Output<List<Map<String,Object>>>> details() {
@@ -50,6 +54,7 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     }
 
     /**
+     * (Output)
      * Human readable message indicating details about the current status.
      * 
      */
@@ -57,7 +62,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
     private @Nullable Output<String> message;
 
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<Output<String>> message() {
@@ -91,7 +97,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param code The status code, which should be an enum value of google.rpc.Code.
+         * @param code (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
          * 
          * @return builder
          * 
@@ -102,7 +109,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param code The status code, which should be an enum value of google.rpc.Code.
+         * @param code (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
          * 
          * @return builder
          * 
@@ -112,7 +120,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param details A list of messages that carry the error details.
+         * @param details (Output)
+         * A list of messages that carry the error details.
          * 
          * @return builder
          * 
@@ -123,7 +132,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param details A list of messages that carry the error details.
+         * @param details (Output)
+         * A list of messages that carry the error details.
          * 
          * @return builder
          * 
@@ -133,7 +143,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param details A list of messages that carry the error details.
+         * @param details (Output)
+         * A list of messages that carry the error details.
          * 
          * @return builder
          * 
@@ -143,7 +154,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -154,7 +166,8 @@ public final class WorkstationConfigConditionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 

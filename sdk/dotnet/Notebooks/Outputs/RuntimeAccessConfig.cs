@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// </summary>
         public readonly string? AccessType;
         /// <summary>
+        /// (Output)
         /// The proxy endpoint that is used to access the runtime.
         /// </summary>
         public readonly string? ProxyUri;

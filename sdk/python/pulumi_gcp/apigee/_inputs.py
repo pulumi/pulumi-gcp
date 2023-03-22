@@ -21,6 +21,7 @@ __all__ = [
     'EnvironmentNodeConfigArgs',
     'OrganizationPropertiesArgs',
     'OrganizationPropertiesPropertyArgs',
+    'SharedflowMetaDataArgs',
 ]
 
 @pulumi.input_type
@@ -150,7 +151,8 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
                  expires_at: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
-        :param pulumi.Input[str] expires_at: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[str] expires_at: (Output)
+               Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -173,6 +175,7 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         return pulumi.get(self, "expires_at")
@@ -189,7 +192,8 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
                  expires_at: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
-        :param pulumi.Input[str] expires_at: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        :param pulumi.Input[str] expires_at: (Output)
+               Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -212,6 +216,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         return pulumi.get(self, "expires_at")
@@ -352,7 +357,8 @@ class EnvironmentNodeConfigArgs:
                  max_node_count: Optional[pulumi.Input[str]] = None,
                  min_node_count: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] current_aggregate_node_count: The current total number of gateway nodes that each environment currently has across
+        :param pulumi.Input[str] current_aggregate_node_count: (Output)
+               The current total number of gateway nodes that each environment currently has across
                all instances.
         :param pulumi.Input[str] max_node_count: The maximum total number of gateway nodes that the is reserved for all instances that
                has the specified environment. If not specified, the default is determined by the
@@ -372,6 +378,7 @@ class EnvironmentNodeConfigArgs:
     @pulumi.getter(name="currentAggregateNodeCount")
     def current_aggregate_node_count(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The current total number of gateway nodes that each environment currently has across
         all instances.
         """
@@ -472,5 +479,60 @@ class OrganizationPropertiesPropertyArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class SharedflowMetaDataArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 last_modified_at: Optional[pulumi.Input[str]] = None,
+                 sub_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_at: Time at which the API proxy was created, in milliseconds since epoch.
+        :param pulumi.Input[str] last_modified_at: Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        :param pulumi.Input[str] sub_type: The type of entity described
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if sub_type is not None:
+            pulumi.set(__self__, "sub_type", sub_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the API proxy was created, in milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @last_modified_at.setter
+    def last_modified_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_at", value)
+
+    @property
+    @pulumi.getter(name="subType")
+    def sub_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of entity described
+        """
+        return pulumi.get(self, "sub_type")
+
+    @sub_type.setter
+    def sub_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_type", value)
 
 

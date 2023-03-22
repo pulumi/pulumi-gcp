@@ -14,15 +14,18 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class EntryBigqueryTableSpec
     {
         /// <summary>
+        /// (Output)
         /// The table source type.
         /// </summary>
         public readonly string? TableSourceType;
         /// <summary>
+        /// (Output)
         /// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EntryBigqueryTableSpecTableSpec> TableSpecs;
         /// <summary>
+        /// (Output)
         /// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
         /// Structure is documented below.
         /// </summary>

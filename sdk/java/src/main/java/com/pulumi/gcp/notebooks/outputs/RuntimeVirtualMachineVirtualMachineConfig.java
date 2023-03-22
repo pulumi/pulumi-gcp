@@ -44,7 +44,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig;
     /**
-     * @return The Compute Engine guest attributes. (see [Project and instance
+     * @return (Output)
+     * The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -138,7 +139,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private @Nullable List<String> tags;
     /**
-     * @return The zone where the virtual machine is located.
+     * @return (Output)
+     * The zone where the virtual machine is located.
      * 
      */
     private @Nullable String zone;
@@ -177,7 +179,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return Optional.ofNullable(this.encryptionConfig);
     }
     /**
-     * @return The Compute Engine guest attributes. (see [Project and instance
+     * @return (Output)
+     * The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -293,7 +296,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return The zone where the virtual machine is located.
+     * @return (Output)
+     * The zone where the virtual machine is located.
      * 
      */
     public Optional<String> zone() {

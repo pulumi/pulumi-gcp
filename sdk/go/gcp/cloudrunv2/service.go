@@ -462,6 +462,7 @@ type Service struct {
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 }
@@ -560,6 +561,7 @@ type serviceState struct {
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
+	// (Output)
 	// Displays the target URI.
 	Uri *string `pulumi:"uri"`
 }
@@ -627,6 +629,7 @@ type ServiceState struct {
 	Traffics ServiceTrafficArrayInput
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
+	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringPtrInput
 }
@@ -932,6 +935,7 @@ func (o ServiceOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Displays the target URI.
 func (o ServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)

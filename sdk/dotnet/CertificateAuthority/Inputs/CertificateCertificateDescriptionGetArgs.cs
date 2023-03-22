@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<string>? _aiaIssuingCertificateUrls;
 
         /// <summary>
+        /// (Output)
         /// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
         /// </summary>
         public InputList<string> AiaIssuingCertificateUrls
@@ -28,6 +29,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>? _authorityKeyIds;
 
         /// <summary>
+        /// (Output)
         /// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
         /// Structure is documented below.
         /// </summary>
@@ -41,6 +43,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>? _certFingerprints;
 
         /// <summary>
+        /// (Output)
         /// The hash of the x.509 certificate.
         /// Structure is documented below.
         /// </summary>
@@ -54,7 +57,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>? _configValues;
 
         /// <summary>
-        /// (Deprecated)
+        /// (Output, Deprecated)
         /// Describes some of the technical fields in a certificate.
         /// Structure is documented below.
         /// </summary>
@@ -69,6 +72,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<string>? _crlDistributionPoints;
 
         /// <summary>
+        /// (Output)
         /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         /// </summary>
         public InputList<string> CrlDistributionPoints
@@ -94,6 +98,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>? _subjectDescriptions;
 
         /// <summary>
+        /// (Output)
         /// Describes some of the values in a certificate that are related to the subject and lifetime.
         /// Structure is documented below.
         /// </summary>
@@ -107,6 +112,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>? _subjectKeyIds;
 
         /// <summary>
+        /// (Output)
         /// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
         /// Structure is documented below.
         /// </summary>
@@ -120,6 +126,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs>? _x509Descriptions;
 
         /// <summary>
+        /// (Output)
         /// A structured description of the issued X.509 certificate.
         /// Structure is documented below.
         /// </summary>

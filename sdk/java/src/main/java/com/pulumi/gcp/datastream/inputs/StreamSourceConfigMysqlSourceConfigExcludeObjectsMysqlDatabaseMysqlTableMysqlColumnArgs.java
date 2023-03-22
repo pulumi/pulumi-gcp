@@ -65,6 +65,7 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     }
 
     /**
+     * (Output)
      * Column length.
      * 
      */
@@ -72,7 +73,8 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     private @Nullable Output<Integer> length;
 
     /**
-     * @return Column length.
+     * @return (Output)
+     * Column length.
      * 
      */
     public Optional<Output<Integer>> length() {
@@ -220,7 +222,8 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 
@@ -231,7 +234,8 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         }
 
         /**
-         * @param length Column length.
+         * @param length (Output)
+         * Column length.
          * 
          * @return builder
          * 

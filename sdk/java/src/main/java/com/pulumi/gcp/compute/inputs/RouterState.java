@@ -65,18 +65,16 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      * 
      */
     @Import(name="encryptedInterconnectRouter")
     private @Nullable Output<Boolean> encryptedInterconnectRouter;
 
     /**
-     * @return Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * @return Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      * 
      */
     public Optional<Output<Boolean>> encryptedInterconnectRouter() {
@@ -268,9 +266,8 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptedInterconnectRouter Field to indicate if a router is dedicated to use with encrypted
-         * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-         * Not currently available publicly.
+         * @param encryptedInterconnectRouter Indicates if a router is dedicated for use with encrypted VLAN
+         * attachments (interconnectAttachments).
          * 
          * @return builder
          * 
@@ -281,9 +278,8 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptedInterconnectRouter Field to indicate if a router is dedicated to use with encrypted
-         * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-         * Not currently available publicly.
+         * @param encryptedInterconnectRouter Indicates if a router is dedicated for use with encrypted VLAN
+         * attachments (interconnectAttachments).
          * 
          * @return builder
          * 

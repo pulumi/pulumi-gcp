@@ -16,6 +16,7 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
     public static final AlertPolicyCreationRecordArgs Empty = new AlertPolicyCreationRecordArgs();
 
     /**
+     * (Output)
      * When the change occurred.
      * 
      */
@@ -23,7 +24,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> mutateTime;
 
     /**
-     * @return When the change occurred.
+     * @return (Output)
+     * When the change occurred.
      * 
      */
     public Optional<Output<String>> mutateTime() {
@@ -31,6 +33,7 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (Output)
      * The email address of the user making the change.
      * 
      */
@@ -38,7 +41,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> mutatedBy;
 
     /**
-     * @return The email address of the user making the change.
+     * @return (Output)
+     * The email address of the user making the change.
      * 
      */
     public Optional<Output<String>> mutatedBy() {
@@ -71,7 +75,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mutateTime When the change occurred.
+         * @param mutateTime (Output)
+         * When the change occurred.
          * 
          * @return builder
          * 
@@ -82,7 +87,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mutateTime When the change occurred.
+         * @param mutateTime (Output)
+         * When the change occurred.
          * 
          * @return builder
          * 
@@ -92,7 +98,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mutatedBy The email address of the user making the change.
+         * @param mutatedBy (Output)
+         * The email address of the user making the change.
          * 
          * @return builder
          * 
@@ -103,7 +110,8 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mutatedBy The email address of the user making the change.
+         * @param mutatedBy (Output)
+         * The email address of the user making the change.
          * 
          * @return builder
          * 

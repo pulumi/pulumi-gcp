@@ -233,7 +233,9 @@ class _CxPageState:
                Page.transition_routes.trigger_fulfillment.messages
                Page.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of this transition route.
+        :param pulumi.Input[str] name: (Output)
+               The unique identifier of this transition route.
+               (Output)
                The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -348,7 +350,9 @@ class _CxPageState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The unique identifier of this transition route.
+        (Output)
         The unique identifier of this event handler.
         """
         return pulumi.get(self, "name")
@@ -727,7 +731,9 @@ class CxPage(pulumi.CustomResource):
                Page.transition_routes.trigger_fulfillment.messages
                Page.transition_routes.trigger_fulfillment.conditional_cases
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of this transition route.
+        :param pulumi.Input[str] name: (Output)
+               The unique identifier of this transition route.
+               (Output)
                The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -818,7 +824,9 @@ class CxPage(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        (Output)
         The unique identifier of this transition route.
+        (Output)
         The unique identifier of this event handler.
         """
         return pulumi.get(self, "name")

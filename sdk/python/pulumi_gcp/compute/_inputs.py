@@ -3555,7 +3555,8 @@ class BackendServiceIapArgs:
         :param pulumi.Input[str] oauth2_client_id: OAuth2 Client ID for IAP
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] oauth2_client_secret_sha256: OAuth2 Client Secret SHA-256 for IAP
+        :param pulumi.Input[str] oauth2_client_secret_sha256: (Output)
+               OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -3592,6 +3593,7 @@ class BackendServiceIapArgs:
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         OAuth2 Client Secret SHA-256 for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -4175,7 +4177,8 @@ class DiskDiskEncryptionKeyArgs:
                customer-supplied encryption key to either encrypt or decrypt
                this resource. You can provide either the rawKey or the rsaEncryptedKey.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4251,6 +4254,7 @@ class DiskDiskEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4356,7 +4360,8 @@ class DiskSourceImageEncryptionKeyArgs:
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4414,6 +4419,7 @@ class DiskSourceImageEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4441,7 +4447,8 @@ class DiskSourceSnapshotEncryptionKeyArgs:
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -4499,6 +4506,7 @@ class DiskSourceSnapshotEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -4935,7 +4943,8 @@ class HaVpnGatewayVpnInterfaceArgs:
                traffic for this VPN Gateway interface will go through the
                specified interconnect attachment resource.
                Not currently available publicly.
-        :param pulumi.Input[str] ip_address: The external IP address for this VPN gateway interface.
+        :param pulumi.Input[str] ip_address: (Output)
+               The external IP address for this VPN gateway interface.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -4977,6 +4986,7 @@ class HaVpnGatewayVpnInterfaceArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The external IP address for this VPN gateway interface.
         """
         return pulumi.get(self, "ip_address")
@@ -7317,6 +7327,7 @@ class InstanceFromMachineImageSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  max_run_duration: Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]] = None,
@@ -7327,6 +7338,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -7357,6 +7370,15 @@ class InstanceFromMachineImageSchedulingArgs:
     @instance_termination_action.setter
     def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_termination_action", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -8232,6 +8254,7 @@ class InstanceFromTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  max_run_duration: Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]] = None,
@@ -8242,6 +8265,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -8272,6 +8297,15 @@ class InstanceFromTemplateSchedulingArgs:
     @instance_termination_action.setter
     def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_termination_action", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -8664,6 +8698,7 @@ class InstanceGroupManagerStatefulExternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8685,6 +8720,9 @@ class InstanceGroupManagerStatefulExternalIpArgs:
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        , The network interface name of the external Ip.
+        """
         return pulumi.get(self, "interface_name")
 
     @interface_name.setter
@@ -8699,6 +8737,7 @@ class InstanceGroupManagerStatefulInternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8720,6 +8759,9 @@ class InstanceGroupManagerStatefulInternalIpArgs:
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        , The network interface name of the internal Ip.
+        """
         return pulumi.get(self, "interface_name")
 
     @interface_name.setter
@@ -9192,7 +9234,7 @@ class InstanceGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -9213,7 +9255,7 @@ class InstanceGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         return pulumi.get(self, "type")
 
@@ -9850,6 +9892,7 @@ class InstanceSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  max_run_duration: Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]]] = None,
@@ -9882,6 +9925,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -9920,6 +9965,15 @@ class InstanceSchedulingArgs:
     @instance_termination_action.setter
     def instance_termination_action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_termination_action", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maxRunDuration")
@@ -10762,7 +10816,8 @@ class InstanceTemplateGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: The type of GCE disk, can be either `"SCRATCH"` or
+               `"PERSISTENT"`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -10783,7 +10838,8 @@ class InstanceTemplateGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
         """
         return pulumi.get(self, "type")
 
@@ -11292,6 +11348,7 @@ class InstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  max_run_duration: Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]]] = None,
@@ -11304,6 +11361,7 @@ class InstanceTemplateSchedulingArgs:
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11323,6 +11381,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
             pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
@@ -11363,10 +11423,20 @@ class InstanceTemplateSchedulingArgs:
         pulumi.set(self, "instance_termination_action", value)
 
     @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
+
+    @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']]:
         """
         Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
 
@@ -11648,7 +11718,8 @@ class InterconnectAttachmentPrivateInterconnectInfoArgs:
     def __init__(__self__, *,
                  tag8021q: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] tag8021q: 802.1q encapsulation tag to be used for traffic between
+        :param pulumi.Input[int] tag8021q: (Output)
+               802.1q encapsulation tag to be used for traffic between
                Google and the customer, going to and from this network and region.
         """
         if tag8021q is not None:
@@ -11658,6 +11729,7 @@ class InterconnectAttachmentPrivateInterconnectInfoArgs:
     @pulumi.getter
     def tag8021q(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         802.1q encapsulation tag to be used for traffic between
         Google and the customer, going to and from this network and region.
         """
@@ -11787,7 +11859,8 @@ class MachineImageMachineImageEncryptionKeyArgs:
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the
                customer-supplied encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -11841,6 +11914,7 @@ class MachineImageMachineImageEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the
         customer-supplied encryption key that protects this resource.
         """
@@ -12263,7 +12337,8 @@ class NodeTemplateNodeTypeFlexibilityArgs:
                  memory: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cpus: Number of virtual CPUs to use.
-        :param pulumi.Input[str] local_ssd: Use local SSD
+        :param pulumi.Input[str] local_ssd: (Output)
+               Use local SSD
         :param pulumi.Input[str] memory: Physical memory available to the node, defined in MB.
         """
         if cpus is not None:
@@ -12289,6 +12364,7 @@ class NodeTemplateNodeTypeFlexibilityArgs:
     @pulumi.getter(name="localSsd")
     def local_ssd(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Use local SSD
         """
         return pulumi.get(self, "local_ssd")
@@ -15154,7 +15230,8 @@ class RegionBackendServiceIapArgs:
         :param pulumi.Input[str] oauth2_client_id: OAuth2 Client ID for IAP
         :param pulumi.Input[str] oauth2_client_secret: OAuth2 Client Secret for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] oauth2_client_secret_sha256: OAuth2 Client Secret SHA-256 for IAP
+        :param pulumi.Input[str] oauth2_client_secret_sha256: (Output)
+               OAuth2 Client Secret SHA-256 for IAP
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
@@ -15191,6 +15268,7 @@ class RegionBackendServiceIapArgs:
     @pulumi.getter(name="oauth2ClientSecretSha256")
     def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         OAuth2 Client Secret SHA-256 for IAP
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -15608,7 +15686,8 @@ class RegionDiskDiskEncryptionKeyArgs:
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -15648,6 +15727,7 @@ class RegionDiskDiskEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -15746,7 +15826,8 @@ class RegionDiskSourceSnapshotEncryptionKeyArgs:
         :param pulumi.Input[str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_name is not None:
@@ -15785,6 +15866,7 @@ class RegionDiskSourceSnapshotEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """
@@ -16959,6 +17041,7 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -16980,6 +17063,9 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        , The network interface name of the external Ip.
+        """
         return pulumi.get(self, "interface_name")
 
     @interface_name.setter
@@ -16994,6 +17080,7 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17015,6 +17102,9 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
     @property
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        , The network interface name of the internal Ip.
+        """
         return pulumi.get(self, "interface_name")
 
     @interface_name.setter
@@ -23139,7 +23229,8 @@ class ReservationSpecificReservationArgs:
         :param pulumi.Input[int] count: The number of resources that are allocated.
         :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
                Structure is documented below.
-        :param pulumi.Input[int] in_use_count: How many instances are in use.
+        :param pulumi.Input[int] in_use_count: (Output)
+               How many instances are in use.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "instance_properties", instance_properties)
@@ -23175,6 +23266,7 @@ class ReservationSpecificReservationArgs:
     @pulumi.getter(name="inUseCount")
     def in_use_count(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         How many instances are in use.
         """
         return pulumi.get(self, "in_use_count")
@@ -23989,11 +24081,15 @@ class RouterBgpArgs:
                ranges will be advertised in addition to any specified groups.
                Leave this field blank to advertise no custom IP ranges.
                Structure is documented below.
-        :param pulumi.Input[int] keepalive_interval: The interval in seconds between BGP keepalive messages that are sent to the peer.
-               Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-               maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-               BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
-               the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        :param pulumi.Input[int] keepalive_interval: The interval in seconds between BGP keepalive messages that are sent
+               to the peer. Hold time is three times the interval at which keepalive
+               messages are sent, and the hold time is the maximum number of seconds
+               allowed to elapse between successive keepalive messages that BGP
+               receives from a peer.
+               BGP will use the smaller of either the local hold time value or the
+               peer's hold time value as the hold time for the BGP connection
+               between the two peers. If set, this value must be between 20 and 60.
+               The default is 20.
         """
         pulumi.set(__self__, "asn", asn)
         if advertise_mode is not None:
@@ -24072,11 +24168,15 @@ class RouterBgpArgs:
     @pulumi.getter(name="keepaliveInterval")
     def keepalive_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval in seconds between BGP keepalive messages that are sent to the peer.
-        Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-        maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-        BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for
-        the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        The interval in seconds between BGP keepalive messages that are sent
+        to the peer. Hold time is three times the interval at which keepalive
+        messages are sent, and the hold time is the maximum number of seconds
+        allowed to elapse between successive keepalive messages that BGP
+        receives from a peer.
+        BGP will use the smaller of either the local hold time value or the
+        peer's hold time value as the hold time for the BGP connection
+        between the two peers. If set, this value must be between 20 and 60.
+        The default is 20.
         """
         return pulumi.get(self, "keepalive_interval")
 
@@ -25926,8 +26026,10 @@ class ServiceAttachmentConnectedEndpointArgs:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] endpoint: The URL of the consumer forwarding rule.
-        :param pulumi.Input[str] status: The status of the connection from the consumer forwarding rule to
+        :param pulumi.Input[str] endpoint: (Output)
+               The URL of the consumer forwarding rule.
+        :param pulumi.Input[str] status: (Output)
+               The status of the connection from the consumer forwarding rule to
                this service attachment.
         """
         if endpoint is not None:
@@ -25939,6 +26041,7 @@ class ServiceAttachmentConnectedEndpointArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The URL of the consumer forwarding rule.
         """
         return pulumi.get(self, "endpoint")
@@ -25951,6 +26054,7 @@ class ServiceAttachmentConnectedEndpointArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The status of the connection from the consumer forwarding rule to
         this service attachment.
         """
@@ -26092,7 +26196,8 @@ class SnapshotSnapshotEncryptionKeyArgs:
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        :param pulumi.Input[str] sha256: (Output)
+               The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         if kms_key_self_link is not None:
@@ -26147,6 +26252,7 @@ class SnapshotSnapshotEncryptionKeyArgs:
     @pulumi.getter
     def sha256(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
         """

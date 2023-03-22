@@ -530,7 +530,8 @@ class _InstanceState:
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
@@ -750,6 +751,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -1710,7 +1712,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
@@ -1882,6 +1885,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
+        (Output)
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.

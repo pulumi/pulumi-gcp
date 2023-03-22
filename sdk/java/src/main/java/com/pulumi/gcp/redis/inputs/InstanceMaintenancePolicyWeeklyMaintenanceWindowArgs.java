@@ -50,6 +50,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
     }
 
     /**
+     * (Output)
      * Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
@@ -60,7 +61,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
     private @Nullable Output<String> duration;
 
     /**
-     * @return Output only. Duration of the maintenance window.
+     * @return (Output)
+     * Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -153,7 +155,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param duration Output only. Duration of the maintenance window.
+         * @param duration (Output)
+         * Output only. Duration of the maintenance window.
          * The current window is fixed at 1 hour.
          * A duration in seconds with up to nine fractional digits,
          * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -167,7 +170,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param duration Output only. Duration of the maintenance window.
+         * @param duration (Output)
+         * Output only. Duration of the maintenance window.
          * The current window is fixed at 1 hour.
          * A duration in seconds with up to nine fractional digits,
          * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.

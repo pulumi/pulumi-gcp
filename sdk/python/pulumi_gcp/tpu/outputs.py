@@ -37,8 +37,10 @@ class NodeNetworkEndpoint(dict):
                  ip_address: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param str ip_address: The IP address of this network endpoint.
-        :param int port: The port of this network endpoint.
+        :param str ip_address: (Output)
+               The IP address of this network endpoint.
+        :param int port: (Output)
+               The port of this network endpoint.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -49,6 +51,7 @@ class NodeNetworkEndpoint(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
         """
+        (Output)
         The IP address of this network endpoint.
         """
         return pulumi.get(self, "ip_address")
@@ -57,6 +60,7 @@ class NodeNetworkEndpoint(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
+        (Output)
         The port of this network endpoint.
         """
         return pulumi.get(self, "port")

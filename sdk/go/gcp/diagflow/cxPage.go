@@ -168,7 +168,9 @@ type CxPage struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
+	// (Output)
 	// The unique identifier of this transition route.
+	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The flow to create a page for.
@@ -247,7 +249,9 @@ type cxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
+	// (Output)
 	// The unique identifier of this transition route.
+	// (Output)
 	// The unique identifier of this event handler.
 	Name *string `pulumi:"name"`
 	// The flow to create a page for.
@@ -295,7 +299,9 @@ type CxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
+	// (Output)
 	// The unique identifier of this transition route.
+	// (Output)
 	// The unique identifier of this event handler.
 	Name pulumi.StringPtrInput
 	// The flow to create a page for.
@@ -539,7 +545,9 @@ func (o CxPageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The unique identifier of this transition route.
+// (Output)
 // The unique identifier of this event handler.
 func (o CxPageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * To get more information about ConsumerQuotaOverride, see:
  *
  * * How-to Guides
- *     * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
+ *     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage

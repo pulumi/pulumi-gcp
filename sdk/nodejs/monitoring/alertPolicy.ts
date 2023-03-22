@@ -155,6 +155,7 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * (Output)
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -290,6 +291,7 @@ export interface AlertPolicyState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * (Output)
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

@@ -142,10 +142,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly ImmutableArray<Outputs.GetRepositoryMavenConfigResult> MavenConfigs;
+        public readonly string Mode;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> RemoteRepositoryConfigs;
         public readonly string RepositoryId;
         public readonly string UpdateTime;
+        public readonly ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> VirtualRepositoryConfigs;
 
         [OutputConstructor]
         private GetRepositoryResult(
@@ -165,13 +168,19 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             ImmutableArray<Outputs.GetRepositoryMavenConfigResult> mavenConfigs,
 
+            string mode,
+
             string name,
 
             string? project,
 
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> remoteRepositoryConfigs,
+
             string repositoryId,
 
-            string updateTime)
+            string updateTime,
+
+            ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> virtualRepositoryConfigs)
         {
             CreateTime = createTime;
             Description = description;
@@ -181,10 +190,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
             Labels = labels;
             Location = location;
             MavenConfigs = mavenConfigs;
+            Mode = mode;
             Name = name;
             Project = project;
+            RemoteRepositoryConfigs = remoteRepositoryConfigs;
             RepositoryId = repositoryId;
             UpdateTime = updateTime;
+            VirtualRepositoryConfigs = virtualRepositoryConfigs;
         }
     }
 }

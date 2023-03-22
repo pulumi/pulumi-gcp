@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string Secret;
         /// <summary>
+        /// (Output)
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>

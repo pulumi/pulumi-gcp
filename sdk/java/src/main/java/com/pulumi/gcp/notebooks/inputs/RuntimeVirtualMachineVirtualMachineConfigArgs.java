@@ -92,6 +92,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
+     * (Output)
      * The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
@@ -101,7 +102,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     private @Nullable Output<Map<String,String>> guestAttributes;
 
     /**
-     * @return The Compute Engine guest attributes. (see [Project and instance
+     * @return (Output)
+     * The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -335,6 +337,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
+     * (Output)
      * The zone where the virtual machine is located.
      * 
      */
@@ -342,7 +345,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone where the virtual machine is located.
+     * @return (Output)
+     * The zone where the virtual machine is located.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -492,7 +496,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param guestAttributes The Compute Engine guest attributes. (see [Project and instance
+         * @param guestAttributes (Output)
+         * The Compute Engine guest attributes. (see [Project and instance
          * guest attributes](https://cloud.google.com/compute/docs/
          * storing-retrieving-metadata#guest_attributes)).
          * 
@@ -505,7 +510,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param guestAttributes The Compute Engine guest attributes. (see [Project and instance
+         * @param guestAttributes (Output)
+         * The Compute Engine guest attributes. (see [Project and instance
          * guest attributes](https://cloud.google.com/compute/docs/
          * storing-retrieving-metadata#guest_attributes)).
          * 
@@ -813,7 +819,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param zone The zone where the virtual machine is located.
+         * @param zone (Output)
+         * The zone where the virtual machine is located.
          * 
          * @return builder
          * 
@@ -824,7 +831,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param zone The zone where the virtual machine is located.
+         * @param zone (Output)
+         * The zone where the virtual machine is located.
          * 
          * @return builder
          * 

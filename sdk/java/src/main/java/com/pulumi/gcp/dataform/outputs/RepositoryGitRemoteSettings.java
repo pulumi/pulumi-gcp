@@ -22,7 +22,8 @@ public final class RepositoryGitRemoteSettings {
      */
     private String defaultBranch;
     /**
-     * @return Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * @return (Output)
+     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
      * 
      */
     private @Nullable String tokenStatus;
@@ -48,7 +49,8 @@ public final class RepositoryGitRemoteSettings {
         return this.defaultBranch;
     }
     /**
-     * @return Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * @return (Output)
+     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
      * 
      */
     public Optional<String> tokenStatus() {

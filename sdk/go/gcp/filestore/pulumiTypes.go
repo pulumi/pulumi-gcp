@@ -19,6 +19,7 @@ type InstanceFileShares struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions []InstanceFileSharesNfsExportOption `pulumi:"nfsExportOptions"`
+	// (Output)
 	// The resource name of the backup, in the format
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
@@ -45,6 +46,7 @@ type InstanceFileSharesArgs struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions InstanceFileSharesNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
+	// (Output)
 	// The resource name of the backup, in the format
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
@@ -145,6 +147,7 @@ func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExport
 	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
+// (Output)
 // The resource name of the backup, in the format
 // projects/{projectId}/locations/{locationId}/backups/{backupId},
 // that this file share has been restored from.
@@ -208,6 +211,7 @@ func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExp
 	}).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
+// (Output)
 // The resource name of the backup, in the format
 // projects/{projectId}/locations/{locationId}/backups/{backupId},
 // that this file share has been restored from.
@@ -396,6 +400,7 @@ type InstanceNetwork struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
+	// (Output)
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
@@ -428,6 +433,7 @@ type InstanceNetworkArgs struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
+	// (Output)
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
@@ -502,6 +508,7 @@ func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // A list of IPv4 or IPv6 addresses.
 func (o InstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)

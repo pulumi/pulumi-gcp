@@ -19,12 +19,14 @@ namespace Pulumi.Gcp.Iot.Inputs
         public Input<string>? BinaryData { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The time at which this configuration version was updated in Cloud IoT Core.
         /// </summary>
         [Input("cloudUpdateTime")]
         public Input<string>? CloudUpdateTime { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The time at which Cloud IoT Core received the acknowledgment from the device,
         /// indicating that the device has received this configuration version.
         /// </summary>
@@ -32,6 +34,7 @@ namespace Pulumi.Gcp.Iot.Inputs
         public Input<string>? DeviceAckTime { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The version of this update.
         /// </summary>
         [Input("version")]

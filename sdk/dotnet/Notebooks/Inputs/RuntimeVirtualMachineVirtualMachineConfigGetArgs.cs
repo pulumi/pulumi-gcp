@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputMap<string>? _guestAttributes;
 
         /// <summary>
+        /// (Output)
         /// The Compute Engine guest attributes. (see [Project and instance
         /// guest attributes](https://cloud.google.com/compute/docs/
         /// storing-retrieving-metadata#guest_attributes)).
@@ -176,6 +177,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         }
 
         /// <summary>
+        /// (Output)
         /// The zone where the virtual machine is located.
         /// </summary>
         [Input("zone")]

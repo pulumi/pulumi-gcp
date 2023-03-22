@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
         /// </summary>
         public readonly string DefaultBranch;
         /// <summary>
+        /// (Output)
         /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         /// </summary>
         public readonly string? TokenStatus;

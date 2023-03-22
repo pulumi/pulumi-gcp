@@ -28,7 +28,8 @@ public final class EntryGcsFilesetSpec {
      */
     private List<String> filePatterns;
     /**
-     * @return Sample files contained in this fileset, not all files contained in this fileset are represented here.
+     * @return (Output)
+     * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
      */
@@ -53,7 +54,8 @@ public final class EntryGcsFilesetSpec {
         return this.filePatterns;
     }
     /**
-     * @return Sample files contained in this fileset, not all files contained in this fileset are represented here.
+     * @return (Output)
+     * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
      */

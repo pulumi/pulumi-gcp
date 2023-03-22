@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
     public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Optional. Specifies whether the disk will be auto-deleted
         /// when the instance is deleted (but not when the disk is
         /// detached from the instance).
@@ -21,6 +22,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<bool>? AutoDelete { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Optional. Indicates that this is a boot disk. The virtual
         /// machine will use the first partition of the disk for its
         /// root filesystem.
@@ -29,6 +31,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<bool>? Boot { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Optional. Specifies a unique device name of your choice
         /// that is reflected into the /dev/disk/by-id/google-* tree
         /// of a Linux operating system running within the instance.
@@ -46,6 +49,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputList<string>? _guestOsFeatures;
 
         /// <summary>
+        /// (Output)
         /// Indicates a list of features to enable on the guest operating
         /// system. Applicable only for bootable images. To see a list of
         /// available features, read `https://cloud.google.com/compute/docs/
@@ -59,6 +63,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         }
 
         /// <summary>
+        /// (Output)
         /// Output only. A zero-based index to this disk, where 0 is
         /// reserved for the boot disk. If you have many disks attached
         /// to an instance, each disk would have a unique index number.
@@ -90,6 +95,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? Interface { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Type of the resource. Always compute#attachedDisk for attached
         /// disks.
         /// </summary>
@@ -100,6 +106,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputList<string>? _licenses;
 
         /// <summary>
+        /// (Output)
         /// Output only. Any valid publicly visible licenses.
         /// </summary>
         public InputList<string> Licenses

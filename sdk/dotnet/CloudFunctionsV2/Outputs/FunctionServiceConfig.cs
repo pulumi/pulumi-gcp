@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
         /// <summary>
+        /// (Output)
         /// URIs of the Service deployed
         /// </summary>
         public readonly string? GcfUri;
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly int? TimeoutSeconds;
         /// <summary>
+        /// (Output)
         /// URI of the Service deployed.
         /// </summary>
         public readonly string? Uri;

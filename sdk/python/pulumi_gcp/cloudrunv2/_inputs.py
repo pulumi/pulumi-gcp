@@ -122,15 +122,23 @@ class JobConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
-        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+        :param pulumi.Input[str] execution_reason: (Output)
+               A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
-        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
-        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] state: State of the condition.
-        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: (Output)
+               A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: (Output)
+               A reason for the revision condition.
+        :param pulumi.Input[str] severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: (Output)
+               State of the condition.
+        :param pulumi.Input[str] type: (Output)
+               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -153,6 +161,7 @@ class JobConditionArgs:
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the execution condition.
         """
         return pulumi.get(self, "execution_reason")
@@ -165,6 +174,7 @@ class JobConditionArgs:
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Last time the condition transitioned from one status to another.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -178,6 +188,7 @@ class JobConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
@@ -190,6 +201,7 @@ class JobConditionArgs:
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A common (service-level) reason for this condition.
         """
         return pulumi.get(self, "reason")
@@ -202,6 +214,7 @@ class JobConditionArgs:
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the revision condition.
         """
         return pulumi.get(self, "revision_reason")
@@ -214,6 +227,7 @@ class JobConditionArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
         """
         return pulumi.get(self, "severity")
@@ -226,6 +240,7 @@ class JobConditionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         State of the condition.
         """
         return pulumi.get(self, "state")
@@ -238,6 +253,7 @@ class JobConditionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
@@ -332,9 +348,11 @@ class JobLatestCreatedExecutionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] completion_time: Completion timestamp of the execution.
+        :param pulumi.Input[str] completion_time: (Output)
+               Completion timestamp of the execution.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] create_time: Creation timestamp of the execution.
+        :param pulumi.Input[str] create_time: (Output)
+               Creation timestamp of the execution.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] name: Name of the Job.
         """
@@ -349,6 +367,7 @@ class JobLatestCreatedExecutionArgs:
     @pulumi.getter(name="completionTime")
     def completion_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Completion timestamp of the execution.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -362,6 +381,7 @@ class JobLatestCreatedExecutionArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Creation timestamp of the execution.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1688,15 +1708,23 @@ class JobTerminalConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
-        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+        :param pulumi.Input[str] execution_reason: (Output)
+               A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
-        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
-        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] state: State of the condition.
-        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: (Output)
+               A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: (Output)
+               A reason for the revision condition.
+        :param pulumi.Input[str] severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: (Output)
+               State of the condition.
+        :param pulumi.Input[str] type: (Output)
+               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -1719,6 +1747,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the execution condition.
         """
         return pulumi.get(self, "execution_reason")
@@ -1731,6 +1760,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Last time the condition transitioned from one status to another.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1744,6 +1774,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
@@ -1756,6 +1787,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A common (service-level) reason for this condition.
         """
         return pulumi.get(self, "reason")
@@ -1768,6 +1800,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the revision condition.
         """
         return pulumi.get(self, "revision_reason")
@@ -1780,6 +1813,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
         """
         return pulumi.get(self, "severity")
@@ -1792,6 +1826,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         State of the condition.
         """
         return pulumi.get(self, "state")
@@ -1804,6 +1839,7 @@ class JobTerminalConditionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
@@ -1864,14 +1900,21 @@ class ServiceConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
-        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+        :param pulumi.Input[str] execution_reason: (Output)
+               A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
-        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
-        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] state: State of the condition.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: (Output)
+               A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: (Output)
+               A reason for the revision condition.
+        :param pulumi.Input[str] severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: (Output)
+               State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
@@ -1896,6 +1939,7 @@ class ServiceConditionArgs:
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the execution condition.
         """
         return pulumi.get(self, "execution_reason")
@@ -1908,6 +1952,7 @@ class ServiceConditionArgs:
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Last time the condition transitioned from one status to another.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1921,6 +1966,7 @@ class ServiceConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
@@ -1933,6 +1979,7 @@ class ServiceConditionArgs:
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A common (service-level) reason for this condition.
         """
         return pulumi.get(self, "reason")
@@ -1945,6 +1992,7 @@ class ServiceConditionArgs:
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the revision condition.
         """
         return pulumi.get(self, "revision_reason")
@@ -1957,6 +2005,7 @@ class ServiceConditionArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
         """
         return pulumi.get(self, "severity")
@@ -1969,6 +2018,7 @@ class ServiceConditionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         State of the condition.
         """
         return pulumi.get(self, "state")
@@ -3537,14 +3587,21 @@ class ServiceTerminalConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
-        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+        :param pulumi.Input[str] execution_reason: (Output)
+               A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transitioned from one status to another.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
-        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
-        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] state: State of the condition.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: (Output)
+               A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: (Output)
+               A reason for the revision condition.
+        :param pulumi.Input[str] severity: (Output)
+               How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: (Output)
+               State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
@@ -3569,6 +3626,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the execution condition.
         """
         return pulumi.get(self, "execution_reason")
@@ -3581,6 +3639,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Last time the condition transitioned from one status to another.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -3594,6 +3653,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
@@ -3606,6 +3666,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A common (service-level) reason for this condition.
         """
         return pulumi.get(self, "reason")
@@ -3618,6 +3679,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         A reason for the revision condition.
         """
         return pulumi.get(self, "revision_reason")
@@ -3630,6 +3692,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         How to interpret failures of this condition, one of Error, Warning, Info
         """
         return pulumi.get(self, "severity")
@@ -3642,6 +3705,7 @@ class ServiceTerminalConditionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         State of the condition.
         """
         return pulumi.get(self, "state")
@@ -3753,7 +3817,8 @@ class ServiceTrafficStatusArgs:
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
-        :param pulumi.Input[str] uri: Displays the target URI.
+        :param pulumi.Input[str] uri: (Output)
+               Displays the target URI.
         """
         if percent is not None:
             pulumi.set(__self__, "percent", percent)
@@ -3821,6 +3886,7 @@ class ServiceTrafficStatusArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Displays the target URI.
         """
         return pulumi.get(self, "uri")

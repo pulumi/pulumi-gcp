@@ -20,6 +20,7 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     public static final DomainMappingStatusArgs Empty = new DomainMappingStatusArgs();
 
     /**
+     * (Output)
      * Array of observed DomainMappingConditions, indicating the current state
      * of the DomainMapping.
      * Structure is documented below.
@@ -29,7 +30,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<DomainMappingStatusConditionArgs>> conditions;
 
     /**
-     * @return Array of observed DomainMappingConditions, indicating the current state
+     * @return (Output)
+     * Array of observed DomainMappingConditions, indicating the current state
      * of the DomainMapping.
      * Structure is documented below.
      * 
@@ -39,6 +41,7 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * The name of the route that the mapping currently points to.
      * 
      */
@@ -46,7 +49,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> mappedRouteName;
 
     /**
-     * @return The name of the route that the mapping currently points to.
+     * @return (Output)
+     * The name of the route that the mapping currently points to.
      * 
      */
     public Optional<Output<String>> mappedRouteName() {
@@ -54,6 +58,7 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (Output)
      * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
      * was last processed by the controller.
      * 
@@ -62,7 +67,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Integer> observedGeneration;
 
     /**
-     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * @return (Output)
+     * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
      * was last processed by the controller.
      * 
      */
@@ -119,7 +125,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * @param conditions (Output)
+         * Array of observed DomainMappingConditions, indicating the current state
          * of the DomainMapping.
          * Structure is documented below.
          * 
@@ -132,7 +139,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * @param conditions (Output)
+         * Array of observed DomainMappingConditions, indicating the current state
          * of the DomainMapping.
          * Structure is documented below.
          * 
@@ -144,7 +152,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * @param conditions (Output)
+         * Array of observed DomainMappingConditions, indicating the current state
          * of the DomainMapping.
          * Structure is documented below.
          * 
@@ -156,7 +165,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mappedRouteName The name of the route that the mapping currently points to.
+         * @param mappedRouteName (Output)
+         * The name of the route that the mapping currently points to.
          * 
          * @return builder
          * 
@@ -167,7 +177,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param mappedRouteName The name of the route that the mapping currently points to.
+         * @param mappedRouteName (Output)
+         * The name of the route that the mapping currently points to.
          * 
          * @return builder
          * 
@@ -177,7 +188,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+         * @param observedGeneration (Output)
+         * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
          * was last processed by the controller.
          * 
          * @return builder
@@ -189,7 +201,8 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+         * @param observedGeneration (Output)
+         * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
          * was last processed by the controller.
          * 
          * @return builder

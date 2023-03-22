@@ -4825,6 +4825,7 @@ type GetInstanceScheduling struct {
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string                                `pulumi:"instanceTerminationAction"`
+	MaintenanceInterval       string                                `pulumi:"maintenanceInterval"`
 	MaxRunDurations           []GetInstanceSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
 	MinNodeCpus               int                                   `pulumi:"minNodeCpus"`
 	NodeAffinities            []GetInstanceSchedulingNodeAffinity   `pulumi:"nodeAffinities"`
@@ -4855,6 +4856,7 @@ type GetInstanceSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput                            `pulumi:"instanceTerminationAction"`
+	MaintenanceInterval       pulumi.StringInput                            `pulumi:"maintenanceInterval"`
 	MaxRunDurations           GetInstanceSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
 	MinNodeCpus               pulumi.IntInput                               `pulumi:"minNodeCpus"`
 	NodeAffinities            GetInstanceSchedulingNodeAffinityArrayInput   `pulumi:"nodeAffinities"`
@@ -4928,6 +4930,10 @@ func (o GetInstanceSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 // Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 func (o GetInstanceSchedulingOutput) InstanceTerminationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
 func (o GetInstanceSchedulingOutput) MaxRunDurations() GetInstanceSchedulingMaxRunDurationArrayOutput {
@@ -7320,6 +7326,7 @@ type GetInstanceTemplateScheduling struct {
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string                                        `pulumi:"instanceTerminationAction"`
+	MaintenanceInterval       string                                        `pulumi:"maintenanceInterval"`
 	MaxRunDurations           []GetInstanceTemplateSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
 	MinNodeCpus               int                                           `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
@@ -7357,6 +7364,7 @@ type GetInstanceTemplateSchedulingArgs struct {
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput                                    `pulumi:"instanceTerminationAction"`
+	MaintenanceInterval       pulumi.StringInput                                    `pulumi:"maintenanceInterval"`
 	MaxRunDurations           GetInstanceTemplateSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
 	MinNodeCpus               pulumi.IntInput                                       `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
@@ -7437,6 +7445,10 @@ func (o GetInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutpu
 // Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 func (o GetInstanceTemplateSchedulingOutput) InstanceTerminationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
 func (o GetInstanceTemplateSchedulingOutput) MaxRunDurations() GetInstanceTemplateSchedulingMaxRunDurationArrayOutput {

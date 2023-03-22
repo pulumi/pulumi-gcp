@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Memcache.Outputs
     public sealed class InstanceMaintenancePolicy
     {
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits
@@ -26,6 +27,7 @@ namespace Pulumi.Gcp.Memcache.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was updated.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.

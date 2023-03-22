@@ -14,6 +14,15 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud Firestore Database. Currently only one database is allowed per
+ * cloud project; this database must have a `database_id` of &#39;(default)&#39;.
+ * 
+ * To get more information about Database, see:
+ * 
+ * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
+ * 
  * ## Example Usage
  * 
  * ## Import

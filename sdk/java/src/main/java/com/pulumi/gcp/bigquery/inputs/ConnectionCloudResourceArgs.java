@@ -16,6 +16,7 @@ public final class ConnectionCloudResourceArgs extends com.pulumi.resources.Reso
     public static final ConnectionCloudResourceArgs Empty = new ConnectionCloudResourceArgs();
 
     /**
+     * (Output)
      * The account ID of the service created for the purpose of this connection.
      * 
      */
@@ -23,7 +24,8 @@ public final class ConnectionCloudResourceArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> serviceAccountId;
 
     /**
-     * @return The account ID of the service created for the purpose of this connection.
+     * @return (Output)
+     * The account ID of the service created for the purpose of this connection.
      * 
      */
     public Optional<Output<String>> serviceAccountId() {
@@ -55,7 +57,8 @@ public final class ConnectionCloudResourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceAccountId The account ID of the service created for the purpose of this connection.
+         * @param serviceAccountId (Output)
+         * The account ID of the service created for the purpose of this connection.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class ConnectionCloudResourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serviceAccountId The account ID of the service created for the purpose of this connection.
+         * @param serviceAccountId (Output)
+         * The account ID of the service created for the purpose of this connection.
          * 
          * @return builder
          * 

@@ -36,7 +36,8 @@ public final class ServiceTrafficStatus {
      */
     private @Nullable String type;
     /**
-     * @return Displays the target URI.
+     * @return (Output)
+     * Displays the target URI.
      * 
      */
     private @Nullable String uri;
@@ -74,7 +75,8 @@ public final class ServiceTrafficStatus {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Displays the target URI.
+     * @return (Output)
+     * Displays the target URI.
      * 
      */
     public Optional<String> uri() {

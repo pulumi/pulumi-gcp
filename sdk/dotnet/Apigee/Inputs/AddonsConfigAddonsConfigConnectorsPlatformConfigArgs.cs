@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Apigee.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Flag that specifies whether the Advanced API Ops add-on is enabled.
         /// </summary>
         [Input("expiresAt")]

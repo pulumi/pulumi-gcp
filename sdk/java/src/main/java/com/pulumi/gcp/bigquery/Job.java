@@ -396,6 +396,7 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jobTimeoutMs);
     }
     /**
+     * (Output)
      * The type of the job.
      * 
      */
@@ -403,7 +404,8 @@ public class Job extends com.pulumi.resources.CustomResource {
     private Output<String> jobType;
 
     /**
-     * @return The type of the job.
+     * @return (Output)
+     * The type of the job.
      * 
      */
     public Output<String> jobType() {

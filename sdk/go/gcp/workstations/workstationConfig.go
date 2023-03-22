@@ -352,8 +352,8 @@ import (
 //				return err
 //			}
 //			defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
-//				AccountId:   pulumi.String("cloud-workstations-kms"),
-//				DisplayName: pulumi.String("Service Account for Cloud Workstations"),
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Service Account"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -406,12 +406,6 @@ import (
 // ```sh
 //
 //	$ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-//
-// ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
 //
 // ```
 type WorkstationConfig struct {

@@ -14,16 +14,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class DomainMappingStatus
     {
         /// <summary>
+        /// (Output)
         /// Array of observed DomainMappingConditions, indicating the current state
         /// of the DomainMapping.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DomainMappingStatusCondition> Conditions;
         /// <summary>
+        /// (Output)
         /// The name of the route that the mapping currently points to.
         /// </summary>
         public readonly string? MappedRouteName;
         /// <summary>
+        /// (Output)
         /// ObservedGeneration is the 'Generation' of the DomainMapping that
         /// was last processed by the controller.
         /// </summary>

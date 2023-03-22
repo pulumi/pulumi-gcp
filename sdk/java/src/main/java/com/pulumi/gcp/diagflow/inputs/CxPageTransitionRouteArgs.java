@@ -51,6 +51,7 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * The unique identifier of this transition route.
      * 
      */
@@ -58,7 +59,8 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of this transition route.
+     * @return (Output)
+     * The unique identifier of this transition route.
      * 
      */
     public Optional<Output<String>> name() {
@@ -192,7 +194,8 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The unique identifier of this transition route.
+         * @param name (Output)
+         * The unique identifier of this transition route.
          * 
          * @return builder
          * 
@@ -203,7 +206,8 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The unique identifier of this transition route.
+         * @param name (Output)
+         * The unique identifier of this transition route.
          * 
          * @return builder
          * 

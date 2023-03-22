@@ -14,10 +14,12 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class InstanceNode
     {
         /// <summary>
+        /// (Output)
         /// Node identifying string. e.g. 'node-0', 'node-1'
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// (Output)
         /// Location of the node.
         /// </summary>
         public readonly string? Zone;

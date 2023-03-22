@@ -384,6 +384,7 @@ type PatchDeployment struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterOutput `pulumi:"instanceFilter"`
+	// (Output)
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringOutput `pulumi:"lastExecuteTime"`
@@ -463,6 +464,7 @@ type patchDeploymentState struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter *PatchDeploymentInstanceFilter `pulumi:"instanceFilter"`
+	// (Output)
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
@@ -508,6 +510,7 @@ type PatchDeploymentState struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterPtrInput
+	// (Output)
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput
@@ -722,6 +725,7 @@ func (o PatchDeploymentOutput) InstanceFilter() PatchDeploymentInstanceFilterOut
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentInstanceFilterOutput { return v.InstanceFilter }).(PatchDeploymentInstanceFilterOutput)
 }
 
+// (Output)
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) LastExecuteTime() pulumi.StringOutput {

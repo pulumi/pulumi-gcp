@@ -316,7 +316,8 @@ class _ServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-        :param pulumi.Input[str] uri: Displays the target URI.
+        :param pulumi.Input[str] uri: (Output)
+               Displays the target URI.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -663,6 +664,7 @@ class _ServiceState:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Displays the target URI.
         """
         return pulumi.get(self, "uri")
@@ -1298,7 +1300,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-        :param pulumi.Input[str] uri: Displays the target URI.
+        :param pulumi.Input[str] uri: (Output)
+               Displays the target URI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1534,6 +1537,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def uri(self) -> pulumi.Output[str]:
         """
+        (Output)
         Displays the target URI.
         """
         return pulumi.get(self, "uri")

@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMaintenanceSchedule {
     /**
-     * @return Output only. The end time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The end time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
      */
     private @Nullable String endTime;
     /**
-     * @return Output only. The deadline that the maintenance schedule start time
+     * @return (Output)
+     * Output only. The deadline that the maintenance schedule start time
      * can not go beyond, including reschedule.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -27,7 +29,8 @@ public final class InstanceMaintenanceSchedule {
      */
     private @Nullable String scheduleDeadlineTime;
     /**
-     * @return Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -36,7 +39,8 @@ public final class InstanceMaintenanceSchedule {
 
     private InstanceMaintenanceSchedule() {}
     /**
-     * @return Output only. The end time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The end time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -45,7 +49,8 @@ public final class InstanceMaintenanceSchedule {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return Output only. The deadline that the maintenance schedule start time
+     * @return (Output)
+     * Output only. The deadline that the maintenance schedule start time
      * can not go beyond, including reschedule.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -55,7 +60,8 @@ public final class InstanceMaintenanceSchedule {
         return Optional.ofNullable(this.scheduleDeadlineTime);
     }
     /**
-     * @return Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 

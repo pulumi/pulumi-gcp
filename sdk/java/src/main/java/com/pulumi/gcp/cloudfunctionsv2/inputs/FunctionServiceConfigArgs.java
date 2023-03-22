@@ -86,6 +86,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * URIs of the Service deployed
      * 
      */
@@ -93,7 +94,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> gcfUri;
 
     /**
-     * @return URIs of the Service deployed
+     * @return (Output)
+     * URIs of the Service deployed
      * 
      */
     public Optional<Output<String>> gcfUri() {
@@ -252,6 +254,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Output)
      * URI of the Service deployed.
      * 
      */
@@ -259,7 +262,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> uri;
 
     /**
-     * @return URI of the Service deployed.
+     * @return (Output)
+     * URI of the Service deployed.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -427,7 +431,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gcfUri URIs of the Service deployed
+         * @param gcfUri (Output)
+         * URIs of the Service deployed
          * 
          * @return builder
          * 
@@ -438,7 +443,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gcfUri URIs of the Service deployed
+         * @param gcfUri (Output)
+         * URIs of the Service deployed
          * 
          * @return builder
          * 
@@ -675,7 +681,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uri URI of the Service deployed.
+         * @param uri (Output)
+         * URI of the Service deployed.
          * 
          * @return builder
          * 
@@ -686,7 +693,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param uri URI of the Service deployed.
+         * @param uri (Output)
+         * URI of the Service deployed.
          * 
          * @return builder
          * 

@@ -14,14 +14,17 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigCondition
     {
         /// <summary>
+        /// (Output)
         /// The status code, which should be an enum value of google.rpc.Code.
         /// </summary>
         public readonly int? Code;
         /// <summary>
+        /// (Output)
         /// A list of messages that carry the error details.
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
         /// <summary>
+        /// (Output)
         /// Human readable message indicating details about the current status.
         /// </summary>
         public readonly string? Message;

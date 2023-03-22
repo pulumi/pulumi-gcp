@@ -6,6 +6,8 @@ package com.pulumi.gcp.firebase.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -27,10 +29,28 @@ public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.appId;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable String project;
+
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
+
     private GetWebAppPlainArgs() {}
 
     private GetWebAppPlainArgs(GetWebAppPlainArgs $) {
         this.appId = $.appId;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -59,6 +79,18 @@ public final class GetWebAppPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder appId(String appId) {
             $.appId = appId;
+            return this;
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable String project) {
+            $.project = project;
             return this;
         }
 

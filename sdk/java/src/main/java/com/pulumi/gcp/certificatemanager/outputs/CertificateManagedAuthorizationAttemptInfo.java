@@ -12,9 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateManagedAuthorizationAttemptInfo {
     /**
-     * @return Human readable explanation about the issue. Provided to help address
+     * @return (Output)
+     * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -22,17 +24,21 @@ public final class CertificateManagedAuthorizationAttemptInfo {
      */
     private @Nullable String details;
     /**
-     * @return Domain name of the authorization attempt.
+     * @return (Output)
+     * Domain name of the authorization attempt.
      * 
      */
     private @Nullable String domain;
     /**
-     * @return Reason for failure of the authorization attempt for the domain.
+     * @return (Output)
+     * Reason for failure of the authorization attempt for the domain.
      * 
      */
     private @Nullable String failureReason;
     /**
-     * @return A state of this Managed Certificate.
+     * @return (Output)
+     * A state of this Managed Certificate.
+     * (Output)
      * State of the domain for managed certificate issuance.
      * 
      */
@@ -40,9 +46,11 @@ public final class CertificateManagedAuthorizationAttemptInfo {
 
     private CertificateManagedAuthorizationAttemptInfo() {}
     /**
-     * @return Human readable explanation about the issue. Provided to help address
+     * @return (Output)
+     * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -52,21 +60,25 @@ public final class CertificateManagedAuthorizationAttemptInfo {
         return Optional.ofNullable(this.details);
     }
     /**
-     * @return Domain name of the authorization attempt.
+     * @return (Output)
+     * Domain name of the authorization attempt.
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return Reason for failure of the authorization attempt for the domain.
+     * @return (Output)
+     * Reason for failure of the authorization attempt for the domain.
      * 
      */
     public Optional<String> failureReason() {
         return Optional.ofNullable(this.failureReason);
     }
     /**
-     * @return A state of this Managed Certificate.
+     * @return (Output)
+     * A state of this Managed Certificate.
+     * (Output)
      * State of the domain for managed certificate issuance.
      * 
      */

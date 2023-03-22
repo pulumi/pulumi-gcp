@@ -5109,7 +5109,8 @@ class MetastoreServiceNetworkConfigConsumer(dict):
                It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
                There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
                `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
-        :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
+        :param str endpoint_uri: (Output)
+               The URI of the endpoint used to access the metastore service.
         """
         pulumi.set(__self__, "subnetwork", subnetwork)
         if endpoint_uri is not None:
@@ -5130,6 +5131,7 @@ class MetastoreServiceNetworkConfigConsumer(dict):
     @pulumi.getter(name="endpointUri")
     def endpoint_uri(self) -> Optional[str]:
         """
+        (Output)
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")

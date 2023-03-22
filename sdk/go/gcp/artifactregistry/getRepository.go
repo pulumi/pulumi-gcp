@@ -66,15 +66,18 @@ type LookupRepositoryResult struct {
 	Description string `pulumi:"description"`
 	Format      string `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                     `pulumi:"id"`
-	KmsKeyName   string                     `pulumi:"kmsKeyName"`
-	Labels       map[string]string          `pulumi:"labels"`
-	Location     string                     `pulumi:"location"`
-	MavenConfigs []GetRepositoryMavenConfig `pulumi:"mavenConfigs"`
-	Name         string                     `pulumi:"name"`
-	Project      *string                    `pulumi:"project"`
-	RepositoryId string                     `pulumi:"repositoryId"`
-	UpdateTime   string                     `pulumi:"updateTime"`
+	Id                       string                                 `pulumi:"id"`
+	KmsKeyName               string                                 `pulumi:"kmsKeyName"`
+	Labels                   map[string]string                      `pulumi:"labels"`
+	Location                 string                                 `pulumi:"location"`
+	MavenConfigs             []GetRepositoryMavenConfig             `pulumi:"mavenConfigs"`
+	Mode                     string                                 `pulumi:"mode"`
+	Name                     string                                 `pulumi:"name"`
+	Project                  *string                                `pulumi:"project"`
+	RemoteRepositoryConfigs  []GetRepositoryRemoteRepositoryConfig  `pulumi:"remoteRepositoryConfigs"`
+	RepositoryId             string                                 `pulumi:"repositoryId"`
+	UpdateTime               string                                 `pulumi:"updateTime"`
+	VirtualRepositoryConfigs []GetRepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfigs"`
 }
 
 func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
@@ -153,6 +156,10 @@ func (o LookupRepositoryResultOutput) MavenConfigs() GetRepositoryMavenConfigArr
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryMavenConfig { return v.MavenConfigs }).(GetRepositoryMavenConfigArrayOutput)
 }
 
+func (o LookupRepositoryResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -161,12 +168,22 @@ func (o LookupRepositoryResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupRepositoryResultOutput) RemoteRepositoryConfigs() GetRepositoryRemoteRepositoryConfigArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryRemoteRepositoryConfig { return v.RemoteRepositoryConfigs }).(GetRepositoryRemoteRepositoryConfigArrayOutput)
+}
+
 func (o LookupRepositoryResultOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RepositoryId }).(pulumi.StringOutput)
 }
 
 func (o LookupRepositoryResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) VirtualRepositoryConfigs() GetRepositoryVirtualRepositoryConfigArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryVirtualRepositoryConfig {
+		return v.VirtualRepositoryConfigs
+	}).(GetRepositoryVirtualRepositoryConfigArrayOutput)
 }
 
 func init() {

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWebAppResult {
@@ -30,7 +32,7 @@ public final class GetWebAppResult {
      * 
      */
     private String name;
-    private String project;
+    private @Nullable String project;
 
     private GetWebAppResult() {}
     /**
@@ -65,8 +67,8 @@ public final class GetWebAppResult {
     public String name() {
         return this.name;
     }
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
 
     public static Builder builder() {
@@ -84,7 +86,7 @@ public final class GetWebAppResult {
         private String displayName;
         private String id;
         private String name;
-        private String project;
+        private @Nullable String project;
         public Builder() {}
         public Builder(GetWebAppResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -131,8 +133,8 @@ public final class GetWebAppResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+        public Builder project(@Nullable String project) {
+            this.project = project;
             return this;
         }
         public GetWebAppResult build() {

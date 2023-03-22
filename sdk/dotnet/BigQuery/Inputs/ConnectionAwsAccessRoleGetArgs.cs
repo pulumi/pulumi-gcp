@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> IamRoleId { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         /// </summary>
         [Input("identity")]

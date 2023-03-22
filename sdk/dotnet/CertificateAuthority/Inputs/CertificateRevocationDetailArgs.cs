@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CertificateRevocationDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Indicates why a Certificate was revoked.
         /// </summary>
         [Input("revocationState")]
         public Input<string>? RevocationState { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The time at which this Certificate was revoked.
         /// </summary>
         [Input("revocationTime")]

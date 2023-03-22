@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:bigquery/appProfile:AppProfile":
 		r = &AppProfile{}
+	case "gcp:bigquery/capacityCommitment:CapacityCommitment":
+		r = &CapacityCommitment{}
 	case "gcp:bigquery/connection:Connection":
 		r = &Connection{}
 	case "gcp:bigquery/connectionIamBinding:ConnectionIamBinding":
@@ -75,6 +77,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/appProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/capacityCommitment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

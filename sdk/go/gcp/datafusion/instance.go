@@ -101,6 +101,12 @@ import (
 //						return fmt.Sprintf("%v/%v", address, prefixLength), nil
 //					}).(pulumi.StringOutput),
 //				},
+//				Accelerators: datafusion.InstanceAcceleratorArray{
+//					&datafusion.InstanceAcceleratorArgs{
+//						AcceleratorType: pulumi.String("CDC"),
+//						State:           pulumi.String("ENABLED"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -291,6 +297,11 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+	// created with the Options field. Users will need to either manually update their state file to include these diffed
+	// options, or include the field in a [lifecycle ignore changes
+	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	Accelerators InstanceAcceleratorArrayOutput `pulumi:"accelerators"`
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint pulumi.StringOutput `pulumi:"apiEndpoint"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -342,13 +353,8 @@ type Instance struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// The type of an accelator for a CDF instance.
+	// Possible values are `ENABLED` and `DISABLED`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
@@ -406,6 +412,11 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+	// created with the Options field. Users will need to either manually update their state file to include these diffed
+	// options, or include the field in a [lifecycle ignore changes
+	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	Accelerators []InstanceAccelerator `pulumi:"accelerators"`
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint *string `pulumi:"apiEndpoint"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -457,13 +468,8 @@ type instanceState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// The type of an accelator for a CDF instance.
+	// Possible values are `ENABLED` and `DISABLED`.
 	State *string `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage *string `pulumi:"stateMessage"`
@@ -490,6 +496,11 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+	// created with the Options field. Users will need to either manually update their state file to include these diffed
+	// options, or include the field in a [lifecycle ignore changes
+	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	Accelerators InstanceAcceleratorArrayInput
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint pulumi.StringPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -541,13 +552,8 @@ type InstanceState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
-	// The current state of this Data Fusion instance.
-	// - CREATING: Instance is being created
-	// - RUNNING: Instance is running and ready for requests
-	// - FAILED: Instance creation failed
-	// - DELETING: Instance is being deleted
-	// - UPGRADING: Instance is being upgraded
-	// - RESTARTING: Instance is being restarted
+	// The type of an accelator for a CDF instance.
+	// Possible values are `ENABLED` and `DISABLED`.
 	State pulumi.StringPtrInput
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringPtrInput
@@ -578,6 +584,11 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+	// created with the Options field. Users will need to either manually update their state file to include these diffed
+	// options, or include the field in a [lifecycle ignore changes
+	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	Accelerators []InstanceAccelerator `pulumi:"accelerators"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	// Structure is documented below.
 	CryptoKeyConfig *InstanceCryptoKeyConfig `pulumi:"cryptoKeyConfig"`
@@ -635,6 +646,11 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+	// created with the Options field. Users will need to either manually update their state file to include these diffed
+	// options, or include the field in a [lifecycle ignore changes
+	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	Accelerators InstanceAcceleratorArrayInput
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	// Structure is documented below.
 	CryptoKeyConfig InstanceCryptoKeyConfigPtrInput
@@ -777,6 +793,14 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+// created with the Options field. Users will need to either manually update their state file to include these diffed
+// options, or include the field in a [lifecycle ignore changes
+// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+func (o InstanceOutput) Accelerators() InstanceAcceleratorArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceAcceleratorArrayOutput { return v.Accelerators }).(InstanceAcceleratorArrayOutput)
+}
+
 // Endpoint on which the REST APIs is accessible.
 func (o InstanceOutput) ApiEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ApiEndpoint }).(pulumi.StringOutput)
@@ -891,13 +915,8 @@ func (o InstanceOutput) ServiceEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceEndpoint }).(pulumi.StringOutput)
 }
 
-// The current state of this Data Fusion instance.
-// - CREATING: Instance is being created
-// - RUNNING: Instance is running and ready for requests
-// - FAILED: Instance creation failed
-// - DELETING: Instance is being deleted
-// - UPGRADING: Instance is being upgraded
-// - RESTARTING: Instance is being restarted
+// The type of an accelator for a CDF instance.
+// Possible values are `ENABLED` and `DISABLED`.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

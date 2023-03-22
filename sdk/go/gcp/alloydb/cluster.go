@@ -87,7 +87,7 @@ type Cluster struct {
 	// The automated backup policy for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
 	// Structure is documented below.
-	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrOutput `pulumi:"automatedBackupPolicy"`
+	AutomatedBackupPolicy ClusterAutomatedBackupPolicyOutput `pulumi:"automatedBackupPolicy"`
 	// Cluster created from backup.
 	// Structure is documented below.
 	BackupSources ClusterBackupSourceArrayOutput `pulumi:"backupSources"`
@@ -368,8 +368,8 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 // The automated backup policy for this cluster.
 // If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
 // Structure is documented below.
-func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupPolicyPtrOutput { return v.AutomatedBackupPolicy }).(ClusterAutomatedBackupPolicyPtrOutput)
+func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupPolicyOutput { return v.AutomatedBackupPolicy }).(ClusterAutomatedBackupPolicyOutput)
 }
 
 // Cluster created from backup.

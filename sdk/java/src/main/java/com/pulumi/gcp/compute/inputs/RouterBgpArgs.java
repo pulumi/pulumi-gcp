@@ -109,22 +109,30 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The interval in seconds between BGP keepalive messages that are sent to the peer.
-     * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-     * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-     * BGP will use the smaller of either the local hold time value or the peer&#39;s hold time value as the hold time for
-     * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+     * The interval in seconds between BGP keepalive messages that are sent
+     * to the peer. Hold time is three times the interval at which keepalive
+     * messages are sent, and the hold time is the maximum number of seconds
+     * allowed to elapse between successive keepalive messages that BGP
+     * receives from a peer.
+     * BGP will use the smaller of either the local hold time value or the
+     * peer&#39;s hold time value as the hold time for the BGP connection
+     * between the two peers. If set, this value must be between 20 and 60.
+     * The default is 20.
      * 
      */
     @Import(name="keepaliveInterval")
     private @Nullable Output<Integer> keepaliveInterval;
 
     /**
-     * @return The interval in seconds between BGP keepalive messages that are sent to the peer.
-     * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-     * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-     * BGP will use the smaller of either the local hold time value or the peer&#39;s hold time value as the hold time for
-     * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+     * @return The interval in seconds between BGP keepalive messages that are sent
+     * to the peer. Hold time is three times the interval at which keepalive
+     * messages are sent, and the hold time is the maximum number of seconds
+     * allowed to elapse between successive keepalive messages that BGP
+     * receives from a peer.
+     * BGP will use the smaller of either the local hold time value or the
+     * peer&#39;s hold time value as the hold time for the BGP connection
+     * between the two peers. If set, this value must be between 20 and 60.
+     * The default is 20.
      * 
      */
     public Optional<Output<Integer>> keepaliveInterval() {
@@ -304,11 +312,15 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepaliveInterval The interval in seconds between BGP keepalive messages that are sent to the peer.
-         * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-         * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-         * BGP will use the smaller of either the local hold time value or the peer&#39;s hold time value as the hold time for
-         * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+         * @param keepaliveInterval The interval in seconds between BGP keepalive messages that are sent
+         * to the peer. Hold time is three times the interval at which keepalive
+         * messages are sent, and the hold time is the maximum number of seconds
+         * allowed to elapse between successive keepalive messages that BGP
+         * receives from a peer.
+         * BGP will use the smaller of either the local hold time value or the
+         * peer&#39;s hold time value as the hold time for the BGP connection
+         * between the two peers. If set, this value must be between 20 and 60.
+         * The default is 20.
          * 
          * @return builder
          * 
@@ -319,11 +331,15 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepaliveInterval The interval in seconds between BGP keepalive messages that are sent to the peer.
-         * Hold time is three times the interval at which keepalive messages are sent, and the hold time is the
-         * maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer.
-         * BGP will use the smaller of either the local hold time value or the peer&#39;s hold time value as the hold time for
-         * the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+         * @param keepaliveInterval The interval in seconds between BGP keepalive messages that are sent
+         * to the peer. Hold time is three times the interval at which keepalive
+         * messages are sent, and the hold time is the maximum number of seconds
+         * allowed to elapse between successive keepalive messages that BGP
+         * receives from a peer.
+         * BGP will use the smaller of either the local hold time value or the
+         * peer&#39;s hold time value as the hold time for the BGP connection
+         * between the two peers. If set, this value must be between 20 and 60.
+         * The default is 20.
          * 
          * @return builder
          * 

@@ -91,10 +91,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{workstation_cluster_id}}
- * ```
  */
 export class WorkstationCluster extends pulumi.CustomResource {
     /**

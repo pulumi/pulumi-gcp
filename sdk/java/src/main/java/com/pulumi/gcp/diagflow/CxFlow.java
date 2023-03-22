@@ -212,7 +212,9 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.languageCode);
     }
     /**
+     * (Output)
      * The unique identifier of this transition route.
+     * (Output)
      * The unique identifier of this event handler.
      * 
      */
@@ -220,7 +222,9 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The unique identifier of this transition route.
+     * @return (Output)
+     * The unique identifier of this transition route.
+     * (Output)
      * The unique identifier of this event handler.
      * 
      */

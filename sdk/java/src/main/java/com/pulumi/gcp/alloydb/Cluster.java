@@ -157,7 +157,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="automatedBackupPolicy", type=ClusterAutomatedBackupPolicy.class, parameters={})
-    private Output</* @Nullable */ ClusterAutomatedBackupPolicy> automatedBackupPolicy;
+    private Output<ClusterAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
      * @return The automated backup policy for this cluster.
@@ -165,8 +165,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterAutomatedBackupPolicy>> automatedBackupPolicy() {
-        return Codegen.optional(this.automatedBackupPolicy);
+    public Output<ClusterAutomatedBackupPolicy> automatedBackupPolicy() {
+        return this.automatedBackupPolicy;
     }
     /**
      * Cluster created from backup.

@@ -17,7 +17,8 @@ public final class TriggerWebhookConfig {
      */
     private String secret;
     /**
-     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return (Output)
+     * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
@@ -32,7 +33,8 @@ public final class TriggerWebhookConfig {
         return this.secret;
     }
     /**
-     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return (Output)
+     * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */

@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesKeyUsage;
+import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesNameConstraints;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesPolicyId;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -39,6 +41,12 @@ public final class CaPoolIssuancePolicyBaselineValues {
      * 
      */
     private CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CaPoolIssuancePolicyBaselineValuesNameConstraints nameConstraints;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
@@ -80,6 +88,14 @@ public final class CaPoolIssuancePolicyBaselineValues {
         return this.keyUsage;
     }
     /**
+     * @return Describes the X.509 name constraints extension.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CaPoolIssuancePolicyBaselineValuesNameConstraints> nameConstraints() {
+        return Optional.ofNullable(this.nameConstraints);
+    }
+    /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -101,6 +117,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
         private @Nullable List<String> aiaOcspServers;
         private CaPoolIssuancePolicyBaselineValuesCaOptions caOptions;
         private CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage;
+        private @Nullable CaPoolIssuancePolicyBaselineValuesNameConstraints nameConstraints;
         private @Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds;
         public Builder() {}
         public Builder(CaPoolIssuancePolicyBaselineValues defaults) {
@@ -109,6 +126,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
     	      this.aiaOcspServers = defaults.aiaOcspServers;
     	      this.caOptions = defaults.caOptions;
     	      this.keyUsage = defaults.keyUsage;
+    	      this.nameConstraints = defaults.nameConstraints;
     	      this.policyIds = defaults.policyIds;
         }
 
@@ -139,6 +157,11 @@ public final class CaPoolIssuancePolicyBaselineValues {
             return this;
         }
         @CustomType.Setter
+        public Builder nameConstraints(@Nullable CaPoolIssuancePolicyBaselineValuesNameConstraints nameConstraints) {
+            this.nameConstraints = nameConstraints;
+            return this;
+        }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
@@ -152,6 +175,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
             o.aiaOcspServers = aiaOcspServers;
             o.caOptions = caOptions;
             o.keyUsage = keyUsage;
+            o.nameConstraints = nameConstraints;
             o.policyIds = policyIds;
             return o;
         }

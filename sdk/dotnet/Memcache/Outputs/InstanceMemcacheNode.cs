@@ -14,22 +14,27 @@ namespace Pulumi.Gcp.Memcache.Outputs
     public sealed class InstanceMemcacheNode
     {
         /// <summary>
+        /// (Output)
         /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
         /// </summary>
         public readonly string? Host;
         /// <summary>
+        /// (Output)
         /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
+        /// (Output)
         /// The port number of the Memcached server on this node.
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// (Output)
         /// Current state of the Memcached node.
         /// </summary>
         public readonly string? State;
         /// <summary>
+        /// (Output)
         /// Location (GCP Zone) for the Memcached node.
         /// </summary>
         public readonly string? Zone;

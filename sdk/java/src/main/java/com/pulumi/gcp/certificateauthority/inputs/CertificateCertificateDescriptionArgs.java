@@ -24,6 +24,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     public static final CertificateCertificateDescriptionArgs Empty = new CertificateCertificateDescriptionArgs();
 
     /**
+     * (Output)
      * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
@@ -31,7 +32,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<String>> aiaIssuingCertificateUrls;
 
     /**
-     * @return Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+     * @return (Output)
+     * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
     public Optional<Output<List<String>>> aiaIssuingCertificateUrls() {
@@ -39,6 +41,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
      * Structure is documented below.
      * 
@@ -47,7 +50,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionAuthorityKeyIdArgs>> authorityKeyIds;
 
     /**
-     * @return Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * @return (Output)
+     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
      * Structure is documented below.
      * 
      */
@@ -56,6 +60,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * The hash of the x.509 certificate.
      * Structure is documented below.
      * 
@@ -64,7 +69,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionCertFingerprintArgs>> certFingerprints;
 
     /**
-     * @return The hash of the x.509 certificate.
+     * @return (Output)
+     * The hash of the x.509 certificate.
      * Structure is documented below.
      * 
      */
@@ -73,7 +79,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
-     * (Deprecated)
+     * (Output, Deprecated)
      * Describes some of the technical fields in a certificate.
      * Structure is documented below.
      * 
@@ -86,7 +92,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues;
 
     /**
-     * @return (Deprecated)
+     * @return (Output, Deprecated)
      * Describes some of the technical fields in a certificate.
      * Structure is documented below.
      * 
@@ -100,6 +106,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
      * 
      */
@@ -107,7 +114,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<String>> crlDistributionPoints;
 
     /**
-     * @return Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * @return (Output)
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
      * 
      */
     public Optional<Output<List<String>>> crlDistributionPoints() {
@@ -132,6 +140,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Describes some of the values in a certificate that are related to the subject and lifetime.
      * Structure is documented below.
      * 
@@ -140,7 +149,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionArgs>> subjectDescriptions;
 
     /**
-     * @return Describes some of the values in a certificate that are related to the subject and lifetime.
+     * @return (Output)
+     * Describes some of the values in a certificate that are related to the subject and lifetime.
      * Structure is documented below.
      * 
      */
@@ -149,6 +159,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
      * Structure is documented below.
      * 
@@ -157,7 +168,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectKeyIdArgs>> subjectKeyIds;
 
     /**
-     * @return Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * @return (Output)
+     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
      * Structure is documented below.
      * 
      */
@@ -166,6 +178,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     }
 
     /**
+     * (Output)
      * A structured description of the issued X.509 certificate.
      * Structure is documented below.
      * 
@@ -174,7 +187,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionX509DescriptionArgs>> x509Descriptions;
 
     /**
-     * @return A structured description of the issued X.509 certificate.
+     * @return (Output)
+     * A structured description of the issued X.509 certificate.
      * Structure is documented below.
      * 
      */
@@ -215,7 +229,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * @param aiaIssuingCertificateUrls (Output)
+         * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
          * 
@@ -226,7 +241,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * @param aiaIssuingCertificateUrls (Output)
+         * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
          * 
@@ -236,7 +252,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * @param aiaIssuingCertificateUrls (Output)
+         * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
          * 
@@ -246,7 +263,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * @param authorityKeyIds (Output)
+         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
          * Structure is documented below.
          * 
          * @return builder
@@ -258,7 +276,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * @param authorityKeyIds (Output)
+         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
          * Structure is documented below.
          * 
          * @return builder
@@ -269,7 +288,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * @param authorityKeyIds (Output)
+         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
          * Structure is documented below.
          * 
          * @return builder
@@ -280,7 +300,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param certFingerprints The hash of the x.509 certificate.
+         * @param certFingerprints (Output)
+         * The hash of the x.509 certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -292,7 +313,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param certFingerprints The hash of the x.509 certificate.
+         * @param certFingerprints (Output)
+         * The hash of the x.509 certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -303,7 +325,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param certFingerprints The hash of the x.509 certificate.
+         * @param certFingerprints (Output)
+         * The hash of the x.509 certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -314,7 +337,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configValues (Deprecated)
+         * @param configValues (Output, Deprecated)
          * Describes some of the technical fields in a certificate.
          * Structure is documented below.
          * 
@@ -331,7 +354,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configValues (Deprecated)
+         * @param configValues (Output, Deprecated)
          * Describes some of the technical fields in a certificate.
          * Structure is documented below.
          * 
@@ -347,7 +370,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param configValues (Deprecated)
+         * @param configValues (Output, Deprecated)
          * Describes some of the technical fields in a certificate.
          * Structure is documented below.
          * 
@@ -363,7 +386,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * @param crlDistributionPoints (Output)
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
          * 
          * @return builder
          * 
@@ -374,7 +398,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * @param crlDistributionPoints (Output)
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
          * 
          * @return builder
          * 
@@ -384,7 +409,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * @param crlDistributionPoints (Output)
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
          * 
          * @return builder
          * 
@@ -428,7 +454,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * @param subjectDescriptions (Output)
+         * Describes some of the values in a certificate that are related to the subject and lifetime.
          * Structure is documented below.
          * 
          * @return builder
@@ -440,7 +467,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * @param subjectDescriptions (Output)
+         * Describes some of the values in a certificate that are related to the subject and lifetime.
          * Structure is documented below.
          * 
          * @return builder
@@ -451,7 +479,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * @param subjectDescriptions (Output)
+         * Describes some of the values in a certificate that are related to the subject and lifetime.
          * Structure is documented below.
          * 
          * @return builder
@@ -462,7 +491,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * @param subjectKeyIds (Output)
+         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
          * Structure is documented below.
          * 
          * @return builder
@@ -474,7 +504,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * @param subjectKeyIds (Output)
+         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
          * Structure is documented below.
          * 
          * @return builder
@@ -485,7 +516,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * @param subjectKeyIds (Output)
+         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
          * Structure is documented below.
          * 
          * @return builder
@@ -496,7 +528,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * @param x509Descriptions (Output)
+         * A structured description of the issued X.509 certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -508,7 +541,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * @param x509Descriptions (Output)
+         * A structured description of the issued X.509 certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -519,7 +553,8 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * @param x509Descriptions (Output)
+         * A structured description of the issued X.509 certificate.
          * Structure is documented below.
          * 
          * @return builder

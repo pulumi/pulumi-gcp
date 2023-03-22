@@ -19,6 +19,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceStatusArgs Empty = new ServiceStatusArgs();
 
     /**
+     * (Output)
      * Array of observed Service Conditions, indicating the current ready state of the service.
      * Structure is documented below.
      * 
@@ -27,7 +28,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ServiceStatusConditionArgs>> conditions;
 
     /**
-     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * @return (Output)
+     * Array of observed Service Conditions, indicating the current ready state of the service.
      * Structure is documented below.
      * 
      */
@@ -36,6 +38,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
      * from this Service&#39;s Configuration. It might not be ready yet, for that use
      * LatestReadyRevisionName.
@@ -45,7 +48,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> latestCreatedRevisionName;
 
     /**
-     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * @return (Output)
+     * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
      * from this Service&#39;s Configuration. It might not be ready yet, for that use
      * LatestReadyRevisionName.
      * 
@@ -55,6 +59,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
      * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
      * &#34;True&#34;.
@@ -64,7 +69,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> latestReadyRevisionName;
 
     /**
-     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * @return (Output)
+     * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
      * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
      * &#34;True&#34;.
      * 
@@ -74,6 +80,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
      * controller.
      * Clients polling for completed reconciliation should poll until observedGeneration =
@@ -84,7 +91,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> observedGeneration;
 
     /**
-     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * @return (Output)
+     * ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
      * controller.
      * Clients polling for completed reconciliation should poll until observedGeneration =
      * metadata.generation and the Ready condition&#39;s status is True or False.
@@ -95,6 +103,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -104,7 +113,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> url;
 
     /**
-     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return (Output)
+     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
@@ -142,7 +152,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * @param conditions (Output)
+         * Array of observed Service Conditions, indicating the current ready state of the service.
          * Structure is documented below.
          * 
          * @return builder
@@ -154,7 +165,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * @param conditions (Output)
+         * Array of observed Service Conditions, indicating the current ready state of the service.
          * Structure is documented below.
          * 
          * @return builder
@@ -165,7 +177,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * @param conditions (Output)
+         * Array of observed Service Conditions, indicating the current ready state of the service.
          * Structure is documented below.
          * 
          * @return builder
@@ -176,7 +189,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestCreatedRevisionName From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+         * @param latestCreatedRevisionName (Output)
+         * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
          * from this Service&#39;s Configuration. It might not be ready yet, for that use
          * LatestReadyRevisionName.
          * 
@@ -189,7 +203,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestCreatedRevisionName From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+         * @param latestCreatedRevisionName (Output)
+         * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
          * from this Service&#39;s Configuration. It might not be ready yet, for that use
          * LatestReadyRevisionName.
          * 
@@ -201,7 +216,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestReadyRevisionName From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+         * @param latestReadyRevisionName (Output)
+         * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
          * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
          * &#34;True&#34;.
          * 
@@ -214,7 +230,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestReadyRevisionName From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+         * @param latestReadyRevisionName (Output)
+         * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
          * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
          * &#34;True&#34;.
          * 
@@ -226,7 +243,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+         * @param observedGeneration (Output)
+         * ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
          * controller.
          * Clients polling for completed reconciliation should poll until observedGeneration =
          * metadata.generation and the Ready condition&#39;s status is True or False.
@@ -240,7 +258,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+         * @param observedGeneration (Output)
+         * ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
          * controller.
          * Clients polling for completed reconciliation should poll until observedGeneration =
          * metadata.generation and the Ready condition&#39;s status is True or False.
@@ -253,7 +272,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * @param url (Output)
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
          * 
@@ -266,7 +286,8 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * @param url (Output)
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
          * 

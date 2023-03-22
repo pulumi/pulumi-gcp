@@ -19,6 +19,7 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     public static final EntryBigqueryTableSpecArgs Empty = new EntryBigqueryTableSpecArgs();
 
     /**
+     * (Output)
      * The table source type.
      * 
      */
@@ -26,7 +27,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> tableSourceType;
 
     /**
-     * @return The table source type.
+     * @return (Output)
+     * The table source type.
      * 
      */
     public Optional<Output<String>> tableSourceType() {
@@ -34,6 +36,7 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
      * Structure is documented below.
      * 
@@ -42,7 +45,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<EntryBigqueryTableSpecTableSpecArgs>> tableSpecs;
 
     /**
-     * @return Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+     * @return (Output)
+     * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
      * Structure is documented below.
      * 
      */
@@ -51,6 +55,7 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
      * Structure is documented below.
      * 
@@ -59,7 +64,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<EntryBigqueryTableSpecViewSpecArgs>> viewSpecs;
 
     /**
-     * @return Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+     * @return (Output)
+     * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
      * Structure is documented below.
      * 
      */
@@ -94,7 +100,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableSourceType The table source type.
+         * @param tableSourceType (Output)
+         * The table source type.
          * 
          * @return builder
          * 
@@ -105,7 +112,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableSourceType The table source type.
+         * @param tableSourceType (Output)
+         * The table source type.
          * 
          * @return builder
          * 
@@ -115,7 +123,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * @param tableSpecs (Output)
+         * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
          * Structure is documented below.
          * 
          * @return builder
@@ -127,7 +136,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * @param tableSpecs (Output)
+         * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
          * Structure is documented below.
          * 
          * @return builder
@@ -138,7 +148,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * @param tableSpecs (Output)
+         * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
          * Structure is documented below.
          * 
          * @return builder
@@ -149,7 +160,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * @param viewSpecs (Output)
+         * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
          * Structure is documented below.
          * 
          * @return builder
@@ -161,7 +173,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * @param viewSpecs (Output)
+         * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
          * Structure is documented below.
          * 
          * @return builder
@@ -172,7 +185,8 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * @param viewSpecs (Output)
+         * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
          * Structure is documented below.
          * 
          * @return builder

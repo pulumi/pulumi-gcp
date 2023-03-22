@@ -27,6 +27,13 @@ namespace Pulumi.Gcp.Firebase
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetAndroidAppArgs()
         {
         }
@@ -40,6 +47,13 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetAndroidAppInvokeArgs()
         {
@@ -79,7 +93,7 @@ namespace Pulumi.Gcp.Firebase
         /// The canonical package name of the Android app as would appear in the Google Play Developer Console.
         /// </summary>
         public readonly string PackageName;
-        public readonly string Project;
+        public readonly string? Project;
         /// <summary>
         /// The SHA1 certificate hashes for the AndroidApp.
         /// </summary>
@@ -105,7 +119,7 @@ namespace Pulumi.Gcp.Firebase
 
             string packageName,
 
-            string project,
+            string? project,
 
             ImmutableArray<string> sha1Hashes,
 

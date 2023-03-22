@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Memcache.Inputs
     public sealed class InstanceMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits
@@ -29,6 +30,7 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Output only. The time when the policy was updated.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.

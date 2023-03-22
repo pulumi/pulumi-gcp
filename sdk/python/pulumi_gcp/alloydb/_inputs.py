@@ -25,16 +25,14 @@ __all__ = [
 @pulumi.input_type
 class ClusterAutomatedBackupPolicyArgs:
     def __init__(__self__, *,
-                 weekly_schedule: pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'],
                  backup_window: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']] = None,
-                 time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']] = None):
+                 time_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']] = None,
+                 weekly_schedule: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']] = None):
         """
-        :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedule: Weekly schedule for the Backup.
-               Structure is documented below.
         :param pulumi.Input[str] backup_window: The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -45,8 +43,9 @@ class ClusterAutomatedBackupPolicyArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs'] time_based_retention: Time-based Backup retention policy.
                Structure is documented below.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedule: Weekly schedule for the Backup.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "weekly_schedule", weekly_schedule)
         if backup_window is not None:
             pulumi.set(__self__, "backup_window", backup_window)
         if enabled is not None:
@@ -59,19 +58,8 @@ class ClusterAutomatedBackupPolicyArgs:
             pulumi.set(__self__, "quantity_based_retention", quantity_based_retention)
         if time_based_retention is not None:
             pulumi.set(__self__, "time_based_retention", time_based_retention)
-
-    @property
-    @pulumi.getter(name="weeklySchedule")
-    def weekly_schedule(self) -> pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']:
-        """
-        Weekly schedule for the Backup.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "weekly_schedule")
-
-    @weekly_schedule.setter
-    def weekly_schedule(self, value: pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']):
-        pulumi.set(self, "weekly_schedule", value)
+        if weekly_schedule is not None:
+            pulumi.set(__self__, "weekly_schedule", weekly_schedule)
 
     @property
     @pulumi.getter(name="backupWindow")
@@ -148,6 +136,19 @@ class ClusterAutomatedBackupPolicyArgs:
     @time_based_retention.setter
     def time_based_retention(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']]):
         pulumi.set(self, "time_based_retention", value)
+
+    @property
+    @pulumi.getter(name="weeklySchedule")
+    def weekly_schedule(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]:
+        """
+        Weekly schedule for the Backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_schedule")
+
+    @weekly_schedule.setter
+    def weekly_schedule(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]):
+        pulumi.set(self, "weekly_schedule", value)
 
 
 @pulumi.input_type

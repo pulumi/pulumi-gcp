@@ -28,8 +28,10 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable String instanceTerminationAction;
+    private @Nullable String maintenanceInterval;
     /**
      * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
      * 
      */
     private @Nullable InstanceTemplateSchedulingMaxRunDuration maxRunDuration;
@@ -82,8 +84,12 @@ public final class InstanceTemplateScheduling {
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
+    public Optional<String> maintenanceInterval() {
+        return Optional.ofNullable(this.maintenanceInterval);
+    }
     /**
      * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
      * 
      */
     public Optional<InstanceTemplateSchedulingMaxRunDuration> maxRunDuration() {
@@ -142,6 +148,7 @@ public final class InstanceTemplateScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
+        private @Nullable String maintenanceInterval;
         private @Nullable InstanceTemplateSchedulingMaxRunDuration maxRunDuration;
         private @Nullable Integer minNodeCpus;
         private @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities;
@@ -153,6 +160,7 @@ public final class InstanceTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.minNodeCpus = defaults.minNodeCpus;
     	      this.nodeAffinities = defaults.nodeAffinities;
@@ -169,6 +177,11 @@ public final class InstanceTemplateScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenanceInterval(@Nullable String maintenanceInterval) {
+            this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         @CustomType.Setter
@@ -208,6 +221,7 @@ public final class InstanceTemplateScheduling {
             final var o = new InstanceTemplateScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.maintenanceInterval = maintenanceInterval;
             o.maxRunDuration = maxRunDuration;
             o.minNodeCpus = minNodeCpus;
             o.nodeAffinities = nodeAffinities;

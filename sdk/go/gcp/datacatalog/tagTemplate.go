@@ -109,6 +109,7 @@ type TagTemplate struct {
 	Fields TagTemplateFieldArrayOutput `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
+	// (Output)
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -166,6 +167,7 @@ type tagTemplateState struct {
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// (Output)
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -189,6 +191,7 @@ type TagTemplateState struct {
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput
+	// (Output)
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -354,6 +357,7 @@ func (o TagTemplateOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 func (o TagTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

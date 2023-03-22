@@ -10,11 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datafusion.InstanceArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceState;
+import com.pulumi.gcp.datafusion.outputs.InstanceAccelerator;
 import com.pulumi.gcp.datafusion.outputs.InstanceCryptoKeyConfig;
 import com.pulumi.gcp.datafusion.outputs.InstanceEventPublishConfig;
 import com.pulumi.gcp.datafusion.outputs.InstanceNetworkConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -74,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datafusion.Instance;
  * import com.pulumi.gcp.datafusion.InstanceArgs;
  * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -115,6 +118,10 @@ import javax.annotation.Nullable;
  *                     var prefixLength = values.t2;
  *                     return String.format(&#34;%s/%s&#34;, address,prefixLength);
  *                 }))
+ *                 .build())
+ *             .accelerators(InstanceAcceleratorArgs.builder()
+ *                 .acceleratorType(&#34;CDC&#34;)
+ *                 .state(&#34;ENABLED&#34;)
  *                 .build())
  *             .build());
  * 
@@ -306,6 +313,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datafusion/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    @Export(name="accelerators", type=List.class, parameters={InstanceAccelerator.class})
+    private Output</* @Nullable */ List<InstanceAccelerator>> accelerators;
+
+    /**
+     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
+     * created with the Options field. Users will need to either manually update their state file to include these diffed
+     * options, or include the field in a [lifecycle ignore changes
+     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * 
+     */
+    public Output<Optional<List<InstanceAccelerator>>> accelerators() {
+        return Codegen.optional(this.accelerators);
+    }
     /**
      * Endpoint on which the REST APIs is accessible.
      * 
@@ -515,14 +542,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="options", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> options;
+    private Output<Map<String,String>> options;
 
     /**
      * @return Map of additional options used to configure the behavior of Data Fusion instance.
      * 
      */
-    public Output<Optional<Map<String,String>>> options() {
-        return Codegen.optional(this.options);
+    public Output<Map<String,String>> options() {
+        return this.options;
     }
     /**
      * P4 service account for the customer project.
@@ -619,26 +646,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serviceEndpoint;
     }
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * @return The type of an accelator for a CDF instance.
+     * Possible values are `ENABLED` and `DISABLED`.
      * 
      */
     public Output<String> state() {

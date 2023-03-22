@@ -664,7 +664,8 @@ class TriggerBuildArtifactsObjectsArgs:
                Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
                this location as a prefix.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: Output only. Stores timing information for pushing all artifact objects.
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: (Output)
+               Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
         """
         if location is not None:
@@ -704,6 +705,7 @@ class TriggerBuildArtifactsObjectsArgs:
     @pulumi.getter
     def timings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]]:
         """
+        (Output)
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
         """
@@ -2070,9 +2072,11 @@ class TriggerPubsubConfigArgs:
         """
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages.
         :param pulumi.Input[str] service_account_email: Service account that will make the push request.
-        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration.
+        :param pulumi.Input[str] state: (Output)
+               Potential issues with the underlying Pub/Sub subscription configuration.
                Only populated on get requests.
-        :param pulumi.Input[str] subscription: Output only. Name of the subscription.
+        :param pulumi.Input[str] subscription: (Output)
+               Output only. Name of the subscription.
         """
         pulumi.set(__self__, "topic", topic)
         if service_account_email is not None:
@@ -2110,6 +2114,7 @@ class TriggerPubsubConfigArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Potential issues with the underlying Pub/Sub subscription configuration.
         Only populated on get requests.
         """
@@ -2123,6 +2128,7 @@ class TriggerPubsubConfigArgs:
     @pulumi.getter
     def subscription(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Name of the subscription.
         """
         return pulumi.get(self, "subscription")
@@ -2517,7 +2523,8 @@ class TriggerWebhookConfigArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] secret: Resource name for the secret required as a URL parameter.
-        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration.
+        :param pulumi.Input[str] state: (Output)
+               Potential issues with the underlying Pub/Sub subscription configuration.
                Only populated on get requests.
         """
         pulumi.set(__self__, "secret", secret)
@@ -2540,6 +2547,7 @@ class TriggerWebhookConfigArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Potential issues with the underlying Pub/Sub subscription configuration.
         Only populated on get requests.
         """

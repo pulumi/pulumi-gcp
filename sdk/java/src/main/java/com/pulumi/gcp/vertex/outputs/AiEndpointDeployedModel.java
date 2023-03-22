@@ -17,18 +17,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiEndpointDeployedModel {
     /**
-     * @return A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+     * @return (Output)
+     * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
      * Structure is documented below.
      * 
      */
     private @Nullable List<AiEndpointDeployedModelAutomaticResource> automaticResources;
     /**
-     * @return Output only. Timestamp when the DeployedModel was created.
+     * @return (Output)
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     private @Nullable String createTime;
     /**
-     * @return A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+     * @return (Output)
+     * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
      * Structure is documented below.
      * 
      */
@@ -39,50 +42,59 @@ public final class AiEndpointDeployedModel {
      */
     private @Nullable String displayName;
     /**
-     * @return These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+     * @return (Output)
+     * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
      * 
      */
     private @Nullable Boolean enableAccessLogging;
     /**
-     * @return If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+     * @return (Output)
+     * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
      * 
      */
     private @Nullable Boolean enableContainerLogging;
     /**
-     * @return The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+     * @return (Output)
+     * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+     * @return (Output)
+     * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
      * 
      */
     private @Nullable String model;
     /**
-     * @return Output only. The version ID of the model that is deployed.
+     * @return (Output)
+     * Output only. The version ID of the model that is deployed.
      * 
      */
     private @Nullable String modelVersionId;
     /**
-     * @return Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+     * @return (Output)
+     * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
      * Structure is documented below.
      * 
      */
     private @Nullable List<AiEndpointDeployedModelPrivateEndpoint> privateEndpoints;
     /**
-     * @return The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+     * @return (Output)
+     * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
      * 
      */
     private @Nullable String serviceAccount;
     /**
-     * @return The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+     * @return (Output)
+     * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
      * 
      */
     private @Nullable String sharedResources;
 
     private AiEndpointDeployedModel() {}
     /**
-     * @return A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+     * @return (Output)
+     * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
      * Structure is documented below.
      * 
      */
@@ -90,14 +102,16 @@ public final class AiEndpointDeployedModel {
         return this.automaticResources == null ? List.of() : this.automaticResources;
     }
     /**
-     * @return Output only. Timestamp when the DeployedModel was created.
+     * @return (Output)
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+     * @return (Output)
+     * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
      * Structure is documented below.
      * 
      */
@@ -112,42 +126,48 @@ public final class AiEndpointDeployedModel {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+     * @return (Output)
+     * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
      * 
      */
     public Optional<Boolean> enableAccessLogging() {
         return Optional.ofNullable(this.enableAccessLogging);
     }
     /**
-     * @return If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+     * @return (Output)
+     * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
      * 
      */
     public Optional<Boolean> enableContainerLogging() {
         return Optional.ofNullable(this.enableContainerLogging);
     }
     /**
-     * @return The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+     * @return (Output)
+     * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+     * @return (Output)
+     * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
      * 
      */
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
     /**
-     * @return Output only. The version ID of the model that is deployed.
+     * @return (Output)
+     * Output only. The version ID of the model that is deployed.
      * 
      */
     public Optional<String> modelVersionId() {
         return Optional.ofNullable(this.modelVersionId);
     }
     /**
-     * @return Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+     * @return (Output)
+     * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
      * Structure is documented below.
      * 
      */
@@ -155,14 +175,16 @@ public final class AiEndpointDeployedModel {
         return this.privateEndpoints == null ? List.of() : this.privateEndpoints;
     }
     /**
-     * @return The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+     * @return (Output)
+     * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
      * 
      */
     public Optional<String> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
-     * @return The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+     * @return (Output)
+     * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
      * 
      */
     public Optional<String> sharedResources() {

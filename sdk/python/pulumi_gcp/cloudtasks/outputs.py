@@ -26,7 +26,8 @@ class QueueAppEngineRoutingOverride(dict):
                  service: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str host: The host that the task is sent to.
+        :param str host: (Output)
+               The host that the task is sent to.
         :param str instance: App instance.
                By default, the task is sent to an instance which is available when the task is attempted.
         :param str service: App service.
@@ -47,6 +48,7 @@ class QueueAppEngineRoutingOverride(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
+        (Output)
         The host that the task is sent to.
         """
         return pulumi.get(self, "host")
@@ -161,7 +163,8 @@ class QueueRateLimits(dict):
                  max_concurrent_dispatches: Optional[int] = None,
                  max_dispatches_per_second: Optional[float] = None):
         """
-        :param int max_burst_size: The max burst size.
+        :param int max_burst_size: (Output)
+               The max burst size.
                Max burst size limits how fast tasks in queue are processed when many tasks are
                in the queue and the rate is high. This field allows the queue to have a high
                rate so processing starts shortly after a task is enqueued, but still limits
@@ -184,6 +187,7 @@ class QueueRateLimits(dict):
     @pulumi.getter(name="maxBurstSize")
     def max_burst_size(self) -> Optional[int]:
         """
+        (Output)
         The max burst size.
         Max burst size limits how fast tasks in queue are processed when many tasks are
         in the queue and the rate is high. This field allows the queue to have a high

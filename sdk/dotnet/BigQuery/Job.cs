@@ -307,6 +307,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> JobTimeoutMs { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// The type of the job.
         /// </summary>
         [Output("jobType")]
@@ -496,6 +497,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? JobTimeoutMs { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The type of the job.
         /// </summary>
         [Input("jobType")]

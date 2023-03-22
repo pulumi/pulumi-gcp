@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DnsAuthorizationDnsResourceRecord {
     /**
-     * @return Data of the DNS Resource Record.
+     * @return (Output)
+     * Data of the DNS Resource Record.
      * 
      */
     private @Nullable String data;
@@ -24,14 +25,16 @@ public final class DnsAuthorizationDnsResourceRecord {
      */
     private @Nullable String name;
     /**
-     * @return Type of the DNS Resource Record.
+     * @return (Output)
+     * Type of the DNS Resource Record.
      * 
      */
     private @Nullable String type;
 
     private DnsAuthorizationDnsResourceRecord() {}
     /**
-     * @return Data of the DNS Resource Record.
+     * @return (Output)
+     * Data of the DNS Resource Record.
      * 
      */
     public Optional<String> data() {
@@ -47,7 +50,8 @@ public final class DnsAuthorizationDnsResourceRecord {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Type of the DNS Resource Record.
+     * @return (Output)
+     * Type of the DNS Resource Record.
      * 
      */
     public Optional<String> type() {

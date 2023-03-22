@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Output only. The resource name of the Eventarc trigger.
         /// </summary>
         [Input("trigger")]

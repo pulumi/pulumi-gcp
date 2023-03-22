@@ -258,6 +258,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly jobTimeoutMs!: pulumi.Output<string | undefined>;
     /**
+     * (Output)
      * The type of the job.
      */
     public /*out*/ readonly jobType!: pulumi.Output<string>;
@@ -361,6 +362,7 @@ export interface JobState {
      */
     jobTimeoutMs?: pulumi.Input<string>;
     /**
+     * (Output)
      * The type of the job.
      */
     jobType?: pulumi.Input<string>;

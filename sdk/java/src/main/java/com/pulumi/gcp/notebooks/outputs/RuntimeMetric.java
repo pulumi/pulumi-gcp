@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuntimeMetric {
     /**
-     * @return Contains runtime daemon metrics, such as OS and kernels and
+     * @return (Output)
+     * Contains runtime daemon metrics, such as OS and kernels and
      * sessions stats.
      * 
      */
@@ -20,7 +21,8 @@ public final class RuntimeMetric {
 
     private RuntimeMetric() {}
     /**
-     * @return Contains runtime daemon metrics, such as OS and kernels and
+     * @return (Output)
+     * Contains runtime daemon metrics, such as OS and kernels and
      * sessions stats.
      * 
      */

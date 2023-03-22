@@ -481,6 +481,7 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      * 
      */
@@ -488,7 +489,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     private Output<List<ServiceStatus>> statuses;
 
     /**
-     * @return Status of the condition, one of True, False, Unknown.
+     * @return (Output)
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     public Output<List<ServiceStatus>> statuses() {

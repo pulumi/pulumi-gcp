@@ -14,14 +14,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class DomainMappingStatusCondition
     {
         /// <summary>
+        /// (Output)
         /// Human readable message indicating details about the current status.
         /// </summary>
         public readonly string? Message;
         /// <summary>
+        /// (Output)
         /// One-word CamelCase reason for the condition's current status.
         /// </summary>
         public readonly string? Reason;
         /// <summary>
+        /// (Output)
         /// Status of the condition, one of True, False, Unknown.
         /// </summary>
         public readonly string? Status;

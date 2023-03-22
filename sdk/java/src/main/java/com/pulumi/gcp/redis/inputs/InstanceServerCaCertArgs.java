@@ -16,6 +16,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     public static final InstanceServerCaCertArgs Empty = new InstanceServerCaCertArgs();
 
     /**
+     * (Output)
      * The certificate data in PEM format.
      * 
      */
@@ -23,7 +24,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> cert;
 
     /**
-     * @return The certificate data in PEM format.
+     * @return (Output)
+     * The certificate data in PEM format.
      * 
      */
     public Optional<Output<String>> cert() {
@@ -31,6 +33,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -40,7 +43,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. The time when the policy was created.
+     * @return (Output)
+     * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -50,6 +54,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * The time when the certificate expires.
      * 
      */
@@ -57,7 +62,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return The time when the certificate expires.
+     * @return (Output)
+     * The time when the certificate expires.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -65,6 +71,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Serial number, as extracted from the certificate.
      * 
      */
@@ -72,7 +79,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> serialNumber;
 
     /**
-     * @return Serial number, as extracted from the certificate.
+     * @return (Output)
+     * Serial number, as extracted from the certificate.
      * 
      */
     public Optional<Output<String>> serialNumber() {
@@ -80,6 +88,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Output)
      * Sha1 Fingerprint of the certificate.
      * 
      */
@@ -87,7 +96,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> sha1Fingerprint;
 
     /**
-     * @return Sha1 Fingerprint of the certificate.
+     * @return (Output)
+     * Sha1 Fingerprint of the certificate.
      * 
      */
     public Optional<Output<String>> sha1Fingerprint() {
@@ -123,7 +133,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cert The certificate data in PEM format.
+         * @param cert (Output)
+         * The certificate data in PEM format.
          * 
          * @return builder
          * 
@@ -134,7 +145,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cert The certificate data in PEM format.
+         * @param cert (Output)
+         * The certificate data in PEM format.
          * 
          * @return builder
          * 
@@ -144,7 +156,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Output only. The time when the policy was created.
+         * @param createTime (Output)
+         * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -157,7 +170,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Output only. The time when the policy was created.
+         * @param createTime (Output)
+         * Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -169,7 +183,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expireTime The time when the certificate expires.
+         * @param expireTime (Output)
+         * The time when the certificate expires.
          * 
          * @return builder
          * 
@@ -180,7 +195,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param expireTime The time when the certificate expires.
+         * @param expireTime (Output)
+         * The time when the certificate expires.
          * 
          * @return builder
          * 
@@ -190,7 +206,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serialNumber Serial number, as extracted from the certificate.
+         * @param serialNumber (Output)
+         * Serial number, as extracted from the certificate.
          * 
          * @return builder
          * 
@@ -201,7 +218,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serialNumber Serial number, as extracted from the certificate.
+         * @param serialNumber (Output)
+         * Serial number, as extracted from the certificate.
          * 
          * @return builder
          * 
@@ -211,7 +229,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sha1Fingerprint Sha1 Fingerprint of the certificate.
+         * @param sha1Fingerprint (Output)
+         * Sha1 Fingerprint of the certificate.
          * 
          * @return builder
          * 
@@ -222,7 +241,8 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sha1Fingerprint Sha1 Fingerprint of the certificate.
+         * @param sha1Fingerprint (Output)
+         * Sha1 Fingerprint of the certificate.
          * 
          * @return builder
          * 

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
     public sealed class EntryBigqueryTableSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The table source type.
         /// </summary>
         [Input("tableSourceType")]
@@ -22,6 +23,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         private InputList<Inputs.EntryBigqueryTableSpecTableSpecArgs>? _tableSpecs;
 
         /// <summary>
+        /// (Output)
         /// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
         /// Structure is documented below.
         /// </summary>
@@ -35,6 +37,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         private InputList<Inputs.EntryBigqueryTableSpecViewSpecArgs>? _viewSpecs;
 
         /// <summary>
+        /// (Output)
         /// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
         /// Structure is documented below.
         /// </summary>

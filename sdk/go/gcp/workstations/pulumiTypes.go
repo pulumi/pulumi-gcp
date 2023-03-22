@@ -11,10 +11,13 @@ import (
 )
 
 type WorkstationClusterCondition struct {
+	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
+	// (Output)
 	// A list of messages that carry the error details.
 	Details []map[string]interface{} `pulumi:"details"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
 }
@@ -31,10 +34,13 @@ type WorkstationClusterConditionInput interface {
 }
 
 type WorkstationClusterConditionArgs struct {
+	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
 	// A list of messages that carry the error details.
 	Details pulumi.MapArrayInput `pulumi:"details"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -90,16 +96,19 @@ func (o WorkstationClusterConditionOutput) ToWorkstationClusterConditionOutputWi
 	return o
 }
 
+// (Output)
 // The status code, which should be an enum value of google.rpc.Code.
 func (o WorkstationClusterConditionOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationClusterCondition) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // A list of messages that carry the error details.
 func (o WorkstationClusterConditionOutput) Details() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v WorkstationClusterCondition) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o WorkstationClusterConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationClusterCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -126,12 +135,14 @@ func (o WorkstationClusterConditionArrayOutput) Index(i pulumi.IntInput) Worksta
 }
 
 type WorkstationClusterPrivateClusterConfig struct {
+	// (Output)
 	// Hostname for the workstation cluster.
 	// This field will be populated only when private endpoint is enabled.
 	// To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
 	ClusterHostname *string `pulumi:"clusterHostname"`
 	// Whether Workstations endpoint is private.
 	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
+	// (Output)
 	// Service attachment URI for the workstation cluster.
 	// The service attachemnt is created when private endpoint is enabled.
 	// To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -150,12 +161,14 @@ type WorkstationClusterPrivateClusterConfigInput interface {
 }
 
 type WorkstationClusterPrivateClusterConfigArgs struct {
+	// (Output)
 	// Hostname for the workstation cluster.
 	// This field will be populated only when private endpoint is enabled.
 	// To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
 	ClusterHostname pulumi.StringPtrInput `pulumi:"clusterHostname"`
 	// Whether Workstations endpoint is private.
 	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
+	// (Output)
 	// Service attachment URI for the workstation cluster.
 	// The service attachemnt is created when private endpoint is enabled.
 	// To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -239,6 +252,7 @@ func (o WorkstationClusterPrivateClusterConfigOutput) ToWorkstationClusterPrivat
 	}).(WorkstationClusterPrivateClusterConfigPtrOutput)
 }
 
+// (Output)
 // Hostname for the workstation cluster.
 // This field will be populated only when private endpoint is enabled.
 // To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
@@ -251,6 +265,7 @@ func (o WorkstationClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pu
 	return o.ApplyT(func(v WorkstationClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
+// (Output)
 // Service attachment URI for the workstation cluster.
 // The service attachemnt is created when private endpoint is enabled.
 // To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -282,6 +297,7 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) Elem() WorkstationClust
 	}).(WorkstationClusterPrivateClusterConfigOutput)
 }
 
+// (Output)
 // Hostname for the workstation cluster.
 // This field will be populated only when private endpoint is enabled.
 // To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
@@ -304,6 +320,7 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) EnablePrivateEndpoint()
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
 // Service attachment URI for the workstation cluster.
 // The service attachemnt is created when private endpoint is enabled.
 // To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -317,10 +334,13 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) ServiceAttachmentUri() 
 }
 
 type WorkstationConfigCondition struct {
+	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
+	// (Output)
 	// A list of messages that carry the error details.
 	Details []map[string]interface{} `pulumi:"details"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message *string `pulumi:"message"`
 }
@@ -337,10 +357,13 @@ type WorkstationConfigConditionInput interface {
 }
 
 type WorkstationConfigConditionArgs struct {
+	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
 	// A list of messages that carry the error details.
 	Details pulumi.MapArrayInput `pulumi:"details"`
+	// (Output)
 	// Human readable message indicating details about the current status.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -396,16 +419,19 @@ func (o WorkstationConfigConditionOutput) ToWorkstationConfigConditionOutputWith
 	return o
 }
 
+// (Output)
 // The status code, which should be an enum value of google.rpc.Code.
 func (o WorkstationConfigConditionOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigCondition) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
 // A list of messages that carry the error details.
 func (o WorkstationConfigConditionOutput) Details() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v WorkstationConfigCondition) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
+// (Output)
 // Human readable message indicating details about the current status.
 func (o WorkstationConfigConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigCondition) *string { return v.Message }).(pulumi.StringPtrOutput)

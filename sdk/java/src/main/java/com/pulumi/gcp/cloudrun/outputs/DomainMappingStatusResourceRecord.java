@@ -17,7 +17,8 @@ public final class DomainMappingStatusResourceRecord {
      */
     private @Nullable String name;
     /**
-     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * @return (Output)
+     * Data for this record. Values vary by record type, as defined in RFC 1035
      * (section 5) and RFC 1034 (section 3.6.1).
      * 
      */
@@ -38,7 +39,8 @@ public final class DomainMappingStatusResourceRecord {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * @return (Output)
+     * Data for this record. Values vary by record type, as defined in RFC 1035
      * (section 5) and RFC 1034 (section 3.6.1).
      * 
      */

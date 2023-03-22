@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
     public sealed class DnsAuthorizationDnsResourceRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Data of the DNS Resource Record.
         /// </summary>
         [Input("data")]
@@ -27,6 +28,7 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Type of the DNS Resource Record.
         /// </summary>
         [Input("type")]

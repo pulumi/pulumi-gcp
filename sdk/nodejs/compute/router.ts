@@ -118,9 +118,8 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      */
     public readonly encryptedInterconnectRouter!: pulumi.Output<boolean | undefined>;
     /**
@@ -210,9 +209,8 @@ export interface RouterState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
@@ -257,9 +255,8 @@ export interface RouterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field to indicate if a router is dedicated to use with encrypted
-     * Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-     * Not currently available publicly.
+     * Indicates if a router is dedicated for use with encrypted VLAN
+     * attachments (interconnectAttachments).
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**

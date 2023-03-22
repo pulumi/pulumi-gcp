@@ -114,6 +114,7 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly spec!: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.DomainMappingStatus[]>;
@@ -188,6 +189,7 @@ export interface DomainMappingState {
      */
     spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
     /**
+     * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.DomainMappingStatus>[]>;

@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string KmsKeyName;
         /// <summary>
+        /// (Output)
         /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         /// </summary>
         public readonly string? KmsKeyVersion;

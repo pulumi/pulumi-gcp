@@ -16,6 +16,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     public static final ServiceConditionArgs Empty = new ServiceConditionArgs();
 
     /**
+     * (Output)
      * A reason for the execution condition.
      * 
      */
@@ -23,7 +24,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> executionReason;
 
     /**
-     * @return A reason for the execution condition.
+     * @return (Output)
+     * A reason for the execution condition.
      * 
      */
     public Optional<Output<String>> executionReason() {
@@ -31,6 +33,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * Last time the condition transitioned from one status to another.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -39,7 +42,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> lastTransitionTime;
 
     /**
-     * @return Last time the condition transitioned from one status to another.
+     * @return (Output)
+     * Last time the condition transitioned from one status to another.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -48,6 +52,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * Human readable message indicating details about the current status.
      * 
      */
@@ -55,7 +60,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> message;
 
     /**
-     * @return Human readable message indicating details about the current status.
+     * @return (Output)
+     * Human readable message indicating details about the current status.
      * 
      */
     public Optional<Output<String>> message() {
@@ -63,6 +69,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * A common (service-level) reason for this condition.
      * 
      */
@@ -70,7 +77,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> reason;
 
     /**
-     * @return A common (service-level) reason for this condition.
+     * @return (Output)
+     * A common (service-level) reason for this condition.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -78,6 +86,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * A reason for the revision condition.
      * 
      */
@@ -85,7 +94,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> revisionReason;
 
     /**
-     * @return A reason for the revision condition.
+     * @return (Output)
+     * A reason for the revision condition.
      * 
      */
     public Optional<Output<String>> revisionReason() {
@@ -93,6 +103,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * How to interpret failures of this condition, one of Error, Warning, Info
      * 
      */
@@ -100,7 +111,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> severity;
 
     /**
-     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * @return (Output)
+     * How to interpret failures of this condition, one of Error, Warning, Info
      * 
      */
     public Optional<Output<String>> severity() {
@@ -108,6 +120,7 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * State of the condition.
      * 
      */
@@ -115,7 +128,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the condition.
+     * @return (Output)
+     * State of the condition.
      * 
      */
     public Optional<Output<String>> state() {
@@ -171,7 +185,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param executionReason A reason for the execution condition.
+         * @param executionReason (Output)
+         * A reason for the execution condition.
          * 
          * @return builder
          * 
@@ -182,7 +197,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param executionReason A reason for the execution condition.
+         * @param executionReason (Output)
+         * A reason for the execution condition.
          * 
          * @return builder
          * 
@@ -192,7 +208,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * @param lastTransitionTime (Output)
+         * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -204,7 +221,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * @param lastTransitionTime (Output)
+         * Last time the condition transitioned from one status to another.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
@@ -215,7 +233,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -226,7 +245,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param message Human readable message indicating details about the current status.
+         * @param message (Output)
+         * Human readable message indicating details about the current status.
          * 
          * @return builder
          * 
@@ -236,7 +256,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param reason A common (service-level) reason for this condition.
+         * @param reason (Output)
+         * A common (service-level) reason for this condition.
          * 
          * @return builder
          * 
@@ -247,7 +268,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param reason A common (service-level) reason for this condition.
+         * @param reason (Output)
+         * A common (service-level) reason for this condition.
          * 
          * @return builder
          * 
@@ -257,7 +279,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param revisionReason A reason for the revision condition.
+         * @param revisionReason (Output)
+         * A reason for the revision condition.
          * 
          * @return builder
          * 
@@ -268,7 +291,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param revisionReason A reason for the revision condition.
+         * @param revisionReason (Output)
+         * A reason for the revision condition.
          * 
          * @return builder
          * 
@@ -278,7 +302,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * @param severity (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
          * 
          * @return builder
          * 
@@ -289,7 +314,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * @param severity (Output)
+         * How to interpret failures of this condition, one of Error, Warning, Info
          * 
          * @return builder
          * 
@@ -299,7 +325,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state State of the condition.
+         * @param state (Output)
+         * State of the condition.
          * 
          * @return builder
          * 
@@ -310,7 +337,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state State of the condition.
+         * @param state (Output)
+         * State of the condition.
          * 
          * @return builder
          * 

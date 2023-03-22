@@ -13,30 +13,35 @@ namespace Pulumi.Gcp.Memcache.Inputs
     public sealed class InstanceMemcacheNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The port number of the Memcached server on this node.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Current state of the Memcached node.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
+        /// (Output)
         /// Location (GCP Zone) for the Memcached node.
         /// </summary>
         [Input("zone")]

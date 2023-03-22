@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         /// </summary>
         public readonly bool? IsRequired;
         /// <summary>
+        /// (Output)
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         public readonly string? Name;

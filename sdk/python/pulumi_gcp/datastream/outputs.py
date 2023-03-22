@@ -339,18 +339,21 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
         :param str ca_certificate: PEM-encoded certificate of the CA that signed the source database
                server's certificate.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool ca_certificate_set: Indicates whether the clientKey field is set.
+        :param bool ca_certificate_set: (Output)
+               Indicates whether the clientKey field is set.
         :param str client_certificate: PEM-encoded certificate that will be used by the replica to
                authenticate against the source database server. If this field
                is used then the 'clientKey' and the 'caCertificate' fields are
                mandatory.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool client_certificate_set: Indicates whether the clientCertificate field is set.
+        :param bool client_certificate_set: (Output)
+               Indicates whether the clientCertificate field is set.
         :param str client_key: PEM-encoded private key associated with the Client Certificate.
                If this field is used then the 'client_certificate' and the
                'ca_certificate' fields are mandatory.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool client_key_set: Indicates whether the clientKey field is set.
+        :param bool client_key_set: (Output)
+               Indicates whether the clientKey field is set.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
@@ -379,6 +382,7 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="caCertificateSet")
     def ca_certificate_set(self) -> Optional[bool]:
         """
+        (Output)
         Indicates whether the clientKey field is set.
         """
         return pulumi.get(self, "ca_certificate_set")
@@ -399,6 +403,7 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="clientCertificateSet")
     def client_certificate_set(self) -> Optional[bool]:
         """
+        (Output)
         Indicates whether the clientCertificate field is set.
         """
         return pulumi.get(self, "client_certificate_set")
@@ -418,6 +423,7 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="clientKeySet")
     def client_key_set(self) -> Optional[bool]:
         """
+        (Output)
         Indicates whether the clientKey field is set.
         """
         return pulumi.get(self, "client_key_set")
@@ -922,7 +928,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -971,6 +978,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1172,13 +1180,20 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        :param str encoding: Column encoding.
-        :param int length: Column length.
-        :param bool nullable: Whether or not the column can accept a null value.
-        :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
-        :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param str encoding: (Output)
+               Column encoding.
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -1220,6 +1235,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter
     def encoding(self) -> Optional[str]:
         """
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -1228,6 +1244,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1236,6 +1253,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter
     def nullable(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -1244,6 +1262,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[int]:
         """
+        (Output)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -1252,6 +1271,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -1260,6 +1280,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -1268,6 +1289,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")
@@ -1444,12 +1466,15 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
+        :param int precision: (Output)
+               Column precision.
         :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -1489,6 +1514,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1513,6 +1539,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -1529,6 +1556,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")
@@ -2300,7 +2328,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -2349,6 +2378,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -2549,7 +2579,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -2598,6 +2629,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -2919,13 +2951,20 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        :param str encoding: Column encoding.
-        :param int length: Column length.
-        :param bool nullable: Whether or not the column can accept a null value.
-        :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
-        :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param str encoding: (Output)
+               Column encoding.
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -2967,6 +3006,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def encoding(self) -> Optional[str]:
         """
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -2975,6 +3015,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -2983,6 +3024,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def nullable(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -2991,6 +3033,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[int]:
         """
+        (Output)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -2999,6 +3042,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3007,6 +3051,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -3015,6 +3060,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")
@@ -3192,13 +3238,20 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
-        :param str encoding: Column encoding.
-        :param int length: Column length.
-        :param bool nullable: Whether or not the column can accept a null value.
-        :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
-        :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param str encoding: (Output)
+               Column encoding.
+        :param int length: (Output)
+               Column length.
+        :param bool nullable: (Output)
+               Whether or not the column can accept a null value.
+        :param int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        :param int precision: (Output)
+               Column precision.
+        :param bool primary_key: (Output)
+               Whether or not the column represents a primary key.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -3240,6 +3293,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def encoding(self) -> Optional[str]:
         """
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -3248,6 +3302,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -3256,6 +3311,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def nullable(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -3264,6 +3320,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[int]:
         """
+        (Output)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -3272,6 +3329,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3280,6 +3338,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[bool]:
         """
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -3288,6 +3347,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")
@@ -3568,12 +3628,15 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
+        :param int precision: (Output)
+               Column precision.
         :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -3613,6 +3676,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -3637,6 +3701,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3653,6 +3718,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")
@@ -3829,12 +3895,15 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
-        :param int length: Column length.
+        :param int length: (Output)
+               Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
-        :param int precision: Column precision.
+        :param int precision: (Output)
+               Column precision.
         :param bool primary_key: Whether or not the column represents a primary key.
-        :param int scale: Column scale.
+        :param int scale: (Output)
+               Column scale.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -3874,6 +3943,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -3898,6 +3968,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def precision(self) -> Optional[int]:
         """
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3914,6 +3985,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def scale(self) -> Optional[int]:
         """
+        (Output)
         Column scale.
         """
         return pulumi.get(self, "scale")

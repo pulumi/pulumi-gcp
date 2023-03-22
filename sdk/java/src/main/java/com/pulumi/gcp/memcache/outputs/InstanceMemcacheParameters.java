@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMemcacheParameters {
     /**
-     * @return This is a unique ID associated with this set of parameters.
+     * @return (Output)
+     * This is a unique ID associated with this set of parameters.
      * 
      */
     private @Nullable String id;
@@ -25,7 +26,8 @@ public final class InstanceMemcacheParameters {
 
     private InstanceMemcacheParameters() {}
     /**
-     * @return This is a unique ID associated with this set of parameters.
+     * @return (Output)
+     * This is a unique ID associated with this set of parameters.
      * 
      */
     public Optional<String> id() {

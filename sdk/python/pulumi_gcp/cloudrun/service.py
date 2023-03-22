@@ -217,7 +217,8 @@ class _ServiceState:
                More info: http://kubernetes.io/docs/user-guide/identifiers#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: (Output)
+               Status of the condition, one of True, False, Unknown.
         :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -326,6 +327,7 @@ class _ServiceState:
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]]]:
         """
+        (Output)
         Status of the condition, one of True, False, Unknown.
         """
         return pulumi.get(self, "statuses")
@@ -911,7 +913,8 @@ class Service(pulumi.CustomResource):
                More info: http://kubernetes.io/docs/user-guide/identifiers#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: (Output)
+               Status of the condition, one of True, False, Unknown.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -997,6 +1000,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence['outputs.ServiceStatus']]:
         """
+        (Output)
         Status of the condition, one of True, False, Unknown.
         """
         return pulumi.get(self, "statuses")

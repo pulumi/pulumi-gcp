@@ -81,6 +81,14 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                 return $"{address}/{prefixLength}";
     ///             }),
     ///         },
+    ///         Accelerators = new[]
+    ///         {
+    ///             new Gcp.DataFusion.Inputs.InstanceAcceleratorArgs
+    ///             {
+    ///                 AcceleratorType = "CDC",
+    ///                 State = "ENABLED",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

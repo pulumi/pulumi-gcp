@@ -1634,6 +1634,7 @@ type TriggerBuildArtifactsObjects struct {
 	Location *string `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths []string `pulumi:"paths"`
+	// (Output)
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	Timings []TriggerBuildArtifactsObjectsTiming `pulumi:"timings"`
@@ -1657,6 +1658,7 @@ type TriggerBuildArtifactsObjectsArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// (Output)
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	Timings TriggerBuildArtifactsObjectsTimingArrayInput `pulumi:"timings"`
@@ -1751,6 +1753,7 @@ func (o TriggerBuildArtifactsObjectsOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildArtifactsObjects) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 func (o TriggerBuildArtifactsObjectsOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
@@ -1803,6 +1806,7 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) Paths() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// (Output)
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 func (o TriggerBuildArtifactsObjectsPtrOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
@@ -4800,9 +4804,11 @@ func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 type TriggerPubsubConfig struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// (Output)
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State *string `pulumi:"state"`
+	// (Output)
 	// Output only. Name of the subscription.
 	Subscription *string `pulumi:"subscription"`
 	// The name of the topic from which this subscription is receiving messages.
@@ -4823,9 +4829,11 @@ type TriggerPubsubConfigInput interface {
 type TriggerPubsubConfigArgs struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// (Output)
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// Output only. Name of the subscription.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
 	// The name of the topic from which this subscription is receiving messages.
@@ -4914,12 +4922,14 @@ func (o TriggerPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerPubsubConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. Name of the subscription.
 func (o TriggerPubsubConfigOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.Subscription }).(pulumi.StringPtrOutput)
@@ -4964,6 +4974,7 @@ func (o TriggerPubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerPubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
@@ -4975,6 +4986,7 @@ func (o TriggerPubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. Name of the subscription.
 func (o TriggerPubsubConfigPtrOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
@@ -6020,6 +6032,7 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 type TriggerWebhookConfig struct {
 	// Resource name for the secret required as a URL parameter.
 	Secret string `pulumi:"secret"`
+	// (Output)
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State *string `pulumi:"state"`
@@ -6039,6 +6052,7 @@ type TriggerWebhookConfigInput interface {
 type TriggerWebhookConfigArgs struct {
 	// Resource name for the secret required as a URL parameter.
 	Secret pulumi.StringInput `pulumi:"secret"`
+	// (Output)
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -6126,6 +6140,7 @@ func (o TriggerWebhookConfigOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerWebhookConfig) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerWebhookConfigOutput) State() pulumi.StringPtrOutput {
@@ -6166,6 +6181,7 @@ func (o TriggerWebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerWebhookConfigPtrOutput) State() pulumi.StringPtrOutput {

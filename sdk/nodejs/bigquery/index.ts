@@ -10,6 +10,11 @@ export type AppProfile = import("./appProfile").AppProfile;
 export const AppProfile: typeof import("./appProfile").AppProfile = null as any;
 utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
 
+export { CapacityCommitmentArgs, CapacityCommitmentState } from "./capacityCommitment";
+export type CapacityCommitment = import("./capacityCommitment").CapacityCommitment;
+export const CapacityCommitment: typeof import("./capacityCommitment").CapacityCommitment = null as any;
+utilities.lazyLoad(exports, ["CapacityCommitment"], () => require("./capacityCommitment"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -112,6 +117,8 @@ const _module = {
         switch (type) {
             case "gcp:bigquery/appProfile:AppProfile":
                 return new AppProfile(name, <any>undefined, { urn })
+            case "gcp:bigquery/capacityCommitment:CapacityCommitment":
+                return new CapacityCommitment(name, <any>undefined, { urn })
             case "gcp:bigquery/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "gcp:bigquery/connectionIamBinding:ConnectionIamBinding":
@@ -154,6 +161,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "bigquery/appProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/capacityCommitment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamMember", _module)

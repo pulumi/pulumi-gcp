@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// How many instances are in use.
         /// </summary>
         [Input("inUseCount")]

@@ -10,6 +10,118 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceAccelerator struct {
+	// The type of an accelator for a CDF instance.
+	// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+	AcceleratorType string `pulumi:"acceleratorType"`
+	// The type of an accelator for a CDF instance.
+	// Possible values are `ENABLED` and `DISABLED`.
+	State string `pulumi:"state"`
+}
+
+// InstanceAcceleratorInput is an input type that accepts InstanceAcceleratorArgs and InstanceAcceleratorOutput values.
+// You can construct a concrete instance of `InstanceAcceleratorInput` via:
+//
+//	InstanceAcceleratorArgs{...}
+type InstanceAcceleratorInput interface {
+	pulumi.Input
+
+	ToInstanceAcceleratorOutput() InstanceAcceleratorOutput
+	ToInstanceAcceleratorOutputWithContext(context.Context) InstanceAcceleratorOutput
+}
+
+type InstanceAcceleratorArgs struct {
+	// The type of an accelator for a CDF instance.
+	// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
+	// The type of an accelator for a CDF instance.
+	// Possible values are `ENABLED` and `DISABLED`.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (InstanceAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAccelerator)(nil)).Elem()
+}
+
+func (i InstanceAcceleratorArgs) ToInstanceAcceleratorOutput() InstanceAcceleratorOutput {
+	return i.ToInstanceAcceleratorOutputWithContext(context.Background())
+}
+
+func (i InstanceAcceleratorArgs) ToInstanceAcceleratorOutputWithContext(ctx context.Context) InstanceAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorOutput)
+}
+
+// InstanceAcceleratorArrayInput is an input type that accepts InstanceAcceleratorArray and InstanceAcceleratorArrayOutput values.
+// You can construct a concrete instance of `InstanceAcceleratorArrayInput` via:
+//
+//	InstanceAcceleratorArray{ InstanceAcceleratorArgs{...} }
+type InstanceAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAcceleratorArrayOutput() InstanceAcceleratorArrayOutput
+	ToInstanceAcceleratorArrayOutputWithContext(context.Context) InstanceAcceleratorArrayOutput
+}
+
+type InstanceAcceleratorArray []InstanceAcceleratorInput
+
+func (InstanceAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAccelerator)(nil)).Elem()
+}
+
+func (i InstanceAcceleratorArray) ToInstanceAcceleratorArrayOutput() InstanceAcceleratorArrayOutput {
+	return i.ToInstanceAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAcceleratorArray) ToInstanceAcceleratorArrayOutputWithContext(ctx context.Context) InstanceAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorArrayOutput)
+}
+
+type InstanceAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (InstanceAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAccelerator)(nil)).Elem()
+}
+
+func (o InstanceAcceleratorOutput) ToInstanceAcceleratorOutput() InstanceAcceleratorOutput {
+	return o
+}
+
+func (o InstanceAcceleratorOutput) ToInstanceAcceleratorOutputWithContext(ctx context.Context) InstanceAcceleratorOutput {
+	return o
+}
+
+// The type of an accelator for a CDF instance.
+// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+func (o InstanceAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAccelerator) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// The type of an accelator for a CDF instance.
+// Possible values are `ENABLED` and `DISABLED`.
+func (o InstanceAcceleratorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAccelerator) string { return v.State }).(pulumi.StringOutput)
+}
+
+type InstanceAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAccelerator)(nil)).Elem()
+}
+
+func (o InstanceAcceleratorArrayOutput) ToInstanceAcceleratorArrayOutput() InstanceAcceleratorArrayOutput {
+	return o
+}
+
+func (o InstanceAcceleratorArrayOutput) ToInstanceAcceleratorArrayOutputWithContext(ctx context.Context) InstanceAcceleratorArrayOutput {
+	return o
+}
+
+func (o InstanceAcceleratorArrayOutput) Index(i pulumi.IntInput) InstanceAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAccelerator {
+		return vs[0].([]InstanceAccelerator)[vs[1].(int)]
+	}).(InstanceAcceleratorOutput)
+}
+
 type InstanceCryptoKeyConfig struct {
 	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KeyReference string `pulumi:"keyReference"`
@@ -472,12 +584,16 @@ func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAcceleratorInput)(nil)).Elem(), InstanceAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAcceleratorArrayInput)(nil)).Elem(), InstanceAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigPtrInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigPtrInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterOutputType(InstanceAcceleratorOutput{})
+	pulumi.RegisterOutputType(InstanceAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceEventPublishConfigOutput{})

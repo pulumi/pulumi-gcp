@@ -17,6 +17,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     public static final WorkstationClusterPrivateClusterConfigArgs Empty = new WorkstationClusterPrivateClusterConfigArgs();
 
     /**
+     * (Output)
      * Hostname for the workstation cluster.
      * This field will be populated only when private endpoint is enabled.
      * To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
@@ -26,7 +27,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     private @Nullable Output<String> clusterHostname;
 
     /**
-     * @return Hostname for the workstation cluster.
+     * @return (Output)
+     * Hostname for the workstation cluster.
      * This field will be populated only when private endpoint is enabled.
      * To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
      * 
@@ -51,6 +53,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     }
 
     /**
+     * (Output)
      * Service attachment URI for the workstation cluster.
      * The service attachemnt is created when private endpoint is enabled.
      * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -60,7 +63,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     private @Nullable Output<String> serviceAttachmentUri;
 
     /**
-     * @return Service attachment URI for the workstation cluster.
+     * @return (Output)
+     * Service attachment URI for the workstation cluster.
      * The service attachemnt is created when private endpoint is enabled.
      * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
      * 
@@ -96,7 +100,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clusterHostname Hostname for the workstation cluster.
+         * @param clusterHostname (Output)
+         * Hostname for the workstation cluster.
          * This field will be populated only when private endpoint is enabled.
          * To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
          * 
@@ -109,7 +114,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param clusterHostname Hostname for the workstation cluster.
+         * @param clusterHostname (Output)
+         * Hostname for the workstation cluster.
          * This field will be populated only when private endpoint is enabled.
          * To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
          * 
@@ -142,7 +148,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param serviceAttachmentUri Service attachment URI for the workstation cluster.
+         * @param serviceAttachmentUri (Output)
+         * Service attachment URI for the workstation cluster.
          * The service attachemnt is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          * 
@@ -155,7 +162,8 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         }
 
         /**
-         * @param serviceAttachmentUri Service attachment URI for the workstation cluster.
+         * @param serviceAttachmentUri (Output)
+         * Service attachment URI for the workstation cluster.
          * The service attachemnt is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          * 

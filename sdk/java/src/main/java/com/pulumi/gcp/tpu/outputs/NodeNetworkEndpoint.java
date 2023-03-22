@@ -13,26 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodeNetworkEndpoint {
     /**
-     * @return The IP address of this network endpoint.
+     * @return (Output)
+     * The IP address of this network endpoint.
      * 
      */
     private @Nullable String ipAddress;
     /**
-     * @return The port of this network endpoint.
+     * @return (Output)
+     * The port of this network endpoint.
      * 
      */
     private @Nullable Integer port;
 
     private NodeNetworkEndpoint() {}
     /**
-     * @return The IP address of this network endpoint.
+     * @return (Output)
+     * The IP address of this network endpoint.
      * 
      */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @return The port of this network endpoint.
+     * @return (Output)
+     * The port of this network endpoint.
      * 
      */
     public Optional<Integer> port() {

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     {
         /// <summary>
         /// The x509 certificate
+        /// (Output)
         /// The x509 certificate
         /// </summary>
         public readonly string? X509Certificate;

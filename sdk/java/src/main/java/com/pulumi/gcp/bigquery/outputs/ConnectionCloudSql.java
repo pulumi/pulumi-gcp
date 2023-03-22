@@ -29,7 +29,8 @@ public final class ConnectionCloudSql {
      */
     private String instanceId;
     /**
-     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * @return (Output)
+     * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
      * 
      */
     private @Nullable String serviceAccountId;
@@ -64,7 +65,8 @@ public final class ConnectionCloudSql {
         return this.instanceId;
     }
     /**
-     * @return When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+     * @return (Output)
+     * When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
      * 
      */
     public Optional<String> serviceAccountId() {

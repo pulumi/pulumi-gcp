@@ -35,7 +35,8 @@ class FunctionBuildConfigArgs:
                  source: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] build: The Cloud Build name of the latest successful
+        :param pulumi.Input[str] build: (Output)
+               The Cloud Build name of the latest successful
                deployment of the function.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed.
@@ -69,6 +70,7 @@ class FunctionBuildConfigArgs:
     @pulumi.getter
     def build(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The Cloud Build name of the latest successful
         deployment of the function.
         """
@@ -400,7 +402,8 @@ class FunctionEventTriggerArgs:
                Retried execution is charged as any other execution.
                Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
         :param pulumi.Input[str] service_account_email: The email of the service account for this function.
-        :param pulumi.Input[str] trigger: Output only. The resource name of the Eventarc trigger.
+        :param pulumi.Input[str] trigger: (Output)
+               Output only. The resource name of the Eventarc trigger.
         :param pulumi.Input[str] trigger_region: The region that the trigger will be in. The trigger will only receive
                events originating in this region. It can be the same
                region as the function, a different region or multi-region, or the global
@@ -489,6 +492,7 @@ class FunctionEventTriggerArgs:
     @pulumi.getter
     def trigger(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The resource name of the Eventarc trigger.
         """
         return pulumi.get(self, "trigger")
@@ -685,7 +689,8 @@ class FunctionServiceConfigArgs:
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
-        :param pulumi.Input[str] gcf_uri: URIs of the Service deployed
+        :param pulumi.Input[str] gcf_uri: (Output)
+               URIs of the Service deployed
         :param pulumi.Input[str] ingress_settings: Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
                Default value is `ALLOW_ALL`.
                Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
@@ -703,7 +708,8 @@ class FunctionServiceConfigArgs:
         :param pulumi.Input[int] timeout_seconds: The function execution timeout. Execution is considered failed and
                can be terminated if the function is not completed at the end of the
                timeout period. Defaults to 60 seconds.
-        :param pulumi.Input[str] uri: URI of the Service deployed.
+        :param pulumi.Input[str] uri: (Output)
+               URI of the Service deployed.
         :param pulumi.Input[str] vpc_connector: The Serverless VPC Access connector that this cloud function can connect to.
         :param pulumi.Input[str] vpc_connector_egress_settings: Available egress settings.
                Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
@@ -797,6 +803,7 @@ class FunctionServiceConfigArgs:
     @pulumi.getter(name="gcfUri")
     def gcf_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         URIs of the Service deployed
         """
         return pulumi.get(self, "gcf_uri")
@@ -925,6 +932,7 @@ class FunctionServiceConfigArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         URI of the Service deployed.
         """
         return pulumi.get(self, "uri")

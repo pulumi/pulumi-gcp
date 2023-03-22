@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryState;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryMavenConfig;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfig;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryVirtualRepositoryConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -101,6 +103,104 @@ import javax.annotation.Nullable;
  *             .kmsKeyName(&#34;kms-key&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(cryptoKey)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Artifact Registry Repository Virtual
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo_upstream = new Repository(&#34;my-repo-upstream&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository-upstream&#34;)
+ *             .description(&#34;example docker repository (upstream source)&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .description(&#34;example virtual docker repository&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .mode(&#34;VIRTUAL_REPOSITORY&#34;)
+ *             .virtualRepositoryConfig(RepositoryVirtualRepositoryConfigArgs.builder()
+ *                 .upstreamPolicies(RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
+ *                     .id(&#34;my-repository-upstream&#34;)
+ *                     .repository(my_repo_upstream.id())
+ *                     .priority(1)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn()
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Artifact Registry Repository Remote
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .description(&#34;example remote docker repository&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description(&#34;docker hub&#34;)
+ *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
+ *                     .publicRepository(&#34;DOCKER_HUB&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .build());
  * 
  *     }
@@ -255,6 +355,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mavenConfig);
     }
     /**
+     * The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * 
+     */
+    @Export(name="mode", type=String.class, parameters={})
+    private Output</* @Nullable */ String> mode;
+
+    /**
+     * @return The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
+     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * 
+     */
+    public Output<Optional<String>> mode() {
+        return Codegen.optional(this.mode);
+    }
+    /**
      * The name of the repository, for example:
      * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
      * 
@@ -287,6 +403,20 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Configuration specific for a Remote Repository.
+     * 
+     */
+    @Export(name="remoteRepositoryConfig", type=RepositoryRemoteRepositoryConfig.class, parameters={})
+    private Output</* @Nullable */ RepositoryRemoteRepositoryConfig> remoteRepositoryConfig;
+
+    /**
+     * @return Configuration specific for a Remote Repository.
+     * 
+     */
+    public Output<Optional<RepositoryRemoteRepositoryConfig>> remoteRepositoryConfig() {
+        return Codegen.optional(this.remoteRepositoryConfig);
+    }
+    /**
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
@@ -315,6 +445,20 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Configuration specific for a Virtual Repository.
+     * 
+     */
+    @Export(name="virtualRepositoryConfig", type=RepositoryVirtualRepositoryConfig.class, parameters={})
+    private Output</* @Nullable */ RepositoryVirtualRepositoryConfig> virtualRepositoryConfig;
+
+    /**
+     * @return Configuration specific for a Virtual Repository.
+     * 
+     */
+    public Output<Optional<RepositoryVirtualRepositoryConfig>> virtualRepositoryConfig() {
+        return Codegen.optional(this.virtualRepositoryConfig);
     }
 
     /**

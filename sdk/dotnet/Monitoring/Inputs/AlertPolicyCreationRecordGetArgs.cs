@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class AlertPolicyCreationRecordGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// When the change occurred.
         /// </summary>
         [Input("mutateTime")]
         public Input<string>? MutateTime { get; set; }
 
         /// <summary>
+        /// (Output)
         /// The email address of the user making the change.
         /// </summary>
         [Input("mutatedBy")]

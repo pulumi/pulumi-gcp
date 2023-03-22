@@ -30,9 +30,12 @@ class WorkstationClusterConditionArgs:
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -45,6 +48,7 @@ class WorkstationClusterConditionArgs:
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
@@ -57,6 +61,7 @@ class WorkstationClusterConditionArgs:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
+        (Output)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
@@ -69,6 +74,7 @@ class WorkstationClusterConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
@@ -86,10 +92,12 @@ class WorkstationClusterPrivateClusterConfigArgs:
                  service_attachment_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_private_endpoint: Whether Workstations endpoint is private.
-        :param pulumi.Input[str] cluster_hostname: Hostname for the workstation cluster.
+        :param pulumi.Input[str] cluster_hostname: (Output)
+               Hostname for the workstation cluster.
                This field will be populated only when private endpoint is enabled.
                To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
-        :param pulumi.Input[str] service_attachment_uri: Service attachment URI for the workstation cluster.
+        :param pulumi.Input[str] service_attachment_uri: (Output)
+               Service attachment URI for the workstation cluster.
                The service attachemnt is created when private endpoint is enabled.
                To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
@@ -115,6 +123,7 @@ class WorkstationClusterPrivateClusterConfigArgs:
     @pulumi.getter(name="clusterHostname")
     def cluster_hostname(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Hostname for the workstation cluster.
         This field will be populated only when private endpoint is enabled.
         To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
@@ -129,6 +138,7 @@ class WorkstationClusterPrivateClusterConfigArgs:
     @pulumi.getter(name="serviceAttachmentUri")
     def service_attachment_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Service attachment URI for the workstation cluster.
         The service attachemnt is created when private endpoint is enabled.
         To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
@@ -147,9 +157,12 @@ class WorkstationConfigConditionArgs:
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
-        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -162,6 +175,7 @@ class WorkstationConfigConditionArgs:
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
@@ -174,6 +188,7 @@ class WorkstationConfigConditionArgs:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
+        (Output)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
@@ -186,6 +201,7 @@ class WorkstationConfigConditionArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")

@@ -54,6 +54,13 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.instanceTerminationAction);
     }
 
+    @Import(name="maintenanceInterval")
+    private @Nullable Output<String> maintenanceInterval;
+
+    public Optional<Output<String>> maintenanceInterval() {
+        return Optional.ofNullable(this.maintenanceInterval);
+    }
+
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration;
 
@@ -163,6 +170,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     private InstanceSchedulingArgs(InstanceSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.maintenanceInterval = $.maintenanceInterval;
         this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
         this.nodeAffinities = $.nodeAffinities;
@@ -233,6 +241,15 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
          */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
+            $.maintenanceInterval = maintenanceInterval;
+            return this;
+        }
+
+        public Builder maintenanceInterval(String maintenanceInterval) {
+            return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
         public Builder maxRunDuration(@Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration) {

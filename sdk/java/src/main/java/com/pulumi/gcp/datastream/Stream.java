@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *                 .gcsDestinationConfig(StreamDestinationConfigGcsDestinationConfigArgs.builder()
  *                     .path(&#34;mydata&#34;)
  *                     .fileRotationMb(200)
- *                     .fileRotationInterval(&#34;900s&#34;)
+ *                     .fileRotationInterval(&#34;60s&#34;)
  *                     .jsonFileFormat(StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs.builder()
  *                         .schemaFileFormat(&#34;NO_SCHEMA_FILE&#34;)
  *                         .compression(&#34;GZIP&#34;)

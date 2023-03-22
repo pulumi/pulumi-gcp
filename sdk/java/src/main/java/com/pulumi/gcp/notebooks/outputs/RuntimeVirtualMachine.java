@@ -13,12 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuntimeVirtualMachine {
     /**
-     * @return The unique identifier of the Managed Compute Engine instance.
+     * @return (Output)
+     * The unique identifier of the Managed Compute Engine instance.
      * 
      */
     private @Nullable String instanceId;
     /**
-     * @return The user-friendly name of the Managed Compute Engine instance.
+     * @return (Output)
+     * The user-friendly name of the Managed Compute Engine instance.
      * 
      */
     private @Nullable String instanceName;
@@ -31,14 +33,16 @@ public final class RuntimeVirtualMachine {
 
     private RuntimeVirtualMachine() {}
     /**
-     * @return The unique identifier of the Managed Compute Engine instance.
+     * @return (Output)
+     * The unique identifier of the Managed Compute Engine instance.
      * 
      */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
     /**
-     * @return The user-friendly name of the Managed Compute Engine instance.
+     * @return (Output)
+     * The user-friendly name of the Managed Compute Engine instance.
      * 
      */
     public Optional<String> instanceName() {

@@ -16,6 +16,7 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     public static final InstanceMaintenanceScheduleArgs Empty = new InstanceMaintenanceScheduleArgs();
 
     /**
+     * (Output)
      * Output only. The end time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -25,7 +26,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     private @Nullable Output<String> endTime;
 
     /**
-     * @return Output only. The end time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The end time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -35,6 +37,7 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Output only. The deadline that the maintenance schedule start time
      * can not go beyond, including reschedule.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
@@ -45,7 +48,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     private @Nullable Output<String> scheduleDeadlineTime;
 
     /**
-     * @return Output only. The deadline that the maintenance schedule start time
+     * @return (Output)
+     * Output only. The deadline that the maintenance schedule start time
      * can not go beyond, including reschedule.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -56,6 +60,7 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Output only. The start time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -65,7 +70,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * @return (Output)
+     * Output only. The start time of any upcoming scheduled maintenance for this instance.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -101,7 +107,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param endTime Output only. The end time of any upcoming scheduled maintenance for this instance.
+         * @param endTime (Output)
+         * Output only. The end time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -114,7 +121,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param endTime Output only. The end time of any upcoming scheduled maintenance for this instance.
+         * @param endTime (Output)
+         * Output only. The end time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -126,7 +134,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param scheduleDeadlineTime Output only. The deadline that the maintenance schedule start time
+         * @param scheduleDeadlineTime (Output)
+         * Output only. The deadline that the maintenance schedule start time
          * can not go beyond, including reschedule.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -140,7 +149,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param scheduleDeadlineTime Output only. The deadline that the maintenance schedule start time
+         * @param scheduleDeadlineTime (Output)
+         * Output only. The deadline that the maintenance schedule start time
          * can not go beyond, including reschedule.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
@@ -153,7 +163,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * @param startTime (Output)
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -166,7 +177,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * @param startTime (Output)
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 

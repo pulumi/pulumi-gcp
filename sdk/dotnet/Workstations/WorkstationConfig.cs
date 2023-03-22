@@ -375,8 +375,8 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
     ///     {
-    ///         AccountId = "cloud-workstations-kms",
-    ///         DisplayName = "Service Account for Cloud Workstations",
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Service Account",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -428,10 +428,6 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// ```sh
     ///  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default {{workstation_config_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:workstations/workstationConfig:WorkstationConfig")]
