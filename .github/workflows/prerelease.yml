@@ -12,7 +12,7 @@ env:
   GOOGLE_PROJECT_NUMBER: 895284651812
   GOOGLE_REGION: us-central1
   GOOGLE_ZONE: us-central1-a
-  GOVERSION: 1.19.x
+  GOVERSION: 1.20.1
   IS_PRERELEASE: true
   JAVAVERSION: "11"
   NODEVERSION: 16.x
@@ -51,9 +51,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -142,9 +142,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -201,9 +201,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -252,9 +252,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -303,9 +303,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -379,9 +379,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -467,7 +467,7 @@ jobs:
         fields: repo,commit,author,action
         status: ${{ job.status }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         language:
         - nodejs
