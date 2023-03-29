@@ -354,6 +354,10 @@ export interface CallbackFunctionArgs {
      */
     region?: pulumi.Input<string>;
     /**
+     * Secret environment variables configuration. Structure is documented below.
+     */
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
+    /**
      * If provided, the self-provided service account to run the function with.
      */
     serviceAccountEmail?: pulumi.Input<string>;
