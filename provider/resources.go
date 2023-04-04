@@ -2598,18 +2598,45 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Dataplex
-			"google_dataplex_lake":              {Tok: gcpResource(gcpDataPlex, "Lake")},
-			"google_dataplex_lake_iam_binding":  {Tok: gcpResource(gcpDataPlex, "LakeIamBinding")},
-			"google_dataplex_lake_iam_member":   {Tok: gcpResource(gcpDataPlex, "LakeIamMember")},
-			"google_dataplex_lake_iam_policy":   {Tok: gcpResource(gcpDataPlex, "LakeIamPolicy")},
-			"google_dataplex_asset":             {Tok: gcpResource(gcpDataPlex, "Asset")},
-			"google_dataplex_asset_iam_binding": {Tok: gcpResource(gcpDataPlex, "AssetIamBinding")},
-			"google_dataplex_asset_iam_member":  {Tok: gcpResource(gcpDataPlex, "AssetIamMember")},
-			"google_dataplex_asset_iam_policy":  {Tok: gcpResource(gcpDataPlex, "AssetIamPolicy")},
-			"google_dataplex_zone":              {Tok: gcpResource(gcpDataPlex, "Zone")},
-			"google_dataplex_zone_iam_binding":  {Tok: gcpResource(gcpDataPlex, "ZoneIamBinding")},
-			"google_dataplex_zone_iam_member":   {Tok: gcpResource(gcpDataPlex, "ZoneIamMember")},
-			"google_dataplex_zone_iam_policy":   {Tok: gcpResource(gcpDataPlex, "ZoneIamPolicy")},
+			"google_dataplex_lake":  {Tok: gcpResource(gcpDataPlex, "Lake")},
+			"google_dataplex_asset": {Tok: gcpResource(gcpDataPlex, "Asset")},
+			"google_dataplex_zone":  {Tok: gcpResource(gcpDataPlex, "Zone")},
+			"google_dataplex_lake_iam_binding": {
+				Tok:  gcpResource(gcpDataPlex, "LakeIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_lake_iam.html.markdown"},
+			},
+			"google_dataplex_lake_iam_member": {
+				Tok:  gcpResource(gcpDataPlex, "LakeIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_lake_iam.html.markdown"},
+			},
+			"google_dataplex_lake_iam_policy": {
+				Tok:  gcpResource(gcpDataPlex, "LakeIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_lake_iam.html.markdown"},
+			},
+			"google_dataplex_asset_iam_binding": {
+				Tok:  gcpResource(gcpDataPlex, "AssetIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_asset_iam.html.markdown"},
+			},
+			"google_dataplex_asset_iam_member": {
+				Tok:  gcpResource(gcpDataPlex, "AssetIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_asset_iam.html.markdown"},
+			},
+			"google_dataplex_asset_iam_policy": {
+				Tok:  gcpResource(gcpDataPlex, "AssetIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_asset_iam.html.markdown"},
+			},
+			"google_dataplex_zone_iam_binding": {
+				Tok:  gcpResource(gcpDataPlex, "ZoneIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
+			},
+			"google_dataplex_zone_iam_member": {
+				Tok:  gcpResource(gcpDataPlex, "ZoneIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
+			},
+			"google_dataplex_zone_iam_policy": {
+				Tok:  gcpResource(gcpDataPlex, "ZoneIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
+			},
 
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
@@ -2672,6 +2699,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_apigee_keystores_aliases_key_cert_file": {
 				Tok: gcpResource(gcpApigee, "KeystoresAliasesKeyCertFile"),
+				Docs: &tfbridge.DocInfo{
+					Source: "apigee_keysotres_aliases_key_cert_file.html.markdown",
+				},
 			},
 
 			// API Gateway
