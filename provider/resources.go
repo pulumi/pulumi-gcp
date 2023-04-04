@@ -2504,6 +2504,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_services_edge_cache_keyset":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheKeyset")},
 			"google_network_services_edge_cache_origin":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheOrigin")},
 			"google_network_services_edge_cache_service": {Tok: gcpResource(gcpNetworkServices, "EdgeCacheService")},
+			"google_network_services_gateway":            {Tok: gcpResource(gcpNetworkServices, "Gateway")},
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
@@ -2597,9 +2598,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Dataplex
-			"google_dataplex_lake":  {Tok: gcpResource(gcpDataPlex, "Lake")},
-			"google_dataplex_asset": {Tok: gcpResource(gcpDataPlex, "Asset")},
-			"google_dataplex_zone":  {Tok: gcpResource(gcpDataPlex, "Zone")},
+			"google_dataplex_lake":              {Tok: gcpResource(gcpDataPlex, "Lake")},
+			"google_dataplex_lake_iam_binding":  {Tok: gcpResource(gcpDataPlex, "LakeIamBinding")},
+			"google_dataplex_lake_iam_member":   {Tok: gcpResource(gcpDataPlex, "LakeIamMember")},
+			"google_dataplex_lake_iam_policy":   {Tok: gcpResource(gcpDataPlex, "LakeIamPolicy")},
+			"google_dataplex_asset":             {Tok: gcpResource(gcpDataPlex, "Asset")},
+			"google_dataplex_asset_iam_binding": {Tok: gcpResource(gcpDataPlex, "AssetIamBinding")},
+			"google_dataplex_asset_iam_member":  {Tok: gcpResource(gcpDataPlex, "AssetIamMember")},
+			"google_dataplex_asset_iam_policy":  {Tok: gcpResource(gcpDataPlex, "AssetIamPolicy")},
+			"google_dataplex_zone":              {Tok: gcpResource(gcpDataPlex, "Zone")},
+			"google_dataplex_zone_iam_binding":  {Tok: gcpResource(gcpDataPlex, "ZoneIamBinding")},
+			"google_dataplex_zone_iam_member":   {Tok: gcpResource(gcpDataPlex, "ZoneIamMember")},
+			"google_dataplex_zone_iam_policy":   {Tok: gcpResource(gcpDataPlex, "ZoneIamPolicy")},
 
 			// IAM
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
@@ -2659,6 +2669,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_apigee_sharedflow_deployment": {
 				Tok: gcpResource(gcpApigee, "SharedflowDeployment"),
+			},
+			"google_apigee_keystores_aliases_key_cert_file": {
+				Tok: gcpResource(gcpApigee, "KeystoresAliasesKeyCertFile"),
 			},
 
 			// API Gateway
